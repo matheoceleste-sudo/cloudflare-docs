@@ -9,7 +9,7 @@ head:
     content: How Cloudflare determines the request rate
 ---
 
-import { Example, GlossaryTooltip } from "~/components";
+import { Example, GlossaryTooltip, Render } from "~/components";
 
 Cloudflare tracks request rates by maintaining separate counters for each unique combination of values in a rule's <GlossaryTooltip term="rule characteristics">characteristics</GlossaryTooltip>.
 
@@ -29,6 +29,8 @@ By default, request rate is based on the number of incoming requests. Enterprise
 - Cloudflare does not support global rate limiting counters across the entire network. Each data center maintains its own counters. The exception is when Cloudflare has multiple data centers associated with a given geographical location. In that case, those data centers share counters. This is especially relevant for customers that do not add the IP address as one of the rate limiting characteristics.
 
 - Every rate limiting rule includes the Cloudflare data center ID (`cf.colo.id`) as a mandatory characteristic. This ensures counters remain scoped to each data center. This characteristic does not appear in the rule configuration in the dashboard, but it is added behind the scenes. When [creating rate limiting rules via API](/waf/rate-limiting-rules/create-api/), you must include the `cf.colo.id` characteristic explicitly.
+
+- <Render file="rate-limiting-ipv6-prefixes" />
 
 - The available characteristics depend on your Cloudflare plan. Refer to [Availability](/waf/rate-limiting-rules/#availability) for more information.
 
