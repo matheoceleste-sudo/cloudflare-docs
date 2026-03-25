@@ -2,9 +2,16 @@
 import Details from "./Details.astro";
 import { marked } from "marked";
 import { z } from "astro/zod";
-import prettyBytes from "pretty-bytes";
 import { warpReleasesSchema } from "~/schemas";
 import platforms from "~/util/warp-platforms.json";
+
+function formatBytes(bytes: number): string {
+	if (bytes === 0) return "0 B";
+	const units = ["B", "kB", "MB", "GB", "TB"];
+	const i = Math.min(Math.floor(Math.log10(bytes) / 3), units.length - 1);
+	const value = bytes / 1000 ** i;
+	return value.toPrecision(3).replace(/\.?0+$/, "") + " " + units[i];
+}
 
 type Props = z.infer<typeof props>;
 
@@ -50,7 +57,7 @@ const sortedPlatforms = Object.entries(release.linuxPlatforms ?? {}).sort(
 					release.packageSize && (
 						<span>
 							<strong>Size: </strong>
-							<span data-size>{prettyBytes(release.packageSize)}</span>
+							<span data-size>{formatBytes(release.packageSize)}</span>
 						</span>
 					)
 				}
@@ -90,7 +97,13 @@ const sortedPlatforms = Object.entries(release.linuxPlatforms ?? {}).sort(
 </Details>
 
 <script>
-	import prettyBytes from "pretty-bytes";
+	function formatBytes(bytes: number): string {
+		if (bytes === 0) return "0 B";
+		const units = ["B", "kB", "MB", "GB", "TB"];
+		const i = Math.min(Math.floor(Math.log10(bytes) / 3), units.length - 1);
+		const value = bytes / 1000 ** i;
+		return value.toPrecision(3).replace(/\.?0+$/, "") + " " + units[i];
+	}
 
 	class WarpDownload extends HTMLElement {
 		connectedCallback() {
@@ -112,7 +125,7 @@ const sortedPlatforms = Object.entries(release.linuxPlatforms ?? {}).sort(
 				if (size) {
 					const platformInfo = platforms.find(([p]: [string, number]) => p === platform);
 
-					size.textContent = prettyBytes(Number(platformInfo?.[1] ?? 0));
+					size.textContent = formatBytes(Number(platformInfo?.[1] ?? 0));
 				}
 			});
 		}
