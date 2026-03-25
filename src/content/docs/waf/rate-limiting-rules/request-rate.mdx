@@ -30,7 +30,7 @@ By default, request rate is based on the number of incoming requests. Enterprise
 
 - Every rate limiting rule includes the Cloudflare data center ID (`cf.colo.id`) as a mandatory characteristic. This ensures counters remain scoped to each data center. This characteristic does not appear in the rule configuration in the dashboard, but it is added behind the scenes. When [creating rate limiting rules via API](/waf/rate-limiting-rules/create-api/), you must include the `cf.colo.id` characteristic explicitly.
 
-- <Render file="rate-limiting-ipv6-prefixes" />
+- <Render file="rate-limiting-ipv6-handling" product="waf" />
 
 - The available characteristics depend on your Cloudflare plan. Refer to [Availability](/waf/rate-limiting-rules/#availability) for more information.
 

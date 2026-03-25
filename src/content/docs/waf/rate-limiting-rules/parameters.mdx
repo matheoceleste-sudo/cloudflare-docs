@@ -58,7 +58,7 @@ Use one or more of the following characteristics:
 | **JWT claim of** (enter token configuration ID, claim name) | `lookup_json_string( http.request.jwt.claims["<token_configuration_id>"][0], "<claim_name>")`                             | [Requirements for claims in JWT](#requirements-for-using-claims-inside-a-json-web-token-jwt), [missing field versus empty value](#missing-field-versus-empty-value) and [JWT Validation reference](/api-shield/security/jwt-validation/transform-rules/) |
 | **Body**                                                    | `http.request.body.raw`                                                                                                   |
 | **Body size** (select operator, enter size)                 | `http.request.body.size`                                                                                                  |
-| **Custom** (enter expression)                               | Enter a custom expression. You can use a function such as `substring()` or `lower()`, or enter a more complex expression. | [Functions](/ruleset-engine/rules-language/functions/)                                                                                                                                                                                                   |
+| **Custom** (enter expression)                               | Enter a custom expression. You can use a function such as `substring()` or `cidr6()`, or enter a more complex expression. | [Functions](/ruleset-engine/rules-language/functions/)                                                                                                                                                                                                   |
 
 The available characteristics depend on your Cloudflare plan. Refer to [Availability](/waf/rate-limiting-rules/#availability) for more information.
 
@@ -215,7 +215,9 @@ The action behavior can be one of the following:
 
 ### IPv6 address handling
 
-<Render file="rate-limiting-ipv6-prefixes" />
+<Render file="rate-limiting-ipv6-handling" product="waf" />
+
+To perform rate limiting based on all IPv6 addresses with the same prefix, you can use the [`cidr6()`](/ruleset-engine/rules-language/functions/#cidr6) function to define a [custom characteristic](#with-the-same-characteristics) based on an expression — for example, `cidr6(ip.src, 64)`.
 
 ### Use cases of IP with NAT support
 
