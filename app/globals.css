@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 222 60% 14%;
+    --primary-foreground: 42 20% 98%;
+    --secondary: 38 15% 88%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 38 10% 93%;
+    --muted-foreground: 220 13% 46%;
+    --accent: 43 65% 45%;
+    --accent-foreground: 222 60% 14%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 42 20% 98%;
+    --border: 38 12% 87%;
+    --input: 38 12% 87%;
+    --ring: 43 65% 45%;
+    --radius: 0.5rem;
+    --font-display: "Playfair Display", Georgia, serif;
+    --font-body: "Inter", system-ui, sans-serif;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-pearl text-navy antialiased;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Gold separator line */
+  .gold-line {
+    @apply block w-16 h-0.5 bg-gold my-4;
+  }
+  /* Section label chip */
+  .label-chip {
+    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gold-dark bg-gold-muted/30 px-4 py-1.5 rounded-full border border-gold/20;
+  }
+  /* Luxury button */
+  .btn-gold {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 bg-gold-gradient text-navy font-semibold text-sm tracking-wide rounded transition-all duration-300
+           hover:shadow-[0_4px_24px_rgba(184,149,42,0.4)] hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 border border-white/60 text-white font-semibold text-sm tracking-wide rounded transition-all duration-300
+           hover:bg-white/10 hover:border-white active:bg-white/5;
+  }
+  .btn-navy {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 bg-navy text-white font-semibold text-sm tracking-wide rounded transition-all duration-300
+           hover:bg-navy-light hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+  /* Card with luxury hover */
+  .service-card {
+    @apply relative bg-white border border-pearl-cream rounded-lg overflow-hidden transition-all duration-300
+           hover:shadow-[0_8px_40px_rgba(13,27,53,0.12)] hover:-translate-y-1;
+  }
+  /* Section container */
+  .section {
+    @apply py-20 md:py-28;
+  }
+  /* Gradient text */
+  .text-gold-gradient {
+    @apply bg-clip-text text-transparent bg-gold-gradient;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F5F2EB; }
+::-webkit-scrollbar-thumb { background: #B8952A; border-radius: 3px; }
+
+/* Reveal animations triggered by IntersectionObserver via data-reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
