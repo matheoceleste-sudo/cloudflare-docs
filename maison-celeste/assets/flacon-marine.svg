@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" role="img" aria-label="Flacon de parfum">
+  <defs>
+    <clipPath id="body"><rect x="52" y="66" width="96" height="208" rx="14"/></clipPath>
+  </defs>
+  <!-- Bouchon -->
+  <rect x="80" y="6" width="40" height="36" rx="4" fill="#a97c50"/>
+  <rect x="80" y="30" width="40" height="8" rx="2" fill="#8a6236"/>
+  <!-- Collerette + col -->
+  <rect x="86" y="42" width="28" height="10" rx="2" fill="#8a6236"/>
+  <rect x="90" y="52" width="20" height="16" fill="#efe6d4" stroke="#d9cdb4" stroke-width="1"/>
+  <!-- Corps en verre -->
+  <rect x="52" y="66" width="96" height="208" rx="14" fill="#fdfaf3" stroke="#d9cdb4" stroke-width="1.5"/>
+  <!-- Liquide -->
+  <g clip-path="url(#body)">
+    <rect x="52" y="150" width="96" height="124" fill="#8fb7bd"/>
+    <ellipse cx="100" cy="150" rx="48" ry="7" fill="#b2d2d6"/>
+    <!-- reflet -->
+    <rect x="64" y="74" width="12" height="188" rx="6" fill="#ffffff" opacity="0.35"/>
+    <rect x="82" y="74" width="5" height="150" rx="2.5" fill="#ffffff" opacity="0.18"/>
+  </g>
+  <!-- Étiquette + monogramme -->
+  <rect x="72" y="176" width="56" height="66" fill="#fbf8f1" stroke="#a97c50" stroke-width="1" opacity="0.96"/>
+  <text x="100" y="214" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="30" fill="#8a6236">C</text>
+  <line x1="84" y1="226" x2="116" y2="226" stroke="#a97c50" stroke-width="0.8"/>
+</svg>
