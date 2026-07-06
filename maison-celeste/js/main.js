@@ -46,6 +46,68 @@
     });
   }
 
+  /* ---------- Hero animé au scroll : le flacon se remplit ---------- */
+  var heroScroll = document.getElementById('heroScroll');
+  if (heroScroll) {
+    var liquid = document.getElementById('hsLiquid');
+    var meniscus = document.getElementById('hsMeniscus');
+    var glow = document.getElementById('heroGlow');
+    var bottle = document.getElementById('heroBottle');
+    var fillBar = document.getElementById('fillBar');
+    var cue = document.getElementById('scrollCue');
+    var caps = Array.prototype.slice.call(heroScroll.querySelectorAll('.hero-cap'));
+    var capName = document.getElementById('hsCap');
+
+    var LIQ_BOTTOM = 274, LIQ_MAX = 178; // géométrie du liquide dans le SVG
+    var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+
+    var setActive = function (name) {
+      caps.forEach(function (c) { c.classList.toggle('is-active', c.dataset.cap === name); });
+    };
+
+    if (prefersReduced) {
+      // Mouvement réduit : flacon plein, titre affiché, pas de scrub.
+      heroScroll.classList.add('no-scrub');
+      setActive('title');
+      if (glow) glow.style.opacity = 0.4;
+    } else {
+      var ticking = false;
+      var render = function () {
+        ticking = false;
+        var rect = heroScroll.getBoundingClientRect();
+        var scrollable = heroScroll.offsetHeight - window.innerHeight;
+        var p = scrollable > 0 ? clamp(-rect.top / scrollable, 0, 1) : 0;
+
+        // Remplissage : plein un peu avant la fin (0 → 1 sur 0..0.82)
+        var fill = clamp(p / 0.82, 0, 1);
+        var top = LIQ_BOTTOM - LIQ_MAX * fill;
+        liquid.setAttribute('y', top.toFixed(1));
+        liquid.setAttribute('height', (LIQ_MAX * fill).toFixed(1));
+        meniscus.setAttribute('cy', top.toFixed(1));
+        meniscus.setAttribute('opacity', fill > 0.02 ? '1' : '0');
+
+        // Halo + flottement + léger balancement du flacon
+        if (glow) glow.style.opacity = (0.15 + fill * 0.5).toFixed(3);
+        if (bottle) bottle.style.transform =
+          'translateY(' + (12 - fill * 12).toFixed(1) + 'px) rotate(' + (Math.sin(p * Math.PI * 2) * 1.5).toFixed(2) + 'deg)';
+        // Le bouchon se soulève légèrement au début (on "verse")
+        if (capName) capName.style.transform = 'translateY(' + (-6 * clamp(1 - p / 0.12, 0, 1)).toFixed(1) + 'px)';
+        if (fillBar) fillBar.style.height = (fill * 100).toFixed(1) + '%';
+
+        // Captions selon la progression
+        var name = p < 0.15 ? 'title' : p < 0.4 ? 'n1' : p < 0.62 ? 'n2' : p < 0.83 ? 'n3' : 'final';
+        setActive(name);
+        if (cue) cue.style.opacity = p > 0.88 ? '0' : '1';
+      };
+      var onHeroScroll = function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(render); }
+      };
+      window.addEventListener('scroll', onHeroScroll, { passive: true });
+      window.addEventListener('resize', onHeroScroll);
+      render();
+    }
+  }
+
   /* ---------- Reveals au scroll ---------- */
   var reveals = document.querySelectorAll('.reveal');
   if (reveals.length) {
