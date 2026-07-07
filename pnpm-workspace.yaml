@@ -13,3 +13,9 @@ onlyBuiltDependencies:
   - sharp
   - tldjs
   - workerd
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+  tldjs: true
+  workerd: true
