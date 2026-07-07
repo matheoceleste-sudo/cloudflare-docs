@@ -230,7 +230,7 @@ export default function Hero({
 							<button
 								type="button"
 								onClick={buttons.primary.onClick}
-								className="rounded-full bg-white px-6 py-3 font-medium text-black transition-transform hover:scale-105"
+								className="rounded-full bg-white px-6 py-3 font-medium text-slate-950 transition-transform hover:scale-105"
 							>
 								{buttons.primary.text}
 							</button>
