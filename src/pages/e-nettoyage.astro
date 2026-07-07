@@ -1,0 +1,293 @@
+---
+import "~/styles/tailwind.css";
+import ENettoyageHero from "~/components/e-nettoyage/ENettoyageHero";
+import { DottedSurface } from "~/components/ui/dotted-surface";
+
+const services = [
+	{
+		icon: "🏠",
+		title: "Nettoyage résidentiel",
+		desc: "Ménage régulier ou ponctuel de votre appartement ou maison, du sol au plafond.",
+	},
+	{
+		icon: "🏢",
+		title: "Nettoyage de bureaux",
+		desc: "Des espaces de travail sains et impeccables, en journée ou en dehors des heures d'ouverture.",
+	},
+	{
+		icon: "🌿",
+		title: "Nettoyage écologique",
+		desc: "Produits certifiés, biodégradables et sans danger pour vos enfants et vos animaux.",
+	},
+	{
+		icon: "📦",
+		title: "Fin de bail & grand ménage",
+		desc: "Un nettoyage en profondeur qui vous rend votre dépôt de garantie sans stress.",
+	},
+];
+
+const steps = [
+	{
+		num: "01",
+		title: "Réservez en ligne",
+		desc: "Choisissez la prestation, la date et l'heure. Devis clair en moins de 2 minutes.",
+	},
+	{
+		num: "02",
+		title: "On s'occupe de tout",
+		desc: "Un professionnel vérifié arrive avec son matériel et suit votre check-list.",
+	},
+	{
+		num: "03",
+		title: "Détendez-vous",
+		desc: "Vous retrouvez un espace éclatant. Pas satisfait ? On revient gratuitement.",
+	},
+];
+
+const stats = [
+	{ value: "2 000+", label: "Clients satisfaits" },
+	{ value: "4,9/5", label: "Note moyenne" },
+	{ value: "100%", label: "Pros vérifiés" },
+	{ value: "48h", label: "Délai moyen" },
+];
+---
+
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>e-Nettoyage — La propreté nouvelle génération</title>
+		<meta
+			name="description"
+			content="e-Nettoyage : réservez en ligne un nettoyage professionnel de votre logement ou de vos bureaux. Pros vérifiés, produits écologiques, satisfaction garantie."
+		/>
+		<style is:global>
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+			html {
+				scroll-behavior: smooth;
+			}
+			body {
+				margin: 0;
+				background: #070711;
+				color: #e2e8f0;
+				font-family:
+					ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+					Helvetica, Arial, sans-serif;
+				-webkit-font-smoothing: antialiased;
+			}
+			h1,
+			h2,
+			h3,
+			p {
+				margin: 0;
+			}
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Navigation -->
+		<header
+			class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[#070711]/70 backdrop-blur-md"
+		>
+			<nav
+				class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
+			>
+				<a href="#top" class="flex items-center gap-2 text-lg font-semibold">
+					<span aria-hidden="true">💧</span>
+					<span>e&#8209;Nettoyage</span>
+				</a>
+				<div class="hidden items-center gap-8 text-sm text-white/70 md:flex">
+					<a href="#services" class="transition-colors hover:text-white"
+						>Services</a
+					>
+					<a href="#etapes" class="transition-colors hover:text-white"
+						>Comment ça marche</a
+					>
+					<a href="#contact" class="transition-colors hover:text-white">Contact</a>
+				</div>
+				<a
+					href="#contact"
+					class="rounded-full bg-cyan-400 px-4 py-2 text-sm font-medium text-slate-950 transition-transform hover:scale-105"
+					>Réserver</a
+				>
+			</nav>
+		</header>
+
+		<main id="top">
+			<!-- Hero avec animation 3D (shader WebGL) -->
+			<ENettoyageHero client:load />
+
+			<!-- Services -->
+			<section id="services" class="mx-auto max-w-6xl px-6 py-24">
+				<div class="mx-auto mb-14 max-w-2xl text-center">
+					<p
+						class="mb-3 text-sm font-medium uppercase tracking-widest text-cyan-400"
+					>
+						Nos services
+					</p>
+					<h2 class="text-3xl font-bold sm:text-4xl">
+						Une prestation pour chaque besoin
+					</h2>
+					<p class="mt-4 text-white/60">
+						Du studio étudiant au plateau de bureaux, nos équipes s'adaptent à
+						votre espace et à votre rythme.
+					</p>
+				</div>
+				<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+					{
+						services.map((s) => (
+							<div class="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-cyan-400/40 hover:bg-white/[0.07]">
+								<div class="mb-4 text-3xl" aria-hidden="true">
+									{s.icon}
+								</div>
+								<h3 class="mb-2 text-lg font-semibold">{s.title}</h3>
+								<p class="text-sm leading-relaxed text-white/60">{s.desc}</p>
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<!-- Bande statistiques -->
+			<section class="border-y border-white/5 bg-white/[0.02]">
+				<div
+					class="mx-auto grid max-w-5xl grid-cols-2 gap-8 px-6 py-14 md:grid-cols-4"
+				>
+					{
+						stats.map((stat) => (
+							<div class="text-center">
+								<div class="text-3xl font-bold text-cyan-400 sm:text-4xl">
+									{stat.value}
+								</div>
+								<div class="mt-2 text-sm text-white/60">{stat.label}</div>
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<!-- Bande animée 3D (DottedSurface) -->
+			<section class="relative h-[420px] overflow-hidden">
+				<DottedSurface client:visible className="h-full w-full text-cyan-300">
+					<div
+						class="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center"
+					>
+						<h2
+							class="max-w-3xl text-3xl font-bold sm:text-4xl md:text-5xl"
+						>
+							La propreté nouvelle génération
+						</h2>
+						<p class="mt-4 max-w-xl text-white/60">
+							Technologie, professionnels de confiance et respect de la planète —
+							réunis dans une seule application.
+						</p>
+					</div>
+				</DottedSurface>
+			</section>
+
+			<!-- Comment ça marche -->
+			<section id="etapes" class="mx-auto max-w-6xl px-6 py-24">
+				<div class="mx-auto mb-14 max-w-2xl text-center">
+					<p
+						class="mb-3 text-sm font-medium uppercase tracking-widest text-cyan-400"
+					>
+						Comment ça marche
+					</p>
+					<h2 class="text-3xl font-bold sm:text-4xl">
+						Un intérieur propre en 3 étapes
+					</h2>
+				</div>
+				<div class="grid gap-8 md:grid-cols-3">
+					{
+						steps.map((step) => (
+							<div class="rounded-2xl border border-white/10 bg-white/5 p-8">
+								<div class="mb-4 text-4xl font-bold text-cyan-400/40">
+									{step.num}
+								</div>
+								<h3 class="mb-2 text-xl font-semibold">{step.title}</h3>
+								<p class="text-sm leading-relaxed text-white/60">{step.desc}</p>
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<!-- Contact / CTA -->
+			<section id="contact" class="mx-auto max-w-3xl px-6 py-24">
+				<div
+					class="rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-8 sm:p-12"
+				>
+					<div class="mb-8 text-center">
+						<h2 class="text-3xl font-bold sm:text-4xl">
+							Réservez votre nettoyage
+						</h2>
+						<p class="mt-3 text-white/60">
+							Laissez-nous vos coordonnées, on vous rappelle sous 24h avec un
+							devis gratuit.
+						</p>
+					</div>
+					<form
+						class="grid gap-4"
+						action="mailto:contact@e-nettoyage.fr"
+						method="post"
+						enctype="text/plain"
+					>
+						<div class="grid gap-4 sm:grid-cols-2">
+							<input
+								type="text"
+								name="nom"
+								required
+								placeholder="Votre nom"
+								class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none placeholder:text-white/40 focus:border-cyan-400/60"
+							/>
+							<input
+								type="email"
+								name="email"
+								required
+								placeholder="Votre e-mail"
+								class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none placeholder:text-white/40 focus:border-cyan-400/60"
+							/>
+						</div>
+						<textarea
+							name="message"
+							rows="4"
+							placeholder="Décrivez votre besoin (surface, fréquence, type de prestation...)"
+							class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none placeholder:text-white/40 focus:border-cyan-400/60"
+						></textarea>
+						<button
+							type="submit"
+							class="mt-2 rounded-full bg-cyan-400 px-6 py-3 font-medium text-slate-950 transition-transform hover:scale-[1.02]"
+						>
+							Demander mon devis gratuit
+						</button>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="border-t border-white/5">
+			<div
+				class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-10 text-sm text-white/50 sm:flex-row"
+			>
+				<div class="flex items-center gap-2">
+					<span aria-hidden="true">💧</span>
+					<span>e&#8209;Nettoyage</span>
+				</div>
+				<p>© {new Date().getFullYear()} e-Nettoyage. Tous droits réservés.</p>
+				<div class="flex gap-6">
+					<a href="#services" class="hover:text-white">Services</a>
+					<a href="#contact" class="hover:text-white">Contact</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
