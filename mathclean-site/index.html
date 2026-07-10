@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathClean — Nettoyage professionnel & réservation en ligne</title>
+  <style>
+    :root {
+      --bleu: #0a6cff;
+      --bleu-fonce: #0546b0;
+      --teal: #06b6d4;
+      --sombre: #0b1b33;
+      --gris: #5b6b83;
+      --gris-clair: #eef3fb;
+      --blanc: #ffffff;
+      --vert: #10b981;
+      --ombre: 0 10px 30px rgba(10, 40, 90, 0.12);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--sombre);
+      background: var(--blanc);
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e6edf8;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; }
+    .logo .dot { width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--bleu), var(--teal));
+      display: grid; place-items: center; color: #fff; font-size: 1.1rem; }
+    .nav-links { display: flex; gap: 26px; align-items: center; }
+    .nav-links a { color: var(--gris); font-weight: 600; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--bleu); }
+    .btn {
+      display: inline-block; background: var(--bleu); color: #fff;
+      padding: 11px 22px; border-radius: 999px; font-weight: 700;
+      border: none; cursor: pointer; font-size: 0.95rem; transition: .2s;
+    }
+    .btn:hover { background: var(--bleu-fonce); transform: translateY(-1px); }
+    .btn.ghost { background: transparent; color: var(--bleu); border: 2px solid #cfe0ff; }
+    .btn.ghost:hover { background: var(--gris-clair); }
+    @media (max-width: 780px) { .nav-links { display: none; } }
+
+    /* HERO */
+    .hero {
+      background: radial-gradient(1200px 500px at 80% -10%, #d5e8ff 0%, transparent 60%),
+                  linear-gradient(180deg, #f7fbff, #ffffff);
+      padding: 70px 0 50px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+    .hero h1 { font-size: 2.9rem; line-height: 1.1; letter-spacing: -1px; margin-bottom: 18px; }
+    .hero h1 span { background: linear-gradient(120deg, var(--bleu), var(--teal));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--gris); font-size: 1.15rem; margin-bottom: 26px; max-width: 520px; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-visual {
+      background: linear-gradient(135deg, #0a6cff, #06b6d4);
+      border-radius: 24px; min-height: 320px; box-shadow: var(--ombre);
+      display: grid; place-items: center; color: #fff; text-align: center; padding: 30px;
+    }
+    .hero-visual .big { font-size: 4rem; }
+    .hero-visual h3 { font-size: 1.4rem; margin: 12px 0 6px; }
+    .hero-visual p { color: rgba(255,255,255,0.85); font-size: 0.98rem; }
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.2rem; } }
+
+    /* SECTIONS */
+    section { padding: 64px 0; }
+    .section-title { text-align: center; margin-bottom: 12px; font-size: 2rem; letter-spacing: -0.5px; }
+    .section-sub { text-align: center; color: var(--gris); margin-bottom: 40px; max-width: 620px; margin-left: auto; margin-right: auto; }
+    .badge { display: inline-block; background: #e5f0ff; color: var(--bleu);
+      font-weight: 700; font-size: 0.8rem; padding: 6px 14px; border-radius: 999px; margin-bottom: 14px; }
+
+    /* SERVICE CARDS */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .card {
+      background: #fff; border: 1px solid #e9f0fb; border-radius: var(--radius);
+      padding: 26px 22px; cursor: pointer; transition: .2s; position: relative; overflow: hidden;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--ombre); border-color: #cfe0ff; }
+    .card .ico { font-size: 2.4rem; margin-bottom: 12px; display: block; }
+    .card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .card p { color: var(--gris); font-size: 0.9rem; }
+    .card .tag { position: absolute; top: 14px; right: 14px; font-size: 0.68rem;
+      font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding: 5px 10px; border-radius: 999px; }
+    .tag.creneau { background: #e7f9f0; color: #059669; }
+    .tag.devis { background: #fff3e0; color: #d97706; }
+    .card.premium { background: linear-gradient(135deg, #0b1b33, #143a6b); color: #fff; border: none; }
+    .card.premium p { color: rgba(255,255,255,0.75); }
+    .card.premium .tag.devis { background: rgba(255,255,255,0.15); color: #ffd27a; }
+
+    /* RESERVATION */
+    #reservation { background: var(--gris-clair); }
+    .resa-box { background: #fff; border-radius: 22px; box-shadow: var(--ombre); padding: 34px; max-width: 820px; margin: 0 auto; }
+    .field { margin-bottom: 24px; }
+    .field label.lbl { display: block; font-weight: 700; margin-bottom: 10px; font-size: 0.98rem; }
+    .field label.lbl small { color: var(--gris); font-weight: 500; }
+    select, input[type="date"], input[type="text"], input[type="tel"], input[type="email"], textarea {
+      width: 100%; padding: 13px 15px; border: 1.5px solid #d7e2f2; border-radius: 12px;
+      font-size: 1rem; font-family: inherit; color: var(--sombre); background: #fff; transition: .15s;
+    }
+    select:focus, input:focus, textarea:focus { outline: none; border-color: var(--bleu); box-shadow: 0 0 0 3px #dbeafe; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+
+    /* Créneaux */
+    .slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: 10px; }
+    .slot {
+      padding: 11px 6px; text-align: center; border: 1.5px solid #d7e2f2; border-radius: 10px;
+      cursor: pointer; font-weight: 700; font-size: 0.92rem; transition: .15s; background: #fff; user-select: none;
+    }
+    .slot:hover { border-color: var(--bleu); color: var(--bleu); }
+    .slot.active { background: var(--bleu); color: #fff; border-color: var(--bleu); }
+
+    /* Devis - toute la journée */
+    .fullday {
+      display: flex; align-items: center; gap: 16px; padding: 20px 22px;
+      background: linear-gradient(135deg, #eef6ff, #e6fbff);
+      border: 2px solid #bfe3ff; border-radius: 14px; margin-bottom: 20px;
+    }
+    .fullday .fico { font-size: 2rem; }
+    .fullday b { font-size: 1.1rem; }
+    .fullday span { display: block; color: var(--gris); font-size: 0.9rem; }
+
+    .hidden { display: none !important; }
+    .hint { color: var(--gris); font-size: 0.85rem; margin-top: 8px; }
+
+    /* Récap / confirmation */
+    #recap {
+      margin-top: 24px; padding: 22px; border-radius: 14px;
+      background: #f0fdf4; border: 1.5px solid #bbf7d0;
+    }
+    #recap h4 { color: #059669; margin-bottom: 10px; }
+    #recap ul { list-style: none; }
+    #recap li { padding: 4px 0; }
+    #recap li b { display: inline-block; min-width: 130px; color: var(--gris); }
+
+    /* FOOTER */
+    footer { background: var(--sombre); color: #b7c6de; padding: 46px 0 30px; }
+    .foot-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    footer .logo { color: #fff; }
+    footer a:hover { color: #fff; }
+    .foot-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 26px; padding-top: 18px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="wrap nav">
+      <div class="logo"><span class="dot">✦</span> MathClean</div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#reservation">Réservation</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#reservation" class="btn">Réserver</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="badge">Nettoyage professionnel à domicile & sur mesure</span>
+        <h1>Un intérieur <span>impeccable</span>, sans effort.</h1>
+        <p>Canapé, matelas, tapis, sièges auto, et même votre <b>jet privé</b> : réservez votre créneau en quelques clics. Résultat garanti par des experts.</p>
+        <div class="hero-cta">
+          <a href="#reservation" class="btn">Réserver un créneau</a>
+          <a href="#services" class="btn ghost">Voir les services</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div>
+          <div class="big">🧼</div>
+          <h3>+ de 2 500 nettoyages réalisés</h3>
+          <p>Note moyenne 4,9/5 · Intervention 7j/7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div style="text-align:center">
+        <span class="badge">Nos prestations</span>
+        <h2 class="section-title">Choisissez votre nettoyage</h2>
+        <p class="section-sub">Cliquez sur une prestation pour la réserver directement. Les prestations « Sur devis » sont chiffrées sur mesure.</p>
+      </div>
+      <div class="grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section id="reservation">
+    <div class="wrap">
+      <div style="text-align:center">
+        <span class="badge">Réservation en ligne</span>
+        <h2 class="section-title">Réservez en 1 minute</h2>
+        <p class="section-sub">Sélectionnez votre prestation, la date, puis votre horaire.</p>
+      </div>
+
+      <div class="resa-box">
+        <!-- Service -->
+        <div class="field">
+          <label class="lbl" for="service">1. Votre prestation</label>
+          <select id="service">
+            <option value="" disabled selected>— Choisir une prestation —</option>
+          </select>
+        </div>
+
+        <!-- Date -->
+        <div class="field">
+          <label class="lbl" for="date">2. Date souhaitée</label>
+          <input type="date" id="date" />
+        </div>
+
+        <!-- CRENEAUX (services 1h) -->
+        <div class="field hidden" id="bloc-creneaux">
+          <label class="lbl">3. Créneau horaire <small>· durée 1h</small></label>
+          <div class="slots" id="slots"></div>
+          <p class="hint">Créneaux disponibles de 9h à 20h, toutes les 30 minutes.</p>
+        </div>
+
+        <!-- DEVIS (toute la journée) -->
+        <div class="field hidden" id="bloc-devis">
+          <label class="lbl">3. Intervention</label>
+          <div class="fullday">
+            <div class="fico">📅</div>
+            <div>
+              <b>Toute la journée</b>
+              <span>Prestation sur devis — nous intervenons sur la durée nécessaire.</span>
+            </div>
+          </div>
+          <label class="lbl" for="heure-debut">Heure de début souhaitée</label>
+          <select id="heure-debut">
+            <option value="" disabled selected>— Choisir l'heure de début —</option>
+          </select>
+          <p class="hint">Vous choisissez l'heure à laquelle nous commençons ; le nettoyage se poursuit sur la journée.</p>
+        </div>
+
+        <!-- Coordonnées -->
+        <div class="field" id="bloc-coord">
+          <label class="lbl">4. Vos coordonnées</label>
+          <div class="row" style="margin-bottom:18px">
+            <input type="text" id="nom" placeholder="Nom complet" />
+            <input type="tel" id="tel" placeholder="Téléphone" />
+          </div>
+          <div class="row" style="margin-bottom:18px">
+            <input type="email" id="email" placeholder="Email" />
+            <input type="text" id="adresse" placeholder="Adresse d'intervention" />
+          </div>
+          <textarea id="notes" rows="2" placeholder="Précisions (facultatif) : nombre de places, matière, taches particulières…"></textarea>
+        </div>
+
+        <button class="btn" style="width:100%; padding:15px; font-size:1.05rem" id="submit">Confirmer ma réservation</button>
+
+        <!-- Récap -->
+        <div id="recap" class="hidden">
+          <h4>✅ Demande envoyée !</h4>
+          <ul id="recap-list"></ul>
+          <p class="hint" style="margin-top:12px">Nous vous recontactons rapidement pour confirmer. (Démo — aucune donnée n'est réellement envoyée.)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="logo"><span class="dot">✦</span> MathClean</div>
+          <p style="margin-top:10px; max-width:280px; font-size:0.92rem">Nettoyage professionnel de vos textiles, véhicules et jets privés. Partout, 7j/7.</p>
+        </div>
+        <div>
+          <h4 style="color:#fff; margin-bottom:12px">Contact</h4>
+          <p>📞 06 00 00 00 00</p>
+          <p>✉️ contact@mathclean.fr</p>
+          <p>🌐 mathclean.fr</p>
+        </div>
+        <div>
+          <h4 style="color:#fff; margin-bottom:12px">Prestations</h4>
+          <p>Canapé · Matelas · Tapis</p>
+          <p>Sièges · Fauteuil</p>
+          <p>Jet privé · Automobile</p>
+        </div>
+      </div>
+      <div class="foot-bottom">© 2026 MathClean — Tous droits réservés.</div>
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- DONNÉES DES PRESTATIONS ---------- */
+    // type "creneau" -> créneaux d'1h (9h-20h, toutes les 30 min)
+    // type "devis"   -> pas de créneau : "Toute la journée" + heure de début
+    const services = [
+      { id: 'canape',   nom: 'Canapé',            ico: '🛋️', type: 'creneau', desc: "Nettoyage en profondeur, toutes places." },
+      { id: 'matelas',  nom: 'Matelas',           ico: '🛏️', type: 'creneau', desc: "Désinfection & anti-acariens." },
+      { id: 'sieges',   nom: 'Sièges',            ico: '💺', type: 'creneau', desc: "Sièges auto, chaises, banquettes." },
+      { id: 'tapis',    nom: 'Tapis / Moquette',  ico: '🧹', type: 'creneau', desc: "Injection-extraction, séchage rapide." },
+      { id: 'fauteuil', nom: 'Fauteuil',          ico: '🪑', type: 'creneau', desc: "Tissu, cuir, velours." },
+      { id: 'jet',      nom: 'Jet privé / Avion', ico: '✈️', type: 'devis',   desc: "Nettoyage complet cabine & extérieur.", premium: true },
+      { id: 'auto',     nom: 'Automobile',        ico: '🚗', type: 'devis',   desc: "Detailing intérieur & extérieur." },
+      { id: 'bateau',   nom: 'Bateau / Yacht',    ico: '⛵', type: 'devis',   desc: "Pont, cabines, sellerie marine." },
+      { id: 'locaux',   nom: 'Bureaux / Locaux',  ico: '🏢', type: 'devis',   desc: "Entretien professionnel sur mesure." },
+    ];
+
+    /* ---------- GÉNÉRATION DES CRÉNEAUX HORAIRES ---------- */
+    // Créneaux d'1h de 9h à 20h, espacés de 30 min -> début de 09:00 à 19:00
+    function genCreneaux1h() {
+      const arr = [];
+      for (let m = 9 * 60; m + 60 <= 20 * 60; m += 30) {
+        arr.push(fmt(m));
+      }
+      return arr; // 09:00 ... 19:00
+    }
+    // Heures de début (devis) : de 9h à 20h toutes les 30 min
+    function genHeuresDebut() {
+      const arr = [];
+      for (let m = 9 * 60; m <= 20 * 60; m += 30) arr.push(fmt(m));
+      return arr;
+    }
+    function fmt(min) {
+      const h = String(Math.floor(min / 60)).padStart(2, '0');
+      const m = String(min % 60).padStart(2, '0');
+      return h + 'h' + m;
+    }
+
+    /* ---------- RENDU ---------- */
+    const grid = document.getElementById('services-grid');
+    const selService = document.getElementById('service');
+
+    services.forEach(s => {
+      // carte
+      const card = document.createElement('div');
+      card.className = 'card' + (s.premium ? ' premium' : '');
+      card.innerHTML = `
+        <span class="tag ${s.type}">${s.type === 'creneau' ? 'Créneau 1h' : 'Sur devis'}</span>
+        <span class="ico">${s.ico}</span>
+        <h3>${s.nom}</h3>
+        <p>${s.desc}</p>`;
+      card.addEventListener('click', () => {
+        selService.value = s.id;
+        onServiceChange();
+        document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
+      });
+      grid.appendChild(card);
+
+      // option select
+      const opt = document.createElement('option');
+      opt.value = s.id;
+      opt.textContent = `${s.ico}  ${s.nom} — ${s.type === 'creneau' ? 'créneau 1h' : 'sur devis'}`;
+      selService.appendChild(opt);
+    });
+
+    // slots créneaux
+    const slotsEl = document.getElementById('slots');
+    let selectedSlot = null;
+    genCreneaux1h().forEach(t => {
+      const el = document.createElement('div');
+      el.className = 'slot';
+      el.textContent = t;
+      el.addEventListener('click', () => {
+        document.querySelectorAll('.slot').forEach(x => x.classList.remove('active'));
+        el.classList.add('active');
+        selectedSlot = t;
+      });
+      slotsEl.appendChild(el);
+    });
+
+    // heures de début (devis)
+    const selHeure = document.getElementById('heure-debut');
+    genHeuresDebut().forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t; opt.textContent = t;
+      selHeure.appendChild(opt);
+    });
+
+    // date min = aujourd'hui
+    document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+    /* ---------- LOGIQUE CONDITIONNELLE ---------- */
+    const blocCreneaux = document.getElementById('bloc-creneaux');
+    const blocDevis = document.getElementById('bloc-devis');
+
+    function onServiceChange() {
+      const s = services.find(x => x.id === selService.value);
+      selectedSlot = null;
+      document.querySelectorAll('.slot').forEach(x => x.classList.remove('active'));
+      selHeure.value = '';
+      document.getElementById('recap').classList.add('hidden');
+
+      if (!s) { blocCreneaux.classList.add('hidden'); blocDevis.classList.add('hidden'); return; }
+      if (s.type === 'creneau') {
+        blocCreneaux.classList.remove('hidden');
+        blocDevis.classList.add('hidden');
+      } else {
+        blocDevis.classList.remove('hidden');
+        blocCreneaux.classList.add('hidden');
+      }
+    }
+    selService.addEventListener('change', onServiceChange);
+
+    /* ---------- SOUMISSION ---------- */
+    document.getElementById('submit').addEventListener('click', () => {
+      const s = services.find(x => x.id === selService.value);
+      const date = document.getElementById('date').value;
+      const nom = document.getElementById('nom').value.trim();
+
+      if (!s) return alert('Merci de choisir une prestation.');
+      if (!date) return alert('Merci de choisir une date.');
+      if (s.type === 'creneau' && !selectedSlot) return alert('Merci de choisir un créneau horaire.');
+      if (s.type === 'devis' && !selHeure.value) return alert("Merci de choisir l'heure de début.");
+      if (!nom) return alert('Merci d’indiquer votre nom.');
+
+      const list = document.getElementById('recap-list');
+      let horaire = s.type === 'creneau'
+        ? `${selectedSlot} <span style="color:#059669">(créneau 1h)</span>`
+        : `Toute la journée — début à ${selHeure.value} <span style="color:#d97706">(sur devis)</span>`;
+
+      list.innerHTML = `
+        <li><b>Prestation :</b> ${s.ico} ${s.nom}</li>
+        <li><b>Date :</b> ${new Date(date).toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' })}</li>
+        <li><b>Horaire :</b> ${horaire}</li>
+        <li><b>Nom :</b> ${nom}</li>`;
+      document.getElementById('recap').classList.remove('hidden');
+      document.getElementById('recap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+</body>
+</html>
