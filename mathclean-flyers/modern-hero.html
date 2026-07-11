@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mathclean — Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0d1f31; --navy-2:#0a1826; --ink:#071018;
+    --gold:#c2a36b; --gold-soft:#dcc498; --gold-bright:#e6d3a6;
+    --paper:#f6f3ec; --mist:#9fb0bf; --line:rgba(194,163,107,.28);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:'Jost',sans-serif; font-weight:300; color:var(--paper); background:var(--navy-2); }
+
+  .hero{
+    position:relative; min-height:100vh; overflow:hidden;
+    display:flex; flex-direction:column;
+    background: radial-gradient(130% 120% at 50% -20%, #16324c 0%, var(--navy) 52%, var(--ink) 100%);
+  }
+
+  /* --- décor animé --- */
+  .beam{ position:absolute; top:-260px; left:50%; width:2px; height:1100px;
+    background:linear-gradient(180deg, rgba(194,163,107,.18), transparent); transform-origin:top center;
+    animation: sway 9s ease-in-out infinite; }
+  .beam.b1{ transform:translateX(-50%) rotate(-20deg); }
+  .beam.b2{ transform:translateX(-50%) rotate(2deg); opacity:.6; animation-delay:-3s; }
+  .beam.b3{ transform:translateX(-50%) rotate(22deg); animation-delay:-6s; }
+  @keyframes sway{ 0%,100%{ opacity:.4; } 50%{ opacity:.9; } }
+
+  .glow{ position:absolute; top:8%; left:50%; transform:translateX(-50%);
+    width:1000px; height:1000px; border-radius:50%;
+    background:radial-gradient(circle, rgba(194,163,107,.12), transparent 62%);
+    animation: breathe 8s ease-in-out infinite; pointer-events:none; }
+  @keyframes breathe{ 0%,100%{ opacity:.55; transform:translateX(-50%) scale(1); } 50%{ opacity:1; transform:translateX(-50%) scale(1.08); } }
+
+  .particle{ position:absolute; bottom:-12px; width:3px; height:3px; border-radius:50%;
+    background:var(--gold-soft); box-shadow:0 0 8px 1px rgba(216,192,150,.5); opacity:0;
+    animation: rise 11s linear infinite; }
+  @keyframes rise{ 0%{ transform:translateY(0); opacity:0; } 12%{ opacity:.7; } 88%{ opacity:.3; } 100%{ transform:translateY(-110vh); opacity:0; } }
+
+  /* --- barre de nav --- */
+  .nav{ position:relative; z-index:5; display:flex; align-items:center; justify-content:space-between;
+    padding:34px clamp(24px,6vw,88px); }
+  .nav .logo{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:28px; letter-spacing:.02em; color:var(--gold-soft); }
+  .nav .links{ display:flex; gap:38px; }
+  .nav .links a{ color:var(--mist); text-decoration:none; font-size:15px; letter-spacing:.06em; transition:color .25s; }
+  .nav .links a:hover{ color:var(--paper); }
+  .nav .cta{ padding:12px 26px; border:1px solid var(--gold); color:var(--gold-soft); text-decoration:none;
+    font-size:13px; letter-spacing:.16em; text-transform:uppercase; border-radius:2px; transition:.25s; }
+  .nav .cta:hover{ background:rgba(194,163,107,.12); }
+  @media(max-width:820px){ .nav .links{ display:none; } }
+
+  /* --- contenu hero --- */
+  .hero-inner{ position:relative; z-index:4; flex:1;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    padding: 40px clamp(24px,6vw,88px) 80px; }
+
+  .badge{ display:inline-flex; align-items:center; gap:12px; padding:9px 20px;
+    border:1px solid var(--line); border-radius:100px; font-size:13px; letter-spacing:.28em; text-transform:uppercase; color:var(--mist);
+    opacity:0; transform:translateY(14px); animation:reveal .8s cubic-bezier(.16,.9,.28,1) .2s forwards; }
+  .badge .dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold); }
+
+  h1{ margin-top:34px; font-family:'Cormorant Garamond',serif; font-weight:600; line-height:.94;
+    font-size:clamp(56px,9vw,132px); letter-spacing:.01em;
+    background:linear-gradient(180deg, var(--gold-bright), var(--gold) 72%, var(--gold-soft));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    opacity:0; transform:translateY(22px); animation:reveal .9s cubic-bezier(.16,.9,.28,1) .4s forwards; }
+  .sub{ margin-top:26px; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500;
+    font-size:clamp(22px,3.4vw,38px); color:var(--paper); opacity:.94;
+    opacity:0; transform:translateY(14px); animation:reveal .8s cubic-bezier(.16,.9,.28,1) .65s forwards; }
+  .lede{ margin-top:24px; max-width:620px; font-size:clamp(15px,1.8vw,19px); color:var(--mist); line-height:1.6;
+    opacity:0; transform:translateY(14px); animation:reveal .8s cubic-bezier(.16,.9,.28,1) .85s forwards; }
+
+  .actions{ margin-top:44px; display:flex; gap:20px; flex-wrap:wrap; justify-content:center;
+    opacity:0; transform:translateY(14px); animation:reveal .8s cubic-bezier(.16,.9,.28,1) 1.05s forwards; }
+  .btn{ padding:17px 40px; border-radius:3px; font-size:14px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transition:.25s; }
+  .btn-primary{ background:linear-gradient(180deg,var(--gold-bright),var(--gold)); color:#1a130a; font-weight:500;
+    box-shadow:0 10px 30px -8px rgba(194,163,107,.45); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 16px 38px -8px rgba(194,163,107,.6); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--gold); background:rgba(194,163,107,.08); }
+
+  /* --- pastilles services --- */
+  .pills{ margin-top:58px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+    opacity:0; animation:reveal .9s ease-out 1.3s forwards; }
+  .pill{ display:flex; align-items:center; gap:11px; padding:12px 22px; border:1px solid var(--line);
+    border-radius:100px; font-size:15px; color:var(--paper); background:rgba(255,255,255,.02); }
+  .pill svg{ width:20px; height:20px; stroke:var(--gold); }
+
+  /* --- bande de confiance en bas --- */
+  .trust{ position:relative; z-index:4; border-top:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; gap:clamp(24px,5vw,70px); flex-wrap:wrap;
+    padding:26px clamp(24px,6vw,88px); color:var(--mist); font-size:14px; letter-spacing:.04em;
+    opacity:0; animation:reveal .9s ease-out 1.5s forwards; }
+  .trust .item{ display:flex; align-items:center; gap:10px; }
+  .trust .item svg{ width:17px; height:17px; stroke:var(--gold); }
+  .trust .stars{ display:flex; gap:4px; }
+  .trust .stars svg{ width:15px; height:15px; fill:var(--gold); stroke:none; }
+
+  @keyframes reveal{ to{ opacity:1; transform:translateY(0); } }
+  @media(prefers-reduced-motion:reduce){ *{ animation:none!important; } .badge,h1,.sub,.lede,.actions,.pills,.trust{ opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+  <section class="hero">
+    <div class="glow"></div>
+    <span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span>
+    <div class="particle" style="left:14%; animation-delay:0s;"></div>
+    <div class="particle" style="left:32%; animation-delay:2.4s;"></div>
+    <div class="particle" style="left:54%; animation-delay:4.6s;"></div>
+    <div class="particle" style="left:73%; animation-delay:1.4s;"></div>
+    <div class="particle" style="left:88%; animation-delay:5.8s;"></div>
+
+    <nav class="nav">
+      <div class="logo">Mathclean</div>
+      <div class="links">
+        <a href="#">Accueil</a>
+        <a href="#">Prestations</a>
+        <a href="#">Réalisations</a>
+        <a href="#">Contact</a>
+      </div>
+      <a href="#" class="cta">Devis gratuit</a>
+    </nav>
+
+    <div class="hero-inner">
+      <span class="badge"><span class="dot"></span>Nettoyage haut de gamme · Paris</span>
+      <h1>L'art du nettoyage</h1>
+      <p class="sub">Particuliers, professionnels, bateaux &amp; jets privés</p>
+      <p class="lede">
+        Un service d'exception à Paris et ses alentours, avec déplacement possible
+        dans toute la France. Minutie, discrétion et finitions impeccables.
+      </p>
+
+      <div class="actions">
+        <a href="#" class="btn btn-primary">Demander un devis</a>
+        <a href="#" class="btn btn-ghost">Découvrir nos prestations</a>
+      </div>
+
+      <div class="pills">
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M6 3v6a6 6 0 0 0 12 0V3M4 21h16"/></svg>Particuliers &amp; Pro</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 18c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0M5 14l1-6h12l1 6M9 8V5h6v3"/></svg>Bateaux &amp; Yachts</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M2 16l7-2 5-8c.6-1 2-1 2.3.2l1 6.8 4-1a2 2 0 0 1 2 3l-6 3-16 1-1.3-2Z"/><path d="M9 20h9"/></svg>Jets privés</span>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="item"><div class="stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.6L21.5 9l-5.2 4.6L18 20.5 12 16.9 6 20.5l1.7-6.9L2.5 9l6.9-.4L12 2Z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.6L21.5 9l-5.2 4.6L18 20.5 12 16.9 6 20.5l1.7-6.9L2.5 9l6.9-.4L12 2Z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.6L21.5 9l-5.2 4.6L18 20.5 12 16.9 6 20.5l1.7-6.9L2.5 9l6.9-.4L12 2Z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.6L21.5 9l-5.2 4.6L18 20.5 12 16.9 6 20.5l1.7-6.9L2.5 9l6.9-.4L12 2Z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.6L21.5 9l-5.2 4.6L18 20.5 12 16.9 6 20.5l1.7-6.9L2.5 9l6.9-.4L12 2Z"/></svg>
+      </div>Satisfaction garantie</div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10Z"/><circle cx="12" cy="11" r="2.2"/></svg>Paris &amp; toute la France</div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>Devis sous 48 h</div>
+    </div>
+  </section>
+</body>
+</html>

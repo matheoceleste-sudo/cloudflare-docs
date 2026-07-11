@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Collection — Maison Céleste</title>
+  <meta name="description" content="Cinq parfums d'exception composés à Paris. Explorez la collection Maison Céleste par famille olfactive : florale, boisée, orientale, chyprée, cuir." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="sr-only" href="#contenu">Aller au contenu principal</a>
+
+  <header class="site-header" id="site-header">
+    <div class="shell header-inner">
+      <a href="index.html" class="brand-mark" aria-label="Maison Céleste, accueil">
+        <span class="brand-name">Maison Céleste</span>
+        <span class="brand-sub">Parfumeur · Paris</span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="nav-link" href="index.html">Accueil</a>
+        <a class="nav-link" href="collections.html" aria-current="page">La Collection</a>
+        <a class="nav-link" href="maison.html">La Maison</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">Accueil</a>
+    <a href="collections.html">La Collection</a>
+    <a href="maison.html">La Maison</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main id="contenu">
+    <!-- ============ EN-TÊTE ============ -->
+    <section class="page-hero">
+      <div class="shell">
+        <span class="eyebrow reveal is-in">La collection</span>
+        <h1 class="reveal is-in" data-delay="1">Cinq écritures olfactives</h1>
+        <p class="lede muted reveal is-in" data-delay="2">
+          Chaque parfum est une émotion à part entière. Filtrez la collection par
+          famille olfactive pour trouver le sillage qui vous ressemble.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ FILTRES ============ -->
+    <section class="section--tight" style="padding-bottom:0;">
+      <div class="shell">
+        <div class="filter-bar reveal" id="filter-bar" role="group" aria-label="Filtrer par famille olfactive">
+          <button class="filter-chip is-active" data-filter="all" aria-pressed="true">Toutes</button>
+          <button class="filter-chip" data-filter="florale" aria-pressed="false">Florale</button>
+          <button class="filter-chip" data-filter="boisee" aria-pressed="false">Boisée</button>
+          <button class="filter-chip" data-filter="orientale" aria-pressed="false">Orientale</button>
+          <button class="filter-chip" data-filter="chypree" aria-pressed="false">Chyprée</button>
+          <button class="filter-chip" data-filter="cuir" aria-pressed="false">Cuir</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GRILLE ============ -->
+    <section class="section" style="padding-top:3rem;">
+      <div class="shell">
+        <div class="perfume-grid">
+
+          <a href="parfum.html" class="perfume-card reveal" data-family="orientale">
+            <div class="card-media" style="--card-grad: linear-gradient(160deg,#f3e7d5,#ecd7bd);">
+              <span class="card-family">Orientale</span>
+              <img src="assets/flacon-ambre.svg" alt="Flacon Nuit d'Ambre" />
+            </div>
+            <div class="card-body">
+              <h3>Nuit d'Ambre</h3>
+              <p class="card-notes">Safran · Rose de Damas · Oud</p>
+              <div class="card-foot"><span class="card-price">185 €</span><span class="link-underline">Découvrir</span></div>
+            </div>
+          </a>
+
+          <a href="parfum.html" class="perfume-card reveal" data-family="florale">
+            <div class="card-media" style="--card-grad: linear-gradient(160deg,#e6efec,#cfe1dd);">
+              <span class="card-family">Florale marine</span>
+              <img src="assets/flacon-marine.svg" alt="Flacon Fleur de Sel" />
+            </div>
+            <div class="card-body">
+              <h3>Fleur de Sel</h3>
+              <p class="card-notes">Néroli · Jasmin · Musc blanc</p>
+              <div class="card-foot"><span class="card-price">165 €</span><span class="link-underline">Découvrir</span></div>
+            </div>
+          </a>
+
+          <a href="parfum.html" class="perfume-card reveal" data-family="boisee">
+            <div class="card-media" style="--card-grad: linear-gradient(160deg,#ece4d3,#dccbb0);">
+              <span class="card-family">Boisée</span>
+              <img src="assets/flacon-boise.svg" alt="Flacon Bois Céleste" />
+            </div>
+            <div class="card-body">
+              <h3>Bois Céleste</h3>
+              <p class="card-notes">Cardamome · Iris · Santal</p>
+              <div class="card-foot"><span class="card-price">175 €</span><span class="link-underline">Découvrir</span></div>
+            </div>
+          </a>
+
+          <a href="parfum.html" class="perfume-card reveal" data-family="chypree">
+            <div class="card-media" style="--card-grad: linear-gradient(160deg,#f2e2df,#e6c9cb);">
+              <span class="card-family">Florale chyprée</span>
+              <img src="assets/flacon-rose.svg" alt="Flacon Rose Impériale" />
+            </div>
+            <div class="card-body">
+              <h3>Rose Impériale</h3>
+              <p class="card-notes">Rose de mai · Pivoine · Patchouli</p>
+              <div class="card-foot"><span class="card-price">195 €</span><span class="link-underline">Découvrir</span></div>
+            </div>
+          </a>
+
+          <a href="parfum.html" class="perfume-card reveal" data-family="cuir">
+            <div class="card-media" style="--card-grad: linear-gradient(160deg,#efe1cf,#e0c3a3);">
+              <span class="card-family">Cuir</span>
+              <img src="assets/flacon-cuir.svg" alt="Flacon Cuir Blanc" />
+            </div>
+            <div class="card-body">
+              <h3>Cuir Blanc</h3>
+              <p class="card-notes">Safran · Cuir · Bois de bouleau</p>
+              <div class="card-foot"><span class="card-price">210 €</span><span class="link-underline">Découvrir</span></div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <span class="brand-name">Maison Céleste</span>
+          <p>Parfums de haute expression, composés à Paris. L'art du sillage, à la française.</p>
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Pinterest"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 20c-.5-2 0-4 1-8M8 9a4 4 0 1 1 7 3c-.7 1.4-2.5 2-3.6 1.2"/><circle cx="12" cy="12" r="9"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explorer</h4>
+          <a href="collections.html">La Collection</a>
+          <a href="parfum.html">Nuit d'Ambre</a>
+          <a href="maison.html">La Maison</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Nous trouver</h4>
+          <a href="contact.html">12 rue Saint-Honoré<br/>75001 Paris</a>
+          <a href="tel:+33142000000">+33 1 42 00 00 00</a>
+          <a href="mailto:contact@maison-celeste.fr">contact@maison-celeste.fr</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Maison Céleste. Tous droits réservés.</span>
+        <span>Mentions légales · Confidentialité · CGV</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

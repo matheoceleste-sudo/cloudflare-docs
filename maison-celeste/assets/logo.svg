@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Maison Céleste">
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#a97c50" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#a97c50" stroke-width="0.6" opacity="0.5"/>
+  <text x="60" y="78" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="56" fill="#a97c50">C</text>
+</svg>
