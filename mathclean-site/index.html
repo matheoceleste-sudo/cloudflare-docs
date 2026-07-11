@@ -16,16 +16,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<style>
-/* Photo yacht (déposez assets/hero-yacht.jpg) — transparent tant qu'absente,
-   vos visuels actuels restent visibles dessous */
-.hero .hero-photo{position:absolute;inset:0;z-index:0;
-  background-image:url('assets/hero-yacht.jpg');background-size:cover;background-position:center;}
-/* Bulles de savon 3D interactives, au-dessus du voile, sous le texte */
-.hero #mcbubbles{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;}
-.hero .hero-inner{z-index:3;}
-.hero .scroll-cue,.hero .slide-dots{z-index:3;}
-</style>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -52,6 +42,34 @@
   ]
 }
 </script>
+<style>
+/* ===== Hero immersif : plongée photo au scroll ===== */
+.journey{position:relative;height:460vh}
+.hero.jstage{position:sticky;top:0;height:100vh;min-height:640px}
+.jscene{position:absolute;inset:0;will-change:opacity}
+.jscene .jimg{
+  position:absolute;inset:-4%;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  will-change:transform;transform-origin:center;
+}
+.jcap{will-change:transform,opacity}
+.jside{
+  position:absolute;left:clamp(24px,7vw,110px);bottom:clamp(100px,17vh,170px);
+  max-width:620px;z-index:2;text-align:left;opacity:0;
+}
+.jside h2{
+  font-family:var(--serif,'Cormorant Garamond',serif);font-weight:600;
+  font-size:clamp(34px,6vw,72px);line-height:1.05;letter-spacing:-1px;
+  color:#f5f2ea;text-shadow:0 4px 40px rgba(0,0,0,.55);margin:10px 0 0;
+}
+.jside p{
+  margin:14px 0 24px;font-size:clamp(15px,1.6vw,18px);line-height:1.6;
+  color:rgba(245,242,234,.85);max-width:480px;text-shadow:0 2px 20px rgba(0,0,0,.6);
+}
+.jdots i{cursor:default}
+.jhide{opacity:0 !important;transition:opacity .6s ease}
+@media (max-width:640px){.jside{bottom:120px}}
+</style>
 </head>
 <body>
 
@@ -63,39 +81,59 @@
   </a>
   <nav class="menu">
     <a href="#services">Services</a>
-    <a href="experience.html">Expérience 3D</a>
     <a href="#zones">Zones d'intervention</a>
     <a href="#avis">Avis clients</a>
     <a href="#faq">FAQ</a>
+    <a href="reservation.html">Réserver</a>
     <a href="#contact" class="nav-cta">Devis gratuit</a>
   </nav>
   <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="slides">
-    <div class="slide active" style="background-image:url('assets/slide-bateau.svg')"></div>
-    <div class="slide" style="background-image:url('assets/slide-auto.svg')"></div>
-    <div class="slide" style="background-image:url('assets/slide-chantier.svg')"></div>
-    <div class="slide" style="background-image:url('assets/slide-canape.svg')"></div>
-    <div class="slide" style="background-image:url('assets/slide-bureau.svg')"></div>
-  </div>
-  <div class="hero-photo" aria-hidden="true"></div>
-  <canvas id="mcbubbles" aria-hidden="true"></canvas>
-  <div class="hero-inner">
-    <span class="eyebrow">Nettoyage premium · Paris &amp; Île-de-France</span>
-    <p class="baseline">MathClean — Une exigence de roi</p>
-    <h1>Offrez-vous un <span class="or">nettoyage</span><br>à Paris</h1>
-    <p class="sub">Automobile, canapé, matelas, tapis, bateau, terrasse, locaux et fin de chantier. Un savoir-faire haut de gamme, à domicile, partout en Île-de-France.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn btn-or">Demander un devis gratuit</a>
-      <a href="#services" class="btn btn-ghost">Découvrir nos services</a>
+<!-- ============ HERO IMMERSIF (plongée photo au scroll) ============ -->
+<div class="journey" id="journey">
+  <section class="hero jstage" id="jstage">
+    <div class="jscene" data-i="3"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#1a2129,#07090c)"></div></div>
+    <div class="jscene" data-i="2"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#26232c,#0e0d12)"></div></div>
+    <div class="jscene" data-i="1"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/8356420/pexels-photo-8356420.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#3a2d20,#181009)"></div></div>
+    <div class="jscene" data-i="0"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/799878/pexels-photo-799878.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#16324a,#0b1826)"></div></div>
+
+    <div class="hero-inner jcap" data-i="0">
+      <span class="eyebrow">Nettoyage premium · Paris &amp; Île-de-France</span>
+      <p class="baseline">MathClean — Une exigence de roi</p>
+      <h1>Offrez-vous un <span class="or">nettoyage</span><br>à Paris</h1>
+      <p class="sub">Automobile, canapé, matelas, tapis, bateau, terrasse, locaux et fin de chantier. Un savoir-faire haut de gamme, à domicile, partout en Île-de-France.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-or">Demander un devis gratuit</a>
+        <a href="#services" class="btn btn-ghost">Découvrir nos services</a>
+      </div>
     </div>
-  </div>
-  <div class="slide-dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
-  <div class="scroll-cue"><span>Défiler</span><span class="line"></span></div>
-</section>
+
+    <div class="jside jcap" data-i="1">
+      <span class="eyebrow">02 — Selleries marines</span>
+      <h2>Textiles &amp; selleries de bateau</h2>
+      <p>Cuirs, tissus et moquettes nautiques nettoyés en profondeur par injection-extraction.</p>
+      <a href="services/nettoyage-bateau-paris.html" class="btn btn-ghost">Voir la prestation</a>
+    </div>
+
+    <div class="jside jcap" data-i="2">
+      <span class="eyebrow">03 — Aviation privée</span>
+      <h2>Intérieur de jet</h2>
+      <p>Une cabine immaculée, digne des plus hauts standards de l'aviation d'affaires.</p>
+      <a href="reservation.html" class="btn btn-ghost">Réserver une prestation</a>
+    </div>
+
+    <div class="jside jcap" data-i="3">
+      <span class="eyebrow">04 — Automobile</span>
+      <h2>Detailing automobile</h2>
+      <p>Intérieur &amp; extérieur, à domicile, dès 49&nbsp;€. La brillance d'un service d'exception.</p>
+      <a href="services/nettoyage-automobile-paris.html" class="btn btn-ghost">Voir la prestation</a>
+    </div>
+
+    <div class="slide-dots jdots"><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="scroll-cue" id="jcue"><span>Défiler</span><span class="line"></span></div>
+  </section>
+</div>
 
 <!-- ============ CHIFFRES ============ -->
 <section class="band">
@@ -315,149 +353,78 @@
 </footer>
 
 <script src="assets/app.js"></script>
-
-<!-- ============ Moteur 3D (Three.js local) + bulles de savon interactives ============ -->
-<script src="assets/three.min.js"></script>
 <script>
-if (typeof THREE === "undefined") {
-  document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
-}
-</script>
-<script>
-(function () {
-  if (typeof THREE === "undefined") return;
-  var canvas = document.getElementById("mcbubbles");
-  if (!canvas) return;
-  var hero = canvas.closest(".hero") || canvas.parentElement;
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-  camera.position.set(0, 0, 12);
-
-  // Matériau "film de savon" : irisation par fresnel
-  var bubbleMat = new THREE.ShaderMaterial({
-    transparent: true, depthWrite: false, side: THREE.FrontSide,
-    uniforms: { uTime: { value: 0 } },
-    vertexShader:
-      "varying vec3 vN; varying vec3 vV;" +
-      "void main(){ vec4 mv = modelViewMatrix*vec4(position,1.0);" +
-      "vN = normalMatrix*normal; vV = -mv.xyz;" +
-      "gl_Position = projectionMatrix*mv; }",
-    fragmentShader:
-      "varying vec3 vN; varying vec3 vV;" +
-      "void main(){ vec3 n=normalize(vN); vec3 v=normalize(vV);" +
-      "float f = pow(1.0 - abs(dot(n,v)), 2.2);" +
-      "float hue = fract(f*1.3 + 0.15);" +
-      "vec3 col = 0.55 + 0.45*cos(6.28318*(hue + vec3(0.0,0.33,0.67)));" +
-      "float a = clamp(f*0.85 + 0.06, 0.0, 0.85);" +
-      "gl_FragColor = vec4(col, a); }"
+/* ===== Plongée photo au scroll (zoom + fondu vers l'image suivante) ===== */
+(function(){
+  var journey = document.getElementById('journey');
+  if (!journey) return;
+  var N = 4;
+  var scenes = {}, imgs = {}, caps = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.jscene'), function(s){
+    var i = +s.getAttribute('data-i');
+    scenes[i] = s; imgs[i] = s.querySelector('.jimg');
   });
-
-  var sphere = new THREE.SphereGeometry(1, 28, 28);
-  var COUNT = window.innerWidth < 640 ? 12 : 22;
-  var bounds = { x: 9, y: 6, z: 3 };
-  var bubbles = [];
-
-  function spawn(b, atBottom) {
-    b.position.set(
-      (Math.random() - 0.5) * bounds.x * 2,
-      atBottom ? -bounds.y - Math.random() * 3 : (Math.random() - 0.5) * bounds.y * 2,
-      (Math.random() - 0.5) * bounds.z * 2
-    );
-    var s = 0.3 + Math.random() * 0.9;
-    b.userData.size = s;
-    b.scale.setScalar(s);
-    b.userData.vy = 0.008 + Math.random() * 0.02;
-    b.userData.wob = Math.random() * 6.28;
-    b.userData.wobAmp = 0.15 + Math.random() * 0.35;
-  }
-  for (var i = 0; i < COUNT; i++) {
-    var m = new THREE.Mesh(sphere, bubbleMat);
-    m.userData = {};
-    spawn(m, false);
-    scene.add(m);
-    bubbles.push(m);
-  }
-
-  // Suivi souris (écran → point du plan z=0)
-  var ndc = new THREE.Vector2(-2, -2);
-  var mouseWorld = new THREE.Vector3();
-  function updateMouseWorld() {
-    var v = new THREE.Vector3(ndc.x, ndc.y, 0.5).unproject(camera);
-    var dir = v.sub(camera.position).normalize();
-    var dist = -camera.position.z / dir.z;
-    mouseWorld.copy(camera.position).add(dir.multiplyScalar(dist));
-  }
-  window.addEventListener("pointermove", function (e) {
-    var r = hero.getBoundingClientRect();
-    if (e.clientY < r.top || e.clientY > r.bottom) { ndc.set(-2, -2); return; }
-    ndc.x = ((e.clientX - r.left) / r.width) * 2 - 1;
-    ndc.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+  Array.prototype.forEach.call(document.querySelectorAll('.jcap'), function(c){
+    caps[+c.getAttribute('data-i')] = c;
   });
-  // Clic = éclatement de la bulle la plus proche
-  window.addEventListener("pointerdown", function () {
-    if (ndc.x < -1.5) return;
-    updateMouseWorld();
-    var best = null, bd = 1e9;
-    for (var k = 0; k < bubbles.length; k++) {
-      var d = bubbles[k].position.distanceTo(mouseWorld);
-      if (d < bd) { bd = d; best = bubbles[k]; }
+  var dots = document.querySelectorAll('.jdots i');
+  var cue  = document.getElementById('jcue');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function clamp01(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
+  function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; }
+
+  var target = 0, current = 0;
+  function measure(){ return Math.max(1, journey.offsetHeight - window.innerHeight); }
+  var maxScroll = measure();
+  window.addEventListener('resize', function(){ maxScroll = measure(); });
+  window.addEventListener('scroll', function(){
+    var top = journey.offsetTop;
+    target = clamp01((window.scrollY - top) / maxScroll);
+    if (cue) cue.classList.toggle('jhide', window.scrollY > 60);
+  }, { passive:true });
+
+  function render(p){
+    var x = p * (N - 1);
+    var active = Math.round(x);
+    for (var i = 0; i < N; i++){
+      var d = x - i, sc = scenes[i];
+      if (d <= 0){                       /* scène à venir : posée, en attente sous la précédente */
+        sc.style.opacity = 1;
+        sc.style.visibility = 'visible';
+        imgs[i].style.transform = 'scale(1)';
+      } else {                           /* on s'enfonce dans l'image : zoom + fondu */
+        var e = ease(Math.min(d, 1));
+        var o = d < 0.45 ? 1 : clamp01(1 - (d - 0.45) / 0.5);
+        sc.style.opacity = o;
+        sc.style.visibility = d >= 0.98 ? 'hidden' : 'visible';
+        imgs[i].style.transform = reduce ? 'scale(1)' : 'scale(' + (1 + e * 1.15).toFixed(4) + ')';
+      }
+      var cap = caps[i];
+      if (cap){
+        var co = clamp01(1 - Math.abs(x - i) * 2.2);
+        cap.style.opacity = co;
+        cap.style.pointerEvents = co > 0.35 ? 'auto' : 'none';
+        if (!reduce) cap.style.transform = 'translateY(' + ((x - i) * -46).toFixed(1) + 'px)';
+      }
     }
-    if (best && bd < best.userData.size * 1.6) spawn(best, true);
-  });
-
-  function resize() {
-    var w = hero.clientWidth, h = hero.clientHeight;
-    if (w === 0 || h === 0) return;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h; camera.updateProjectionMatrix();
-  }
-  resize();
-  window.addEventListener("resize", resize);
-  window.addEventListener("load", resize);
-
-  var running = true;
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (en) { running = en[0].isIntersecting; }).observe(hero);
+    for (var m = 0; m < dots.length; m++){
+      dots[m].className = (m === active) ? 'on' : '';
+    }
   }
 
-  var t = 0;
-  (function loop() {
+  (function loop(){
     requestAnimationFrame(loop);
-    if (!running) return;
-    t += 0.016;
-    bubbleMat.uniforms.uTime.value = t;
-    var hasMouse = ndc.x > -1.5;
-    if (hasMouse) updateMouseWorld();
-
-    for (var i = 0; i < bubbles.length; i++) {
-      var b = bubbles[i], u = b.userData;
-      if (!reduce) {
-        b.position.y += u.vy;
-        b.position.x += Math.sin(t + u.wob) * u.wobAmp * 0.02;
-      }
-      if (hasMouse) {
-        var dx = b.position.x - mouseWorld.x;
-        var dy = b.position.y - mouseWorld.y;
-        var d2 = dx * dx + dy * dy;
-        var R = 3.2;
-        if (d2 < R * R) {
-          var d = Math.sqrt(d2) || 0.001;
-          var force = (1 - d / R) * 0.35;
-          b.position.x += (dx / d) * force;
-          b.position.y += (dy / d) * force;
-        }
-      }
-      b.rotation.y += 0.003;
-      if (b.position.y > bounds.y + 2) spawn(b, true);
+    if (reduce){ current = target; }
+    else {
+      current += (target - current) * 0.08;
+      if (Math.abs(target - current) < 0.0002) current = target;
     }
-    renderer.render(scene, camera);
+    render(current);
   })();
+  render(0);
 })();
 </script>
+
 </body>
 </html>
