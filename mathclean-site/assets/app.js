@@ -49,3 +49,11 @@ document.querySelectorAll('.q button').forEach(b=>{
 
 /* ===== Année footer ===== */
 const y=document.getElementById('y');if(y)y.textContent=new Date().getFullYear();
+
+
+/* ===== Page de remerciement après envoi (devis & réservation) ===== */
+document.querySelectorAll('form[action*="formsubmit.co"]').forEach(f=>{
+  let n=f.querySelector('input[name="_next"]');
+  if(!n){n=document.createElement('input');n.type='hidden';n.name='_next';f.appendChild(n);}
+  n.value=new URL('merci.html',location.href).href;
+});

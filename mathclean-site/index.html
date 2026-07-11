@@ -69,6 +69,9 @@
 .jdots i{cursor:default}
 .jhide{opacity:0 !important;transition:opacity .6s ease}
 @media (max-width:640px){.jside{bottom:120px}}
+.card-photo{display:block;height:150px;border-radius:12px;background-size:cover;
+  background-position:center;margin-bottom:16px;border:1px solid rgba(255,255,255,.06)}
+@media (max-width:640px){.card-photo{height:120px}}
 </style>
 </head>
 <body>
@@ -96,7 +99,7 @@
     <div class="jscene" data-i="3"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#1a2129,#07090c)"></div></div>
     <div class="jscene" data-i="2"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#26232c,#0e0d12)"></div></div>
     <div class="jscene" data-i="1"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/8356420/pexels-photo-8356420.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#3a2d20,#181009)"></div></div>
-    <div class="jscene" data-i="0"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/799878/pexels-photo-799878.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#16324a,#0b1826)"></div></div>
+    <div class="jscene" data-i="0"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/6752179/pexels-photo-6752179.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#16324a,#0b1826)"></div></div>
 
     <div class="hero-inner jcap" data-i="0">
       <span class="eyebrow">Nettoyage premium · Paris &amp; Île-de-France</span>
@@ -158,54 +161,63 @@
     <div class="grid">
       <!-- 9 cartes -->
       <a class="card reveal" href="services/nettoyage-automobile-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M5 11h14M5 11v6m14-6v6M5 17h14M6 17v2m12-2v2M7 14h2m6 0h2"/></svg>
         <h3>Nettoyage automobile</h3>
         <p>Detailing intérieur &amp; extérieur, à domicile. Dès 49 € pour une citadine.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal d1" href="services/nettoyage-canape-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/4401538/pexels-photo-4401538.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M3 11a2 2 0 0 1 2 2v3h14v-3a2 2 0 0 1 2-2 2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0zM5 16v2m14-2v2"/></svg>
         <h3>Nettoyage de canapé</h3>
         <p>Shampoing, injection-extraction et désinfection des tissus en profondeur.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal d2" href="services/nettoyage-matelas-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/3659681/pexels-photo-3659681.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M3 12h18M7 8V6m10 2V6M7 17v1m10-1v1"/></svg>
         <h3>Nettoyage de matelas</h3>
         <p>Élimination des acariens, taches et odeurs. Traitement anti-allergènes à domicile.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal" href="services/nettoyage-tapis-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/9462139/pexels-photo-9462139.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 7h16M4 17h16M8 7v10m8-10v10"/></svg>
         <h3>Nettoyage de tapis</h3>
         <p>Lavage en profondeur des fibres, ravivage des couleurs et détachage spécifique.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal d1" href="services/nettoyage-bateau-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/799878/pexels-photo-799878.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14l9-3 9 3-2.5 5.5a2 2 0 0 1-1.8 1.2H7.3a2 2 0 0 1-1.8-1.2L3 14zM12 11V4m0 0l5 2-5 2"/></svg>
         <h3>Nettoyage de bateau</h3>
         <p>Entretien nautique premium : coque, pont, sellerie. Sur la Seine et la Marne.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal d2" href="services/nettoyage-terrasse-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/17418139/pexels-photo-17418139.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18M5 20V9m14 11V9M3 9l9-5 9 5M9 20v-5h6v5"/></svg>
         <h3>Nettoyage de terrasse</h3>
         <p>Nettoyage haute pression, traitement anti-mousse et hydrofuge des surfaces.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal" href="services/nettoyage-locaux-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/6195273/pexels-photo-6195273.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2m4 0h2M8 11h2m4 0h2M8 15h2m4 0h2"/></svg>
         <h3>Nettoyage de locaux</h3>
         <p>Entretien professionnel de vos locaux et moquettes. Interventions régulières.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal d1" href="services/nettoyage-bureau-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/30047570/pexels-photo-30047570.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 21v-5h6v5M9 11h.01M15 11h.01"/></svg>
         <h3>Nettoyage de bureau</h3>
         <p>Espaces de travail propres et sains. Désinfection et entretien de moquettes.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal d2" href="services/nettoyage-fin-de-chantier-paris.html">
+        <span class="card-photo" style="background-image:url(&#39;https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=640&q=80&#39;)"></span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M6 21V11l6-5 6 5v10M10 21v-6h4v6M14 4l3-1 1 3"/></svg>
         <h3>Nettoyage fin de chantier</h3>
         <p>Dépoussiérage, évacuation des gravats, lavage des vitres et remise en état.</p>
