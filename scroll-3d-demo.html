@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MathClean — Scroll 3D Animation Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0c;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 12, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .scroll-container {
+      position: relative;
+      width: 100%;
+      height: 500vh;
+      background: linear-gradient(to bottom, #0a0a0c, #1a1a1c, #0a0a0c);
+    }
+
+    .canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .content-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .content-overlay h2 {
+      font-size: 48px;
+      font-weight: 700;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+      letter-spacing: -1px;
+      opacity: 0;
+    }
+
+    .phase-label {
+      position: fixed;
+      top: 120px;
+      left: 40px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e7cd86;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0;
+      z-index: 50;
+    }
+
+    .stats {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 24px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+      opacity: 0.6;
+      z-index: 50;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 20;
+      padding: 80px 40px;
+      text-align: center;
+      background: #0a0a0c;
+    }
+
+    .footer h3 {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: #e7cd86;
+    }
+
+    .footer p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .header, .phase-label, .stats {
+        font-size: 12px;
+      }
+
+      .content-overlay h2 {
+        font-size: 28px;
+      }
+
+      .footer h3 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">MathClean</div>
+
+  <div class="canvas-container">
+    <canvas id="scrollCanvas"></canvas>
+  </div>
+
+  <div class="content-overlay">
+    <h2 id="phaseTitle">Nettoyage Bateau</h2>
+  </div>
+
+  <div class="phase-label" id="phaseLabel">Phase 1</div>
+
+  <div class="scroll-container"></div>
+
+  <div class="stats" id="stats">
+    <div>Scroll Progress: <span id="progress">0</span>%</div>
+    <div>Camera Zoom: <span id="zoom">1.0</span></div>
+  </div>
+
+  <div class="footer">
+    <h3>✨ Animation Scroll-Trigger 3D ✨</h3>
+    <p>Parcourez l'expérience MathClean : nettoyage bateau → textile → jet → automobile</p>
+  </div>
+
+  <!-- Three.js -->
+  <script src="assets/three.min.js"></script>
+
+  <!-- GSAP (avec ScrollTrigger) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    // ============ CONFIG ============
+    const SCENES = [
+      { name: 'Bateau', color: 0x1e5a8e, label: 'Phase 1: Nettoyage Bateau' },
+      { name: 'Textile Bateau', color: 0x2d7ab5, label: 'Phase 2: Textile Bateau' },
+      { name: 'Jet', color: 0x1a3a52, label: 'Phase 3: Intérieur Jet' },
+      { name: 'Voiture', color: 0x8b0000, label: 'Phase 4: Nettoyage Voiture' }
+    ];
+
+    // ============ SCENE SETUP ============
+    const canvas = document.getElementById('scrollCanvas');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0a0a0c);
+
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // ============ LIGHTS ============
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    const pointLight = new THREE.PointLight(0xe7cd86, 0.5);
+    pointLight.position.set(-5, 3, 3);
+    scene.add(pointLight);
+
+    // ============ GEOMETRY FACTORY ============
+    function createBoat() {
+      const group = new THREE.Group();
+
+      // Coque
+      const hullGeom = new THREE.ConeGeometry(1.5, 2, 32);
+      const hullMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.3, roughness: 0.7 });
+      const hull = new THREE.Mesh(hullGeom, hullMat);
+      hull.rotation.z = Math.PI / 2;
+      hull.position.x = -0.5;
+      group.add(hull);
+
+      // Cabine
+      const cabinGeom = new THREE.BoxGeometry(0.8, 0.6, 0.6);
+      const cabinMat = new THREE.MeshStandardMaterial({ color: 0x4a4a4a, metalness: 0.2, roughness: 0.8 });
+      const cabin = new THREE.Mesh(cabinGeom, cabinMat);
+      cabin.position.set(0.3, 0.5, 0);
+      group.add(cabin);
+
+      // Mât
+      const mastGeom = new THREE.CylinderGeometry(0.1, 0.1, 2, 8);
+      const mastMat = new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.5, roughness: 0.5 });
+      const mast = new THREE.Mesh(mastGeom, mastMat);
+      mast.position.set(0.3, 1.2, 0);
+      group.add(mast);
+
+      return group;
+    }
+
+    function createJetInterior() {
+      const group = new THREE.Group();
+
+      // Fuselage
+      const fuselageGeom = new THREE.CylinderGeometry(0.8, 0.8, 3, 32);
+      const fuselageMat = new THREE.MeshStandardMaterial({ color: 0x2a2a2a, metalness: 0.8, roughness: 0.2 });
+      const fuselage = new THREE.Mesh(fuselageGeom, fuselageMat);
+      fuselage.rotation.z = Math.PI / 2;
+      group.add(fuselage);
+
+      // Sièges (2)
+      for (let i = 0; i < 2; i++) {
+        const seatGeom = new THREE.BoxGeometry(0.4, 0.3, 0.4);
+        const seatMat = new THREE.MeshStandardMaterial({ color: 0xb8860b, metalness: 0.1, roughness: 0.8 });
+        const seat = new THREE.Mesh(seatGeom, seatMat);
+        seat.position.set(i * 0.6 - 0.3, 0, -0.8);
+        group.add(seat);
+      }
+
+      // Fenêtre
+      const windowGeom = new THREE.CircleGeometry(0.3, 32);
+      const windowMat = new THREE.MeshStandardMaterial({ color: 0x87ceeb, metalness: 1, roughness: 0.1 });
+      const window = new THREE.Mesh(windowGeom, windowMat);
+      window.position.set(0.82, 0.2, -0.8);
+      group.add(window);
+
+      return group;
+    }
+
+    function createCar() {
+      const group = new THREE.Group();
+
+      // Chassis
+      const chassisGeom = new THREE.BoxGeometry(1.5, 0.6, 1, 4);
+      const chassisMat = new THREE.MeshStandardMaterial({ color: 0xc41e3a, metalness: 0.7, roughness: 0.3 });
+      const chassis = new THREE.Mesh(chassisGeom, chassisMat);
+      chassis.position.y = 0.3;
+      group.add(chassis);
+
+      // Cabin
+      const cabinGeom = new THREE.BoxGeometry(1.2, 0.5, 0.8);
+      const cabinMat = new THREE.MeshStandardMaterial({ color: 0x8b0000, metalness: 0.6, roughness: 0.4 });
+      const cabin = new THREE.Mesh(cabinGeom, cabinMat);
+      cabin.position.set(0, 0.8, 0);
+      group.add(cabin);
+
+      // Roues (4)
+      const wheelGeom = new THREE.CylinderGeometry(0.35, 0.35, 0.2, 32);
+      const wheelMat = new THREE.MeshStandardMaterial({ color: 0x000000, metalness: 0.8, roughness: 0.2 });
+
+      const wheelPositions = [
+        [-0.5, 0.35, 0.4],
+        [0.5, 0.35, 0.4],
+        [-0.5, 0.35, -0.4],
+        [0.5, 0.35, -0.4]
+      ];
+
+      wheelPositions.forEach(pos => {
+        const wheel = new THREE.Mesh(wheelGeom, wheelMat);
+        wheel.rotation.z = Math.PI / 2;
+        wheel.position.set(...pos);
+        group.add(wheel);
+      });
+
+      return group;
+    }
+
+    // ============ OBJECTS SETUP ============
+    const objects = {
+      boat: createBoat(),
+      textile: new THREE.Mesh(new THREE.PlaneGeometry(1.5, 1.5, 32, 32),
+        new THREE.MeshStandardMaterial({ color: 0x8b7355, wireframe: false, metalness: 0.1, roughness: 0.9 })),
+      jet: createJetInterior(),
+      car: createCar()
+    };
+
+    objects.textile.rotation.y = Math.PI / 4;
+
+    // Ajouter tous les objets (on va les animer)
+    Object.values(objects).forEach(obj => scene.add(obj));
+
+    // ============ ANIMATION & SCROLL ============
+    gsap.registerPlugin(ScrollTrigger);
+
+    let scrollProgress = 0;
+    let currentPhase = 0;
+
+    const updateUI = (progress, phase) => {
+      document.getElementById('progress').textContent = Math.round(progress * 100);
+      document.getElementById('zoom').textContent = (1 + progress * 0.5).toFixed(2);
+
+      const phaseInfo = SCENES[phase];
+      document.getElementById('phaseTitle').textContent = phaseInfo.name;
+      document.getElementById('phaseLabel').textContent = phaseInfo.label;
+    };
+
+    // ScrollTrigger pour suivre le scroll
+    ScrollTrigger.create({
+      onUpdate: (self) => {
+        scrollProgress = self.getVelocity() >= 0 ? self.progress : scrollProgress;
+        currentPhase = Math.floor(scrollProgress * 4);
+
+        // Limiter à 4 phases
+        currentPhase = Math.min(currentPhase, 3);
+
+        updateUI(scrollProgress, currentPhase);
+
+        // Animation des objets
+        camera.position.z = 5 - scrollProgress * 2;
+        camera.position.x = Math.sin(scrollProgress * Math.PI * 4) * 2;
+
+        // Opacité des objets selon la phase
+        objects.boat.visible = scrollProgress < 0.25;
+        objects.textile.visible = scrollProgress >= 0.25 && scrollProgress < 0.5;
+        objects.jet.visible = scrollProgress >= 0.5 && scrollProgress < 0.75;
+        objects.car.visible = scrollProgress >= 0.75;
+
+        // Rotation continu
+        if (objects.boat.visible) objects.boat.rotation.y += 0.005;
+        if (objects.textile.visible) objects.textile.rotation.x += 0.003;
+        if (objects.jet.visible) objects.jet.rotation.y += 0.004;
+        if (objects.car.visible) objects.car.rotation.y += 0.005;
+
+        // Couleur de fond selon la phase
+        const colors = [0x1e5a8e, 0x2d7ab5, 0x1a3a52, 0x8b0000];
+        scene.background.lerp(new THREE.Color(colors[currentPhase]), 0.02);
+      }
+    });
+
+    // ============ RESIZE & RENDER ============
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
