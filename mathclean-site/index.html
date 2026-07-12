@@ -87,8 +87,8 @@
     <a href="#zones">Zones d'intervention</a>
     <a href="#avis">Avis clients</a>
     <a href="#faq">FAQ</a>
-    <a href="reservation.html">Réserver</a>
-    <a href="#contact" class="nav-cta">Devis gratuit</a>
+    <a href="#contact">Contact</a>
+    <a href="reservation.html" class="nav-cta">Réserver</a>
   </nav>
   <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
@@ -100,8 +100,6 @@
     <div class="jscene" data-i="2"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#26232c,#0e0d12)"></div></div>
     <div class="jscene" data-i="1"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/8356420/pexels-photo-8356420.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#3a2d20,#181009)"></div></div>
     <div class="jscene" data-i="0"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/144634/pexels-photo-144634.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#16324a,#0b1826)"></div></div>
-
-    <canvas id="jetCanvas" style="position:absolute;inset:0;z-index:2;pointer-events:none"></canvas>
 
     <div class="hero-inner jcap" data-i="0">
       <span class="eyebrow">Nettoyage premium · Paris &amp; Île-de-France</span>
@@ -303,8 +301,8 @@
 <section id="contact" class="band alt">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">Parlons de votre projet</span>
-      <h2>Demander un devis</h2>
+      <span class="eyebrow">Des questions à nous poser ?</span>
+      <h2>Nous contacter</h2>
       <p>Réponse rapide, devis gratuit et sans engagement.</p>
     </div>
     <div class="contact-grid">
@@ -445,139 +443,6 @@
     render(current);
   })();
   render(0);
-})();
-</script>
-<script>
-/* ===== Jet d'eau interactif sur la coque du yacht (scène 1) ===== */
-(function(){
-  var stage   = document.getElementById('jstage');
-  var journey = document.getElementById('journey');
-  var cv      = document.getElementById('jetCanvas');
-  if (!stage || !journey || !cv) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ cv.remove(); return; }
-  var ctx = cv.getContext('2d');
-
-  var W = 0, H = 0;
-  function size(){ W = cv.width = stage.clientWidth; H = cv.height = stage.clientHeight; }
-  size(); window.addEventListener('resize', size);
-
-  var mouse = { down:false, x:0, y:0 };
-  stage.addEventListener('pointerdown', function(e){
-    if (e.target.closest('a,button,input,select,textarea')) return;   /* ne gêne pas les boutons */
-    var r = stage.getBoundingClientRect();
-    mouse.down = true; mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
-  });
-  window.addEventListener('pointermove', function(e){
-    if (!mouse.down) return;
-    var r = stage.getBoundingClientRect();
-    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
-  });
-  window.addEventListener('pointerup', function(){ mouse.down = false; });
-  window.addEventListener('pointercancel', function(){ mouse.down = false; });
-
-  var t = 0, drops = [], splashes = [];
-  var GRAV = 0.13;
-
-  /* origine automatique : se balade entre la moitié droite du bord bas
-     et la moitié basse du bord droit, hors de l'écran */
-  function autoOrigin(){
-    var k = (Math.sin(t * 0.011) + 1) / 2;          /* 0..1 aller-retour lent */
-    if (k < 0.5){
-      var u = k / 0.5;                              /* le long du bord bas, moitié droite */
-      return { x: W * (0.55 + 0.45 * u) + 20, y: H + 26 };
-    }
-    var v = (k - 0.5) / 0.5;                        /* remonte le bord droit jusqu'à mi-hauteur */
-    return { x: W + 26, y: H + 26 - v * (H * 0.5 + 26) };
-  }
-  /* cible : balaye la coque de gauche à droite */
-  function target(){
-    var k = (Math.sin(t * 0.017) + 1) / 2;
-    return { x: W * (0.24 + 0.38 * k), y: H * (0.60 + 0.05 * Math.sin(t * 0.05)) };
-  }
-
-  function spawn(){
-    var o = mouse.down ? { x: mouse.x, y: mouse.y } : autoOrigin();
-    var g = target();
-    for (var i = 0; i < 6; i++){
-      var n  = 26 + Math.random() * 10;             /* frames de vol */
-      var dx = g.x - o.x + (Math.random() - .5) * 60;
-      var dy = g.y - o.y + (Math.random() - .5) * 40;
-      drops.push({
-        x: o.x, y: o.y,
-        vx: dx / n,
-        vy: dy / n - GRAV * n / 2,                  /* arc balistique vers la coque */
-        life: n,
-        r: 1.2 + Math.random() * 1.8
-      });
-    }
-  }
-
-  function step(){
-    var i, d;
-    for (i = drops.length - 1; i >= 0; i--){
-      d = drops[i];
-      d.x += d.vx; d.y += d.vy; d.vy += GRAV; d.life--;
-      if (d.life <= 0){
-        for (var s = 0; s < 3; s++){
-          splashes.push({
-            x: d.x, y: d.y,
-            vx: (Math.random() - .5) * 2.4,
-            vy: -Math.random() * 2.2,
-            life: 14 + Math.random() * 10,
-            r: 1 + Math.random() * 1.6
-          });
-        }
-        drops.splice(i, 1);
-      }
-    }
-    for (i = splashes.length - 1; i >= 0; i--){
-      d = splashes[i];
-      d.x += d.vx; d.y += d.vy; d.vy += GRAV * 0.7; d.life--;
-      if (d.life <= 0) splashes.splice(i, 1);
-    }
-  }
-
-  function draw(alpha){
-    ctx.clearRect(0, 0, W, H);
-    ctx.globalAlpha = alpha;
-    ctx.lineCap = 'round';
-    var i, d;
-    for (i = 0; i < drops.length; i++){
-      d = drops[i];
-      ctx.strokeStyle = 'rgba(185,224,255,.75)';
-      ctx.lineWidth = d.r;
-      ctx.beginPath();
-      ctx.moveTo(d.x - d.vx * 2.2, d.y - d.vy * 2.2);
-      ctx.lineTo(d.x, d.y);
-      ctx.stroke();
-    }
-    for (i = 0; i < splashes.length; i++){
-      d = splashes[i];
-      ctx.fillStyle = 'rgba(222,242,255,' + (0.55 * d.life / 24) + ')';
-      ctx.beginPath();
-      ctx.arc(d.x, d.y, d.r, 0, 6.2832);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-  }
-
-  function progress(){
-    var max = Math.max(1, journey.offsetHeight - window.innerHeight);
-    var p = (window.scrollY - journey.offsetTop) / max;
-    return p < 0 ? 0 : (p > 1 ? 1 : p);
-  }
-
-  (function loop(){
-    requestAnimationFrame(loop);
-    t++;
-    var x = progress() * 3;                          /* position dans le voyage */
-    var alpha = 1 - x * 1.6;                         /* visible sur la scène du yacht */
-    if (alpha <= 0){
-      if (drops.length || splashes.length){ drops = []; splashes = []; ctx.clearRect(0, 0, W, H); }
-      return;
-    }
-    spawn(); step(); draw(alpha);
-  })();
 })();
 </script>
 

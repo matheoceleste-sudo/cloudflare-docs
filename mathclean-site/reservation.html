@@ -74,6 +74,7 @@
     <a href="index.html#zones">Zones d'intervention</a>
     <a href="index.html#avis">Avis clients</a>
     <a href="index.html#faq">FAQ</a>
+    <a href="index.html#contact">Contact</a>
     <a href="reservation.html" class="nav-cta">Réserver</a>
   </nav>
   <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -123,7 +124,7 @@
 
         <!-- 4. Date (calendrier) -->
         <div class="step reveal" id="stepDate">
-          <div class="step-label"><span class="step-num">2</span><h3>Votre date</h3></div>
+          <div class="step-label"><span class="step-num">2</span><h3>Votre date <small id="dateHint" style="color:var(--gris);font-weight:400"></small></h3></div>
           <div class="cal" id="cal">
             <div class="cal-head">
               <b id="calTitle"></b>
@@ -147,6 +148,17 @@
         <div class="step reveal hide" id="stepDevis">
           <div class="step-label"><span class="step-num">2</span><h3>Décrivez votre besoin</h3></div>
           <p style="color:var(--gris);font-size:.92rem;margin-bottom:14px">Plus votre description est précise (surfaces, dimensions, état, accès…), plus votre devis sera rapide et juste. Ajoutez autant de photos et de vidéos que nécessaire.</p>
+          <div class="fld"><label>Description détaillée de votre besoin</label><textarea form="resaForm" name="Description" id="descArea" placeholder="Décrivez précisément : type de surface, dimensions, état, taches, accès, étage, date souhaitée…" rows="5" disabled></textarea></div>
+          <div class="fld">
+            <label>Photos &amp; vidéos</label>
+            <div class="up-zone" id="upZone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+              <p>Cliquez pour ajouter vos photos et vidéos</p>
+              <small>Autant de fichiers que nécessaire — cela nous aide à établir un devis précis</small>
+            </div>
+            <input form="resaForm" type="file" name="attachment" id="fileInput" accept="image/*,video/*" multiple style="display:none" disabled>
+            <div class="up-list" id="upList"></div>
+          </div>
         </div>
       </div>
 
@@ -173,17 +185,6 @@
           <div class="fld"><label>Email</label><input type="email" name="Email" required></div>
           <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="Ville ou adresse complète" required></div>
           <div class="fld" id="fldMsg"><label>Précisions (facultatif)</label><textarea name="Message" placeholder="Détails utiles : surface, accès, étage…"></textarea></div>
-          <div class="fld hide" id="fldDesc"><label>Description détaillée de votre besoin</label><textarea name="Description" id="descArea" placeholder="Décrivez précisément : type de surface, dimensions, état, taches, accès, étage, date souhaitée…" rows="5" disabled></textarea></div>
-          <div class="fld hide" id="fldFiles">
-            <label>Photos &amp; vidéos</label>
-            <div class="up-zone" id="upZone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-              <p>Cliquez pour ajouter vos photos et vidéos</p>
-              <small>Autant de fichiers que nécessaire — cela nous aide à établir un devis précis</small>
-            </div>
-            <input type="file" name="attachment" id="fileInput" accept="image/*,video/*" multiple style="display:none" disabled>
-            <div class="up-list" id="upList"></div>
-          </div>
           <button type="submit" class="btn btn-or" id="resaBtn" disabled>Confirmer ma réservation</button>
           <p class="note" id="formNote">Réponse sous 24 h · Devis gratuit et sans engagement · 7j/7</p>
         </form>
@@ -298,18 +299,16 @@
       var devis = state.type === 'devis', auto = state.type === 'auto';
       $('#stepVeh').classList.toggle('hide', !auto);
       $('#stepOpts').classList.toggle('hide', !auto);
-      $('#stepDate').classList.toggle('hide', devis);
+      /* le calendrier reste visible en mode devis (date souhaitée, facultative) */
       $('#stepSlot').classList.toggle('hide', devis);
       $('#stepDevis').classList.toggle('hide', !devis);
       $('#fldMsg').classList.toggle('hide', devis);
-      $('#fldDesc').classList.toggle('hide', !devis);
-      $('#fldFiles').classList.toggle('hide', !devis);
       $('#descArea').disabled = !devis; $('#descArea').required = devis;
       $('#fileInput').disabled = !devis;
       $('#lVeh').style.display = auto ? '' : 'none';
       $('#lOpts').style.display = auto ? '' : 'none';
-      $('#lDate').style.display = devis ? 'none' : '';
       $('#lSlot').style.display = devis ? 'none' : '';
+      $('#dateHint').textContent = devis ? '(souhaitée, facultatif)' : '';
       $('#recapTitle').textContent = devis ? 'Votre demande de devis' : 'Votre réservation';
       $('#resaBtn').textContent   = devis ? 'Envoyer ma demande de devis' : 'Confirmer ma réservation';
       $('#fSubject').value = devis ? 'Nouvelle demande de devis — MathClean' : 'Nouvelle réservation — MathClean';

@@ -57,3 +57,17 @@ document.querySelectorAll('form[action*="formsubmit.co"]').forEach(f=>{
   if(!n){n=document.createElement('input');n.type='hidden';n.name='_next';f.appendChild(n);}
   n.value=new URL('merci.html',location.href).href;
 });
+
+
+/* ===== Bulle flottante Réserver (toutes pages sauf réservation/merci) ===== */
+(function(){
+  var path=location.pathname;
+  if(/reservation\.html$|merci\.html$/.test(path)) return;
+  var pre=/\/(services|zones)\//.test(path)?'../':'';
+  var b=document.createElement('a');
+  b.href=pre+'reservation.html';
+  b.className='resa-bubble';
+  b.setAttribute('aria-label','Réserver une prestation');
+  b.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Réserver</span>';
+  document.body.appendChild(b);
+})();
