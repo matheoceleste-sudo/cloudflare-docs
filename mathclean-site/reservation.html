@@ -33,7 +33,7 @@
 /* ===== Créneaux ===== */
 .slot.off{opacity:.28;pointer-events:none;text-decoration:line-through}
 .slots-note{font-size:.8rem;color:var(--gris);margin-top:10px}
-/* ===== Options auto ===== */
+/* ===== Options & véhicules ===== */
 .opts{display:grid;gap:10px}
 .opt-row{display:flex;align-items:center;gap:12px;border:1px solid var(--ligne);border-radius:12px;
   padding:12px 14px;cursor:pointer;transition:.2s}
@@ -42,6 +42,14 @@
 .opt-row .o-name{flex:1;font-size:.92rem;color:#d8d4ca}
 .opt-row .o-price{color:var(--or);font-weight:700;font-size:.92rem}
 .opt-row.sel{border-color:var(--or);background:linear-gradient(160deg,var(--noir-3),var(--noir-2))}
+.veh-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:640px){.veh-pick{grid-template-columns:repeat(2,1fr)}}
+.veh-opt{cursor:pointer;border:1px solid var(--ligne);border-radius:14px;padding:14px 10px;text-align:center;transition:.2s;position:relative}
+.veh-opt:hover{transform:translateY(-3px);border-color:rgba(201,162,75,.5)}
+.veh-opt.sel{border-color:var(--or);background:linear-gradient(160deg,var(--noir-3),var(--noir-2));box-shadow:0 0 0 3px rgba(201,162,75,.15)}
+.veh-opt.sel::after{content:"✓";position:absolute;top:8px;right:10px;color:var(--or);font-weight:700}
+.veh-opt span{display:block;font-size:.85rem;color:#d8d4ca}
+.veh-opt small{color:var(--or);font-size:.82rem;font-weight:700}
 /* ===== Mode devis ===== */
 .up-zone{border:1.5px dashed var(--ligne);border-radius:14px;padding:22px;text-align:center;cursor:pointer;transition:.25s}
 .up-zone:hover{border-color:var(--or)}
@@ -88,11 +96,12 @@
         <div class="step reveal">
           <div class="step-label"><span class="step-num">1</span><h3>Votre prestation</h3></div>
           <div class="svc-pick" id="svcPick">
-            <div class="svc-opt" data-svc="Nettoyage automobile" data-type="auto" data-base="49" data-from="dès 49 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M5 11h14M5 11v6m14-6v6M5 17h14"/></svg><span>Automobile</span><small>dès 49 €</small></div>
+            <div class="svc-opt" data-svc="Nettoyage automobile" data-type="auto" data-from="dès 29 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M5 11h14M5 11v6m14-6v6M5 17h14"/></svg><span>Automobile</span><small>dès 29 €</small></div>
             <div class="svc-opt" data-svc="Nettoyage de canapé" data-type="textile" data-from="dès 39 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M3 11a2 2 0 0 1 2 2v3h14v-3a2 2 0 0 1 2-2 2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0z"/></svg><span>Canapé</span><small>dès 39 €</small></div>
             <div class="svc-opt" data-svc="Nettoyage de matelas" data-type="textile" data-from="dès 49 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M3 12h18"/></svg><span>Matelas</span><small>dès 49 €</small></div>
             <div class="svc-opt" data-svc="Nettoyage de tapis" data-type="textile" data-from="dès 59 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 7h16M4 17h16"/></svg><span>Tapis</span><small>dès 59 €</small></div>
             <div class="svc-opt" data-svc="Nettoyage de bateau" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14l9-3 9 3-2.5 5.5a2 2 0 0 1-1.8 1.2H7.3a2 2 0 0 1-1.8-1.2L3 14zM12 11V4"/></svg><span>Bateau</span><small>sur devis</small></div>
+            <div class="svc-opt" data-svc="Nettoyage d'avion" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.5 20.5 9 15l-5.5-1.5L2 12l7-2 2-7 1.5 1.5L14 10l7 2-1.5 1.5L14 15l-1.5 5.5z"/></svg><span>Avion</span><small>sur devis</small></div>
             <div class="svc-opt" data-svc="Nettoyage de terrasse" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18M5 20V9m14 11V9M3 9l9-5 9 5"/></svg><span>Terrasse</span><small>sur devis</small></div>
             <div class="svc-opt" data-svc="Nettoyage de locaux" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2m4 0h2M8 11h2m4 0h2"/></svg><span>Locaux</span><small>sur devis</small></div>
             <div class="svc-opt" data-svc="Nettoyage de bureau" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg><span>Bureau</span><small>sur devis</small></div>
@@ -100,13 +109,19 @@
           </div>
         </div>
 
-        <!-- 2. Options (automobile) -->
+        <!-- 2. Véhicule (automobile) -->
+        <div class="step reveal hide" id="stepVeh">
+          <div class="step-label"><span class="step-num">2</span><h3>Votre véhicule</h3></div>
+          <div class="veh-pick" id="vehPick"></div>
+        </div>
+
+        <!-- 3. Options (automobile) -->
         <div class="step reveal hide" id="stepOpts">
-          <div class="step-label"><span class="step-num">2</span><h3>Vos options <small style="color:var(--gris);font-weight:400">(facultatif)</small></h3></div>
+          <div class="step-label"><span class="step-num">3</span><h3>Vos options <small style="color:var(--gris);font-weight:400">(facultatif)</small></h3></div>
           <div class="opts" id="opts"></div>
         </div>
 
-        <!-- 3. Date (calendrier) -->
+        <!-- 4. Date (calendrier) -->
         <div class="step reveal" id="stepDate">
           <div class="step-label"><span class="step-num">2</span><h3>Votre date</h3></div>
           <div class="cal" id="cal">
@@ -121,7 +136,7 @@
           </div>
         </div>
 
-        <!-- 4. Créneau -->
+        <!-- 5. Créneau -->
         <div class="step reveal" id="stepSlot">
           <div class="step-label"><span class="step-num">3</span><h3>Votre créneau</h3></div>
           <div class="slots" id="slots"><p class="slots-note">Choisissez d'abord votre prestation et votre date.</p></div>
@@ -139,6 +154,7 @@
       <div class="recap reveal">
         <h3 id="recapTitle">Votre réservation</h3>
         <div class="line"><span>Prestation</span><b id="rSvc" class="empty">À choisir</b></div>
+        <div class="line" id="lVeh" style="display:none"><span>Véhicule</span><b id="rVeh" class="empty">À choisir</b></div>
         <div class="line" id="lOpts" style="display:none"><span>Options</span><b id="rOpts">—</b></div>
         <div class="line" id="lDate"><span>Date</span><b id="rDate" class="empty">À choisir</b></div>
         <div class="line" id="lSlot"><span>Créneau</span><b id="rSlot" class="empty">À choisir</b></div>
@@ -147,6 +163,7 @@
           <input type="hidden" name="_subject" value="Nouvelle réservation — MathClean" id="fSubject">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="Prestation" id="fSvc">
+          <input type="hidden" name="Véhicule" id="fVeh">
           <input type="hidden" name="Options" id="fOpts">
           <input type="hidden" name="Estimation" id="fTotal">
           <input type="hidden" name="Date" id="fDate">
@@ -190,6 +207,7 @@
         <li><a href="services/nettoyage-bateau-paris.html">Nettoyage de bateau</a></li>
       </ul></div>
       <div><h4>&nbsp;</h4><ul>
+        <li><a href="services/nettoyage-avion-paris.html">Nettoyage d'avion</a></li>
         <li><a href="services/nettoyage-terrasse-paris.html">Nettoyage de terrasse</a></li>
         <li><a href="services/nettoyage-locaux-paris.html">Nettoyage de locaux</a></li>
         <li><a href="services/nettoyage-bureau-paris.html">Nettoyage de bureau</a></li>
@@ -212,7 +230,8 @@
 <script>
 /* =====================================================================
    Réservation MathClean
-   - Automobile : 2 créneaux de 3 h (09h-12h / 13h-16h) + options 10-20 €
+   - Automobile : véhicule (citadine 29 € → van 59 €) + options
+     (5-20 €) + 2 créneaux de 3 h (09h-12h / 13h-16h)
    - Textiles (canapé, matelas, tapis) : créneaux d'1 h de 9h à 20h
    - Blocage croisé : un créneau voiture bloque les heures textiles
      comprises dedans, et inversement
@@ -221,27 +240,29 @@
 (function(){
   var $ = function(s){ return document.querySelector(s); };
 
-  var AUTO_BASE = 49;
+  var VEHICLES = [
+    ['Citadine', 29],
+    ['Berline', 39],
+    ['SUV / 4x4', 49],
+    ['Monospace / Van', 59]
+  ];
   var AUTO_SLOTS = [
     { label:'09:00 – 12:00', hours:[9,10,11] },
     { label:'13:00 – 16:00', hours:[13,14,15] }
   ];
   var TEXTILE_HOURS = [9,10,11,12,13,14,15,16,17,18,19];
+  /* [nom, prix, groupe-exclusif] */
   var OPTIONS = [
-    ['Coffre : aspiration + shampoing complet', 10],
-    ['Vitres intérieures & extérieures', 10],
-    ['Jantes détaillées & brillant pneus', 10],
-    ['Plastiques nourris & satinés', 10],
-    ['Traitement anti-odeurs de l’habitacle', 15],
-    ['Retrait renforcé des poils d’animaux', 15],
-    ['Shampoing des sièges en tissu', 20],
-    ['Nettoyage & nourrissage du cuir', 20],
-    ['Cire de protection carrosserie', 20]
+    ['Coffre : aspiration + shampoing complet', 5, null],
+    ['Retrait des poils d’animaux', 5, 'poils'],
+    ['Retrait des poils d’animaux (beaucoup de poils)', 10, 'poils'],
+    ['Shampoing des sièges', 10, null],
+    ['Jantes détaillées & brillant pneus', 20, null]
   ];
   var MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   var JOURS = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
 
-  var state = { svc:null, type:null, from:null, base:0, opts:[], date:null, dateLabel:null, slot:null, slotHours:[] };
+  var state = { svc:null, type:null, from:null, veh:null, vehPrice:0, opts:[], date:null, dateLabel:null, slot:null, slotHours:[] };
 
   /* ---------- réservations enregistrées (sur cet appareil) ---------- */
   function bookings(){ try { return JSON.parse(localStorage.getItem('mcResa') || '{}'); } catch(e){ return {}; } }
@@ -266,15 +287,17 @@
       state.svc  = o.getAttribute('data-svc');
       state.type = o.getAttribute('data-type');
       state.from = o.getAttribute('data-from');
-      state.base = +(o.getAttribute('data-base') || 0);
+      state.veh = null; state.vehPrice = 0;
       state.opts = []; state.date = null; state.dateLabel = null; state.slot = null; state.slotHours = [];
       document.querySelectorAll('.opt-row input').forEach(function(c){ c.checked = false; });
       document.querySelectorAll('.opt-row').forEach(function(r){ r.classList.remove('sel'); });
+      document.querySelectorAll('.veh-opt').forEach(function(v){ v.classList.remove('sel'); });
       document.querySelectorAll('.cal-day').forEach(function(d){ d.classList.remove('sel'); });
       $('#rSvc').textContent = state.svc; $('#rSvc').classList.remove('empty');
       $('#fSvc').value = state.svc;
-      var devis = state.type === 'devis';
-      $('#stepOpts').classList.toggle('hide', state.type !== 'auto');
+      var devis = state.type === 'devis', auto = state.type === 'auto';
+      $('#stepVeh').classList.toggle('hide', !auto);
+      $('#stepOpts').classList.toggle('hide', !auto);
       $('#stepDate').classList.toggle('hide', devis);
       $('#stepSlot').classList.toggle('hide', devis);
       $('#stepDevis').classList.toggle('hide', !devis);
@@ -283,7 +306,8 @@
       $('#fldFiles').classList.toggle('hide', !devis);
       $('#descArea').disabled = !devis; $('#descArea').required = devis;
       $('#fileInput').disabled = !devis;
-      $('#lOpts').style.display = state.type === 'auto' ? '' : 'none';
+      $('#lVeh').style.display = auto ? '' : 'none';
+      $('#lOpts').style.display = auto ? '' : 'none';
       $('#lDate').style.display = devis ? 'none' : '';
       $('#lSlot').style.display = devis ? 'none' : '';
       $('#recapTitle').textContent = devis ? 'Votre demande de devis' : 'Votre réservation';
@@ -303,14 +327,40 @@
     });
   }
 
+  /* --------------------------- véhicules --------------------------- */
+  var vehEl = $('#vehPick');
+  VEHICLES.forEach(function(pair){
+    var v = document.createElement('div');
+    v.className = 'veh-opt';
+    v.innerHTML = '<span>' + pair[0] + '</span><small>' + pair[1] + ' €</small>';
+    v.addEventListener('click', function(){
+      document.querySelectorAll('.veh-opt').forEach(function(x){ x.classList.remove('sel'); });
+      v.classList.add('sel');
+      state.veh = pair[0]; state.vehPrice = pair[1];
+      $('#rVeh').textContent = pair[0]; $('#rVeh').classList.remove('empty');
+      $('#fVeh').value = pair[0] + ' (' + pair[1] + ' €)';
+      recap(); check();
+    });
+    vehEl.appendChild(v);
+  });
+
   /* ---------------------------- options ---------------------------- */
   var optsEl = $('#opts');
-  OPTIONS.forEach(function(pair){
+  OPTIONS.forEach(function(triple){
     var row = document.createElement('label');
     row.className = 'opt-row';
-    row.innerHTML = '<input type="checkbox" value="' + pair[0] + ' (+' + pair[1] + ' €)" data-p="' + pair[1] + '">' +
-                    '<span class="o-name">' + pair[0] + '</span><span class="o-price">+' + pair[1] + ' €</span>';
-    row.querySelector('input').addEventListener('change', function(e){
+    row.innerHTML = '<input type="checkbox" value="' + triple[0] + ' (+' + triple[1] + ' €)" data-p="' + triple[1] + '"' +
+                    (triple[2] ? ' data-x="' + triple[2] + '"' : '') + '>' +
+                    '<span class="o-name">' + triple[0] + '</span><span class="o-price">+' + triple[1] + ' €</span>';
+    var input = row.querySelector('input');
+    input.addEventListener('change', function(e){
+      /* options exclusives (ex. : poils normal / beaucoup de poils) */
+      var g = e.target.getAttribute('data-x');
+      if (g && e.target.checked){
+        document.querySelectorAll('.opt-row input[data-x="' + g + '"]').forEach(function(c){
+          if (c !== e.target){ c.checked = false; c.closest('.opt-row').classList.remove('sel'); }
+        });
+      }
       row.classList.toggle('sel', e.target.checked);
       state.opts = [];
       document.querySelectorAll('.opt-row input:checked').forEach(function(c){
@@ -413,13 +463,14 @@
     el = $('#rSlot'); el.textContent = state.slot || 'À choisir'; el.classList.toggle('empty', !state.slot);
     if (state.type === 'auto'){
       var sum = state.opts.reduce(function(a,o){ return a + o.p; }, 0);
+      var base = state.vehPrice || 29;
       $('#rOpts').textContent = state.opts.length ? state.opts.length + ' option' + (state.opts.length > 1 ? 's' : '') + ' (+' + sum + ' €)' : 'Aucune';
-      $('#rPrice').textContent = 'dès ' + (AUTO_BASE + sum) + ' €';
+      $('#rPrice').textContent = (state.veh ? '' : 'dès ') + (base + sum) + ' €';
       $('#fOpts').value  = state.opts.map(function(o){ return o.name; }).join(' | ') || 'Aucune';
-      $('#fTotal').value = 'dès ' + (AUTO_BASE + sum) + ' €';
+      $('#fTotal').value = (state.veh ? '' : 'dès ') + (base + sum) + ' €';
     } else if (state.type){
       $('#rPrice').textContent = state.from;
-      $('#fOpts').value = ''; $('#fTotal').value = state.from;
+      $('#fOpts').value = ''; $('#fVeh').value = ''; $('#fTotal').value = state.from;
     }
     if (state.type) $('#rPrice').classList.remove('empty');
   }
@@ -429,6 +480,8 @@
     var ok;
     if (state.type === 'devis'){
       ok = !!state.svc && $('#descArea').value.trim().length >= 10;
+    } else if (state.type === 'auto'){
+      ok = !!(state.svc && state.veh && state.date && state.slot);
     } else {
       ok = !!(state.svc && state.date && state.slot);
     }
