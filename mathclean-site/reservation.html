@@ -186,6 +186,7 @@
           <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="Ville ou adresse complète" required></div>
           <div class="fld" id="fldMsg"><label>Précisions (facultatif)</label><textarea name="Message" placeholder="Détails utiles : surface, accès, étage…"></textarea></div>
           <button type="submit" class="btn btn-or" id="resaBtn" disabled>Confirmer ma réservation</button>
+          <p class="slots-note hide" id="btnHint" style="margin-top:10px;text-align:center"></p>
           <p class="note" id="formNote">Réponse sous 24 h · Devis gratuit et sans engagement · 7j/7</p>
         </form>
       </div>
@@ -313,6 +314,8 @@
       $('#resaBtn').textContent   = devis ? 'Envoyer ma demande de devis' : 'Confirmer ma réservation';
       $('#fSubject').value = devis ? 'Nouvelle demande de devis — MathClean' : 'Nouvelle réservation — MathClean';
       renumber(); renderSlots(); recap(); check();
+      var next = auto ? $('#stepVeh') : (devis ? $('#stepDevis') : $('#stepDate'));
+      setTimeout(function(){ next.scrollIntoView({ behavior:'smooth', block:'start' }); }, 150);
     });
   });
 
@@ -485,8 +488,31 @@
       ok = !!(state.svc && state.date && state.slot);
     }
     $('#resaBtn').disabled = !ok;
+    var msg = '';
+    if (state.svc && !ok){
+      if (state.type === 'devis'){
+        msg = '✍️ Décrivez votre besoin à l\u2019étape 2 (quelques mots suffisent) pour activer l\u2019envoi.';
+      } else if (state.type === 'auto'){
+        msg = !state.veh ? '🚗 Choisissez votre véhicule (étape 2).'
+            : (!state.date ? '📅 Choisissez votre date dans le calendrier.'
+            : '⏰ Choisissez votre créneau.');
+      } else {
+        msg = !state.date ? '📅 Choisissez votre date dans le calendrier.' : '⏰ Choisissez votre créneau.';
+      }
+    }
+    var hint = $('#btnHint');
+    hint.textContent = msg;
+    hint.classList.toggle('hide', !msg);
   }
   $('#descArea').addEventListener('input', check);
+
+  /* ---------------- préselection via ?service= ---------------- */
+  var wanted = new URLSearchParams(location.search).get('service');
+  if (wanted){
+    document.querySelectorAll('.svc-opt').forEach(function(o){
+      if (o.getAttribute('data-svc') === wanted) o.click();
+    });
+  }
 
   /* ------------------------- fichiers (devis) ------------------------ */
   $('#upZone').addEventListener('click', function(){ $('#fileInput').click(); });

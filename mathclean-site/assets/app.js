@@ -71,3 +71,19 @@ document.querySelectorAll('form[action*="formsubmit.co"]').forEach(f=>{
   b.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Réserver</span>';
   document.body.appendChild(b);
 })();
+
+
+/* ===== Envoi AJAX + redirection garantie vers la page de remerciement ===== */
+document.querySelectorAll('form[action*="formsubmit.co"]').forEach(f=>{
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.reportValidity()) return;
+    var btn=f.querySelector('[type="submit"]');
+    if(btn){btn.disabled=true;btn.textContent='Envoi en cours…';}
+    var merci=new URL('merci.html',location.href).href;
+    var url=f.action.replace('formsubmit.co/','formsubmit.co/ajax/');
+    fetch(url,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
+      .then(function(){location.href=merci;})
+      .catch(function(){ f.submit(); });   /* repli : envoi classique (redirigé via _next) */
+  });
+});
