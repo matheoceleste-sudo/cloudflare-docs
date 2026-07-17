@@ -296,3 +296,43 @@ footer ul a:hover{color:var(--or);padding-left:5px}
 .resa-bubble:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.55),0 0 24px rgba(231,205,134,.35)}
 .resa-bubble svg{flex:0 0 18px}
 @media(max-width:680px){.resa-bubble{bottom:16px;right:16px;padding:13px 20px}}
+
+
+/* ===== Avis défilants (marquee) ===== */
+.avis-marquee{position:relative;overflow:hidden;margin-top:44px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.avis-track{display:flex;gap:22px;width:max-content;animation:avis-scroll 42s linear infinite}
+.avis-marquee:hover .avis-track{animation-play-state:paused}
+.avis-track .avis{flex:0 0 380px;max-width:82vw;margin:0}
+@keyframes avis-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.avis-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}}
+
+/* ===== Cartes tarifs ===== */
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.price-card{position:relative;display:flex;flex-direction:column;
+  background:linear-gradient(160deg,var(--noir-3),var(--noir-2));
+  border:1px solid var(--ligne);border-radius:20px;padding:38px 30px;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .5s,box-shadow .5s}
+.price-card:hover{transform:translateY(-8px);border-color:rgba(201,162,75,.55);box-shadow:var(--ombre)}
+.price-card.featured{border-color:rgba(201,162,75,.6);
+  background:linear-gradient(160deg,#211b0f,var(--noir-2));box-shadow:0 20px 60px -30px var(--or)}
+.pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(120deg,var(--or-clair),var(--or));color:var(--noir);
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 16px;border-radius:30px;white-space:nowrap}
+.pc-head{text-align:center;padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--ligne)}
+.pc-tag{font-family:var(--sans);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or)}
+.pc-amount{display:flex;align-items:baseline;justify-content:center;gap:6px;margin:14px 0 6px}
+.pc-from{font-size:.9rem;color:var(--gris)}
+.pc-num{font-family:var(--serif);font-size:3.2rem;line-height:1;color:var(--blanc)}
+.pc-cur{font-family:var(--serif);font-size:1.6rem;color:var(--or)}
+.pc-sub{color:var(--gris);font-size:.92rem}
+.pc-list{list-style:none;flex:1;margin-bottom:26px}
+.pc-list li{position:relative;padding-left:28px;margin-bottom:12px;color:#d8d4ca;font-size:.95rem}
+.pc-list li::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;
+  background:var(--or);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/contain no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/contain no-repeat}
+.pc-btn{width:100%;justify-content:center}
+.pc-note{text-align:center;color:var(--gris);font-size:.85rem;margin-top:28px;max-width:640px;margin-left:auto;margin-right:auto}
+@media(max-width:960px){.pricing{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
