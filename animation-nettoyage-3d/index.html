@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nettoyage vapeur — animation 3D au défilement</title>
+<style>
+  :root { --cv-track-height: 700vh; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #0e0d0b; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; }
+
+  /* Piste de défilement : sa hauteur = durée de l'animation */
+  .cv-track { height: var(--cv-track-height); position: relative; }
+  .cv-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  #cvCanvas { width: 100%; height: 100%; display: block; }
+
+  /* Voile blanc pour la traversée de la vapeur */
+  .cv-whiteout {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: radial-gradient(ellipse at 50% 55%, #ffffff 0%, #f4f2ee 60%, #e9e6df 100%);
+  }
+
+  /* Légendes */
+  .cv-caption {
+    position: absolute; left: 6%; bottom: 9%; max-width: 520px;
+    color: #f7f3ec; opacity: 0; pointer-events: none;
+    text-shadow: 0 2px 18px rgba(0,0,0,.45);
+  }
+  .cv-caption h2 {
+    font-size: clamp(1.3rem, 3.2vw, 2.2rem); font-weight: 600;
+    letter-spacing: .02em; line-height: 1.15; margin-bottom: .4rem;
+  }
+  .cv-caption p { font-size: clamp(.9rem, 1.6vw, 1.05rem); opacity: .85; }
+
+  .cv-hint {
+    position: absolute; left: 50%; bottom: 4%; transform: translateX(-50%);
+    color: #f7f3ec; font-size: .85rem; letter-spacing: .25em; text-transform: uppercase;
+    opacity: .8; pointer-events: none; text-shadow: 0 2px 12px rgba(0,0,0,.5);
+    animation: cvBounce 2.2s ease-in-out infinite;
+  }
+  .cv-hint::after { content: "↓"; display: block; text-align: center; font-size: 1.2rem; margin-top: .2rem; }
+  @keyframes cvBounce { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,8px); } }
+
+  .cv-vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.35) 100%);
+  }
+</style>
+</head>
+<body>
+
+<div class="cv-track" id="cvTrack">
+  <div class="cv-sticky">
+    <canvas id="cvCanvas"></canvas>
+    <div class="cv-vignette"></div>
+    <div class="cv-whiteout" id="cvWhiteout"></div>
+
+    <div class="cv-caption" data-from="0.02" data-to="0.20">
+      <h2>Nettoyage vapeur en profondeur</h2>
+      <p>Canapés, tapis, moquettes &amp; tissus d'ameublement</p>
+    </div>
+    <div class="cv-caption" data-from="0.30" data-to="0.55">
+      <h2>Injection &amp; extraction</h2>
+      <p>Le produit est injecté dans la fibre, la saleté est aspirée instantanément</p>
+    </div>
+    <div class="cv-caption" data-from="0.58" data-to="0.71">
+      <h2>La vapeur agit au cœur des fibres</h2>
+    </div>
+    <div class="cv-caption" data-from="0.86" data-to="1.08">
+      <h2>… et pour vos véhicules</h2>
+      <p>Lavage à la main soigné, intérieur &amp; extérieur</p>
+    </div>
+
+    <div class="cv-hint" id="cvHint">Faites défiler</div>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from './vendor/three.module.min.js';
+
+/* ============================================================
+   Outils
+   ============================================================ */
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const smooth = t => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
+const range = (p, a, b) => smooth((p - a) / (b - a));
+const UP = new THREE.Vector3(0, 1, 0);
+
+function roundedBox(w, h, d, r, seg = 3) {
+  r = Math.min(r, w / 2 - 0.001, h / 2 - 0.001, d / 2 - 0.001);
+  const s = new THREE.Shape();
+  const x = -w / 2, y = -h / 2;
+  s.moveTo(x, y + r);
+  s.lineTo(x, y + h - r);
+  s.quadraticCurveTo(x, y + h, x + r, y + h);
+  s.lineTo(x + w - r, y + h);
+  s.quadraticCurveTo(x + w, y + h, x + w, y + h - r);
+  s.lineTo(x + w, y + r);
+  s.quadraticCurveTo(x + w, y, x + w - r, y);
+  s.lineTo(x + r, y);
+  s.quadraticCurveTo(x, y, x, y + r);
+  const depth = Math.max(0.001, d - 2 * r);
+  const g = new THREE.ExtrudeGeometry(s, {
+    depth, bevelEnabled: true, bevelThickness: r, bevelSize: r * 0.92,
+    bevelSegments: seg, steps: 1, curveSegments: seg * 2
+  });
+  g.translate(0, 0, -depth / 2);
+  return g;
+}
+
+function orientBetween(mesh, a, b) {
+  const dir = new THREE.Vector3().subVectors(b, a);
+  const len = dir.length();
+  mesh.position.copy(a).addScaledVector(dir, 0.5);
+  mesh.scale.set(1, len, 1);
+  mesh.quaternion.setFromUnitVectors(UP, dir.normalize());
+}
+
+function canvasTexture(size, draw) {
+  const c = document.createElement('canvas');
+  c.width = c.height = size;
+  draw(c.getContext('2d'), size);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+
+const woodTex = canvasTexture(512, (ctx, s) => {
+  ctx.fillStyle = '#8a6a4a'; ctx.fillRect(0, 0, s, s);
+  const rows = 8;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < 4; j++) {
+      const tone = 118 + Math.random() * 40;
+      ctx.fillStyle = `rgb(${tone + 20},${tone - 12},${tone - 45})`;
+      ctx.fillRect(j * s / 4 + (i % 2) * s / 8, i * s / rows, s / 4 - 2, s / rows - 2);
+    }
+  }
+  ctx.globalAlpha = 0.12; ctx.strokeStyle = '#3c2a18';
+  for (let i = 0; i < 90; i++) {
+    ctx.beginPath();
+    const y = Math.random() * s;
+    ctx.moveTo(0, y); ctx.bezierCurveTo(s / 3, y + 6, 2 * s / 3, y - 6, s, y);
+    ctx.stroke();
+  }
+});
+woodTex.wrapS = woodTex.wrapT = THREE.RepeatWrapping;
+woodTex.repeat.set(3, 3);
+
+const softTex = canvasTexture(128, (ctx, s) => {
+  const g = ctx.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+  g.addColorStop(0, 'rgba(255,255,255,0.9)');
+  g.addColorStop(0.45, 'rgba(255,255,255,0.45)');
+  g.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, s, s);
+});
+
+const starTex = canvasTexture(128, (ctx, s) => {
+  ctx.translate(s / 2, s / 2);
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+  ctx.beginPath();
+  const R = s * 0.48, r = s * 0.06;
+  for (let i = 0; i < 8; i++) {
+    const a = i * Math.PI / 4;
+    const rad = i % 2 === 0 ? R : r;
+    ctx[i === 0 ? 'moveTo' : 'lineTo'](Math.cos(a) * rad, Math.sin(a) * rad);
+  }
+  ctx.closePath(); ctx.fill();
+});
+
+/* ============================================================
+   Rendu de base
+   ============================================================ */
+const canvas = document.getElementById('cvCanvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(44, 1, 0.05, 60);
+
+function resize() {
+  const w = canvas.clientWidth || innerWidth;
+  const h = canvas.clientHeight || innerHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize);
+
+/* ============================================================
+   Matériaux partagés
+   ============================================================ */
+const M = {
+  fabric:  new THREE.MeshStandardMaterial({ color: 0xb59a7b, roughness: 0.92 }),
+  fabric2: new THREE.MeshStandardMaterial({ color: 0xa88c6e, roughness: 0.92 }),
+  woodLeg: new THREE.MeshStandardMaterial({ color: 0x5b3f28, roughness: 0.5 }),
+  wall:    new THREE.MeshStandardMaterial({ color: 0xcfc5b6, roughness: 0.95 }),
+  wallDark:new THREE.MeshStandardMaterial({ color: 0xbfb4a3, roughness: 0.95 }),
+  rug:     new THREE.MeshStandardMaterial({ color: 0xe6ddcc, roughness: 1 }),
+  brass:   new THREE.MeshStandardMaterial({ color: 0xc9a25a, roughness: 0.3, metalness: 0.8 }),
+  dark:    new THREE.MeshStandardMaterial({ color: 0x2e2c29, roughness: 0.6 }),
+  skin:    new THREE.MeshStandardMaterial({ color: 0xd9b391, roughness: 0.7 }),
+  shirt:   new THREE.MeshStandardMaterial({ color: 0x2c3e50, roughness: 0.85 }),
+  pants:   new THREE.MeshStandardMaterial({ color: 0x3a3f45, roughness: 0.9 }),
+  machine: new THREE.MeshStandardMaterial({ color: 0x35393d, roughness: 0.45 }),
+  accent:  new THREE.MeshStandardMaterial({ color: 0x2196a8, roughness: 0.4 }),
+  clear:   new THREE.MeshPhysicalMaterial({
+    color: 0xd4ecf5, transparent: true, opacity: 0.35, roughness: 0.12,
+    metalness: 0, side: THREE.DoubleSide, depthWrite: false
+  }),
+};
+
+function mesh(geo, mat, x = 0, y = 0, z = 0, castShadow = true) {
+  const m = new THREE.Mesh(geo, mat);
+  m.position.set(x, y, z);
+  m.castShadow = castShadow;
+  m.receiveShadow = true;
+  return m;
+}
+
+/* ============================================================
+   SCÈNE A — Salon chic
+   ============================================================ */
+const room = new THREE.Group();
+scene.add(room);
+
+// Sol parquet + tapis
+const floorMat = new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.55 });
+const floor = mesh(new THREE.PlaneGeometry(14, 14), floorMat, 0, 0, 2, false);
+floor.rotation.x = -Math.PI / 2;
+room.add(floor);
+room.add(mesh(roundedBox(3.6, 0.03, 2.5, 0.015), M.rug, 0, 0.015, 0.55, false));
+
+// Murs avec moulures
+const backWall = mesh(new THREE.PlaneGeometry(14, 5.6), M.wall, 0, 2.8, -1.75, false);
+room.add(backWall);
+const leftWall = mesh(new THREE.PlaneGeometry(12, 5.6), M.wall, -4.6, 2.8, 3, false);
+leftWall.rotation.y = Math.PI / 2;
+room.add(leftWall);
+const rightWall = mesh(new THREE.PlaneGeometry(12, 5.6), M.wall, 4.6, 2.8, 3, false);
+rightWall.rotation.y = -Math.PI / 2;
+room.add(rightWall);
+// plinthe + panneaux muraux
+room.add(mesh(new THREE.BoxGeometry(14, 0.18, 0.04), M.wallDark, 0, 0.09, -1.74, false));
+for (const px of [-2.6, 0, 2.6]) {
+  const frame = new THREE.Group();
+  const t = 0.045;
+  frame.add(mesh(new THREE.BoxGeometry(1.9, t, 0.03), M.wallDark, 0, 1.05, 0, false));
+  frame.add(mesh(new THREE.BoxGeometry(1.9, t, 0.03), M.wallDark, 0, 3.15, 0, false));
+  frame.add(mesh(new THREE.BoxGeometry(t, 2.15, 0.03), M.wallDark, -0.93, 2.1, 0, false));
+  frame.add(mesh(new THREE.BoxGeometry(t, 2.15, 0.03), M.wallDark, 0.93, 2.1, 0, false));
+  frame.position.set(px, 0, -1.73);
+  room.add(frame);
+}
+
+// Fenêtre lumineuse à gauche
+const winGroup = new THREE.Group();
+winGroup.position.set(-4.55, 2.0, 2.6);
+winGroup.rotation.y = Math.PI / 2;
+winGroup.add(mesh(new THREE.BoxGeometry(2.4, 2.6, 0.1), new THREE.MeshStandardMaterial({ color: 0xf5efe2 }), 0, 0, 0, false));
+const winLight = new THREE.MeshBasicMaterial({ color: 0xfff6e0 });
+winGroup.add(mesh(new THREE.PlaneGeometry(2.1, 2.3), winLight, 0, 0, 0.06, false));
+winGroup.add(mesh(new THREE.BoxGeometry(0.08, 2.3, 0.04), new THREE.MeshStandardMaterial({ color: 0xf5efe2 }), 0, 0, 0.08, false));
+winGroup.add(mesh(new THREE.BoxGeometry(2.1, 0.08, 0.04), new THREE.MeshStandardMaterial({ color: 0xf5efe2 }), 0, 0, 0.08, false));
+room.add(winGroup);
+// rideaux
+room.add(mesh(new THREE.BoxGeometry(0.12, 3.1, 0.5), new THREE.MeshStandardMaterial({ color: 0x8d8272, roughness: 1 }), -4.45, 1.75, 1.2, false));
+room.add(mesh(new THREE.BoxGeometry(0.12, 3.1, 0.5), new THREE.MeshStandardMaterial({ color: 0x8d8272, roughness: 1 }), -4.45, 1.75, 4.0, false));
+
+// Tableaux au-dessus du canapé
+function artwork(w, h, color, x, y) {
+  const g = new THREE.Group();
+  g.add(mesh(new THREE.BoxGeometry(w + 0.08, h + 0.08, 0.05), M.dark, 0, 0, 0, false));
+  g.add(mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshStandardMaterial({ color, roughness: 0.9 }), 0, 0, 0.03, false));
+  g.position.set(x, y, -1.7);
+  return g;
+}
+room.add(artwork(0.85, 1.05, 0x9db4a0, -0.55, 2.15));
+room.add(artwork(0.6, 0.75, 0xc9b8a0, 0.55, 2.1));
+
+// Plante à gauche
+const plant = new THREE.Group();
+plant.add(mesh(new THREE.CylinderGeometry(0.2, 0.15, 0.35, 20), new THREE.MeshStandardMaterial({ color: 0xa8a29a, roughness: 0.8 }), 0, 0.175, 0));
+const leafMat = new THREE.MeshStandardMaterial({ color: 0x3d6b3f, roughness: 0.85 });
+for (let i = 0; i < 6; i++) {
+  const leaf = mesh(new THREE.ConeGeometry(0.09, 0.85, 7), leafMat, 0, 0.75, 0);
+  leaf.rotation.z = (i / 6) * Math.PI * 0.5 - Math.PI * 0.25;
+  leaf.rotation.y = i * 1.1;
+  leaf.position.x = Math.cos(i * 1.1) * 0.08;
+  leaf.position.z = Math.sin(i * 1.1) * 0.08;
+  plant.add(leaf);
+}
+plant.position.set(-2.6, 0, -0.9);
+room.add(plant);
+
+// Lampadaire + table basse
+const lamp = new THREE.Group();
+lamp.add(mesh(new THREE.CylinderGeometry(0.16, 0.2, 0.03, 24), M.brass, 0, 0.015, 0));
+lamp.add(mesh(new THREE.CylinderGeometry(0.015, 0.015, 1.5, 10), M.brass, 0, 0.78, 0));
+lamp.add(mesh(new THREE.CylinderGeometry(0.16, 0.22, 0.3, 24, 1, true),
+  new THREE.MeshStandardMaterial({ color: 0xf0e3c8, roughness: 0.9, side: THREE.DoubleSide, emissive: 0xffe8b0, emissiveIntensity: 0.5 }), 0, 1.6, 0));
+lamp.position.set(2.7, 0, -1.0);
+room.add(lamp);
+
+const table = new THREE.Group();
+table.add(mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.04, 32), M.woodLeg, 0, 0.42, 0));
+table.add(mesh(new THREE.CylinderGeometry(0.05, 0.07, 0.42, 12), M.woodLeg, 0, 0.21, 0));
+table.add(mesh(new THREE.CylinderGeometry(0.09, 0.06, 0.22, 16), M.accent, 0.15, 0.55, 0.1));
+table.position.set(-1.7, 0, 1.9);
+room.add(table);
+
+/* ---------- Canapé 3 places (face caméra) ---------- */
+const sofa = new THREE.Group();
+// pieds
+for (const [lx, lz] of [[-1.05, 0.38], [1.05, 0.38], [-1.05, -0.38], [1.05, -0.38]]) {
+  sofa.add(mesh(new THREE.CylinderGeometry(0.03, 0.02, 0.12, 10), M.woodLeg, lx, 0.06, lz));
+}
+// châssis
+sofa.add(mesh(roundedBox(2.3, 0.32, 0.95, 0.06), M.fabric2, 0, 0.28, 0));
+// accoudoirs
+sofa.add(mesh(roundedBox(0.24, 0.62, 0.95, 0.1), M.fabric2, -1.17, 0.45, 0));
+sofa.add(mesh(roundedBox(0.24, 0.62, 0.95, 0.1), M.fabric2, 1.17, 0.45, 0));
+// dossier
+sofa.add(mesh(roundedBox(2.3, 0.72, 0.22, 0.08), M.fabric2, 0, 0.72, -0.38));
+// coussins d'assise (3 places)
+for (const cx of [-0.7, 0, 0.7]) {
+  sofa.add(mesh(roundedBox(0.68, 0.18, 0.78, 0.07), M.fabric, cx, 0.52, 0.06));
+}
+// coussins de dossier
+for (const cx of [-0.7, 0, 0.7]) {
+  const c = mesh(roundedBox(0.66, 0.5, 0.16, 0.07), M.fabric, cx, 0.85, -0.28);
+  c.rotation.x = -0.12;
+  sofa.add(c);
+}
+// coussins déco
+const deco1 = mesh(roundedBox(0.34, 0.34, 0.1, 0.05), new THREE.MeshStandardMaterial({ color: 0x7d8f6e, roughness: 0.95 }), -0.92, 0.75, -0.15);
+deco1.rotation.z = 0.2; sofa.add(deco1);
+const deco2 = mesh(roundedBox(0.34, 0.34, 0.1, 0.05), new THREE.MeshStandardMaterial({ color: 0xb0763f, roughness: 0.95 }), 0.95, 0.74, -0.16);
+deco2.rotation.z = -0.15; sofa.add(deco2);
+room.add(sofa);
+
+const SEAT_Y = 0.615; // surface des coussins d'assise
+
+// Taches de saleté sur les coussins (elles s'effacent au passage de l'embout)
+const stains = [];
+const stainGeo = new THREE.CircleGeometry(1, 20);
+for (let i = 0; i < 9; i++) {
+  const m = new THREE.Mesh(stainGeo, new THREE.MeshBasicMaterial({
+    color: i % 2 ? 0x4a3a26 : 0x53412c, transparent: true, opacity: 0.42, depthWrite: false
+  }));
+  const sx = -0.9 + Math.random() * 1.8;
+  const sz = -0.12 + Math.random() * 0.4;
+  m.position.set(sx, SEAT_Y + 0.004 + i * 0.0004, sz);
+  m.rotation.x = -Math.PI / 2;
+  m.scale.set(0.09 + Math.random() * 0.12, 0.06 + Math.random() * 0.09, 1);
+  m.rotation.z = Math.random() * Math.PI;
+  room.add(m);
+  stains.push({ mesh: m, x: sx, z: sz, clean: 0, baseOp: m.material.opacity });
+}
+
+/* ---------- Personnage ---------- */
+function buildPerson() {
+  const g = new THREE.Group();
+  const legs = new THREE.Group();
+  legs.add(mesh(new THREE.CapsuleGeometry(0.075, 0.62, 4, 10), M.pants, -0.11, 0.44, 0));
+  legs.add(mesh(new THREE.CapsuleGeometry(0.075, 0.62, 4, 10), M.pants, 0.11, 0.44, 0));
+  legs.add(mesh(roundedBox(0.12, 0.07, 0.26, 0.03), M.dark, -0.11, 0.035, 0.05));
+  legs.add(mesh(roundedBox(0.12, 0.07, 0.26, 0.03), M.dark, 0.11, 0.035, 0.05));
+  g.add(legs);
+
+  const lean = new THREE.Group();      // pivot au niveau des hanches
+  lean.position.y = 0.85;
+  g.add(lean);
+  lean.add(mesh(new THREE.CapsuleGeometry(0.16, 0.42, 4, 12), M.shirt, 0, 0.32, 0));
+  lean.add(mesh(new THREE.CylinderGeometry(0.055, 0.07, 0.1, 10), M.skin, 0, 0.68, 0));
+  lean.add(mesh(new THREE.SphereGeometry(0.11, 18, 14), M.skin, 0, 0.8, 0));
+  lean.add(mesh(new THREE.SphereGeometry(0.115, 18, 10, 0, Math.PI * 2, 0, Math.PI * 0.55), M.dark, 0, 0.815, -0.012)); // cheveux
+
+  const shoulderR = new THREE.Object3D(); shoulderR.position.set(0.2, 0.52, 0.02);
+  lean.add(shoulderR);
+
+  // bras gauche statique, plié le long du corps
+  const upperL = mesh(new THREE.CylinderGeometry(0.045, 0.04, 0.42, 10), M.shirt, -0.24, 0.28, 0.04);
+  upperL.rotation.z = 0.18; upperL.rotation.x = 0.12;
+  lean.add(upperL);
+  const foreL = mesh(new THREE.CylinderGeometry(0.04, 0.036, 0.34, 10), M.skin, -0.28, 0.02, 0.12);
+  foreL.rotation.x = -0.45; foreL.rotation.z = 0.1;
+  lean.add(foreL);
+  lean.add(mesh(new THREE.SphereGeometry(0.05, 12, 10), M.skin, -0.3, -0.1, 0.2));
+
+  // le bras droit est positionné en coordonnées monde : il vit dans un
+  // groupe séparé (à ajouter au même parent racine que le personnage)
+  const arms = new THREE.Group();
+  const upperR = mesh(new THREE.CylinderGeometry(0.048, 0.042, 1, 10), M.shirt);
+  const foreR = mesh(new THREE.CylinderGeometry(0.042, 0.038, 1, 10), M.skin);
+  const handR = mesh(new THREE.SphereGeometry(0.055, 12, 10), M.skin);
+  arms.add(upperR, foreR, handR);
+
+  return { group: g, arms, lean, shoulderR, upperR, foreR, handR };
+}
+
+const cleaner = buildPerson();
+cleaner.group.position.set(1.3, 0, 0.72);
+cleaner.group.rotation.y = -2.0;   // tourné vers le canapé
+room.add(cleaner.group, cleaner.arms);
+
+/* ---------- Machine injection/extraction ---------- */
+const machineG = new THREE.Group();
+machineG.add(mesh(new THREE.CylinderGeometry(0.17, 0.19, 0.3, 24), M.machine, 0, 0.19, 0));
+machineG.add(mesh(new THREE.SphereGeometry(0.17, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), M.accent, 0, 0.34, 0));
+machineG.add(mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.05, 12), M.dark, 0, 0.42, 0));
+const ring = mesh(new THREE.TorusGeometry(0.18, 0.015, 8, 24), M.dark, 0, 0.065, 0);
+ring.rotation.x = Math.PI / 2;
+machineG.add(ring);
+for (const a of [0.6, 2.2, 3.9, 5.5]) {
+  const wheel = mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.025, 10), M.dark, Math.cos(a) * 0.16, 0.035, Math.sin(a) * 0.16);
+  wheel.rotation.z = Math.PI / 2;
+  machineG.add(wheel);
+}
+machineG.position.set(-2.75, 0, 1.7);
+room.add(machineG);
+const hosePort = new THREE.Object3D();
+hosePort.position.set(0, 0.42, 0);
+machineG.add(hosePort);
+
+/* ---------- Embout injecteur / extracteur (tête transparente) ---------- */
+const nozzle = new THREE.Group();
+// poignée (tenue par la main) — vers l'arrière/haut
+const grip = mesh(new THREE.CylinderGeometry(0.026, 0.03, 0.2, 12), M.machine, 0, 0.16, 0.14);
+grip.rotation.x = 0.7;
+nozzle.add(grip);
+const gripEnd = new THREE.Object3D(); gripEnd.position.set(0, 0.235, 0.2); nozzle.add(gripEnd);   // main
+const hoseEnd = new THREE.Object3D(); hoseEnd.position.set(0, 0.28, 0.24); nozzle.add(hoseEnd);   // tuyau
+// gâchette
+nozzle.add(mesh(roundedBox(0.02, 0.05, 0.04, 0.008), M.accent, 0, 0.12, 0.1));
+// corps coudé vers la tête
+const neck = mesh(new THREE.CylinderGeometry(0.024, 0.026, 0.16, 12), M.machine, 0, 0.065, 0.045);
+neck.rotation.x = 0.55;
+nozzle.add(neck);
+// tête transparente inclinée (prisme) — on voit l'intérieur
+const headShape = new THREE.Shape();
+headShape.moveTo(-0.055, 0);
+headShape.lineTo(0.055, 0);
+headShape.lineTo(0.045, 0.1);
+headShape.lineTo(-0.045, 0.1);
+headShape.closePath();
+const headGeo = new THREE.ExtrudeGeometry(headShape, { depth: 0.05, bevelEnabled: true, bevelThickness: 0.008, bevelSize: 0.008, bevelSegments: 2 });
+headGeo.translate(0, 0, -0.025);
+const head = new THREE.Mesh(headGeo, M.clear);
+head.rotation.x = -0.5;
+head.position.set(0, 0.005, -0.02);
+nozzle.add(head);
+// canal d'aspiration interne (visible à travers la tête)
+const innerTube = mesh(new THREE.CylinderGeometry(0.012, 0.016, 0.09, 10), M.dark, 0, 0.048, -0.045);
+innerTube.rotation.x = -0.5;
+innerTube.material = new THREE.MeshStandardMaterial({ color: 0x5a4632, roughness: 0.6 });
+nozzle.add(innerTube);
+// lèvre d'aspiration au sol
+const lip = mesh(roundedBox(0.13, 0.014, 0.045, 0.006), M.machine, 0, 0.006, -0.045);
+nozzle.add(lip);
+// buse d'injection à l'avant
+const sprayNoz = mesh(new THREE.CylinderGeometry(0.006, 0.008, 0.03, 8), M.brass, 0, 0.03, -0.085);
+sprayNoz.rotation.x = 0.9;
+nozzle.add(sprayNoz);
+// repères pour particules
+const lipMouth = new THREE.Object3D(); lipMouth.position.set(0, 0.015, -0.045); nozzle.add(lipMouth);
+const tubeTop = new THREE.Object3D(); tubeTop.position.set(0, 0.1, -0.075); nozzle.add(tubeTop);
+const sprayTip = new THREE.Object3D(); sprayTip.position.set(0, 0.02, -0.09); nozzle.add(sprayTip);
+nozzle.scale.setScalar(1.6);
+room.add(nozzle);
+
+/* ---------- Tuyau machine → embout ---------- */
+const hoseMat = new THREE.MeshStandardMaterial({ color: 0x24272a, roughness: 0.7 });
+const hoseMesh = new THREE.Mesh(new THREE.BufferGeometry(), hoseMat);
+hoseMesh.castShadow = true;
+room.add(hoseMesh);
+const _hv = { a: new THREE.Vector3(), b: new THREE.Vector3() };
+function updateHose() {
+  hosePort.getWorldPosition(_hv.a);
+  hoseEnd.getWorldPosition(_hv.b);
+  const mid1 = _hv.a.clone().lerp(_hv.b, 0.35); mid1.y = 0.09;
+  const mid2 = _hv.a.clone().lerp(_hv.b, 0.75); mid2.y = Math.max(0.25, _hv.b.y * 0.55);
+  const curve = new THREE.CatmullRomCurve3([_hv.a, mid1, mid2, _hv.b]);
+  hoseMesh.geometry.dispose();
+  hoseMesh.geometry = new THREE.TubeGeometry(curve, 32, 0.015, 8, false);
+}
+
+/* ---------- Lumières du salon ---------- */
+room.add(new THREE.AmbientLight(0xfff2e0, 0.55));
+const sun = new THREE.DirectionalLight(0xfff2d8, 2.6);
+sun.position.set(-4, 3.4, 2.8);
+sun.target.position.set(0.4, 0.5, 0.2);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.camera.left = -5; sun.shadow.camera.right = 5;
+sun.shadow.camera.top = 5; sun.shadow.camera.bottom = -5;
+sun.shadow.bias = -0.0004;
+room.add(sun, sun.target);
+const lampLight = new THREE.PointLight(0xffd9a0, 4, 6, 2);
+lampLight.position.set(2.7, 1.55, -1.0);
+room.add(lampLight);
+const fillA = new THREE.PointLight(0xfff0e0, 2.5, 10, 2);
+fillA.position.set(0.5, 2.4, 3.5);
+room.add(fillA);
+
+/* ============================================================
+   SCÈNE B — Lavage auto à la main
+   ============================================================ */
+const wash = new THREE.Group();
+wash.visible = false;
+scene.add(wash);
+
+// sol extérieur
+const ground = mesh(new THREE.PlaneGeometry(90, 90), new THREE.MeshStandardMaterial({ color: 0x9aa0a4, roughness: 0.9 }), 0, 0, 0, false);
+ground.rotation.x = -Math.PI / 2;
+wash.add(ground);
+// zone mouillée brillante sous la voiture
+const wet = mesh(new THREE.CircleGeometry(2.8, 40), new THREE.MeshStandardMaterial({ color: 0x878e94, roughness: 0.3, metalness: 0.15 }), 0, 0.005, 0.4, false);
+wet.rotation.x = -Math.PI / 2;
+wash.add(wet);
+// haie + mur de fond
+for (let i = -4; i <= 4; i++) {
+  wash.add(mesh(roundedBox(1.9, 1.1, 0.8, 0.25), new THREE.MeshStandardMaterial({ color: 0x33532c, roughness: 1 }), i * 2, 0.55, -5.5, false));
+}
+wash.add(mesh(new THREE.BoxGeometry(90, 3, 0.3), new THREE.MeshStandardMaterial({ color: 0xd8d2c6, roughness: 0.95 }), 0, 1.5, -7, false));
+
+/* ---------- Voiture stylisée ---------- */
+const car = new THREE.Group();
+const carPaint = new THREE.MeshPhysicalMaterial({ color: 0x8a1f2b, roughness: 0.22, metalness: 0.75, clearcoat: 1, clearcoatRoughness: 0.12 });
+const bodyShape = new THREE.Shape();
+bodyShape.moveTo(-2.1, 0.28);
+bodyShape.lineTo(-2.16, 0.6);
+bodyShape.quadraticCurveTo(-2.1, 0.82, -1.65, 0.86);
+bodyShape.lineTo(-1.05, 0.9);
+bodyShape.quadraticCurveTo(-0.55, 1.32, 0.15, 1.32);
+bodyShape.lineTo(0.75, 1.28);
+bodyShape.quadraticCurveTo(1.25, 1.2, 1.55, 0.9);
+bodyShape.lineTo(2.05, 0.82);
+bodyShape.quadraticCurveTo(2.32, 0.76, 2.32, 0.55);
+bodyShape.lineTo(2.26, 0.28);
+bodyShape.lineTo(-2.1, 0.28);
+const bodyGeo = new THREE.ExtrudeGeometry(bodyShape, { depth: 1.5, bevelEnabled: true, bevelThickness: 0.14, bevelSize: 0.14, bevelSegments: 5, curveSegments: 12 });
+bodyGeo.translate(0, 0, -0.75);
+const carBody = new THREE.Mesh(bodyGeo, carPaint);
+carBody.castShadow = true; carBody.receiveShadow = true;
+car.add(carBody);
+// vitres (bande légèrement plus large que la carrosserie)
+const glassShape = new THREE.Shape();
+glassShape.moveTo(-0.9, 0.92);
+glassShape.quadraticCurveTo(-0.45, 1.26, 0.12, 1.26);
+glassShape.lineTo(0.7, 1.22);
+glassShape.quadraticCurveTo(1.1, 1.16, 1.35, 0.92);
+glassShape.lineTo(-0.9, 0.92);
+const glassGeo = new THREE.ExtrudeGeometry(glassShape, { depth: 1.82, bevelEnabled: false });
+glassGeo.translate(0, 0, -0.91);
+car.add(new THREE.Mesh(glassGeo, new THREE.MeshPhysicalMaterial({ color: 0x1c2a33, roughness: 0.08, metalness: 0.4 })));
+// roues
+const tireMat = new THREE.MeshStandardMaterial({ color: 0x181a1c, roughness: 0.85 });
+const hubMat = new THREE.MeshStandardMaterial({ color: 0xb9bec4, roughness: 0.25, metalness: 0.9 });
+for (const [wx, wz] of [[-1.45, 0.85], [1.45, 0.85], [-1.45, -0.85], [1.45, -0.85]]) {
+  const tire = mesh(new THREE.CylinderGeometry(0.36, 0.36, 0.24, 24), tireMat, wx, 0.36, wz);
+  tire.rotation.x = Math.PI / 2;
+  car.add(tire);
+  const hub = mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.25, 16), hubMat, wx, 0.36, wz);
+  hub.rotation.x = Math.PI / 2;
+  car.add(hub);
+}
+// phares + calandre
+car.add(mesh(roundedBox(0.06, 0.1, 0.3, 0.02), new THREE.MeshStandardMaterial({ color: 0xfff6d8, emissive: 0xfff0c0, emissiveIntensity: 0.4 }), 2.38, 0.62, 0.5));
+car.add(mesh(roundedBox(0.06, 0.1, 0.3, 0.02), new THREE.MeshStandardMaterial({ color: 0xfff6d8, emissive: 0xfff0c0, emissiveIntensity: 0.4 }), 2.38, 0.62, -0.5));
+car.add(mesh(roundedBox(0.05, 0.14, 0.7, 0.02), M.dark, 2.4, 0.45, 0));
+wash.add(car);
+
+// mousse statique sur la carrosserie
+const sudsMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, transparent: true, opacity: 0.92 });
+function sudsPatch(x, y, z, n, spread) {
+  const g = new THREE.Group();
+  for (let i = 0; i < n; i++) {
+    const b = mesh(new THREE.SphereGeometry(0.05 + Math.random() * 0.06, 10, 8), sudsMat,
+      (Math.random() - 0.5) * spread, (Math.random() - 0.5) * spread * 0.5, (Math.random() - 0.5) * 0.1);
+    b.scale.y = 0.55;
+    g.add(b);
+  }
+  g.position.set(x, y, z);
+  return g;
+}
+wash.add(sudsPatch(0.35, 0.78, 0.9, 12, 0.55));
+wash.add(sudsPatch(-0.95, 0.75, 0.92, 10, 0.5));
+wash.add(sudsPatch(1.8, 0.92, 0.3, 8, 0.4));
+wash.add(sudsPatch(0.15, 1.34, 0.15, 7, 0.4));
+
+// seau
+const bucket = new THREE.Group();
+bucket.add(mesh(new THREE.CylinderGeometry(0.2, 0.15, 0.3, 20, 1, true), new THREE.MeshStandardMaterial({ color: 0x2b5fa3, roughness: 0.5, side: THREE.DoubleSide }), 0, 0.15, 0));
+bucket.add(mesh(new THREE.CylinderGeometry(0.19, 0.19, 0.03, 20), sudsMat, 0, 0.28, 0));
+for (let i = 0; i < 6; i++) {
+  bucket.add(mesh(new THREE.SphereGeometry(0.045, 8, 6), sudsMat, (Math.random() - 0.5) * 0.25, 0.3, (Math.random() - 0.5) * 0.25));
+}
+bucket.position.set(-2.35, 0, 2.05);
+wash.add(bucket);
+// tuyau d'arrosage au sol
+const gardenCurve = new THREE.CatmullRomCurve3([
+  new THREE.Vector3(4.4, 0.03, 2.8), new THREE.Vector3(3.3, 0.03, 2.3),
+  new THREE.Vector3(3.5, 0.03, 1.5), new THREE.Vector3(4.3, 0.03, 1.2),
+]);
+wash.add(new THREE.Mesh(new THREE.TubeGeometry(gardenCurve, 24, 0.025, 8), new THREE.MeshStandardMaterial({ color: 0x2e7d4f, roughness: 0.6 })));
+
+// laveur + éponge
+const washer = buildPerson();
+washer.group.position.set(-1.35, 0, 1.55);
+washer.group.rotation.y = 2.4; // face à l'aile arrière de la voiture
+wash.add(washer.group, washer.arms);
+const sponge = mesh(roundedBox(0.16, 0.07, 0.11, 0.03), new THREE.MeshStandardMaterial({ color: 0xf2c94c, roughness: 0.95 }));
+wash.add(sponge);
+
+// étincelles « propre »
+const sparkles = [];
+for (let i = 0; i < 5; i++) {
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: starTex, transparent: true, opacity: 0, depthWrite: false }));
+  sp.position.set(-1.6 + i * 0.85, 0.9 + (i % 2) * 0.45, 0.95);
+  sp.scale.setScalar(0.001);
+  wash.add(sp);
+  sparkles.push(sp);
+}
+
+/* ---------- Lumières extérieures ---------- */
+wash.add(new THREE.HemisphereLight(0xcfe4f5, 0x8a8f92, 0.9));
+const sunB = new THREE.DirectionalLight(0xfff4de, 2.8);
+sunB.position.set(5, 7, 4);
+sunB.castShadow = true;
+sunB.shadow.mapSize.set(2048, 2048);
+sunB.shadow.camera.left = -7; sunB.shadow.camera.right = 7;
+sunB.shadow.camera.top = 7; sunB.shadow.camera.bottom = -7;
+sunB.shadow.bias = -0.0004;
+wash.add(sunB);
+
+/* ============================================================
+   Particules
+   ============================================================ */
+// — Vapeur (sprites doux) —
+const STEAM_N = 90;
+const steam = [];
+for (let i = 0; i < STEAM_N; i++) {
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: softTex, transparent: true, opacity: 0, depthWrite: false }));
+  sp.visible = false;
+  scene.add(sp);
+  steam.push({ sp, life: 0, max: 1, vel: new THREE.Vector3(), grow: 1 });
+}
+let steamAcc = 0;
+function emitSteam(origin, big) {
+  const s = steam.find(s => !s.sp.visible);
+  if (!s) return;
+  s.sp.visible = true;
+  s.sp.position.copy(origin).add(new THREE.Vector3((Math.random() - 0.5) * 0.15, Math.random() * 0.04, (Math.random() - 0.5) * 0.15));
+  s.life = 0;
+  s.max = big ? 1.6 + Math.random() : 1.1 + Math.random() * 0.8;
+  s.vel.set((Math.random() - 0.5) * 0.12, 0.16 + Math.random() * 0.18, (Math.random() - 0.5) * 0.12 + (big ? 0.15 : 0.02));
+  s.grow = big ? 0.9 + Math.random() * 0.7 : 0.3 + Math.random() * 0.25;
+  s.sp.scale.setScalar(0.04);
+}
+
+// — Injection (fine brume de produit) —
+const SPRAY_N = 90;
+const sprayPos = new Float32Array(SPRAY_N * 3);
+const sprayData = [];
+for (let i = 0; i < SPRAY_N; i++) sprayData.push({ life: 1, vel: new THREE.Vector3() });
+const sprayGeo = new THREE.BufferGeometry();
+sprayGeo.setAttribute('position', new THREE.BufferAttribute(sprayPos, 3));
+const sprayPts = new THREE.Points(sprayGeo, new THREE.PointsMaterial({
+  color: 0xbfe3ff, size: 0.016, transparent: true, opacity: 0.85,
+  depthWrite: false, blending: THREE.AdditiveBlending
+}));
+sprayPts.frustumCulled = false;
+room.add(sprayPts);
+
+// — Extraction (saleté aspirée dans la tête transparente) —
+const DIRT_N = 70;
+const dirtPos = new Float32Array(DIRT_N * 3);
+const dirtData = [];
+for (let i = 0; i < DIRT_N; i++) dirtData.push({ stage: 2, pos: new THREE.Vector3(0, -10, 0) });
+const dirtGeo = new THREE.BufferGeometry();
+dirtGeo.setAttribute('position', new THREE.BufferAttribute(dirtPos, 3));
+const dirtPts = new THREE.Points(dirtGeo, new THREE.PointsMaterial({
+  color: 0x4a3826, size: 0.02, transparent: true, opacity: 0.95, depthWrite: false
+}));
+dirtPts.frustumCulled = false;
+room.add(dirtPts);
+
+// — Mousse au niveau de l'éponge (scène B) —
+const FOAM_N = 40;
+const foam = [];
+for (let i = 0; i < FOAM_N; i++) {
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: softTex, transparent: true, opacity: 0, depthWrite: false }));
+  sp.visible = false;
+  wash.add(sp);
+  foam.push({ sp, life: 0, vel: new THREE.Vector3() });
+}
+
+/* ============================================================
+   Caméra — trajectoires
+   ============================================================ */
+const SWITCH_P = 0.78;
+const KEYS_A = [
+  { p: 0.00, pos: [0.0, 1.55, 7.4], look: [0, 1.05, 0.0], fov: 44, track: 0 },
+  { p: 0.18, pos: [0.45, 1.42, 5.6], look: [0.1, 0.9, 0.1], fov: 44, track: 0.15 },
+  { p: 0.38, pos: [0.85, 1.22, 3.6], look: [0.25, 0.72, 0.3], fov: 42, track: 0.55 },
+  { p: 0.55, pos: [0.9, 1.0, 2.35], look: [0.3, 0.62, 0.35], fov: 40, track: 0.85 },
+  { p: 0.68, pos: [0.8, 0.98, 1.65], look: [0.3, 0.6, 0.4], fov: 38, track: 1 },
+  { p: SWITCH_P, pos: [0.6, 0.85, 1.05], look: [0.28, 0.58, 0.45], fov: 36, track: 1 },
+];
+const KEYS_B = [
+  { p: SWITCH_P, pos: [-0.2, 1.0, 2.7], look: [-0.7, 0.88, 0.9], fov: 38, track: 0 },
+  { p: 0.86, pos: [2.2, 1.35, 4.2], look: [0.0, 0.8, 0.2], fov: 40, track: 0 },
+  { p: 1.00, pos: [4.6, 1.8, 6.2], look: [-0.1, 0.75, 0.0], fov: 44, track: 0 },
+];
+const _cp = new THREE.Vector3(), _cl = new THREE.Vector3(), _nz = new THREE.Vector3();
+function applyCamera(p, t) {
+  const keys = p < SWITCH_P ? KEYS_A : KEYS_B;
+  let i = 0;
+  while (i < keys.length - 2 && p > keys[i + 1].p) i++;
+  const a = keys[i], b = keys[i + 1];
+  const tt = smooth((p - a.p) / (b.p - a.p));
+  _cp.fromArray(a.pos).lerp(_cl.fromArray(b.pos), tt);
+  const px = _cp.x, py = _cp.y, pz = _cp.z;
+  _cl.fromArray(a.look).lerp(_nz.fromArray(b.look), tt);
+  const track = lerp(a.track, b.track, tt);
+  if (track > 0) {
+    nozzleTip.getWorldPosition(_nz);
+    _cl.lerp(_nz, track);
+  }
+  // léger flottement organique
+  camera.position.set(
+    px + Math.sin(t * 0.5) * 0.02,
+    py + Math.sin(t * 0.8) * 0.012,
+    pz
+  );
+  camera.lookAt(_cl);
+  const fov = lerp(a.fov, b.fov, tt);
+  if (Math.abs(camera.fov - fov) > 0.01) { camera.fov = fov; camera.updateProjectionMatrix(); }
+}
+const nozzleTip = new THREE.Object3D();
+nozzleTip.position.set(0, 0.05, -0.05);
+nozzle.add(nozzleTip);
+
+/* ============================================================
+   Défilement
+   ============================================================ */
+const track = document.getElementById('cvTrack');
+let targetP = 0, currentP = 0;
+function readScroll() {
+  const r = track.getBoundingClientRect();
+  const total = r.height - innerHeight;
+  targetP = total > 0 ? clamp(-r.top / total, 0, 1) : 0;
+}
+addEventListener('scroll', readScroll, { passive: true });
+
+// Accès direct pour tests / debug : #p=0.5
+function applyHash() {
+  const m = location.hash.match(/p=([\d.]+)/);
+  if (m) {
+    targetP = currentP = clamp(parseFloat(m[1]), 0, 1);
+    const total = track.getBoundingClientRect().height - innerHeight;
+    scrollTo(0, targetP * total);
+  }
+}
+addEventListener('hashchange', applyHash);
+
+/* ============================================================
+   Boucle d'animation
+   ============================================================ */
+const whiteout = document.getElementById('cvWhiteout');
+const hint = document.getElementById('cvHint');
+const captions = [...document.querySelectorAll('.cv-caption')].map(el => ({
+  el, from: parseFloat(el.dataset.from), to: parseFloat(el.dataset.to)
+}));
+
+const _v1 = new THREE.Vector3(), _v2 = new THREE.Vector3(), _v3 = new THREE.Vector3(), _v4 = new THREE.Vector3();
+const clock = new THREE.Clock();
+
+function updateCleaner(p, t, dt) {
+  // Position de l'embout : va-et-vient sur l'assise, amplitude réduite au fil du zoom
+  const engage = range(p, 0.08, 0.2);
+  const amp = lerp(lerp(0.02, 0.45, engage), 0.08, range(p, 0.45, 0.72));
+  const cx = lerp(0.72, 0.3, engage);
+  const stroke = Math.sin(t * 1.5);
+  const nx = cx + amp * stroke;
+  const nzz = 0.12 + 0.1 * Math.sin(t * 0.7);
+  nozzle.position.set(nx, SEAT_Y + 0.002, nzz);
+  // angle 3/4 : la tête transparente fait face à la caméra, légère inclinaison dans le sens du geste
+  nozzle.rotation.set(0, -2.4 + stroke * 0.06, -stroke * 0.1);
+
+  // personnage : penché vers l'outil
+  cleaner.lean.rotation.x = 0.32 + engage * 0.22 + Math.max(0, -stroke) * 0.04;
+  cleaner.lean.rotation.y = -0.15 + stroke * 0.08;
+
+  // bras droit : épaule → coude → poignée
+  cleaner.shoulderR.getWorldPosition(_v1);
+  gripEnd.getWorldPosition(_v2);
+  _v3.copy(_v1).lerp(_v2, 0.5);
+  _v3.y += 0.04; _v3.z += 0.16; _v3.x += 0.05;
+  orientBetween(cleaner.upperR, _v1, _v3);
+  orientBetween(cleaner.foreR, _v3, _v2);
+  cleaner.handR.position.copy(_v2);
+
+  updateHose();
+
+  // effacement des taches proches de la lèvre d'aspiration
+  lipMouth.getWorldPosition(_v1);
+  for (const st of stains) {
+    const d = Math.hypot(st.x - _v1.x, st.z - _v1.z);
+    if (d < 0.22 && engage > 0.5) st.clean = Math.min(1, st.clean + dt * 1.4);
+    st.mesh.material.opacity = st.baseOp * (1 - st.clean);
+  }
+}
+
+function updateSpray(p, t, dt) {
+  const active = p > 0.14 && p < SWITCH_P;
+  sprayTip.getWorldPosition(_v1);
+  lipMouth.getWorldPosition(_v2);
+  _v3.subVectors(_v2, _v1).normalize().multiplyScalar(0.5);
+  _v3.y -= 0.55;
+  let spawned = 0;
+  for (let i = 0; i < SPRAY_N; i++) {
+    const d = sprayData[i];
+    d.life += dt * 3.2;
+    if (d.life >= 1) {
+      if (active && spawned < 3) {
+        spawned++;
+        d.life = 0;
+        sprayPos[i * 3] = _v1.x; sprayPos[i * 3 + 1] = _v1.y; sprayPos[i * 3 + 2] = _v1.z;
+        d.vel.copy(_v3).add(_v4.set((Math.random() - 0.5) * 0.25, -Math.random() * 0.2, (Math.random() - 0.5) * 0.25));
+      } else {
+        sprayPos[i * 3 + 1] = -10;
+        continue;
+      }
+    }
+    sprayPos[i * 3] += d.vel.x * dt;
+    sprayPos[i * 3 + 1] += d.vel.y * dt;
+    sprayPos[i * 3 + 2] += d.vel.z * dt;
+  }
+  sprayGeo.attributes.position.needsUpdate = true;
+}
+
+function updateDirt(p, t, dt) {
+  const active = p > 0.16 && p < SWITCH_P;
+  lipMouth.getWorldPosition(_v1);
+  tubeTop.getWorldPosition(_v2);
+  let spawned = 0;
+  for (let i = 0; i < DIRT_N; i++) {
+    const d = dirtData[i];
+    if (d.stage === 2) {
+      if (active && spawned < 2 && Math.random() < 0.5) {
+        spawned++;
+        d.stage = 0;
+        d.pos.set(_v1.x + (Math.random() - 0.5) * 0.1, SEAT_Y + 0.005, _v1.z + (Math.random() - 0.5) * 0.08);
+      } else {
+        dirtPos[i * 3 + 1] = -10;
+        continue;
+      }
+    }
+    const target = d.stage === 0 ? _v1 : _v2;
+    _v3.subVectors(target, d.pos);
+    const dist = _v3.length();
+    if (dist < 0.02) {
+      if (d.stage === 0) d.stage = 1;
+      else { d.stage = 2; dirtPos[i * 3 + 1] = -10; continue; }
+    }
+    d.pos.addScaledVector(_v3.normalize(), Math.min(dist, (d.stage === 0 ? 0.9 : 1.5) * dt));
+    dirtPos[i * 3] = d.pos.x; dirtPos[i * 3 + 1] = d.pos.y; dirtPos[i * 3 + 2] = d.pos.z;
+  }
+  dirtGeo.attributes.position.needsUpdate = true;
+}
+
+function updateSteam(p, t, dt) {
+  // taux d'émission : discret pendant le nettoyage, dense pendant la plongée
+  const cleaning = p > 0.16 && p < SWITCH_P ? 3 : 0;
+  const dive = range(p, 0.52, 0.75) * 34;
+  const rate = p < SWITCH_P ? cleaning + dive : 0;
+  steamAcc += rate * dt;
+  lipMouth.getWorldPosition(_v1);
+  while (steamAcc >= 1) {
+    steamAcc -= 1;
+    const big = Math.random() < range(p, 0.52, 0.72);
+    _v2.copy(_v1);
+    if (big && Math.random() < 0.45) {
+      // quelques volutes entre l'embout et la caméra pour « entrer » dans la vapeur
+      _v2.lerp(camera.position, 0.25 + Math.random() * 0.45);
+    }
+    emitSteam(_v2, big);
+  }
+  for (const s of steam) {
+    if (!s.sp.visible) continue;
+    s.life += dt;
+    if (s.life >= s.max) { s.sp.visible = false; continue; }
+    const k = s.life / s.max;
+    s.sp.position.addScaledVector(s.vel, dt);
+    s.sp.scale.setScalar(0.04 + s.grow * k);
+    s.sp.material.opacity = 0.5 * Math.sin(Math.PI * k);
+  }
+}
+
+function updateWasher(t, dt) {
+  // éponge : mouvement circulaire sur l'aile arrière
+  const cx = -0.7, cy = 0.85, surf = 0.9;
+  const sx = cx + Math.cos(t * 2.2) * 0.28;
+  const sy = cy + Math.sin(t * 2.2) * 0.16;
+  sponge.position.set(sx, sy, surf);
+  sponge.rotation.z = Math.sin(t * 2.2) * 0.3;
+
+  washer.lean.rotation.x = 0.28 + Math.sin(t * 2.2) * 0.05;
+  washer.shoulderR.getWorldPosition(_v1);
+  _v2.set(sx, sy + 0.03, surf + 0.1);
+  _v3.copy(_v1).lerp(_v2, 0.5); _v3.y += 0.05; _v3.z += 0.14;
+  orientBetween(washer.upperR, _v1, _v3);
+  orientBetween(washer.foreR, _v3, _v2);
+  washer.handR.position.copy(_v2);
+
+  // mousse autour de l'éponge
+  if (Math.random() < 0.5) {
+    const f = foam.find(f => !f.sp.visible);
+    if (f) {
+      f.sp.visible = true;
+      f.life = 0;
+      f.sp.position.set(sx + (Math.random() - 0.5) * 0.2, sy + (Math.random() - 0.5) * 0.15, surf + 0.05);
+      f.vel.set((Math.random() - 0.5) * 0.1, 0.05 + Math.random() * 0.1, 0.05);
+      f.sp.scale.setScalar(0.05);
+    }
+  }
+  for (const f of foam) {
+    if (!f.sp.visible) continue;
+    f.life += dt;
+    if (f.life > 1.1) { f.sp.visible = false; continue; }
+    const k = f.life / 1.1;
+    f.sp.position.addScaledVector(f.vel, dt);
+    f.sp.scale.setScalar(0.05 + 0.1 * k);
+    f.sp.material.opacity = 0.85 * Math.sin(Math.PI * k);
+  }
+}
+
+function updateSparkles(p, t) {
+  const vis = range(p, 0.88, 0.97);
+  sparkles.forEach((sp, i) => {
+    const pulse = Math.max(0, Math.sin(t * 2.4 + i * 1.7));
+    sp.material.opacity = vis * pulse * 0.9;
+    sp.scale.setScalar(0.02 + vis * pulse * 0.2);
+  });
+}
+
+function updateOverlays(p) {
+  // voile blanc : montée 0.70→0.775, plateau, descente jusqu'à 0.90
+  const upW = range(p, 0.70, 0.775);
+  const downW = 1 - range(p, 0.815, 0.90);
+  whiteout.style.opacity = Math.min(upW, downW).toFixed(3);
+  hint.style.opacity = (0.8 * (1 - range(p, 0.01, 0.06))).toFixed(3);
+  for (const c of captions) {
+    const o = Math.min(range(p, c.from, c.from + 0.04), 1 - range(p, c.to - 0.04, c.to));
+    c.el.style.opacity = o.toFixed(3);
+    c.el.style.transform = `translateY(${(1 - o) * 14}px)`;
+  }
+}
+
+function setSceneState(p) {
+  const inRoom = p < SWITCH_P;
+  if (room.visible !== inRoom) {
+    room.visible = inRoom;
+    wash.visible = !inRoom;
+  }
+  if (inRoom) {
+    scene.background = _bgA;
+    scene.fog = fogA;
+  } else {
+    scene.background = _bgB;
+    scene.fog = fogB;
+  }
+}
+const _bgA = new THREE.Color(0x151210);
+const _bgB = new THREE.Color(0xbcd2e2);
+const fogA = new THREE.Fog(0x151210, 9, 18);
+const fogB = new THREE.Fog(0xbcd2e2, 12, 30);
+
+function tick() {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const t = clock.elapsedTime;
+  currentP += (targetP - currentP) * Math.min(1, dt * 5);
+  const p = currentP;
+
+  setSceneState(p);
+  if (room.visible) {
+    updateCleaner(p, t, dt);
+    updateSpray(p, t, dt);
+    updateDirt(p, t, dt);
+  } else {
+    updateWasher(t, dt);
+    updateSparkles(p, t);
+  }
+  updateSteam(p, t, dt);
+  applyCamera(p, t);
+  updateOverlays(p);
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+
+resize();
+readScroll();
+applyHash();
+tick();
+</script>
+</body>
+</html>
