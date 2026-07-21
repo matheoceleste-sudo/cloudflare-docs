@@ -61,6 +61,29 @@
 .hide{display:none !important}
 .total-line{border-top:1px solid var(--ligne);margin-top:6px;padding-top:12px}
 .total-line b{font-size:1.2rem;color:var(--or)}
+/* ===== Bandeau confiance ===== */
+.resa-trust{margin-top:20px;font-size:.92rem;color:rgba(245,242,234,.85);display:inline-flex;
+  align-items:center;gap:8px;flex-wrap:wrap;background:rgba(255,255,255,.05);
+  border:1px solid var(--ligne);border-radius:99px;padding:10px 20px}
+.resa-trust .stars{color:var(--or);letter-spacing:1px}
+.resa-trust b{color:#f5f2ea}
+.resa-trust .sep{color:rgba(255,255,255,.3)}
+@media(max-width:560px){.resa-trust{font-size:.82rem;padding:9px 14px;gap:6px}}
+/* ===== Barre de progression (façon wizard) ===== */
+.resa-progress-bar{position:sticky;top:0;z-index:40;background:rgba(10,10,12,.9);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne);padding:16px 0}
+.rp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.rp-step{font-size:.78rem;letter-spacing:.18em;color:var(--gris);text-transform:uppercase}
+.rp-step b{color:var(--or);font-size:1.15rem;font-family:var(--serif);letter-spacing:0}
+.rp-help{font-size:.85rem;color:var(--gris)}
+.rp-help a{color:var(--or);font-weight:700;text-decoration:none}
+.rp-track{height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.rp-track i{display:block;height:100%;width:12%;border-radius:2px;
+  background:linear-gradient(90deg,#e7cd86,#9c7a2e);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.rp-labels{display:flex;justify-content:space-between;margin-top:10px}
+.rp-labels span{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);transition:color .3s}
+.rp-labels span.on{color:var(--or)}
+@media(max-width:560px){.rp-help{display:none}.rp-labels span{font-size:.62rem}}
 </style>
 </head>
 <body>
@@ -84,10 +107,32 @@
 <section class="subhero" style="background-image:linear-gradient(rgba(10,10,12,.82),rgba(10,10,12,.88)),url('https://images.pexels.com/photos/6752179/pexels-photo-6752179.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80');background-size:cover;background-position:center">
   <div class="wrap">
     <div class="crumb reveal in"><a href="index.html">Accueil</a> · Réservation</div>
-    <h1 class="reveal in">Réserver votre <span class="or">prestation</span></h1>
-    <p class="reveal in">Choisissez votre service, votre date et votre créneau dans le calendrier. Nous confirmons votre rendez-vous sous 24 h. Devis gratuit, sans engagement.</p>
+    <h1 class="reveal in">Composez votre <span class="or">prestation</span></h1>
+    <p class="reveal in">Sélectionnez votre service, votre date et votre créneau. Votre tarif s'affiche en temps réel. Nous confirmons sous 24 h — devis gratuit, sans engagement.</p>
+    <div class="resa-trust reveal in">
+      <span class="stars">★★★★★</span> <b>4,9/5</b>
+      <span class="sep">·</span> +250 avis
+      <span class="sep">·</span> Dès <b>29 €</b>
+      <span class="sep">·</span> Devis gratuit sous 24 h
+    </div>
   </div>
 </section>
+
+<div class="resa-progress-bar">
+  <div class="wrap">
+    <div class="rp-row">
+      <span class="rp-step">ÉTAPE <b id="rpNum">01</b> / 04</span>
+      <span class="rp-help">Besoin d'aide ? <a href="tel:+33623075259">06 23 07 52 59</a></span>
+    </div>
+    <div class="rp-track"><i id="rpFill"></i></div>
+    <div class="rp-labels">
+      <span class="on" data-s="0">Prestation</span>
+      <span data-s="1">Détails</span>
+      <span data-s="2">Date &amp; créneau</span>
+      <span data-s="3">Coordonnées</span>
+    </div>
+  </div>
+</div>
 
 <section class="band">
   <div class="wrap">
@@ -504,7 +549,33 @@
     var hint = $('#btnHint');
     hint.textContent = msg;
     hint.classList.toggle('hide', !msg);
+    updateProgress(ok);
   }
+
+  /* ---- barre de progression façon wizard ---- */
+  function updateProgress(ready){
+    var step = 0, frac = 0.12;
+    if (state.svc){
+      if (state.type === 'auto'){
+        if (!state.veh){ step = 1; frac = 0.38; }
+        else if (!state.date || !state.slot){ step = 2; frac = 0.62; }
+        else { step = 3; frac = 0.9; }
+      } else if (state.type === 'devis'){
+        step = ($('#descArea').value.trim().length >= 10) ? 3 : 1;
+        frac = (step === 3) ? 0.9 : 0.5;
+      } else {
+        if (!state.date || !state.slot){ step = 2; frac = 0.55; }
+        else { step = 3; frac = 0.9; }
+      }
+    }
+    if (ready) frac = 1;
+    $('#rpNum').textContent = String(Math.min(step + 1, 4)).padStart(2, '0');
+    $('#rpFill').style.width = (frac * 100).toFixed(0) + '%';
+    document.querySelectorAll('.rp-labels span').forEach(function(el){
+      el.classList.toggle('on', +el.getAttribute('data-s') <= step);
+    });
+  }
+
   $('#descArea').addEventListener('input', check);
 
   /* ---------------- préselection via ?service= ---------------- */

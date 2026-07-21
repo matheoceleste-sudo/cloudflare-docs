@@ -73,6 +73,11 @@
 .card-photo{display:block;height:150px;border-radius:12px;background-size:cover;
   background-position:center;margin-bottom:16px;border:1px solid rgba(255,255,255,.06)}
 @media (max-width:640px){.card-photo{height:120px}}
+.hero-badges{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:26px 0 30px}
+.hero-badges span{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;
+  color:rgba(245,242,234,.9);text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.hero-badges svg{width:18px;height:18px;color:var(--or,#e7cd86);flex:0 0 18px}
+@media (max-width:640px){.hero-badges{gap:14px;margin:20px 0 24px}.hero-badges span{font-size:.82rem}}
 </style>
 </head>
 <body>
@@ -104,13 +109,18 @@
     <div class="jscene" data-i="0"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/144634/pexels-photo-144634.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#16324a,#0b1826)" role="img" aria-label="Yacht blanc amarré au port, nettoyage de bateau premium"></div></div>
 
     <div class="hero-inner jcap" data-i="0">
-      <span class="eyebrow">Nettoyage premium · Paris &amp; Île-de-France</span>
+      <span class="eyebrow">Nettoyage haut de gamme à domicile · Paris &amp; Île-de-France</span>
       <p class="baseline">MathClean — Une exigence de roi</p>
-      <h1>Offrez-vous un <span class="or">nettoyage</span><br>à Paris</h1>
-      <p class="sub">Automobile, canapé, matelas, tapis, bateau, avion, terrasse, locaux et fin de chantier. Un savoir-faire haut de gamme, à domicile, partout en Île-de-France.</p>
+      <h1>Comme neuf.<br><span class="or">Sans effort.</span></h1>
+      <p class="sub">Automobile, canapé, matelas, tapis, bateau, avion… Un nettoyage premium à domicile, partout en Île-de-France.</p>
+      <div class="hero-badges">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Intervention sous 24h</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Devis gratuit</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg>Experts qualifiés · 7j/7</span>
+      </div>
       <div class="hero-btns">
-        <a href="#contact" class="btn btn-or">Demander un devis gratuit</a>
-        <a href="#services" class="btn btn-ghost">Découvrir nos services</a>
+        <a href="reservation.html" class="btn btn-or">Réserver mon intervention</a>
+        <a href="#contact" class="btn btn-ghost">Demander un devis gratuit</a>
       </div>
     </div>
 
