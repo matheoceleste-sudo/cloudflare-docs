@@ -61,6 +61,15 @@
 .hide{display:none !important}
 .total-line{border-top:1px solid var(--ligne);margin-top:6px;padding-top:12px}
 .total-line b{font-size:1.2rem;color:var(--or)}
+/* ===== Champs de l'étape devis (hors <form>, à styler à la main) ===== */
+#stepDevis .fld{margin-bottom:16px}
+#stepDevis .fld label{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:7px}
+#stepDevis .fld textarea{
+  width:100%;background:var(--noir-2);border:1px solid var(--ligne);border-radius:11px;
+  padding:14px 16px;color:var(--blanc);font-family:var(--sans);font-size:.98rem;
+  resize:vertical;min-height:170px;line-height:1.55;transition:.3s;box-sizing:border-box}
+#stepDevis .fld textarea::placeholder{color:rgba(216,212,202,.5)}
+#stepDevis .fld textarea:focus{outline:none;border-color:var(--or);box-shadow:0 0 0 3px rgba(201,162,75,.13)}
 /* ===== Bandeau confiance ===== */
 .resa-trust{margin-top:20px;font-size:.92rem;color:rgba(245,242,234,.85);display:inline-flex;
   align-items:center;gap:8px;flex-wrap:wrap;background:rgba(255,255,255,.05);
@@ -94,7 +103,21 @@
     Math<b>Clean</b>
   </a>
   <nav class="menu">
-    <a href="index.html#services">Services</a>
+  <div class="has-sub">
+    <a href="index.html#services" class="sub-toggle">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+    <div class="submenu">
+      <a href="services/nettoyage-automobile-paris.html">Nettoyage automobile à Paris</a>
+      <a href="services/nettoyage-canape-paris.html">Nettoyage de canapé à Paris</a>
+      <a href="services/nettoyage-matelas-paris.html">Nettoyage de matelas à Paris</a>
+      <a href="services/nettoyage-tapis-paris.html">Nettoyage de tapis à Paris</a>
+      <a href="services/nettoyage-bateau-paris.html">Nettoyage de bateau à Paris</a>
+      <a href="services/nettoyage-avion-paris.html">Nettoyage d'avion à Paris</a>
+      <a href="services/nettoyage-terrasse-paris.html">Nettoyage de terrasse à Paris</a>
+      <a href="services/nettoyage-locaux-paris.html">Nettoyage de locaux à Paris</a>
+      <a href="services/nettoyage-bureau-paris.html">Nettoyage de bureau à Paris</a>
+      <a href="services/nettoyage-fin-de-chantier-paris.html">Nettoyage fin de chantier à Paris</a>
+    </div>
+  </div>
     <a href="index.html#zones">Zones d'intervention</a>
     <a href="index.html#avis">Avis clients</a>
     <a href="index.html#faq">FAQ</a>
@@ -113,7 +136,8 @@
       <span class="stars">★★★★★</span> <b>4,9/5</b>
       <span class="sep">·</span> +250 avis
       <span class="sep">·</span> Dès <b>29 €</b>
-      <span class="sep">·</span> Devis gratuit sous 24 h
+      <span class="sep">·</span> Intervention sous 24h
+      <span class="sep">·</span> Experts qualifiés
     </div>
   </div>
 </section>

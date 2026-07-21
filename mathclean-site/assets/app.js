@@ -87,3 +87,30 @@ document.querySelectorAll('form[action*="formsubmit.co"]').forEach(f=>{
       .catch(function(){ f.submit(); });   /* repli : envoi classique (redirigé via _next) */
   });
 });
+
+/* ===== Menu déroulant Services (clic + fermeture au clic extérieur) ===== */
+document.querySelectorAll('.sub-toggle').forEach(function(t){
+  t.addEventListener('click',function(e){
+    e.preventDefault();
+    var wrap=t.closest('.has-sub');
+    var wasOpen=wrap.classList.contains('open');
+    document.querySelectorAll('.has-sub.open').forEach(function(w){w.classList.remove('open')});
+    if(!wasOpen) wrap.classList.add('open');
+  });
+});
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.has-sub')) document.querySelectorAll('.has-sub.open').forEach(function(w){w.classList.remove('open')});
+});
+
+/* ===== Prochaines disponibilités (dates dynamiques) ===== */
+(function(){
+  var rows=document.querySelectorAll('.hero-dispo .hd-day');
+  if(!rows.length) return;
+  var J=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  var M=['jan.','fév.','mars','avr.','mai','juin','juil.','août','sep.','oct.','nov.','déc.'];
+  rows.forEach(function(el){
+    var off=+el.getAttribute('data-off')||1;
+    var d=new Date(); d.setDate(d.getDate()+off);
+    el.textContent=(off===1?'Demain':J[d.getDay()]+' '+d.getDate()+' '+M[d.getMonth()]);
+  });
+})();
