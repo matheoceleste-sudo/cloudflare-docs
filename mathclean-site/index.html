@@ -139,10 +139,16 @@
   <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 
-<!-- ============ HERO (thème clair) ============ -->
-<section class="band hero-light">
-  <div class="wrap">
-    <div class="hl-inner">
+<!-- ============ HERO IMMERSIF (plongée photo au scroll) ============ -->
+<div class="journey" id="journey">
+  <section class="hero jstage" id="jstage">
+    <div class="jscene" data-i="3"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/144634/pexels-photo-144634.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#16324a,#0b1826)" role="img" aria-label="Yacht blanc amarré au port, nettoyage de bateau premium"></div></div>
+    <div class="jscene" data-i="2"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#26232c,#0e0d12)" role="img" aria-label="Intérieur de jet privé nettoyé, cabine et selleries cuir"></div></div>
+    <div class="jscene" data-i="1"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#1a2129,#07090c)" role="img" aria-label="Lavage et nettoyage voiture haut de gamme à domicile"></div></div>
+    <div class="jscene" data-i="0"><div class="jimg" style="background-image:url('https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'),linear-gradient(160deg,#3a3226,#1a150e)" role="img" aria-label="Salon cosy aux couleurs claires, canapé propre dans un intérieur lumineux"></div></div>
+    <div class="jscrim"></div>
+
+    <div class="hero-inner jcap" data-i="0">
       <span class="eyebrow">Service de nettoyage à Paris &amp; Île-de-France</span>
       <p class="baseline">MathClean — Une exigence de roi</p>
       <h1>Comme neuf.<br><span class="or">Sans effort.</span></h1>
@@ -163,8 +169,32 @@
         <div class="hd-row"><span class="hd-city">Tremblay-en-France (93)</span><span class="hd-day" data-off="2"></span><span class="hd-time">10h00</span></div>
       </div>
     </div>
-  </div>
-</section>
+
+    <div class="jside jcap" data-i="1">
+      <span class="eyebrow">02 — Automobile</span>
+      <h2>Detailing automobile</h2>
+      <p>Intérieur &amp; extérieur, à domicile, dès 29&nbsp;€. La brillance d'un service d'exception.</p>
+      <a href="services/nettoyage-automobile-paris.html" class="btn btn-ghost">Voir la prestation</a>
+    </div>
+
+    <div class="jside jcap" data-i="2">
+      <span class="eyebrow">03 — Aviation privée</span>
+      <h2>Intérieur de jet</h2>
+      <p>Une cabine immaculée, digne des plus hauts standards de l'aviation d'affaires.</p>
+      <a href="services/nettoyage-avion-paris.html" class="btn btn-ghost">Voir la prestation</a>
+    </div>
+
+    <div class="jside jcap" data-i="3">
+      <span class="eyebrow">04 — Nautique</span>
+      <h2>Nettoyage de bateau</h2>
+      <p>Coque, pont et sellerie de votre bateau, sur la Seine comme en mer. Un éclat parfait.</p>
+      <a href="services/nettoyage-bateau-paris.html" class="btn btn-ghost">Voir la prestation</a>
+    </div>
+
+    <div class="slide-dots jdots"><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="scroll-cue" id="jcue"><span>Défiler</span><span class="line"></span></div>
+  </section>
+</div>
 
 <!-- ============ PRÉSENTATION ENTREPRISE ============ -->
 <section class="band apropos">

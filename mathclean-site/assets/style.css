@@ -389,8 +389,8 @@ footer ul a:hover{color:var(--or);padding-left:5px}
   --noir:#f4eee2;        /* base crème (ex-fond sombre) */
   --noir-2:#fbf7ee;      /* cartes / champs : blanc cassé */
   --noir-3:#efe7d6;      /* survol / alt : beige */
-  --blanc:#2c2820;       /* texte principal : encre */
-  --gris:#6f6656;        /* texte secondaire */
+  --blanc:#12100c;       /* texte principal : quasi noir */
+  --gris:#39332a;        /* texte secondaire : gris très foncé */
   --or:#a97f28;          /* or plus profond pour contraste sur clair */
   --or-clair:#c19a45;
   --or-fonce:#7c5f22;
@@ -489,3 +489,44 @@ nav.menu a{color:var(--blanc)}
 /* merci.html : texte sur crème */
 .merci p{color:var(--gris)}
 .merci .tel-note{color:var(--gris)}
+
+/* --- Hero animé (accueil) : texte clair sur photos sombres, malgré le thème clair --- */
+.journey .baseline{color:var(--or-clair) !important}
+.journey .hero-inner .eyebrow, .journey .jside .eyebrow{color:var(--or-clair)}
+.journey h1{color:#f6f3ec}
+.journey .jside h2{color:#f6f3ec}
+.journey .sub, .journey .jside p{color:rgba(245,242,234,.85) !important}
+.journey .hero-badges span{color:rgba(245,242,234,.92) !important;text-shadow:0 2px 12px rgba(0,0,0,.6) !important}
+.journey .hd-title{color:rgba(245,242,234,.7)}
+.journey .hero-dispo{background:rgba(255,255,255,.07) !important;border-color:rgba(255,255,255,.14)}
+.journey .hd-row{color:#f6f3ec !important;border-top-color:rgba(255,255,255,.12) !important}
+.journey .hd-row .hd-day{color:rgba(245,242,234,.65)}
+.journey .btn-ghost{border-color:rgba(246,243,236,.45) !important;color:#f6f3ec !important}
+.journey .btn-ghost:hover{border-color:var(--or-clair) !important;color:var(--or-clair) !important}
+.journey .scroll-cue span{color:var(--or-clair)}
+.journey .jdots i{background:rgba(246,243,236,.3)}
+.journey .jdots i.on{background:var(--or-clair)}
+
+/* Photo showcase des pages services (remplace l'ancienne animation SVG) */
+.svc-shot{width:100%;aspect-ratio:16/10;border-radius:20px;background-size:cover;background-position:center;border:1px solid var(--ligne);box-shadow:var(--ombre)}
+
+/* --- Textes gris codés en dur (#cdc9bf / #d8d4ca) → foncés sur crème --- */
+.prose p, .prose ul li{color:#241f17 !important}
+.prose h3{color:var(--or-fonce) !important}
+.villes a, .villes span{color:var(--blanc) !important;background:var(--noir-2) !important}
+.villes a:hover{color:var(--or-fonce) !important}
+.pc-list li{color:var(--gris) !important}
+.autre-card .ac-name{color:var(--gris) !important}
+.svc-anim .txt .mini span{color:var(--or-fonce) !important}
+.avis p, .faq .a div, .cinfo .row span, .contact-grid p, .sec-head p{color:var(--gris) !important}
+/* garder le hero animé en clair (ne pas assombrir) */
+.journey .prose p{color:inherit !important}
+
+/* --- Accueil : header clair tant qu'on est sur le hero animé sombre (avant scroll) --- */
+body:has(.journey) header.nav:not(.scrolled) .brand{color:#f6f3ec}
+body:has(.journey) header.nav:not(.scrolled) nav.menu a{color:#f6f3ec}
+body:has(.journey) header.nav:not(.scrolled) .sub-toggle{color:#f6f3ec}
+body:has(.journey) header.nav:not(.scrolled) .burger span{background:#f6f3ec}
+body:has(.journey) header.nav:not(.scrolled) .nav-cta{color:var(--or-clair)!important;border-color:var(--or-clair)}
+/* le sous-menu déroulant reste sur fond crème avec texte foncé */
+body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!important}
