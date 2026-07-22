@@ -380,3 +380,112 @@ footer ul a:hover{color:var(--or);padding-left:5px}
 .hd-row .hd-city{flex:1}
 .hd-row .hd-day{color:var(--gris)}
 .hd-row .hd-time{color:var(--or);font-weight:700}
+
+/* ============================================================= */
+/* ===============  THÈME CLAIR — crème / beige  =============== */
+/* ===  fond salon fixe partout + contenu centré (feuille A4) === */
+/* ============================================================= */
+:root{
+  --noir:#f4eee2;        /* base crème (ex-fond sombre) */
+  --noir-2:#fbf7ee;      /* cartes / champs : blanc cassé */
+  --noir-3:#efe7d6;      /* survol / alt : beige */
+  --blanc:#2c2820;       /* texte principal : encre */
+  --gris:#6f6656;        /* texte secondaire */
+  --or:#a97f28;          /* or plus profond pour contraste sur clair */
+  --or-clair:#c19a45;
+  --or-fonce:#7c5f22;
+  --ligne:rgba(120,95,45,.22);
+  --ombre:0 24px 60px -28px rgba(70,55,30,.35);
+}
+/* fond salon fixe, voilé de crème, identique sur toutes les pages */
+body{
+  background:
+    linear-gradient(rgba(244,238,226,.80),rgba(238,231,216,.86)),
+    url('https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80') center/cover fixed no-repeat;
+  color:var(--blanc);
+}
+body::before{content:none}
+
+/* La « feuille A4 » : colonne crème centrée qui contient tout le contenu.
+   Chaque .wrap devient une tranche de cette feuille ; en supprimant les
+   marges verticales des sections, les tranches s'enchaînent en une seule
+   feuille continue posée sur le fond salon. */
+.band, .subhero, .garanties, .autres, footer, section.hero{
+  background:transparent !important;
+  padding-top:0 !important;padding-bottom:0 !important;
+}
+.band .wrap, .subhero .wrap, .garanties .wrap, .autres .wrap, footer .wrap,
+section#tarifs .wrap, section#services .wrap, section#zones .wrap,
+section#avis .wrap, section#faq .wrap, section#contact .wrap{
+  background:var(--noir);
+  max-width:1000px;
+  padding:56px clamp(24px,5vw,72px);
+  box-shadow:0 0 0 1px var(--ligne), 0 18px 50px -30px rgba(60,45,20,.4);
+}
+/* marges hautes/basses de la feuille (espace salon visible en haut et en bas) */
+header.nav + *, .journey + section, body > section:first-of-type{margin-top:0}
+main, .sheet-top{margin-top:0}
+.autres .wrap{border-top:1px solid var(--ligne)}
+footer .wrap{padding-top:44px;padding-bottom:44px}
+
+/* Header : barre crème translucide */
+header.nav{background:transparent}
+header.nav.scrolled{background:rgba(250,247,238,.9);box-shadow:0 1px 0 var(--ligne)}
+.brand{color:var(--blanc)}
+nav.menu a{color:var(--blanc)}
+@media(max-width:680px){
+  nav.menu{background:var(--noir-2)}
+}
+.burger span{background:var(--blanc)}
+
+/* Boutons */
+.btn-ghost{border:1px solid var(--ligne);color:var(--blanc)}
+.btn-ghost:hover{border-color:var(--or);color:var(--or-fonce)}
+
+/* Cartes services / zones / avis / prix : blanc cassé sur crème */
+.card,.zone,.avis,.price-card,.opt-row,.veh-opt,.cal,.autre-card,.up-zone,
+.faq .q,.svc-opt,.date-chip,.slot,.cinfo,.recap,form input,form select,form textarea{
+  background:var(--noir-2) !important;
+}
+.card:hover,.zone:hover,.autre-card:hover{box-shadow:var(--ombre)}
+.autre-card .ac-img{background-color:var(--noir-3)}
+
+/* Textes secondaires */
+.sub,.pc-sub,.slots-note,.note,.hero-badges span,.jside p{color:var(--gris)}
+.hero-badges span{text-shadow:none}
+
+/* Bandeau confiance / dispo sur fond clair */
+.resa-trust{background:var(--noir-2);color:var(--blanc)}
+.resa-trust b{color:var(--or-fonce)}
+.hero-dispo{background:var(--noir-2)}
+.hd-row{border-top-color:var(--ligne);color:var(--blanc)}
+
+/* Sous-menu déroulant */
+.submenu{background:var(--noir-2)}
+.submenu a{color:var(--blanc)}
+.submenu a:hover{background:var(--noir-3);color:var(--or-fonce)}
+
+/* Barre de progression réservation */
+.resa-progress-bar{background:rgba(250,247,238,.92)}
+
+/* Présentation entreprise : la photo garde son cadre */
+.apropos .ap-txt p{color:var(--gris)}
+.apropos .ap-sign b{color:var(--blanc)}
+
+/* --- Surcharges !important : battre les styles internes (thème sombre) des pages --- */
+.resa-trust{background:var(--noir-2) !important;color:var(--blanc) !important}
+.resa-trust b{color:var(--or-fonce) !important}
+.resa-trust .sep{color:var(--gris) !important}
+.resa-progress-bar{background:rgba(250,247,238,.92) !important}
+.rp-track{background:rgba(120,95,45,.18) !important}
+.rp-labels span{color:var(--gris) !important}
+.rp-labels span.on{color:var(--or-fonce) !important}
+.hero-badges span{color:var(--gris) !important;text-shadow:none !important}
+/* textes gris hérités (#d8d4ca) devenus illisibles sur crème */
+.cal-day,.slot,.opt-row .o-name,.veh-opt span,.up-zone p,.jside p,.hd-row,
+.submenu a,.svc-opt span{color:var(--blanc) !important}
+.svc-opt small,.veh-opt small{color:var(--or-fonce) !important}
+.up-zone small,.slots-note,.note{color:var(--gris) !important}
+/* merci.html : texte sur crème */
+.merci p{color:var(--gris)}
+.merci .tel-note{color:var(--gris)}
