@@ -530,3 +530,11 @@ body:has(.journey) header.nav:not(.scrolled) .burger span{background:#f6f3ec}
 body:has(.journey) header.nav:not(.scrolled) .nav-cta{color:var(--or-clair)!important;border-color:var(--or-clair)}
 /* le sous-menu déroulant reste sur fond crème avec texte foncé */
 body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!important}
+
+/* ===== Avis Google (CTA) ===== */
+.avis-cta{max-width:640px;margin:40px auto 0;text-align:center;padding:32px 28px;border:1px solid var(--ligne);border-radius:18px;background:linear-gradient(160deg,var(--noir-3),var(--noir-2));box-shadow:var(--ombre)}
+.avis-cta .ac-stars{color:#f5b400;font-size:1.5rem;letter-spacing:4px;margin-bottom:10px}
+.avis-cta b{display:block;font-family:var(--serif,'Cormorant Garamond',serif);font-size:1.5rem;color:var(--blanc);margin-bottom:8px}
+.avis-cta p{color:var(--gris);margin:0 auto 22px;max-width:460px;line-height:1.6}
+.avis-cta .btn{display:inline-flex;align-items:center;gap:10px}
+.avis-cta .gicon{width:20px;height:20px;flex:0 0 20px;background:#fff;border-radius:50%;padding:2px}

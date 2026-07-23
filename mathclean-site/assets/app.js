@@ -114,3 +114,17 @@ document.addEventListener('click',function(e){
     el.textContent=(off===1?'Demain':J[d.getDay()]+' '+d.getDate()+' '+M[d.getMonth()]);
   });
 })();
+
+/* ===== Avis Google =====
+   ↓ Une fois votre fiche Google Business créée, collez son identifiant (Place ID)
+   entre les guillemets ci-dessous. Le bouton ouvrira alors directement la fenêtre d'avis.
+   Comment l'obtenir : https://developers.google.com/maps/documentation/places/web-service/place-id */
+const GOOGLE_PLACE_ID = ""; // ex : "ChIJN1t_tDeuEmsRUsoyG83frY4"
+(function(){
+  const links=document.querySelectorAll('.js-google-review');
+  if(!links.length)return;
+  const url=GOOGLE_PLACE_ID
+    ? "https://search.google.com/local/writereview?placeid="+GOOGLE_PLACE_ID
+    : "https://www.google.com/maps/search/?api=1&query=MathClean+nettoyage+Paris";
+  links.forEach(a=>{a.href=url;});
+})();
