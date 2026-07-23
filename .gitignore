@@ -48,7 +48,8 @@ tools/relevant_changed_files.txt
 
 # Configuration of AI tools we don't directly support in this repo (generated via rulesync)
 .rulesync/
-.claude/
+.claude/*
+!.claude/skills/
 CLAUDE.md
 .cursor/
 .github/prompts/
