@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Logo empreinte de patte de lion">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E7D6B"/>
+      <stop offset="1" stop-color="#1C4E44"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="240" height="240" rx="52" fill="url(#g2)"/>
+  <!-- anneau -->
+  <circle cx="120" cy="120" r="92" fill="none" stroke="#E8F3EF" stroke-width="4" opacity="0.35"/>
+  <g fill="#F4EAD5">
+    <!-- coussinet principal -->
+    <path d="M120 118
+             c-30 0 -50 20 -50 42
+             c0 20 22 30 50 30
+             c28 0 50 -10 50 -30
+             c0 -22 -20 -42 -50 -42 Z"/>
+    <!-- doigts -->
+    <ellipse cx="78" cy="96" rx="15" ry="21" transform="rotate(-18 78 96)"/>
+    <ellipse cx="108" cy="74" rx="15" ry="23"/>
+    <ellipse cx="140" cy="74" rx="15" ry="23"/>
+    <ellipse cx="170" cy="96" rx="15" ry="21" transform="rotate(18 170 96)"/>
+  </g>
+  <!-- griffes -->
+  <g fill="#1C4E44">
+    <path d="M66 74 l6 -14 4 12 Z"/>
+    <path d="M101 50 l7 -13 5 12 Z"/>
+    <path d="M139 50 l7 -13 5 12 Z" transform="translate(-4 0)"/>
+    <path d="M170 74 l8 -12 2 13 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Logo silhouette de lion en écusson">
+  <defs>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3A2A6B"/>
+      <stop offset="1" stop-color="#171033"/>
+    </linearGradient>
+  </defs>
+  <!-- écusson -->
+  <path d="M120 8 L212 40 V126 C212 184 170 216 120 232 C70 216 28 184 28 126 V40 Z"
+        fill="url(#g3)" stroke="#C9A54B" stroke-width="5"/>
+  <!-- lion rugissant, profil -->
+  <g fill="#C9A54B">
+    <path d="M150 70
+             c14 4 24 16 26 32
+             c8 -2 14 2 16 10
+             c-6 -2 -10 -1 -12 3
+             c4 6 4 14 0 20
+             c-4 -6 -8 -8 -12 -7
+             c-2 10 -10 18 -20 22
+             l6 14 l-14 -8
+             c-10 2 -22 0 -30 -6
+             l-4 12 l-6 -14
+             c-10 -8 -16 -20 -16 -34
+             c0 -26 22 -46 48 -46
+             c12 0 -2 0 0 0 Z"/>
+  </g>
+  <!-- crinière stylisée (mèches) -->
+  <g fill="none" stroke="#8A6A2E" stroke-width="4" stroke-linecap="round">
+    <path d="M96 62 q-14 6 -18 22"/>
+    <path d="M92 92 q-16 2 -22 16"/>
+    <path d="M96 122 q-14 8 -14 24"/>
+  </g>
+  <!-- oeil + détails visage (creux sombre) -->
+  <circle cx="150" cy="96" r="4.5" fill="#171033"/>
+  <path d="M170 104 l14 -2" stroke="#171033" stroke-width="3" stroke-linecap="round"/>
+  <!-- socle texte -->
+  <path d="M64 196 h112" stroke="#C9A54B" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <text x="120" y="216" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="18" letter-spacing="6" fill="#C9A54B">LION</text>
+</svg>
