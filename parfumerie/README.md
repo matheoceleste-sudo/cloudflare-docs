@@ -19,19 +19,25 @@ dépendance à installer).
   olfactive apparaissent au fil de la lecture (IntersectionObserver + anime.js).
 - **Ambiance réactive** — survoler un parfum teinte toute la page de sa
   couleur signature.
+- **Fiche produit immersive** — cliquer un flacon ouvre une vue plein écran
+  (flacon agrandi, description, pyramide olfactive Tête / Cœur / Fond).
+- **Panier** — tiroir coulissant, ajout avec animation « vol vers le panier »,
+  gestion des quantités et total, persistant via `localStorage`.
 - **100 % responsive** et respectueux de `prefers-reduced-motion`.
 
 ## Les parfums
 
-| N°  | Nom            | Famille        | Notes                     |
-| --- | -------------- | -------------- | ------------------------- |
-| 01  | Noir Absolu    | Boisé — Ambré  | Oud · Cuir · Encens       |
+| N°  | Nom            | Famille        | Notes                        |
+| --- | -------------- | -------------- | ---------------------------- |
+| 01  | Noir Absolu    | Boisé — Ambré  | Oud · Cuir · Encens          |
 | 02  | Rose Éternelle | Floral — Poudré| Rose de Mai · Pivoine · Musc |
 | 03  | Bois de Lune   | Boisé — Frais  | Vétiver · Cèdre · Ambre gris |
+| 04  | Iris Nocturne  | Floral — Boisé | Iris · Violette · Santal     |
 
 Pour ajouter un parfum, il suffit d'ajouter un objet dans le tableau
-`PARFUMS` en haut de `js/main.js` — la carte et son flacon sont générés
-automatiquement.
+`PARFUMS` en haut de `js/main.js` (nom, famille, notes, prix, couleurs,
+description, pyramide) — la carte, le flacon, la fiche produit et le panier
+sont générés automatiquement.
 
 ## Lancer le site
 
