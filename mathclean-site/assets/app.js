@@ -128,3 +128,20 @@ const GOOGLE_PLACE_ID = ""; // ex : "ChIJN1t_tDeuEmsRUsoyG83frY4"
     : "https://www.google.com/maps/search/?api=1&query=MathClean+nettoyage+Paris";
   links.forEach(a=>{a.href=url;});
 })();
+
+/* ===== Bandeau cookies (informatif, non-bloquant) ===== */
+(function(){
+  try{ if(localStorage.getItem('mcCookies')==='ok') return; }catch(e){}
+  const pre=/\/(services|zones)\//.test(location.pathname)?'../':'';
+  const bar=document.createElement('div');
+  bar.className='cookie-bar';
+  bar.setAttribute('role','dialog');
+  bar.setAttribute('aria-label','Information cookies');
+  bar.innerHTML='<p>🍪 Ce site utilise uniquement des cookies <b>fonctionnels</b> (nécessaires à la réservation) et <b>aucun traceur publicitaire</b>. <a href="'+pre+'politique-cookies.html">En savoir plus</a>.</p><button type="button" class="btn btn-or ck-ok">J’ai compris</button>';
+  document.body.appendChild(bar);
+  bar.querySelector('.ck-ok').addEventListener('click',function(){
+    try{ localStorage.setItem('mcCookies','ok'); }catch(e){}
+    bar.classList.add('hide');
+    setTimeout(function(){ bar.remove(); },420);
+  });
+})();

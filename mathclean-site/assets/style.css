@@ -538,3 +538,37 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 .avis-cta p{color:var(--gris);margin:0 auto 22px;max-width:460px;line-height:1.6}
 .avis-cta .btn{display:inline-flex;align-items:center;gap:10px}
 .avis-cta .gicon{width:20px;height:20px;flex:0 0 20px;background:#fff;border-radius:50%;padding:2px}
+
+/* ===== Liens légaux (footer) ===== */
+.flegal{display:flex;gap:8px;flex-wrap:wrap}
+.flegal a{color:var(--gris);transition:.3s}
+.flegal a:hover{color:var(--or)}
+
+/* ===== Bandeau cookies ===== */
+.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:1200;max-width:900px;margin:0 auto;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:space-between;
+  background:linear-gradient(160deg,var(--noir-3),var(--noir-2));border:1px solid var(--ligne);
+  border-radius:16px;padding:16px 20px;box-shadow:var(--ombre);animation:ckup .5s cubic-bezier(.2,.8,.2,1) both}
+.cookie-bar p{margin:0;color:var(--gris);font-size:.9rem;line-height:1.55;flex:1 1 300px}
+.cookie-bar p b{color:var(--blanc)}
+.cookie-bar a{color:var(--or);text-decoration:underline}
+.cookie-bar .btn{padding:11px 24px;font-size:.85rem;white-space:nowrap}
+.cookie-bar.hide{opacity:0;transform:translateY(20px);transition:opacity .4s,transform .4s}
+@keyframes ckup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media(max-width:560px){.cookie-bar{flex-direction:column;align-items:stretch;text-align:center}.cookie-bar .btn{width:100%;justify-content:center}}
+
+/* ===== Pages légales ===== */
+.legal-topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 38px;background:rgba(10,10,12,.9);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--ligne)}
+.legal-head{padding:130px 0 30px;text-align:center}
+.legal-head h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+.legal-body{max-width:820px;margin:0 auto;padding:10px 24px 90px}
+.legal-body h2{font-size:1.35rem;margin:32px 0 10px;color:var(--blanc)}
+.legal-body h2:first-child{margin-top:0}
+.legal-body p{color:var(--gris);line-height:1.75;margin-bottom:12px}
+.legal-body ul{color:var(--gris);line-height:1.7;margin:0 0 14px 22px}
+.legal-body li{margin-bottom:6px}
+.legal-body a{color:var(--or)}
+.legal-body .ph{background:rgba(201,162,75,.16);border-radius:4px;padding:1px 6px;color:var(--or-fonce);font-weight:600}
+.legal-note{background:linear-gradient(160deg,var(--noir-3),var(--noir-2));border:1px solid var(--ligne);border-radius:14px;padding:15px 20px;margin-bottom:26px;color:var(--gris);font-size:.9rem}
+.legal-note b{color:var(--or)}
