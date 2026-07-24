@@ -206,7 +206,7 @@ form .btn-or{width:100%;justify-content:center;border:0}
   radial-gradient(900px 300px at 10% 0%,rgba(201,162,75,.08),transparent),var(--noir-2);
   padding:90px 0}
 .gar-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 36px;margin-top:30px}
-.gar-list .g{display:flex;gap:12px;align-items:flex-start;color:#d8d4ca}
+.gar-list .g{display:flex;gap:12px;align-items:flex-start;color:var(--gris)}
 .gar-list .g svg{color:var(--or);flex:0 0 20px;margin-top:4px}
 .gar-list .g b{color:var(--blanc)}
 .cta-band{text-align:center;margin-top:50px;padding:40px;border:1px solid var(--ligne);border-radius:20px;
@@ -391,7 +391,7 @@ footer ul a:hover{color:var(--or);padding-left:5px}
   --noir-2:#fbf7ee;      /* cartes / champs : blanc cassé */
   --noir-3:#efe7d6;      /* survol / alt : beige */
   --blanc:#12100c;       /* texte principal : quasi noir */
-  --gris:#39332a;        /* texte secondaire : gris très foncé */
+  --gris:#2a251d;        /* texte secondaire : gris très foncé */
   --or:#a97f28;          /* or plus profond pour contraste sur clair */
   --or-clair:#c19a45;
   --or-fonce:#7c5f22;
