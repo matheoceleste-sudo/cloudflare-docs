@@ -7,7 +7,8 @@ const burger=document.querySelector('.burger');
 const menu=document.querySelector('nav.menu');
 if(burger){
   burger.addEventListener('click',()=>{burger.classList.toggle('x');menu.classList.toggle('open')});
-  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('x');menu.classList.remove('open')}));
+  // Les vrais liens ferment le menu — sauf le bouton « Services » qui ne fait que dérouler le sous-menu
+  menu.querySelectorAll('a:not(.sub-toggle)').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('x');menu.classList.remove('open')}));
 }
 
 /* ===== Carrousel hero (10 s) ===== */
