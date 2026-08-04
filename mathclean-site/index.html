@@ -93,8 +93,9 @@
 <style>
 /* ===== Hero immersif : plongée photo au scroll ===== */
 .journey{position:relative;height:460vh}
-.hero.jstage{position:sticky;top:0;height:100vh;min-height:640px}
-.jscene{position:absolute;inset:0;will-change:opacity}
+.hero.jstage{position:sticky;top:0;height:100vh;height:100dvh;min-height:560px;background:#0b1826}
+.jscene{position:absolute;inset:0;will-change:opacity;background:#0b1826}
+.jscene .jimg{background-color:#0b1826}
 .jscene .jimg{
   position:absolute;inset:-4%;
   background-size:cover;background-position:center;background-repeat:no-repeat;
@@ -119,6 +120,12 @@
 .jdots i{cursor:default}
 .jhide{opacity:0 !important;transition:opacity .6s ease}
 @media (max-width:640px){.jside{bottom:120px}}
+/* Mobile : caler le contenu du hero sous la barre de nav (évite le chevauchement avec le logo) */
+@media (max-width:700px){
+  .journey .jstage{align-items:flex-start}
+  .journey .jcap{padding-top:82px;padding-bottom:20px}
+  .journey .jcap .eyebrow{display:none}
+}
 .card-photo{display:block;width:100%;height:150px;object-fit:cover;border-radius:12px;background-size:cover;
   background-position:center;margin-bottom:16px;border:1px solid rgba(255,255,255,.06)}
 @media (max-width:640px){.card-photo{height:120px}}

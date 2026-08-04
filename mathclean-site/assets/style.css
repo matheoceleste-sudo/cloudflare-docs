@@ -15,12 +15,13 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+html{overflow-x:clip}
 body{
   font-family:var(--sans);
   background:var(--noir);
   color:var(--blanc);
   line-height:1.65;
-  overflow-x:hidden;
+  overflow-x:clip;            /* clip (et non hidden) : bloque le débordement horizontal SANS casser position:sticky sur mobile */
   -webkit-font-smoothing:antialiased;
 }
 a{color:inherit;text-decoration:none}
