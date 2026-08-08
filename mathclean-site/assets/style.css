@@ -399,9 +399,15 @@ footer ul a:hover{color:var(--or);padding-left:5px}
   --ligne:rgba(20,20,30,.10);
   --ombre:0 20px 50px -26px rgba(20,20,35,.22);
 }
-/* fond clair uni (blanc cassé très léger), les feuilles blanches se détachent dessus */
+/* fond clair : un « ballon » doré élégant en arrière-plan, derrière la feuille blanche */
 body{
-  background:#f3f4f6;
+  background:
+    radial-gradient(48% 42% at 50% 44%, rgba(169,127,40,.30), rgba(169,127,40,0) 66%),
+    radial-gradient(30% 30% at 88% 14%, rgba(199,161,78,.22), rgba(199,161,78,0) 70%),
+    radial-gradient(32% 32% at 10% 88%, rgba(124,95,34,.18), rgba(124,95,34,0) 70%),
+    #ebedf1;
+  background-attachment:fixed,fixed,fixed,fixed;
+  background-repeat:no-repeat,no-repeat,no-repeat,no-repeat;
   color:var(--blanc);
 }
 body::before{content:none}
@@ -597,10 +603,10 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 
 /* Section engagements : cartes blanches posées sur le fond gris clair (comme la référence) */
 .feats .wrap{background:transparent !important;box-shadow:none !important;
-  padding-top:64px !important;padding-bottom:64px !important;max-width:1080px !important}
+  padding-top:64px !important;padding-bottom:64px !important;max-width:1000px !important}
 
 /* ===== Prestations détaillées (accueil) : blocs alternés + réserver ===== */
-.presta-detail .wrap{max-width:1120px}
+.presta-detail .wrap{max-width:1000px}
 .presta-detail .sec-head{margin-bottom:48px}
 .pdrow{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center;margin-bottom:70px}
 .pdrow:last-child{margin-bottom:0}
