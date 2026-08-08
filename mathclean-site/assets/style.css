@@ -620,3 +620,21 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
   .pd-txt h3{font-size:1.7rem}
   .pd-img{aspect-ratio:16/10}
 }
+
+/* ===== Avant / Après (preuves) ===== */
+.beforeafter .sec-head{margin-bottom:44px}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.ba-pair{background:var(--noir);border:1px solid var(--ligne);border-radius:20px;overflow:hidden;
+  box-shadow:0 24px 60px -38px rgba(20,20,35,.3)}
+.ba-imgs{display:grid;grid-template-columns:1fr 1fr}
+.ba-shot{position:relative;aspect-ratio:3/4;overflow:hidden}
+.ba-shot img{width:100%;height:100%;object-fit:cover;display:block}
+.ba-shot.avant{border-right:2px solid var(--noir)}
+.ba-badge{position:absolute;top:12px;left:12px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:700;padding:6px 12px;border-radius:99px;backdrop-filter:blur(4px)}
+.ba-badge.a{background:rgba(20,20,30,.72);color:#fff}
+.ba-badge.b{background:var(--or);color:#1a1206}
+.ba-cap{padding:18px 22px;text-align:center}
+.ba-cap b{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--blanc)}
+.ba-cap span{font-size:.9rem;color:var(--gris)}
+@media(max-width:860px){.ba-grid{grid-template-columns:1fr;gap:28px}}
