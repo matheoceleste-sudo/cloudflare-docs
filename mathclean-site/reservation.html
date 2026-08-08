@@ -31,8 +31,80 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/anim.css">
 <style>
+/* ===== Bandeau confiance ===== */
+.resa-trust{margin-top:20px;font-size:.92rem;color:rgba(245,242,234,.9);display:inline-flex;
+  align-items:center;gap:8px;flex-wrap:wrap;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:10px 20px}
+.resa-trust .stars{color:var(--or);letter-spacing:1px}
+.resa-trust b{color:#fff}
+.resa-trust .sep{color:rgba(255,255,255,.35)}
+@media(max-width:560px){.resa-trust{font-size:.82rem;padding:9px 14px;gap:6px}}
+
+/* ===== Barre de progression (wizard) ===== */
+.resa-progress-bar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne);padding:16px 0}
+.rp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.rp-step{font-size:.78rem;letter-spacing:.18em;color:var(--gris);text-transform:uppercase}
+.rp-step b{color:var(--or);font-size:1.15rem;font-family:var(--serif);letter-spacing:0}
+.rp-help{font-size:.85rem;color:var(--gris)}
+.rp-help a{color:var(--or);font-weight:700;text-decoration:none}
+.rp-track{height:4px;background:var(--noir-3);border-radius:2px;overflow:hidden}
+.rp-track i{display:block;height:100%;width:25%;border-radius:2px;
+  background:linear-gradient(90deg,#e7cd86,#9c7a2e);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.rp-labels{display:flex;justify-content:space-between;margin-top:10px}
+.rp-labels span{font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gris);opacity:.55;transition:.3s;font-weight:600}
+.rp-labels span.on{color:var(--or);opacity:1}
+@media(max-width:560px){.rp-help{display:none}.rp-labels span{font-size:.6rem}}
+
+/* ===== Coquille wizard ===== */
+.wiz-wrap{max-width:820px;margin:0 auto}
+.wiz-card{background:var(--noir);border:1px solid var(--ligne);border-radius:22px;
+  padding:38px 40px;box-shadow:0 24px 60px -34px rgba(20,20,35,.26)}
+@media(max-width:640px){.wiz-card{padding:26px 20px;border-radius:18px}}
+.wstep{display:none;animation:wIn .45s cubic-bezier(.2,.8,.2,1)}
+.wstep.on{display:block}
+@keyframes wIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+.wstep-head{margin-bottom:24px}
+.wstep-head .k{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);font-weight:700;margin-bottom:8px}
+.wstep-head h2{font-family:var(--serif);font-size:1.9rem;line-height:1.15;color:var(--blanc);margin:0}
+.wstep-head p{color:var(--gris);font-size:.95rem;margin:10px 0 0;line-height:1.55}
+
+/* ===== Choix (services / types) ===== */
+.pick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.pick{cursor:pointer;border:1.5px solid var(--ligne);border-radius:15px;padding:18px 14px;text-align:center;
+  transition:.22s;position:relative;background:var(--noir-2)}
+.pick:hover{transform:translateY(-3px);border-color:rgba(169,127,40,.55);box-shadow:0 14px 30px -22px rgba(20,20,35,.3)}
+.pick svg{width:30px;height:30px;color:var(--or);margin-bottom:9px;stroke-width:1.5}
+.pick .pname{display:block;font-size:.96rem;font-weight:600;color:var(--blanc)}
+.pick .pfrom{display:block;font-size:.82rem;color:var(--or);font-weight:700;margin-top:4px}
+.pick .pdesc{display:block;font-size:.78rem;color:var(--gris);margin-top:5px;line-height:1.4}
+.pick.sel{border-color:var(--or);background:var(--noir-3);box-shadow:0 0 0 3px rgba(169,127,40,.16)}
+.pick.sel::after{content:"✓";position:absolute;top:9px;right:12px;color:var(--or);font-weight:800}
+
+/* ===== Sous-section (véhicule, options) ===== */
+.subsec{margin-top:26px;border-top:1px solid var(--ligne);padding-top:24px}
+.subsec.hide{display:none}
+.subsec-t{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or);font-weight:700;margin:0 0 14px}
+.subsec-t small{color:var(--gris);font-weight:500;letter-spacing:0;text-transform:none}
+.veh-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:560px){.veh-pick{grid-template-columns:repeat(2,1fr)}}
+.veh-opt{cursor:pointer;border:1.5px solid var(--ligne);border-radius:13px;padding:15px 8px;text-align:center;transition:.2s;position:relative;background:var(--noir-2)}
+.veh-opt:hover{transform:translateY(-2px);border-color:rgba(169,127,40,.5)}
+.veh-opt.sel{border-color:var(--or);background:var(--noir-3);box-shadow:0 0 0 3px rgba(169,127,40,.15)}
+.veh-opt.sel::after{content:"✓";position:absolute;top:7px;right:9px;color:var(--or);font-weight:700}
+.veh-opt span{display:block;font-size:.9rem;color:var(--blanc);font-weight:600}
+
+.opts{display:grid;gap:10px}
+.opt-row{display:flex;align-items:center;gap:12px;border:1px solid var(--ligne);border-radius:12px;
+  padding:12px 14px;cursor:pointer;transition:.2s;background:var(--noir-2)}
+.opt-row:hover{border-color:rgba(169,127,40,.5)}
+.opt-row input{accent-color:var(--or);width:17px;height:17px;flex:0 0 17px}
+.opt-row .o-name{flex:1;font-size:.92rem;color:var(--blanc)}
+.opt-row .o-price{color:var(--or);font-weight:700;font-size:.92rem}
+.opt-row.sel{border-color:var(--or);background:var(--noir-3)}
+
 /* ===== Calendrier ===== */
-.cal{border:1px solid var(--ligne);border-radius:14px;padding:16px;background:linear-gradient(160deg,var(--noir-3),var(--noir-2))}
+.cal{border:1px solid var(--ligne);border-radius:14px;padding:16px;background:var(--noir-2)}
 .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .cal-head b{font-family:var(--serif);font-size:1.15rem;color:var(--blanc);text-transform:capitalize}
 .cal-nav{display:flex;gap:8px}
@@ -42,74 +114,68 @@
 .cal-nav button:disabled{opacity:.25;cursor:default}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
 .cal-grid .dow{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);padding:6px 0}
-.cal-day{cursor:pointer;border:1px solid transparent;border-radius:10px;padding:9px 0;color:#d8d4ca;font-size:.9rem;transition:.2s}
-.cal-day:hover{border-color:rgba(201,162,75,.5)}
-.cal-day.off{opacity:.22;pointer-events:none}
+.cal-day{cursor:pointer;border:1px solid transparent;border-radius:10px;padding:10px 0;color:var(--blanc);font-size:.9rem;transition:.2s}
+.cal-day:hover{border-color:rgba(169,127,40,.5)}
+.cal-day.off{opacity:.25;pointer-events:none}
 .cal-day.today{border-color:var(--ligne)}
-.cal-day.sel{background:linear-gradient(135deg,var(--or),#9c7a2e);color:#151004;font-weight:700}
+.cal-day.sel{background:linear-gradient(135deg,var(--or),var(--or-fonce));color:#fff;font-weight:700}
 .cal-day.blank{visibility:hidden}
+
 /* ===== Créneaux ===== */
-.slot.off{opacity:.28;pointer-events:none;text-decoration:line-through}
-.slots-note{font-size:.8rem;color:var(--gris);margin-top:10px}
-/* ===== Options & véhicules ===== */
-.opts{display:grid;gap:10px}
-.opt-row{display:flex;align-items:center;gap:12px;border:1px solid var(--ligne);border-radius:12px;
-  padding:12px 14px;cursor:pointer;transition:.2s}
-.opt-row:hover{border-color:rgba(201,162,75,.5)}
-.opt-row input{accent-color:#c9a24b;width:17px;height:17px;flex:0 0 17px}
-.opt-row .o-name{flex:1;font-size:.92rem;color:#d8d4ca}
-.opt-row .o-price{color:var(--or);font-weight:700;font-size:.92rem}
-.opt-row.sel{border-color:var(--or);background:linear-gradient(160deg,var(--noir-3),var(--noir-2))}
-.veh-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media(max-width:640px){.veh-pick{grid-template-columns:repeat(2,1fr)}}
-.veh-opt{cursor:pointer;border:1px solid var(--ligne);border-radius:14px;padding:14px 10px;text-align:center;transition:.2s;position:relative}
-.veh-opt:hover{transform:translateY(-3px);border-color:rgba(201,162,75,.5)}
-.veh-opt.sel{border-color:var(--or);background:linear-gradient(160deg,var(--noir-3),var(--noir-2));box-shadow:0 0 0 3px rgba(201,162,75,.15)}
-.veh-opt.sel::after{content:"✓";position:absolute;top:8px;right:10px;color:var(--or);font-weight:700}
-.veh-opt span{display:block;font-size:.85rem;color:#d8d4ca}
-.veh-opt small{color:var(--or);font-size:.82rem;font-weight:700}
-/* ===== Mode devis ===== */
-.up-zone{border:1.5px dashed var(--ligne);border-radius:14px;padding:22px;text-align:center;cursor:pointer;transition:.25s}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:16px}
+.slot{cursor:pointer;border:1.5px solid var(--ligne);border-radius:12px;padding:13px 10px;text-align:center;
+  font-size:.92rem;font-weight:600;color:var(--blanc);transition:.2s;background:var(--noir-2)}
+.slot:hover{border-color:rgba(169,127,40,.5)}
+.slot.sel{border-color:var(--or);background:var(--noir-3);box-shadow:0 0 0 3px rgba(169,127,40,.15)}
+.slot.off{opacity:.3;pointer-events:none;text-decoration:line-through}
+.slots-note{font-size:.82rem;color:var(--gris);margin-top:12px}
+
+/* ===== Téléversement ===== */
+.up-zone{border:1.6px dashed var(--ligne);border-radius:14px;padding:24px;text-align:center;cursor:pointer;transition:.25s;background:var(--noir-2)}
 .up-zone:hover{border-color:var(--or)}
 .up-zone svg{width:34px;height:34px;color:var(--or);margin-bottom:8px}
-.up-zone p{color:#d8d4ca;font-size:.92rem;margin:0}
+.up-zone p{color:var(--blanc);font-size:.94rem;margin:0;font-weight:600}
 .up-zone small{color:var(--gris)}
-.up-list{margin-top:10px;font-size:.85rem;color:var(--or)}
+.up-list{margin-top:10px;font-size:.85rem;color:var(--or);font-weight:600}
+
+/* ===== Champs ===== */
+.fld{margin-bottom:16px}
+.fld label{display:block;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--or);margin-bottom:7px;font-weight:600}
+.fld input,.fld textarea{width:100%;background:var(--noir-2);border:1px solid var(--ligne);border-radius:11px;
+  padding:13px 15px;color:var(--blanc);font-family:var(--sans);font-size:.98rem;transition:.25s;box-sizing:border-box}
+.fld textarea{resize:vertical;min-height:150px;line-height:1.55}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--gris)}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--or);box-shadow:0 0 0 3px rgba(169,127,40,.14)}
+.fgrid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.fgrid2{grid-template-columns:1fr}}
+
+/* ===== Toggle Particulier / Entreprise ===== */
+.ctype{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.ctype button{cursor:pointer;border:1.5px solid var(--ligne);background:var(--noir-2);border-radius:13px;
+  padding:16px 12px;text-align:center;transition:.2s;font-family:var(--sans)}
+.ctype button b{display:block;font-size:1rem;color:var(--blanc);font-weight:700}
+.ctype button small{display:block;font-size:.8rem;color:var(--gris);margin-top:3px}
+.ctype button.on{border-color:var(--or);background:var(--noir-3);box-shadow:0 0 0 3px rgba(169,127,40,.14)}
+.ctype button.on b{color:var(--or)}
+
+/* ===== Récap ===== */
+.wrecap{background:var(--noir-2);border:1px solid var(--ligne);border-radius:14px;padding:18px 20px;margin-bottom:24px}
+.wrecap .rl{display:flex;justify-content:space-between;gap:14px;padding:7px 0;font-size:.92rem;border-bottom:1px solid var(--ligne)}
+.wrecap .rl:last-child{border-bottom:0}
+.wrecap .rl span{color:var(--gris)}
+.wrecap .rl b{color:var(--blanc);text-align:right}
+.wrecap .rl.tot b{color:var(--or);font-size:1.15rem}
+
+/* ===== Navigation bas ===== */
+.wnav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:30px}
+.wnav .btn{margin:0}
+.wprev{background:none;border:1.5px solid var(--ligne);color:var(--blanc);border-radius:99px;
+  padding:14px 26px;font-family:var(--sans);font-weight:600;cursor:pointer;transition:.2s;font-size:.95rem}
+.wprev:hover{border-color:var(--or);color:var(--or)}
+.wprev.hide{visibility:hidden}
+.wnext[disabled]{opacity:.4;cursor:not-allowed}
+.wnav-note{text-align:center;font-size:.85rem;color:var(--gris);margin-top:14px;min-height:1.1em}
 .hide{display:none !important}
-.total-line{border-top:1px solid var(--ligne);margin-top:6px;padding-top:12px}
-.total-line b{font-size:1.2rem;color:var(--or)}
-/* ===== Champs de l'étape devis (hors <form>, à styler à la main) ===== */
-#stepDevis .fld{margin-bottom:16px}
-#stepDevis .fld label{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:7px}
-#stepDevis .fld textarea{
-  width:100%;background:var(--noir-2);border:1px solid var(--ligne);border-radius:11px;
-  padding:14px 16px;color:var(--blanc);font-family:var(--sans);font-size:.98rem;
-  resize:vertical;min-height:170px;line-height:1.55;transition:.3s;box-sizing:border-box}
-#stepDevis .fld textarea::placeholder{color:rgba(216,212,202,.5)}
-#stepDevis .fld textarea:focus{outline:none;border-color:var(--or);box-shadow:0 0 0 3px rgba(201,162,75,.13)}
-/* ===== Bandeau confiance ===== */
-.resa-trust{margin-top:20px;font-size:.92rem;color:rgba(245,242,234,.85);display:inline-flex;
-  align-items:center;gap:8px;flex-wrap:wrap;background:rgba(255,255,255,.05);
-  border:1px solid var(--ligne);border-radius:99px;padding:10px 20px}
-.resa-trust .stars{color:var(--or);letter-spacing:1px}
-.resa-trust b{color:#f5f2ea}
-.resa-trust .sep{color:rgba(255,255,255,.3)}
-@media(max-width:560px){.resa-trust{font-size:.82rem;padding:9px 14px;gap:6px}}
-/* ===== Barre de progression (façon wizard) ===== */
-.resa-progress-bar{position:sticky;top:0;z-index:40;background:rgba(10,10,12,.9);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne);padding:16px 0}
-.rp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.rp-step{font-size:.78rem;letter-spacing:.18em;color:var(--gris);text-transform:uppercase}
-.rp-step b{color:var(--or);font-size:1.15rem;font-family:var(--serif);letter-spacing:0}
-.rp-help{font-size:.85rem;color:var(--gris)}
-.rp-help a{color:var(--or);font-weight:700;text-decoration:none}
-.rp-track{height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
-.rp-track i{display:block;height:100%;width:12%;border-radius:2px;
-  background:linear-gradient(90deg,#e7cd86,#9c7a2e);transition:width .5s cubic-bezier(.2,.8,.2,1)}
-.rp-labels{display:flex;justify-content:space-between;margin-top:10px}
-.rp-labels span{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);transition:color .3s}
-.rp-labels span.on{color:var(--or)}
-@media(max-width:560px){.rp-help{display:none}.rp-labels span{font-size:.62rem}}
 </style>
 </head>
 <body>
@@ -148,7 +214,7 @@
   <div class="wrap">
     <div class="crumb reveal in"><a href="index.html">Accueil</a> · Réservation</div>
     <h1 class="reveal in">Composez votre <span class="or">prestation</span></h1>
-    <p class="reveal in">Sélectionnez votre service, votre date et votre créneau. Votre tarif s'affiche en temps réel. Nous confirmons sous 24 h — devis gratuit, sans engagement.</p>
+    <p class="reveal in">Un parcours simple, étape par étape : votre service, vos options, votre date, vos coordonnées. Nous confirmons sous 24 h — devis gratuit, sans engagement.</p>
     <div class="resa-trust reveal in">
       <span class="stars">★★★★★</span> <b>4,9/5</b>
       <span class="sep">·</span> +250 avis
@@ -167,114 +233,170 @@
     </div>
     <div class="rp-track"><i id="rpFill"></i></div>
     <div class="rp-labels">
-      <span class="on" data-s="0">Prestation</span>
-      <span data-s="1">Détails</span>
-      <span data-s="2">Date &amp; créneau</span>
-      <span data-s="3">Coordonnées</span>
+      <span class="on" data-s="0" id="lab0">Prestation</span>
+      <span data-s="1" id="lab1">Détails</span>
+      <span data-s="2" id="lab2">Date</span>
+      <span data-s="3" id="lab3">Coordonnées</span>
     </div>
   </div>
 </div>
 
 <section class="band">
   <div class="wrap">
-    <div class="resa-wrap">
-      <!-- COLONNE GAUCHE : étapes -->
-      <div>
-        <!-- 1. Service -->
-        <div class="step reveal">
-          <div class="step-label"><span class="step-num">1</span><h3>Votre prestation</h3></div>
-          <div class="svc-pick" id="svcPick">
-            <div class="svc-opt" data-svc="Nettoyage automobile" data-type="auto" data-from="dès 29 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M5 11h14M5 11v6m14-6v6M5 17h14"/></svg><span>Automobile</span><small>dès 29 €</small></div>
-            <div class="svc-opt" data-svc="Nettoyage de canapé" data-type="textile" data-from="dès 39 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M3 11a2 2 0 0 1 2 2v3h14v-3a2 2 0 0 1 2-2 2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0z"/></svg><span>Canapé</span><small>dès 39 €</small></div>
-            <div class="svc-opt" data-svc="Nettoyage de matelas" data-type="textile" data-from="dès 49 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M3 12h18"/></svg><span>Matelas</span><small>dès 49 €</small></div>
-            <div class="svc-opt" data-svc="Nettoyage de tapis" data-type="textile" data-from="dès 59 €"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 7h16M4 17h16"/></svg><span>Tapis</span><small>dès 59 €</small></div>
-            <div class="svc-opt" data-svc="Nettoyage de bateau" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14l9-3 9 3-2.5 5.5a2 2 0 0 1-1.8 1.2H7.3a2 2 0 0 1-1.8-1.2L3 14zM12 11V4"/></svg><span>Bateau</span><small>sur devis</small></div>
-            <div class="svc-opt" data-svc="Nettoyage d'avion" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.5 20.5 9 15l-5.5-1.5L2 12l7-2 2-7 1.5 1.5L14 10l7 2-1.5 1.5L14 15l-1.5 5.5z"/></svg><span>Avion</span><small>sur devis</small></div>
-            <div class="svc-opt" data-svc="Nettoyage de terrasse" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18M5 20V9m14 11V9M3 9l9-5 9 5"/></svg><span>Terrasse</span><small>sur devis</small></div>
-            <div class="svc-opt" data-svc="Nettoyage de locaux" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2m4 0h2M8 11h2m4 0h2"/></svg><span>Locaux</span><small>sur devis</small></div>
-            <div class="svc-opt" data-svc="Nettoyage de bureau" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg><span>Bureau</span><small>sur devis</small></div>
-            <div class="svc-opt" data-svc="Fin de chantier" data-type="devis" data-from="sur devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M6 21V11l6-5 6 5v10"/></svg><span>Fin de chantier</span><small>sur devis</small></div>
-          </div>
-        </div>
-
-        <!-- 2. Véhicule (automobile) -->
-        <div class="step reveal hide" id="stepVeh">
-          <div class="step-label"><span class="step-num">2</span><h3>Votre véhicule</h3></div>
-          <div class="veh-pick" id="vehPick"></div>
-        </div>
-
-        <!-- 3. Options (automobile) -->
-        <div class="step reveal hide" id="stepOpts">
-          <div class="step-label"><span class="step-num">3</span><h3>Vos options <small style="color:var(--gris);font-weight:400">(facultatif)</small></h3></div>
-          <div class="opts" id="opts"></div>
-        </div>
-
-        <!-- 4. Date (calendrier) -->
-        <div class="step reveal" id="stepDate">
-          <div class="step-label"><span class="step-num">2</span><h3>Votre date <small id="dateHint" style="color:var(--gris);font-weight:400"></small></h3></div>
-          <div class="cal" id="cal">
-            <div class="cal-head">
-              <b id="calTitle"></b>
-              <div class="cal-nav">
-                <button type="button" id="calPrev" aria-label="Mois précédent">‹</button>
-                <button type="button" id="calNext" aria-label="Mois suivant">›</button>
-              </div>
-            </div>
-            <div class="cal-grid" id="calGrid"></div>
-          </div>
-        </div>
-
-        <!-- 5. Créneau -->
-        <div class="step reveal" id="stepSlot">
-          <div class="step-label"><span class="step-num">3</span><h3>Votre créneau</h3></div>
-          <div class="slots" id="slots"><p class="slots-note">Choisissez d'abord votre prestation et votre date.</p></div>
-          <p class="slots-note" id="slotsNote"></p>
-        </div>
-
-        <!-- Besoin détaillé (prestations sur devis) -->
-        <div class="step reveal hide" id="stepDevis">
-          <div class="step-label"><span class="step-num">2</span><h3>Décrivez votre besoin</h3></div>
-          <p style="color:var(--gris);font-size:.92rem;margin-bottom:14px">Plus votre description est précise (surfaces, dimensions, état, accès…), plus votre devis sera rapide et juste. Ajoutez autant de photos et de vidéos que nécessaire.</p>
-          <div class="fld"><label>Description détaillée de votre besoin</label><textarea form="resaForm" name="Description" id="descArea" placeholder="Décrivez précisément : type de surface, dimensions, état, taches, accès, étage, date souhaitée…" rows="5" disabled></textarea></div>
-          <div class="fld">
-            <label>Photos &amp; vidéos</label>
-            <div class="up-zone" id="upZone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-              <p>Cliquez pour ajouter vos photos et vidéos</p>
-              <small>Autant de fichiers que nécessaire — cela nous aide à établir un devis précis</small>
-            </div>
-            <input form="resaForm" type="file" name="attachment" id="fileInput" accept="image/*,video/*" multiple style="display:none" disabled>
-            <div class="up-list" id="upList"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- COLONNE DROITE : récap + coordonnées -->
-      <div class="recap reveal">
-        <h3 id="recapTitle">Votre réservation</h3>
-        <div class="line"><span>Prestation</span><b id="rSvc" class="empty">À choisir</b></div>
-        <div class="line" id="lVeh" style="display:none"><span>Véhicule</span><b id="rVeh" class="empty">À choisir</b></div>
-        <div class="line" id="lOpts" style="display:none"><span>Options</span><b id="rOpts">—</b></div>
-        <div class="line" id="lDate"><span>Date</span><b id="rDate" class="empty">À choisir</b></div>
-        <div class="line" id="lSlot"><span>Créneau</span><b id="rSlot" class="empty">À choisir</b></div>
-        <div class="line total-line"><span>Estimation</span><b id="rPrice" class="empty">—</b></div>
-        <form id="resaForm" action="https://formsubmit.co/matheoceleste@gmail.com" method="POST" enctype="multipart/form-data" style="margin-top:18px">
+    <div class="wiz-wrap">
+      <div class="wiz-card">
+        <form id="resaForm" action="https://formsubmit.co/matheoceleste@gmail.com" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="_subject" value="Nouvelle réservation — MathClean" id="fSubject">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="Prestation" id="fSvc">
+          <input type="hidden" name="Type de nettoyage" id="fType">
           <input type="hidden" name="Véhicule" id="fVeh">
           <input type="hidden" name="Options" id="fOpts">
           <input type="hidden" name="Estimation" id="fTotal">
-          <input type="hidden" name="Date" id="fDate">
+          <input type="hidden" name="Date souhaitée" id="fDate">
           <input type="hidden" name="Créneau" id="fSlot">
-          <div class="fld"><label>Nom &amp; prénom</label><input type="text" name="Nom" required></div>
-          <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" required></div>
-          <div class="fld"><label>Email</label><input type="email" name="Email" required></div>
-          <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="Ville ou adresse complète" required></div>
-          <div class="fld" id="fldMsg"><label>Précisions (facultatif)</label><textarea name="Message" placeholder="Détails utiles : surface, accès, étage…"></textarea></div>
-          <button type="submit" class="btn btn-or" id="resaBtn" disabled>Confirmer ma réservation</button>
-          <p class="slots-note hide" id="btnHint" style="margin-top:10px;text-align:center"></p>
-          <p class="note" id="formNote">Réponse sous 24 h · Devis gratuit et sans engagement · 7j/7</p>
+          <input type="hidden" name="Type de client" id="fClient" value="Particulier">
+
+          <!-- ÉTAPE 1 : PRESTATION -->
+          <div class="wstep on" data-step="presta">
+            <div class="wstep-head">
+              <div class="k">Étape 1</div>
+              <h2>Quelle prestation&nbsp;?</h2>
+              <p>Sélectionnez le service qui vous intéresse. Les prochaines étapes s'adaptent automatiquement à votre choix.</p>
+            </div>
+            <div class="pick-grid" id="svcPick">
+              <div class="pick" data-svc="Nettoyage de locaux" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2m4 0h2M8 11h2m4 0h2"/></svg><span class="pname">Locaux</span><span class="pfrom">sur devis</span></div>
+              <div class="pick" data-svc="Nettoyage de bureau" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg><span class="pname">Bureau</span><span class="pfrom">sur devis</span></div>
+              <div class="pick" data-svc="Nettoyage automobile" data-type="auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M5 11h14M5 11v6m14-6v6M5 17h14"/></svg><span class="pname">Automobile</span><span class="pfrom">dès 39 €</span></div>
+              <div class="pick" data-svc="Nettoyage de bateau" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 14l9-3 9 3-2.5 5.5a2 2 0 0 1-1.8 1.2H7.3a2 2 0 0 1-1.8-1.2L3 14zM12 11V4"/></svg><span class="pname">Bateau</span><span class="pfrom">sur devis</span></div>
+              <div class="pick" data-svc="Nettoyage de terrasse" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 20h18M5 20V9m14 11V9M3 9l9-5 9 5"/></svg><span class="pname">Terrasse</span><span class="pfrom">sur devis</span></div>
+              <div class="pick" data-svc="Nettoyage de canapé" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M3 11a2 2 0 0 1 2 2v3h14v-3a2 2 0 0 1 2-2 2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0z"/></svg><span class="pname">Canapé</span><span class="pfrom">sur devis</span></div>
+              <div class="pick" data-svc="Nettoyage de matelas" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M3 12h18"/></svg><span class="pname">Matelas</span><span class="pfrom">sur devis</span></div>
+              <div class="pick" data-svc="Nettoyage de tapis" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 7h16M4 17h16"/></svg><span class="pname">Tapis</span><span class="pfrom">sur devis</span></div>
+              <div class="pick" data-svc="Fin de chantier" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18M6 21V11l6-5 6 5v10"/></svg><span class="pname">Fin de chantier</span><span class="pfrom">sur devis</span></div>
+              <div class="pick" data-svc="Nettoyage d'avion" data-type="devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10.5 20.5 9 15l-5.5-1.5L2 12l7-2 2-7 1.5 1.5L14 10l7 2-1.5 1.5L14 15l-1.5 5.5z"/></svg><span class="pname">Avion</span><span class="pfrom">sur devis</span></div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 2 AUTO : TYPE + VÉHICULE + OPTIONS -->
+          <div class="wstep" data-step="auto">
+            <div class="wstep-head">
+              <div class="k">Étape 2</div>
+              <h2>Votre formule automobile</h2>
+              <p>Choisissez le type de nettoyage, puis le gabarit de votre véhicule.</p>
+            </div>
+            <div class="pick-grid" id="typePick"></div>
+            <div class="subsec hide" id="subVeh">
+              <p class="subsec-t">Votre véhicule</p>
+              <div class="veh-pick" id="vehPick"></div>
+            </div>
+            <div class="subsec hide" id="subOpts">
+              <p class="subsec-t">Options <small>(facultatif)</small></p>
+              <div class="opts" id="opts"></div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 2 DEVIS : BESOIN -->
+          <div class="wstep" data-step="besoin">
+            <div class="wstep-head">
+              <div class="k">Étape 2</div>
+              <h2>Décrivez votre besoin</h2>
+              <p>Plus votre description est précise (surfaces, dimensions, état, accès…), plus votre devis sera rapide et juste. Ajoutez autant de photos et de vidéos que nécessaire.</p>
+            </div>
+            <div class="fld"><label>Description détaillée</label><textarea name="Description" id="descArea" placeholder="Décrivez précisément : type de surface, dimensions, état, taches, accès, étage…" rows="5" disabled></textarea></div>
+            <div class="fld">
+              <label>Photos &amp; vidéos <small style="color:var(--gris);text-transform:none;letter-spacing:0;font-weight:400">(facultatif)</small></label>
+              <div class="up-zone" id="upZone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                <p>Cliquez pour ajouter vos photos et vidéos</p>
+                <small>Autant de fichiers que nécessaire — cela nous aide à établir un devis précis</small>
+              </div>
+              <input type="file" name="attachment" id="fileInput" accept="image/*,video/*" multiple style="display:none" disabled>
+              <div class="up-list" id="upList"></div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 3 : DATE (+ créneau si auto) -->
+          <div class="wstep" data-step="date">
+            <div class="wstep-head">
+              <div class="k">Étape 3</div>
+              <h2>Votre date <span id="dateSuffix"></span></h2>
+              <p id="dateIntro">Sélectionnez le jour qui vous convient dans le calendrier.</p>
+            </div>
+            <div class="cal" id="cal">
+              <div class="cal-head">
+                <b id="calTitle"></b>
+                <div class="cal-nav">
+                  <button type="button" id="calPrev" aria-label="Mois précédent">‹</button>
+                  <button type="button" id="calNext" aria-label="Mois suivant">›</button>
+                </div>
+              </div>
+              <div class="cal-grid" id="calGrid"></div>
+            </div>
+            <div id="slotWrap" class="hide">
+              <p class="subsec-t" style="margin:22px 0 0">Votre créneau</p>
+              <div class="slots" id="slots"></div>
+              <p class="slots-note" id="slotsNote"></p>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 4 : COORDONNÉES -->
+          <div class="wstep" data-step="contact">
+            <div class="wstep-head">
+              <div class="k">Étape 4</div>
+              <h2>Vos coordonnées</h2>
+              <p>Dernière étape : renseignez vos informations pour recevoir votre confirmation sous 24 h.</p>
+            </div>
+
+            <div class="wrecap" id="wrecap"></div>
+
+            <div class="ctype">
+              <button type="button" class="on" data-client="Particulier"><b>Particulier</b><small>Pour votre domicile</small></button>
+              <button type="button" data-client="Entreprise"><b>Entreprise</b><small>Sur facture / SIRET</small></button>
+            </div>
+
+            <!-- Particulier -->
+            <div id="grpParti">
+              <div class="fgrid2">
+                <div class="fld"><label>Prénom</label><input type="text" name="Prénom" autocomplete="given-name"></div>
+                <div class="fld"><label>Nom</label><input type="text" name="Nom" autocomplete="family-name"></div>
+              </div>
+              <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="N° et nom de rue" autocomplete="street-address"></div>
+              <div class="fgrid2">
+                <div class="fld"><label>Code postal</label><input type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code"></div>
+                <div class="fld"><label>Ville</label><input type="text" name="Ville" autocomplete="address-level2"></div>
+              </div>
+              <div class="fgrid2">
+                <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" autocomplete="tel"></div>
+                <div class="fld"><label>Email</label><input type="email" name="Email" autocomplete="email"></div>
+              </div>
+            </div>
+
+            <!-- Entreprise -->
+            <div id="grpEntr" class="hide">
+              <div class="fld"><label>Nom de l'entreprise</label><input type="text" name="Entreprise" autocomplete="organization" disabled></div>
+              <div class="fld"><label>Numéro SIRET</label><input type="text" name="SIRET" inputmode="numeric" placeholder="14 chiffres" disabled></div>
+              <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="N° et nom de rue" autocomplete="street-address" disabled></div>
+              <div class="fgrid2">
+                <div class="fld"><label>Code postal</label><input type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code" disabled></div>
+                <div class="fld"><label>Ville</label><input type="text" name="Ville" autocomplete="address-level2" disabled></div>
+              </div>
+              <div class="fgrid2">
+                <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" autocomplete="tel" disabled></div>
+                <div class="fld"><label>Email</label><input type="email" name="Email" autocomplete="email" disabled></div>
+              </div>
+            </div>
+
+            <div class="fld"><label>Précisions <small style="color:var(--gris);text-transform:none;letter-spacing:0;font-weight:400">(facultatif)</small></label><textarea name="Message" placeholder="Détails utiles : accès, étage, digicode, contraintes horaires…" style="min-height:90px"></textarea></div>
+          </div>
+
+          <!-- NAVIGATION -->
+          <div class="wnav">
+            <button type="button" class="wprev hide" id="wPrev">← Précédent</button>
+            <button type="button" class="btn btn-or wnext" id="wNext" disabled>Suivant →</button>
+          </div>
+          <p class="wnav-note" id="wNote"></p>
+          <p class="note" style="text-align:center;margin-top:8px">Réponse sous 24 h · Devis gratuit et sans engagement · 7j/7</p>
         </form>
       </div>
     </div>
@@ -319,137 +441,119 @@
 <script src="assets/app.js"></script>
 <script>
 /* =====================================================================
-   Réservation MathClean
-   - Automobile : véhicule (citadine 49 € → van 79 €) + options
-     (5-20 €) + 2 créneaux de 3 h (09h-12h / 13h-16h)
-   - Textiles (canapé, matelas, tapis) : créneaux d'1 h de 9h à 20h
-   - Blocage croisé : un créneau voiture bloque les heures textiles
-     comprises dedans, et inversement
-   - Prestations sur devis : description détaillée + photos/vidéos
+   Réservation MathClean — assistant multi-étapes (wizard)
+   Parcours : Prestation → (Automobile : formule+véhicule | Devis : besoin)
+              → Date (+ créneau pour l'automobile) → Coordonnées
+   Boutons Précédent / Suivant ; « Suivant » ne s'active que si l'étape
+   en cours est complète.
    ===================================================================== */
 (function(){
   var $ = function(s){ return document.querySelector(s); };
 
-  var VEHICLES = [
-    ['Citadine', 49],
-    ['Berline', 59],
-    ['SUV / 4x4', 69],
-    ['Monospace / Van', 79]
+  /* ----- données ----- */
+  var AUTO_TYPES = [
+    ['Nettoyage simple', 39, 'Aspiration, plastiques & vitres'],
+    ['Full intérieur', 70, 'Intérieur nettoyé en profondeur'],
+    ['Extérieur uniquement', 70, 'Carrosserie, jantes & vitres'],
+    ['Nettoyage complet', 130, 'Intérieur + extérieur'],
+    ['Sortie de concession', 400, 'Intérieur + extérieur + polissage'],
+    ['Polissage', 300, 'Correction & brillance carrosserie']
   ];
-  var AUTO_SLOTS = [
-    { label:'09:00 – 12:00', hours:[9,10,11] },
-    { label:'13:00 – 16:00', hours:[13,14,15] }
-  ];
-  var TEXTILE_HOURS = [9,10,11,12,13,14,15,16,17,18,19];
-  /* [nom, prix, groupe-exclusif] */
+  var VEHICLES = ['Citadine', 'Berline', 'SUV / 4x4', 'Monospace / Van'];
   var OPTIONS = [
     ['Coffre : aspiration + shampoing complet', 5, null],
     ['Retrait des poils d’animaux', 5, 'poils'],
     ['Retrait des poils d’animaux (beaucoup de poils)', 10, 'poils'],
     ['Shampoing des sièges', 10, null],
     ['Jantes détaillées & brillant pneus', 20, null],
-    ['Désinfection totale des acariens &amp; allergènes', 15, null]
+    ['Désinfection totale des acariens & allergènes', 15, null]
+  ];
+  var AUTO_SLOTS = [
+    { label:'09:00 – 12:00', hours:[9,10,11] },
+    { label:'13:00 – 16:00', hours:[13,14,15] }
   ];
   var MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   var JOURS = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
 
-  var state = { svc:null, type:null, from:null, veh:null, vehPrice:0, opts:[], date:null, dateLabel:null, slot:null, slotHours:[] };
+  var LABELS = {
+    auto:  ['Prestation','Véhicule','Date & créneau','Coordonnées'],
+    devis: ['Prestation','Besoin','Date','Coordonnées']
+  };
 
-  /* ---------- réservations enregistrées (sur cet appareil) ---------- */
+  var state = { svc:null, branch:null, autoType:null, autoFrom:0, veh:null,
+                opts:[], date:null, dateLabel:null, slot:null, slotHours:[], client:'Particulier' };
+
+  /* ordre des étapes selon la branche */
+  function seq(){ return state.branch === 'auto'
+      ? ['presta','auto','date','contact']
+      : ['presta','besoin','date','contact']; }
+  var idx = 0;
+
+  /* ---------- anti double-réservation (local) ---------- */
   function bookings(){ try { return JSON.parse(localStorage.getItem('mcResa') || '{}'); } catch(e){ return {}; } }
-  function blockedHours(dateKey){
-    var out = {};
-    (bookings()[dateKey] || []).forEach(function(b){
-      (b.hours || []).forEach(function(h){ out[h] = true; });
-    });
-    return out;
-  }
-  function saveBooking(dateKey, entry){
-    var all = bookings();
-    (all[dateKey] = all[dateKey] || []).push(entry);
-    try { localStorage.setItem('mcResa', JSON.stringify(all)); } catch(e){}
-  }
+  function blockedHours(dateKey){ var out={}; (bookings()[dateKey]||[]).forEach(function(b){ (b.hours||[]).forEach(function(h){ out[h]=true; }); }); return out; }
+  function saveBooking(dateKey, entry){ var all=bookings(); (all[dateKey]=all[dateKey]||[]).push(entry); try { localStorage.setItem('mcResa', JSON.stringify(all)); } catch(e){} }
 
-  /* ---------------------------- service ---------------------------- */
-  document.querySelectorAll('.svc-opt').forEach(function(o){
+  /* =========================== ÉTAPE 1 : service =========================== */
+  document.querySelectorAll('#svcPick .pick').forEach(function(o){
     o.addEventListener('click', function(){
-      document.querySelectorAll('.svc-opt').forEach(function(x){ x.classList.remove('sel'); });
+      document.querySelectorAll('#svcPick .pick').forEach(function(x){ x.classList.remove('sel'); });
       o.classList.add('sel');
-      state.svc  = o.getAttribute('data-svc');
-      state.type = o.getAttribute('data-type');
-      state.from = o.getAttribute('data-from');
-      state.veh = null; state.vehPrice = 0;
-      state.opts = []; state.date = null; state.dateLabel = null; state.slot = null; state.slotHours = [];
-      document.querySelectorAll('.opt-row input').forEach(function(c){ c.checked = false; });
-      document.querySelectorAll('.opt-row').forEach(function(r){ r.classList.remove('sel'); });
-      document.querySelectorAll('.veh-opt').forEach(function(v){ v.classList.remove('sel'); });
-      document.querySelectorAll('.cal-day').forEach(function(d){ d.classList.remove('sel'); });
-      $('#rSvc').textContent = state.svc; $('#rSvc').classList.remove('empty');
+      state.svc = o.getAttribute('data-svc');
+      state.branch = o.getAttribute('data-type') === 'auto' ? 'auto' : 'devis';
       $('#fSvc').value = state.svc;
-      var devis = state.type === 'devis', auto = state.type === 'auto';
-      $('#stepVeh').classList.toggle('hide', !auto);
-      $('#stepOpts').classList.toggle('hide', !auto);
-      /* le calendrier reste visible en mode devis (date souhaitée, facultative) */
-      $('#stepSlot').classList.toggle('hide', devis);
-      $('#stepDevis').classList.toggle('hide', !devis);
-      $('#fldMsg').classList.toggle('hide', devis);
-      $('#descArea').disabled = !devis; $('#descArea').required = devis;
+      var devis = state.branch === 'devis';
+      $('#descArea').disabled = !devis;
       $('#fileInput').disabled = !devis;
-      $('#lVeh').style.display = auto ? '' : 'none';
-      $('#lOpts').style.display = auto ? '' : 'none';
-      $('#lSlot').style.display = devis ? 'none' : '';
-      $('#dateHint').textContent = devis ? '(souhaitée, facultatif)' : '';
-      $('#recapTitle').textContent = devis ? 'Votre demande de devis' : 'Votre réservation';
-      $('#resaBtn').textContent   = devis ? 'Envoyer ma demande de devis' : 'Confirmer ma réservation';
-      $('#fSubject').value = devis ? 'Nouvelle demande de devis — MathClean' : 'Nouvelle réservation — MathClean';
-      renumber(); renderSlots(); recap(); check();
-      var next = auto ? $('#stepVeh') : (devis ? $('#stepDevis') : $('#stepDate'));
-      setTimeout(function(){ next.scrollIntoView({ behavior:'smooth', block:'start' }); }, 150);
+      refreshNav();
     });
   });
 
-  function renumber(){
-    var n = 1;
-    document.querySelectorAll('.step').forEach(function(s){
-      if (!s.classList.contains('hide')){
-        var num = s.querySelector('.step-num');
-        if (num) num.textContent = n++;
-      }
+  /* =========================== ÉTAPE 2 : automobile =========================== */
+  var typeEl = $('#typePick');
+  AUTO_TYPES.forEach(function(t){
+    var c = document.createElement('div');
+    c.className = 'pick';
+    c.innerHTML = '<span class="pname">'+t[0]+'</span><span class="pfrom">dès '+t[1]+' €</span><span class="pdesc">'+t[2]+'</span>';
+    c.addEventListener('click', function(){
+      document.querySelectorAll('#typePick .pick').forEach(function(x){ x.classList.remove('sel'); });
+      c.classList.add('sel');
+      state.autoType = t[0]; state.autoFrom = t[1];
+      $('#fType').value = t[0] + ' (dès ' + t[1] + ' €)';
+      $('#subVeh').classList.remove('hide');
+      $('#subOpts').classList.remove('hide');
+      refreshNav();
     });
-  }
+    typeEl.appendChild(c);
+  });
 
-  /* --------------------------- véhicules --------------------------- */
   var vehEl = $('#vehPick');
-  VEHICLES.forEach(function(pair){
+  VEHICLES.forEach(function(name){
     var v = document.createElement('div');
     v.className = 'veh-opt';
-    v.innerHTML = '<span>' + pair[0] + '</span><small>' + pair[1] + ' €</small>';
+    v.innerHTML = '<span>'+name+'</span>';
     v.addEventListener('click', function(){
-      document.querySelectorAll('.veh-opt').forEach(function(x){ x.classList.remove('sel'); });
+      document.querySelectorAll('#vehPick .veh-opt').forEach(function(x){ x.classList.remove('sel'); });
       v.classList.add('sel');
-      state.veh = pair[0]; state.vehPrice = pair[1];
-      $('#rVeh').textContent = pair[0]; $('#rVeh').classList.remove('empty');
-      $('#fVeh').value = pair[0] + ' (' + pair[1] + ' €)';
-      recap(); check();
+      state.veh = name; $('#fVeh').value = name;
+      refreshNav();
     });
     vehEl.appendChild(v);
   });
 
-  /* ---------------------------- options ---------------------------- */
   var optsEl = $('#opts');
   OPTIONS.forEach(function(triple){
     var row = document.createElement('label');
     row.className = 'opt-row';
-    row.innerHTML = '<input type="checkbox" value="' + triple[0] + ' (+' + triple[1] + ' €)" data-p="' + triple[1] + '"' +
-                    (triple[2] ? ' data-x="' + triple[2] + '"' : '') + '>' +
-                    '<span class="o-name">' + triple[0] + '</span><span class="o-price">+' + triple[1] + ' €</span>';
+    row.innerHTML = '<input type="checkbox" data-p="'+triple[1]+'"'+(triple[2]?' data-x="'+triple[2]+'"':'')+'>' +
+                    '<span class="o-name">'+triple[0]+'</span><span class="o-price">+'+triple[1]+' €</span>';
     var input = row.querySelector('input');
+    input.value = triple[0] + ' (+' + triple[1] + ' €)';
     input.addEventListener('change', function(e){
-      /* options exclusives (ex. : poils normal / beaucoup de poils) */
       var g = e.target.getAttribute('data-x');
       if (g && e.target.checked){
-        document.querySelectorAll('.opt-row input[data-x="' + g + '"]').forEach(function(c){
-          if (c !== e.target){ c.checked = false; c.closest('.opt-row').classList.remove('sel'); }
+        document.querySelectorAll('.opt-row input[data-x="'+g+'"]').forEach(function(c){
+          if (c !== e.target){ c.checked=false; c.closest('.opt-row').classList.remove('sel'); }
         });
       }
       row.classList.toggle('sel', e.target.checked);
@@ -457,40 +561,40 @@
       document.querySelectorAll('.opt-row input:checked').forEach(function(c){
         state.opts.push({ name:c.value, p:+c.getAttribute('data-p') });
       });
-      recap();
+      refreshNav();
     });
     optsEl.appendChild(row);
   });
 
-  /* --------------------------- calendrier --------------------------- */
+  /* =========================== ÉTAPE 2 : devis =========================== */
+  $('#descArea').addEventListener('input', refreshNav);
+  $('#upZone').addEventListener('click', function(){ $('#fileInput').click(); });
+  $('#fileInput').addEventListener('change', function(){
+    var f = this.files;
+    $('#upList').textContent = f.length
+      ? f.length + ' fichier' + (f.length>1?'s':'') + ' prêt' + (f.length>1?'s':'') + ' à envoyer 📎' : '';
+  });
+
+  /* =========================== ÉTAPE 3 : calendrier =========================== */
   var today = new Date(); today.setHours(0,0,0,0);
   var view = new Date(today.getFullYear(), today.getMonth(), 1);
+  function key(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
-  function key(d){
-    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-  }
   function drawCal(){
     $('#calTitle').textContent = MOIS[view.getMonth()] + ' ' + view.getFullYear();
-    $('#calPrev').disabled = view.getFullYear() === today.getFullYear() && view.getMonth() === today.getMonth();
-    var grid = $('#calGrid');
-    grid.innerHTML = '';
-    JOURS.forEach(function(j){
-      var d = document.createElement('div'); d.className = 'dow'; d.textContent = j; grid.appendChild(d);
-    });
-    var first = new Date(view), lead = (first.getDay() + 6) % 7;  /* lundi en tête */
-    for (var b = 0; b < lead; b++){
-      var bl = document.createElement('div'); bl.className = 'cal-day blank'; grid.appendChild(bl);
-    }
-    var last = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
-    for (var n = 1; n <= last; n++){
+    $('#calPrev').disabled = view.getFullYear()===today.getFullYear() && view.getMonth()===today.getMonth();
+    var grid = $('#calGrid'); grid.innerHTML = '';
+    JOURS.forEach(function(j){ var d=document.createElement('div'); d.className='dow'; d.textContent=j; grid.appendChild(d); });
+    var first = new Date(view), lead = (first.getDay()+6)%7;
+    for (var b=0;b<lead;b++){ var bl=document.createElement('div'); bl.className='cal-day blank'; grid.appendChild(bl); }
+    var last = new Date(view.getFullYear(), view.getMonth()+1, 0).getDate();
+    for (var n=1;n<=last;n++){
       (function(n){
         var d = new Date(view.getFullYear(), view.getMonth(), n);
-        var el = document.createElement('div');
-        el.className = 'cal-day';
-        el.textContent = n;
+        var el = document.createElement('div'); el.className='cal-day'; el.textContent=n;
         if (d < today) el.classList.add('off');
-        if (d.getTime() === today.getTime()) el.classList.add('today');
-        if (state.date === key(d)) el.classList.add('sel');
+        if (d.getTime()===today.getTime()) el.classList.add('today');
+        if (state.date===key(d)) el.classList.add('sel');
         el.addEventListener('click', function(){
           document.querySelectorAll('.cal-day').forEach(function(x){ x.classList.remove('sel'); });
           el.classList.add('sel');
@@ -498,152 +602,190 @@
           state.dateLabel = n + ' ' + MOIS[d.getMonth()] + ' ' + d.getFullYear();
           state.slot = null; state.slotHours = [];
           $('#fDate').value = state.dateLabel;
-          renderSlots(); recap(); check();
+          renderSlots(); refreshNav();
         });
         grid.appendChild(el);
       })(n);
     }
   }
-  $('#calPrev').addEventListener('click', function(){ view.setMonth(view.getMonth() - 1); drawCal(); });
-  $('#calNext').addEventListener('click', function(){ view.setMonth(view.getMonth() + 1); drawCal(); });
+  $('#calPrev').addEventListener('click', function(){ view.setMonth(view.getMonth()-1); drawCal(); });
+  $('#calNext').addEventListener('click', function(){ view.setMonth(view.getMonth()+1); drawCal(); });
   drawCal();
 
-  /* ---------------------------- créneaux ---------------------------- */
   function renderSlots(){
+    if (state.branch !== 'auto') return;
     var box = $('#slots'), note = $('#slotsNote');
     box.innerHTML = ''; note.textContent = '';
-    if (!state.type || state.type === 'devis'){ box.innerHTML = '<p class="slots-note">Choisissez d’abord votre prestation.</p>'; return; }
-    if (!state.date){ box.innerHTML = '<p class="slots-note">Choisissez d’abord votre date dans le calendrier.</p>'; return; }
-    var blocked = blockedHours(state.date);
-    var defs = [];
-    if (state.type === 'auto'){
-      defs = AUTO_SLOTS;
-      note.textContent = 'Prestation automobile : créneau de 3 h.';
-    } else {
-      TEXTILE_HOURS.forEach(function(h){
-        defs.push({ label: String(h).padStart(2,'0') + ':00 – ' + String(h+1).padStart(2,'0') + ':00', hours:[h] });
-      });
-      note.textContent = 'Prestation textile : créneau d’1 h, de 9 h à 20 h.';
-    }
-    var anyFree = false;
-    defs.forEach(function(def){
+    if (!state.date){ note.textContent = 'Choisissez d’abord votre date.'; return; }
+    var blocked = blockedHours(state.date), anyFree = false;
+    AUTO_SLOTS.forEach(function(def){
       var off = def.hours.some(function(h){ return blocked[h]; });
-      var el = document.createElement('div');
-      el.className = 'slot' + (off ? ' off' : '');
-      el.textContent = def.label;
+      var el = document.createElement('div'); el.className='slot'+(off?' off':''); el.textContent=def.label;
       if (!off){
         anyFree = true;
         el.addEventListener('click', function(){
           document.querySelectorAll('.slot').forEach(function(x){ x.classList.remove('sel'); });
           el.classList.add('sel');
-          state.slot = def.label; state.slotHours = def.hours;
-          $('#fSlot').value = def.label;
-          recap(); check();
+          state.slot = def.label; state.slotHours = def.hours; $('#fSlot').value = def.label;
+          refreshNav();
         });
       }
-      if (state.slot === def.label) el.classList.add('sel');
+      if (state.slot===def.label) el.classList.add('sel');
       box.appendChild(el);
     });
-    if (!anyFree) note.textContent = 'Tous les créneaux de cette date sont pris — choisissez un autre jour.';
+    note.textContent = anyFree ? 'Prestation automobile : créneau de 3 h.'
+                               : 'Tous les créneaux de cette date sont pris — choisissez un autre jour.';
   }
 
-  /* ------------------------------ récap ------------------------------ */
-  function recap(){
-    var el;
-    el = $('#rDate'); el.textContent = state.dateLabel || 'À choisir'; el.classList.toggle('empty', !state.dateLabel);
-    el = $('#rSlot'); el.textContent = state.slot || 'À choisir'; el.classList.toggle('empty', !state.slot);
-    if (state.type === 'auto'){
-      var sum = state.opts.reduce(function(a,o){ return a + o.p; }, 0);
-      var base = state.vehPrice || 49;
-      $('#rOpts').textContent = state.opts.length ? state.opts.length + ' option' + (state.opts.length > 1 ? 's' : '') + ' (+' + sum + ' €)' : 'Aucune';
-      $('#rPrice').textContent = (state.veh ? '' : 'dès ') + (base + sum) + ' €';
-      $('#fOpts').value  = state.opts.map(function(o){ return o.name; }).join(' | ') || 'Aucune';
-      $('#fTotal').value = (state.veh ? '' : 'dès ') + (base + sum) + ' €';
-    } else if (state.type){
-      $('#rPrice').textContent = state.from;
-      $('#fOpts').value = ''; $('#fVeh').value = ''; $('#fTotal').value = state.from;
-    }
-    if (state.type) $('#rPrice').classList.remove('empty');
-  }
-
-  /* --------------------------- validation --------------------------- */
-  function check(){
-    var ok;
-    if (state.type === 'devis'){
-      ok = !!state.svc && $('#descArea').value.trim().length >= 10;
-    } else if (state.type === 'auto'){
-      ok = !!(state.svc && state.veh && state.date && state.slot);
-    } else {
-      ok = !!(state.svc && state.date && state.slot);
-    }
-    $('#resaBtn').disabled = !ok;
-    var msg = '';
-    if (state.svc && !ok){
-      if (state.type === 'devis'){
-        msg = '✍️ Décrivez votre besoin à l\u2019étape 2 (quelques mots suffisent) pour activer l\u2019envoi.';
-      } else if (state.type === 'auto'){
-        msg = !state.veh ? '🚗 Choisissez votre véhicule (étape 2).'
-            : (!state.date ? '📅 Choisissez votre date dans le calendrier.'
-            : '⏰ Choisissez votre créneau.');
-      } else {
-        msg = !state.date ? '📅 Choisissez votre date dans le calendrier.' : '⏰ Choisissez votre créneau.';
-      }
-    }
-    var hint = $('#btnHint');
-    hint.textContent = msg;
-    hint.classList.toggle('hide', !msg);
-    updateProgress(ok);
-  }
-
-  /* ---- barre de progression façon wizard ---- */
-  function updateProgress(ready){
-    var step = 0, frac = 0.12;
-    if (state.svc){
-      if (state.type === 'auto'){
-        if (!state.veh){ step = 1; frac = 0.38; }
-        else if (!state.date || !state.slot){ step = 2; frac = 0.62; }
-        else { step = 3; frac = 0.9; }
-      } else if (state.type === 'devis'){
-        step = ($('#descArea').value.trim().length >= 10) ? 3 : 1;
-        frac = (step === 3) ? 0.9 : 0.5;
-      } else {
-        if (!state.date || !state.slot){ step = 2; frac = 0.55; }
-        else { step = 3; frac = 0.9; }
-      }
-    }
-    if (ready) frac = 1;
-    $('#rpNum').textContent = String(Math.min(step + 1, 4)).padStart(2, '0');
-    $('#rpFill').style.width = (frac * 100).toFixed(0) + '%';
-    document.querySelectorAll('.rp-labels span').forEach(function(el){
-      el.classList.toggle('on', +el.getAttribute('data-s') <= step);
+  /* =========================== ÉTAPE 4 : particulier / entreprise =========================== */
+  function setClient(type){
+    state.client = type; $('#fClient').value = type;
+    var parti = type === 'Particulier';
+    $('#grpParti').classList.toggle('hide', !parti);
+    $('#grpEntr').classList.toggle('hide', parti);
+    document.querySelectorAll('#grpParti input, #grpParti textarea').forEach(function(i){ i.disabled = !parti; });
+    document.querySelectorAll('#grpEntr input, #grpEntr textarea').forEach(function(i){ i.disabled = parti; });
+    document.querySelectorAll('.ctype button').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-client')===type);
     });
+    refreshNav();
+  }
+  document.querySelectorAll('.ctype button').forEach(function(b){
+    b.addEventListener('click', function(){ setClient(b.getAttribute('data-client')); });
+  });
+  setClient('Particulier');
+
+  /* =========================== validation par étape =========================== */
+  function contactValid(){
+    var grp = state.client === 'Particulier' ? '#grpParti' : '#grpEntr';
+    var ok = true;
+    document.querySelectorAll(grp+' input').forEach(function(i){ if (!i.value.trim()) ok = false; });
+    var email = document.querySelector(grp+' input[type=email]');
+    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())) ok = false;
+    return ok;
+  }
+  function stepValid(name){
+    if (name === 'presta')  return !!state.svc;
+    if (name === 'auto')    return !!(state.autoType && state.veh);
+    if (name === 'besoin')  return $('#descArea').value.trim().length >= 10;
+    if (name === 'date')    return state.branch==='auto' ? !!(state.date && state.slot) : !!state.date;
+    if (name === 'contact') return contactValid();
+    return true;
+  }
+  function hintFor(name){
+    if (name === 'presta')  return 'Sélectionnez une prestation pour continuer.';
+    if (name === 'auto')    return !state.autoType ? 'Choisissez un type de nettoyage.' : 'Choisissez le gabarit de votre véhicule.';
+    if (name === 'besoin')  return 'Décrivez votre besoin en quelques mots (10 caractères minimum).';
+    if (name === 'date')    return state.branch==='auto'
+                              ? (!state.date ? 'Choisissez une date.' : 'Choisissez un créneau horaire.')
+                              : 'Choisissez une date.';
+    if (name === 'contact') return 'Renseignez tous les champs pour confirmer.';
+    return '';
   }
 
-  $('#descArea').addEventListener('input', check);
+  /* =========================== affichage récap =========================== */
+  function estimate(){
+    if (state.branch !== 'auto') return 'Sur devis';
+    var sum = state.opts.reduce(function(a,o){ return a+o.p; }, 0);
+    return 'dès ' + (state.autoFrom + sum) + ' €';
+  }
+  function buildRecap(){
+    var rows = [['Prestation', state.svc || '—']];
+    if (state.branch === 'auto'){
+      rows.push(['Formule', state.autoType || '—']);
+      rows.push(['Véhicule', state.veh || '—']);
+      if (state.opts.length) rows.push(['Options', state.opts.length + ' sélectionnée' + (state.opts.length>1?'s':'')]);
+    }
+    if (state.dateLabel) rows.push(['Date', state.dateLabel]);
+    if (state.slot) rows.push(['Créneau', state.slot]);
+    rows.push(['Estimation', estimate()]);
+    var html = rows.map(function(r, i){
+      var cls = i === rows.length-1 ? ' tot' : '';
+      return '<div class="rl'+cls+'"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>';
+    }).join('');
+    $('#wrecap').innerHTML = html;
+    /* champs cachés récap */
+    $('#fTotal').value = estimate();
+    $('#fOpts').value  = state.opts.map(function(o){ return o.name; }).join(' | ') || (state.branch==='auto'?'Aucune':'');
+  }
 
-  /* ---------------- préselection via ?service= ---------------- */
+  /* =========================== navigation =========================== */
+  function showStep(name){
+    document.querySelectorAll('.wstep').forEach(function(s){
+      s.classList.toggle('on', s.getAttribute('data-step')===name);
+    });
+    if (name === 'date'){
+      var auto = state.branch === 'auto';
+      $('#slotWrap').classList.toggle('hide', !auto);
+      $('#dateSuffix').textContent = '';
+      $('#dateIntro').textContent = auto
+        ? 'Choisissez votre jour, puis votre créneau horaire.'
+        : 'Choisissez le jour souhaité pour votre intervention.';
+      if (auto) renderSlots();
+    }
+    if (name === 'contact') buildRecap();
+  }
+  function updateProgress(){
+    var s = seq();
+    var labels = LABELS[state.branch || 'devis'];
+    for (var i=0;i<4;i++){
+      var el = document.getElementById('lab'+i);
+      el.textContent = labels[i];
+      el.classList.toggle('on', i <= idx);
+    }
+    $('#rpNum').textContent = String(idx+1).padStart(2,'0');
+    $('#rpFill').style.width = (((idx+1)/4)*100).toFixed(0) + '%';
+  }
+  function refreshNav(){
+    var s = seq();
+    var name = s[idx];
+    var last = idx === s.length-1;
+    var valid = stepValid(name);
+    var next = $('#wNext');
+    next.disabled = !valid;
+    next.innerHTML = last ? (state.branch==='auto' ? 'Confirmer ma réservation' : 'Envoyer ma demande de devis')
+                          : 'Suivant →';
+    $('#wPrev').classList.toggle('hide', idx === 0);
+    $('#wNote').textContent = valid ? '' : hintFor(name);
+    if (name === 'contact') buildRecap();
+    updateProgress();
+  }
+
+  $('#wNext').addEventListener('click', function(){
+    var s = seq();
+    var name = s[idx];
+    if (!stepValid(name)) return;
+    if (idx === s.length-1){
+      /* dernière étape → envoi (déclenche la validation + l'AJAX de app.js) */
+      $('#fSubject').value = state.branch==='auto' ? 'Nouvelle réservation — MathClean' : 'Nouvelle demande de devis — MathClean';
+      if (state.branch==='auto' && state.date && state.slotHours.length){
+        saveBooking(state.date, { label: state.slot, hours: state.slotHours });
+      }
+      $('#resaForm').requestSubmit();
+      return;
+    }
+    idx++;
+    showStep(seq()[idx]);
+    refreshNav();
+    window.scrollTo({ top: 0, behavior:'smooth' });
+  });
+  $('#wPrev').addEventListener('click', function(){
+    if (idx === 0) return;
+    idx--;
+    showStep(seq()[idx]);
+    refreshNav();
+    window.scrollTo({ top: 0, behavior:'smooth' });
+  });
+
+  /* ----- pré-sélection via ?service= ----- */
   var wanted = new URLSearchParams(location.search).get('service');
   if (wanted){
-    document.querySelectorAll('.svc-opt').forEach(function(o){
+    document.querySelectorAll('#svcPick .pick').forEach(function(o){
       if (o.getAttribute('data-svc') === wanted) o.click();
     });
   }
 
-  /* ------------------------- fichiers (devis) ------------------------ */
-  $('#upZone').addEventListener('click', function(){ $('#fileInput').click(); });
-  $('#fileInput').addEventListener('change', function(){
-    var f = this.files;
-    $('#upList').textContent = f.length
-      ? f.length + ' fichier' + (f.length > 1 ? 's' : '') + ' prêt' + (f.length > 1 ? 's' : '') + ' à envoyer 📎'
-      : '';
-  });
-
-  /* ----------------------------- envoi ------------------------------ */
-  $('#resaForm').addEventListener('submit', function(){
-    if (state.type && state.type !== 'devis' && state.date && state.slotHours.length){
-      saveBooking(state.date, { type: state.type, label: state.slot, hours: state.slotHours });
-    }
-  });
+  refreshNav();
 })();
 </script>
 </body>
