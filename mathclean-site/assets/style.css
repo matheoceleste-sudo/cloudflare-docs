@@ -388,22 +388,20 @@ footer ul a:hover{color:var(--or);padding-left:5px}
 /* ===  fond salon fixe partout + contenu centré (feuille A4) === */
 /* ============================================================= */
 :root{
-  --noir:#f4eee2;        /* base crème (ex-fond sombre) */
-  --noir-2:#fbf7ee;      /* cartes / champs : blanc cassé */
-  --noir-3:#efe7d6;      /* survol / alt : beige */
-  --blanc:#12100c;       /* texte principal : quasi noir */
-  --gris:#2a251d;        /* texte secondaire : gris très foncé */
-  --or:#a97f28;          /* or plus profond pour contraste sur clair */
+  --noir:#ffffff;        /* base : blanc (feuilles / cartes) */
+  --noir-2:#ffffff;      /* cartes / champs : blanc */
+  --noir-3:#eef0f3;      /* survol / alt : gris très clair */
+  --blanc:#14141a;       /* texte principal : quasi noir */
+  --gris:#4a4a55;        /* texte secondaire : gris neutre */
+  --or:#a97f28;          /* or profond pour contraste sur blanc */
   --or-clair:#c19a45;
   --or-fonce:#7c5f22;
-  --ligne:rgba(120,95,45,.22);
-  --ombre:0 24px 60px -28px rgba(70,55,30,.35);
+  --ligne:rgba(20,20,30,.10);
+  --ombre:0 20px 50px -26px rgba(20,20,35,.22);
 }
-/* fond salon fixe, voilé de crème, identique sur toutes les pages */
+/* fond clair uni (blanc cassé très léger), les feuilles blanches se détachent dessus */
 body{
-  background:
-    linear-gradient(rgba(244,238,226,.80),rgba(238,231,216,.86)),
-    url('https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80') center/cover fixed no-repeat;
+  background:#f3f4f6;
   color:var(--blanc);
 }
 body::before{content:none}
@@ -422,7 +420,7 @@ section#avis .wrap, section#faq .wrap, section#contact .wrap{
   background:var(--noir);
   max-width:1000px;
   padding:56px clamp(24px,5vw,72px);
-  box-shadow:0 0 0 1px var(--ligne), 0 18px 50px -30px rgba(60,45,20,.4);
+  box-shadow:0 0 0 1px var(--ligne), 0 18px 50px -34px rgba(20,20,35,.28);
 }
 /* marges hautes/basses de la feuille (espace salon visible en haut et en bas) */
 header.nav + *, .journey + section, body > section:first-of-type{margin-top:0}
@@ -432,7 +430,7 @@ footer .wrap{padding-top:44px;padding-bottom:44px}
 
 /* Header : barre crème translucide */
 header.nav{background:transparent}
-header.nav.scrolled{background:rgba(250,247,238,.9);box-shadow:0 1px 0 var(--ligne)}
+header.nav.scrolled{background:rgba(255,255,255,.92);box-shadow:0 1px 0 var(--ligne),0 8px 24px -18px rgba(20,20,35,.3)}
 .brand{color:var(--blanc)}
 nav.menu a{color:var(--blanc)}
 @media(max-width:680px){
@@ -574,3 +572,29 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 .legal-body .ph{background:rgba(201,162,75,.16);border-radius:4px;padding:1px 6px;color:var(--or-fonce);font-weight:600}
 .legal-note{background:linear-gradient(160deg,var(--noir-3),var(--noir-2));border:1px solid var(--ligne);border-radius:14px;padding:15px 20px;margin-bottom:26px;color:var(--gris);font-size:.9rem}
 .legal-note b{color:var(--or)}
+
+/* ===== Animations d'apparition latérale au scroll ===== */
+.reveal-l,.reveal-r{opacity:0;transition:opacity .85s ease,transform .85s cubic-bezier(.2,.8,.2,1)}
+.reveal-l{transform:translateX(-54px)}
+.reveal-r{transform:translateX(54px)}
+.reveal-l.in,.reveal-r.in{opacity:1;transform:none}
+.reveal-l.d1,.reveal-r.d1{transition-delay:.08s}
+.reveal-l.d2,.reveal-r.d2{transition-delay:.16s}
+.reveal-l.d3,.reveal-r.d3{transition-delay:.24s}
+@media(max-width:640px){.reveal-l{transform:translateX(-30px)}.reveal-r{transform:translateX(30px)}}
+
+/* ===== Cartes "engagements" (blocs blancs) ===== */
+.feats .sec-head{margin-bottom:34px}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.feat{background:#fff;border:1px solid var(--ligne);border-radius:18px;padding:30px 30px;text-align:center;
+  box-shadow:0 18px 44px -30px rgba(20,20,35,.28);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.feat:hover{transform:translateY(-6px);box-shadow:0 26px 56px -30px rgba(20,20,35,.34)}
+.feat .fi{width:46px;height:46px;margin:0 auto 16px;color:var(--or)}
+.feat .fi svg{width:100%;height:100%}
+.feat h3{font-family:var(--serif);font-weight:600;font-size:1.5rem;color:var(--blanc);margin-bottom:10px}
+.feat p{color:var(--gris);line-height:1.7;font-size:.97rem;margin:0}
+@media(max-width:760px){.feat-grid{grid-template-columns:1fr;gap:18px}}
+
+/* Section engagements : cartes blanches posées sur le fond gris clair (comme la référence) */
+.feats .wrap{background:transparent !important;box-shadow:none !important;
+  padding-top:64px !important;padding-bottom:64px !important;max-width:1080px !important}

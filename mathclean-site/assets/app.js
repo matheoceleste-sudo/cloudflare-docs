@@ -28,7 +28,7 @@ if(slides.length){
 
 /* ===== Reveal au scroll ===== */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el=>io.observe(el));
 
 /* ===== Halo sur les cartes ===== */
 document.querySelectorAll('.card').forEach(c=>{
