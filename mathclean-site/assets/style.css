@@ -652,7 +652,7 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 
 /* ===== MathClean en vidéo ===== */
 .video-show .sec-head{margin-bottom:40px}
-.vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:720px;margin:0 auto}
-.vid{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#0b1826;
+.vid-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:26px}
+.vid{width:300px;max-width:100%;height:auto;display:block;background:#0b1826;
   border-radius:18px;border:1px solid var(--ligne);box-shadow:0 24px 60px -38px rgba(20,20,35,.34)}
-@media(max-width:640px){.vid-grid{grid-template-columns:1fr;max-width:330px;gap:20px}}
+@media(max-width:640px){.vid{width:330px}}
