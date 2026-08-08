@@ -644,3 +644,15 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 .ba-cap b{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--blanc)}
 .ba-cap span{font-size:.9rem;color:var(--gris)}
 @media(max-width:860px){.ba-grid{grid-template-columns:1fr;gap:28px}}
+
+/* Avant/Après : 3e paire seule centrée (desktop) */
+@media(min-width:861px){
+  .ba-grid .ba-pair:last-child:nth-child(odd){grid-column:1 / -1;max-width:calc(50% - 22px);margin-left:auto;margin-right:auto}
+}
+
+/* ===== MathClean en vidéo ===== */
+.video-show .sec-head{margin-bottom:40px}
+.vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:720px;margin:0 auto}
+.vid{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#0b1826;
+  border-radius:18px;border:1px solid var(--ligne);box-shadow:0 24px 60px -38px rgba(20,20,35,.34)}
+@media(max-width:640px){.vid-grid{grid-template-columns:1fr;max-width:330px;gap:20px}}
