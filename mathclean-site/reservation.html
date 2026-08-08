@@ -320,7 +320,7 @@
 <script>
 /* =====================================================================
    Réservation MathClean
-   - Automobile : véhicule (citadine 29 € → van 59 €) + options
+   - Automobile : véhicule (citadine 49 € → van 79 €) + options
      (5-20 €) + 2 créneaux de 3 h (09h-12h / 13h-16h)
    - Textiles (canapé, matelas, tapis) : créneaux d'1 h de 9h à 20h
    - Blocage croisé : un créneau voiture bloque les heures textiles
@@ -331,10 +331,10 @@
   var $ = function(s){ return document.querySelector(s); };
 
   var VEHICLES = [
-    ['Citadine', 29],
-    ['Berline', 39],
-    ['SUV / 4x4', 49],
-    ['Monospace / Van', 59]
+    ['Citadine', 49],
+    ['Berline', 59],
+    ['SUV / 4x4', 69],
+    ['Monospace / Van', 79]
   ];
   var AUTO_SLOTS = [
     { label:'09:00 – 12:00', hours:[9,10,11] },
@@ -347,7 +347,8 @@
     ['Retrait des poils d’animaux', 5, 'poils'],
     ['Retrait des poils d’animaux (beaucoup de poils)', 10, 'poils'],
     ['Shampoing des sièges', 10, null],
-    ['Jantes détaillées & brillant pneus', 20, null]
+    ['Jantes détaillées & brillant pneus', 20, null],
+    ['Désinfection totale des acariens &amp; allergènes', 15, null]
   ];
   var MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   var JOURS = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
@@ -553,7 +554,7 @@
     el = $('#rSlot'); el.textContent = state.slot || 'À choisir'; el.classList.toggle('empty', !state.slot);
     if (state.type === 'auto'){
       var sum = state.opts.reduce(function(a,o){ return a + o.p; }, 0);
-      var base = state.vehPrice || 29;
+      var base = state.vehPrice || 49;
       $('#rOpts').textContent = state.opts.length ? state.opts.length + ' option' + (state.opts.length > 1 ? 's' : '') + ' (+' + sum + ' €)' : 'Aucune';
       $('#rPrice').textContent = (state.veh ? '' : 'dès ') + (base + sum) + ' €';
       $('#fOpts').value  = state.opts.map(function(o){ return o.name; }).join(' | ') || 'Aucune';
