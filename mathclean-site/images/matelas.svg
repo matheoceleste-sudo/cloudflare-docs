@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Photo : nettoyage de matelas">
+  <rect width="900" height="1100" fill="#e4edf6"/>
+  <rect x="8" y="8" width="884" height="1084" fill="none" stroke="#9fbdd8" stroke-width="3" stroke-dasharray="14 10" rx="12"/>
+  <g fill="#5a86ab">
+    <circle cx="450" cy="510" r="34" fill="none" stroke="#5a86ab" stroke-width="5"/>
+    <circle cx="450" cy="510" r="14"/>
+    <rect x="398" y="458" width="26" height="16" rx="4"/>
+  </g>
+  <text x="450" y="600" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="26" fill="#41647f">Photo : nettoyage de matelas</text>
+  <text x="450" y="636" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#6c8ba3">Remplacez ce fichier par votre photo</text>
+</svg>

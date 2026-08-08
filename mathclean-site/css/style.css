@@ -1,0 +1,544 @@
+/* ==========================================================================
+   MATCLEANING — feuille de style principale
+   Palette reprise du site matcleaning-95.fr
+   ========================================================================== */
+
+:root {
+  --bleu-logo: #3aa7dc;        /* logo et titres de marque */
+  --bleu-primaire: #2e86c9;    /* boutons */
+  --bleu-primaire-fonce: #2571ad;
+  --bleu-footer: #35a3e0;      /* pied de page */
+  --bleu-bandeau-1: #2e86c9;   /* dégradé du bandeau sous le menu */
+  --bleu-bandeau-2: #5ab8e8;
+  --bleu-section: #d9e7f5;     /* fond bleu clair des sections */
+  --texte: #333940;
+  --texte-titre: #1b2a3a;
+  --etoile: #f2a900;           /* étoiles des avis */
+  --gris-carte: #f7f7f8;
+  --blanc: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Open Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--texte);
+  background: var(--blanc);
+  line-height: 1.65;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--bleu-primaire); }
+
+/* --------------------------------------------------------------------------
+   Barre supérieure + en-tête
+   -------------------------------------------------------------------------- */
+
+.topbar {
+  background: var(--blanc);
+  text-align: center;
+  padding: 0.9rem 1rem 0.2rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: #1d2b3a;
+}
+
+.site-header {
+  background: var(--blanc);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.header-inner {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0.8rem 1.2rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--bleu-logo);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.main-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+}
+
+.main-nav a {
+  color: #2c3540;
+  text-decoration: none;
+  font-size: 1.02rem;
+  padding: 0.2rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  border-bottom-color: #2c3540;
+}
+
+.main-nav a.btn-contact {
+  background: var(--bleu-primaire);
+  color: var(--blanc);
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 2.2rem;
+  font-size: 1.05rem;
+  margin-left: 0.8rem;
+}
+
+.main-nav a.btn-contact:hover {
+  background: var(--bleu-primaire-fonce);
+  border-bottom-color: transparent;
+}
+
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: 1px solid #cfd8e0;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 0.35rem 0.7rem;
+  color: #2c3540;
+  cursor: pointer;
+}
+
+/* Bandeau dégradé sous le menu */
+.banner-strip {
+  background: linear-gradient(90deg, var(--bleu-bandeau-1), var(--bleu-bandeau-2));
+  color: var(--blanc);
+  text-align: center;
+  padding: 0.55rem 1rem;
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+
+.section-light { background: var(--bleu-section); }
+.section-white { background: var(--blanc); }
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.section-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--texte-titre);
+  margin-bottom: 1.4rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-weight: 600;
+  color: var(--texte-titre);
+  margin-bottom: 2rem;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.split .photo img,
+.split .photo svg {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.split h2 { margin-bottom: 1.2rem; }
+
+.split p { margin-bottom: 1rem; }
+
+.split ul {
+  margin: 0.4rem 0 1rem 1.4rem;
+}
+
+.split h3,
+.content h3 {
+  color: var(--texte-titre);
+  margin: 1.2rem 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+/* Bouton principal */
+.btn {
+  display: inline-block;
+  background: var(--bleu-primaire);
+  color: var(--blanc);
+  text-decoration: none;
+  border: none;
+  border-radius: 999px;
+  padding: 1rem 2.4rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn:hover { background: var(--bleu-primaire-fonce); }
+
+.btn-center {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Avis Google
+   -------------------------------------------------------------------------- */
+
+.reviews-bar {
+  background: var(--gris-carte);
+  border-radius: 12px;
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.reviews-bar .score {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.reviews-bar .score .titre {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.reviews-bar .score .note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  font-size: 1.05rem;
+}
+
+.reviews-bar .btn { margin-left: auto; }
+
+.stars {
+  color: var(--etoile);
+  font-size: 1.35rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.6rem;
+}
+
+.review-card {
+  background: var(--gris-carte);
+  border: 1px solid #ececee;
+  border-radius: 10px;
+  padding: 1.4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: var(--blanc);
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: "Open Sans", "Segoe UI", sans-serif;
+}
+
+.review-head .nom {
+  font-weight: 700;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.review-head .badge { color: #1a73e8; font-size: 0.95rem; }
+
+.review-head .date {
+  color: #6b7075;
+  font-size: 0.9rem;
+}
+
+.review-card .texte { color: #222; }
+
+.review-card .google {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Carte
+   -------------------------------------------------------------------------- */
+
+.map-wrap { padding: 0 1.5rem 0; max-width: 1220px; margin: 0 auto 0; }
+
+.map-wrap iframe {
+  width: 100%;
+  height: 440px;
+  border: 0;
+  border-radius: 6px;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Avant / Après
+   -------------------------------------------------------------------------- */
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.ba-pair {
+  background: var(--blanc);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.ba-pair .images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ba-pair .legende {
+  padding: 0.9rem 1.1rem;
+  font-weight: 600;
+  color: var(--texte-titre);
+}
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-bloc {
+  background: var(--blanc);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.contact-bloc h3 { margin: 0 0 0.6rem; }
+
+.contact-bloc + .contact-bloc { margin-top: 1.5rem; }
+
+.contact-tel {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--bleu-primaire);
+  text-decoration: none;
+}
+
+form label {
+  display: block;
+  font-weight: 600;
+  margin: 1rem 0 0.3rem;
+  color: var(--texte-titre);
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #c9d4de;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--blanc);
+}
+
+form textarea { min-height: 130px; resize: vertical; }
+
+form .btn { margin-top: 1.4rem; }
+
+/* --------------------------------------------------------------------------
+   Pied de page
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--bleu-footer);
+  color: var(--blanc);
+  padding: 2.5rem 1.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.footer-cols h4 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.pill {
+  display: inline-block;
+  border: 1px solid var(--blanc);
+  border-radius: 999px;
+  padding: 0.35rem 1.6rem;
+  color: var(--blanc);
+  text-decoration: none;
+  margin: 0 0 0.9rem;
+  text-align: center;
+}
+
+.pill:hover { background: rgba(255, 255, 255, 0.15); }
+
+.footer-services .pill { min-width: 220px; display: block; max-width: 260px; }
+
+.footer-contact p { margin-bottom: 0.9rem; }
+
+.footer-social .icons {
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
+}
+
+.footer-social .icons a {
+  color: var(--blanc);
+  display: inline-flex;
+}
+
+.footer-social .icons svg {
+  width: 34px;
+  height: 34px;
+  fill: currentColor;
+}
+
+.footer-horaires { margin-top: 0.5rem; }
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   Pages intérieures
+   -------------------------------------------------------------------------- */
+
+.page-hero {
+  background: linear-gradient(90deg, var(--bleu-bandeau-1), var(--bleu-bandeau-2));
+  color: var(--blanc);
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.page-hero h1 { font-size: 2.1rem; }
+
+.page-hero p { max-width: 760px; margin: 0.8rem auto 0; }
+
+.content { max-width: 860px; }
+
+.content p, .content ul { margin-bottom: 1rem; }
+
+.content ul { margin-left: 1.4rem; }
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .header-inner { flex-wrap: wrap; }
+
+  .nav-toggle { display: block; }
+
+  .main-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding-top: 1rem;
+  }
+
+  .main-nav.open { display: flex; }
+
+  .main-nav a.btn-contact { margin-left: 0; }
+
+  .split,
+  .contact-grid,
+  .footer-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .split .photo { order: -1; }
+
+  .reviews-bar .btn { margin-left: 0; }
+}
+
+@media (max-width: 520px) {
+  .logo { font-size: 1.8rem; }
+  .topbar { font-size: 0.95rem; }
+  .page-hero h1 { font-size: 1.6rem; }
+}
