@@ -132,6 +132,15 @@
   .journey .jcap{padding-top:82px;padding-bottom:20px}
   .journey .jcap .eyebrow{display:none}
 }
+/* Mobile : pas d'animation de plongée — un seul hero statique, puis la présentation */
+@media (max-width:700px){
+  .journey{height:auto}
+  .journey .jstage{position:relative;height:100vh;height:100dvh;min-height:560px}
+  .journey .jscene[data-i="1"],.journey .jscene[data-i="2"],.journey .jscene[data-i="3"]{display:none}
+  .journey .jside{display:none}
+  .journey .jdots{display:none}
+  .journey .jcap{opacity:1 !important;transform:none !important}
+}
 .card-photo{display:block;width:100%;height:150px;object-fit:cover;border-radius:12px;background-size:cover;
   background-position:center;margin-bottom:16px;border:1px solid rgba(255,255,255,.06)}
 @media (max-width:640px){.card-photo{height:120px}}
@@ -395,13 +404,13 @@
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal" href="services/nettoyage-tapis-paris.html">
-        <img class="card-photo" src="https://images.pexels.com/photos/9462139/pexels-photo-9462139.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=640&amp;q=80" alt="Nettoyage et shampooing d'un tapis à Paris" loading="lazy" decoding="async" width="640" height="150">
+        <img class="card-photo" src="assets/photos/tapis-karcher.jpg" alt="Nettoyage et shampooing d'un tapis à Paris" loading="lazy" decoding="async" width="640" height="150">
         <h3>Nettoyage de tapis</h3>
         <p>Lavage en profondeur des fibres, ravivage des couleurs et détachage spécifique.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal d1" href="services/nettoyage-bateau-paris.html">
-        <img class="card-photo" src="https://images.pexels.com/photos/799878/pexels-photo-799878.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=640&amp;q=80" alt="Nettoyage d'un bateau et de ses textiles en Île-de-France" loading="lazy" decoding="async" width="640" height="150">
+        <img class="card-photo" src="assets/photos/bateau-yacht.jpg" alt="Nettoyage d'un bateau et de ses textiles en Île-de-France" loading="lazy" decoding="async" width="640" height="150">
         <h3>Nettoyage de bateau</h3>
         <p>Entretien nautique premium : coque, pont, sellerie. Sur la Seine et la Marne.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -425,7 +434,7 @@
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card reveal d1" href="services/nettoyage-bureau-paris.html">
-        <img class="card-photo" src="https://images.pexels.com/photos/30047570/pexels-photo-30047570.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=640&amp;q=80" alt="Nettoyage de bureaux professionnels en Île-de-France" loading="lazy" decoding="async" width="640" height="150">
+        <img class="card-photo" src="assets/photos/bureau-entreprise.jpg" alt="Nettoyage de bureaux professionnels en Île-de-France" loading="lazy" decoding="async" width="640" height="150">
         <h3>Nettoyage de bureau</h3>
         <p>Espaces de travail propres et sains. Désinfection et entretien de moquettes.</p>
         <span class="go">Voir la prestation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -480,7 +489,7 @@
     </div>
 
     <div class="pdrow flip">
-      <div class="pd-img reveal-r"><img src="https://images.pexels.com/photos/9462139/pexels-photo-9462139.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;q=80" alt="Nettoyage et shampooing d'un tapis à Paris" loading="lazy" decoding="async"></div>
+      <div class="pd-img reveal-r"><img src="assets/photos/tapis-karcher.jpg" alt="Nettoyage et shampooing d'un tapis à Paris" loading="lazy" decoding="async"></div>
       <div class="pd-txt reveal-l">
         <span class="pd-num">04 — Tapis</span>
         <h3>Nettoyage de tapis</h3>
@@ -490,7 +499,7 @@
     </div>
 
     <div class="pdrow">
-      <div class="pd-img reveal-l"><img src="https://images.pexels.com/photos/799878/pexels-photo-799878.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;q=80" alt="Nettoyage d'un bateau et de ses textiles en Île-de-France" loading="lazy" decoding="async"></div>
+      <div class="pd-img reveal-l"><img src="assets/photos/bateau-yacht.jpg" alt="Nettoyage d'un bateau et de ses textiles en Île-de-France" loading="lazy" decoding="async"></div>
       <div class="pd-txt reveal-r">
         <span class="pd-num">05 — Bateau</span>
         <h3>Nettoyage de bateau</h3>
@@ -530,7 +539,7 @@
     </div>
 
     <div class="pdrow">
-      <div class="pd-img reveal-l"><img src="https://images.pexels.com/photos/30047570/pexels-photo-30047570.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;q=80" alt="Nettoyage de bureaux professionnels en Île-de-France" loading="lazy" decoding="async"></div>
+      <div class="pd-img reveal-l"><img src="assets/photos/bureau-entreprise.jpg" alt="Nettoyage de bureaux professionnels en Île-de-France" loading="lazy" decoding="async"></div>
       <div class="pd-txt reveal-r">
         <span class="pd-num">09 — Bureau</span>
         <h3>Nettoyage de bureau</h3>
@@ -720,6 +729,8 @@
 (function(){
   var journey = document.getElementById('journey');
   if (!journey) return;
+  /* Mobile : hero statique, on ne lance pas l'animation de plongée */
+  if (window.matchMedia('(max-width:700px)').matches) return;
   var N = 4;
   var scenes = {}, imgs = {}, caps = {};
   Array.prototype.forEach.call(document.querySelectorAll('.jscene'), function(s){
