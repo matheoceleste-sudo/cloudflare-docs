@@ -1,51 +1,62 @@
-# Site MATCLEANING — nettoyage professionnel à domicile (Val-d'Oise)
+# Site MathClean — nettoyage premium à Paris & Île-de-France
 
-Site vitrine statique (HTML/CSS/JS pur, sans dépendance) reproduisant le design
-de matcleaning-95.fr. Il peut être hébergé tel quel sur n'importe quel domaine,
-par exemple **mathclean.fr**.
+Site vitrine statique (HTML/CSS/JS pur, sans dépendance), construit avec le
+même gabarit visuel « MATCLEANING » mais avec les **vraies informations de
+mathclean.fr** : nom, slogan, coordonnées, adresse, 10 prestations, avis
+clients, FAQ et photos réelles.
+
+## Informations reprises du vrai site mathclean.fr
+
+- **Nom** : MathClean — slogan « Une exigence de roi »
+- **Téléphone** : 06 23 07 52 59 (7j/7, 8h–20h)
+- **E-mail** : matheoceleste@gmail.com
+- **Adresse** : 4 Rue Nicolas Copernic, 93290 Tremblay-en-France
+- **Zone d'intervention** : Paris (75) et les 7 départements d'Île-de-France
+  (77, 78, 91, 92, 93, 94, 95), déplacement gratuit
+- **10 prestations** : automobile, canapé, matelas, tapis, bateau, avion,
+  terrasse, locaux, bureau, fin de chantier
+- **Photos réelles** : photo du fondateur (Mathéo), 3 paires avant/après
+  (siège auto, plan de travail, réfrigérateur professionnel), 3 photos
+  d'intervention — toutes reprises du zip fourni
 
 ## Structure
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Accueil : présentation, sections canapé / matelas / tapis / voiture, avis Google, carte |
-| `nettoyage-canape.html` | Page service canapé |
-| `nettoyage-tapis.html` | Page service tapis |
-| `nettoyage-matelas.html` | Page service matelas |
-| `nettoyage-voiture.html` | Page service intérieur voiture |
-| `avant-apres.html` | Galerie avants / après |
+| `index.html` | Accueil : présentation, avant/après, engagements, 10 services, zones, avis, FAQ, contact |
+| `nettoyage-automobile.html` | Detailing automobile, tarifs (49 à 79 €), options |
+| `nettoyage-canape.html` | Nettoyage de canapé |
+| `nettoyage-matelas.html` | Nettoyage de matelas |
+| `nettoyage-tapis.html` | Nettoyage de tapis |
+| `nettoyage-bateau.html` | Entretien nautique |
+| `nettoyage-avion.html` | Nettoyage d'avion / jet privé |
+| `nettoyage-terrasse.html` | Nettoyage de terrasse |
+| `nettoyage-locaux.html` | Nettoyage de locaux commerciaux |
+| `nettoyage-bureau.html` | Nettoyage de bureau |
+| `nettoyage-fin-de-chantier.html` | Nettoyage fin de chantier |
 | `contact.html` | Coordonnées + formulaire de devis + carte |
-| `mentions-legales.html` | Politique de confidentialité et mentions légales (à compléter) |
-| `css/style.css` | Feuille de style (couleurs dans les variables `:root` en haut du fichier) |
+| `mentions-legales.html` | Mentions légales (SIRET à compléter) |
+| `css/style.css` | Feuille de style (couleurs dans les variables `:root`) |
 | `js/main.js` | Menu mobile + année automatique |
-| `images/` | Images de remplacement (SVG) à remplacer par vos vraies photos |
+| `images/` | Photos réelles + logo lion (`lion.svg`) |
 
-## À personnaliser avant la mise en ligne
+## À compléter avant la mise en ligne
 
-1. **Photos** : remplacez les fichiers `images/*.svg` par vos vraies photos
-   (gardez les mêmes noms, ou mettez à jour les attributs `src` dans les pages).
-   Formats conseillés : JPG/WebP, largeur 900 px environ.
-2. **Lien « Laissez-nous un avis sur Google »** (`index.html`) : remplacez le
-   lien de recherche par le lien direct « Donner un avis » de votre fiche
-   Google Business.
-3. **Réseaux sociaux** : dans le pied de page de chaque fichier HTML, remplacez
-   les `href="#"` par les liens de vos comptes Facebook, Instagram, TikTok et X.
-4. **Mentions légales** (`mentions-legales.html`) : complétez les champs entre
-   crochets (SIRET, forme juridique, hébergeur, etc.).
-5. **Formulaire de contact** (`contact.html`) : il fonctionne en `mailto:`
-   (il ouvre la messagerie du visiteur). Pour recevoir les demandes
-   directement, créez un formulaire gratuit sur formspree.io et remplacez
-   l'attribut `action` du formulaire par l'URL fournie.
-6. **Nom de marque** : si le site doit s'appeler autrement (par ex. MATHCLEAN
-   au lieu de MATCLEANING), un simple rechercher/remplacer dans les fichiers
-   `.html` suffit.
+1. **SIRET** : à renseigner dans `mentions-legales.html` (champ signalé `[…]`).
+2. **Formulaire de contact** : utilise déjà `formsubmit.co` vers
+   matheoceleste@gmail.com, comme le site d'origine — aucune action requise,
+   mais la première soumission demande une validation par e-mail
+   (lien de confirmation envoyé par FormSubmit).
+3. **Nom de marque** : si un autre nom est souhaité, un rechercher/remplacer
+   sur « MathClean » dans les fichiers `.html` suffit.
 
-## Mise en ligne (exemple avec Cloudflare Pages, gratuit)
+## Mise en ligne (Cloudflare Pages, gratuit)
 
-1. Créez un compte sur https://dash.cloudflare.com.
-2. Menu **Workers & Pages → Create → Pages → Upload assets**.
-3. Glissez-déposez le contenu du dossier `mathclean-site/`.
-4. Dans l'onglet **Custom domains**, ajoutez votre domaine (ex. mathclean.fr).
+1. Dézippez l'archive — tous les fichiers doivent être **à la racine**
+   (pas dans un sous-dossier).
+2. Dashboard Cloudflare → **Workers & Pages → Create → Pages → Upload
+   assets**.
+3. Glissez-déposez le contenu du dossier (pas le zip lui-même).
+4. Dans **Custom domains**, ajoutez mathclean.fr.
 
-Le site fonctionne aussi sur Netlify, OVH, o2switch ou tout hébergement
-classique : il suffit de copier les fichiers à la racine du serveur web.
+Fonctionne aussi sur Netlify, OVH, o2switch ou tout hébergement classique.
