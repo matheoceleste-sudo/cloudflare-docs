@@ -656,3 +656,10 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 .vid{width:300px;max-width:100%;height:auto;display:block;background:#0b1826;
   border-radius:18px;border:1px solid var(--ligne);box-shadow:0 24px 60px -38px rgba(20,20,35,.34)}
 @media(max-width:640px){.vid{width:330px}}
+
+/* ===== Galerie interventions (photos réelles) ===== */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.gal-grid img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;border:1px solid var(--ligne);
+  box-shadow:0 20px 50px -34px rgba(20,20,35,.3);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.gal-grid img:hover{transform:translateY(-5px)}
+@media(max-width:640px){.gal-grid{grid-template-columns:1fr 1fr;gap:12px}}
