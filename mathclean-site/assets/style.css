@@ -667,3 +667,30 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 /* Sous-titre à l'intérieur de « Nos résultats » (vidéos / galerie fusionnées) */
 .ba-sub{text-align:center;font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);color:var(--blanc);
   margin:64px 0 30px}
+
+/* ===== Prestations : cartes-images interactives (spotlight + description au survol) ===== */
+.presta-cards .sec-head{margin-bottom:44px}
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.pcards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pcards{grid-template-columns:1fr}}
+.pcard{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/2;
+  background:#0b1826 center/cover no-repeat;box-shadow:0 22px 55px -34px rgba(20,20,35,.42);
+  transition:opacity .4s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.pcard::after{content:"";position:absolute;inset:0;z-index:1;transition:background .45s ease;
+  background:linear-gradient(to top,rgba(8,10,14,.92) 0%,rgba(8,10,14,.5) 42%,rgba(8,10,14,.08) 74%)}
+.pc-page{position:absolute;inset:0;z-index:3}
+.pc-body{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:22px 24px;pointer-events:none}
+.pc-n{font-family:var(--serif);font-size:1rem;color:var(--or-clair);letter-spacing:.05em}
+.pc-body h3{font-family:var(--serif);font-weight:600;font-size:1.5rem;line-height:1.1;color:#fff;margin:3px 0 0}
+.pc-reveal{max-height:0;opacity:0;overflow:hidden;transform:translateY(8px);
+  transition:max-height .5s ease,opacity .45s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.pc-reveal p{color:rgba(255,255,255,.86);font-size:.94rem;line-height:1.55;margin:10px 0 12px}
+.pc-cta{display:inline-flex;align-items:center;gap:7px;color:var(--or-clair);font-weight:700;font-size:.9rem;
+  letter-spacing:.03em;pointer-events:auto;position:relative;z-index:5}
+.pc-cta svg{width:15px;height:15px}
+.pcard:hover .pc-reveal{max-height:220px;opacity:1;transform:none}
+.pcard:hover{transform:translateY(-5px)}
+/* survol : toutes les cartes s'assombrissent, seule la carte visée reste éclairée */
+.pcards:hover .pcard::after{background:linear-gradient(to top,rgba(6,8,12,.9) 0%,rgba(6,8,12,.78) 100%)}
+.pcards .pcard:hover::after{background:linear-gradient(to top,rgba(8,10,14,.92) 0%,rgba(8,10,14,.42) 56%,rgba(8,10,14,0) 100%)}
+@media(hover:none){.pcards:hover .pcard::after{background:linear-gradient(to top,rgba(8,10,14,.92) 0%,rgba(8,10,14,.42) 56%,rgba(8,10,14,0) 100%)}.pcard .pc-reveal{max-height:220px;opacity:1;transform:none}}
