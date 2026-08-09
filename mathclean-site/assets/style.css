@@ -663,3 +663,7 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
   box-shadow:0 20px 50px -34px rgba(20,20,35,.3);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
 .gal-grid img:hover{transform:translateY(-5px)}
 @media(max-width:640px){.gal-grid{grid-template-columns:1fr 1fr;gap:12px}}
+
+/* Sous-titre à l'intérieur de « Nos résultats » (vidéos / galerie fusionnées) */
+.ba-sub{text-align:center;font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);color:var(--blanc);
+  margin:64px 0 30px}
