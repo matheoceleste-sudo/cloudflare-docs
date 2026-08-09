@@ -690,7 +690,7 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 .pc-cta svg{width:15px;height:15px}
 .pcard:hover .pc-reveal{max-height:220px;opacity:1;transform:none}
 .pcard:hover{transform:translateY(-5px)}
-/* survol : toutes les cartes s'assombrissent, seule la carte visée reste éclairée */
-.pcards:hover .pcard::after{background:linear-gradient(to top,rgba(6,8,12,.9) 0%,rgba(6,8,12,.78) 100%)}
+/* survol : les cartes s'assombrissent UNIQUEMENT quand une case est survolée (pas les espaces autour) */
+.pcards:has(.pcard:hover) .pcard::after{background:linear-gradient(to top,rgba(6,8,12,.9) 0%,rgba(6,8,12,.78) 100%)}
 .pcards .pcard:hover::after{background:linear-gradient(to top,rgba(8,10,14,.92) 0%,rgba(8,10,14,.42) 56%,rgba(8,10,14,0) 100%)}
 @media(hover:none){.pcards:hover .pcard::after{background:linear-gradient(to top,rgba(8,10,14,.92) 0%,rgba(8,10,14,.42) 56%,rgba(8,10,14,0) 100%)}.pcard .pc-reveal{max-height:220px;opacity:1;transform:none}}
