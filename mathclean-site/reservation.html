@@ -100,6 +100,52 @@
 .item-qty button:hover{border-color:var(--or);color:var(--or)}
 .item-qty b{min-width:18px;text-align:center;color:var(--or);font-size:1rem}
 
+/* ===== Packs (formules détaillées) ===== */
+.packs{display:grid;gap:18px}
+.pack{border:1.5px solid var(--ligne);border-radius:18px;overflow:hidden;background:var(--noir-2);transition:.25s}
+.pack:hover{border-color:rgba(169,127,40,.55);box-shadow:0 18px 44px -30px rgba(20,20,35,.3)}
+.pack.added{border-color:var(--or);box-shadow:0 0 0 3px rgba(169,127,40,.13)}
+.pack-img{height:170px;background:#0b1826 center/cover no-repeat}
+.pack-body{padding:18px 20px 20px}
+.pack-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.pack-badges span{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;
+  color:var(--gris);background:var(--noir-3);border:1px solid var(--ligne);border-radius:99px;padding:5px 12px}
+.pack-badges svg{width:13px;height:13px;color:var(--or)}
+.pack h4{font-family:var(--sans);font-size:1.15rem;font-weight:800;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--blanc);margin:0 0 4px}
+.pack .tag{font-size:.88rem;color:var(--gris);margin:0 0 12px}
+.pack-list{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:5px}
+.pack-list li{position:relative;padding-left:20px;font-size:.9rem;color:var(--gris);line-height:1.45}
+.pack-list li::before{content:"";position:absolute;left:2px;top:.52em;width:6px;height:6px;border-radius:50%;background:var(--or)}
+.pack-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  border-top:1px solid var(--ligne);padding-top:15px;flex-wrap:wrap}
+.pack-price b{font-size:1.35rem;color:var(--or);font-weight:800;line-height:1}
+.pack-price small{display:block;font-size:.78rem;color:var(--gris);margin-top:3px}
+.pack-btn{cursor:pointer;border:0;border-radius:99px;padding:12px 26px;font-family:var(--sans);font-weight:700;
+  font-size:.92rem;background:linear-gradient(120deg,var(--or-clair),var(--or));color:#fff;transition:.25s}
+.pack-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px var(--or)}
+.pack-qty{display:flex;align-items:center;gap:10px}
+.pack-qty button{cursor:pointer;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ligne);
+  background:none;color:var(--blanc);font-size:1.1rem;transition:.2s;font-family:var(--sans)}
+.pack-qty button:hover{border-color:var(--or);color:var(--or)}
+.pack-qty b{min-width:20px;text-align:center;color:var(--or)}
+
+/* ===== Options façon « Ajoutez des options » ===== */
+.opt2-list{display:grid;gap:0;border:1.5px solid var(--ligne);border-radius:14px;overflow:hidden;background:var(--noir-2)}
+.opt2{display:flex;align-items:center;gap:14px;padding:15px 16px;cursor:pointer;
+  border-bottom:1px solid var(--ligne);transition:.2s}
+.opt2:last-child{border-bottom:0}
+.opt2:hover{background:var(--noir-3)}
+.opt2 input{width:20px;height:20px;flex:0 0 20px;accent-color:var(--or);cursor:pointer}
+.opt2 .o-name{flex:1;min-width:0;font-size:.95rem;font-weight:700;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--blanc)}
+.opt2 .o-name em{display:block;font-style:normal;font-size:.84rem;font-weight:400;letter-spacing:0;
+  text-transform:none;color:var(--gris);margin-top:3px;line-height:1.45}
+.opt2 .o-pill{flex:0 0 auto;background:var(--noir-3);border:1px solid var(--ligne);color:var(--or);
+  font-weight:800;font-size:.88rem;border-radius:99px;padding:8px 16px;white-space:nowrap}
+.opt2.on{background:var(--noir-3)}
+.opt2.on .o-pill{background:linear-gradient(120deg,var(--or-clair),var(--or));color:#fff;border-color:transparent}
+
 /* véhicule (automobile) */
 .veh-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:18px}
 @media(max-width:560px){.veh-pick{grid-template-columns:repeat(2,1fr)}}
@@ -299,11 +345,11 @@
 
             <!-- Automobile -->
             <div class="cat-pane on" data-pane="auto">
-              <p class="cat-note">Choisissez d'abord le gabarit de votre véhicule, puis la formule. Chaque prestation automobile compte <b>3 h</b> d'intervention.</p>
+              <p class="cat-note">Choisissez le gabarit de votre véhicule, puis votre formule. Le tarif s'ajuste automatiquement.</p>
               <div class="veh-pick" id="vehPick"></div>
-              <div class="item-list" id="listAuto"></div>
-              <p class="cat-note" style="margin:18px 0 10px"><b>Options automobile</b> (à ajouter à votre formule)</p>
-              <div class="item-list" id="listOpts"></div>
+              <div class="packs" id="listAuto"></div>
+              <p class="cat-note" style="margin:26px 0 12px;font-size:1.05rem;color:var(--blanc);font-weight:700">Ajoutez des options</p>
+              <div class="opt2-list" id="listOpts"></div>
             </div>
 
             <!-- Textile -->
@@ -480,22 +526,47 @@
   var VEHICLES = [['Citadine',0],['Berline',10],['SUV / 4x4',20],['Monospace / Van',30]];
   var vehIdx = 0;
 
+  /* formules automobile : [nom, prix de base, durée (min), accroche, contenu, image] */
   var AUTO = [
-    ['Nettoyage simple',        39,  'Aspiration, plastiques &amp; vitres'],
-    ['Full intérieur',          70,  'Intérieur nettoyé en profondeur'],
-    ['Extérieur uniquement',    70,  'Carrosserie, jantes &amp; vitres'],
-    ['Nettoyage complet',      130,  'Intérieur + extérieur'],
-    ['Sortie de concession',   400,  'Intérieur + extérieur + polissage'],
-    ['Polissage',              300,  'Correction &amp; brillance carrosserie']
+    ['Nettoyage simple', 39, 120, 'Idéal pour un coup de propre régulier',
+      ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord',
+       'Nettoyage des plastiques','Nettoyage des vitres intérieures',
+       'Désinfection complète à la vapeur','Parfum d’ambiance'],
+      'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
+    ['Full intérieur', 70, 150, 'Idéal pour un nettoyage en profondeur',
+      ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord',
+       'Nettoyage des plastiques','Nettoyage des vitres intérieures',
+       'Désinfection complète à la vapeur','Sièges cuir nettoyés ou pressing des sièges tissu',
+       'Pressing des tapis et moquettes','Parfum d’ambiance'],
+      'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
+    ['Extérieur uniquement', 70, 90, 'Idéal pour retrouver une carrosserie nette',
+      ['Lavage complet de la carrosserie','Nettoyage des jantes et passages de roues',
+       'Brillant pneus','Nettoyage des vitres extérieures','Séchage sans trace'],
+      'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
+    ['Nettoyage complet', 130, 180, 'Idéal pour un nettoyage optimal, intérieur et extérieur',
+      ['Tout le Full intérieur','Protection des plastiques','Traitement des cuirs',
+       'Nettoyage des battements de portes','Nettoyage du ciel de toit',
+       'Lavage complet de la carrosserie','Jantes et brillant pneus','Parfum d’ambiance'],
+      'assets/photos/polissage-2.jpg'],
+    ['Sortie de concession', 400, 300, 'La remise à neuf totale de votre véhicule',
+      ['Tout le Nettoyage complet','Compartiment de la roue de secours',
+       'Décontamination de la peinture','Polissage carrosserie complet',
+       'Finition miroir et protection','Parfum d’ambiance'],
+      'assets/photos/polissage-1.jpg'],
+    ['Polissage carrosserie', 300, 180, 'Réduction des micro-rayures et éclat profond',
+      ['Décontamination de la peinture','Correction des micro-rayures et tourbillons',
+       'Travail minutieux autour des optiques et poignées','Lustrage de finition',
+       'Finition miroir durable'],
+      'assets/photos/polissage-1.jpg']
   ];
-  /* options auto : pas de durée supplémentaire (comprises dans les 3 h) */
+  /* options auto : pas de durée supplémentaire (comprises dans la formule) */
   var OPTS = [
-    ['Coffre : aspiration + shampoing',            5],
-    ['Retrait des poils d’animaux',                5],
-    ['Retrait des poils d’animaux (beaucoup)',    10],
-    ['Shampoing des sièges',                      10],
-    ['Jantes détaillées &amp; brillant pneus',    20],
-    ['Désinfection acariens &amp; allergènes',    15]
+    ['Coffre',              5,  'Aspiration et shampoing complet du coffre'],
+    ['Poils d’animaux',     5,  'Retrait des poils sur sièges, tapis et moquettes'],
+    ['Beaucoup de poils',  10,  'Traitement renforcé pour les véhicules très chargés en poils'],
+    ['Shampoing des sièges',10, 'Pressing en injection-extraction de l’ensemble des sièges'],
+    ['Jantes détaillées',  20,  'Nettoyage détaillé des jantes et brillant pneus'],
+    ['Acariens & allergènes',15,'Désinfection totale à haute température de l’habitacle']
   ];
   var TEXTILE = [
     ['Canapé 2 places',        39, 'Injection-extraction, détachage'],
@@ -610,20 +681,54 @@
       d.addEventListener('click',function(){ vehIdx=n; renderCatalog(); });
       vp.appendChild(d);
     });
-    /* --- formules auto --- */
+    /* --- formules auto : cartes « pack » détaillées --- */
     var la=$('#listAuto'); la.innerHTML='';
+    var veh=VEHICLES[vehIdx];
     AUTO.forEach(function(a){
-      var veh=VEHICLES[vehIdx], price=a[1]+veh[1];
-      var key='auto:'+a[0]+':'+veh[0];
-      la.appendChild(itemRow(key, a[0], a[2]+' · '+veh[0], price+' €', '3 h',
-        function(){ addItem(key, a[0]+' ('+veh[0]+')', '', price, MIN_LOURD, false); }));
+      var price=a[1]+veh[1], mini=a[1], maxi=a[1]+VEHICLES[VEHICLES.length-1][1];
+      var key='auto:'+a[0]+':'+veh[0], q=qtyOf(key);
+      var el=document.createElement('article');
+      el.className='pack'+(q?' added':'');
+      el.innerHTML=
+        '<div class="pack-img" style="background-image:url(\''+a[5]+'\')"></div>'+
+        '<div class="pack-body">'+
+          '<div class="pack-badges">'+
+            '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg>Nettoyage</span>'+
+            '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'+fmtDur(a[2])+'</span>'+
+          '</div>'+
+          '<h4>'+a[0]+'</h4>'+
+          '<p class="tag">'+a[3]+'</p>'+
+          '<ul class="pack-list">'+a[4].map(function(x){ return '<li>'+x+'</li>'; }).join('')+'</ul>'+
+          '<div class="pack-foot">'+
+            '<div class="pack-price"><b>'+price+' €</b><small>'+veh[0]+' · de '+mini+' € à '+maxi+' € selon le gabarit</small></div>'+
+            (q ? '<div class="pack-qty"><button type="button" data-a="-">−</button><b>'+q+'</b><button type="button" data-a="+">+</button></div>'
+               : '<button type="button" class="pack-btn">Ajouter</button>')+
+          '</div>'+
+        '</div>';
+      if(q){
+        el.querySelector('[data-a="-"]').addEventListener('click',function(){ changeQty(key,-1); });
+        el.querySelector('[data-a="+"]').addEventListener('click',function(){ changeQty(key,1); });
+      } else {
+        el.querySelector('.pack-btn').addEventListener('click',function(){
+          addItem(key, a[0]+' ('+veh[0]+')', '', price, a[2], false);
+        });
+      }
+      la.appendChild(el);
     });
-    /* --- options auto --- */
+    /* --- options auto : cases à cocher + pastille de prix --- */
     var lo=$('#listOpts'); lo.innerHTML='';
     OPTS.forEach(function(o){
-      var key='opt:'+o[0];
-      lo.appendChild(itemRow(key, o[0], '', '+'+o[1]+' €', 'incluse',
-        function(){ addItem(key, o[0], 'option', o[1], 0, false); }));
+      var key='opt:'+o[0], on=qtyOf(key)>0;
+      var row=document.createElement('label');
+      row.className='opt2'+(on?' on':'');
+      row.innerHTML='<input type="checkbox"'+(on?' checked':'')+'>'+
+                    '<span class="o-name">'+o[0]+'<em>'+o[2]+'</em></span>'+
+                    '<span class="o-pill">+ '+o[1]+',00 €</span>';
+      row.querySelector('input').addEventListener('change',function(e){
+        if(e.target.checked) addItem(key, o[0], 'option', o[1], 0, false);
+        else changeQty(key, -qtyOf(key));
+      });
+      lo.appendChild(row);
     });
     /* --- textile --- */
     var lt=$('#listTextile'); lt.innerHTML='';
