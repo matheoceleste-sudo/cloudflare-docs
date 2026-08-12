@@ -345,8 +345,7 @@
 
             <!-- Automobile -->
             <div class="cat-pane on" data-pane="auto">
-              <p class="cat-note">Choisissez le gabarit de votre véhicule, puis votre formule. Le tarif s'ajuste automatiquement.</p>
-              <div class="veh-pick" id="vehPick"></div>
+              <p class="cat-note">Nos formules automobile, à tarif unique quel que soit votre véhicule.</p>
               <div class="packs" id="listAuto"></div>
               <p class="cat-note" style="margin:26px 0 12px;font-size:1.05rem;color:var(--blanc);font-weight:700">Ajoutez des options</p>
               <div class="opt2-list" id="listOpts"></div>
@@ -522,24 +521,21 @@
   var MIN_TEXTILE = 45;   /* 45 min par pièce textile */
   var MIN_LOURD   = 180;  /* 3 h : automobile & bateau */
 
-  /* gabarits véhicule : supplément appliqué aux formules auto */
-  var VEHICLES = [['Citadine',0],['Berline',10],['SUV / 4x4',20],['Monospace / Van',30]];
-  var vehIdx = 0;
 
   /* formules automobile : [nom, prix de base, durée (min), accroche, contenu, image] */
   var AUTO = [
-    ['Pack Standard', 50, 120, 'Idéal pour un coup de propre régulier',
+    ['Pack Standard', 70, 120, 'Idéal pour un coup de propre régulier',
       ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord',
        'Nettoyage des plastiques','Nettoyage des vitres intérieures',
        'Désinfection complète à la vapeur','Parfum d’ambiance'],
       'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
-    ['Pack Premium', 70, 150, 'Idéal pour un nettoyage en profondeur',
+    ['Pack Premium', 90, 150, 'Idéal pour un nettoyage en profondeur',
       ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord',
        'Nettoyage des plastiques','Nettoyage des vitres intérieures',
        'Désinfection complète à la vapeur','Nettoyage sièges cuir ou pressing des sièges tissus',
        'Pressing des tapis et moquettes','Parfum d’ambiance'],
       'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
-    ['Pack Prestige', 100, 180, 'Idéal pour un nettoyage optimal',
+    ['Pack Prestige', 120, 180, 'Idéal pour un nettoyage optimal',
       ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord',
        'Nettoyage des plastiques','Protection plastiques','Nettoyage des vitres intérieures',
        'Nettoyage des sièges en cuir ou pressing des sièges en tissus',
@@ -552,25 +548,25 @@
       ['Lavage complet de la carrosserie','Nettoyage des jantes et passages de roues',
        'Brillant pneus','Nettoyage des vitres extérieures','Séchage sans trace'],
       'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
+    ['Polissage carrosserie', 350, 180, 'Réduction des micro-rayures et éclat profond',
+      ['Décontamination de la peinture','Correction des micro-rayures et tourbillons',
+       'Travail minutieux autour des optiques et poignées','Lustrage de finition',
+       'Finition miroir durable'],
+      'assets/photos/polissage-1.jpg'],
     ['Sortie de concession', 400, 300, 'La remise à neuf totale de votre véhicule',
       ['Tout le Pack Prestige','Décontamination de la peinture',
        'Polissage carrosserie complet','Finition miroir et protection',
        'Lavage complet de la carrosserie','Parfum d’ambiance'],
-      'assets/photos/polissage-1.jpg'],
-    ['Polissage carrosserie', 300, 180, 'Réduction des micro-rayures et éclat profond',
-      ['Décontamination de la peinture','Correction des micro-rayures et tourbillons',
-       'Travail minutieux autour des optiques et poignées','Lustrage de finition',
-       'Finition miroir durable'],
       'assets/photos/polissage-1.jpg']
   ];
   /* options auto : pas de durée supplémentaire (comprises dans la formule) */
   var OPTS = [
-    ['Coffre',              5,  'Aspiration et shampoing complet du coffre'],
-    ['Poils d’animaux',     5,  'Retrait des poils sur sièges, tapis et moquettes'],
-    ['Beaucoup de poils',  10,  'Traitement renforcé pour les véhicules très chargés en poils'],
-    ['Shampoing des sièges',10, 'Pressing en injection-extraction de l’ensemble des sièges'],
-    ['Jantes détaillées',  20,  'Nettoyage détaillé des jantes et brillant pneus'],
-    ['Acariens & allergènes',15,'Désinfection totale à haute température de l’habitacle']
+    ['Coffre',                 5,  'Aspiration et shampoing complet du coffre', 0],
+    ['Poils d’animaux',        5,  'Retrait des poils sur sièges, tapis et moquettes', 0],
+    ['Jantes détaillées',     10,  'Nettoyage détaillé des jantes et brillant pneus', 0],
+    ['Acariens & allergènes', 10,  'Désinfection totale à haute température de l’habitacle', 0],
+    ['Traitement cuir & alcantara', 20, 'Nettoyage et nourrissage des cuirs et de l’alcantara', 0],
+    ['Neutralisation des odeurs par ozone', 30, 'Traitement à l’ozone d’1 h pour éliminer durablement les mauvaises odeurs, bactéries et moisissures, sans produits chimiques', 60]
   ];
   var TEXTILE = [
     ['Canapé 2 places',        39, 'Injection-extraction, détachage'],
@@ -676,21 +672,11 @@
   }
 
   function renderCatalog(){
-    /* --- véhicules --- */
-    var vp=$('#vehPick'); vp.innerHTML='';
-    VEHICLES.forEach(function(v,n){
-      var d=document.createElement('div');
-      d.className='veh-opt'+(n===vehIdx?' sel':'');
-      d.innerHTML='<span>'+v[0]+'</span><small>'+(v[1]?('+'+v[1]+' €'):'inclus')+'</small>';
-      d.addEventListener('click',function(){ vehIdx=n; renderCatalog(); });
-      vp.appendChild(d);
-    });
     /* --- formules auto : cartes « pack » détaillées --- */
     var la=$('#listAuto'); la.innerHTML='';
-    var veh=VEHICLES[vehIdx];
     AUTO.forEach(function(a){
-      var price=a[1]+veh[1], mini=a[1], maxi=a[1]+VEHICLES[VEHICLES.length-1][1];
-      var key='auto:'+a[0]+':'+veh[0], q=qtyOf(key);
+      var price=a[1];
+      var key='auto:'+a[0], q=qtyOf(key);
       var el=document.createElement('article');
       el.className='pack'+(q?' added':'');
       el.innerHTML=
@@ -704,7 +690,7 @@
           '<p class="tag">'+a[3]+'</p>'+
           '<ul class="pack-list">'+a[4].map(function(x){ return '<li>'+x+'</li>'; }).join('')+'</ul>'+
           '<div class="pack-foot">'+
-            '<div class="pack-price"><b>'+price+' €</b><small>'+veh[0]+' · de '+mini+' € à '+maxi+' € selon le gabarit</small></div>'+
+            '<div class="pack-price"><b>'+price+' €</b><small>tarif tout compris, quel que soit le véhicule</small></div>'+
             (q ? '<div class="pack-qty"><button type="button" data-a="-">−</button><b>'+q+'</b><button type="button" data-a="+">+</button></div>'
                : '<button type="button" class="pack-btn">Ajouter</button>')+
           '</div>'+
@@ -714,7 +700,7 @@
         el.querySelector('[data-a="+"]').addEventListener('click',function(){ changeQty(key,1); });
       } else {
         el.querySelector('.pack-btn').addEventListener('click',function(){
-          addItem(key, a[0]+' ('+veh[0]+')', '', price, a[2], false);
+          addItem(key, a[0], '', price, a[2], false);
         });
       }
       la.appendChild(el);
@@ -729,7 +715,7 @@
                     '<span class="o-name">'+o[0]+'<em>'+o[2]+'</em></span>'+
                     '<span class="o-pill">+ '+o[1]+',00 €</span>';
       row.querySelector('input').addEventListener('change',function(e){
-        if(e.target.checked) addItem(key, o[0], 'option', o[1], 0, false);
+        if(e.target.checked) addItem(key, o[0], 'option', o[1], o[3]||0, false);
         else changeQty(key, -qtyOf(key));
       });
       lo.appendChild(row);
