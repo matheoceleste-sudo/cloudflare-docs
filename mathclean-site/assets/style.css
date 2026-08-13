@@ -695,3 +695,28 @@ img.vid{aspect-ratio:9/16;object-fit:cover}
 .pcards:has(.pcard:hover) .pcard::after{background:linear-gradient(to top,rgba(6,8,12,.9) 0%,rgba(6,8,12,.78) 100%)}
 .pcards .pcard:hover::after{background:linear-gradient(to top,rgba(8,10,14,.92) 0%,rgba(8,10,14,.42) 56%,rgba(8,10,14,0) 100%)}
 @media(hover:none){.pcards:hover .pcard::after{background:linear-gradient(to top,rgba(8,10,14,.92) 0%,rgba(8,10,14,.42) 56%,rgba(8,10,14,0) 100%)}.pcard .pc-reveal{max-height:220px;opacity:1;transform:none}}
+
+/* ===== Menu mobile : lisibilité garantie (le panneau est clair, le texte doit rester foncé) ===== */
+@media(max-width:680px){
+  nav.menu{width:88%;max-width:340px;background:var(--noir);
+    border-radius:0 0 0 20px;padding:20px 22px 26px;gap:2px;
+    box-shadow:0 26px 60px -22px rgba(20,20,35,.4)}
+  /* on neutralise la règle « texte blanc sur hero sombre » à l'intérieur du panneau */
+  nav.menu a,
+  nav.menu .sub-toggle,
+  body:has(.journey) header.nav:not(.scrolled) nav.menu a,
+  body:has(.journey) header.nav:not(.scrolled) nav.menu .sub-toggle{color:var(--blanc)}
+  nav.menu > a,
+  nav.menu > .has-sub{width:100%;padding:14px 2px;border-bottom:1px solid var(--ligne)}
+  nav.menu > .has-sub{padding-bottom:0}
+  nav.menu .sub-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 0 14px}
+  nav.menu a::after{display:none}
+  /* bouton Réserver : bien visible en bas du panneau */
+  nav.menu .nav-cta,
+  body:has(.journey) header.nav:not(.scrolled) nav.menu .nav-cta{
+    color:var(--or)!important;border-color:var(--or);border-radius:99px;
+    margin-top:16px;text-align:center;justify-content:center;border-bottom-width:1px}
+  /* sous-menu Services déroulé */
+  nav.menu .submenu a,
+  body:has(.journey) header.nav:not(.scrolled) nav.menu .submenu a{color:var(--gris)!important;font-size:.78rem}
+}
