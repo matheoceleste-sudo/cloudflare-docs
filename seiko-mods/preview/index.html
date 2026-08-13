@@ -1,0 +1,1978 @@
+<title>Atelier BKR Mods</title>
+
+<style>
+  /* ======================================================================
+     Atelier BKR Mods — feuille de style de la maquette
+     Parti pris : un seul monde visuel, l'atelier de nuit. Fond froid
+     quasi noir, surfaces de verre, et une teinte d'accent qui n'est pas
+     fixe : c'est celle du cadran survolé. Toute la page se reteinte.
+     ====================================================================== */
+
+  :root {
+    /* Fonds --------------------------------------------------------- */
+    --ground: #07080a;
+    --ground-2: #0e1117;
+
+    /* Encre : blanc froid, jamais pur ------------------------------- */
+    --ink: #eef2f6;
+    --ink-2: rgba(238, 242, 246, 0.64);
+    --ink-3: rgba(238, 242, 246, 0.36);
+
+    /* Traits --------------------------------------------------------- */
+    --line: rgba(255, 255, 255, 0.1);
+    --line-2: rgba(255, 255, 255, 0.18);
+
+    /* Acier brossé : l'accent au repos ------------------------------- */
+    --steel: #9fb4c7;
+    --steel-deep: #4a6076;
+
+    /* Accent vivant, piloté par le cadran survolé -------------------- */
+    --accent: var(--steel);
+    --accent-live: var(--steel-deep);
+
+    /* Typographie ---------------------------------------------------- */
+    --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial,
+      sans-serif;
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+    /* Rayons et rythme ----------------------------------------------- */
+    --r-sm: 14px;
+    --r-md: 22px;
+    --r-lg: 32px;
+    --r-xl: 44px;
+    --gutter: clamp(20px, 5vw, 56px);
+    --max: 1240px;
+    --section: clamp(72px, 9vw, 140px);
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --mx: 50%;
+    --my: 50%;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--steel);
+    color: var(--ground);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* --- Décor de fond -------------------------------------------------- */
+
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    color: var(--accent-live);
+    transition: color 1.2s var(--ease);
+  }
+
+  .aurora b {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background: radial-gradient(circle, currentColor, transparent 68%);
+    filter: blur(90px);
+    opacity: 0.42;
+    will-change: transform;
+  }
+
+  .aurora b:nth-child(1) {
+    width: 48vw;
+    height: 48vw;
+    top: -14vw;
+    left: -10vw;
+    animation: drift-a 26s var(--ease) infinite alternate;
+  }
+  .aurora b:nth-child(2) {
+    width: 38vw;
+    height: 38vw;
+    top: 34vh;
+    right: -12vw;
+    animation: drift-b 33s var(--ease) infinite alternate;
+  }
+  .aurora b:nth-child(3) {
+    width: 44vw;
+    height: 44vw;
+    bottom: -18vw;
+    left: 24vw;
+    opacity: 0.26;
+    animation: drift-c 39s var(--ease) infinite alternate;
+  }
+
+  @keyframes drift-a {
+    to {
+      transform: translate3d(8vw, 6vh, 0) scale(1.2);
+    }
+  }
+  @keyframes drift-b {
+    to {
+      transform: translate3d(-10vw, -8vh, 0) scale(1.12);
+    }
+  }
+  @keyframes drift-c {
+    to {
+      transform: translate3d(6vw, -10vh, 0) scale(0.88);
+    }
+  }
+
+  .grain {
+    position: fixed;
+    inset: -50%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 800ms steps(4) infinite;
+  }
+
+  @keyframes grain {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-4%, 3%); }
+    50% { transform: translate(3%, -4%); }
+    75% { transform: translate(-3%, -3%); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 70;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--accent-live), var(--ink));
+    pointer-events: none;
+  }
+
+  /* --- Structure ------------------------------------------------------ */
+
+  .page {
+    position: relative;
+    z-index: 2;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: var(--max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  section {
+    padding-block: var(--section);
+  }
+
+  /* --- Verre ----------------------------------------------------------- */
+
+  .glass {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: linear-gradient(
+      158deg,
+      rgba(255, 255, 255, 0.085) 0%,
+      rgba(255, 255, 255, 0.028) 46%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    backdrop-filter: blur(28px) saturate(180%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.045),
+      0 30px 70px -30px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Halo spéculaire accroché au pointeur */
+  .glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(340px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.1), transparent 62%);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease);
+    pointer-events: none;
+  }
+
+  .glass:hover::before {
+    opacity: 1;
+  }
+
+  /* Réfraction du bord : clair en haut, sombre en bas */
+  .glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.34),
+      rgba(255, 255, 255, 0.02) 38%,
+      rgba(0, 0, 0, 0.25)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass {
+      background: rgba(18, 21, 27, 0.94);
+    }
+  }
+
+  /* --- Typographie ----------------------------------------------------- */
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7em;
+    margin: 0 0 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 26px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent));
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: clamp(42px, 8vw, 98px);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  h2 {
+    font-size: clamp(30px, 4.6vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.038em;
+  }
+
+  h3 {
+    font-size: clamp(19px, 2vw, 24px);
+    line-height: 1.16;
+    letter-spacing: -0.022em;
+  }
+
+  .lede {
+    margin: 24px 0 0;
+    max-width: 54ch;
+    font-size: clamp(15px, 1.5vw, 18px);
+    line-height: 1.62;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .fine {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-3);
+  }
+
+  /* Fragment en métal brossé */
+  .steel {
+    background: linear-gradient(
+      100deg,
+      #ffffff 0%,
+      #b9c6d3 22%,
+      #7e8fa1 40%,
+      #ffffff 55%,
+      #9dadbd 72%,
+      #6d7d8e 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: sheen 9s linear infinite;
+  }
+
+  @keyframes sheen {
+    to {
+      background-position: 220% 0;
+    }
+  }
+
+  /* --- Boutons --------------------------------------------------------- */
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(18px) saturate(160%);
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+    transition:
+      transform 0.45s var(--spring),
+      border-color 0.35s var(--ease),
+      background 0.35s var(--ease);
+  }
+
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.3), transparent 80%);
+    transform: translateX(-110%);
+    transition: transform 0.75s var(--ease);
+  }
+
+  .btn:hover {
+    border-color: rgba(255, 255, 255, 0.34);
+    background: rgba(255, 255, 255, 0.13);
+  }
+
+  .btn:hover::after {
+    transform: translateX(110%);
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn--solid {
+    border-color: transparent;
+    background: linear-gradient(180deg, #ffffff, #d9e2ea);
+    color: #0a0c10;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 14px 34px -14px rgba(190, 214, 236, 0.55);
+  }
+
+  .btn--solid:hover {
+    background: linear-gradient(180deg, #ffffff, #eef3f8);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--steel);
+    outline-offset: 3px;
+  }
+
+  /* --- En-tête --------------------------------------------------------- */
+
+  header.bar {
+    position: fixed;
+    top: 14px;
+    left: 50%;
+    z-index: 60;
+    width: min(calc(100% - 24px), var(--max));
+    transform: translateX(-50%);
+    border-radius: 999px;
+    transition:
+      top 0.5s var(--ease),
+      width 0.5s var(--ease);
+  }
+
+  header.bar.condensed {
+    top: 8px;
+    width: min(calc(100% - 24px), 900px);
+  }
+
+  .bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 11px 11px 11px 24px;
+  }
+
+  /* Sans place pour la navigation, la barre se resserre autour du logo. */
+  @media (max-width: 899px) {
+    .bar__inner {
+      gap: 12px;
+      padding: 9px 9px 9px 18px;
+    }
+
+    .bar__inner > .btn {
+      padding: 12px 18px;
+      font-size: 13px;
+    }
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 9px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .logo em {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  nav {
+    position: relative;
+    display: none;
+    align-items: center;
+    gap: 2px;
+  }
+
+  @media (min-width: 900px) {
+    nav {
+      display: flex;
+    }
+  }
+
+  nav a {
+    position: relative;
+    z-index: 1;
+    padding: 9px 15px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-2);
+    text-decoration: none;
+    transition: color 0.3s var(--ease);
+  }
+
+  nav a:hover {
+    color: var(--ink);
+  }
+
+  .pill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    opacity: 0;
+    transition:
+      transform 0.55s var(--spring),
+      width 0.55s var(--spring),
+      opacity 0.35s var(--ease);
+    pointer-events: none;
+  }
+
+  nav:hover .pill {
+    opacity: 1;
+  }
+
+  /* --- Hero ------------------------------------------------------------ */
+
+  .hero {
+    min-height: 100svh;
+    display: grid;
+    align-items: center;
+    padding-block: 150px 96px;
+  }
+
+  .hero__grid {
+    display: grid;
+    gap: clamp(36px, 6vw, 72px);
+    align-items: center;
+  }
+
+  @media (min-width: 1000px) {
+    .hero__grid {
+      grid-template-columns: 1.06fr 0.94fr;
+    }
+  }
+
+  .stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+  }
+
+  /* Le porte-montre doit occuper toute la scène : sans cela, le SVG
+     calcule sa largeur en pourcentage d'une boîte déjà rétrécie. */
+  .stage > div:not(.halo) {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .halo {
+    position: absolute;
+    inset: 10%;
+    border-radius: 50%;
+    color: var(--accent-live);
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(255, 255, 255, 0.16) 70deg,
+      currentColor 150deg,
+      transparent 220deg,
+      rgba(255, 255, 255, 0.12) 320deg,
+      transparent 360deg
+    );
+    filter: blur(38px);
+    opacity: 0.6;
+    animation: spin 22s linear infinite;
+    transition: color 1.2s var(--ease);
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  .stage svg {
+    position: relative;
+    width: min(62%, 340px);
+    height: auto;
+    filter: drop-shadow(0 50px 60px rgba(0, 0, 0, 0.78));
+    animation: float 7s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(-10px); }
+    50% { transform: translateY(10px); }
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 38px;
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 34px;
+    margin: 46px 0 0;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+
+  .hero__meta dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .hero__meta dd {
+    margin: 6px 0 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .cue {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .cue i {
+    display: block;
+    width: 1px;
+    height: 44px;
+    background: linear-gradient(var(--ink-3), transparent);
+    transform-origin: top;
+    animation: cue 2.4s var(--ease) infinite;
+  }
+
+  @keyframes cue {
+    0% { transform: scaleY(0); opacity: 0; }
+    35% { transform: scaleY(1); opacity: 1; }
+    100% { transform: scaleY(1) translateY(44px); opacity: 0; }
+  }
+
+  /* --- Bandeau --------------------------------------------------------- */
+
+  .marquee {
+    padding: 24px 0;
+    border-block: 1px solid var(--line);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    gap: 54px;
+    animation: marquee 46s linear infinite;
+  }
+
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee span {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  .marquee span::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--steel);
+  }
+
+  /* --- Familles -------------------------------------------------------- */
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: clamp(34px, 5vw, 60px);
+  }
+
+  .families {
+    display: grid;
+    gap: clamp(18px, 2.4vw, 26px);
+  }
+
+  @media (min-width: 800px) {
+    .families {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .family {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 26px;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.6s var(--ease);
+  }
+
+  .family__glow {
+    position: absolute;
+    inset: -35%;
+    z-index: -1;
+    color: var(--accent);
+    background: radial-gradient(circle at 50% 34%, currentColor, transparent 62%);
+    opacity: 0.14;
+    filter: blur(46px);
+    transition:
+      opacity 0.6s var(--ease),
+      color 0.7s var(--ease);
+    pointer-events: none;
+  }
+
+  .family:hover .family__glow {
+    opacity: 0.42;
+  }
+
+  .family__top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .count {
+    flex-shrink: 0;
+    padding: 6px 13px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  .family__media {
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin-block: 16px 4px;
+    transform-style: preserve-3d;
+  }
+
+  .family__media svg {
+    grid-area: 1 / 1;
+    width: min(58%, 186px);
+    height: auto;
+    opacity: 0;
+    transform: translateZ(40px) scale(0.94) rotate(-5deg);
+    filter: drop-shadow(0 34px 40px rgba(0, 0, 0, 0.62));
+    transition:
+      opacity 0.45s var(--ease),
+      transform 0.7s var(--ease);
+    pointer-events: none;
+  }
+
+  .family__media svg.on {
+    opacity: 1;
+    transform: translateZ(40px) scale(1) rotate(0deg);
+  }
+
+  .family:hover .family__media svg.on {
+    transform: translateZ(62px) scale(1.05);
+  }
+
+  .swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .swatch {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--line-2);
+    border-radius: 50%;
+    background: var(--dot);
+    cursor: pointer;
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.45),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+    transition:
+      transform 0.4s var(--spring),
+      box-shadow 0.4s var(--ease);
+  }
+
+  .swatch:hover {
+    transform: scale(1.16);
+  }
+
+  /* Au doigt, une pastille de 30 px se rate : on l'agrandit. */
+  @media (max-width: 799px) {
+    .swatch {
+      width: 38px;
+      height: 38px;
+    }
+  }
+
+  .swatch[aria-pressed='true'] {
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.45),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+      0 0 0 2px var(--ground),
+      0 0 0 3.5px var(--ink);
+  }
+
+  .family__label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .family__name {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .family__price {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cover {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+  }
+
+  .family__foot {
+    position: relative;
+    z-index: 4;
+  }
+
+  /* --- Spécifications --------------------------------------------------- */
+
+  .specs {
+    display: grid;
+    gap: 1px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--line);
+  }
+
+  @media (min-width: 640px) {
+    .specs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .specs {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .spec {
+    padding: 34px 28px 30px;
+    background: rgba(11, 13, 17, 0.72);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    transition: background 0.5s var(--ease);
+  }
+
+  .spec:hover {
+    background: rgba(24, 29, 37, 0.82);
+  }
+
+  .spec b {
+    display: block;
+    font-family: var(--mono);
+    font-size: clamp(30px, 3.4vw, 42px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .spec b i {
+    font-family: var(--sans);
+    font-size: 0.42em;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink-3);
+    margin-left: 0.3em;
+  }
+
+  .spec em {
+    display: block;
+    margin-top: 13px;
+    font-size: 13px;
+    font-style: normal;
+    color: var(--ink-2);
+  }
+
+  /* --- Atelier ---------------------------------------------------------- */
+
+  .steps {
+    display: grid;
+    gap: clamp(16px, 2vw, 22px);
+    counter-reset: st;
+  }
+
+  @media (min-width: 880px) {
+    .steps {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .step {
+    padding: 30px 26px 34px;
+    border-radius: var(--r-md);
+    counter-increment: st;
+  }
+
+  .step::before {
+    content: '0' counter(st);
+    display: block;
+    margin-bottom: 18px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--steel);
+  }
+
+  .step p {
+    margin: 10px 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  /* --- FAQ -------------------------------------------------------------- */
+
+  .faq {
+    display: grid;
+    gap: 12px;
+    max-width: 860px;
+    margin-inline: auto;
+  }
+
+  .faq details {
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+
+  .faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 26px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq summary i {
+    position: relative;
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+  }
+
+  .faq summary i::before,
+  .faq summary i::after {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.45s var(--spring);
+  }
+
+  .faq summary i::after {
+    transform: rotate(90deg);
+  }
+
+  .faq details[open] summary i::after {
+    transform: rotate(0deg);
+  }
+
+  .faq__body {
+    padding: 0 26px 24px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+
+  .faq details[open] .faq__body {
+    animation: unfold 0.5s var(--ease);
+  }
+
+  @keyframes unfold {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  /* --- Appel à l'action -------------------------------------------------- */
+
+  .cta {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 14px;
+    padding: clamp(48px, 8vw, 100px) clamp(24px, 5vw, 72px);
+    border-radius: var(--r-xl);
+    overflow: hidden;
+  }
+
+  .cta__glow {
+    position: absolute;
+    inset: auto -20% -60%;
+    height: 120%;
+    z-index: -1;
+    color: var(--accent-live);
+    background: radial-gradient(ellipse at 50% 100%, currentColor, transparent 62%);
+    opacity: 0.26;
+    filter: blur(58px);
+    transition: color 1.2s var(--ease);
+  }
+
+  .cta .lede {
+    text-align: center;
+  }
+
+  /* --- Pied de page ------------------------------------------------------ */
+
+  footer {
+    padding-block: 56px 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .foot__grid {
+    display: grid;
+    gap: 40px;
+  }
+
+  @media (min-width: 760px) {
+    .foot__grid {
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+    }
+  }
+
+  footer h4 {
+    margin: 0 0 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+
+  footer a {
+    font-size: 14px;
+    color: var(--ink-2);
+    text-decoration: none;
+    transition: color 0.3s var(--ease);
+  }
+
+  footer a:hover {
+    color: var(--ink);
+  }
+
+  .foot__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    justify-content: space-between;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* --- Apparitions -------------------------------------------------------- */
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(6px);
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease),
+      filter 0.9s var(--ease);
+    transition-delay: var(--delay, 0ms);
+  }
+
+  [data-reveal].in {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .split span {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+
+  .split span > i {
+    display: inline-block;
+    font-style: inherit;
+    transform: translateY(105%);
+    transition: transform 1s var(--ease);
+    transition-delay: var(--delay, 0ms);
+  }
+
+  .split.in span > i {
+    transform: none;
+  }
+
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .split span > i {
+      transform: none;
+    }
+
+    .grain,
+    .cue i {
+      display: none;
+    }
+  }
+</style>
+
+<div class="aurora" aria-hidden="true"><b></b><b></b><b></b></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- Gabarit de montre : cloné par le script, recoloré par coloris.
+     Les couleurs passent par des variables CSS posées sur le SVG. -->
+<template id="watch">
+  <svg viewBox="0 0 220 300" role="img" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-case" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="var(--c-hi, #e9eef3)" />
+        <stop offset="28%" stop-color="var(--c-lo, #6c7a88)" />
+        <stop offset="52%" stop-color="var(--c-hi, #e9eef3)" />
+        <stop offset="76%" stop-color="var(--c-lo, #6c7a88)" />
+        <stop offset="100%" stop-color="var(--c-hi, #e9eef3)" />
+      </linearGradient>
+      <linearGradient id="g-band" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--c-lo, #6c7a88)" />
+        <stop offset="22%" stop-color="var(--c-hi, #e9eef3)" />
+        <stop offset="50%" stop-color="var(--c-lo, #6c7a88)" />
+        <stop offset="78%" stop-color="var(--c-hi, #e9eef3)" />
+        <stop offset="100%" stop-color="var(--c-lo, #6c7a88)" />
+      </linearGradient>
+      <radialGradient id="g-dial" cx="38%" cy="26%" r="82%">
+        <stop offset="0%" stop-color="#fff" stop-opacity=".26" />
+        <stop offset="46%" stop-color="#fff" stop-opacity=".05" />
+        <stop offset="100%" stop-color="#000" stop-opacity=".42" />
+      </radialGradient>
+      <radialGradient id="g-crystal" cx="30%" cy="18%" r="60%">
+        <stop offset="0%" stop-color="#fff" stop-opacity=".3" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+
+    <!-- Bracelet : plus étroit au loin, évasé vers les cornes -->
+    <path d="M89 0H131L136 54C136 68 128 76 110 76C92 76 84 68 84 54Z" fill="url(#g-band)" />
+    <path d="M89 300H131L136 246C136 232 128 224 110 224C92 224 84 232 84 246Z" fill="url(#g-band)" />
+
+    <!-- Couronne -->
+    <rect x="192" y="140" width="15" height="20" rx="3" fill="url(#g-case)" />
+
+    <!-- Boîtier, lunette, cadran -->
+    <circle cx="110" cy="150" r="88" fill="url(#g-case)" />
+    <circle cx="110" cy="150" r="78" fill="var(--bezel, #8d9aa7)" />
+    <circle cx="110" cy="150" r="78" fill="url(#g-dial)" opacity=".5" />
+    <circle cx="110" cy="150" r="68" fill="var(--dial, #14171c)" />
+    <circle cx="110" cy="150" r="68" fill="url(#g-dial)" />
+    <!-- Deux cernes sombres : ils détachent la lunette du cadran -->
+    <circle cx="110" cy="150" r="68.5" fill="none" stroke="rgba(0,0,0,.55)" stroke-width="1.5" />
+    <circle cx="110" cy="150" r="78.5" fill="none" stroke="rgba(0,0,0,.3)" stroke-width="1" />
+
+    <!-- Index -->
+    <g fill="var(--index, #e6ebf0)">
+      <rect x="106" y="90" width="8" height="15" rx="2" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(30 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(60 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(120 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(150 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(180 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(210 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(240 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(270 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(300 110 150)" />
+      <rect x="107" y="90" width="6" height="14" rx="2" transform="rotate(330 110 150)" />
+    </g>
+
+    <!-- Guichet de date -->
+    <rect x="152" y="141" width="24" height="18" rx="2" fill="#f2f5f8" />
+    <text
+      x="164"
+      y="155"
+      text-anchor="middle"
+      font-family="ui-monospace, Menlo, monospace"
+      font-size="13"
+      fill="#14171c"
+      data-date
+    >13</text>
+
+    <!-- Aiguilles. La rotation garde toujours la forme « angle cx cy » :
+         c'est la seule qui soit fiable partout. -->
+    <g stroke-linecap="round">
+      <rect data-h x="106" y="110" width="8" height="44" rx="4" fill="var(--hands, #e6ebf0)" />
+      <rect data-m x="107.5" y="92" width="5" height="62" rx="2.5" fill="var(--hands, #e6ebf0)" />
+      <g data-s>
+        <rect x="109.2" y="88" width="1.6" height="76" rx="0.8" fill="var(--second, #d8452f)" />
+        <circle cx="110" cy="150" r="4.5" fill="var(--second, #d8452f)" />
+      </g>
+      <circle cx="110" cy="150" r="1.8" fill="#14171c" />
+    </g>
+
+    <!-- Reflet du verre -->
+    <circle cx="110" cy="150" r="78" fill="url(#g-crystal)" pointer-events="none" />
+  </svg>
+</template>
+
+<header class="bar glass" id="bar">
+  <div class="bar__inner">
+    <a class="logo" href="#top">BKR MODS <em>Atelier</em></a>
+    <nav id="nav">
+      <span class="pill" aria-hidden="true"></span>
+      <a href="#familles">Familles</a>
+      <a href="#atelier">Atelier</a>
+      <a href="#mesures">Mesures</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="#familles">Voir le catalogue</a>
+  </div>
+</header>
+
+<div class="page" id="top">
+  <section class="hero wrap">
+    <div class="hero__grid">
+      <div>
+        <p class="eyebrow" data-reveal>Seiko mod — atelier indépendant</p>
+        <h1>
+          <span data-split>Chaque montre est</span><br />
+          <span class="steel">montée à la main.</span>
+        </h1>
+        <p class="lede" data-reveal>
+          Boîtiers, cadrans et aiguilles assemblés sur mouvement Seiko NH35, puis réglés au
+          chronocomparateur. Une famille, tous ses coloris, et rien de superflu.
+        </p>
+        <div class="actions" data-stagger="90">
+          <a class="btn btn--solid" href="#familles" data-reveal data-magnetic>Voir les familles</a>
+          <a class="btn" href="#atelier" data-reveal data-magnetic>Comment on monte</a>
+        </div>
+        <dl class="hero__meta" data-stagger="80">
+          <div data-reveal><dt>Mouvement</dt><dd>Seiko NH35A</dd></div>
+          <div data-reveal><dt>Verre</dt><dd>Saphir bombé</dd></div>
+          <div data-reveal><dt>Étanchéité</dt><dd>200 m</dd></div>
+          <div data-reveal><dt>Garantie</dt><dd>2 ans</dd></div>
+        </dl>
+      </div>
+
+      <div class="stage" data-parallax="0.07">
+        <div class="halo" aria-hidden="true"></div>
+        <div id="hero-watch"></div>
+      </div>
+    </div>
+
+    <div class="cue" aria-hidden="true"><i></i>Faire défiler</div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee__track" data-marquee>
+      <span>Mouvement Seiko NH35A</span>
+      <span>Verre saphir bombé</span>
+      <span>Étanche 200 m</span>
+      <span>Montage à la main</span>
+      <span>Réglage ± 8 s / jour</span>
+      <span>Garantie 2 ans</span>
+      <span>Expédition sous 48 h</span>
+    </div>
+  </div>
+
+  <section class="wrap" id="familles">
+    <div class="head">
+      <div>
+        <p class="eyebrow" data-reveal>Le catalogue</p>
+        <h2 data-split>Une famille, tous ses coloris.</h2>
+      </div>
+      <a class="btn" href="#familles" data-reveal data-magnetic>Tout voir</a>
+    </div>
+    <p class="lede" style="margin: -22px 0 46px" data-reveal>
+      Choisissez d'abord la famille, puis le cadran. Survolez les pastilles : la montre change de
+      coloris, et toute la page prend la teinte du cadran.
+    </p>
+
+    <div class="families" id="families" data-stagger="110"></div>
+  </section>
+
+  <section class="wrap" id="mesures">
+    <div class="head">
+      <div>
+        <p class="eyebrow" data-reveal>Sous le cadran</p>
+        <h2 data-split>Les chiffres qui comptent.</h2>
+      </div>
+    </div>
+
+    <div class="specs" data-stagger="90">
+      <div class="spec" data-reveal data-glass>
+        <b><span data-count="200">0</span><i>m</i></b>
+        <em>Étanchéité testée en atelier</em>
+      </div>
+      <div class="spec" data-reveal data-glass>
+        <b><span data-count="41">0</span><i>h</i></b>
+        <em>Réserve de marche</em>
+      </div>
+      <div class="spec" data-reveal data-glass>
+        <b><span data-count="21600">0</span></b>
+        <em>Alternances par heure</em>
+      </div>
+      <div class="spec" data-reveal data-glass>
+        <b>±<span data-count="8">0</span><i>s/jour</i></b>
+        <em>Écart maximal après réglage</em>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="atelier">
+    <div class="head">
+      <div>
+        <p class="eyebrow" data-reveal>L'atelier</p>
+        <h2 data-split>Du boîtier nu à la montre réglée.</h2>
+        <p class="lede" data-reveal>
+          Quatre étapes, aucune sous-traitance. La montre que vous recevez a été montée, réglée et
+          photographiée sur l'établi.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps" data-stagger="120">
+      <article class="step glass" data-reveal data-tilt="4">
+        <h3>Sélection</h3>
+        <p>Boîtier, lunette, cadran et aiguilles choisis pièce par pièce, puis contrôlés à la loupe.
+          Toute pièce marquée part au rebut.</p>
+      </article>
+      <article class="step glass" data-reveal data-tilt="4">
+        <h3>Montage</h3>
+        <p>Pose du mouvement NH35, alignement des aiguilles et du guichet de date sous binoculaire,
+          dans une boîte à poussière.</p>
+      </article>
+      <article class="step glass" data-reveal data-tilt="4">
+        <h3>Réglage</h3>
+        <p>Passage au chronocomparateur dans cinq positions, jusqu'à moins de 8 secondes d'écart par
+          jour.</p>
+      </article>
+      <article class="step glass" data-reveal data-tilt="4">
+        <h3>Contrôle</h3>
+        <p>Test d'étanchéité, nettoyage aux ultrasons, 24 heures de marche à vide, puis photo de la
+          pièce exacte qui part chez vous.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="faq">
+    <div class="head" style="justify-content: center; text-align: center">
+      <div>
+        <p class="eyebrow" data-reveal>Questions fréquentes</p>
+        <h2 data-split>Ce qu'on nous demande le plus.</h2>
+      </div>
+    </div>
+
+    <div class="faq" data-stagger="70">
+      <details class="glass" data-reveal open>
+        <summary>Un Seiko mod, c'est quoi exactement ?<i aria-hidden="true"></i></summary>
+        <div class="faq__body">
+          Une montre assemblée pièce par pièce autour d'un mouvement automatique Seiko NH35. Boîtier,
+          lunette, cadran, aiguilles et bracelet sont choisis séparément, puis montés et réglés à la
+          main dans notre atelier. Ce n'est ni une contrefaçon ni une montre de série : chaque pièce
+          est unique par sa combinaison.
+        </div>
+      </details>
+      <details class="glass" data-reveal>
+        <summary>Comment lire le catalogue ?<i aria-hidden="true"></i></summary>
+        <div class="faq__body">
+          Le catalogue est rangé par famille. Une famille regroupe un boîtier et une silhouette ; à
+          l'intérieur, chaque coloris de cadran est une référence à part, avec son stock et son prix.
+        </div>
+      </details>
+      <details class="glass" data-reveal>
+        <summary>Quel est le délai de fabrication ?<i aria-hidden="true"></i></summary>
+        <div class="faq__body">
+          5 à 10 jours ouvrés pour un coloris en stock, 2 à 3 semaines pour une configuration sur
+          mesure. Vous recevez une photo de votre montre avant l'expédition.
+        </div>
+      </details>
+      <details class="glass" data-reveal>
+        <summary>La montre est-elle réglée avant l'envoi ?<i aria-hidden="true"></i></summary>
+        <div class="faq__body">
+          Oui. Chaque mouvement passe au chronocomparateur dans cinq positions. Nous n'expédions pas
+          une montre au-delà de 8 secondes d'écart par jour.
+        </div>
+      </details>
+      <details class="glass" data-reveal>
+        <summary>Quelle taille choisir ?<i aria-hidden="true"></i></summary>
+        <div class="faq__body">
+          Pour un poignet de 15 à 17 cm, un boîtier 36 mm passe très bien ; au-delà de 17 cm, le
+          40-41 mm est plus équilibré. En cas de doute, envoyez-nous une photo de votre poignet avec
+          un mètre ruban.
+        </div>
+      </details>
+      <details class="glass" data-reveal>
+        <summary>Que couvre la garantie ?<i aria-hidden="true"></i></summary>
+        <div class="faq__body">
+          Deux ans sur le mouvement et le montage. L'usure normale du bracelet et les rayures du
+          verre ne sont pas couvertes. Le service après-vente se fait directement à l'atelier.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="cta glass" data-reveal>
+      <span class="cta__glow" aria-hidden="true"></span>
+      <p class="eyebrow">Sur mesure</p>
+      <h2 data-split>Une idée précise en tête ?</h2>
+      <p class="lede">
+        Décrivez la famille de départ et les pièces voulues. On vous répond sous 48 heures avec un
+        prix et un délai.
+      </p>
+      <div class="actions" style="justify-content: center">
+        <a class="btn btn--solid" href="#top" data-magnetic>Demander un devis</a>
+        <a class="btn" href="#familles" data-magnetic>Voir le catalogue</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="logo" href="#top">BKR MODS <em>Atelier</em></a>
+        <p class="fine" style="margin-top: 14px; max-width: 34ch">
+          Montres Seiko modifiées, montées et réglées à la main. Atelier indépendant, sans lien avec
+          les marques citées.
+        </p>
+      </div>
+      <div>
+        <h4>Catalogue</h4>
+        <ul>
+          <li><a href="#familles">Toutes les familles</a></li>
+          <li><a href="#familles">Nouveautés</a></li>
+          <li><a href="#familles">Pièces uniques</a></li>
+          <li><a href="#familles">Bracelets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atelier</h4>
+        <ul>
+          <li><a href="#atelier">Notre méthode</a></li>
+          <li><a href="#mesures">Spécifications</a></li>
+          <li><a href="#faq">Questions fréquentes</a></li>
+          <li><a href="#top">Nous écrire</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="#faq">Livraison &amp; retours</a></li>
+          <li><a href="#faq">Garantie 2 ans</a></li>
+          <li><a href="#faq">Guide des tailles</a></li>
+          <li><a href="#top">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom fine">
+      <span>© 2026 BKR Mods — Tous droits réservés</span>
+      <span>Maquette de démonstration · contenus d'exemple</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    'use strict';
+
+    var calm = matchMedia('(prefers-reduced-motion: reduce)');
+    var fine = matchMedia('(hover: hover) and (pointer: fine)');
+
+    /* ------------------------------------------------------- Catalogue ---
+       Une famille = un boîtier. À l'intérieur, un coloris = une référence.
+       C'est exactement la structure du thème Shopify : collection > produits.
+    --------------------------------------------------------------------- */
+
+    var FAMILIES = [
+      {
+        name: 'Datejust',
+        caption: '36 & 41 mm · index appliqués · bracelet jubilé',
+        colorways: [
+          { name: 'Bleu soleillé', price: '389 €', dial: '#1f4d8f', bezel: '#c3ccd4', index: '#eef2f6' },
+          { name: 'Champagne', price: '389 €', dial: '#c8a253', bezel: '#d8bb7a', index: '#3a2f18', hands: '#3a2f18', caseHi: '#f2dfae', caseLo: '#a5813c' },
+          { name: 'Noir laqué', price: '369 €', dial: '#14171c', bezel: '#c3ccd4', index: '#eef2f6' },
+          { name: 'Gris ardoise', price: '369 €', dial: '#7c8792', bezel: '#c3ccd4', index: '#12161b', hands: '#12161b' },
+          { name: 'Vert menthe', price: '399 €', dial: '#1d6b4f', bezel: '#c3ccd4', index: '#eef2f6' },
+          { name: 'Ivoire', price: '379 €', dial: '#efe7d6', bezel: '#c3ccd4', index: '#2b2f36', hands: '#2b2f36' }
+        ]
+      },
+      {
+        name: 'Diver',
+        caption: '40 mm · lunette céramique · bracelet oyster',
+        colorways: [
+          { name: 'Noir profond', price: '429 €', dial: '#101317', bezel: '#14171c', index: '#d7e6c8' },
+          { name: 'Bleu abysse', price: '449 €', dial: '#122a4d', bezel: '#16325c', index: '#d7e6c8' },
+          { name: 'Vert sillage', price: '449 €', dial: '#0f3a2b', bezel: '#14513a', index: '#d7e6c8' },
+          { name: 'Bordeaux', price: '459 €', dial: '#4a1119', bezel: '#7a1f2b', index: '#e8dcc0' },
+          { name: 'Gris fumé', price: '429 €', dial: '#2b2f36', bezel: '#3c424b', index: '#d7e6c8' }
+        ]
+      },
+      {
+        name: 'Explorer',
+        caption: '36 mm · cadran mat · index 3-6-9',
+        colorways: [
+          { name: 'Noir mat', price: '349 €', dial: '#101317', bezel: '#a8b3bd', index: '#e8f0e0' },
+          { name: 'Crème vintage', price: '369 €', dial: '#e3d8bd', bezel: '#a8b3bd', index: '#3b3323', hands: '#3b3323' },
+          { name: 'Anthracite', price: '349 €', dial: '#2b2f36', bezel: '#a8b3bd', index: '#eef2f6' },
+          { name: 'Bleu nuit', price: '369 €', dial: '#16233a', bezel: '#a8b3bd', index: '#eef2f6' }
+        ]
+      },
+      {
+        name: 'GMT',
+        caption: '40 mm · lunette bicolore · aiguille 24 h',
+        colorways: [
+          { name: 'Rouge et bleu', price: '469 €', dial: '#101317', bezel: '#8f2233', index: '#e8f0e0', second: '#2b6bb5' },
+          { name: 'Bleu et noir', price: '469 €', dial: '#101317', bezel: '#1c3f70', index: '#e8f0e0', second: '#4d8fd6' },
+          { name: 'Brun et noir', price: '479 €', dial: '#1a1310', bezel: '#5a3b2b', index: '#e0cfa8', second: '#c8a253' },
+          { name: 'Vert et noir', price: '479 €', dial: '#101317', bezel: '#1d6b4f', index: '#e8f0e0', second: '#3fae7a' }
+        ]
+      }
+    ];
+
+    var tpl = document.getElementById('watch');
+    var uid = 0;
+
+    // Fabrique un SVG de montre aux couleurs d'un coloris.
+    function makeWatch(cw) {
+      var svg = tpl.content.firstElementChild.cloneNode(true);
+      var n = ++uid;
+
+      // Les dégradés sont recopiés à chaque montre : on renomme leurs
+      // identifiants pour qu'une carte n'aille pas piocher dans une autre.
+      svg.querySelectorAll('defs [id]').forEach(function (def) {
+        var before = def.id;
+        var after = before + '-' + n;
+        def.id = after;
+        svg.querySelectorAll('[fill="url(#' + before + ')"]').forEach(function (user) {
+          user.setAttribute('fill', 'url(#' + after + ')');
+        });
+      });
+
+      svg.style.setProperty('--dial', cw.dial);
+      svg.style.setProperty('--bezel', cw.bezel);
+      svg.style.setProperty('--index', cw.index || '#eef2f6');
+      svg.style.setProperty('--hands', cw.hands || cw.index || '#eef2f6');
+      svg.style.setProperty('--second', cw.second || '#d8452f');
+      svg.style.setProperty('--c-hi', cw.caseHi || '#e9eef3');
+      svg.style.setProperty('--c-lo', cw.caseLo || '#6c7a88');
+      svg.setAttribute('aria-label', 'Montre — cadran ' + cw.name.toLowerCase());
+      svg.querySelector('[data-date]').textContent = new Date().getDate();
+
+      // Pose statique 10 h 10 : la position qui dégage le cadran.
+      svg.querySelector('[data-h]').setAttribute('transform', 'rotate(-55 110 150)');
+      svg.querySelector('[data-m]').setAttribute('transform', 'rotate(60 110 150)');
+      svg.querySelector('[data-s]').setAttribute('transform', 'rotate(174 110 150)');
+      return svg;
+    }
+
+    /* --------------------------------------------------- Montre du hero ---
+       Les aiguilles donnent l'heure réelle, et la trotteuse avance par
+       pas de 1/6 de seconde : la cadence exacte d'un NH35 (21 600 A/h).
+    --------------------------------------------------------------------- */
+
+    var heroWatch = makeWatch({
+      name: 'acier', dial: '#12161c', bezel: '#c3ccd4', index: '#eef2f6', second: '#d8452f'
+    });
+    document.getElementById('hero-watch').appendChild(heroWatch);
+
+    (function runWatch() {
+      var h = heroWatch.querySelector('[data-h]');
+      var m = heroWatch.querySelector('[data-m]');
+      var s = heroWatch.querySelector('[data-s]');
+
+      function tick() {
+        var now = new Date();
+        var secs = now.getSeconds() + now.getMilliseconds() / 1000;
+        var beat = Math.floor(secs * 6) / 6; // 6 alternances par seconde
+        var mins = now.getMinutes() + beat / 60;
+        var hours = (now.getHours() % 12) + mins / 60;
+
+        h.setAttribute('transform', 'rotate(' + hours * 30 + ' 110 150)');
+        m.setAttribute('transform', 'rotate(' + mins * 6 + ' 110 150)');
+        s.setAttribute('transform', 'rotate(' + beat * 6 + ' 110 150)');
+
+        requestAnimationFrame(tick);
+      }
+
+      if (calm.matches) {
+        // Mouvement coupé : on fige sur l'heure d'arrivée sur la page.
+        var now = new Date();
+        var hAngle = ((now.getHours() % 12) + now.getMinutes() / 60) * 30;
+        h.setAttribute('transform', 'rotate(' + hAngle + ' 110 150)');
+        m.setAttribute('transform', 'rotate(' + now.getMinutes() * 6 + ' 110 150)');
+        s.setAttribute('transform', 'rotate(' + now.getSeconds() * 6 + ' 110 150)');
+      } else {
+        tick();
+      }
+    })();
+
+    /* ------------------------------------------------- Cartes familles --- */
+
+    var host = document.getElementById('families');
+
+    FAMILIES.forEach(function (fam) {
+      var card = document.createElement('article');
+      card.className = 'family glass';
+      card.setAttribute('data-reveal', '');
+      card.setAttribute('data-tilt', '5');
+      card.style.setProperty('--accent', fam.colorways[0].dial);
+
+      var media = document.createElement('div');
+      media.className = 'family__media';
+      fam.colorways.forEach(function (cw) {
+        media.appendChild(makeWatch(cw));
+      });
+
+      var dots = fam.colorways
+        .map(function (cw, i) {
+          return (
+            '<button class="swatch" type="button" style="--dot:' + cw.dial + '"' +
+            ' aria-pressed="' + (i === 0 ? 'true' : 'false') + '"' +
+            ' aria-label="' + cw.name + '"></button>'
+          );
+        })
+        .join('');
+
+      card.innerHTML =
+        '<span class="family__glow" aria-hidden="true"></span>' +
+        '<div class="family__top">' +
+          '<div><h3>' + fam.name + '</h3><p class="fine" style="margin:8px 0 0">' + fam.caption + '</p></div>' +
+          '<span class="count">' + fam.colorways.length + ' coloris</span>' +
+        '</div>' +
+        '<div class="family__stage"></div>' +
+        '<div class="family__foot">' +
+          '<div class="swatches" role="group" aria-label="Coloris ' + fam.name + '">' + dots + '</div>' +
+          '<div class="family__label">' +
+            '<span class="family__name"></span><span class="family__price"></span>' +
+          '</div>' +
+        '</div>' +
+        '<a class="cover" href="#familles"><span class="sr">Découvrir la famille ' + fam.name + '</span></a>';
+
+      card.querySelector('.family__stage').replaceWith(media);
+      host.appendChild(card);
+
+      var watches = media.querySelectorAll('svg');
+      var swatches = card.querySelectorAll('.swatch');
+      var nameEl = card.querySelector('.family__name');
+      var priceEl = card.querySelector('.family__price');
+      var glow = card.querySelector('.family__glow');
+
+      function select(i, ambient) {
+        var cw = fam.colorways[i];
+        swatches.forEach(function (s, j) {
+          s.setAttribute('aria-pressed', j === i ? 'true' : 'false');
+        });
+        watches.forEach(function (w, j) {
+          w.classList.toggle('on', j === i);
+        });
+        card.style.setProperty('--accent', cw.dial);
+        glow.style.color = cw.dial;
+        nameEl.textContent = cw.name;
+        priceEl.textContent = cw.price;
+        // La teinte du cadran choisi contamine l'ambiance de la page.
+        if (ambient) document.documentElement.style.setProperty('--accent-live', cw.dial);
+      }
+
+      swatches.forEach(function (sw, i) {
+        sw.addEventListener('click', function (e) {
+          e.preventDefault();
+          select(i, true);
+        });
+        if (fine.matches) {
+          sw.addEventListener('pointerenter', function () {
+            select(i, true);
+          });
+        }
+      });
+
+      select(0, false);
+    });
+
+    /* ------------------------------------------------------- Apparitions --- */
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.12 }
+    );
+
+    document.querySelectorAll('[data-stagger]').forEach(function (parent) {
+      var step = parseInt(parent.getAttribute('data-stagger'), 10) || 80;
+      parent.querySelectorAll('[data-reveal]').forEach(function (kid, i) {
+        kid.style.setProperty('--delay', i * step + 'ms');
+      });
+    });
+
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+      if (calm.matches) el.classList.add('in');
+      else io.observe(el);
+    });
+
+    /* --------------------------------------------------- Titres mot à mot --- */
+
+    document.querySelectorAll('[data-split]').forEach(function (el) {
+      el.classList.add('split');
+      var words = el.textContent.trim().split(/\s+/);
+      el.textContent = '';
+      words.forEach(function (word, i) {
+        var outer = document.createElement('span');
+        var inner = document.createElement('i');
+        inner.textContent = word;
+        inner.style.setProperty('--delay', i * 70 + 'ms');
+        outer.appendChild(inner);
+        el.appendChild(outer);
+        if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+      });
+
+      if (calm.matches) {
+        el.classList.add('in');
+        return;
+      }
+      new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('in');
+            obs.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.3 }
+      ).observe(el);
+    });
+
+    /* ------------------------------------------------------------ Compteurs --- */
+
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var target = parseFloat(el.getAttribute('data-count'));
+      var format = function (n) {
+        return Math.round(n).toLocaleString('fr-FR');
+      };
+
+      if (calm.matches) {
+        el.textContent = format(target);
+        return;
+      }
+
+      new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            obs.unobserve(entry.target);
+            var start = performance.now();
+            (function step(now) {
+              var t = Math.min((now - start) / 1400, 1);
+              el.textContent = format(target * (1 - Math.pow(1 - t, 3)));
+              if (t < 1) requestAnimationFrame(step);
+            })(start);
+          });
+        },
+        { threshold: 0.6 }
+      ).observe(el);
+    });
+
+    /* --------------------------------------------------------- Bandeau --- */
+
+    document.querySelectorAll('[data-marquee]').forEach(function (track) {
+      // La boucle translate de -50 % : il faut exactement deux copies.
+      track.innerHTML += track.innerHTML;
+      Array.prototype.slice.call(track.children, track.children.length / 2).forEach(function (c) {
+        c.setAttribute('aria-hidden', 'true');
+      });
+    });
+
+    /* ------------------------------------------- Verre, inclinaison, aimant --- */
+
+    if (fine.matches) {
+      document.querySelectorAll('.glass, [data-glass]').forEach(function (el) {
+        el.addEventListener('pointermove', function (e) {
+          var r = el.getBoundingClientRect();
+          el.style.setProperty('--mx', e.clientX - r.left + 'px');
+          el.style.setProperty('--my', e.clientY - r.top + 'px');
+        });
+      });
+
+      if (!calm.matches) {
+        document.querySelectorAll('[data-tilt]').forEach(function (el) {
+          var max = parseFloat(el.getAttribute('data-tilt')) || 6;
+          var frame = null;
+          el.addEventListener('pointermove', function (e) {
+            if (frame) return;
+            frame = requestAnimationFrame(function () {
+              frame = null;
+              var r = el.getBoundingClientRect();
+              var px = (e.clientX - r.left) / r.width - 0.5;
+              var py = (e.clientY - r.top) / r.height - 0.5;
+              el.style.transform =
+                'perspective(1100px) rotateX(' + (-py * max).toFixed(2) +
+                'deg) rotateY(' + (px * max).toFixed(2) + 'deg)';
+            });
+          });
+          el.addEventListener('pointerleave', function () {
+            el.style.transform = '';
+          });
+        });
+
+        document.querySelectorAll('[data-magnetic]').forEach(function (el) {
+          el.addEventListener('pointermove', function (e) {
+            var r = el.getBoundingClientRect();
+            el.style.transform =
+              'translate(' + ((e.clientX - (r.left + r.width / 2)) * 0.25).toFixed(1) + 'px,' +
+              ((e.clientY - (r.top + r.height / 2)) * 0.25).toFixed(1) + 'px)';
+          });
+          el.addEventListener('pointerleave', function () {
+            el.style.transform = '';
+          });
+        });
+      }
+    }
+
+    /* ---------------------------------------------- Pastille de navigation --- */
+
+    var nav = document.getElementById('nav');
+    var pill = nav.querySelector('.pill');
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('pointerenter', function () {
+        pill.style.width = link.offsetWidth + 'px';
+        pill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      });
+    });
+
+    /* ------------------------------------ Défilement : en-tête, barre, parallaxe --- */
+
+    var bar = document.getElementById('bar');
+    var progress = document.getElementById('progress');
+    var parallax = Array.prototype.map.call(document.querySelectorAll('[data-parallax]'), function (el) {
+      return { el: el, rate: parseFloat(el.getAttribute('data-parallax')) || 0.1 };
+    });
+    var ticking = false;
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var y = window.scrollY;
+        bar.classList.toggle('condensed', y > 60);
+
+        var max = document.documentElement.scrollHeight - innerHeight;
+        progress.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+
+        if (calm.matches) return;
+        parallax.forEach(function (item) {
+          var r = item.el.getBoundingClientRect();
+          if (r.bottom < -200 || r.top > innerHeight + 200) return;
+          var offset = (r.top + r.height / 2 - innerHeight / 2) * item.rate;
+          item.el.style.transform = 'translate3d(0,' + -offset.toFixed(1) + 'px,0)';
+        });
+      });
+    }
+
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ------------------------------------------------------------- Ancres --- */
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: calm.matches ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+  })();
+</script>
