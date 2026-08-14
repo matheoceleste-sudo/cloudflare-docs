@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page introuvable (404) | MathClean</title>
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0a0a0c">
+<link rel="icon" href="/assets/lion.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+.e404{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:100px 24px 70px;position:relative;overflow:hidden;background:var(--noir)}
+.e404::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(46% 40% at 50% 40%,rgba(169,127,40,.22),transparent 70%)}
+.e404 .inner{position:relative;z-index:1;max-width:620px}
+.e404 .code{font-family:var(--serif);font-size:clamp(88px,20vw,170px);line-height:.9;
+  background:linear-gradient(120deg,var(--or-clair),var(--or),var(--or-fonce));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.e404 h1{font-family:var(--serif);font-size:clamp(1.7rem,4.5vw,2.6rem);color:var(--blanc);margin:0 0 14px}
+.e404 p{color:var(--gris);font-size:1.05rem;line-height:1.7;margin:0 auto 30px;max-width:460px}
+.e404 .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:38px}
+.e404 .links{border-top:1px solid var(--ligne);padding-top:26px;margin-top:4px}
+.e404 .links b{display:block;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or);margin-bottom:14px}
+.e404 .links a{display:inline-block;margin:5px 9px;color:var(--blanc);font-size:.95rem;
+  border-bottom:1px solid transparent;transition:.25s}
+.e404 .links a:hover{color:var(--or);border-color:var(--or)}
+</style>
+</head>
+<body>
+<div class="e404">
+  <div class="inner">
+    <a class="brand" href="/index.html" style="display:inline-flex;margin-bottom:30px">
+      <svg viewBox="0 0 64 64" class="lion" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7cd86"/><stop offset="1" stop-color="#9c7a2e"/></linearGradient></defs><circle cx="32" cy="32" r="28.5" fill="none" stroke="url(#lg)" stroke-width="2.5"/><text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="&#39;Cormorant Garamond&#39;,Georgia,serif" font-size="27" font-weight="600" fill="url(#lg)">MC</text></svg>
+      Math<b style="color:var(--or)">Clean</b>
+    </a>
+    <div class="code">404</div>
+    <h1>Cette page a disparu au nettoyage</h1>
+    <p>La page que vous cherchez n'existe pas ou a été déplacée. Pas d'inquiétude — retrouvez tout ce qu'il vous faut ci-dessous.</p>
+    <div class="btns">
+      <a href="/index.html" class="btn btn-or">Retour à l'accueil</a>
+      <a href="/reservation.html" class="btn btn-ghost">Réserver une prestation</a>
+    </div>
+    <div class="links">
+      <b>Nos prestations</b>
+      <a href="/services/nettoyage-automobile-paris.html">Automobile</a>
+      <a href="/services/nettoyage-textile-paris.html">Textile</a>
+      <a href="/services/polissage-carrosserie-paris.html">Polissage</a>
+      <a href="/services/nettoyage-bateau-paris.html">Bateau</a>
+      <a href="/services/nettoyage-terrasse-paris.html">Terrasse</a>
+      <a href="/services/nettoyage-locaux-paris.html">Locaux &amp; bureaux</a>
+      <a href="/zones.html">Zones d'intervention</a>
+      <a href="/index.html#contact">Contact</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
