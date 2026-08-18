@@ -103,19 +103,6 @@ document.addEventListener('click',function(e){
   if(!e.target.closest('.has-sub')) document.querySelectorAll('.has-sub.open').forEach(function(w){w.classList.remove('open')});
 });
 
-/* ===== Prochaines disponibilités (dates dynamiques) ===== */
-(function(){
-  var rows=document.querySelectorAll('.hero-dispo .hd-day');
-  if(!rows.length) return;
-  var J=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
-  var M=['jan.','fév.','mars','avr.','mai','juin','juil.','août','sep.','oct.','nov.','déc.'];
-  rows.forEach(function(el){
-    var off=+el.getAttribute('data-off')||1;
-    var d=new Date(); d.setDate(d.getDate()+off);
-    el.textContent=(off===1?'Demain':J[d.getDay()]+' '+d.getDate()+' '+M[d.getMonth()]);
-  });
-})();
-
 /* ===== Avis Google =====
    ↓ Une fois votre fiche Google Business créée, collez son identifiant (Place ID)
    entre les guillemets ci-dessous. Le bouton ouvrira alors directement la fenêtre d'avis.
@@ -158,4 +145,56 @@ const GOOGLE_PLACE_ID = ""; // ex : "ChIJN1t_tDeuEmsRUsoyG83frY4"
   }
   b.querySelector('.ck-ok').addEventListener('click',function(){ choose('yes'); });
   b.querySelector('.ck-no').addEventListener('click',function(){ choose('no'); });
+})();
+
+/* ===== Fonds d'image différés (cartes prestations) =====
+   Les visuels ne sont chargés qu'à l'approche du viewport : la page d'accueil
+   ne demande plus 8 images avant même d'être affichée. */
+(function(){
+  var els = document.querySelectorAll('[data-bg]');
+  if (!els.length) return;
+  function load(el){
+    if (el.dataset.bg){
+      el.style.backgroundImage = "url('" + el.dataset.bg + "')";
+      el.removeAttribute('data-bg');
+    }
+  }
+  if (!('IntersectionObserver' in window)){
+    Array.prototype.forEach.call(els, load);
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ load(e.target); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '400px 0px' });
+  Array.prototype.forEach.call(els, function(el){ io.observe(el); });
+})();
+
+/* ===== Vidéos à la demande =====
+   Aucune vidéo n'est téléchargée au chargement : la source n'est posée
+   qu'au moment où la vidéo entre dans l'écran, puis la lecture démarre. */
+(function(){
+  var vids = document.querySelectorAll('video source[data-src]');
+  if (!vids.length) return;
+  function start(video){
+    if (video.dataset.poster){ video.poster = video.dataset.poster; video.removeAttribute('data-poster'); }
+    var src = video.querySelector('source[data-src]');
+    if (src){
+      src.src = src.dataset.src;
+      src.removeAttribute('data-src');
+      video.load();
+    }
+    var p = video.play();
+    if (p && p.catch) p.catch(function(){});
+  }
+  var list = [];
+  Array.prototype.forEach.call(vids, function(s){ list.push(s.parentNode); });
+  if (!('IntersectionObserver' in window)){ list.forEach(start); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ start(e.target); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '200px 0px' });
+  list.forEach(function(v){ io.observe(v); });
 })();

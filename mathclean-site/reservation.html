@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Réserver une prestation | MathClean — Entreprise de nettoyage en Île-de-France</title>
-<meta name="description" content="Composez votre prestation MathClean dans notre configurateur : formules automobile, textile et professionnelles, tarif et durée en temps réel. Devis gratuit, intervention 7j/7 en Île-de-France.">
+<title>Réserver un nettoyage en ligne | MathClean Paris</title>
+<meta name="description" content="Composez votre prestation dans notre configurateur : tarif et durée affichés en temps réel, demande envoyée en une minute. Devis gratuit en Île-de-France.">
 <link rel="canonical" href="https://mathclean.fr/reservation.html">
 <meta name="theme-color" content="#08080a">
-<meta property="og:title" content="Réserver une prestation | MathClean">
-<meta property="og:description" content="Composez votre prestation dans notre configurateur : tarif et durée en temps réel. Devis gratuit, 7j/7 en Île-de-France.">
+<meta property="og:title" content="Réserver un nettoyage en ligne | MathClean Paris">
+<meta property="og:description" content="Composez votre prestation dans notre configurateur : tarif et durée affichés en temps réel, demande envoyée en une minute. Devis gratuit en Île-de-France.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mathclean.fr/reservation.html">
 <meta property="og:site_name" content="MathClean">
@@ -17,15 +17,16 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Réserver une prestation | MathClean">
-<meta name="twitter:description" content="Composez votre prestation dans notre configurateur : tarif et durée en temps réel.">
+<meta name="twitter:title" content="Réserver un nettoyage en ligne | MathClean Paris">
+<meta name="twitter:description" content="Composez votre prestation dans notre configurateur : tarif et durée affichés en temps réel, demande envoyée en une minute. Devis gratuit en Île-de-France.">
 <meta name="twitter:image" content="https://mathclean.fr/assets/og-image.png">
 <meta name="geo.region" content="FR-IDF">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="assets/lion.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap"></noscript>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B58TBB5DQL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
@@ -100,8 +101,8 @@ button{font-family:inherit}
   transition:stroke-dashoffset .7s cubic-bezier(.2,.8,.2,1)}
 .ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);
   font-size:1.05rem;color:var(--or)}
-.step-head .txt .k{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);font-weight:700}
-.step-head .txt h1{font-family:var(--serif);font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;
+.step-head .txt h1.k{font-size:.72rem;line-height:1.5;letter-spacing:.24em;text-transform:uppercase;color:var(--or);font-weight:700}
+.step-head .txt h2{font-family:var(--serif);font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;
   margin:6px 0 0;font-weight:600}
 
 /* --- panneaux d'étape --- */
@@ -351,7 +352,86 @@ button{font-family:inherit}
 .ck-btns .ck-no:hover{border-color:var(--or);color:var(--or)}
 @media(max-width:1040px){.ck-banner{bottom:auto;top:76px}}
 @media(max-width:560px){.ck-banner{left:10px;right:10px;padding:17px 18px}.ck-btns button{flex:1}}
+
+/* --- contenu éditorial sous le configurateur --- */
+.cfg-info{position:relative;z-index:1;border-top:1px solid var(--ligne);
+  background:rgba(255,255,255,.02);padding:64px 30px 80px}
+.ci-wrap{max-width:820px;margin:0 auto}
+.cfg-info h2{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:600;
+  margin:44px 0 14px;color:var(--ivoire)}
+.cfg-info h2:first-child{margin-top:0}
+.cfg-info p{color:var(--brume);margin-bottom:14px}
+.cfg-info a{color:var(--or);text-decoration:underline;text-underline-offset:3px}
+.ci-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 10px}
+.ci-steps>div{border:1px solid var(--ligne);border-radius:16px;padding:22px;background:rgba(255,255,255,.02)}
+.ci-steps b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--or);margin-bottom:8px}
+.ci-steps p{font-size:.92rem;margin:0}
+.ci-list{list-style:none;margin:18px 0 0}
+.ci-list li{position:relative;padding-left:24px;margin-bottom:12px;color:var(--brume)}
+.ci-list li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;
+  border-radius:50%;background:var(--or)}
+.ci-list b{color:var(--ivoire)}
+.ci-faq p{border-top:1px solid var(--ligne);padding-top:14px}
+.ci-faq b{color:var(--ivoire);display:block;margin-bottom:4px}
+.ci-more{margin-top:34px;padding-top:22px;border-top:1px solid var(--ligne);font-size:.94rem}
+@media(max-width:820px){.ci-steps{grid-template-columns:1fr}.cfg-info{padding:48px 18px 64px}}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Le tarif affiché dans le configurateur est-il définitif ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Oui pour les formules automobile, le nettoyage textile et le polissage : le montant du ticket est celui que vous réglerez. Les prestations professionnelles (locaux, bureaux, fin de chantier, bateau, avion) dépendent des surfaces et de l'état, et font l'objet d'un devis gratuit après échange."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Le créneau que je choisis est-il réservé immédiatement ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Non. Le créneau sélectionné constitue une demande : MathClean le confirme sous 24 h par téléphone ou par email. Rien n'est engagé tant que cette confirmation n'a pas été reçue."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Puis-je annuler ou décaler mon rendez-vous ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Oui, sans frais, en prévenant MathClean au 06 23 07 52 59. Un autre créneau vous sera proposé."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Combien de temps dure l'intervention ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "La durée s'affiche sur le ticket au fur et à mesure : environ 1 h 30 pour un nettoyage extérieur, 2 h à 3 h pour un intérieur, 4 h pour la formule Intégral et 45 minutes par pièce textile."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Faut-il être présent pendant l'intervention ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pour un véhicule, il suffit de remettre les clés et d'être joignable. Pour une intervention à domicile ou en entreprise, une présence à l'arrivée et au départ est préférable."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Le déplacement est-il facturé ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Non. Le déplacement est gratuit partout à Paris et en Île-de-France, à domicile comme sur le lieu de travail, et aucun acompte n'est demandé : le paiement intervient après la prestation."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -382,8 +462,8 @@ button{font-family:inherit}
         <b id="ringTxt">1</b>
       </div>
       <div class="txt">
-        <div class="k" id="stepK">Étape 1 sur 3</div>
-        <h1 id="stepT">Composez votre prestation</h1>
+        <h1 class="k" id="stepK">Étape 1 sur 3 · Réserver un nettoyage en Île-de-France</h1>
+        <h2 id="stepT">Composez votre prestation</h2>
       </div>
     </div>
 
@@ -424,9 +504,9 @@ button{font-family:inherit}
           <p class="lead">Ces prestations font l'objet d'un <b>devis gratuit personnalisé</b>. Ajoutez-les, décrivez votre besoin, nous répondons sous 24 h avec un tarif ferme.</p>
           <div class="rows" id="fDev"></div>
           <div id="devisBlock" class="hide" style="margin-top:26px">
-            <div class="fld"><label>Décrivez votre besoin</label><textarea name="Description" id="descArea" placeholder="Surfaces, dimensions, état, accès, étage…" disabled></textarea></div>
+            <div class="fld"><label for="descArea">Décrivez votre besoin</label><textarea name="Description" id="descArea" placeholder="Surfaces, dimensions, état, accès, étage…" disabled></textarea></div>
             <div class="fld">
-              <label>Photos &amp; vidéos <span style="text-transform:none;letter-spacing:0;color:var(--brume);font-weight:400">(facultatif)</span></label>
+              <label for="fileInput">Photos &amp; vidéos <span style="text-transform:none;letter-spacing:0;color:var(--brume);font-weight:400">(facultatif)</span></label>
               <div class="up" id="upZone">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
                 <b>Ajouter des photos ou vidéos</b>
@@ -441,7 +521,7 @@ button{font-family:inherit}
 
       <!-- ÉTAPE 2 -->
       <section class="panel" data-p="1">
-        <p class="lead" id="dateLead">Choisissez le jour de votre intervention, puis un créneau adapté à la durée de votre sélection.</p>
+        <p class="lead" id="dateLead">Choisissez le jour souhaité, puis un créneau adapté à la durée de votre sélection. Ce choix nous sert de base : nous vous confirmons le rendez-vous définitif après réception de votre demande.</p>
         <div class="cal">
           <div class="cal-h">
             <b id="calT"></b>
@@ -458,40 +538,40 @@ button{font-family:inherit}
 
       <!-- ÉTAPE 3 -->
       <section class="panel" data-p="2">
-        <p class="lead">Dernière étape : vos coordonnées pour recevoir la confirmation sous 24 h.</p>
+        <p class="lead">Dernière étape : vos coordonnées, pour que nous puissions vous confirmer le rendez-vous sous 24 h.</p>
         <div class="who">
           <button type="button" class="on" data-c="Particulier"><b>Particulier</b><span>Pour votre domicile</span></button>
           <button type="button" data-c="Entreprise"><b>Entreprise</b><span>Sur facture / SIRET</span></button>
         </div>
         <div id="gParti">
           <div class="g2">
-            <div class="fld"><label>Prénom</label><input type="text" name="Prénom" autocomplete="given-name"></div>
-            <div class="fld"><label>Nom</label><input type="text" name="Nom" autocomplete="family-name"></div>
+            <div class="fld"><label for="p-prenom">Prénom</label><input id="p-prenom" type="text" name="Prénom" autocomplete="given-name"></div>
+            <div class="fld"><label for="p-nom">Nom</label><input id="p-nom" type="text" name="Nom" autocomplete="family-name"></div>
           </div>
-          <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="N° et nom de rue" autocomplete="street-address"></div>
+          <div class="fld"><label for="p-adr">Adresse d'intervention</label><input id="p-adr" type="text" name="Adresse" placeholder="N° et nom de rue" autocomplete="street-address"></div>
           <div class="g2">
-            <div class="fld"><label>Code postal</label><input type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code"></div>
-            <div class="fld"><label>Ville</label><input type="text" name="Ville" autocomplete="address-level2"></div>
+            <div class="fld"><label for="p-cp">Code postal</label><input id="p-cp" type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code"></div>
+            <div class="fld"><label for="p-ville">Ville</label><input id="p-ville" type="text" name="Ville" autocomplete="address-level2"></div>
           </div>
           <div class="g2">
-            <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" autocomplete="tel"></div>
-            <div class="fld"><label>Email</label><input type="email" name="Email" autocomplete="email"></div>
+            <div class="fld"><label for="p-tel">Téléphone</label><input id="p-tel" type="tel" name="Téléphone" autocomplete="tel"></div>
+            <div class="fld"><label for="p-email">Email</label><input id="p-email" type="email" name="Email" autocomplete="email"></div>
           </div>
         </div>
         <div id="gEntr" class="hide">
-          <div class="fld"><label>Nom de l'entreprise</label><input type="text" name="Entreprise" autocomplete="organization" disabled></div>
-          <div class="fld"><label>Numéro SIRET</label><input type="text" name="SIRET" inputmode="numeric" placeholder="14 chiffres" disabled></div>
-          <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="N° et nom de rue" disabled></div>
+          <div class="fld"><label for="e-soc">Nom de l'entreprise</label><input id="e-soc" type="text" name="Entreprise" autocomplete="organization" disabled></div>
+          <div class="fld"><label for="e-siret">Numéro SIRET</label><input id="e-siret" type="text" name="SIRET" inputmode="numeric" placeholder="14 chiffres" disabled></div>
+          <div class="fld"><label for="e-adr">Adresse d'intervention</label><input id="e-adr" type="text" name="Adresse" placeholder="N° et nom de rue" autocomplete="street-address" disabled></div>
           <div class="g2">
-            <div class="fld"><label>Code postal</label><input type="text" name="Code postal" inputmode="numeric" disabled></div>
-            <div class="fld"><label>Ville</label><input type="text" name="Ville" disabled></div>
+            <div class="fld"><label for="e-cp">Code postal</label><input id="e-cp" type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code" disabled></div>
+            <div class="fld"><label for="e-ville">Ville</label><input id="e-ville" type="text" name="Ville" autocomplete="address-level2" disabled></div>
           </div>
           <div class="g2">
-            <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" disabled></div>
-            <div class="fld"><label>Email</label><input type="email" name="Email" disabled></div>
+            <div class="fld"><label for="e-tel">Téléphone</label><input id="e-tel" type="tel" name="Téléphone" autocomplete="tel" disabled></div>
+            <div class="fld"><label for="e-email">Email</label><input id="e-email" type="email" name="Email" autocomplete="email" disabled></div>
           </div>
         </div>
-        <div class="fld"><label>Précisions <span style="text-transform:none;letter-spacing:0;color:var(--brume);font-weight:400">(facultatif)</span></label><textarea name="Message" placeholder="Accès, étage, digicode, contraintes horaires…" style="min-height:90px"></textarea></div>
+        <div class="fld"><label for="r-msg">Précisions <span style="text-transform:none;letter-spacing:0;color:var(--brume);font-weight:400">(facultatif)</span></label><textarea id="r-msg" name="Message" placeholder="Accès, étage, digicode, contraintes horaires…" style="min-height:90px"></textarea></div>
       </section>
 
       <div class="nav2" id="nav2">
@@ -526,6 +606,39 @@ button{font-family:inherit}
     </div>
   </aside>
 </main>
+
+<section class="cfg-info">
+  <div class="ci-wrap">
+    <h2>Comment se passe une réservation chez MathClean&nbsp;?</h2>
+    <p>Notre configurateur vous laisse composer votre prestation vous-même&nbsp;: vous choisissez une formule automobile, une ou plusieurs pièces textiles ou une intervention professionnelle, vous ajoutez les options qui vous concernent, et le tarif comme la durée se recalculent à chaque geste. Aucun devis à attendre pour connaître le prix&nbsp;: il s'affiche en temps réel sur votre ticket.</p>
+
+    <div class="ci-steps">
+      <div><b>1. Vous composez</b><p>Formules automobile de 40 € à 120 €, nettoyage textile à la pièce, polissage, sortie de concession ou prestation professionnelle sur devis. Le ticket affiche le montant et la durée au fur et à mesure.</p></div>
+      <div><b>2. Vous proposez une date</b><p>Vous indiquez le jour souhaité et un créneau compatible avec la durée de votre sélection, du lundi au dimanche, matin ou après-midi.</p></div>
+      <div><b>3. Nous confirmons</b><p>Votre demande nous parvient immédiatement. Nous vous rappelons ou vous écrivons sous 24 h pour confirmer le rendez-vous, ou vous proposer un autre créneau si celui-ci n'est plus libre.</p></div>
+    </div>
+
+    <h2>Ce qui est compris dans le tarif affiché</h2>
+    <ul class="ci-list">
+      <li><b>Le déplacement</b> — gratuit partout à Paris et en Île-de-France, à votre domicile comme sur votre lieu de travail.</li>
+      <li><b>Le matériel et l'eau</b> — nous venons entièrement équipés&nbsp;; vous n'avez ni prise ni point d'eau à fournir.</li>
+      <li><b>Les produits</b> — professionnels, choisis pour ne pas agresser les matériaux, sans danger pour les enfants ni les animaux.</li>
+      <li><b>Aucun acompte</b> — le paiement se fait après l'intervention, une fois le résultat constaté.</li>
+    </ul>
+
+    <h2>Questions fréquentes sur la réservation</h2>
+    <div class="ci-faq">
+      <p><b>Le tarif affiché est-il définitif&nbsp;?</b> Oui pour les formules automobile, le textile et le polissage&nbsp;: le montant du ticket est celui que vous réglerez. Les prestations professionnelles (locaux, bureaux, fin de chantier, bateau, avion) dépendent des surfaces et de l'état&nbsp;; elles font l'objet d'un devis gratuit après échange.</p>
+      <p><b>Le créneau que je choisis est-il réservé immédiatement&nbsp;?</b> Non. Le créneau que vous sélectionnez est une demande&nbsp;: nous le confirmons sous 24 h par téléphone ou par email. Rien n'est engagé tant que vous n'avez pas reçu cette confirmation.</p>
+      <p><b>Puis-je annuler ou décaler&nbsp;?</b> Oui, sans frais, en nous prévenant au <a href="tel:+33623075259">06&nbsp;23&nbsp;07&nbsp;52&nbsp;59</a>. Nous vous proposerons un autre créneau.</p>
+      <p><b>Combien de temps dure l'intervention&nbsp;?</b> La durée s'affiche sur votre ticket au fur et à mesure&nbsp;: comptez 1 h 30 pour un extérieur, 2 h à 3 h pour un intérieur, 4 h pour l'Intégral et 45 min par pièce textile.</p>
+      <p><b>Faut-il être présent&nbsp;?</b> Pour un véhicule, il suffit de nous remettre les clés et d'être joignable. Pour une intervention à domicile ou en entreprise, une présence à l'arrivée et au départ est préférable.</p>
+    </div>
+
+    <p class="ci-more">Vous préférez en parler de vive voix&nbsp;? Appelez-nous au <a href="tel:+33623075259">06&nbsp;23&nbsp;07&nbsp;52&nbsp;59</a>, 7j/7. Vous pouvez aussi consulter le détail de chaque prestation&nbsp;: <a href="/services/nettoyage-automobile-paris.html">nettoyage automobile</a>, <a href="/services/nettoyage-textile-paris.html">canapé, matelas et tapis</a>, <a href="/services/polissage-carrosserie-paris.html">polissage de carrosserie</a>, <a href="/services/nettoyage-terrasse-paris.html">terrasse</a>, <a href="/services/nettoyage-locaux-paris.html">locaux et bureaux</a>, <a href="/services/nettoyage-fin-de-chantier-paris.html">fin de chantier</a>, <a href="/services/nettoyage-bateau-paris.html">bateau</a> et <a href="/services/nettoyage-avion-paris.html">avion</a>, ainsi que nos <a href="/zones.html">zones d'intervention</a>.</p>
+  </div>
+</section>
+
 
 <script>
 /* =====================================================================
@@ -774,7 +887,7 @@ button{font-family:inherit}
       box.appendChild(el);
     });
     note.textContent=any
-      ? 'Créneaux calculés pour une durée d’intervention de '+dur(d)+'.'
+      ? 'Créneaux proposés pour une durée d’intervention de '+dur(d)+'. Le rendez-vous est confirmé par nos soins avant tout déplacement.'
       : 'Votre sélection dépasse une journée — appelez-nous au 06 23 07 52 59 pour organiser plusieurs passages.';
   }
 
@@ -830,7 +943,7 @@ button{font-family:inherit}
     $('#hint').textContent=ok?'':why(idx);
     $('#ringTxt').textContent=idx+1;
     $('#ringFg').style.strokeDashoffset=176-(176*((idx+1)/3));
-    $('#stepK').textContent='Étape '+(idx+1)+' sur 3';
+    $('#stepK').textContent='Étape '+(idx+1)+' sur 3 · Réserver un nettoyage en Île-de-France';
     $('#stepT').textContent=TITRES[idx];
   }
   function show(i){

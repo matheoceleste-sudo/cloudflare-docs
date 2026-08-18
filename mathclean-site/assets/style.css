@@ -393,9 +393,10 @@ footer ul a:hover{color:var(--or);padding-left:5px}
   --noir-3:#eef0f3;      /* survol / alt : gris très clair */
   --blanc:#14141a;       /* texte principal : quasi noir */
   --gris:#4a4a55;        /* texte secondaire : gris neutre */
-  --or:#a97f28;          /* or profond pour contraste sur blanc */
-  --or-clair:#c19a45;
+  --or:#866518;          /* or texte : 5,4:1 sur blanc, 4,6:1 sur les fonds clairs (AA) */
+  --or-clair:#c19a45;    /* réservé au décoratif : dégradés, filets, icônes */
   --or-fonce:#7c5f22;
+  --or-deco:#a97f28;     /* or d'origine, conservé pour les aplats et les ombres */
   --ligne:rgba(20,20,30,.10);
   --ombre:0 20px 50px -26px rgba(20,20,35,.22);
 }
@@ -638,7 +639,7 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 .ba-shot.avant{border-right:2px solid var(--noir)}
 .ba-badge{position:absolute;top:12px;left:12px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
   font-weight:700;padding:6px 12px;border-radius:99px;backdrop-filter:blur(4px)}
-.ba-badge.a{background:rgba(20,20,30,.72);color:#fff}
+.ba-badge.a{background:rgba(20,20,30,.86);color:#fff}
 .ba-badge.b{background:var(--or);color:#1a1206}
 .ba-cap{padding:18px 22px;text-align:center}
 .ba-cap b{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--blanc)}
@@ -655,7 +656,9 @@ body:has(.journey) header.nav:not(.scrolled) .submenu a{color:var(--blanc)!impor
 .vid-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
 .vid{width:calc(25% - 15px);max-width:100%;height:auto;display:block;background:#0b1826;
   border-radius:18px;border:1px solid var(--ligne);box-shadow:0 24px 60px -38px rgba(20,20,35,.34)}
-img.vid{aspect-ratio:9/16;object-fit:cover}
+/* Ratio imposé aux deux : sans poster ni métadonnées chargées, une <video>
+   n'a aucune hauteur intrinsèque et la grille sauterait à l'affichage. */
+img.vid,video.vid{aspect-ratio:9/16;object-fit:cover}
 @media(max-width:640px){.vid{width:calc(50% - 10px)}}
 
 /* ===== Galerie interventions (photos réelles) ===== */
@@ -765,3 +768,52 @@ img.vid{aspect-ratio:9/16;object-fit:cover}
 .ck-btns .ck-ok:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px var(--or)}
 .ck-btns .ck-no:hover{border-color:var(--or);color:var(--or)}
 @media(max-width:560px){.ck-banner{left:10px;right:10px;bottom:10px;padding:17px 18px}.ck-btns button{flex:1}}
+
+/* ---- Note Google réelle (remplace le carrousel de témoignages) ---- */
+.gnote{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;
+  max-width:900px;margin:44px auto 0;padding:30px 34px;border:1px solid var(--ligne);
+  border-radius:20px;background:linear-gradient(160deg,var(--noir-3),var(--noir-2));box-shadow:var(--ombre)}
+.gnote .gn-left{display:flex;align-items:center;gap:16px;padding-right:34px;border-right:1px solid var(--ligne)}
+.gnote .gicon-lg{width:44px;height:44px;flex:0 0 44px;background:#fff;border-radius:50%;padding:5px}
+.gnote .gn-score{display:block;font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--blanc)}
+.gnote .gn-stars{display:block;color:#f5b400;letter-spacing:3px;font-size:1rem;margin:4px 0 2px}
+.gnote .gn-left small{display:block;color:var(--gris);font-size:.85rem;white-space:nowrap}
+.gnote .gn-right p{color:var(--gris);line-height:1.65;margin:0 0 18px}
+.gnote .gn-btns{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:820px){
+  .gnote{grid-template-columns:1fr;gap:22px;padding:26px 22px;text-align:center}
+  .gnote .gn-left{justify-content:center;padding:0 0 20px;border-right:0;border-bottom:1px solid var(--ligne)}
+  .gnote .gn-btns{justify-content:center}
+}
+
+
+/* ============================================================= */
+/* ======  Contrastes : mise au niveau WCAG AA (4,5:1)  ========= */
+/* ============================================================= */
+/* Le bouton principal héritait de var(--noir), redéfini en blanc par le thème
+   clair : texte blanc sur or, soit 3:1. On force une encre sombre. */
+.btn-or{background:linear-gradient(120deg,var(--or-clair),var(--or-deco));color:#151109}
+.btn-or:hover{color:#151109}
+/* Or clair (2,6:1 sur blanc) : réservé aux fonds sombres, jamais au texte sur clair */
+.prose h3{color:var(--or)}
+nav.menu a:hover{color:var(--or)}
+.villes a:hover{color:var(--or)}
+/* Ombres et filets : on garde la teinte d'origine, plus lumineuse */
+.btn-or{box-shadow:0 14px 36px -14px var(--or-deco)}
+.btn-or:hover{box-shadow:0 22px 48px -16px var(--or-deco)}
+/* Sur les fonds sombres (hero en plongée, cartes photo), l'or clair reste correct */
+.journey .baseline,.journey .hero-inner .eyebrow,.journey .jside .eyebrow,
+.pc-n,.pc-cta{color:var(--or-clair)}
+.hero-dispo .hd-note{font-size:.78rem;line-height:1.5;color:var(--gris);margin:10px 0 0;padding-top:9px;
+  border-top:1px solid var(--ligne)}
+.journey .hero-dispo .hd-note{color:rgba(245,242,234,.62);border-top-color:rgba(255,255,255,.12)}
+
+/* La barre des pages légales est sombre : le texte de marque héritait de
+   var(--blanc), redéfini en quasi-noir par le thème clair — illisible. */
+.legal-topbar .brand{color:#f6f3ec}
+.legal-topbar .brand b{color:var(--or-clair)}
+/* Bouton d'acceptation des cookies : blanc sur or = 2,6:1. Encre sombre. */
+.ck-btns .ck-ok{color:#151109;background:linear-gradient(120deg,var(--or-clair),var(--or-deco))}
+.ck-btns .ck-ok:hover{color:#151109;box-shadow:0 12px 26px -12px var(--or-deco)}
+/* Badge « Après » : l'or texte est trop sombre pour porter une encre sombre. */
+.ba-badge.b{background:var(--or);color:#fff}
