@@ -1,6 +1,6 @@
 /* ===== Header au scroll ===== */
 const navEl=document.querySelector('header.nav');
-addEventListener('scroll',()=>navEl.classList.toggle('scrolled',scrollY>40));
+if(navEl) addEventListener('scroll',()=>navEl.classList.toggle('scrolled',scrollY>40));
 
 /* ===== Menu mobile ===== */
 const burger=document.querySelector('.burger');

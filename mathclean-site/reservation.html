@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Réserver une prestation | MathClean — Entreprise de nettoyage en Île-de-France</title>
-<meta name="description" content="Réservez votre prestation de nettoyage MathClean en ligne : ajoutez vos prestations au panier, votre tarif et la durée s'affichent en temps réel. Devis gratuit, intervention 7j/7 en Île-de-France.">
+<meta name="description" content="Composez votre prestation MathClean dans notre configurateur : formules automobile, textile et professionnelles, tarif et durée en temps réel. Devis gratuit, intervention 7j/7 en Île-de-France.">
 <link rel="canonical" href="https://mathclean.fr/reservation.html">
-<meta name="theme-color" content="#0a0a0c">
-<meta property="og:title" content="Réserver une prestation | MathClean — Entreprise de nettoyage en Île-de-France">
-<meta property="og:description" content="Réservez votre prestation de nettoyage MathClean en ligne : ajoutez vos prestations au panier, votre tarif et la durée s'affichent en temps réel. Devis gratuit, intervention 7j/7 en Île-de-France.">
+<meta name="theme-color" content="#08080a">
+<meta property="og:title" content="Réserver une prestation | MathClean">
+<meta property="og:description" content="Composez votre prestation dans notre configurateur : tarif et durée en temps réel. Devis gratuit, 7j/7 en Île-de-France.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mathclean.fr/reservation.html">
 <meta property="og:site_name" content="MathClean">
@@ -16,915 +16,862 @@
 <meta property="og:image" content="https://mathclean.fr/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="MathClean — Nettoyage à Paris &amp; Île-de-France">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Réserver une prestation | MathClean — Entreprise de nettoyage en Île-de-France">
-<meta name="twitter:description" content="Réservez votre prestation de nettoyage MathClean en ligne : ajoutez vos prestations au panier, votre tarif et la durée s'affichent en temps réel.">
+<meta name="twitter:title" content="Réserver une prestation | MathClean">
+<meta name="twitter:description" content="Composez votre prestation dans notre configurateur : tarif et durée en temps réel.">
 <meta name="twitter:image" content="https://mathclean.fr/assets/og-image.png">
 <meta name="geo.region" content="FR-IDF">
-<meta name="geo.placename" content="Paris, Île-de-France">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="assets/lion.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="assets/anim.css">
-<style>
-/* ===== Bandeau confiance ===== */
-.resa-trust{margin-top:20px;font-size:.92rem;color:rgba(245,242,234,.9);display:inline-flex;
-  align-items:center;gap:8px;flex-wrap:wrap;background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:10px 20px}
-.resa-trust .stars{color:var(--or);letter-spacing:1px}
-.resa-trust b{color:#fff}
-.resa-trust .sep{color:rgba(255,255,255,.35)}
-@media(max-width:560px){.resa-trust{font-size:.82rem;padding:9px 14px;gap:6px}}
-
-/* ===== Barre de progression ===== */
-.resa-progress-bar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne);padding:14px 0}
-.rp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.rp-step{font-size:.78rem;letter-spacing:.18em;color:var(--gris);text-transform:uppercase}
-.rp-step b{color:var(--or);font-size:1.1rem;font-family:var(--serif);letter-spacing:0}
-.rp-help{font-size:.85rem;color:var(--gris)}
-.rp-help a{color:var(--or);font-weight:700;text-decoration:none}
-.rp-track{height:4px;background:var(--noir-3);border-radius:2px;overflow:hidden}
-.rp-track i{display:block;height:100%;width:33%;border-radius:2px;
-  background:linear-gradient(90deg,#e7cd86,#9c7a2e);transition:width .5s cubic-bezier(.2,.8,.2,1)}
-.rp-labels{display:flex;justify-content:space-between;margin-top:9px}
-.rp-labels span{font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gris);opacity:.55;transition:.3s;font-weight:600}
-.rp-labels span.on{color:var(--or);opacity:1}
-@media(max-width:560px){.rp-help{display:none}.rp-labels span{font-size:.62rem}}
-
-/* ===== Mise en page : contenu + panier ===== */
-.resa-layout{display:grid;grid-template-columns:1fr 350px;gap:30px;align-items:start}
-@media(max-width:960px){.resa-layout{grid-template-columns:1fr}}
-.wiz-card{background:var(--noir);border:1px solid var(--ligne);border-radius:22px;
-  padding:34px 34px;box-shadow:0 24px 60px -34px rgba(20,20,35,.26)}
-@media(max-width:640px){.wiz-card{padding:24px 18px;border-radius:18px}}
-.wstep{display:none;animation:wIn .45s cubic-bezier(.2,.8,.2,1)}
-.wstep.on{display:block}
-@keyframes wIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
-.wstep-head{margin-bottom:22px}
-.wstep-head .k{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);font-weight:700;margin-bottom:8px}
-.wstep-head h2{font-family:var(--serif);font-size:1.9rem;line-height:1.15;color:var(--blanc);margin:0}
-.wstep-head p{color:var(--gris);font-size:.95rem;margin:10px 0 0;line-height:1.55}
-
-/* ===== Catalogue ===== */
-.cat-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.cat-tab{cursor:pointer;border:1.5px solid var(--ligne);background:var(--noir-2);border-radius:99px;
-  padding:9px 18px;font-family:var(--sans);font-size:.88rem;font-weight:600;color:var(--blanc);transition:.2s}
-.cat-tab:hover{border-color:rgba(169,127,40,.6)}
-.cat-tab.on{border-color:var(--or);background:var(--noir-3);color:var(--or)}
-.cat-pane{display:none}
-.cat-pane.on{display:block}
-.cat-note{font-size:.86rem;color:var(--gris);margin:0 0 16px;line-height:1.5}
-
-.item-list{display:grid;gap:10px}
-.item{display:flex;align-items:center;gap:14px;border:1.5px solid var(--ligne);border-radius:14px;
-  padding:14px 16px;background:var(--noir-2);transition:.2s}
-.item:hover{border-color:rgba(169,127,40,.55)}
-.item-main{flex:1;min-width:0}
-.item-main b{display:block;font-size:.97rem;color:var(--blanc);font-weight:600}
-.item-main small{display:block;font-size:.83rem;color:var(--gris);margin-top:3px;line-height:1.4}
-.item-price{text-align:right;white-space:nowrap}
-.item-price .p{display:block;color:var(--or);font-weight:800;font-size:1rem}
-.item-price .d{display:block;font-size:.78rem;color:var(--gris);margin-top:2px}
-.item-add{flex:0 0 auto;cursor:pointer;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--or);
-  background:none;color:var(--or);font-size:1.35rem;line-height:1;font-weight:700;transition:.2s;font-family:var(--sans)}
-.item-add:hover{background:var(--or);color:#fff;transform:scale(1.07)}
-.item.added{border-color:var(--or);background:var(--noir-3)}
-.item-qty{flex:0 0 auto;display:flex;align-items:center;gap:9px}
-.item-qty button{cursor:pointer;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--ligne);
-  background:none;color:var(--blanc);font-size:1.05rem;line-height:1;transition:.2s;font-family:var(--sans)}
-.item-qty button:hover{border-color:var(--or);color:var(--or)}
-.item-qty b{min-width:18px;text-align:center;color:var(--or);font-size:1rem}
-
-/* ===== Packs (formules détaillées) ===== */
-.packs{display:grid;gap:18px}
-.pack{border:1.5px solid var(--ligne);border-radius:18px;overflow:hidden;background:var(--noir-2);transition:.25s}
-.pack:hover{border-color:rgba(169,127,40,.55);box-shadow:0 18px 44px -30px rgba(20,20,35,.3)}
-.pack.added{border-color:var(--or);box-shadow:0 0 0 3px rgba(169,127,40,.13)}
-.pack-img{height:170px;background:#0b1826 center/cover no-repeat}
-.pack-body{padding:18px 20px 20px}
-.pack-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.pack-badges span{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;
-  color:var(--gris);background:var(--noir-3);border:1px solid var(--ligne);border-radius:99px;padding:5px 12px}
-.pack-badges svg{width:13px;height:13px;color:var(--or)}
-.pack h4{font-family:var(--sans);font-size:1.15rem;font-weight:800;letter-spacing:.04em;
-  text-transform:uppercase;color:var(--blanc);margin:0 0 4px}
-.pack .tag{font-size:.88rem;color:var(--gris);margin:0 0 12px}
-.pack-list{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:5px}
-.pack-list li{position:relative;padding-left:20px;font-size:.9rem;color:var(--gris);line-height:1.45}
-.pack-list li::before{content:"";position:absolute;left:2px;top:.52em;width:6px;height:6px;border-radius:50%;background:var(--or)}
-.pack-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;
-  border-top:1px solid var(--ligne);padding-top:15px;flex-wrap:wrap}
-.pack-price b{font-size:1.35rem;color:var(--or);font-weight:800;line-height:1}
-.pack-price small{display:block;font-size:.78rem;color:var(--gris);margin-top:3px}
-.pack-btn{cursor:pointer;border:0;border-radius:99px;padding:12px 26px;font-family:var(--sans);font-weight:700;
-  font-size:.92rem;background:linear-gradient(120deg,var(--or-clair),var(--or));color:#fff;transition:.25s}
-.pack-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px var(--or)}
-.pack-qty{display:flex;align-items:center;gap:10px}
-.pack-qty button{cursor:pointer;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ligne);
-  background:none;color:var(--blanc);font-size:1.1rem;transition:.2s;font-family:var(--sans)}
-.pack-qty button:hover{border-color:var(--or);color:var(--or)}
-.pack-qty b{min-width:20px;text-align:center;color:var(--or)}
-
-/* ===== Options façon « Ajoutez des options » ===== */
-.opt2-list{display:grid;gap:0;border:1.5px solid var(--ligne);border-radius:14px;overflow:hidden;background:var(--noir-2)}
-.opt2{display:flex;align-items:center;gap:14px;padding:15px 16px;cursor:pointer;
-  border-bottom:1px solid var(--ligne);transition:.2s}
-.opt2:last-child{border-bottom:0}
-.opt2:hover{background:var(--noir-3)}
-.opt2 input{width:20px;height:20px;flex:0 0 20px;accent-color:var(--or);cursor:pointer}
-.opt2 .o-name{flex:1;min-width:0;font-size:.95rem;font-weight:700;letter-spacing:.03em;
-  text-transform:uppercase;color:var(--blanc)}
-.opt2 .o-name em{display:block;font-style:normal;font-size:.84rem;font-weight:400;letter-spacing:0;
-  text-transform:none;color:var(--gris);margin-top:3px;line-height:1.45}
-.opt2 .o-pill{flex:0 0 auto;background:var(--noir-3);border:1px solid var(--ligne);color:var(--or);
-  font-weight:800;font-size:.88rem;border-radius:99px;padding:8px 16px;white-space:nowrap}
-.opt2.on{background:var(--noir-3)}
-.opt2.on .o-pill{background:linear-gradient(120deg,var(--or-clair),var(--or));color:#fff;border-color:transparent}
-
-/* véhicule (automobile) */
-.veh-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:18px}
-@media(max-width:560px){.veh-pick{grid-template-columns:repeat(2,1fr)}}
-.veh-opt{cursor:pointer;border:1.5px solid var(--ligne);border-radius:12px;padding:12px 6px;text-align:center;
-  transition:.2s;position:relative;background:var(--noir-2)}
-.veh-opt:hover{border-color:rgba(169,127,40,.5)}
-.veh-opt.sel{border-color:var(--or);background:var(--noir-3);box-shadow:0 0 0 3px rgba(169,127,40,.15)}
-.veh-opt span{display:block;font-size:.86rem;color:var(--blanc);font-weight:600}
-.veh-opt small{display:block;font-size:.76rem;color:var(--or);margin-top:2px}
-
-/* ===== PANIER ===== */
-.cart{position:sticky;top:96px;background:var(--noir);border:1px solid var(--ligne);border-radius:20px;
-  padding:22px 22px;box-shadow:0 24px 60px -34px rgba(20,20,35,.3)}
-.cart h3{font-family:var(--serif);font-size:1.35rem;color:var(--blanc);margin:0 0 4px}
-.cart .sub{font-size:.84rem;color:var(--gris);margin-bottom:16px}
-.cart-empty{font-size:.9rem;color:var(--gris);text-align:center;padding:22px 6px;line-height:1.55}
-.cart-list{display:grid;gap:9px;margin-bottom:14px;max-height:320px;overflow-y:auto}
-.cl{display:flex;align-items:flex-start;gap:9px;font-size:.9rem;padding-bottom:9px;border-bottom:1px solid var(--ligne)}
-.cl:last-child{border-bottom:0;padding-bottom:0}
-.cl .n{flex:1;color:var(--blanc);line-height:1.35}
-.cl .n em{display:block;font-style:normal;font-size:.78rem;color:var(--gris);margin-top:2px}
-.cl .pz{color:var(--or);font-weight:700;white-space:nowrap}
-.cl .rm{cursor:pointer;border:0;background:none;color:var(--gris);font-size:1.05rem;line-height:1;padding:0 2px;transition:.2s}
-.cl .rm:hover{color:#c0392b}
-.cart-tot{border-top:2px solid var(--ligne);padding-top:14px;margin-top:4px}
-.ct-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.9rem;color:var(--gris);margin-bottom:7px}
-.ct-row.big{font-size:1rem;color:var(--blanc);font-weight:600}
-.ct-row.big b{font-family:var(--serif);font-size:1.9rem;color:var(--or);line-height:1}
-.ct-devis{font-size:.8rem;color:var(--gris);line-height:1.45;margin-top:8px;
-  background:var(--noir-2);border:1px solid var(--ligne);border-radius:10px;padding:9px 11px}
-.cart .btn{width:100%;justify-content:center;margin-top:14px}
-.cart-add{width:100%;justify-content:center;margin-top:9px;cursor:pointer;border:1.5px dashed var(--ligne);
-  background:none;color:var(--blanc);border-radius:99px;padding:11px 16px;font-family:var(--sans);
-  font-weight:600;font-size:.9rem;transition:.2s;display:inline-flex;align-items:center;gap:8px}
-.cart-add:hover{border-color:var(--or);color:var(--or)}
-/* panier mobile : barre fixe en bas */
-@media(max-width:960px){
-  .cart{position:fixed;left:0;right:0;bottom:0;top:auto;border-radius:18px 18px 0 0;z-index:60;
-    box-shadow:0 -12px 40px -18px rgba(20,20,35,.4);padding:14px 18px;max-height:72vh;overflow-y:auto}
-  .cart.collapsed .cart-list,.cart.collapsed .cart-empty,.cart.collapsed .sub,
-  .cart.collapsed h3,.cart.collapsed .ct-devis,.cart.collapsed .cart-add{display:none}
-  .cart-list{max-height:34vh}
-  .cart-toggle{display:block;width:38px;height:4px;border-radius:2px;background:var(--ligne);
-    border:0;margin:0 auto 10px;cursor:pointer;padding:0}
-  body{padding-bottom:150px}
-}
-.cart-toggle{display:none}
-
-/* ===== Calendrier ===== */
-.cal{border:1px solid var(--ligne);border-radius:14px;padding:16px;background:var(--noir-2)}
-.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.cal-head b{font-family:var(--serif);font-size:1.15rem;color:var(--blanc);text-transform:capitalize}
-.cal-nav{display:flex;gap:8px}
-.cal-nav button{cursor:pointer;width:34px;height:34px;border-radius:50%;border:1px solid var(--ligne);
-  background:none;color:var(--or);font-size:1rem;transition:.25s}
-.cal-nav button:hover:not(:disabled){border-color:var(--or)}
-.cal-nav button:disabled{opacity:.25;cursor:default}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
-.cal-grid .dow{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);padding:6px 0}
-.cal-day{cursor:pointer;border:1px solid transparent;border-radius:10px;padding:10px 0;color:var(--blanc);font-size:.9rem;transition:.2s}
-.cal-day:hover{border-color:rgba(169,127,40,.5)}
-.cal-day.off{opacity:.25;pointer-events:none}
-.cal-day.today{border-color:var(--ligne)}
-.cal-day.sel{background:linear-gradient(135deg,var(--or),var(--or-fonce));color:#fff;font-weight:700}
-.cal-day.blank{visibility:hidden}
-.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:16px}
-.slot{cursor:pointer;border:1.5px solid var(--ligne);border-radius:12px;padding:12px 8px;text-align:center;
-  font-size:.9rem;font-weight:600;color:var(--blanc);transition:.2s;background:var(--noir-2)}
-.slot:hover{border-color:rgba(169,127,40,.5)}
-.slot.sel{border-color:var(--or);background:var(--noir-3);box-shadow:0 0 0 3px rgba(169,127,40,.15)}
-.slot small{display:block;font-weight:400;font-size:.76rem;color:var(--gris);margin-top:2px}
-.slots-note{font-size:.82rem;color:var(--gris);margin-top:12px}
-
-/* ===== Téléversement / champs ===== */
-.up-zone{border:1.6px dashed var(--ligne);border-radius:14px;padding:22px;text-align:center;cursor:pointer;transition:.25s;background:var(--noir-2)}
-.up-zone:hover{border-color:var(--or)}
-.up-zone svg{width:32px;height:32px;color:var(--or);margin-bottom:8px}
-.up-zone p{color:var(--blanc);font-size:.93rem;margin:0;font-weight:600}
-.up-zone small{color:var(--gris)}
-.up-list{margin-top:10px;font-size:.85rem;color:var(--or);font-weight:600}
-.fld{margin-bottom:16px}
-.fld label{display:block;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--or);margin-bottom:7px;font-weight:600}
-.fld input,.fld textarea{width:100%;background:var(--noir-2);border:1px solid var(--ligne);border-radius:11px;
-  padding:13px 15px;color:var(--blanc);font-family:var(--sans);font-size:.98rem;transition:.25s;box-sizing:border-box}
-.fld textarea{resize:vertical;min-height:130px;line-height:1.55}
-.fld input::placeholder,.fld textarea::placeholder{color:var(--gris)}
-.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--or);box-shadow:0 0 0 3px rgba(169,127,40,.14)}
-.fgrid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:520px){.fgrid2{grid-template-columns:1fr}}
-.ctype{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-.ctype button{cursor:pointer;border:1.5px solid var(--ligne);background:var(--noir-2);border-radius:13px;
-  padding:15px 12px;text-align:center;transition:.2s;font-family:var(--sans)}
-.ctype button b{display:block;font-size:1rem;color:var(--blanc);font-weight:700}
-.ctype button small{display:block;font-size:.8rem;color:var(--gris);margin-top:3px}
-.ctype button.on{border-color:var(--or);background:var(--noir-3);box-shadow:0 0 0 3px rgba(169,127,40,.14)}
-.ctype button.on b{color:var(--or)}
-
-/* ===== Navigation ===== */
-.wnav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:28px}
-.wprev{background:none;border:1.5px solid var(--ligne);color:var(--blanc);border-radius:99px;
-  padding:13px 24px;font-family:var(--sans);font-weight:600;cursor:pointer;transition:.2s;font-size:.94rem}
-.wprev:hover{border-color:var(--or);color:var(--or)}
-.wprev.hide{visibility:hidden}
-.wnext[disabled]{opacity:.4;cursor:not-allowed}
-.wnav-note{text-align:center;font-size:.85rem;color:var(--gris);margin-top:12px;min-height:1.1em}
-.hide{display:none !important}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B58TBB5DQL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
 try{if(localStorage.getItem('mcConsent')==='yes'){gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});}}catch(e){}
 gtag('js',new Date());gtag('config','G-B58TBB5DQL');gtag('config','GT-5DHFFMX6');</script>
+<style>
+/* ===================== CONFIGURATEUR MATHCLEAN ===================== */
+:root{
+  --or:#d4af37; --or-clair:#f0d98a; --or-fonce:#8f6f1e;
+  --nuit:#08080a; --nuit-2:#101014; --nuit-3:#17171d;
+  --ivoire:#f4f1ea; --brume:#9d9a94;
+  --ligne:rgba(212,175,55,.20);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--nuit);color:var(--ivoire);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* --- aurore dorée animée en fond --- */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;display:block}
+.aurora i:nth-child(1){width:58vw;height:58vw;left:-14vw;top:-18vw;
+  background:radial-gradient(circle,rgba(212,175,55,.30),transparent 68%);animation:drift1 26s ease-in-out infinite}
+.aurora i:nth-child(2){width:48vw;height:48vw;right:-12vw;top:22vh;
+  background:radial-gradient(circle,rgba(150,110,40,.26),transparent 68%);animation:drift2 32s ease-in-out infinite}
+.aurora i:nth-child(3){width:42vw;height:42vw;left:26vw;bottom:-16vw;
+  background:radial-gradient(circle,rgba(240,217,138,.14),transparent 70%);animation:drift3 38s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(7vw,5vh)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-6vw,-6vh)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(4vw,-4vh)}}
+@media(prefers-reduced-motion:reduce){.aurora i{animation:none}}
+
+/* --- barre haute --- */
+.cfg-top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:16px 30px;background:rgba(8,8,10,.72);
+  backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,175,55,.14)}
+.cfg-top .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:1.35rem;font-weight:600}
+.cfg-top .brand svg{width:34px;height:34px}
+.cfg-top .brand b{color:var(--or)}
+.cfg-top .tools{display:flex;align-items:center;gap:20px}
+.cfg-top .tel{font-size:.9rem;font-weight:600;color:var(--or);white-space:nowrap}
+.cfg-top .quit{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brume);transition:.25s}
+.cfg-top .quit:hover{color:var(--ivoire)}
+@media(max-width:700px){
+  .cfg-top{padding:11px 14px}
+  .cfg-top .brand{font-size:1.05rem;gap:8px}
+  .cfg-top .brand svg{width:28px;height:28px}
+  .cfg-top .tools{gap:13px}
+  .cfg-top .tel{font-size:.8rem}
+  .cfg-top .tel span{display:none}
+  .cfg-top .quit{font-size:0}
+  .cfg-top .quit::after{content:"✕";font-size:1.1rem;line-height:1}
+}
+
+/* --- ossature --- */
+.cfg{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:104px 30px 60px;
+  display:grid;grid-template-columns:1fr 348px;gap:38px;align-items:start}
+@media(max-width:1040px){.cfg{grid-template-columns:1fr;padding:92px 18px 190px}}
+
+/* --- en-tête d'étape + anneau de progression --- */
+.step-head{display:flex;align-items:center;gap:20px;margin-bottom:30px}
+.ring{position:relative;flex:0 0 62px;width:62px;height:62px}
+.ring svg{transform:rotate(-90deg);width:62px;height:62px}
+.ring circle{fill:none;stroke-width:4;stroke-linecap:round}
+.ring .bg{stroke:rgba(212,175,55,.16)}
+.ring .fg{stroke:url(#ringGrad);stroke-dasharray:176;stroke-dashoffset:176;
+  transition:stroke-dashoffset .7s cubic-bezier(.2,.8,.2,1)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);
+  font-size:1.05rem;color:var(--or)}
+.step-head .txt .k{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);font-weight:700}
+.step-head .txt h1{font-family:var(--serif);font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;
+  margin:6px 0 0;font-weight:600}
+
+/* --- panneaux d'étape --- */
+.panel{display:none}
+.panel.on{display:block;animation:panelIn .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes panelIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.lead{color:var(--brume);font-size:1rem;max-width:62ch;margin-bottom:26px}
+
+/* --- onglets univers --- */
+.univ{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.univ button{cursor:pointer;border:1px solid var(--ligne);background:rgba(255,255,255,.03);
+  color:var(--ivoire);border-radius:99px;padding:11px 22px;font-size:.9rem;font-weight:600;transition:.28s}
+.univ button:hover{border-color:rgba(212,175,55,.5);transform:translateY(-2px)}
+.univ button.on{background:linear-gradient(120deg,var(--or-clair),var(--or));color:#241a04;border-color:transparent;
+  box-shadow:0 10px 26px -12px rgba(212,175,55,.7)}
+.zone{display:none}
+.zone.on{display:block;animation:panelIn .5s cubic-bezier(.2,.8,.2,1)}
+.group-t{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  font-weight:700;margin:32px 0 14px;display:flex;align-items:center;gap:12px}
+.group-t::after{content:"";flex:1;height:1px;background:var(--ligne)}
+
+/* --- cartes formules --- */
+.formules{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:16px}
+.f{position:relative;border:1px solid var(--ligne);border-radius:20px;padding:24px 22px 22px;
+  background:linear-gradient(165deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  overflow:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .45s}
+.f::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .45s;
+  background:radial-gradient(360px circle at 50% 0%,rgba(212,175,55,.16),transparent 70%)}
+.f:hover{transform:translateY(-6px);border-color:rgba(212,175,55,.48);
+  box-shadow:0 26px 54px -30px rgba(0,0,0,.9)}
+.f:hover::before{opacity:1}
+.f.on{border-color:var(--or);box-shadow:0 0 0 1px var(--or),0 26px 54px -30px rgba(212,175,55,.5)}
+.f.on::before{opacity:1}
+.f > *{position:relative;z-index:1}
+.f .fmeta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.f .dur{font-size:.74rem;font-weight:700;letter-spacing:.08em;color:var(--brume);
+  border:1px solid var(--ligne);border-radius:99px;padding:4px 11px}
+.f .num{font-family:var(--serif);font-size:.95rem;color:var(--or)}
+.f h3{font-family:var(--sans);font-size:1.06rem;font-weight:800;letter-spacing:.03em;
+  text-transform:uppercase;margin-bottom:5px}
+.f .tag{font-size:.85rem;color:var(--brume);margin-bottom:15px;min-height:2.6em}
+.f ul{list-style:none;display:grid;gap:6px;margin-bottom:18px}
+.f li{position-relative;position:relative;padding-left:19px;font-size:.86rem;color:var(--brume);line-height:1.45}
+.f li::before{content:"";position:absolute;left:1px;top:.5em;width:6px;height:6px;border-radius:50%;
+  background:var(--or);opacity:.85}
+.f .fbot{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid var(--ligne);padding-top:15px}
+.f .prix{font-family:var(--serif);font-size:1.85rem;color:var(--or);line-height:1}
+.f .prix small{font-family:var(--sans);font-size:.72rem;color:var(--brume);display:block;letter-spacing:.06em}
+.pick{cursor:pointer;border:0;border-radius:99px;padding:11px 22px;font-weight:700;font-size:.86rem;
+  background:linear-gradient(120deg,var(--or-clair),var(--or));color:#241a04;transition:.28s}
+.pick:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(212,175,55,.8)}
+.qty{display:flex;align-items:center;gap:11px}
+.qty button{cursor:pointer;width:33px;height:33px;border-radius:50%;border:1px solid var(--ligne);
+  background:none;color:var(--ivoire);font-size:1.05rem;transition:.25s}
+.qty button:hover{border-color:var(--or);color:var(--or)}
+.qty b{min-width:18px;text-align:center;color:var(--or)}
+.f .badge{position:absolute;top:0;right:22px;z-index:2;font-size:.64rem;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:800;color:#241a04;padding:5px 13px;border-radius:0 0 9px 9px;
+  background:linear-gradient(120deg,var(--or-clair),var(--or))}
+
+/* --- lignes simples (textile / devis) --- */
+.rows{display:grid;gap:9px}
+.r{display:flex;align-items:center;gap:15px;border:1px solid var(--ligne);border-radius:15px;
+  padding:15px 17px;background:rgba(255,255,255,.03);transition:.28s}
+.r:hover{border-color:rgba(212,175,55,.45);transform:translateX(3px)}
+.r.on{border-color:var(--or);background:rgba(212,175,55,.07)}
+.r .rm{flex:1;min-width:0}
+.r .rm b{display:block;font-size:.96rem;font-weight:600}
+.r .rm span{font-size:.83rem;color:var(--brume)}
+.r .rp{text-align:right;white-space:nowrap}
+.r .rp b{display:block;color:var(--or);font-weight:800}
+.r .rp span{font-size:.76rem;color:var(--brume)}
+.r .add{cursor:pointer;width:40px;height:40px;border-radius:50%;border:1px solid var(--or);
+  background:none;color:var(--or);font-size:1.3rem;line-height:1;transition:.28s;flex:0 0 40px}
+.r .add:hover{background:var(--or);color:#241a04;transform:rotate(90deg) scale(1.08)}
+
+/* --- options --- */
+.opts{display:grid;gap:10px}
+.o{display:flex;align-items:center;gap:15px;border:1px solid var(--ligne);border-radius:15px;
+  padding:15px 17px;cursor:pointer;background:rgba(255,255,255,.03);transition:.28s}
+.o:hover{border-color:rgba(212,175,55,.45)}
+.o.on{border-color:var(--or);background:rgba(212,175,55,.07)}
+.o .box{flex:0 0 24px;width:24px;height:24px;border-radius:8px;border:1.5px solid var(--ligne);
+  display:grid;place-items:center;transition:.28s}
+.o.on .box{background:linear-gradient(120deg,var(--or-clair),var(--or));border-color:transparent}
+.o .box svg{width:14px;height:14px;stroke:#241a04;stroke-width:3.4;fill:none;
+  stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .35s .07s}
+.o.on .box svg{stroke-dashoffset:0}
+.o .on-t{flex:1;min-width:0}
+.o .on-t b{display:block;font-size:.92rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.o .on-t span{font-size:.83rem;color:var(--brume);line-height:1.45}
+.o .pill{flex:0 0 auto;border:1px solid var(--ligne);border-radius:99px;padding:7px 15px;
+  font-weight:800;font-size:.85rem;color:var(--or);transition:.28s}
+.o.on .pill{background:linear-gradient(120deg,var(--or-clair),var(--or));color:#241a04;border-color:transparent}
+
+/* --- calendrier --- */
+.cal{border:1px solid var(--ligne);border-radius:20px;padding:20px;background:rgba(255,255,255,.03)}
+.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
+.cal-h b{font-family:var(--serif);font-size:1.3rem;text-transform:capitalize}
+.cal-h div{display:flex;gap:8px}
+.cal-h button{cursor:pointer;width:36px;height:36px;border-radius:50%;border:1px solid var(--ligne);
+  background:none;color:var(--or);transition:.25s}
+.cal-h button:hover:not(:disabled){border-color:var(--or);background:rgba(212,175,55,.1)}
+.cal-h button:disabled{opacity:.22;cursor:default}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;text-align:center}
+.cal-g .dow{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brume);padding:5px 0}
+.d{cursor:pointer;border:1px solid transparent;border-radius:12px;padding:11px 0;font-size:.92rem;transition:.25s}
+.d:hover{border-color:rgba(212,175,55,.5);background:rgba(212,175,55,.08)}
+.d.off{opacity:.2;pointer-events:none}
+.d.today{border-color:var(--ligne)}
+.d.sel{background:linear-gradient(135deg,var(--or-clair),var(--or));color:#241a04;font-weight:800;
+  box-shadow:0 10px 24px -12px rgba(212,175,55,.9)}
+.d.blank{visibility:hidden}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:11px;margin-top:20px}
+.s{cursor:pointer;border:1px solid var(--ligne);border-radius:14px;padding:13px 10px;text-align:center;
+  font-weight:700;font-size:.92rem;background:rgba(255,255,255,.03);transition:.28s}
+.s:hover{border-color:rgba(212,175,55,.5);transform:translateY(-2px)}
+.s.on{border-color:var(--or);background:rgba(212,175,55,.1);box-shadow:0 0 0 1px var(--or)}
+.s small{display:block;font-weight:400;font-size:.75rem;color:var(--brume);margin-top:2px}
+.note{font-size:.84rem;color:var(--brume);margin-top:14px}
+
+/* --- champs --- */
+.who{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:26px}
+.who button{cursor:pointer;border:1px solid var(--ligne);background:rgba(255,255,255,.03);
+  border-radius:16px;padding:18px 14px;text-align:center;transition:.28s;color:var(--ivoire)}
+.who button:hover{border-color:rgba(212,175,55,.5)}
+.who button.on{border-color:var(--or);background:rgba(212,175,55,.08);box-shadow:0 0 0 1px var(--or)}
+.who b{display:block;font-size:1rem;font-weight:700}
+.who span{display:block;font-size:.8rem;color:var(--brume);margin-top:3px}
+.who button.on b{color:var(--or)}
+.fld{margin-bottom:15px}
+.fld label{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--or);margin-bottom:7px;font-weight:700}
+.fld input,.fld textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--ligne);
+  border-radius:13px;padding:14px 16px;color:var(--ivoire);font-family:var(--sans);font-size:.98rem;transition:.28s}
+.fld textarea{resize:vertical;min-height:120px;line-height:1.55}
+.fld input::placeholder,.fld textarea::placeholder{color:rgba(157,154,148,.65)}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--or);background:rgba(212,175,55,.06);
+  box-shadow:0 0 0 3px rgba(212,175,55,.14)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+@media(max-width:520px){.g2,.who{grid-template-columns:1fr}}
+.up{border:1.5px dashed var(--ligne);border-radius:16px;padding:24px;text-align:center;cursor:pointer;
+  transition:.28s;background:rgba(255,255,255,.03)}
+.up:hover{border-color:var(--or);background:rgba(212,175,55,.05)}
+.up svg{width:32px;height:32px;color:var(--or);margin-bottom:8px}
+.up b{display:block;font-size:.94rem}
+.up span{font-size:.82rem;color:var(--brume)}
+.uplist{margin-top:10px;font-size:.86rem;color:var(--or);font-weight:600}
+.hide{display:none!important}
+
+/* --- navigation --- */
+.nav2{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:34px}
+.back{cursor:pointer;background:none;border:1px solid var(--ligne);color:var(--ivoire);border-radius:99px;
+  padding:14px 26px;font-weight:600;font-size:.93rem;transition:.28s}
+.back:hover{border-color:var(--or);color:var(--or)}
+.back.hide{visibility:hidden;display:block!important}
+.go{cursor:pointer;border:0;border-radius:99px;padding:16px 34px;font-weight:800;font-size:.97rem;
+  background:linear-gradient(120deg,var(--or-clair),var(--or));color:#241a04;transition:.3s;
+  display:inline-flex;align-items:center;gap:10px}
+.go:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 18px 38px -16px rgba(212,175,55,.85)}
+.go:disabled{opacity:.32;cursor:not-allowed}
+.hint{text-align:center;font-size:.86rem;color:var(--brume);margin-top:13px;min-height:1.2em}
+
+/* ===== LE TICKET ===== */
+.ticket{position:sticky;top:96px;background:linear-gradient(170deg,#14141a,#0d0d11);
+  border:1px solid var(--ligne);border-radius:20px;overflow:hidden;
+  box-shadow:0 30px 70px -34px rgba(0,0,0,.95)}
+.tk-h{padding:20px 22px 16px;border-bottom:1px dashed rgba(212,175,55,.28);position:relative}
+.tk-h::before,.tk-h::after{content:"";position:absolute;bottom:-11px;width:22px;height:22px;
+  border-radius:50%;background:var(--nuit);border:1px solid var(--ligne)}
+.tk-h::before{left:-12px}
+.tk-h::after{right:-12px}
+.tk-h .lbl{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--or);font-weight:700}
+.tk-h h2{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin-top:3px}
+.tk-b{padding:20px 22px}
+.tk-empty{text-align:center;color:var(--brume);font-size:.9rem;padding:22px 4px;line-height:1.6}
+.tk-empty svg{width:38px;height:38px;color:rgba(212,175,55,.4);margin:0 auto 12px;display:block}
+.tk-list{display:grid;gap:11px;max-height:250px;overflow-y:auto;margin-bottom:16px}
+.tk-i{display:flex;align-items:flex-start;gap:9px;font-size:.88rem;animation:tkIn .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes tkIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.tk-i .n{flex:1;line-height:1.35}
+.tk-i .n em{display:block;font-style:normal;font-size:.76rem;color:var(--brume);margin-top:1px}
+.tk-i .p{color:var(--or);font-weight:700;white-space:nowrap}
+.tk-i .x{cursor:pointer;background:none;border:0;color:var(--brume);font-size:1.1rem;line-height:1;padding:0 2px;transition:.2s}
+.tk-i .x:hover{color:#e06055}
+.tk-bar{height:6px;border-radius:3px;background:rgba(212,175,55,.14);overflow:hidden;margin:4px 0 16px}
+.tk-bar i{display:block;height:100%;border-radius:3px;width:0;
+  background:linear-gradient(90deg,var(--or-clair),var(--or));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.tk-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.88rem;color:var(--brume);margin-bottom:8px}
+.tk-row b{color:var(--ivoire);font-weight:600}
+.tk-tot{display:flex;justify-content:space-between;align-items:flex-end;
+  border-top:1px dashed rgba(212,175,55,.28);padding-top:16px;margin-top:6px}
+.tk-tot span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brume);font-weight:700}
+.tk-tot b{font-family:var(--serif);font-size:2.5rem;line-height:.9;color:var(--or)}
+.tk-devis{font-size:.79rem;color:var(--brume);line-height:1.5;margin-top:12px;
+  background:rgba(212,175,55,.07);border:1px solid var(--ligne);border-radius:11px;padding:10px 12px}
+.tk-code{margin-top:18px;padding-top:15px;border-top:1px dashed rgba(212,175,55,.28)}
+.tk-code i{display:block;height:34px;opacity:.5;background-repeat:repeat-x;background-size:5px 100%;
+  background-image:repeating-linear-gradient(90deg,var(--ivoire) 0 1px,transparent 1px 3px,var(--ivoire) 3px 4px,transparent 4px 7px)}
+.tk-code span{display:block;text-align:center;font-size:.64rem;letter-spacing:.34em;color:var(--brume);margin-top:7px}
+.tk-add{width:100%;margin-top:15px;cursor:pointer;border:1px dashed var(--ligne);background:none;
+  color:var(--ivoire);border-radius:99px;padding:12px;font-weight:600;font-size:.88rem;transition:.28s}
+.tk-add:hover{border-color:var(--or);color:var(--or);border-style:solid}
+
+.tk-grab{display:none}
+/* ticket en barre basse sur mobile */
+@media(max-width:1040px){
+  body{padding-bottom:172px}
+  .ticket{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:60;border-radius:20px 20px 0 0;
+    max-height:70vh;overflow-y:auto}
+  .tk-h::before,.tk-h::after{display:none}
+  .tk-grab{display:block;width:40px;height:4px;border-radius:2px;background:rgba(212,175,55,.4);
+    border:0;margin:11px auto 0;cursor:pointer;padding:0}
+  .ticket.min .tk-list,.ticket.min .tk-empty,.ticket.min .tk-code,
+  .ticket.min .tk-add,.ticket.min .tk-devis,.ticket.min .tk-h h2{display:none}
+  .ticket.min .tk-h{padding-bottom:10px}
+  .tk-list{max-height:32vh}
+}
+
+/* --- écran de confirmation --- */
+.done{text-align:center;padding:40px 10px}
+.done .seal{width:96px;height:96px;margin:0 auto 26px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(120deg,var(--or-clair),var(--or));animation:pop .7s cubic-bezier(.2,1.5,.4,1)}
+@keyframes pop{0%{transform:scale(0) rotate(-45deg);opacity:0}100%{transform:none;opacity:1}}
+.done .seal svg{width:46px;height:46px;stroke:#241a04;stroke-width:3;fill:none;
+  stroke-dasharray:40;stroke-dashoffset:40;animation:draw .5s .35s forwards ease-out}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done h2{font-family:var(--serif);font-size:2.4rem;margin-bottom:12px}
+.done p{color:var(--brume);max-width:46ch;margin:0 auto 28px}
+
+/* --- bandeau de consentement cookies (thème configurateur) --- */
+.ck-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:200;max-width:560px;margin:0 auto;
+  background:linear-gradient(170deg,#14141a,#0d0d11);border:1px solid var(--ligne);border-radius:18px;
+  padding:20px 22px;box-shadow:0 26px 60px -22px rgba(0,0,0,.9);
+  transform:translateY(160%);transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.ck-banner.on{transform:none}
+.ck-banner p{font-size:.89rem;line-height:1.6;color:var(--brume);margin:0 0 14px}
+.ck-banner p b{color:var(--ivoire)}
+.ck-banner a{color:var(--or);font-weight:600;text-decoration:underline}
+.ck-btns{display:flex;gap:10px;flex-wrap:wrap}
+.ck-btns button{cursor:pointer;font-weight:700;font-size:.87rem;border-radius:99px;padding:11px 22px;
+  transition:.25s;border:1px solid var(--ligne);background:none;color:var(--ivoire)}
+.ck-btns .ck-ok{flex:1;min-width:140px;border-color:transparent;color:#241a04;
+  background:linear-gradient(120deg,var(--or-clair),var(--or))}
+.ck-btns .ck-ok:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(212,175,55,.8)}
+.ck-btns .ck-no:hover{border-color:var(--or);color:var(--or)}
+@media(max-width:1040px){.ck-banner{bottom:auto;top:76px}}
+@media(max-width:560px){.ck-banner{left:10px;right:10px;padding:17px 18px}.ck-btns button{flex:1}}
+</style>
 </head>
 <body>
 
-<header class="nav">
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0d98a"/><stop offset="1" stop-color="#8f6f1e"/>
+  </linearGradient>
+</defs></svg>
+
+<header class="cfg-top">
   <a class="brand" href="index.html">
-    <svg viewBox="0 0 64 64" class="lion" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7cd86"/><stop offset="1" stop-color="#9c7a2e"/></linearGradient></defs><circle cx="32" cy="32" r="28.5" fill="none" stroke="url(#lg)" stroke-width="2.5"/><text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="&#39;Cormorant Garamond&#39;,Georgia,serif" font-size="27" font-weight="600" fill="url(#lg)">MC</text></svg>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0d98a"/><stop offset="1" stop-color="#8f6f1e"/></linearGradient></defs><circle cx="32" cy="32" r="28.5" fill="none" stroke="url(#lg)" stroke-width="2.5"/><text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="27" font-weight="600" fill="url(#lg)">MC</text></svg>
     Math<b>Clean</b>
   </a>
-  <nav class="menu">
-  <div class="has-sub">
-    <a href="index.html#services" class="sub-toggle">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-    <div class="submenu">
-      <a href="services/nettoyage-automobile-paris.html">Nettoyage automobile à Paris</a>
-      <a href="services/nettoyage-textile-paris.html">Nettoyage textile à Paris</a>
-      <a href="services/nettoyage-bateau-paris.html">Nettoyage de bateau à Paris</a>
-      <a href="services/nettoyage-avion-paris.html">Nettoyage d'avion à Paris</a>
-      <a href="services/nettoyage-terrasse-paris.html">Nettoyage de terrasse à Paris</a>
-      <a href="services/nettoyage-locaux-paris.html">Nettoyage de locaux &amp; bureaux à Paris</a>
-      <a href="services/nettoyage-fin-de-chantier-paris.html">Nettoyage fin de chantier à Paris</a>
-    </div>
+  <div class="tools">
+    <a class="tel" href="tel:+33623075259">06 23 07 52 59 <span>· 7j/7</span></a>
+    <a class="quit" href="index.html">Quitter</a>
   </div>
-    <a href="zones.html">Zones d'intervention</a>
-    <a href="index.html#avis">Avis clients</a>
-    <a href="index.html#faq">FAQ</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="reservation.html" class="nav-cta">Réserver</a>
-  </nav>
-  <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 
-<section class="subhero" style="background-image:linear-gradient(rgba(10,10,12,.82),rgba(10,10,12,.88)),url('https://images.pexels.com/photos/6752179/pexels-photo-6752179.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80');background-size:cover;background-position:center">
-  <div class="wrap">
-    <div class="crumb reveal in"><a href="index.html">Accueil</a> · Réservation</div>
-    <h1 class="reveal in">Composez votre <span class="or">prestation</span></h1>
-    <p class="reveal in">Ajoutez autant de prestations que vous le souhaitez : votre <b>montant total</b> et la <b>durée d'intervention</b> se calculent en temps réel. Nous confirmons sous 24 h — devis gratuit, sans engagement.</p>
-    <div class="resa-trust reveal in">
-      <span class="stars">★★★★★</span> <b>4,9/5</b>
-      <span class="sep">·</span> +250 avis
-      <span class="sep">·</span> Dès <b>29 €</b>
-      <span class="sep">·</span> Intervention sous 24h
-      <span class="sep">·</span> Experts qualifiés
-    </div>
-  </div>
-</section>
-
-<div class="resa-progress-bar">
-  <div class="wrap">
-    <div class="rp-row">
-      <span class="rp-step">ÉTAPE <b id="rpNum">01</b> / 03</span>
-      <span class="rp-help">Besoin d'aide ? <a href="tel:+33623075259">06 23 07 52 59</a></span>
-    </div>
-    <div class="rp-track"><i id="rpFill"></i></div>
-    <div class="rp-labels">
-      <span class="on" data-s="0">Prestations</span>
-      <span data-s="1">Date &amp; créneau</span>
-      <span data-s="2">Coordonnées</span>
-    </div>
-  </div>
-</div>
-
-<section class="band">
-  <div class="wrap">
-    <div class="resa-layout">
-
-      <!-- ============ CONTENU ============ -->
-      <div class="wiz-card">
-        <form id="resaForm" action="https://formsubmit.co/matheoceleste@gmail.com" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="_subject" value="Nouvelle réservation — MathClean" id="fSubject">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="Prestations" id="fItems">
-          <input type="hidden" name="Montant estimé" id="fTotal">
-          <input type="hidden" name="Durée estimée" id="fDuree">
-          <input type="hidden" name="Date souhaitée" id="fDate">
-          <input type="hidden" name="Créneau" id="fSlot">
-          <input type="hidden" name="Type de client" id="fClient" value="Particulier">
-
-          <!-- ÉTAPE 1 : PRESTATIONS -->
-          <div class="wstep on" data-step="presta">
-            <div class="wstep-head">
-              <div class="k">Étape 1</div>
-              <h2>Vos prestations</h2>
-              <p>Cliquez sur <b>+</b> pour ajouter une prestation. Vous pouvez en ajouter autant que vous voulez — le montant et la durée se mettent à jour instantanément.</p>
-            </div>
-
-            <div class="cat-tabs" id="catTabs">
-              <button type="button" class="cat-tab on" data-cat="auto">Automobile</button>
-              <button type="button" class="cat-tab" data-cat="textile">Textile &amp; ameublement</button>
-              <button type="button" class="cat-tab" data-cat="devis">Autres prestations</button>
-            </div>
-
-            <!-- Automobile -->
-            <div class="cat-pane on" data-pane="auto">
-              <p class="cat-note">Nos formules automobile, à tarif unique quel que soit votre véhicule.</p>
-              <div class="packs" id="listAuto"></div>
-              <p class="cat-note" style="margin:26px 0 12px;font-size:1.05rem;color:var(--blanc);font-weight:700">Ajoutez des options</p>
-              <div class="opt2-list" id="listOpts"></div>
-            </div>
-
-            <!-- Textile -->
-            <div class="cat-pane" data-pane="textile">
-              <p class="cat-note">Canapés, matelas, tapis et fauteuils, nettoyés en injection-extraction à domicile. Chaque pièce compte <b>45 min</b> d'intervention.</p>
-              <div class="item-list" id="listTextile"></div>
-            </div>
-
-            <!-- Sur devis -->
-            <div class="cat-pane" data-pane="devis">
-              <p class="cat-note">Ces prestations font l'objet d'un <b>devis gratuit personnalisé</b> : ajoutez-les à votre demande, décrivez votre besoin, et nous vous répondons sous 24 h avec un tarif ferme.</p>
-              <div class="item-list" id="listDevis"></div>
-            </div>
-
-            <!-- Besoin détaillé (si prestation sur devis dans le panier) -->
-            <div id="devisBlock" class="hide" style="margin-top:26px;border-top:1px solid var(--ligne);padding-top:22px">
-              <div class="fld"><label>Décrivez votre besoin</label><textarea name="Description" id="descArea" placeholder="Surfaces, dimensions, état, accès, étage…" rows="4" disabled></textarea></div>
-              <div class="fld">
-                <label>Photos &amp; vidéos <small style="color:var(--gris);text-transform:none;letter-spacing:0;font-weight:400">(facultatif)</small></label>
-                <div class="up-zone" id="upZone">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-                  <p>Cliquez pour ajouter vos photos et vidéos</p>
-                  <small>Cela nous aide à établir un devis précis</small>
-                </div>
-                <input type="file" name="attachment" id="fileInput" accept="image/*,video/*" multiple style="display:none" disabled>
-                <div class="up-list" id="upList"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ÉTAPE 2 : DATE -->
-          <div class="wstep" data-step="date">
-            <div class="wstep-head">
-              <div class="k">Étape 2</div>
-              <h2>Votre date</h2>
-              <p id="dateIntro">Choisissez votre jour, puis un créneau adapté à la durée de votre intervention.</p>
-            </div>
-            <div class="cal" id="cal">
-              <div class="cal-head">
-                <b id="calTitle"></b>
-                <div class="cal-nav">
-                  <button type="button" id="calPrev" aria-label="Mois précédent">‹</button>
-                  <button type="button" id="calNext" aria-label="Mois suivant">›</button>
-                </div>
-              </div>
-              <div class="cal-grid" id="calGrid"></div>
-            </div>
-            <div id="slotWrap">
-              <div class="slots" id="slots"></div>
-              <p class="slots-note" id="slotsNote"></p>
-            </div>
-          </div>
-
-          <!-- ÉTAPE 3 : COORDONNÉES -->
-          <div class="wstep" data-step="contact">
-            <div class="wstep-head">
-              <div class="k">Étape 3</div>
-              <h2>Vos coordonnées</h2>
-              <p>Dernière étape : renseignez vos informations pour recevoir votre confirmation sous 24 h.</p>
-            </div>
-            <div class="ctype">
-              <button type="button" class="on" data-client="Particulier"><b>Particulier</b><small>Pour votre domicile</small></button>
-              <button type="button" data-client="Entreprise"><b>Entreprise</b><small>Sur facture / SIRET</small></button>
-            </div>
-            <div id="grpParti">
-              <div class="fgrid2">
-                <div class="fld"><label>Prénom</label><input type="text" name="Prénom" autocomplete="given-name"></div>
-                <div class="fld"><label>Nom</label><input type="text" name="Nom" autocomplete="family-name"></div>
-              </div>
-              <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="N° et nom de rue" autocomplete="street-address"></div>
-              <div class="fgrid2">
-                <div class="fld"><label>Code postal</label><input type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code"></div>
-                <div class="fld"><label>Ville</label><input type="text" name="Ville" autocomplete="address-level2"></div>
-              </div>
-              <div class="fgrid2">
-                <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" autocomplete="tel"></div>
-                <div class="fld"><label>Email</label><input type="email" name="Email" autocomplete="email"></div>
-              </div>
-            </div>
-            <div id="grpEntr" class="hide">
-              <div class="fld"><label>Nom de l'entreprise</label><input type="text" name="Entreprise" autocomplete="organization" disabled></div>
-              <div class="fld"><label>Numéro SIRET</label><input type="text" name="SIRET" inputmode="numeric" placeholder="14 chiffres" disabled></div>
-              <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="N° et nom de rue" autocomplete="street-address" disabled></div>
-              <div class="fgrid2">
-                <div class="fld"><label>Code postal</label><input type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code" disabled></div>
-                <div class="fld"><label>Ville</label><input type="text" name="Ville" autocomplete="address-level2" disabled></div>
-              </div>
-              <div class="fgrid2">
-                <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" autocomplete="tel" disabled></div>
-                <div class="fld"><label>Email</label><input type="email" name="Email" autocomplete="email" disabled></div>
-              </div>
-            </div>
-            <div class="fld"><label>Précisions <small style="color:var(--gris);text-transform:none;letter-spacing:0;font-weight:400">(facultatif)</small></label><textarea name="Message" placeholder="Accès, étage, digicode, contraintes horaires…" style="min-height:90px"></textarea></div>
-          </div>
-
-          <div class="wnav">
-            <button type="button" class="wprev hide" id="wPrev">← Précédent</button>
-            <button type="button" class="btn btn-or wnext" id="wNext" disabled>Suivant →</button>
-          </div>
-          <p class="wnav-note" id="wNote"></p>
-        </form>
+<main class="cfg">
+  <div>
+    <div class="step-head">
+      <div class="ring">
+        <svg viewBox="0 0 62 62"><circle class="bg" cx="31" cy="31" r="28"/><circle class="fg" id="ringFg" cx="31" cy="31" r="28"/></svg>
+        <b id="ringTxt">1</b>
       </div>
-
-      <!-- ============ PANIER ============ -->
-      <aside class="cart" id="cart">
-        <button type="button" class="cart-toggle" id="cartToggle" aria-label="Afficher/masquer le panier"></button>
-        <h3>Votre réservation</h3>
-        <p class="sub">Montant et durée en temps réel</p>
-        <div id="cartBody">
-          <p class="cart-empty" id="cartEmpty">Votre panier est vide.<br>Ajoutez une prestation pour voir votre montant s'afficher ici.</p>
-          <div class="cart-list" id="cartList"></div>
-        </div>
-        <div class="cart-tot">
-          <div class="ct-row"><span>Durée estimée</span><b id="ctDuree">—</b></div>
-          <div class="ct-row big"><span>Total</span><b id="ctTotal">0 €</b></div>
-          <div class="ct-devis hide" id="ctDevis"></div>
-        </div>
-        <button type="button" class="cart-add" id="cartAdd">+ Ajouter une prestation</button>
-        <p class="slots-note" style="text-align:center;margin-top:10px">Devis gratuit · Réponse sous 24 h · 7j/7</p>
-      </aside>
-
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="fgrid">
-      <div>
-        <div class="brand">Math<b style="color:var(--or)">Clean</b></div>
-        <p>Entreprise de nettoyage à Paris &amp; en Île-de-France. Une exigence de roi, du particulier au professionnel.</p>
+      <div class="txt">
+        <div class="k" id="stepK">Étape 1 sur 3</div>
+        <h1 id="stepT">Composez votre prestation</h1>
       </div>
-      <div><h4>Services</h4><ul>
-        <li><a href="services/nettoyage-automobile-paris.html">Nettoyage automobile</a></li>
-        <li><a href="services/polissage-carrosserie-paris.html">Polissage carrosserie</a></li>
-        <li><a href="services/nettoyage-textile-paris.html">Nettoyage textile</a></li>
-        <li><a href="services/nettoyage-bateau-paris.html">Nettoyage de bateau</a></li>
-      </ul></div>
-      <div><h4>&nbsp;</h4><ul>
-        <li><a href="services/nettoyage-avion-paris.html">Nettoyage d'avion</a></li>
-        <li><a href="services/nettoyage-terrasse-paris.html">Nettoyage de terrasse</a></li>
-        <li><a href="services/nettoyage-locaux-paris.html">Locaux &amp; bureaux</a></li>
-        <li><a href="services/nettoyage-fin-de-chantier-paris.html">Fin de chantier</a></li>
-      </ul></div>
-      <div><h4>Réservation</h4><ul>
-        <li><a href="reservation.html">Réserver en ligne</a></li>
-        <li><a href="index.html#contact">Demander un devis</a></li>
-        <li><a href="tel:+33623075259">06 23 07 52 59</a></li>
-      </ul></div>
     </div>
-    <div class="fbottom">
-      <span>© <span id="y"></span> MathClean — Tous droits réservés.</span>
-      <span class="flegal"><a href="astuces-nettoyage.html">Astuces &amp; conseils</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="politique-confidentialite.html">Confidentialité</a> · <a href="politique-cookies.html">Cookies</a></span>
-      <span>📞 06 23 07 52 59 · Paris &amp; Île-de-France</span>
-    </div>
-  </div>
-</footer>
 
-<script src="assets/app.js"></script>
+    <form id="resaForm" action="https://formsubmit.co/matheoceleste@gmail.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" id="fSubject" value="Nouvelle réservation — MathClean">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="Prestations" id="fItems">
+      <input type="hidden" name="Montant estimé" id="fTotal">
+      <input type="hidden" name="Durée estimée" id="fDuree">
+      <input type="hidden" name="Date souhaitée" id="fDate">
+      <input type="hidden" name="Créneau" id="fSlot">
+      <input type="hidden" name="Type de client" id="fClient" value="Particulier">
+
+      <!-- ÉTAPE 1 -->
+      <section class="panel on" data-p="0">
+        <p class="lead">Choisissez votre univers, puis ajoutez autant de prestations que vous le souhaitez. Votre tarif et la durée d'intervention se calculent en direct sur votre ticket.</p>
+        <div class="univ" id="univ">
+          <button type="button" class="on" data-z="auto">Automobile</button>
+          <button type="button" data-z="textile">Textile &amp; ameublement</button>
+          <button type="button" data-z="devis">Sur devis</button>
+        </div>
+
+        <div class="zone on" data-z="auto">
+          <p class="group-t">Nos 5 formules automobile</p>
+          <div class="formules" id="fAuto"></div>
+          <p class="group-t">Prestations d'exception</p>
+          <div class="formules" id="fSpec"></div>
+          <p class="group-t">Ajoutez des options</p>
+          <div class="opts" id="fOpts"></div>
+        </div>
+
+        <div class="zone" data-z="textile">
+          <p class="lead">Canapés, matelas, tapis et fauteuils nettoyés en injection-extraction à domicile. Chaque pièce compte <b>45 min</b> d'intervention.</p>
+          <div class="rows" id="fTex"></div>
+        </div>
+
+        <div class="zone" data-z="devis">
+          <p class="lead">Ces prestations font l'objet d'un <b>devis gratuit personnalisé</b>. Ajoutez-les, décrivez votre besoin, nous répondons sous 24 h avec un tarif ferme.</p>
+          <div class="rows" id="fDev"></div>
+          <div id="devisBlock" class="hide" style="margin-top:26px">
+            <div class="fld"><label>Décrivez votre besoin</label><textarea name="Description" id="descArea" placeholder="Surfaces, dimensions, état, accès, étage…" disabled></textarea></div>
+            <div class="fld">
+              <label>Photos &amp; vidéos <span style="text-transform:none;letter-spacing:0;color:var(--brume);font-weight:400">(facultatif)</span></label>
+              <div class="up" id="upZone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                <b>Ajouter des photos ou vidéos</b>
+                <span>Cela nous aide à établir un devis précis</span>
+              </div>
+              <input type="file" name="attachment" id="fileInput" accept="image/*,video/*" multiple style="display:none" disabled>
+              <div class="uplist" id="upList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ÉTAPE 2 -->
+      <section class="panel" data-p="1">
+        <p class="lead" id="dateLead">Choisissez le jour de votre intervention, puis un créneau adapté à la durée de votre sélection.</p>
+        <div class="cal">
+          <div class="cal-h">
+            <b id="calT"></b>
+            <div>
+              <button type="button" id="calP" aria-label="Mois précédent">‹</button>
+              <button type="button" id="calN" aria-label="Mois suivant">›</button>
+            </div>
+          </div>
+          <div class="cal-g" id="calG"></div>
+        </div>
+        <div class="slots" id="slots"></div>
+        <p class="note" id="slotNote"></p>
+      </section>
+
+      <!-- ÉTAPE 3 -->
+      <section class="panel" data-p="2">
+        <p class="lead">Dernière étape : vos coordonnées pour recevoir la confirmation sous 24 h.</p>
+        <div class="who">
+          <button type="button" class="on" data-c="Particulier"><b>Particulier</b><span>Pour votre domicile</span></button>
+          <button type="button" data-c="Entreprise"><b>Entreprise</b><span>Sur facture / SIRET</span></button>
+        </div>
+        <div id="gParti">
+          <div class="g2">
+            <div class="fld"><label>Prénom</label><input type="text" name="Prénom" autocomplete="given-name"></div>
+            <div class="fld"><label>Nom</label><input type="text" name="Nom" autocomplete="family-name"></div>
+          </div>
+          <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="N° et nom de rue" autocomplete="street-address"></div>
+          <div class="g2">
+            <div class="fld"><label>Code postal</label><input type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code"></div>
+            <div class="fld"><label>Ville</label><input type="text" name="Ville" autocomplete="address-level2"></div>
+          </div>
+          <div class="g2">
+            <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" autocomplete="tel"></div>
+            <div class="fld"><label>Email</label><input type="email" name="Email" autocomplete="email"></div>
+          </div>
+        </div>
+        <div id="gEntr" class="hide">
+          <div class="fld"><label>Nom de l'entreprise</label><input type="text" name="Entreprise" autocomplete="organization" disabled></div>
+          <div class="fld"><label>Numéro SIRET</label><input type="text" name="SIRET" inputmode="numeric" placeholder="14 chiffres" disabled></div>
+          <div class="fld"><label>Adresse d'intervention</label><input type="text" name="Adresse" placeholder="N° et nom de rue" disabled></div>
+          <div class="g2">
+            <div class="fld"><label>Code postal</label><input type="text" name="Code postal" inputmode="numeric" disabled></div>
+            <div class="fld"><label>Ville</label><input type="text" name="Ville" disabled></div>
+          </div>
+          <div class="g2">
+            <div class="fld"><label>Téléphone</label><input type="tel" name="Téléphone" disabled></div>
+            <div class="fld"><label>Email</label><input type="email" name="Email" disabled></div>
+          </div>
+        </div>
+        <div class="fld"><label>Précisions <span style="text-transform:none;letter-spacing:0;color:var(--brume);font-weight:400">(facultatif)</span></label><textarea name="Message" placeholder="Accès, étage, digicode, contraintes horaires…" style="min-height:90px"></textarea></div>
+      </section>
+
+      <div class="nav2" id="nav2">
+        <button type="button" class="back hide" id="btnBack">← Précédent</button>
+        <button type="button" class="go" id="btnGo" disabled>Continuer
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="hint" id="hint"></p>
+    </form>
+  </div>
+
+  <!-- TICKET -->
+  <aside class="ticket" id="ticket">
+    <button type="button" class="tk-grab" id="tkGrab" aria-label="Afficher ou masquer le ticket"></button>
+    <div class="tk-h">
+      <div class="lbl">Votre ticket</div>
+      <h2>MathClean</h2>
+    </div>
+    <div class="tk-b">
+      <div class="tk-empty" id="tkEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 6h18l-1.6 11.2a2 2 0 0 1-2 1.8H6.6a2 2 0 0 1-2-1.8L3 6zM8 6V4.5A2.5 2.5 0 0 1 10.5 2h3A2.5 2.5 0 0 1 16 4.5V6"/></svg>
+        Votre ticket est vide.<br>Ajoutez une prestation pour voir votre montant s'afficher ici.
+      </div>
+      <div class="tk-list" id="tkList"></div>
+      <div class="tk-bar"><i id="tkBar"></i></div>
+      <div class="tk-row"><span>Durée d'intervention</span><b id="tkDur">—</b></div>
+      <div class="tk-tot"><span>Total</span><b id="tkTot">0 €</b></div>
+      <div class="tk-devis hide" id="tkDevis"></div>
+      <button type="button" class="tk-add" id="tkAdd">+ Ajouter une prestation</button>
+      <div class="tk-code"><i></i><span>MATHCLEAN · IDF</span></div>
+    </div>
+  </aside>
+</main>
+
 <script>
 /* =====================================================================
-   Réservation MathClean — panier avec montant & durée en temps réel
-   - On ajoute autant de prestations qu'on veut (panier)
-   - Chaque ajout met à jour le TOTAL et la DURÉE instantanément
-   - Durée : 45 min par pièce textile, 3 h par prestation auto / bateau
+   CONFIGURATEUR MATHCLEAN
+   Ticket vivant : montant + durée recalculés à chaque geste.
+   Durées : 45 min par pièce textile · durée propre à chaque formule auto.
    ===================================================================== */
 (function(){
-  var $ = function(s){ return document.querySelector(s); };
+  var $=function(s){return document.querySelector(s);};
+  var MIN_TEX=45;
 
-  var MIN_TEXTILE = 45;   /* 45 min par pièce textile */
-  var MIN_LOURD   = 180;  /* 3 h : automobile & bateau */
-
-
-  /* formules automobile : [nom, prix de base, durée (min), accroche, contenu, image] */
-  var AUTO = [
-    ['Pack Standard', 40, 120, 'Idéal pour un coup de propre régulier',
-      ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord',
-       'Nettoyage des plastiques','Nettoyage des vitres intérieures',
-       'Désinfection complète à la vapeur','Parfum d’ambiance'],
-      'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
-    ['Pack Premium', 60, 150, 'Idéal pour un nettoyage en profondeur',
-      ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord',
-       'Nettoyage des plastiques','Nettoyage des vitres intérieures',
-       'Désinfection complète à la vapeur','Nettoyage sièges cuir ou pressing des sièges tissus',
-       'Pressing des tapis et moquettes','Parfum d’ambiance'],
-      'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
-    ['Pack Prestige', 90, 180, 'Idéal pour un nettoyage optimal',
-      ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord',
-       'Nettoyage des plastiques','Protection plastiques','Nettoyage des vitres intérieures',
-       'Nettoyage des sièges en cuir ou pressing des sièges en tissus',
-       'Désinfection complète à la vapeur','Traitement des cuirs',
-       'Pressing des tapis et moquettes','Nettoyage battements de portes',
-       'Nettoyage du ciel de toit','Nettoyage compartiment de la roue de secours',
-       'Parfum d’ambiance'],
-      'assets/photos/polissage-2.jpg'],
-    ['Extérieur uniquement', 70, 90, 'Idéal pour retrouver une carrosserie nette',
-      ['Lavage complet de la carrosserie','Nettoyage des jantes et passages de roues',
-       'Brillant pneus','Nettoyage des vitres extérieures','Séchage sans trace'],
-      'https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&cs=tinysrgb&w=800&q=80'],
-    ['Polissage carrosserie', 350, 180, 'Réduction des micro-rayures et éclat profond',
+  /* ---- 5 formules automobile : [nom, prix, minutes, famille, accroche, contenu, badge] ---- */
+  var AUTO=[
+    ['Extérieur Éclat',40,90,'Extérieur','La carrosserie retrouve sa brillance',
+      ['Lavage complet de la carrosserie','Jantes et passages de roues','Brillant pneus',
+       'Vitres extérieures','Séchage sans trace'],''],
+    ['Intérieur Essentiel',40,120,'Intérieur','Idéal pour un coup de propre régulier',
+      ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord','Nettoyage des plastiques',
+       'Vitres intérieures','Désinfection complète à la vapeur','Parfum d’ambiance'],''],
+    ['Intérieur Confort',60,150,'Intérieur','Un nettoyage en profondeur des textiles',
+      ['Tout l’Essentiel','Sièges cuir nettoyés ou pressing des sièges tissu',
+       'Pressing des tapis et moquettes','Désinfection complète à la vapeur','Parfum d’ambiance'],'Le plus choisi'],
+    ['Intérieur Prestige',90,180,'Intérieur','Le détail poussé jusqu’au moindre recoin',
+      ['Tout le Confort','Protection des plastiques','Traitement des cuirs',
+       'Battements de portes','Ciel de toit','Compartiment de la roue de secours'],''],
+    ['Intégral',120,240,'Intérieur + Extérieur','Le véhicule entier, dedans comme dehors',
+      ['Tout l’Intérieur Prestige','Lavage complet de la carrosserie','Jantes et brillant pneus',
+       'Vitres intérieures et extérieures','Séchage sans trace','Parfum d’ambiance'],'Complet']
+  ];
+  /* prestations d'exception */
+  var SPEC=[
+    ['Polissage carrosserie',350,180,'Carrosserie','Micro-rayures corrigées, éclat profond',
       ['Décontamination de la peinture','Correction des micro-rayures et tourbillons',
-       'Travail minutieux autour des optiques et poignées','Lustrage de finition',
-       'Finition miroir durable'],
-      'assets/photos/polissage-1.jpg'],
-    ['Sortie de concession', 400, 300, 'La remise à neuf totale de votre véhicule',
-      ['Tout le Pack Prestige','Décontamination de la peinture',
-       'Polissage carrosserie complet','Finition miroir et protection',
-       'Lavage complet de la carrosserie','Parfum d’ambiance'],
-      'assets/photos/polissage-1.jpg']
+       'Travail minutieux autour des optiques','Lustrage de finition','Finition miroir durable'],''],
+    ['Sortie de concession',400,300,'Remise à neuf','La remise à neuf totale de votre véhicule',
+      ['Tout l’Intégral','Décontamination de la peinture','Polissage carrosserie complet',
+       'Finition miroir et protection','Parfum d’ambiance'],'Signature']
   ];
-  /* options auto : pas de durée supplémentaire (comprises dans la formule) */
-  var OPTS = [
-    ['Coffre',                 5,  'Aspiration et shampoing complet du coffre', 0],
-    ['Poils d’animaux',        5,  'Retrait des poils sur sièges, tapis et moquettes', 0],
-    ['Jantes détaillées',     10,  'Nettoyage détaillé des jantes et brillant pneus', 0],
-    ['Acariens & allergènes', 10,  'Désinfection totale à haute température de l’habitacle', 0],
-    ['Traitement cuir & alcantara', 20, 'Nettoyage et nourrissage des cuirs et de l’alcantara', 0],
-    ['Neutralisation des odeurs par ozone', 30, 'Traitement à l’ozone d’1 h pour éliminer durablement les mauvaises odeurs, bactéries et moisissures, sans produits chimiques', 60]
+  /* options : [nom, prix, description, minutes] */
+  var OPTS=[
+    ['Coffre',5,'Aspiration et shampoing complet du coffre',0],
+    ['Poils d’animaux',5,'Retrait des poils sur sièges, tapis et moquettes',0],
+    ['Jantes détaillées',10,'Nettoyage détaillé des jantes et brillant pneus',0],
+    ['Acariens & allergènes',10,'Désinfection totale à haute température de l’habitacle',0],
+    ['Traitement cuir & alcantara',20,'Nettoyage et nourrissage des cuirs et de l’alcantara',0],
+    ['Neutralisation des odeurs par ozone',30,'Traitement à l’ozone d’1 h : odeurs, bactéries et moisissures éliminées',60]
   ];
-  var TEXTILE = [
-    ['Canapé 2 places',        39, 'Injection-extraction, détachage'],
-    ['Canapé 3 places',        49, 'Injection-extraction, détachage'],
-    ['Canapé d’angle',         69, 'Injection-extraction, détachage'],
-    ['Fauteuil',               25, 'Assise, dossier et accoudoirs'],
-    ['Chaise / chaise de bureau', 15, 'Assise et dossier'],
-    ['Matelas 1 place',        39, 'Deux faces, anti-acariens'],
-    ['Matelas 2 places',       49, 'Deux faces, anti-acariens'],
-    ['Tapis jusqu’à 6 m²',     39, 'Lavage des fibres en profondeur'],
-    ['Tapis plus de 6 m²',     59, 'Lavage des fibres en profondeur']
+  var TEX=[
+    ['Canapé 2 places',39,'Injection-extraction, détachage'],
+    ['Canapé 3 places',49,'Injection-extraction, détachage'],
+    ['Canapé d’angle',69,'Injection-extraction, détachage'],
+    ['Fauteuil',25,'Assise, dossier et accoudoirs'],
+    ['Chaise / chaise de bureau',15,'Assise et dossier'],
+    ['Matelas 1 place',39,'Deux faces, traitement anti-acariens'],
+    ['Matelas 2 places',49,'Deux faces, traitement anti-acariens'],
+    ['Tapis jusqu’à 6 m²',39,'Lavage des fibres en profondeur'],
+    ['Tapis plus de 6 m²',59,'Lavage des fibres en profondeur']
   ];
-  /* prestations sur devis : durée estimée, prix à confirmer */
-  var DEVIS = [
-    ['Nettoyage de bateau',    MIN_LOURD, 'Coque, pont et sellerie'],
-    ['Nettoyage d’avion',      MIN_LOURD, 'Cabine, selleries et cockpit'],
-    ['Nettoyage de terrasse',  120,       'Haute pression, anti-mousse'],
-    ['Nettoyage de locaux',    120,       'Locaux commerciaux, moquettes'],
-    ['Nettoyage de bureaux',   120,       'Postes, sanitaires, vitrerie'],
-    ['Fin de chantier',        240,       'Remise en état après travaux']
+  var DEV=[
+    ['Nettoyage de bateau',180,'Coque, pont et sellerie'],
+    ['Nettoyage d’avion',180,'Cabine, selleries et cockpit'],
+    ['Nettoyage de terrasse',120,'Haute pression, anti-mousse'],
+    ['Nettoyage de locaux',120,'Locaux commerciaux, moquettes'],
+    ['Nettoyage de bureaux',120,'Postes, sanitaires, vitrerie'],
+    ['Fin de chantier',240,'Remise en état après travaux']
   ];
+  var MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  var JOURS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
 
-  var MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
-  var JOURS = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+  /* ------------------------------- PANIER ------------------------------- */
+  var cart=[];
+  function dur(m){ if(!m) return '—'; var h=Math.floor(m/60),n=m%60;
+    return h&&n ? h+' h '+(n<10?'0':'')+n : (h? h+' h' : n+' min'); }
+  function sumP(){ return cart.reduce(function(a,i){return a+(i.price||0)*i.qty;},0); }
+  function sumM(){ return cart.reduce(function(a,i){return a+i.mins*i.qty;},0); }
+  function hasDev(){ return cart.some(function(i){return i.devis;}); }
+  function qtyOf(k){ var f=cart.filter(function(i){return i.key===k;})[0]; return f?f.qty:0; }
 
-  /* ------------------------------ PANIER ------------------------------ */
-  var cart = [];   /* {key,name,detail,price|null,mins,qty,devis} */
-
-  function fmtDur(m){
-    if (!m) return '—';
-    var h = Math.floor(m/60), mn = m%60;
-    if (h && mn) return h + ' h ' + (mn<10?'0':'') + mn;
-    if (h) return h + ' h';
-    return mn + ' min';
+  function add(key,name,detail,price,mins,devis){
+    var f=cart.filter(function(i){return i.key===key;})[0];
+    if(f) f.qty++; else cart.push({key:key,name:name,detail:detail||'',price:price,mins:mins,qty:1,devis:!!devis});
+    draw();
   }
-  function totalPrice(){ return cart.reduce(function(a,i){ return a + (i.price||0)*i.qty; },0); }
-  function totalMins(){  return cart.reduce(function(a,i){ return a + i.mins*i.qty; },0); }
-  function hasDevis(){   return cart.some(function(i){ return i.devis; }); }
-
-  function addItem(key,name,detail,price,mins,devis){
-    var f = cart.filter(function(i){ return i.key===key; })[0];
-    if (f) f.qty++;
-    else cart.push({key:key,name:name,detail:detail||'',price:price,mins:mins,qty:1,devis:!!devis});
-    renderCart(); renderCatalog(); refreshNav();
-  }
-  function changeQty(key,d){
-    var f = cart.filter(function(i){ return i.key===key; })[0];
-    if (!f) return;
-    f.qty += d;
-    if (f.qty<=0) cart = cart.filter(function(i){ return i.key!==key; });
-    renderCart(); renderCatalog(); refreshNav();
+  function chg(key,d){
+    var f=cart.filter(function(i){return i.key===key;})[0]; if(!f) return;
+    f.qty+=d; if(f.qty<=0) cart=cart.filter(function(i){return i.key!==key;});
+    draw();
   }
 
-  function renderCart(){
-    var list=$('#cartList'), empty=$('#cartEmpty');
-    list.innerHTML='';
-    empty.classList.toggle('hide', cart.length>0);
+  /* compteur animé sur le total */
+  var shown=0, raf=null;
+  function countTo(v){
+    if(raf) cancelAnimationFrame(raf);
+    var from=shown, t0=performance.now(), d=520;
+    (function tick(now){
+      var p=Math.min((now-t0)/d,1), e=1-Math.pow(1-p,3);
+      shown=Math.round(from+(v-from)*e);
+      $('#tkTot').textContent=shown+' €';
+      if(p<1) raf=requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  function drawTicket(){
+    var L=$('#tkList');
+    L.innerHTML='';
+    $('#tkEmpty').classList.toggle('hide',cart.length>0);
     cart.forEach(function(i){
-      var row=document.createElement('div'); row.className='cl';
-      var price = i.devis ? 'sur devis' : ((i.price*i.qty) + ' €');
-      row.innerHTML = '<span class="n">'+(i.qty>1?('<b style="color:var(--or)">'+i.qty+'× </b>'):'')+i.name+
-                      '<em>'+fmtDur(i.mins*i.qty)+(i.detail?(' · '+i.detail):'')+'</em></span>'+
-                      '<span class="pz">'+price+'</span>'+
-                      '<button type="button" class="rm" aria-label="Retirer">×</button>';
-      row.querySelector('.rm').addEventListener('click', function(){ changeQty(i.key, -i.qty); });
-      list.appendChild(row);
+      var d=document.createElement('div'); d.className='tk-i';
+      d.innerHTML='<span class="n">'+(i.qty>1?'<b style="color:var(--or)">'+i.qty+'× </b>':'')+i.name+
+                  '<em>'+dur(i.mins*i.qty)+(i.detail?' · '+i.detail:'')+'</em></span>'+
+                  '<span class="p">'+(i.devis?'sur devis':(i.price*i.qty)+' €')+'</span>'+
+                  '<button type="button" class="x" aria-label="Retirer">×</button>';
+      d.querySelector('.x').addEventListener('click',function(){ chg(i.key,-i.qty); });
+      L.appendChild(d);
     });
-    $('#ctTotal').textContent = totalPrice() + ' €';
-    $('#ctDuree').textContent = fmtDur(totalMins());
-    var d=$('#ctDevis');
-    d.classList.toggle('hide', !hasDevis());
-    if (hasDevis()) d.innerHTML = '💬 Votre demande contient une prestation <b>sur devis</b> : le montant affiché ne la comprend pas encore. Nous vous envoyons un tarif ferme sous 24 h.';
-    /* champs cachés pour l'email */
-    $('#fItems').value = cart.map(function(i){
-      return i.qty+'× '+i.name.replace(/&amp;/g,'&')+' — '+(i.devis?'sur devis':(i.price*i.qty)+' €');
-    }).join(' | ');
-    $('#fTotal').value = totalPrice()+' €'+(hasDevis()?' + prestation(s) sur devis':'');
-    $('#fDuree').value = fmtDur(totalMins());
-    /* bloc devis (description + photos) */
-    var db=$('#devisBlock'); db.classList.toggle('hide', !hasDevis());
-    $('#descArea').disabled = !hasDevis();
-    $('#fileInput').disabled = !hasDevis();
+    countTo(sumP());
+    $('#tkDur').textContent=dur(sumM());
+    $('#tkBar').style.width=Math.min(sumM()/480*100,100)+'%';
+    var dv=$('#tkDevis');
+    dv.classList.toggle('hide',!hasDev());
+    if(hasDev()) dv.innerHTML='Votre demande contient une prestation <b>sur devis</b> : le montant affiché ne la comprend pas encore. Tarif ferme sous 24 h.';
+    $('#fItems').value=cart.map(function(i){return i.qty+'× '+i.name+' — '+(i.devis?'sur devis':(i.price*i.qty)+' €');}).join(' | ');
+    $('#fTotal').value=sumP()+' €'+(hasDev()?' + prestation(s) sur devis':'');
+    $('#fDuree').value=dur(sumM());
+    $('#devisBlock').classList.toggle('hide',!hasDev());
+    $('#descArea').disabled=!hasDev();
+    $('#fileInput').disabled=!hasDev();
   }
 
-  /* ---------------------------- CATALOGUE ---------------------------- */
-  function qtyOf(key){ var f=cart.filter(function(i){return i.key===key;})[0]; return f?f.qty:0; }
-
-  function itemRow(key,name,detail,priceLabel,durLabel,onAdd){
-    var q=qtyOf(key);
-    var el=document.createElement('div');
-    el.className='item'+(q?' added':'');
-    el.innerHTML='<div class="item-main"><b>'+name+'</b>'+(detail?('<small>'+detail+'</small>'):'')+'</div>'+
-                 '<div class="item-price"><span class="p">'+priceLabel+'</span><span class="d">'+durLabel+'</span></div>'+
-                 (q ? '<div class="item-qty"><button type="button" data-a="-">−</button><b>'+q+'</b><button type="button" data-a="+">+</button></div>'
-                    : '<button type="button" class="item-add" aria-label="Ajouter">+</button>');
-    if (q){
-      el.querySelector('[data-a="-"]').addEventListener('click',function(){ changeQty(key,-1); });
-      el.querySelector('[data-a="+"]').addEventListener('click',function(){ changeQty(key,1); });
+  /* ----------------------------- CATALOGUE ----------------------------- */
+  function carte(a,pfx){
+    var key=pfx+':'+a[0], q=qtyOf(key);
+    var el=document.createElement('article');
+    el.className='f'+(q?' on':'');
+    el.innerHTML=(a[6]?'<span class="badge">'+a[6]+'</span>':'')+
+      '<div class="fmeta"><span class="num">'+a[3]+'</span><span class="dur">'+dur(a[2])+'</span></div>'+
+      '<h3>'+a[0]+'</h3><p class="tag">'+a[4]+'</p>'+
+      '<ul>'+a[5].map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'+
+      '<div class="fbot"><div class="prix">'+a[1]+' €<small>tout compris</small></div>'+
+      (q?'<div class="qty"><button type="button" data-a="-">−</button><b>'+q+'</b><button type="button" data-a="+">+</button></div>'
+        :'<button type="button" class="pick">Choisir</button>')+'</div>';
+    if(q){
+      el.querySelector('[data-a="-"]').addEventListener('click',function(){chg(key,-1);});
+      el.querySelector('[data-a="+"]').addEventListener('click',function(){chg(key,1);});
     } else {
-      el.querySelector('.item-add').addEventListener('click', onAdd);
+      el.querySelector('.pick').addEventListener('click',function(){ add(key,a[0],'',a[1],a[2],false); });
     }
     return el;
   }
-
-  function renderCatalog(){
-    /* --- formules auto : cartes « pack » détaillées --- */
-    var la=$('#listAuto'); la.innerHTML='';
-    AUTO.forEach(function(a){
-      var price=a[1];
-      var key='auto:'+a[0], q=qtyOf(key);
-      var el=document.createElement('article');
-      el.className='pack'+(q?' added':'');
-      el.innerHTML=
-        '<div class="pack-img" style="background-image:url(\''+a[5]+'\')"></div>'+
-        '<div class="pack-body">'+
-          '<div class="pack-badges">'+
-            '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg>Nettoyage</span>'+
-            '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'+fmtDur(a[2])+'</span>'+
-          '</div>'+
-          '<h4>'+a[0]+'</h4>'+
-          '<p class="tag">'+a[3]+'</p>'+
-          '<ul class="pack-list">'+a[4].map(function(x){ return '<li>'+x+'</li>'; }).join('')+'</ul>'+
-          '<div class="pack-foot">'+
-            '<div class="pack-price"><b>'+price+' €</b><small>tarif tout compris, quel que soit le véhicule</small></div>'+
-            (q ? '<div class="pack-qty"><button type="button" data-a="-">−</button><b>'+q+'</b><button type="button" data-a="+">+</button></div>'
-               : '<button type="button" class="pack-btn">Ajouter</button>')+
-          '</div>'+
-        '</div>';
-      if(q){
-        el.querySelector('[data-a="-"]').addEventListener('click',function(){ changeQty(key,-1); });
-        el.querySelector('[data-a="+"]').addEventListener('click',function(){ changeQty(key,1); });
-      } else {
-        el.querySelector('.pack-btn').addEventListener('click',function(){
-          addItem(key, a[0], '', price, a[2], false);
-        });
-      }
-      la.appendChild(el);
-    });
-    /* --- options auto : cases à cocher + pastille de prix --- */
-    var lo=$('#listOpts'); lo.innerHTML='';
+  function ligne(key,nom,det,prixTxt,durTxt,onAdd){
+    var q=qtyOf(key);
+    var el=document.createElement('div');
+    el.className='r'+(q?' on':'');
+    el.innerHTML='<div class="rm"><b>'+nom+'</b><span>'+det+'</span></div>'+
+      '<div class="rp"><b>'+prixTxt+'</b><span>'+durTxt+'</span></div>'+
+      (q?'<div class="qty"><button type="button" data-a="-">−</button><b>'+q+'</b><button type="button" data-a="+">+</button></div>'
+        :'<button type="button" class="add" aria-label="Ajouter">+</button>');
+    if(q){
+      el.querySelector('[data-a="-"]').addEventListener('click',function(){chg(key,-1);});
+      el.querySelector('[data-a="+"]').addEventListener('click',function(){chg(key,1);});
+    } else el.querySelector('.add').addEventListener('click',onAdd);
+    return el;
+  }
+  function drawCat(){
+    var A=$('#fAuto'); A.innerHTML=''; AUTO.forEach(function(a){A.appendChild(carte(a,'auto'));});
+    var S=$('#fSpec'); S.innerHTML=''; SPEC.forEach(function(a){S.appendChild(carte(a,'spec'));});
+    var O=$('#fOpts'); O.innerHTML='';
     OPTS.forEach(function(o){
       var key='opt:'+o[0], on=qtyOf(key)>0;
-      var row=document.createElement('label');
-      row.className='opt2'+(on?' on':'');
-      row.innerHTML='<input type="checkbox"'+(on?' checked':'')+'>'+
-                    '<span class="o-name">'+o[0]+'<em>'+o[2]+'</em></span>'+
-                    '<span class="o-pill">+ '+o[1]+',00 €</span>';
-      row.querySelector('input').addEventListener('change',function(e){
-        if(e.target.checked) addItem(key, o[0], 'option', o[1], o[3]||0, false);
-        else changeQty(key, -qtyOf(key));
+      var el=document.createElement('label');
+      el.className='o'+(on?' on':'');
+      el.innerHTML='<span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>'+
+        '<span class="on-t"><b>'+o[0]+'</b><span>'+o[2]+'</span></span>'+
+        '<span class="pill">+ '+o[1]+' €</span>';
+      el.addEventListener('click',function(e){
+        e.preventDefault();
+        if(qtyOf(key)>0) chg(key,-qtyOf(key)); else add(key,o[0],'option',o[1],o[3]||0,false);
       });
-      lo.appendChild(row);
+      O.appendChild(el);
     });
-    /* --- textile --- */
-    var lt=$('#listTextile'); lt.innerHTML='';
-    TEXTILE.forEach(function(t){
-      var key='tex:'+t[0];
-      lt.appendChild(itemRow(key, t[0], t[2], t[1]+' €', '45 min',
-        function(){ addItem(key, t[0], '', t[1], MIN_TEXTILE, false); }));
-    });
-    /* --- sur devis --- */
-    var ld=$('#listDevis'); ld.innerHTML='';
-    DEVIS.forEach(function(d){
-      var key='dev:'+d[0];
-      ld.appendChild(itemRow(key, d[0], d[2], 'sur devis', fmtDur(d[1]),
-        function(){ addItem(key, d[0], '', null, d[1], true); }));
-    });
+    var T=$('#fTex'); T.innerHTML='';
+    TEX.forEach(function(t){ var k='tex:'+t[0];
+      T.appendChild(ligne(k,t[0],t[2],t[1]+' €','45 min',function(){add(k,t[0],'',t[1],MIN_TEX,false);})); });
+    var D=$('#fDev'); D.innerHTML='';
+    DEV.forEach(function(d){ var k='dev:'+d[0];
+      D.appendChild(ligne(k,d[0],d[2],'sur devis',dur(d[1]),function(){add(k,d[0],'',null,d[1],true);})); });
   }
 
-  /* onglets catégories */
-  document.querySelectorAll('.cat-tab').forEach(function(t){
-    t.addEventListener('click', function(){
-      document.querySelectorAll('.cat-tab').forEach(function(x){ x.classList.remove('on'); });
-      t.classList.add('on');
-      var c=t.getAttribute('data-cat');
-      document.querySelectorAll('.cat-pane').forEach(function(p){
-        p.classList.toggle('on', p.getAttribute('data-pane')===c);
-      });
+  document.querySelectorAll('#univ button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#univ button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      var z=b.getAttribute('data-z');
+      document.querySelectorAll('.zone').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-z')===z);});
     });
   });
 
-  /* ---------------------------- CALENDRIER ---------------------------- */
+  /* ----------------------------- CALENDRIER ----------------------------- */
   var today=new Date(); today.setHours(0,0,0,0);
-  var view=new Date(today.getFullYear(), today.getMonth(), 1);
-  var selDate=null, selDateLabel=null, selSlot=null;
-  function key(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
-
+  var view=new Date(today.getFullYear(),today.getMonth(),1);
+  var selD=null, selDL=null, selS=null;
+  function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
   function drawCal(){
-    $('#calTitle').textContent = MOIS[view.getMonth()]+' '+view.getFullYear();
-    $('#calPrev').disabled = view.getFullYear()===today.getFullYear() && view.getMonth()===today.getMonth();
-    var g=$('#calGrid'); g.innerHTML='';
-    JOURS.forEach(function(j){ var d=document.createElement('div'); d.className='dow'; d.textContent=j; g.appendChild(d); });
+    $('#calT').textContent=MOIS[view.getMonth()]+' '+view.getFullYear();
+    $('#calP').disabled=view.getFullYear()===today.getFullYear()&&view.getMonth()===today.getMonth();
+    var g=$('#calG'); g.innerHTML='';
+    JOURS.forEach(function(j){var e=document.createElement('div');e.className='dow';e.textContent=j;g.appendChild(e);});
     var lead=(new Date(view).getDay()+6)%7;
-    for(var b=0;b<lead;b++){ var bl=document.createElement('div'); bl.className='cal-day blank'; g.appendChild(bl); }
+    for(var b=0;b<lead;b++){var bl=document.createElement('div');bl.className='d blank';g.appendChild(bl);}
     var last=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
-    for(var n=1;n<=last;n++){
-      (function(n){
-        var d=new Date(view.getFullYear(),view.getMonth(),n);
-        var el=document.createElement('div'); el.className='cal-day'; el.textContent=n;
-        if(d<today) el.classList.add('off');
-        if(d.getTime()===today.getTime()) el.classList.add('today');
-        if(selDate===key(d)) el.classList.add('sel');
-        el.addEventListener('click',function(){
-          document.querySelectorAll('.cal-day').forEach(function(x){ x.classList.remove('sel'); });
-          el.classList.add('sel');
-          selDate=key(d); selDateLabel=n+' '+MOIS[d.getMonth()]+' '+d.getFullYear();
-          selSlot=null; $('#fDate').value=selDateLabel;
-          renderSlots(); refreshNav();
-        });
-        g.appendChild(el);
-      })(n);
-    }
+    for(var n=1;n<=last;n++)(function(n){
+      var d=new Date(view.getFullYear(),view.getMonth(),n);
+      var e=document.createElement('div'); e.className='d'; e.textContent=n;
+      if(d<today) e.classList.add('off');
+      if(d.getTime()===today.getTime()) e.classList.add('today');
+      if(selD===key(d)) e.classList.add('sel');
+      e.addEventListener('click',function(){
+        document.querySelectorAll('.d').forEach(function(x){x.classList.remove('sel');});
+        e.classList.add('sel');
+        selD=key(d); selDL=n+' '+MOIS[d.getMonth()]+' '+d.getFullYear(); selS=null;
+        $('#fDate').value=selDL; drawSlots(); nav();
+      });
+      g.appendChild(e);
+    })(n);
   }
-  $('#calPrev').addEventListener('click',function(){ view.setMonth(view.getMonth()-1); drawCal(); });
-  $('#calNext').addEventListener('click',function(){ view.setMonth(view.getMonth()+1); drawCal(); });
-  drawCal();
+  $('#calP').addEventListener('click',function(){view.setMonth(view.getMonth()-1);drawCal();});
+  $('#calN').addEventListener('click',function(){view.setMonth(view.getMonth()+1);drawCal();});
 
-  /* créneaux calculés d'après la durée totale du panier */
-  function renderSlots(){
-    var box=$('#slots'), note=$('#slotsNote');
+  function drawSlots(){
+    var box=$('#slots'), note=$('#slotNote');
     box.innerHTML=''; note.textContent='';
-    if(!selDate){ note.textContent='Choisissez d’abord une date.'; return; }
-    var dur=totalMins()||60;
-    var starts=[8,9,10,11,12,13,14,15,16,17,18];
-    var any=false;
-    starts.forEach(function(h){
-      var endM=h*60+dur;
-      if(endM>20*60) return;           /* on termine au plus tard à 20 h */
-      any=true;
-      var e=Math.floor(endM/60), em=endM%60;
+    if(!selD){ note.textContent='Choisissez d’abord une date.'; return; }
+    var d=sumM()||60, any=false;
+    [8,9,10,11,12,13,14,15,16,17,18].forEach(function(h){
+      var end=h*60+d; if(end>20*60) return; any=true;
+      var e2=Math.floor(end/60), m2=end%60;
       var lab=String(h).padStart(2,'0')+':00';
-      var end=String(e).padStart(2,'0')+':'+(em?String(em).padStart(2,'0'):'00');
-      var el=document.createElement('div'); el.className='slot'+(selSlot===lab?' sel':'');
-      el.innerHTML=lab+'<small>→ '+end+'</small>';
+      var fin=String(e2).padStart(2,'0')+':'+(m2?String(m2).padStart(2,'0'):'00');
+      var el=document.createElement('div');
+      el.className='s'+(selS===lab?' on':'');
+      el.innerHTML=lab+'<small>jusqu’à '+fin+'</small>';
       el.addEventListener('click',function(){
-        document.querySelectorAll('.slot').forEach(function(x){ x.classList.remove('sel'); });
-        el.classList.add('sel'); selSlot=lab;
-        $('#fSlot').value=lab+' → '+end;
-        refreshNav();
+        document.querySelectorAll('.s').forEach(function(x){x.classList.remove('on');});
+        el.classList.add('on'); selS=lab; $('#fSlot').value=lab+' → '+fin; nav();
       });
       box.appendChild(el);
     });
-    note.textContent = any
-      ? 'Créneaux calculés pour une durée d’intervention de '+fmtDur(dur)+'.'
-      : 'Votre sélection dépasse une journée d’intervention — appelez-nous au 06 23 07 52 59 pour organiser plusieurs passages.';
+    note.textContent=any
+      ? 'Créneaux calculés pour une durée d’intervention de '+dur(d)+'.'
+      : 'Votre sélection dépasse une journée — appelez-nous au 06 23 07 52 59 pour organiser plusieurs passages.';
   }
 
   /* --------------------- Particulier / Entreprise --------------------- */
-  var clientType='Particulier';
-  function setClient(t){
-    clientType=t; $('#fClient').value=t;
-    var parti=(t==='Particulier');
-    $('#grpParti').classList.toggle('hide',!parti);
-    $('#grpEntr').classList.toggle('hide',parti);
-    document.querySelectorAll('#grpParti input').forEach(function(i){ i.disabled=!parti; });
-    document.querySelectorAll('#grpEntr input').forEach(function(i){ i.disabled=parti; });
-    document.querySelectorAll('.ctype button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-client')===t); });
-    refreshNav();
+  var who='Particulier';
+  function setWho(t){
+    who=t; $('#fClient').value=t;
+    var p=(t==='Particulier');
+    $('#gParti').classList.toggle('hide',!p);
+    $('#gEntr').classList.toggle('hide',p);
+    document.querySelectorAll('#gParti input').forEach(function(i){i.disabled=!p;});
+    document.querySelectorAll('#gEntr input').forEach(function(i){i.disabled=p;});
+    document.querySelectorAll('.who button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-c')===t);});
+    nav();
   }
-  document.querySelectorAll('.ctype button').forEach(function(b){
-    b.addEventListener('click',function(){ setClient(b.getAttribute('data-client')); });
+  document.querySelectorAll('.who button').forEach(function(b){
+    b.addEventListener('click',function(){setWho(b.getAttribute('data-c'));});
   });
-  /* revalider en direct pendant la saisie des coordonnées */
-  document.querySelectorAll('#grpParti input, #grpEntr input').forEach(function(i){
-    i.addEventListener('input', refreshNav);
+  document.querySelectorAll('#gParti input,#gEntr input').forEach(function(i){i.addEventListener('input',nav);});
+  $('#descArea').addEventListener('input',nav);
+  $('#upZone').addEventListener('click',function(){$('#fileInput').click();});
+  $('#fileInput').addEventListener('change',function(){
+    var f=this.files;
+    $('#upList').textContent=f.length?f.length+' fichier'+(f.length>1?'s':'')+' prêt'+(f.length>1?'s':'')+' à envoyer 📎':'';
   });
 
   /* ------------------------------ ÉTAPES ------------------------------ */
-  var STEPS=['presta','date','contact'], idx=0;
-  function contactValid(){
-    var g = clientType==='Particulier' ? '#grpParti' : '#grpEntr';
-    var ok=true;
+  var TITRES=['Composez votre prestation','Choisissez votre date','Vos coordonnées'];
+  var idx=0;
+  function contactOK(){
+    var g=who==='Particulier'?'#gParti':'#gEntr', ok=true;
     document.querySelectorAll(g+' input').forEach(function(i){ if(!i.value.trim()) ok=false; });
     var em=document.querySelector(g+' input[type=email]');
-    if(em && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())) ok=false;
+    if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())) ok=false;
     return ok;
   }
-  function stepValid(n){
-    if(n==='presta')  return cart.length>0 && (!hasDevis() || $('#descArea').value.trim().length>=10);
-    if(n==='date')    return !!(selDate && selSlot);
-    if(n==='contact') return contactValid();
-    return true;
+  function valid(i){
+    if(i===0) return cart.length>0 && (!hasDev() || $('#descArea').value.trim().length>=10);
+    if(i===1) return !!(selD&&selS);
+    return contactOK();
   }
-  function hintFor(n){
-    if(n==='presta')  return cart.length===0 ? 'Ajoutez au moins une prestation pour continuer.'
-                                             : 'Décrivez votre besoin pour la prestation sur devis (10 caractères minimum).';
-    if(n==='date')    return !selDate ? 'Choisissez une date.' : 'Choisissez un créneau horaire.';
-    if(n==='contact') return 'Renseignez tous les champs pour confirmer.';
-    return '';
+  function why(i){
+    if(i===0) return cart.length===0?'Ajoutez au moins une prestation à votre ticket.'
+      :'Décrivez votre besoin pour la prestation sur devis (10 caractères minimum).';
+    if(i===1) return !selD?'Choisissez une date.':'Choisissez un créneau horaire.';
+    return 'Renseignez tous les champs pour confirmer.';
   }
-  function showStep(n){
-    document.querySelectorAll('.wstep').forEach(function(s){ s.classList.toggle('on', s.getAttribute('data-step')===n); });
-    if(n==='date') renderSlots();
+  function nav(){
+    var ok=valid(idx), last=(idx===2);
+    $('#btnGo').disabled=!ok;
+    $('#btnGo').firstChild.nodeValue = last ? (hasDev()?'Envoyer ma demande ':'Confirmer ma réservation ') : 'Continuer ';
+    $('#btnBack').classList.toggle('hide',idx===0);
+    $('#hint').textContent=ok?'':why(idx);
+    $('#ringTxt').textContent=idx+1;
+    $('#ringFg').style.strokeDashoffset=176-(176*((idx+1)/3));
+    $('#stepK').textContent='Étape '+(idx+1)+' sur 3';
+    $('#stepT').textContent=TITRES[idx];
   }
-  function refreshNav(){
-    var n=STEPS[idx], last=(idx===STEPS.length-1), ok=stepValid(n);
-    var next=$('#wNext');
-    next.disabled=!ok;
-    next.textContent = last ? (hasDevis()?'Envoyer ma demande':'Confirmer ma réservation') : 'Suivant →';
-    $('#wPrev').classList.toggle('hide', idx===0);
-    $('#wNote').textContent = ok ? '' : hintFor(n);
-    $('#rpNum').textContent = String(idx+1).padStart(2,'0');
-    $('#rpFill').style.width = (((idx+1)/3)*100).toFixed(0)+'%';
-    document.querySelectorAll('.rp-labels span').forEach(function(el){
-      el.classList.toggle('on', +el.getAttribute('data-s')<=idx);
-    });
+  function show(i){
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('on',+p.getAttribute('data-p')===i);});
+    if(i===1){ drawCal(); drawSlots(); }
+    window.scrollTo({top:0,behavior:'smooth'});
   }
-  $('#wNext').addEventListener('click',function(){
-    var n=STEPS[idx];
-    if(!stepValid(n)) return;
-    if(idx===STEPS.length-1){
-      $('#fSubject').value = hasDevis() ? 'Nouvelle demande de devis — MathClean' : 'Nouvelle réservation — MathClean';
+  function draw(){ drawCat(); drawTicket(); nav(); }
+
+  $('#btnGo').addEventListener('click',function(){
+    if(!valid(idx)) return;
+    if(idx===2){
+      $('#fSubject').value=hasDev()?'Nouvelle demande de devis — MathClean':'Nouvelle réservation — MathClean';
       $('#resaForm').requestSubmit();
       return;
     }
-    idx++; showStep(STEPS[idx]); refreshNav(); window.scrollTo({top:0,behavior:'smooth'});
+    idx++; show(idx); nav();
   });
-  $('#wPrev').addEventListener('click',function(){
-    if(idx===0) return;
-    idx--; showStep(STEPS[idx]); refreshNav(); window.scrollTo({top:0,behavior:'smooth'});
+  $('#btnBack').addEventListener('click',function(){ if(idx>0){ idx--; show(idx); nav(); } });
+  $('#tkAdd').addEventListener('click',function(){
+    idx=0; show(0); nav();
+    document.querySelector('.step-head').scrollIntoView({behavior:'smooth',block:'start'});
   });
-  /* « Ajouter une prestation » depuis le panier : revient à l'étape 1 */
-  $('#cartAdd').addEventListener('click',function(){
-    idx=0; showStep('presta'); refreshNav();
-    document.querySelector('.wiz-card').scrollIntoView({behavior:'smooth',block:'start'});
-  });
+  $('#tkGrab').addEventListener('click',function(){ $('#ticket').classList.toggle('min'); });
 
-  /* panier repliable sur mobile */
-  $('#cartToggle').addEventListener('click',function(){ $('#cart').classList.toggle('collapsed'); });
-
-  /* description / fichiers */
-  $('#descArea').addEventListener('input', refreshNav);
-  $('#upZone').addEventListener('click',function(){ $('#fileInput').click(); });
-  $('#fileInput').addEventListener('change',function(){
-    var f=this.files;
-    $('#upList').textContent = f.length ? (f.length+' fichier'+(f.length>1?'s':'')+' prêt'+(f.length>1?'s':'')+' à envoyer 📎') : '';
-  });
-
-  /* pré-sélection via ?service= */
-  var wanted=new URLSearchParams(location.search).get('service');
-  if(wanted){
-    var map={'Nettoyage automobile':'auto','Polissage':'auto','Nettoyage textile':'textile'};
-    var tab=map[wanted]||'devis';
-    var btn=document.querySelector('.cat-tab[data-cat="'+tab+'"]');
-    if(btn) btn.click();
-    var d=DEVIS.filter(function(x){ return x[0]===wanted; })[0];
-    if(d) addItem('dev:'+d[0], d[0], '', null, d[1], true);
+  /* ---- pré-sélection via ?service= ---- */
+  var w=new URLSearchParams(location.search).get('service');
+  if(w){
+    var zone=/automobile|polissage/i.test(w)?'auto':(/textile|canap|matelas|tapis/i.test(w)?'textile':'devis');
+    var tab=document.querySelector('#univ button[data-z="'+zone+'"]'); if(tab) tab.click();
+    var d=DEV.filter(function(x){return x[0]===w;})[0];
+    if(d) add('dev:'+d[0],d[0],'',null,d[1],true);
   }
 
-  setClient('Particulier');
-  renderCatalog(); renderCart(); refreshNav();
+  /* sur mobile, le ticket démarre replié pour ne pas masquer le catalogue */
+  if(window.matchMedia('(max-width:1040px)').matches) $('#ticket').classList.add('min');
+
+  setWho('Particulier');
+  draw();
 })();
 </script>
+<script src="assets/app.js"></script>
 </body>
 </html>
