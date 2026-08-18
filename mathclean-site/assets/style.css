@@ -747,3 +747,21 @@ img.vid{aspect-ratio:9/16;object-fit:cover}
 .case dd{margin:3px 0 0;color:var(--gris);font-size:.93rem;line-height:1.6}
 .case .res{margin-top:16px;padding-top:14px;border-top:1px solid var(--ligne)}
 .case .res dd{color:var(--blanc);font-weight:600}
+
+/* ===== Bandeau de consentement cookies ===== */
+.ck-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:200;max-width:560px;margin:0 auto;
+  background:var(--noir);border:1px solid var(--ligne);border-radius:18px;padding:20px 22px;
+  box-shadow:0 26px 60px -22px rgba(20,20,35,.45);
+  transform:translateY(140%);transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.ck-banner.on{transform:none}
+.ck-banner p{font-size:.9rem;line-height:1.6;color:var(--gris);margin:0 0 14px}
+.ck-banner p b{color:var(--blanc)}
+.ck-banner a{color:var(--or);font-weight:600;text-decoration:underline}
+.ck-btns{display:flex;gap:10px;flex-wrap:wrap}
+.ck-btns button{cursor:pointer;font-family:var(--sans);font-weight:700;font-size:.88rem;
+  border-radius:99px;padding:11px 22px;transition:.25s;border:1.5px solid var(--ligne);background:none;color:var(--blanc)}
+.ck-btns .ck-ok{flex:1;min-width:140px;border-color:transparent;color:#fff;
+  background:linear-gradient(120deg,var(--or-clair),var(--or))}
+.ck-btns .ck-ok:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px var(--or)}
+.ck-btns .ck-no:hover{border-color:var(--or);color:var(--or)}
+@media(max-width:560px){.ck-banner{left:10px;right:10px;bottom:10px;padding:17px 18px}.ck-btns button{flex:1}}

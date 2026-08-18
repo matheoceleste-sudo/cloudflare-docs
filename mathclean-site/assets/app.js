@@ -129,3 +129,33 @@ const GOOGLE_PLACE_ID = ""; // ex : "ChIJN1t_tDeuEmsRUsoyG83frY4"
     : "https://www.google.com/maps/search/?api=1&query=MathClean+nettoyage+Paris";
   links.forEach(a=>{a.href=url;});
 })();
+
+/* ===== Consentement cookies (Google Analytics chargé seulement après accord) ===== */
+(function(){
+  var KEY='mcConsent';
+  var val=null; try{ val=localStorage.getItem(KEY); }catch(e){}
+  if(val==='yes'||val==='no') return;              /* choix déjà fait */
+  var pre=/\/(services|zones)\//.test(location.pathname)?'../':'';
+  var b=document.createElement('div');
+  b.className='ck-banner';
+  b.setAttribute('role','dialog');
+  b.setAttribute('aria-label','Consentement aux cookies');
+  b.innerHTML='<p><b>Nous utilisons des cookies de mesure d’audience</b> pour comprendre comment '+
+    'notre site est consulté et l’améliorer. Aucun cookie n’est déposé sans votre accord. '+
+    'En savoir plus dans notre <a href="'+pre+'politique-cookies.html">politique de cookies</a>.</p>'+
+    '<div class="ck-btns"><button type="button" class="ck-ok">Accepter</button>'+
+    '<button type="button" class="ck-no">Refuser</button></div>';
+  document.body.appendChild(b);
+  setTimeout(function(){ b.classList.add('on'); }, 700);
+  function choose(v){
+    try{ localStorage.setItem(KEY,v); }catch(e){}
+    if(v==='yes' && typeof gtag==='function'){
+      gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',
+        ad_user_data:'granted',ad_personalization:'granted'});
+    }
+    b.classList.remove('on');
+    setTimeout(function(){ b.remove(); }, 600);
+  }
+  b.querySelector('.ck-ok').addEventListener('click',function(){ choose('yes'); });
+  b.querySelector('.ck-no').addEventListener('click',function(){ choose('no'); });
+})();
