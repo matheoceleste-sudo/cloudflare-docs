@@ -311,16 +311,28 @@ button{font-family:inherit}
 .tk-grab{display:none}
 /* ticket en barre basse sur mobile */
 @media(max-width:1040px){
-  body{padding-bottom:172px}
+  body{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
   .ticket{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:60;border-radius:20px 20px 0 0;
-    max-height:70vh;overflow-y:auto}
+    max-height:70vh;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom,0px)}
   .tk-h::before,.tk-h::after{display:none}
   .tk-grab{display:block;width:40px;height:4px;border-radius:2px;background:rgba(212,175,55,.4);
-    border:0;margin:11px auto 0;cursor:pointer;padding:0}
-  .ticket.min .tk-list,.ticket.min .tk-empty,.ticket.min .tk-code,
-  .ticket.min .tk-add,.ticket.min .tk-devis,.ticket.min .tk-h h2{display:none}
-  .ticket.min .tk-h{padding-bottom:10px}
+    border:0;margin:9px auto 0;cursor:pointer;padding:0}
   .tk-list{max-height:32vh}
+
+  /* Replié : une seule barre compacte — libellé + durée à gauche, montant à droite.
+     Tout le reste (liste, jauge, code-barres, bouton d'ajout) est masqué. */
+  .ticket.min .tk-list,.ticket.min .tk-empty,.ticket.min .tk-code,
+  .ticket.min .tk-add,.ticket.min .tk-devis,.ticket.min .tk-h h2,
+  .ticket.min .tk-bar{display:none}
+  .ticket.min{overflow:hidden}
+  .ticket.min .tk-h{padding:6px 18px 0;border-bottom:0}
+  .ticket.min .tk-h .lbl{font-size:.58rem;letter-spacing:.2em}
+  .ticket.min .tk-b{padding:0 18px 11px;display:flex;align-items:center;
+    justify-content:space-between;gap:14px}
+  .ticket.min .tk-row{margin:0;font-size:.78rem;gap:7px}
+  .ticket.min .tk-tot{border-top:0;padding-top:0;margin-top:0;align-items:baseline;gap:9px}
+  .ticket.min .tk-tot span{font-size:.58rem;letter-spacing:.16em}
+  .ticket.min .tk-tot b{font-size:1.45rem}
 }
 
 /* --- écran de confirmation --- */
@@ -679,10 +691,7 @@ button{font-family:inherit}
   ];
   /* options : [nom, prix, description, minutes] */
   var OPTS=[
-    ['Coffre',5,'Aspiration et shampoing complet du coffre',0],
-    ['Poils d’animaux',5,'Retrait des poils sur sièges, tapis et moquettes',0],
-    ['Jantes détaillées',10,'Nettoyage détaillé des jantes et brillant pneus',0],
-    ['Acariens & allergènes',10,'Désinfection totale à haute température de l’habitacle',0],
+    ['Poils d’animaux',10,'Retrait des poils sur sièges, tapis et moquettes',0],
     ['Traitement cuir & alcantara',20,'Nettoyage et nourrissage des cuirs et de l’alcantara',0],
     ['Neutralisation des odeurs par ozone',30,'Traitement à l’ozone d’1 h : odeurs, bactéries et moisissures éliminées',60]
   ];
