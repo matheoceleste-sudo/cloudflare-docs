@@ -387,6 +387,30 @@ button{font-family:inherit}
 .ci-faq b{color:var(--ivoire);display:block;margin-bottom:4px}
 .ci-more{margin-top:34px;padding-top:22px;border-top:1px solid var(--ligne);font-size:.94rem}
 @media(max-width:820px){.ci-steps{grid-template-columns:1fr}.cfg-info{padding:48px 18px 64px}}
+
+/* --- étape 1 : choix de la prestation --- */
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.pk{position:relative;cursor:pointer;text-align:left;border:1px solid var(--ligne);
+  border-radius:18px;padding:22px 20px 20px;background:rgba(255,255,255,.03);color:var(--ivoire);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;overflow:hidden}
+.pk::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s;pointer-events:none;
+  background:radial-gradient(120% 90% at 12% 0%,rgba(212,175,55,.16),transparent 62%)}
+.pk:hover,.pk:focus-visible{transform:translateY(-4px);border-color:rgba(212,175,55,.55);
+  box-shadow:0 22px 46px -26px rgba(212,175,55,.6);outline:none}
+.pk:hover::after,.pk:focus-visible::after{opacity:1}
+.pk.on{border-color:var(--or);box-shadow:0 0 0 1px var(--or) inset,0 22px 46px -26px rgba(212,175,55,.7)}
+.pk.on::after{opacity:1}
+.pk svg{width:30px;height:30px;color:var(--or);margin-bottom:14px;display:block}
+.pk b{display:block;font-family:var(--serif);font-size:1.32rem;font-weight:600;line-height:1.15;margin-bottom:6px}
+.pk span{display:block;font-size:.86rem;color:var(--brume);line-height:1.5}
+.pk .pk-from{display:inline-block;margin-top:12px;font-size:.76rem;font-weight:700;letter-spacing:.06em;
+  color:var(--or);border:1px solid var(--ligne);border-radius:99px;padding:4px 11px}
+@media(max-width:560px){.picks{grid-template-columns:1fr 1fr;gap:11px}
+  .pk{padding:17px 15px 16px}.pk b{font-size:1.08rem}.pk span{font-size:.79rem}
+  .pk svg{width:25px;height:25px;margin-bottom:10px}}
+/* à l'étape du choix, le ticket est encore vide : on ne l'affiche pas */
+body.pick-step .ticket{display:none}
+@media(max-width:1040px){body.pick-step{padding-bottom:0}}
 </style>
 <script type="application/ld+json">
 {
@@ -488,9 +512,16 @@ button{font-family:inherit}
       <input type="hidden" name="Date souhaitée" id="fDate">
       <input type="hidden" name="Créneau" id="fSlot">
       <input type="hidden" name="Type de client" id="fClient" value="Particulier">
+      <input type="hidden" name="Prestation demandée" id="fServ">
 
       <!-- ÉTAPE 1 -->
       <section class="panel on" data-p="0">
+        <p class="lead">Commencez par nous dire ce que vous souhaitez faire nettoyer. Vous composerez votre prestation en détail juste après.</p>
+        <div class="picks" id="picks"></div>
+      </section>
+
+      <!-- ÉTAPE 2 -->
+      <section class="panel" data-p="1">
         <p class="lead">Choisissez votre univers, puis ajoutez autant de prestations que vous le souhaitez. Votre tarif et la durée d'intervention se calculent en direct sur votre ticket.</p>
         <div class="univ" id="univ">
           <button type="button" class="on" data-z="auto">Automobile</button>
@@ -499,7 +530,7 @@ button{font-family:inherit}
         </div>
 
         <div class="zone on" data-z="auto">
-          <p class="group-t">Nos 5 formules automobile</p>
+          <p class="group-t">Nos 4 formules automobile</p>
           <div class="formules" id="fAuto"></div>
           <p class="group-t">Prestations d'exception</p>
           <div class="formules" id="fSpec"></div>
@@ -531,8 +562,8 @@ button{font-family:inherit}
         </div>
       </section>
 
-      <!-- ÉTAPE 2 -->
-      <section class="panel" data-p="1">
+      <!-- ÉTAPE 3 -->
+      <section class="panel" data-p="2">
         <p class="lead" id="dateLead">Choisissez le jour souhaité, puis un créneau adapté à la durée de votre sélection. Ce choix nous sert de base : nous vous confirmons le rendez-vous définitif après réception de votre demande.</p>
         <div class="cal">
           <div class="cal-h">
@@ -548,8 +579,8 @@ button{font-family:inherit}
         <p class="note" id="slotNote"></p>
       </section>
 
-      <!-- ÉTAPE 3 -->
-      <section class="panel" data-p="2">
+      <!-- ÉTAPE 4 -->
+      <section class="panel" data-p="3">
         <p class="lead">Dernière étape : vos coordonnées, pour que nous puissions vous confirmer le rendez-vous sous 24 h.</p>
         <div class="who">
           <button type="button" class="on" data-c="Particulier"><b>Particulier</b><span>Pour votre domicile</span></button>
@@ -662,19 +693,17 @@ button{font-family:inherit}
   var $=function(s){return document.querySelector(s);};
   var MIN_TEX=45;
 
-  /* ---- 5 formules automobile : [nom, prix, minutes, famille, accroche, contenu, badge] ---- */
+  /* ---- 4 formules automobile : [nom, prix, minutes, famille, accroche, contenu, badge] ---- */
   var AUTO=[
     ['Extérieur Éclat',40,90,'Extérieur','La carrosserie retrouve sa brillance',
       ['Lavage complet de la carrosserie','Jantes et passages de roues','Brillant pneus',
        'Vitres extérieures','Séchage sans trace'],''],
-    ['Intérieur Essentiel',50,120,'Intérieur','Idéal pour un coup de propre régulier',
+    ['Intérieur Essentiel',50,120,'Intérieur','Idéal pour un coup de propre régulier (ne comprend pas le cuir et l’alcantara)',
       ['Aspiration de l’habitacle et du coffre','Nettoyage du tableau de bord','Nettoyage des plastiques',
        'Vitres intérieures','Désinfection complète à la vapeur','Parfum d’ambiance'],''],
-    ['Intérieur Confort',60,150,'Intérieur','Un nettoyage en profondeur des textiles',
+    ['Intérieur Prestige',90,180,'Intérieur','Le détail poussé jusqu’au moindre recoin, cuir compris',
       ['Tout l’Essentiel','Sièges cuir nettoyés ou pressing des sièges tissu',
-       'Pressing des tapis et moquettes','Désinfection complète à la vapeur','Parfum d’ambiance'],'Le plus choisi'],
-    ['Intérieur Prestige',90,180,'Intérieur','Le détail poussé jusqu’au moindre recoin',
-      ['Tout le Confort','Protection des plastiques','Traitement des cuirs',
+       'Pressing des tapis et moquettes','Protection des plastiques','Traitement des cuirs',
        'Battements de portes','Ciel de toit','Compartiment de la roue de secours'],''],
     ['Intégral',120,240,'Intérieur + Extérieur','Le véhicule entier, dedans comme dehors',
       ['Tout l’Intérieur Prestige','Lavage complet de la carrosserie','Jantes et brillant pneus',
@@ -714,8 +743,56 @@ button{font-family:inherit}
     ['Nettoyage de bureaux',120,'Postes, sanitaires, vitrerie'],
     ['Fin de chantier',240,'Remise en état après travaux']
   ];
+  /* ---- étape 1 : ce que le client veut faire nettoyer ----
+     [clé, nom, description, repère de prix, univers ciblé, prestation sur devis à pré-cocher] */
+  var ICONS={auto:'<path d="M5 17h14M6.5 17V9.7l1.7-3.9A2 2 0 0 1 10 4.6h4a2 2 0 0 1 1.8 1.2l1.7 3.9V17M4 12h16"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/>',polish:'<circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="8.6"/><path d="M12 3.4v3M12 17.6v3M3.4 12h3M17.6 12h3"/>',tex:'<path d="M3 17v-5.5A2.5 2.5 0 0 1 5.5 9h13A2.5 2.5 0 0 1 21 11.5V17M3 17h18M5 17v2M19 17v2M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/>',boat:'<path d="M4 17l1.6-5.6a1 1 0 0 1 .96-.72h10.88a1 1 0 0 1 .96.72L20 17M12 10.7V4.4M12 4.4l4.6 2.3-4.6 2M2.6 19.6c1.6 0 1.6 1.2 3.2 1.2s1.6-1.2 3.2-1.2 1.6 1.2 3.2 1.2 1.6-1.2 3.2-1.2 1.6 1.2 3.2 1.2"/>',plane:'<path d="M12 3c.7 0 1.25.58 1.25 1.3v4.4l7.35 4.1v1.85l-7.35-2.2v3.9l2.3 1.7v1.4L12 18.55 8.45 19.8v-1.4l2.3-1.7v-3.9L3.4 15v-1.85l7.35-4.1V4.3C10.75 3.58 11.3 3 12 3z"/>',terr:'<path d="M2.4 20h19.2M4.3 15.9h15.4M6.2 11.8h11.6M8.1 7.7h7.8M12 7.7V20"/>',loc:'<path d="M3 21h18M5 21V6.4a1 1 0 0 1 .7-.95l7-2.3a1 1 0 0 1 1.3.95V21M19 21v-9.4a1 1 0 0 0-.7-.95L14 9.2M8.6 8.4h1.8M8.6 12h1.8M8.6 15.6h1.8"/>',chan:'<path d="M14.6 5.4a3.6 3.6 0 0 0-5 4.6l-6.2 6.2a1.6 1.6 0 0 0 0 2.3l2.1 2.1a1.6 1.6 0 0 0 2.3 0l6.2-6.2a3.6 3.6 0 0 0 4.6-5l-2.6 2.6-2.5-.5-.5-2.5z"/>'};
+  var CATS=[
+    ['auto','Automobile','Detailing intérieur et extérieur, à domicile','dès 40 €','auto',''],
+    ['polish','Polissage','Micro-rayures corrigées, finition miroir','dès 350 €','auto',''],
+    ['tex','Textile','Canapé, matelas, tapis, fauteuil, moquette','dès 15 €','textile',''],
+    ['boat','Bateau','Coque, pont et sellerie, nettoyés à quai','sur devis','devis','Nettoyage de bateau'],
+    ['plane','Avion','Cabine, selleries et cockpit de votre appareil','sur devis','devis','Nettoyage d’avion'],
+    ['terr','Terrasse','Haute pression, anti-mousse, saturateur bois','sur devis','devis','Nettoyage de terrasse'],
+    ['loc','Locaux & bureaux','Commerces, bureaux et locaux professionnels','sur devis','devis','Nettoyage de locaux'],
+    ['chan','Fin de chantier','Remise en état complète après travaux','sur devis','devis','Fin de chantier']
+  ];
+
   var MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   var JOURS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+
+
+  /* --------------------- ÉTAPE 1 : choix de la prestation --------------------- */
+  var chosen=null;
+  function drawPicks(){
+    var box=$('#picks'); box.innerHTML='';
+    CATS.forEach(function(c){
+      var el=document.createElement('button');
+      el.type='button';
+      el.className='pk'+(chosen===c[0]?' on':'');
+      el.setAttribute('aria-pressed', chosen===c[0]?'true':'false');
+      el.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" '+
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICONS[c[0]]+'</svg>'+
+        '<b>'+c[1]+'</b><span>'+c[2]+'</span><span class="pk-from">'+c[3]+'</span>';
+      el.addEventListener('click',function(){ choose(c); });
+      box.appendChild(el);
+    });
+  }
+  function choose(c){
+    chosen=c[0];
+    $('#fServ').value=c[1];
+    /* on vide le panier : changer de prestation repart d'une feuille blanche */
+    cart=[];
+    /* l'univers correspondant devient actif */
+    var tab=document.querySelector('#univ button[data-z="'+c[4]+'"]');
+    if(tab) tab.click();
+    /* une prestation sur devis est directement posée dans le ticket */
+    if(c[5]){
+      var d=DEV.filter(function(x){return x[0]===c[5];})[0];
+      if(d) cart.push({key:'dev:'+d[0],name:d[0],detail:'',price:null,mins:0,qty:1,devis:true});
+    }
+    drawPicks(); draw();
+    idx=1; show(1); nav();
+  }
 
   /* ------------------------------- PANIER ------------------------------- */
   var cart=[];
@@ -739,8 +816,10 @@ button{font-family:inherit}
 
   /* compteur animé sur le total */
   var shown=0, raf=null;
-  function countTo(v){
+  function countTo(v,libelle){
     if(raf) cancelAnimationFrame(raf);
+    if(libelle){ shown=v; $('#tkTot').textContent=libelle; $('#tkTot').style.fontSize='1.6rem'; return; }
+    $('#tkTot').style.fontSize='';
     var from=shown, t0=performance.now(), d=520;
     (function tick(now){
       var p=Math.min((now-t0)/d,1), e=1-Math.pow(1-p,3);
@@ -756,22 +835,26 @@ button{font-family:inherit}
     $('#tkEmpty').classList.toggle('hide',cart.length>0);
     cart.forEach(function(i){
       var d=document.createElement('div'); d.className='tk-i';
+      var sous=i.devis ? 'durée définie au devis' : dur(i.mins*i.qty);
       d.innerHTML='<span class="n">'+(i.qty>1?'<b style="color:var(--or)">'+i.qty+'× </b>':'')+i.name+
-                  '<em>'+dur(i.mins*i.qty)+(i.detail?' · '+i.detail:'')+'</em></span>'+
+                  '<em>'+sous+(i.detail?' · '+i.detail:'')+'</em></span>'+
                   '<span class="p">'+(i.devis?'sur devis':(i.price*i.qty)+' €')+'</span>'+
                   '<button type="button" class="x" aria-label="Retirer">×</button>';
       d.querySelector('.x').addEventListener('click',function(){ chg(i.key,-i.qty); });
       L.appendChild(d);
     });
-    countTo(sumP());
-    $('#tkDur').textContent=dur(sumM());
+    /* Une demande uniquement sur devis n'a pas de montant : « 0 € » serait trompeur. */
+    var seulDevis = hasDev() && sumP()===0;
+    countTo(sumP(), seulDevis ? 'sur devis' : null);
+    var dTxt = (sumM()===0 && hasDev()) ? 'à définir' : dur(sumM());
+    $('#tkDur').textContent=dTxt;
     $('#tkBar').style.width=Math.min(sumM()/480*100,100)+'%';
     var dv=$('#tkDevis');
     dv.classList.toggle('hide',!hasDev());
-    if(hasDev()) dv.innerHTML='Votre demande contient une prestation <b>sur devis</b> : le montant affiché ne la comprend pas encore. Tarif ferme sous 24 h.';
+    if(hasDev()) dv.innerHTML='Votre demande contient une prestation <b>sur devis</b> : ni le montant ni la durée ne sont encore fixés. Nous revenons vers vous sous 24 h avec un tarif ferme.';
     $('#fItems').value=cart.map(function(i){return i.qty+'× '+i.name+' — '+(i.devis?'sur devis':(i.price*i.qty)+' €');}).join(' | ');
-    $('#fTotal').value=sumP()+' €'+(hasDev()?' + prestation(s) sur devis':'');
-    $('#fDuree').value=dur(sumM());
+    $('#fTotal').value=seulDevis ? 'sur devis' : (sumP()+' €'+(hasDev()?' + prestation(s) sur devis':''));
+    $('#fDuree').value=dTxt;
     $('#devisBlock').classList.toggle('hide',!hasDev());
     $('#descArea').disabled=!hasDev();
     $('#fileInput').disabled=!hasDev();
@@ -832,8 +915,9 @@ button{font-family:inherit}
     TEX.forEach(function(t){ var k='tex:'+t[0];
       T.appendChild(ligne(k,t[0],t[2],t[1]+' €','45 min',function(){add(k,t[0],'',t[1],MIN_TEX,false);})); });
     var D=$('#fDev'); D.innerHTML='';
+    /* Sur devis : ni prix ni durée annoncés — les deux sont fixés après étude du besoin. */
     DEV.forEach(function(d){ var k='dev:'+d[0];
-      D.appendChild(ligne(k,d[0],d[2],'sur devis',dur(d[1]),function(){add(k,d[0],'',null,d[1],true);})); });
+      D.appendChild(ligne(k,d[0],d[2],'sur devis','durée à définir',function(){add(k,d[0],'',null,0,true);})); });
   }
 
   document.querySelectorAll('#univ button').forEach(function(b){
@@ -880,6 +964,24 @@ button{font-family:inherit}
     var box=$('#slots'), note=$('#slotNote');
     box.innerHTML=''; note.textContent='';
     if(!selD){ note.textContent='Choisissez d’abord une date.'; return; }
+
+    /* Prestation sur devis : la durée n'est pas connue, on ne propose donc pas
+       de créneaux calculés mais une simple préférence de demi-journée. */
+    if(sumM()===0 && hasDev()){
+      [['Matin','entre 8 h et 12 h'],['Après-midi','entre 13 h et 18 h']].forEach(function(o){
+        var el=document.createElement('div');
+        el.className='s'+(selS===o[0]?' on':'');
+        el.innerHTML=o[0]+'<small>'+o[1]+'</small>';
+        el.addEventListener('click',function(){
+          document.querySelectorAll('.s').forEach(function(x){x.classList.remove('on');});
+          el.classList.add('on'); selS=o[0]; $('#fSlot').value=o[0]+' ('+o[1]+')'; nav();
+        });
+        box.appendChild(el);
+      });
+      note.textContent='Indiquez simplement le moment qui vous arrange : la durée sera fixée avec le devis, et l’horaire précis confirmé avec vous.';
+      return;
+    }
+
     var d=sumM()||60, any=false;
     [8,9,10,11,12,13,14,15,16,17,18].forEach(function(h){
       var end=h*60+d; if(end>20*60) return; any=true;
@@ -924,7 +1026,7 @@ button{font-family:inherit}
   });
 
   /* ------------------------------ ÉTAPES ------------------------------ */
-  var TITRES=['Composez votre prestation','Choisissez votre date','Vos coordonnées'];
+  var TITRES=['Que souhaitez-vous faire nettoyer ?','Composez votre prestation','Choisissez votre date','Vos coordonnées'];
   var idx=0;
   function contactOK(){
     var g=who==='Particulier'?'#gParti':'#gEntr', ok=true;
@@ -934,37 +1036,43 @@ button{font-family:inherit}
     return ok;
   }
   function valid(i){
-    if(i===0) return cart.length>0 && (!hasDev() || $('#descArea').value.trim().length>=10);
-    if(i===1) return !!(selD&&selS);
+    if(i===0) return !!chosen;
+    if(i===1) return cart.length>0 && (!hasDev() || $('#descArea').value.trim().length>=10);
+    if(i===2) return !!(selD&&selS);
     return contactOK();
   }
   function why(i){
-    if(i===0) return cart.length===0?'Ajoutez au moins une prestation à votre ticket.'
+    if(i===0) return 'Choisissez la prestation qui vous intéresse.';
+    if(i===1) return cart.length===0?'Ajoutez au moins une prestation à votre ticket.'
       :'Décrivez votre besoin pour la prestation sur devis (10 caractères minimum).';
-    if(i===1) return !selD?'Choisissez une date.':'Choisissez un créneau horaire.';
+    if(i===2) return !selD?'Choisissez une date.':'Choisissez un créneau horaire.';
     return 'Renseignez tous les champs pour confirmer.';
   }
+  var NB=4;
   function nav(){
-    var ok=valid(idx), last=(idx===2);
+    var ok=valid(idx), last=(idx===NB-1);
     $('#btnGo').disabled=!ok;
     $('#btnGo').firstChild.nodeValue = last ? (hasDev()?'Envoyer ma demande ':'Confirmer ma réservation ') : 'Continuer ';
+    /* à l'étape du choix, la carte cliquée fait déjà avancer : pas de bouton « Continuer » */
+    $('#nav2').classList.toggle('hide',idx===0);
     $('#btnBack').classList.toggle('hide',idx===0);
-    $('#hint').textContent=ok?'':why(idx);
+    $('#hint').textContent=(ok||idx===0)?'':why(idx);
     $('#ringTxt').textContent=idx+1;
-    $('#ringFg').style.strokeDashoffset=176-(176*((idx+1)/3));
-    $('#stepK').textContent='Étape '+(idx+1)+' sur 3 · Réserver un nettoyage en Île-de-France';
+    $('#ringFg').style.strokeDashoffset=176-(176*((idx+1)/NB));
+    $('#stepK').textContent='Étape '+(idx+1)+' sur '+NB+' · Réserver un nettoyage en Île-de-France';
     $('#stepT').textContent=TITRES[idx];
   }
   function show(i){
     document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('on',+p.getAttribute('data-p')===i);});
-    if(i===1){ drawCal(); drawSlots(); }
+    document.body.classList.toggle('pick-step',i===0);
+    if(i===2){ drawCal(); drawSlots(); }
     window.scrollTo({top:0,behavior:'smooth'});
   }
   function draw(){ drawCat(); drawTicket(); nav(); }
 
   $('#btnGo').addEventListener('click',function(){
     if(!valid(idx)) return;
-    if(idx===2){
+    if(idx===NB-1){
       $('#fSubject').value=hasDev()?'Nouvelle demande de devis — MathClean':'Nouvelle réservation — MathClean';
       $('#resaForm').requestSubmit();
       return;
@@ -973,24 +1081,36 @@ button{font-family:inherit}
   });
   $('#btnBack').addEventListener('click',function(){ if(idx>0){ idx--; show(idx); nav(); } });
   $('#tkAdd').addEventListener('click',function(){
-    idx=0; show(0); nav();
+    idx=1; show(1); nav();
     document.querySelector('.step-head').scrollIntoView({behavior:'smooth',block:'start'});
   });
   $('#tkGrab').addEventListener('click',function(){ $('#ticket').classList.toggle('min'); });
 
-  /* ---- pré-sélection via ?service= ---- */
+  /* ---- arrivée depuis une page service : ?service=… saute l'étape du choix ---- */
+  drawPicks();
   var w=new URLSearchParams(location.search).get('service');
   if(w){
-    var zone=/automobile|polissage/i.test(w)?'auto':(/textile|canap|matelas|tapis/i.test(w)?'textile':'devis');
-    var tab=document.querySelector('#univ button[data-z="'+zone+'"]'); if(tab) tab.click();
-    var d=DEV.filter(function(x){return x[0]===w;})[0];
-    if(d) add('dev:'+d[0],d[0],'',null,d[1],true);
+    var m=CATS.filter(function(c){
+      return c[1].toLowerCase()===w.toLowerCase() || (c[5] && c[5].toLowerCase()===w.toLowerCase());
+    })[0];
+    if(!m){
+      if(/automobile/i.test(w))            m=CATS[0];
+      else if(/polissage|concession/i.test(w)) m=CATS[1];
+      else if(/textile|canap|matelas|tapis/i.test(w)) m=CATS[2];
+      else if(/bateau/i.test(w))           m=CATS[3];
+      else if(/avion|jet/i.test(w))        m=CATS[4];
+      else if(/terrasse/i.test(w))         m=CATS[5];
+      else if(/locaux|bureau/i.test(w))    m=CATS[6];
+      else if(/chantier/i.test(w))         m=CATS[7];
+    }
+    if(m) choose(m);
   }
 
   /* sur mobile, le ticket démarre replié pour ne pas masquer le catalogue */
   if(window.matchMedia('(max-width:1040px)').matches) $('#ticket').classList.add('min');
 
   setWho('Particulier');
+  show(idx);
   draw();
 })();
 </script>
