@@ -3,6 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://mathclean.fr/</loc><priority>1.0</priority><changefreq>weekly</changefreq><lastmod>2026-08-18</lastmod>
     <image:image><image:loc>https://mathclean.fr/assets/og-image.png</image:loc></image:image></url>
+  <url><loc>https://mathclean.fr/a-propos.html</loc><priority>0.7</priority><changefreq>monthly</changefreq><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://mathclean.fr/zones.html</loc><priority>0.8</priority><changefreq>monthly</changefreq><lastmod>2026-08-18</lastmod></url>
   <url><loc>https://mathclean.fr/reservation.html</loc><priority>0.9</priority><changefreq>monthly</changefreq><lastmod>2026-08-18</lastmod></url>
   <url><loc>https://mathclean.fr/services/nettoyage-textile-paris.html</loc><priority>0.8</priority><changefreq>monthly</changefreq><lastmod>2026-08-18</lastmod></url>
