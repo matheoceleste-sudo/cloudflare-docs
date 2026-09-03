@@ -422,6 +422,24 @@ button{font-family:inherit}
 /* à l'étape du choix, le ticket est encore vide : on ne l'affiche pas */
 body.pick-step .ticket{display:none}
 @media(max-width:1040px){body.pick-step{padding-bottom:0}}
+
+/* --- frais de déplacement --- */
+.dep{grid-column:1/-1;border:1px solid var(--ligne);border-radius:15px;padding:17px 18px;
+  background:rgba(212,175,55,.05);margin:2px 0 4px}
+.dep-h{display:flex;gap:12px;align-items:flex-start}
+.dep-h svg{width:22px;height:22px;flex:0 0 22px;color:var(--or);margin-top:2px}
+.dep-h b{display:block;font-size:.95rem;margin-bottom:3px}
+.dep-h span{display:block;font-size:.83rem;color:var(--brume);line-height:1.5}
+.dep-out{margin-top:13px;padding-top:12px;border-top:1px dashed var(--ligne);
+  font-size:.9rem;color:var(--brume);line-height:1.55}
+.dep-out.on{color:var(--ivoire)}
+.dep-out b{color:var(--or);font-weight:700}
+.dep-out .err{color:#e8a49c}
+.dep-go{margin-top:11px;cursor:pointer;border:1px solid var(--ligne);background:none;color:var(--ivoire);
+  border-radius:99px;padding:8px 17px;font-size:.83rem;font-weight:600;transition:.25s}
+.dep-go:hover{border-color:var(--or);color:var(--or)}
+.dep-go.hide{display:none}
+.tk-i.tk-dep .n{color:var(--brume)}
 </style>
 <script type="application/ld+json">
 {
@@ -473,7 +491,7 @@ body.pick-step .ticket{display:none}
    "name": "Le déplacement est-il facturé ?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Non. Le déplacement est gratuit partout à Paris et en Île-de-France, à domicile comme sur le lieu de travail, et aucun acompte n'est demandé : le paiement intervient après la prestation."
+    "text": "Non. Nous intervenons partout à Paris et en Île-de-France, à domicile comme sur le lieu de travail. Les frais de déplacement sont de 5 € par tranche de 5 km, calculés depuis notre atelier de Tremblay-en-France et affichés avant validation. Aucun acompte n'est demandé : le paiement intervient après la prestation."
    }
   }
  ]
@@ -524,6 +542,8 @@ body.pick-step .ticket{display:none}
       <input type="hidden" name="Créneau" id="fSlot">
       <input type="hidden" name="Type de client" id="fClient" value="Particulier">
       <input type="hidden" name="Prestation demandée" id="fServ">
+      <input type="hidden" name="Distance" id="fKm">
+      <input type="hidden" name="Frais de déplacement" id="fDep">
 
       <!-- ÉTAPE 1 -->
       <section class="panel on" data-p="0">
@@ -607,6 +627,17 @@ body.pick-step .ticket{display:none}
             <div class="fld"><label for="p-cp">Code postal</label><input id="p-cp" type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code"></div>
             <div class="fld"><label for="p-ville">Ville</label><input id="p-ville" type="text" name="Ville" autocomplete="address-level2"></div>
           </div>
+          <div class="dep" id="depBox">
+            <div class="dep-h">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              <div>
+                <b>Frais de déplacement</b>
+                <span>5 € par tranche de 5 km entre notre atelier de Tremblay-en-France et votre adresse.</span>
+              </div>
+            </div>
+            <div class="dep-out" id="depOut" role="status" aria-live="polite">Renseignez votre adresse ci-dessus pour connaître le montant.</div>
+            <button type="button" class="dep-go hide" id="depGo">Recalculer</button>
+          </div>
           <div class="g2">
             <div class="fld"><label for="p-tel">Téléphone</label><input id="p-tel" type="tel" name="Téléphone" autocomplete="tel"></div>
             <div class="fld"><label for="p-email">Email</label><input id="p-email" type="email" name="Email" autocomplete="email"></div>
@@ -619,6 +650,17 @@ body.pick-step .ticket{display:none}
           <div class="g2">
             <div class="fld"><label for="e-cp">Code postal</label><input id="e-cp" type="text" name="Code postal" inputmode="numeric" autocomplete="postal-code" disabled></div>
             <div class="fld"><label for="e-ville">Ville</label><input id="e-ville" type="text" name="Ville" autocomplete="address-level2" disabled></div>
+          </div>
+          <div class="dep" id="depBoxE">
+            <div class="dep-h">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              <div>
+                <b>Frais de déplacement</b>
+                <span>5 € par tranche de 5 km entre notre atelier de Tremblay-en-France et votre adresse.</span>
+              </div>
+            </div>
+            <div class="dep-out" id="depOutE" role="status" aria-live="polite">Renseignez votre adresse ci-dessus pour connaître le montant.</div>
+            <button type="button" class="dep-go hide" id="depGoE">Recalculer</button>
           </div>
           <div class="g2">
             <div class="fld"><label for="e-tel">Téléphone</label><input id="e-tel" type="tel" name="Téléphone" autocomplete="tel" disabled></div>
@@ -674,7 +716,7 @@ body.pick-step .ticket{display:none}
 
     <h2>Ce qui est compris dans le tarif affiché</h2>
     <ul class="ci-list">
-      <li><b>Le déplacement</b> — gratuit partout à Paris et en Île-de-France, à votre domicile comme sur votre lieu de travail.</li>
+      <li><b>Le déplacement</b> — 5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France, calculés et affichés avant que vous validiez.</li>
       <li><b>Le matériel et l'eau</b> — nous venons entièrement équipés&nbsp;; vous n'avez ni prise ni point d'eau à fournir.</li>
       <li><b>Les produits</b> — professionnels, choisis pour ne pas agresser les matériaux, sans danger pour les enfants ni les animaux.</li>
       <li><b>Aucun acompte</b> — le paiement se fait après l'intervention, une fois le résultat constaté.</li>
@@ -807,6 +849,83 @@ body.pick-step .ticket{display:none}
     idx=1; show(1); nav();
   }
 
+
+  /* ==================== FRAIS DE DÉPLACEMENT ====================
+     Géocodage par l'API Adresse de l'État (adresse.data.gouv.fr) : gratuite,
+     sans clé, sans quota bloquant. La distance est calculée à vol d'oiseau
+     puis majorée d'un coefficient routier, faute d'API d'itinéraire fiable
+     et gratuite. C'est une estimation, annoncée comme telle au client. */
+  var DEP = {
+    lat: 48.9486, lon: 2.5697,   /* 5 rue Nicolas Copernic, Tremblay-en-France */
+    palierKm: 5,                 /* tranche facturée */
+    palierEur: 5,                /* montant de la tranche */
+    franchiseKm: 0,              /* kilomètres offerts avant facturation */
+    coefRoute: 1.25              /* majoration du vol d'oiseau vers la distance routière */
+  };
+  var depKm=null, depEur=0, depLbl='', depT=null;
+
+  function volDoiseau(la1,lo1,la2,lo2){
+    var R=6371, r=Math.PI/180;
+    var dLa=(la2-la1)*r, dLo=(lo2-lo1)*r;
+    var a=Math.sin(dLa/2)*Math.sin(dLa/2)
+        + Math.cos(la1*r)*Math.cos(la2*r)*Math.sin(dLo/2)*Math.sin(dLo/2);
+    return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+  }
+  function fraisPour(km){
+    var fact=Math.max(0, km-DEP.franchiseKm);
+    if(fact<=0) return 0;
+    return Math.ceil(fact/DEP.palierKm)*DEP.palierEur;
+  }
+  function champsAdresse(){
+    var p = who==='Particulier';
+    return {adr:$(p?'#p-adr':'#e-adr'), cp:$(p?'#p-cp':'#e-cp'), ville:$(p?'#p-ville':'#e-ville'),
+            out:$(p?'#depOut':'#depOutE'), go:$(p?'#depGo':'#depGoE')};
+  }
+  function depMsg(html,ok){
+    ['#depOut','#depOutE'].forEach(function(sel){
+      var e=$(sel); if(!e) return;
+      e.innerHTML=html; e.classList.toggle('on',!!ok);
+    });
+  }
+  function depReset(msg){
+    depKm=null; depEur=0; depLbl='';
+    depMsg(msg||'Renseignez votre adresse ci-dessus pour connaître le montant.',false);
+    ['#depGo','#depGoE'].forEach(function(sel){var e=$(sel); if(e) e.classList.add('hide');});
+    drawTicket(); nav();
+  }
+  function calculerDep(){
+    var f=champsAdresse();
+    var adr=(f.adr&&f.adr.value.trim())||'', cp=(f.cp&&f.cp.value.trim())||'', ville=(f.ville&&f.ville.value.trim())||'';
+    if(!cp && !ville){ depReset(); return; }
+    var q=(adr+' '+cp+' '+ville).trim();
+    depMsg('Calcul en cours…',false);
+    var url='https://api-adresse.data.gouv.fr/search/?limit=1&q='+encodeURIComponent(q);
+    fetch(url).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){
+      if(!j.features || !j.features.length) throw 0;
+      var c=j.features[0].geometry.coordinates;          /* [lon, lat] */
+      var libelle=j.features[0].properties.label;
+      var km=volDoiseau(DEP.lat,DEP.lon,c[1],c[0])*DEP.coefRoute;
+      depKm = km<10 ? Math.round(km*10)/10 : Math.round(km);
+      var kmTxt = String(depKm).replace('.',',');
+      depEur=fraisPour(km);
+      depLbl=libelle;
+      var txt = depEur>0
+        ? 'Environ <b>'+kmTxt+' km</b> depuis notre atelier — frais de déplacement <b>'+depEur+' €</b>.'
+        : 'Environ <b>'+kmTxt+' km</b> depuis notre atelier — <b>aucun frais de déplacement</b>.';
+      depMsg(txt+'<br><span style="font-size:.8rem;opacity:.75">Adresse retenue : '+libelle+
+             '. Distance estimée, confirmée avec votre rendez-vous.</span>', true);
+      ['#depGo','#depGoE'].forEach(function(sel){var e=$(sel); if(e) e.classList.remove('hide');});
+      drawTicket(); nav();
+    }).catch(function(){
+      depKm=null; depEur=0; depLbl='';
+      depMsg('<span class="err">Adresse introuvable.</span> Vérifiez le numéro, le code postal et la ville, '+
+             'ou appelez-nous au 06 23 07 52 59 : nous calculons les frais avec vous.',false);
+      ['#depGo','#depGoE'].forEach(function(sel){var e=$(sel); if(e) e.classList.remove('hide');});
+      drawTicket(); nav();
+    });
+  }
+  function depDiffere(){ clearTimeout(depT); depT=setTimeout(calculerDep,800); }
+
   /* ------------------------------- PANIER ------------------------------- */
   var cart=[];
   function dur(m){ if(!m) return '—'; var h=Math.floor(m/60),n=m%60;
@@ -856,9 +975,17 @@ body.pick-step .ticket{display:none}
       d.querySelector('.x').addEventListener('click',function(){ chg(i.key,-i.qty); });
       L.appendChild(d);
     });
-    /* Une demande uniquement sur devis n'a pas de montant : « 0 € » serait trompeur. */
-    var seulDevis = hasDev() && sumP()===0;
-    countTo(sumP(), seulDevis ? 'sur devis' : null);
+    /* Les frais de déplacement s'ajoutent aux prestations, y compris sur devis. */
+    if(depEur>0){
+      var dd=document.createElement('div'); dd.className='tk-i tk-dep';
+      dd.innerHTML='<span class="n">Déplacement<em>'+String(depKm).replace('.',',')+' km aller</em></span>'+
+                   '<span class="p">'+depEur+' €</span>';
+      L.appendChild(dd);
+    }
+    /* Une demande uniquement sur devis n'a pas de montant de prestation ;
+       les frais de déplacement, eux, sont connus dès que l'adresse l'est. */
+    var seulDevis = hasDev() && sumP()===0 && depEur===0;
+    countTo(sumP()+depEur, seulDevis ? 'sur devis' : null);
     var dTxt = (sumM()===0 && hasDev()) ? 'à définir' : dur(sumM());
     $('#tkDur').textContent=dTxt;
     $('#tkBar').style.width=Math.min(sumM()/480*100,100)+'%';
@@ -866,7 +993,13 @@ body.pick-step .ticket{display:none}
     dv.classList.toggle('hide',!hasDev());
     if(hasDev()) dv.innerHTML='Votre demande contient une prestation <b>sur devis</b> : ni le montant ni la durée ne sont encore fixés. Nous revenons vers vous sous 24 h avec un tarif ferme.';
     $('#fItems').value=cart.map(function(i){return i.qty+'× '+i.name+' — '+(i.devis?'sur devis':(i.price*i.qty)+' €');}).join(' | ');
-    $('#fTotal').value=seulDevis ? 'sur devis' : (sumP()+' €'+(hasDev()?' + prestation(s) sur devis':''));
+    $('#fKm').value  = depKm===null ? 'non calculée' : (String(depKm).replace('.',',')+' km — '+depLbl);
+    $('#fDep').value = depKm===null ? 'à calculer'   : (depEur+' €');
+    $('#fTotal').value = seulDevis
+      ? 'sur devis' + (depEur>0 ? ' + '+depEur+' € de déplacement' : '')
+      : ((sumP()+depEur)+' €'
+         + (depEur>0 ? ' (dont '+depEur+' € de déplacement)' : '')
+         + (hasDev()?' + prestation(s) sur devis':''));
     $('#fDuree').value=dTxt;
     $('#devisBlock').classList.toggle('hide',!hasDev());
     $('#descArea').disabled=!hasDev();
@@ -1025,12 +1158,19 @@ body.pick-step .ticket{display:none}
     document.querySelectorAll('#gParti input').forEach(function(i){i.disabled=!p;});
     document.querySelectorAll('#gEntr input').forEach(function(i){i.disabled=p;});
     document.querySelectorAll('.who button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-c')===t);});
+    depReset();
     nav();
   }
   document.querySelectorAll('.who button').forEach(function(b){
     b.addEventListener('click',function(){setWho(b.getAttribute('data-c'));});
   });
   document.querySelectorAll('#gParti input,#gEntr input').forEach(function(i){i.addEventListener('input',nav);});
+  ['#p-adr','#p-cp','#p-ville','#e-adr','#e-cp','#e-ville'].forEach(function(sel){
+    var e=$(sel); if(e) e.addEventListener('input',depDiffere);
+  });
+  ['#depGo','#depGoE'].forEach(function(sel){
+    var e=$(sel); if(e) e.addEventListener('click',calculerDep);
+  });
   $('#descArea').addEventListener('input',nav);
   $('#upZone').addEventListener('click',function(){$('#fileInput').click();});
   $('#fileInput').addEventListener('change',function(){
