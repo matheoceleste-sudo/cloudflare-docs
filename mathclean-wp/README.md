@@ -113,6 +113,24 @@ récapitulatif de droite.
 La demande part par FormSubmit avec un récapitulatif lisible. Sans
 JavaScript, la page renvoie vers le formulaire de devis et le téléphone.
 
+## La photo d'en-tête
+
+L'accueil ouvre sur une photo, plus sur une vidéo. Elle se règle dans
+`content.py`, bloc `HERO` :
+
+```python
+HERO = {
+    "image": "hero-mathclean-vapeur.webp",  # fichier dans site/assets/photos/
+    "position": "center 45%",               # zone visible après recadrage
+    "alt": "…",
+}
+```
+
+La photo est en portrait et le navigateur la recadre en bandeau : `position`
+décide de la bande visible. `center 45%` place le visage et le logo du t-shirt
+à droite, en laissant le texte lisible à gauche. Si vous changez de photo,
+ajustez ce pourcentage — plus bas = on descend dans l'image.
+
 ## Afficher vos avis Google
 
 Deux réglages dans `content.py` :
@@ -138,7 +156,7 @@ Réalisations.
 
 ## Remplacer les images
 
-**15 des 26 photos actuelles sont trop petites** et paraissent floues une
+**13 des photos actuelles sont trop petites** et paraissent floues une
 fois agrandies. Les plus visibles sont les quatre comparateurs avant/après
 en 192 × 160 px, affichés à plus de 560 px de large.
 
@@ -151,7 +169,6 @@ même nom** : rien d'autre à modifier.
 | `ba-tapis-avant.webp` / `-apres.webp` | Comparateur « Tapis et moquette » | 1200 × 900 |
 | `ba-terrasse-avant.webp` / `-apres.webp` | Comparateur « Terrasse extérieure » | 1200 × 900 |
 | `ba-fauteuil-avant.webp` / `-apres.webp` | Comparateur « Fauteuil de bureau » | 1200 × 900 |
-| `canape-nettoyage.webp` | Carte + page « Nettoyage textile » | 1200 × 800 |
 | `bateau-yacht.webp` | Carte + page « Nettoyage de bateau » | 1200 × 800 |
 | `bureau-entreprise.webp` | Carte + page « Nettoyage pour entreprise » | 1200 × 800 |
 | `tapis-karcher.webp` | Article « Raviver un tapis » | 1200 × 800 |

@@ -766,3 +766,14 @@ CRENEAUX = [
     "Après-midi — 12h à 17h",
     "Fin de journée — 17h à 20h",
 ]
+
+
+# --- Photo d'en-tête de l'accueil ------------------------------------------
+# "image"    : fichier dans site/assets/photos/
+# "position" : cadrage CSS object-position — la photo est rognée par le
+#              navigateur, ce réglage décide de la zone visible.
+HERO = {
+    "image": "hero-mathclean-vapeur.webp",
+    "position": "center 45%",
+    "alt": "Technicien MathClean en intervention de nettoyage vapeur, à Paris",
+}

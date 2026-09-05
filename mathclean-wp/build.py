@@ -25,7 +25,7 @@ sys.path.insert(0, HERE)
 from content import (  # noqa: E402
     SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
-    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX,
+    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO,
 )
 
 OUT = os.path.join(HERE, "site")
@@ -461,8 +461,9 @@ def build_home():
     body = f"""
 <section class="hero">
   <div class="hero-media">
-    <video src="assets/videos/detailing-5.mp4" poster="assets/videos/detailing-5.webp"
-           autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <img src="assets/photos/{HERO['image']}" alt="{HERO['alt']}"
+         width="1125" height="1500" fetchpriority="high"
+         style="object-position:{HERO['position']}">
   </div>
   <div class="container">
     <div class="hero-inner">
