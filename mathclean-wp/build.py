@@ -42,6 +42,18 @@ def empreinte(chemin):
         return "0"
 
 
+_MOTS = {1: "une", 2: "deux", 3: "trois", 4: "quatre", 5: "cinq", 6: "six",
+         7: "sept", 8: "huit", 9: "neuf", 10: "dix", 11: "onze", 12: "douze"}
+
+
+def en_lettres(n):
+    """Nombre en toutes lettres, chiffre au-delà de douze."""
+    return _MOTS.get(n, str(n))
+
+
+NB_SERVICES = en_lettres(len(SERVICES))
+NB_ZONES = en_lettres(len(ZONES))
+
 V_CSS = empreinte("theme/theme.css")
 V_JS = empreinte("theme/theme.js")
 V_RESA = empreinte("theme/reservation.js")
@@ -68,6 +80,7 @@ ICONS = {
     "pin":      '<path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>',
     "arrow":    '<path d="M4 12h15M13 6l6 6-6 6"/>',
     "chevron":  '<polyline points="6 9 12 15 18 9"/>',
+    "ozone":    '<circle cx="6.5" cy="14.5" r="3.1"/><circle cx="17.5" cy="14.5" r="3.1"/><circle cx="12" cy="6.5" r="3.1"/><path d="M8.9 12.2 10.4 9.4M13.6 9.4l1.5 2.8M9.6 14.5h4.8"/>',
     "check":    '<polyline points="20 6 9 17 4 12"/>',
     "up":       '<path d="M12 19V6M6 12l6-6 6 6"/>',
     "info":     '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/>',
@@ -542,7 +555,7 @@ def build_home():
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Nos prestations</span>
-      <h2>Sept métiers, une seule exigence</h2>
+      <h2>{NB_SERVICES.capitalize()} métiers, une seule exigence</h2>
       <p class="lead">
         Chaque matière appelle un produit et un geste différents. C'est ce travail de diagnostic —
         comprendre la matière avant de la nettoyer — qui sépare un résultat correct d'un résultat qui tient.
@@ -550,7 +563,7 @@ def build_home():
     </div>
     <div class="tile-grid">{cards}</div>
     <div class="btn-row center" style="margin-top:36px">
-      <a class="btn btn-outline" href="services.html">Voir les sept prestations</a>
+      <a class="btn btn-outline" href="services.html">Voir les {NB_SERVICES} prestations</a>
     </div>
   </div>
 </section>
@@ -715,7 +728,7 @@ def build_services_archive():
     cards = "".join(service_tile(base, s) for s in SERVICES)
     body = f"""
 {page_title_block(base, trail, "Nos prestations de nettoyage",
-    "Sept métiers, à domicile comme en entreprise, partout à Paris et en Île-de-France. "
+    "%s métiers, à domicile comme en entreprise, partout à Paris et en Île-de-France. " % NB_SERVICES.capitalize() +
     "Chaque prestation dispose de sa page dédiée : méthode, contenu détaillé et réponses aux questions courantes.")}
 
 <section class="section">
@@ -1207,7 +1220,7 @@ def build_zone(z):
     </div>
     <div class="grid grid-3">{services_cards}</div>
     <div class="btn-row center" style="margin-top:34px">
-      <a class="btn btn-outline" href="{base}services.html">Voir les sept prestations</a>
+      <a class="btn btn-outline" href="{base}services.html">Voir les {NB_SERVICES} prestations</a>
     </div>
   </div>
 </section>
@@ -2622,7 +2635,7 @@ def build_ville(v):
     </div>
     <div class="tile-grid">{tiles}</div>
     <div class="btn-row center" style="margin-top:34px">
-      <a class="btn btn-outline" href="{base}services.html">Voir les sept prestations</a>
+      <a class="btn btn-outline" href="{base}services.html">Voir les {NB_SERVICES} prestations</a>
     </div>
   </div>
 </section>

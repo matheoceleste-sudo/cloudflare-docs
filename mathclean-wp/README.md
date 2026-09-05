@@ -86,12 +86,12 @@ Quelques repères dans `content.py` :
 Les couleurs se règlent en haut de `theme/theme.css`, dans le bloc `:root`
 (`--brand` pour le bleu, `--gold` pour le doré).
 
-## Les 78 pages indexables
+## Les 84 pages indexables
 
 - Accueil, À propos, Tarifs, Réalisations, Réservation, Devis, Contact
-- 7 pages de prestations (`services/`)
+- 8 pages de prestations (`services/`), dont le traitement par ozone
 - **28 pages villes** (`villes/`) + leur sommaire
-- **12 guides pratiques** (`guides/`) + leur sommaire
+- **17 guides pratiques** (`guides/`) + leur sommaire
 - Zones d'intervention + 8 pages départements (`zones/`)
 - Blog + 8 articles de conseils (`blog/`)
 - Merci, 404, mentions légales, confidentialité, cookies
@@ -114,6 +114,28 @@ récapitulatif de droite.
 
 La demande part par FormSubmit avec un récapitulatif lisible. Sans
 JavaScript, la page renvoie vers le formulaire de devis et le téléphone.
+
+## Le traitement par ozone : ce qui est écrit, et pourquoi
+
+L'ozone est un gaz irritant pour les voies respiratoires ; l'ANSES le
+rappelle dans ses avis. Les pages du site le disent explicitement, et
+décrivent le protocole : local vidé de ses occupants, de leurs animaux et de
+leurs plantes, puis aération avant restitution.
+
+**Aucune page n'affirme que l'ozone désinfecte, tue des virus ou élimine des
+bactéries.** Ces allégations relèvent du règlement biocides européen
+528/2012 : les revendiquer sans autorisation vous exposerait, et elles sont
+invérifiables dans les conditions réelles d'un habitacle ou d'un logement.
+
+Ce que les pages affirment — la destruction des molécules odorantes par
+oxydation — est exact, constatable immédiatement, et suffit largement à
+vendre la prestation. Dire franchement ce que l'ozone ne fait pas est aussi
+ce qui vous distingue des prestataires qui le présentent comme une solution
+miracle.
+
+Cinq pages couvrent la demande : la prestation elle-même, l'entreprise de
+traitement ozone à Paris, le traitement en Île-de-France, le cas du
+véhicule, les règles de sécurité, et le prix.
 
 ## Villes et guides
 

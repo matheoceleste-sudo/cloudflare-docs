@@ -299,6 +299,73 @@ SERVICES = [
         ],
     },
     {
+        "slug": "traitement-ozone-paris",
+        "short": "Ozone",
+        "nav": "Traitement par ozone",
+        "name": "Traitement par ozone à Paris",
+        "h1": "Traitement par ozone : neutraliser les odeurs à la source",
+        "title": "Traitement ozone à Paris & Île-de-France — odeurs neutralisées | MathClean",
+        "meta": "Traitement par ozone à Paris et en Île-de-France : tabac, animaux, humidité, cuisine, fumée. Odeurs détruites à la source, pas masquées. Dès 30 €, protocole de sécurité respecté.",
+        "price": "dès 30 €",
+        "excerpt": "Tabac, animaux, humidité, cuisine, fumée : l'ozone détruit les molécules odorantes au lieu de les masquer. Véhicule, appartement, local ou chambre.",
+        "image": "intervention-3.webp",
+        "hero": "intervention-3.webp",
+        "icon": "ozone",
+        "intro": [
+            "Un désodorisant masque. L'ozone, lui, oxyde : la molécule responsable de l'odeur est "
+            "détruite, elle ne revient pas quand le parfum s'estompe. C'est la différence entre "
+            "couvrir une odeur de tabac et la faire disparaître.",
+            "Le gaz pénètre partout où l'air circule — mousse de siège, ciel de toit, tissus, "
+            "conduits de ventilation, recoins — c'est-à-dire là où aucun nettoyage de surface "
+            "n'atteint. Puis il se recombine naturellement en oxygène en quelques heures.",
+        ],
+        "included_title": "Ce que l'ozone traite réellement",
+        "included": [
+            "Odeur de <strong>tabac</strong> incrustée dans les textiles et les mousses",
+            "Odeurs d'<strong>animaux</strong>, y compris l'urine une fois la source retirée",
+            "Odeurs d'<strong>humidité</strong> et de moisissure après dégât des eaux",
+            "Odeurs de <strong>cuisine</strong> ou de friture dans un logement ou un local",
+            "Odeur de <strong>fumée</strong> après un début d'incendie",
+        ],
+        "steps": [
+            ("Nettoyage préalable",
+             "L'ozone ne nettoie pas : il traite l'air et les surfaces qu'il atteint. Si la source "
+             "de l'odeur est encore là — un textile imprégné, un tapis souillé — elle doit être "
+             "traitée d'abord, sinon l'odeur revient."),
+            ("Mise en sécurité",
+             "Le local ou le véhicule est vidé : personne à l'intérieur, ni animaux ni plantes. "
+             "C'est une règle absolue, sur laquelle nous ne transigeons pas."),
+            ("Traitement",
+             "Le générateur tourne en espace clos, une heure environ pour un habitacle de voiture, "
+             "davantage selon le volume pour une pièce ou un local."),
+            ("Aération et restitution",
+             "Nous aérons, et nous attendons que l'ozone se soit recombiné en oxygène avant de vous "
+             "rendre les lieux. Vous ne récupérez jamais un espace encore chargé."),
+        ],
+        "faq": [
+            ("L'ozone est-il dangereux ?",
+             "Oui, pendant le traitement : c'est un gaz irritant pour les voies respiratoires, et "
+             "l'ANSES le rappelle régulièrement. C'est précisément pourquoi il se manipule en espace "
+             "vide, sans personne, sans animaux et sans plantes, suivi d'une aération. Une fois "
+             "recombiné en oxygène, il ne laisse aucun résidu."),
+            ("Combien de temps avant de pouvoir réutiliser les lieux ?",
+             "Comptez environ deux heures après la fin du traitement pour un habitacle de voiture, "
+             "davantage pour une pièce. Nous ne restituons jamais un espace avant que l'aération "
+             "soit faite."),
+            ("L'ozone remplace-t-il un nettoyage ?",
+             "Non, et personne ne devrait vous le vendre ainsi. Il traite les odeurs, pas la "
+             "saleté. Sur un habitacle encrassé, le nettoyage vient d'abord, l'ozone ensuite."),
+            ("Est-ce que l'odeur peut revenir ?",
+             "Seulement si la source est toujours présente. Une moquette imprégnée d'urine "
+             "continuera d'émettre tant qu'elle n'aura pas été traitée. C'est pour cela que nous "
+             "diagnostiquons avant de proposer l'ozone."),
+            ("Traitez-vous les appartements et les locaux ?",
+             "Oui : logements, chambres d'hôtel, commerces, restaurants, véhicules. Le tarif dépend "
+             "du volume à traiter et s'établit sur devis, sauf pour l'habitacle automobile, "
+             "proposé à 30 € en option d'un nettoyage."),
+        ],
+    },
+    {
         "slug": "nettoyage-fin-de-chantier-paris",
         "short": "Fin de chantier",
         "nav": "Fin de chantier",
@@ -383,6 +450,7 @@ TARIFS_DEVIS = [
     ("Nettoyage de terrasse", "Haute pression et anti-mousse", "nettoyage-terrasse-paris"),
     ("Nettoyage de vitres", "Vitres, baies vitrées et vitrines", "nettoyage-vitres-paris"),
     ("Nettoyage pour entreprise", "Bureaux, commerces, locaux et vitrerie", "nettoyage-entreprise-paris"),
+    ("Traitement par ozone (local, logement)", "Odeurs neutralisées à la source", "traitement-ozone-paris"),
     ("Nettoyage de fin de chantier", "Remise en état après travaux", "nettoyage-fin-de-chantier-paris"),
 ]
 
@@ -1142,6 +1210,162 @@ GUIDES = [
   ("Est-ce rentable avant une revente ?",
    "C'est l'usage le plus fréquent de nos clients. Un habitacle assaini et sans odeur pèse concrètement sur le prix accepté par l'acheteur.")],
  "service": "nettoyage-automobile-paris",
+},
+{
+ "slug": "entreprise-traitement-ozone-paris",
+ "cat": "Ozone",
+ "h1": "Entreprise de traitement ozone à Paris : comment choisir",
+ "title": "Entreprise de traitement ozone à Paris — critères, protocole, tarifs | MathClean",
+ "meta": "Choisir une entreprise de traitement ozone à Paris : protocole de sécurité, diagnostic préalable, tarifs, durée. Ce qu'un prestataire sérieux doit vous dire.",
+ "image": "intervention-3.webp",
+ "lead": "Le traitement à l'ozone s'est banalisé, et avec lui les promesses excessives. Voici comment reconnaître une entreprise qui maîtrise réellement le procédé.",
+ "sections": [
+  ("Elle commence par un diagnostic, pas par le générateur", [
+   "L'ozone traite les odeurs, il ne retire pas la source. Une moquette imprégnée d'urine, un textile saturé de nicotine, une zone humide encore active continueront d'émettre une fois le traitement terminé.",
+   "Un prestataire sérieux identifie d'abord d'où vient l'odeur, dit ce qui doit être nettoyé ou retiré avant, et n'annonce l'ozone qu'ensuite. Celui qui propose l'ozone au téléphone sans rien avoir vu vend un traitement, pas un résultat."]),
+  ("Elle vous parle spontanément de sécurité", [
+   "L'ozone est un gaz irritant pour les voies respiratoires ; l'ANSES le rappelle régulièrement dans ses avis sur les épurateurs d'air. Le traitement se fait donc en espace clos et vide : personne à l'intérieur, ni animaux ni plantes.",
+   "Une entreprise qui n'aborde pas ce point de sa propre initiative, ou qui vous laisse entendre que vous pouvez rester sur place, ne connaît pas son sujet. C'est le filtre le plus efficace."]),
+  ("Elle prévoit l'aération dans le temps d'intervention", [
+   "Après le traitement, l'ozone se recombine naturellement en oxygène — mais cela prend du temps. Comptez environ deux heures pour un habitacle de voiture, davantage pour une pièce.",
+   "Ce délai fait partie de la prestation. Un prestataire qui vous rend les clés immédiatement après avoir coupé le générateur vous fait prendre un risque inutile."]),
+  ("Elle ne promet pas de désinfection", [
+   "Les allégations biocides et virucides sont encadrées par le règlement européen 528/2012. Annoncer « élimine 99,9 % des virus » sur une prestation d'ozone est juridiquement exposé, et invérifiable dans les conditions réelles d'un appartement ou d'un habitacle.",
+   "Ce que l'ozone fait très bien, en revanche, c'est détruire les molécules odorantes. C'est déjà beaucoup, et cela se constate immédiatement."]),
+  ("À Paris : la contrainte du lieu clos", [
+   "En appartement, le traitement suppose de quitter les lieux pendant sa durée, aération comprise. En copropriété, mieux vaut prévenir : l'odeur caractéristique de l'ozone peut se percevoir sur un palier.",
+   "Pour un véhicule, un parking souterrain fermé convient parfaitement — c'est même le cas le plus simple, et le plus fréquent à Paris."])],
+ "faq": [
+  ("Combien coûte un traitement ozone à Paris ?",
+   "Chez MathClean, 30 € en option d'un nettoyage automobile, pour un traitement d'environ une heure. Pour une pièce, un logement ou un local, le tarif dépend du volume et s'établit sur devis gratuit."),
+  ("Faut-il quitter les lieux ?",
+   "Oui, sans exception, pendant le traitement et pendant l'aération qui suit. C'est la seule façon de procéder correctement."),
+  ("L'odeur peut-elle revenir après le traitement ?",
+   "Seulement si la source est toujours en place. C'est pourquoi le diagnostic préalable compte plus que la puissance du générateur.")],
+ "service": "traitement-ozone-paris",
+},
+{
+ "slug": "traitement-ozone-ile-de-france",
+ "cat": "Ozone",
+ "h1": "Traitement ozone en Île-de-France : où, quand, combien de temps",
+ "title": "Traitement ozone en Île-de-France — véhicules, logements, locaux | MathClean",
+ "meta": "Traitement par ozone dans les huit départements franciliens : véhicules, logements, chambres, commerces. Durées, délais d'intervention et frais de déplacement.",
+ "image": "auto-interieur-vw.webp",
+ "lead": "Nous traitons à l'ozone dans les huit départements franciliens. Voici ce que cela suppose selon le type de lieu, et combien de temps il faut y consacrer.",
+ "sections": [
+  ("Un véhicule : le cas le plus simple", [
+   "Une heure de traitement, environ deux heures d'aération. Le véhicule peut rester où il est — devant chez vous, en parking souterrain, sur un parking d'entreprise — puisque nous venons avec notre propre matériel et notre propre alimentation.",
+   "C'est le format que nous réalisons le plus souvent, généralement associé à un nettoyage intérieur : le nettoyage retire la source, l'ozone traite ce qui a imprégné les mousses et le ciel de toit."]),
+  ("Un logement ou une chambre", [
+   "La durée dépend du volume. Une chambre se traite en quelques heures, un appartement entier demande de fractionner ou d'allonger le temps de traitement.",
+   "Vous devez pouvoir quitter les lieux sur cette durée, aération comprise. C'est la contrainte principale, et elle se planifie : beaucoup de nos clients font traiter pendant une journée d'absence."]),
+  ("Un commerce, un restaurant, une chambre d'hôtel", [
+   "Ces lieux se traitent hors des heures d'ouverture, souvent de nuit, ce qui règle la question de l'évacuation. Pour un hôtel, une chambre libérée le matin peut être remise en service dans la journée.",
+   "En restauration, l'ozone intervient après le dégraissage : les odeurs de friture imprègnent les textiles et les conduits, que le nettoyage de surface n'atteint pas."]),
+  ("Délais et déplacement", [
+   "Comptez 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne. Les frais de déplacement suivent la règle habituelle : 5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France, annoncés avant validation.",
+   "Le détail commune par commune figure sur nos pages villes."])],
+ "faq": [
+  ("Intervenez-vous dans toute l'Île-de-France ?",
+   "Oui, dans les huit départements : Paris (75), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94), Essonne (91), Yvelines (78), Seine-et-Marne (77) et Val-d'Oise (95)."),
+  ("Peut-on traiter un logement occupé ?",
+   "Pas pendant le traitement. Le logement doit être vide de ses occupants, de leurs animaux et de leurs plantes, et le rester jusqu'à la fin de l'aération."),
+  ("Combien de temps faut-il prévoir en tout ?",
+   "Pour un véhicule, une demi-journée en comptant l'aération. Pour un logement, cela se planifie selon le volume : nous vous le disons précisément au devis.")],
+ "service": "traitement-ozone-paris",
+},
+{
+ "slug": "traitement-ozone-voiture-odeurs",
+ "cat": "Ozone",
+ "h1": "Traitement ozone d'une voiture : tabac, animaux, humidité",
+ "title": "Traitement ozone voiture à Paris — odeur de tabac, d'animal, d'humidité | MathClean",
+ "meta": "Faire traiter sa voiture à l'ozone : odeur de tabac, d'animal ou d'humidité éliminée à la source. Durée, prix, protocole. À domicile en Île-de-France, dès 30 €.",
+ "image": "auto-interieur-vw.webp",
+ "lead": "C'est l'usage le plus fréquent de l'ozone, et le plus spectaculaire. Voici pourquoi il fonctionne là où l'aspiration et les désodorisants échouent.",
+ "sections": [
+  ("Pourquoi l'odeur résiste au nettoyage", [
+   "Dans un habitacle, l'odeur ne tient pas seulement aux surfaces. Elle s'est fixée dans la mousse des sièges, dans le ciel de toit, dans la moquette du plancher, et surtout dans le circuit de ventilation — autant d'endroits qu'aucun passage d'aspirateur n'atteint.",
+   "C'est ce qui explique le phénomène classique : la voiture sent bon deux jours, puis l'odeur revient dès qu'on met le chauffage."]),
+  ("Ce que fait l'ozone", [
+   "Le gaz circule partout où l'air circule, y compris dans les conduits de ventilation. Il oxyde les molécules odorantes : elles sont détruites, pas recouvertes.",
+   "Une heure suffit pour un habitacle. Nous faisons tourner la ventilation pendant le traitement, précisément pour que le circuit d'air soit traité lui aussi."]),
+  ("L'ordre compte : nettoyer d'abord", [
+   "Si un tapis est imprégné, si un liquide a coulé sous un siège, la source est toujours là et l'odeur reviendra. Le nettoyage intérieur retire la matière ; l'ozone traite ce qui a imprégné.",
+   "C'est pour cela que nous proposons l'ozone en option d'un nettoyage plutôt que seul : dans l'autre ordre, le résultat ne tient pas."]),
+  ("Le cas de la revente", [
+   "Un acheteur se fait un avis en trois secondes, à l'ouverture de la portière, sur une impression olfactive qu'il ne formulera jamais à voix haute. Une odeur de tabac ou d'animal coûte concrètement en négociation.",
+   "L'association nettoyage intérieur plus ozone est, de loin, la préparation à la revente la plus rentable que nous réalisons."])],
+ "faq": [
+  ("Combien coûte un traitement ozone sur une voiture ?",
+   "30 €, en option d'un nettoyage intérieur. Le traitement dure environ une heure, à laquelle s'ajoute l'aération."),
+  ("L'odeur de tabac part-elle vraiment ?",
+   "Dans la grande majorité des cas, oui, à condition que l'habitacle ait été nettoyé au préalable. Sur un véhicule fumé pendant des années, un second passage est parfois nécessaire."),
+  ("Puis-je conduire juste après ?",
+   "Non. Il faut laisser l'ozone se recombiner en oxygène et aérer, soit environ deux heures. Nous ne vous rendons jamais le véhicule avant.")],
+ "service": "traitement-ozone-paris",
+},
+{
+ "slug": "traitement-ozone-securite",
+ "cat": "Ozone",
+ "h1": "Traitement ozone : les règles de sécurité à connaître",
+ "title": "Sécurité du traitement ozone : ce qu'il faut savoir avant | MathClean",
+ "meta": "L'ozone est un gaz irritant pour les voies respiratoires. Règles de sécurité d'un traitement : local vide, aération, délai avant réoccupation. Ce que dit l'ANSES.",
+ "image": "intervention-2.webp",
+ "lead": "L'ozone est efficace, et il n'est pas anodin. Ces règles ne sont pas des précautions de confort : elles conditionnent la sécurité du traitement.",
+ "sections": [
+  ("Ce qu'est l'ozone, et pourquoi il agit", [
+   "L'ozone est une molécule d'oxygène instable, composée de trois atomes au lieu de deux. C'est cette instabilité qui le rend efficace : il cède facilement un atome, oxydant au passage les molécules odorantes qu'il rencontre.",
+   "La même instabilité explique sa toxicité : ce qu'il oxyde dans une molécule d'odeur, il l'oxyde aussi dans les tissus respiratoires."]),
+  ("Personne dans le local, sans exception", [
+   "Pendant le traitement, l'espace doit être vide : pas d'occupants, pas d'animaux, pas de plantes. Les animaux de petite taille et les oiseaux y sont particulièrement sensibles.",
+   "Cette règle ne souffre aucune exception, quelle que soit la durée. Un prestataire qui vous laisse rester dans une pièce voisine mal isolée fait mal son travail."]),
+  ("L'aération fait partie du traitement", [
+   "Une fois le générateur arrêté, l'ozone ne disparaît pas instantanément : il se recombine progressivement en oxygène. Comptez environ deux heures pour un habitacle de voiture, davantage pour un volume plus grand.",
+   "L'odeur caractéristique — proche de celle de l'air après un orage — est un indicateur utile : tant qu'elle est nette, l'aération n'est pas terminée."]),
+  ("Ce que dit l'ANSES", [
+   "L'agence a émis à plusieurs reprises des avis prudents sur les appareils émettant de l'ozone en présence humaine, en rappelant son caractère irritant pour les voies respiratoires et l'absence de bénéfice démontré comme purificateur d'air d'ambiance.",
+   "Cela ne disqualifie pas l'ozone comme traitement d'odeurs en espace vide et ventilé ensuite — c'est un usage différent, ponctuel et encadré. Mais cela disqualifie l'idée d'un appareil à laisser tourner chez soi au quotidien."]),
+  ("Les matériaux sensibles", [
+   "L'ozone est un oxydant : à forte concentration et sur des durées longues, il peut altérer certains caoutchoucs, mousses et matières plastiques anciennes.",
+   "Sur un véhicule ou un logement en bon état, aux durées usuelles, cela ne pose pas de difficulté. Sur un véhicule de collection ou des matériaux fragiles, cela se discute avant."])],
+ "faq": [
+  ("Peut-on acheter un générateur et le faire soi-même ?",
+   "Techniquement oui, ces appareils sont en vente libre. Le risque n'est pas dans la machine mais dans le protocole : concentration, durée, évacuation des occupants, aération. C'est là que se jouent l'efficacité et la sécurité."),
+  ("L'ozone laisse-t-il des résidus ?",
+   "Non. Il se recombine en oxygène, sans dépôt ni film résiduel. C'est l'un de ses intérêts par rapport à un produit chimique."),
+  ("Est-ce compatible avec la présence d'enfants dans le logement ?",
+   "Après aération complète, oui, l'air est redevenu de l'air ordinaire. Pendant le traitement, non, et cela vaut pour tout le monde.")],
+ "service": "traitement-ozone-paris",
+},
+{
+ "slug": "prix-traitement-ozone",
+ "cat": "Prix",
+ "h1": "Combien coûte un traitement à l'ozone ?",
+ "title": "Prix d'un traitement ozone — véhicule 30 €, logement sur devis | MathClean",
+ "meta": "Prix d'un traitement ozone : 30 € en option d'un nettoyage automobile, sur devis pour un logement ou un local. Ce qui fait varier le tarif.",
+ "image": "intervention-1.webp",
+ "lead": "Le tarif dépend d'une seule variable réelle : le volume à traiter, qui détermine la durée.",
+ "sections": [
+  ("Le véhicule : 30 €", [
+   "Chez MathClean, la neutralisation des odeurs par ozone est proposée à 30 €, en option de n'importe quelle formule de nettoyage automobile. Le traitement dure environ une heure, plus l'aération.",
+   "Ce prix suppose que l'habitacle soit nettoyé : c'est le nettoyage qui retire la source, l'ozone qui traite ce qui a imprégné. Vendre l'ozone seul sur un habitacle encrassé serait vous facturer un résultat qui ne tiendra pas."]),
+  ("Le logement, la chambre, le local : sur devis", [
+   "Pour un volume plus important, la durée de traitement augmente, et avec elle le temps d'intervention. Une chambre, un studio et un local de 200 m² n'ont pas de commune mesure.",
+   "Le devis est gratuit et s'établit après échange : volume, nature de l'odeur, contraintes d'accès et d'horaires."]),
+  ("Ce qui fait vraiment varier le prix", [
+   "Le volume, d'abord. L'ancienneté de l'odeur ensuite : un tabagisme de plusieurs années demande parfois deux passages. Et l'accessibilité, enfin — un local qu'on ne peut vider qu'entre minuit et six heures se planifie différemment.",
+   "Les frais de déplacement s'ajoutent selon la règle habituelle : 5 € par tranche de 5 km depuis notre atelier, annoncés avant que vous validiez."]),
+  ("Le piège du prix bas", [
+   "Un traitement annoncé très bas est souvent un traitement trop court, ou réalisé sans le nettoyage préalable. Dans les deux cas, l'odeur revient — et vous avez payé deux fois.",
+   "Demandez systématiquement la durée de traitement prévue et ce qui est fait avant. Les réponses vous renseigneront mieux que le prix."])],
+ "faq": [
+  ("Le traitement ozone est-il vendu seul ?",
+   "Sur véhicule, nous le proposons en option d'un nettoyage, parce que c'est la seule façon d'obtenir un résultat durable. Sur logement ou local, il peut se traiter seul si la source de l'odeur a déjà été retirée."),
+  ("Faut-il parfois deux passages ?",
+   "Sur des odeurs très anciennes et très incrustées, cela arrive. Nous le disons au devis quand nous l'anticipons, plutôt que de le découvrir après."),
+  ("Le devis est-il payant ?",
+   "Non, il est gratuit et sans engagement, comme pour toutes nos prestations.")],
+ "service": "traitement-ozone-paris",
 },
 {
  "slug": "injection-extraction",
