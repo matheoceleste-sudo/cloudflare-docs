@@ -26,8 +26,11 @@ SITE = {
     "siren": "924 565 990",
     "manager": "Mathéo Céleste",
     "hours": "7j/7, de 8h à 20h",
-    "review_url": "https://g.page/r/mathclean/review",
-    "maps_url": "https://www.google.com/maps/search/?api=1&query=5+Rue+Nicolas+Copernic+93290+Tremblay-en-France",
+    # Fiche Google Business (CID issu de l'URL Maps fournie par le client).
+    "google_cid": "8434710860473546146",
+    "maps_url": "https://www.google.com/maps/place/MathClean/@48.9499461,2.4559529,17z",
+    "review_url": "https://www.google.com/maps?cid=8434710860473546146",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=MathClean&destination_place_id=",
     "travel_fee": "5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France (93)",
 }
 
@@ -165,47 +168,6 @@ SERVICES = [
         ],
     },
     {
-        "slug": "nettoyage-avion-paris",
-        "nav": "Nettoyage d'avion",
-        "name": "Nettoyage d'avion à Paris",
-        "h1": "Nettoyage de cabine d'avion et d'aviation d'affaires",
-        "title": "Nettoyage d'avion & jet privé en Île-de-France — cabine, cuir, cockpit | MathClean",
-        "meta": "Nettoyage de cabine d'avion et de jet privé sur aérodrome francilien : selleries cuir, moquettes, cockpit, sanitaires. Devis gratuit.",
-        "price": "sur devis",
-        "excerpt": "Cabine, selleries cuir et cockpit de votre jet ou avion léger, nettoyés directement sur l'aérodrome, entre deux rotations.",
-        "image": "intervention-3.webp",
-        "hero": "intervention-3.webp",
-        "icon": "plane",
-        "intro": [
-            "Une cabine d'aviation d'affaires se juge au détail : une trace sur une boiserie, une couture de cuir grisée, une moquette marquée. "
-            "Nous intervenons sur les aérodromes franciliens, entre deux rotations, avec un protocole calé sur le temps disponible au sol.",
-            "Le cockpit demande une prudence particulière : écrans, sérigraphies d'instruments et interrupteurs ne tolèrent ni excès d'humidité "
-            "ni produit agressif. Nous y travaillons au chiffon micro-fibre et au produit neutre, jamais par projection.",
-        ],
-        "included_title": "Le protocole cabine",
-        "included": [
-            "Selleries cuir nettoyées puis nourries",
-            "Moquettes aspirées et traitées en injection-extraction",
-            "Boiseries, tablettes et parois dépoussiérées et lustrées",
-            "Cockpit traité au chiffon, sans projection sur les instruments",
-            "Sanitaires, office et soutes désinfectés",
-        ],
-        "steps": [
-            ("Prise de contact", "Type d'appareil, aérodrome, créneau disponible au sol : ces trois éléments déterminent le protocole et le devis."),
-            ("Devis ferme", "Établi après échange, détaillé par zone. Aucune surprise à la facturation."),
-            ("Intervention sur site", "Sur l'aérodrome, dans le créneau convenu, avec notre matériel autonome."),
-            ("Contrôle final", "Passage de contrôle zone par zone avec vous ou avec l'équipage avant remise en service."),
-        ],
-        "faq": [
-            ("Sur quels aérodromes intervenez-vous ?",
-             "Sur les plateformes franciliennes, en fonction des accès dont vous disposez. Précisez-nous l'aérodrome lors de votre demande de devis."),
-            ("Combien de temps faut-il immobiliser l'appareil ?",
-             "Cela dépend de l'appareil et de l'ampleur de la prestation. Nous calons le protocole sur le créneau au sol dont vous disposez et nous vous le confirmons dans le devis."),
-            ("Traitez-vous aussi les avions légers ?",
-             "Oui, aviation générale comme aviation d'affaires."),
-        ],
-    },
-    {
         "slug": "nettoyage-terrasse-paris",
         "nav": "Nettoyage de terrasse",
         "name": "Nettoyage de terrasse à Paris",
@@ -290,12 +252,12 @@ SERVICES = [
         ],
     },
     {
-        "slug": "nettoyage-locaux-paris",
-        "nav": "Locaux & bureaux",
-        "name": "Nettoyage de locaux & bureaux à Paris",
-        "h1": "Entretien de locaux, bureaux et commerces",
-        "title": "Nettoyage de bureaux & locaux à Paris — entretien professionnel | MathClean",
-        "meta": "Entretien de bureaux, locaux commerciaux, restaurants et commerces à Paris et en Île-de-France. Passage ponctuel ou régulier, horaires décalés, facturation entreprise.",
+        "slug": "nettoyage-entreprise-paris",
+        "nav": "Nettoyage pour entreprise",
+        "name": "Nettoyage pour entreprise à Paris",
+        "h1": "Nettoyage pour entreprise : bureaux, commerces et locaux",
+        "title": "Nettoyage pour entreprise à Paris — bureaux, commerces, locaux | MathClean",
+        "meta": "Nettoyage pour entreprise à Paris et en Île-de-France : bureaux, commerces, restaurants et locaux d'activité. Passage ponctuel ou régulier, horaires décalés, facturation entreprise.",
         "price": "sur devis",
         "excerpt": "Bureaux, commerces, restaurants et locaux d'activité : désinfection, moquettes, sanitaires et vitrerie, en passage ponctuel ou régulier.",
         "image": "bureau-entreprise.webp",
@@ -411,11 +373,9 @@ TARIFS_TEXTILE = [
 
 TARIFS_DEVIS = [
     ("Nettoyage de bateau", "Coque, pont et sellerie", "nettoyage-bateau-paris"),
-    ("Nettoyage d'avion", "Cabine, selleries et cockpit", "nettoyage-avion-paris"),
     ("Nettoyage de terrasse", "Haute pression et anti-mousse", "nettoyage-terrasse-paris"),
     ("Nettoyage de vitres", "Vitres, baies vitrées et vitrines", "nettoyage-vitres-paris"),
-    ("Nettoyage de locaux", "Locaux commerciaux et moquettes", "nettoyage-locaux-paris"),
-    ("Nettoyage de bureaux", "Postes, sanitaires et vitrerie", "nettoyage-locaux-paris"),
+    ("Nettoyage pour entreprise", "Bureaux, commerces, locaux et vitrerie", "nettoyage-entreprise-paris"),
     ("Nettoyage de fin de chantier", "Remise en état après travaux", "nettoyage-fin-de-chantier-paris"),
 ]
 
@@ -636,7 +596,7 @@ POSTS = [
         "date": "2026-08-14",
         "date_fr": "14 août 2026",
         "image": "tapis-karcher.webp",
-        "excerpt": "Laine, soie ou synthétique : la fibre décide de la méthode. Pourquoi un test des couleurs vaut mieux qu'un shampoing du commerce.",
+        "excerpt": "Laine, soie ou synthétique : la fibre décide de la méthode.",
         "meta": "Comment raviver un tapis sans le faire dégorger : aspiration des deux côtés, rotation, détachage et test des couleurs selon la fibre.",
         "body": [
             ("p", "Un tapis se dégrade de deux façons : par l'usure localisée, là où l'on marche toujours, et par l'accumulation de particules abrasives à la base de la fibre, qui scient la laine de l'intérieur. Les deux se combattent facilement."),
@@ -772,4 +732,37 @@ POSTS = [
         "cta": "Une tache que vous n'osez pas traiter ?",
         "service": "nettoyage-textile-paris",
     },
+]
+
+
+# --- Avis clients ---------------------------------------------------------
+# Note globale affichée. À corriger dès qu'elle bouge sur votre fiche Google.
+GOOGLE_NOTE = {"score": "5,0", "nombre": 10}
+
+# IMPORTANT — n'inscrivez ici que de VRAIS avis, recopiés mot pour mot depuis
+# votre fiche Google, avec le prénom et la date affichés par Google.
+# Format : (auteur, date affichée, note sur 5, texte de l'avis)
+#
+# Tant que cette liste reste vide, la page affiche la note globale et renvoie
+# vers Google : aucun témoignage n'est inventé. Dès que vous ajoutez une
+# entrée, elle apparaît sous forme de carte. Exemple de ligne à recopier :
+#
+#     ("Sophie L.", "12 août 2026", 5, "Intervention impeccable sur mon canapé…"),
+#
+REVIEWS = []
+
+# --- Réservation en ligne -------------------------------------------------
+# Frais de déplacement : mêmes règles que l'ancien configurateur.
+DEPLACEMENT = {
+    "lat": 48.9486,          # atelier, 5 rue Nicolas Copernic
+    "lon": 2.5697,
+    "palier_km": 5,          # tranche facturée
+    "palier_eur": 5,         # montant par tranche
+    "coef_route": 1.25,      # majoration du vol d'oiseau vers la distance routière
+}
+
+CRENEAUX = [
+    "Matin — 8h à 12h",
+    "Après-midi — 12h à 17h",
+    "Fin de journée — 17h à 20h",
 ]

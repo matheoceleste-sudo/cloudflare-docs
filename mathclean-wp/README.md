@@ -86,14 +86,96 @@ Quelques repères dans `content.py` :
 Les couleurs se règlent en haut de `theme/theme.css`, dans le bloc `:root`
 (`--brand` pour le bleu, `--gold` pour le doré).
 
-## Les 38 pages
+## Les 36 pages
 
-- Accueil, À propos, Tarifs, Réalisations, Devis, Contact
-- 8 pages de prestations (`services/`)
+- Accueil, À propos, Tarifs, Réalisations, **Réservation**, Devis, Contact
+- 7 pages de prestations (`services/`)
 - Zones d'intervention + 8 pages départements (`zones/`)
 - Blog + 8 articles de conseils (`blog/`)
 - Merci, 404, mentions légales, confidentialité, cookies
 - `sitemap.xml` et `robots.txt` générés automatiquement
+
+## Réserver en ligne
+
+`reservation.html` est un configurateur en quatre étapes : prestation →
+détail → lieu et date → coordonnées. Le prix se construit en direct dans le
+récapitulatif de droite.
+
+- **Automobile** : les quatre packs et les trois options de `content.py`.
+- **Textile** : compteurs de quantité par pièce, additionnés.
+- **Autres prestations** : passage en « sur devis » avec un champ descriptif.
+- **Frais de déplacement** : calculés depuis l'adresse saisie via l'API
+  Adresse de data.gouv.fr (service public français, sans cookie ni compte),
+  selon la règle des 5 € par tranche de 5 km. Si l'API ne répond pas, la
+  réservation continue : le message indique que les frais seront confirmés
+  avant validation.
+
+La demande part par FormSubmit avec un récapitulatif lisible. Sans
+JavaScript, la page renvoie vers le formulaire de devis et le téléphone.
+
+## Afficher vos avis Google
+
+Deux réglages dans `content.py` :
+
+- `GOOGLE_NOTE` — la note globale et le nombre d'avis affichés en tête de
+  section. À corriger quand ils bougent.
+- `REVIEWS` — **vos vrais avis**, recopiés depuis votre fiche Google.
+
+`REVIEWS` est volontairement vide au départ. Tant qu'elle l'est, le site
+affiche la note globale et renvoie vers Google, sans afficher le moindre
+témoignage : rien n'est inventé. Dès que vous ajoutez une ligne au format
+
+```python
+("Sophie L.", "12 août 2026", 5, "Intervention impeccable sur mon canapé…"),
+```
+
+une carte d'avis apparaît sur l'accueil, la page À propos et la page
+Réalisations.
+
+> Un affichage automatique des avis Google demanderait l'API Google Places :
+> une clé, un compte de facturation et un serveur. Pour une dizaine d'avis
+> qui changent rarement, la recopie manuelle est plus simple et plus fiable.
+
+## Remplacer les images
+
+**15 des 26 photos actuelles sont trop petites** et paraissent floues une
+fois agrandies. Les plus visibles sont les quatre comparateurs avant/après
+en 192 × 160 px, affichés à plus de 560 px de large.
+
+Déposez simplement le nouveau fichier dans `site/assets/photos/` **sous le
+même nom** : rien d'autre à modifier.
+
+| Fichier | Où il s'affiche | Taille minimale conseillée |
+|---|---|---|
+| `ba-canape-avant.webp` / `-apres.webp` | Comparateur « Canapé en tissu » | 1200 × 900 |
+| `ba-tapis-avant.webp` / `-apres.webp` | Comparateur « Tapis et moquette » | 1200 × 900 |
+| `ba-terrasse-avant.webp` / `-apres.webp` | Comparateur « Terrasse extérieure » | 1200 × 900 |
+| `ba-fauteuil-avant.webp` / `-apres.webp` | Comparateur « Fauteuil de bureau » | 1200 × 900 |
+| `canape-nettoyage.webp` | Carte + page « Nettoyage textile » | 1200 × 800 |
+| `bateau-yacht.webp` | Carte + page « Nettoyage de bateau » | 1200 × 800 |
+| `bureau-entreprise.webp` | Carte + page « Nettoyage pour entreprise » | 1200 × 800 |
+| `tapis-karcher.webp` | Article « Raviver un tapis » | 1200 × 800 |
+| `intervention-1/2/3.webp` | Fin de chantier, articles de blog | 1200 × 900 |
+
+**Vos propres photos d'intervention valent mieux que n'importe quelle photo
+de banque** : elles montrent votre travail, et les paires avant/après n'ont
+de sens que si elles sont vraies. Un téléphone récent suffit largement.
+
+À défaut, ces deux banques sont gratuites, utilisables commercialement et
+sans obligation de crédit — cherchez-y les termes indiqués :
+
+- **Pexels** (pexels.com) et **Unsplash** (unsplash.com)
+- Termes utiles : « car detailing interior », « sofa cleaning », « carpet
+  cleaning machine », « pressure washing deck », « office cleaning »,
+  « boat cleaning marina », « window cleaning squeegee »
+
+Convertissez en WebP avant de déposer (squoosh.app, gratuit et sans compte),
+puis relancez `python3 build.py`.
+
+> Attention aux paires avant/après : n'utilisez **pas** deux photos de banque
+> sans lien entre elles pour simuler un résultat. Ce serait une mise en scène
+> trompeuse. Ces comparateurs doivent montrer vos vraies interventions — ou
+> être retirés de `BEFORE_AFTER` dans `content.py`.
 
 ## Ce qui est déjà en place
 
@@ -114,13 +196,25 @@ Les couleurs se règlent en haut de `theme/theme.css`, dans le bloc `:root`
 
 ## À vérifier avant la mise en ligne
 
-1. **Le lien des avis Google** (`SITE["review_url"]` dans `content.py`) est un
-   lien générique : remplacez-le par le vrai lien « Rédiger un avis » de votre
-   fiche Google Business.
-2. **La photo `ba-canape-avant/apres.webp`** est en 192 × 160 px : elle est
-   floue une fois agrandie. Une photo plus grande améliorerait nettement le
-   rendu du comparateur.
+1. **Le lien des avis Google** pointe désormais sur votre vraie fiche
+   (`https://www.google.com/maps?cid=8434710860473546146`), déduite de l'URL
+   Maps que vous m'avez transmise. Si votre tableau de bord Google Business
+   vous fournit un lien court « Demander des avis » (`g.page/r/…`), il ouvre
+   directement la fenêtre de notation : remplacez `review_url` par celui-là,
+   c'est un clic de moins pour vos clients.
+2. **Les images trop petites** : voir la section « Remplacer les images »
+   ci-dessus. Quinze fichiers sont concernés.
 3. **Les frais de déplacement** sont annoncés partout comme « 5 € par tranche
    de 5 km ». L'ancien site affichait par endroits « déplacement gratuit »,
    ce qui se contredisait ; la version payante a été retenue, conformément à
    la FAQ et au configurateur de l'ancien site.
+4. **L'ancienne adresse `/services/nettoyage-locaux-paris.html`** est
+   redirigée en 301 vers `nettoyage-entreprise-paris.html` par le fichier
+   `_redirects`, pour ne pas perdre le référencement acquis. De même,
+   l'ancienne page « nettoyage d'avion » renvoie vers la liste des
+   prestations.
+5. **Les coordonnées de votre fiche Google** (48.9499, 2.4560) diffèrent de
+   celles de l'atelier utilisées pour les frais de déplacement (48.9486,
+   2.5697) — environ 8 km d'écart. Les liens Maps pointent sur votre fiche ;
+   le calcul de déplacement part de l'atelier. Dites-moi si l'un des deux
+   doit être corrigé.

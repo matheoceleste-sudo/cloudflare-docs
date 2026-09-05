@@ -25,6 +25,7 @@ sys.path.insert(0, HERE)
 from content import (  # noqa: E402
     SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
+    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX,
 )
 
 OUT = os.path.join(HERE, "site")
@@ -37,7 +38,6 @@ ICONS = {
     "car":      '<path d="M5 17h14M6.5 17V9.7l1.7-3.9A2 2 0 0 1 10 4.6h4a2 2 0 0 1 1.8 1.2l1.7 3.9V17M4 12h16"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/>',
     "sofa":     '<path d="M3 17v-5.5A2.5 2.5 0 0 1 5.5 9h13A2.5 2.5 0 0 1 21 11.5V17M3 17h18M5 17v2M19 17v2M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/>',
     "boat":     '<path d="M4 17l1.6-5.6a1 1 0 0 1 .96-.72h10.88a1 1 0 0 1 .96.72L20 17M12 10.7V4.4M12 4.4l4.6 2.3-4.6 2M2.6 19.6c1.6 0 1.6 1.2 3.2 1.2s1.6-1.2 3.2-1.2 1.6 1.2 3.2 1.2 1.6-1.2 3.2-1.2 1.6 1.2 3.2 1.2"/>',
-    "plane":    '<path d="M12 3c.7 0 1.25.58 1.25 1.3v4.4l7.35 4.1v1.85l-7.35-2.2v3.9l2.3 1.7v1.4L12 18.55 8.45 19.8v-1.4l2.3-1.7v-3.9L3.4 15v-1.85l7.35-4.1V4.3C10.75 3.58 11.3 3 12 3z"/>',
     "deck":     '<path d="M2.4 20h19.2M4.3 15.9h15.4M6.2 11.8h11.6M8.1 7.7h7.8M12 7.7V20"/>',
     "window":   '<rect x="3.4" y="3.4" width="17.2" height="17.2" rx="1.6"/><path d="M12 3.4V20.6M3.4 12h17.2"/>',
     "building": '<path d="M3 21h18M5 21V6.4a1 1 0 0 1 .7-.95l7-2.3a1 1 0 0 1 1.3.95V21M19 21v-9.4a1 1 0 0 0-.7-.95L14 9.2M8.6 8.4h1.8M8.6 12h1.8M8.6 15.6h1.8"/>',
@@ -150,8 +150,8 @@ def nav_menu(base, current):
 <li{cls('contact')}><a href="{base}contact.html">Contact</a></li>
 </ul>
 <div class="nav-cta">
-  <a class="btn" href="{base}devis.html">Demander un devis</a>
-  <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+  <a class="btn" href="{base}reservation.html">Réserver en ligne</a>
+  <a class="btn btn-outline" href="{base}devis.html">Demander un devis</a>
 </div>
 </nav>"""
 
@@ -179,7 +179,7 @@ def header(base, current=""):
     {nav_menu(base, current)}
     <div class="header-cta">
       <a class="btn btn-outline btn-sm btn-phone" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
-      <a class="btn btn-sm" href="{base}devis.html">Devis gratuit</a>
+      <a class="btn btn-sm" href="{base}reservation.html">Réserver</a>
       <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false"
               aria-controls="site-nav" aria-label="Ouvrir le menu">
         <span></span><span></span><span></span>
@@ -202,7 +202,8 @@ def cta_band(base, title="Un besoin de nettoyage ?",
       <p class="lead" style="color:#dbe7f5">{text}</p>
     </div>
     <div class="btn-row">
-      <a class="btn btn-light" href="{base}devis.html">Demander un devis</a>
+      <a class="btn btn-light" href="{base}reservation.html">Réserver en ligne</a>
+      <a class="btn btn-ghost-light" href="{base}devis.html">Demander un devis</a>
       <a class="btn btn-ghost-light" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
     </div>
   </div>
@@ -227,7 +228,7 @@ def footer(base):
         <span class="brand-name" style="font-size:1.5rem">Math<span>Clean</span></span>
         <p class="footer-about">
           Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit départements
-          d'Île-de-France. Automobile, textile, bateau, terrasse, vitres, locaux et fin de chantier.
+          d'Île-de-France. Automobile, textile, bateau, terrasse, vitres, entreprise et fin de chantier.
           Une exigence de roi, du particulier au professionnel.
         </p>
         <div class="footer-contact">
@@ -252,6 +253,7 @@ def footer(base):
           <li><a href="{base}tarifs.html">Tarifs</a></li>
           <li><a href="{base}realisations.html">Réalisations</a></li>
           <li><a href="{base}blog.html">Conseils &amp; astuces</a></li>
+          <li><a href="{base}reservation.html">Réserver en ligne</a></li>
           <li><a href="{base}devis.html">Devis gratuit</a></li>
           <li><a href="{base}contact.html">Contact</a></li>
         </ul>
@@ -272,7 +274,7 @@ def footer(base):
 
 <div class="callbar">
   <a href="tel:{SITE['phone_link']}">{icon('phone')}Appeler</a>
-  <a href="{base}devis.html">{icon('quote')}Devis gratuit</a>
+  <a href="{base}reservation.html">{icon('calendar')}Réserver</a>
 </div>
 
 <div class="cookie-bar" id="cookie-bar" role="dialog" aria-label="Information cookies">
@@ -381,8 +383,8 @@ def business_schema():
         "name": SITE["name"],
         "slogan": SITE["slogan"],
         "description": "Entreprise de nettoyage à domicile à Paris et en Île-de-France : automobile, "
-                       "canapé, matelas, tapis, bateau, avion, terrasse, vitres, locaux, bureaux et "
-                       "fin de chantier. Devis gratuit, intervention 7j/7.",
+                       "canapé, matelas, tapis, bateau, terrasse, vitres, bureaux et locaux "
+                       "professionnels, fin de chantier. Devis gratuit, intervention 7j/7.",
         "url": SITE["url"] + "/",
         "logo": SITE["url"] + "/assets/img/lion.svg",
         "image": SITE["url"] + "/assets/img/og-image.png",
@@ -467,7 +469,7 @@ def build_home():
       <span class="eyebrow eyebrow-gold">{SITE['name']} · {SITE['slogan']}</span>
       <h1>Entreprise de nettoyage à Paris <em>&amp; en Île-de-France</em></h1>
       <p class="hero-lead">
-        Automobile, textile, bateau, avion, terrasse, vitres, locaux et fin de chantier.
+        Automobile, textile, bateau, terrasse, vitres, entreprise et fin de chantier.
         Nous venons chez vous, entièrement équipés, 7&nbsp;jours sur 7 — sans acompte,
         et vous ne réglez qu'une fois le résultat constaté.
       </p>
@@ -477,7 +479,7 @@ def build_home():
         <span class="badge">{icon('check')}8 départements couverts</span>
       </div>
       <div class="btn-row">
-        <a class="btn btn-gold" href="devis.html">Demander un devis gratuit</a>
+        <a class="btn btn-gold" href="reservation.html">Réserver en ligne</a>
         <a class="btn btn-ghost-light" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
       </div>
     </div>
@@ -608,7 +610,9 @@ def build_home():
   </div>
 </section>
 
-<section class="section">
+{reviews_section(base, soft=False)}
+
+<section class="section section-soft">
   <div class="container container-narrow">
     <div class="section-head center">
       <span class="eyebrow">Questions fréquentes</span>
@@ -621,7 +625,7 @@ def build_home():
   </div>
 </section>
 
-<section class="section section-soft">
+<section class="section">
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Conseils &amp; astuces</span>
@@ -646,7 +650,7 @@ def build_home():
     ]
     html = (
         head("Entreprise de nettoyage à Paris & Île-de-France | MathClean",
-             "Nettoyage automobile, textile, bateau, terrasse, vitres, locaux et fin de chantier à "
+             "Nettoyage automobile, textile, bateau, terrasse, vitres, entreprise et fin de chantier à "
              "Paris et en Île-de-France. Intervention à domicile 7j/7, devis gratuit, sans acompte.",
              "", base, schema=schema)
         + header(base, "home") + body + footer(base)
@@ -692,8 +696,8 @@ def build_services_archive():
 {cta_band(base)}
 """
     html = (head("Nos prestations de nettoyage à Paris & Île-de-France | MathClean",
-                 "Toutes les prestations MathClean : nettoyage automobile, textile, bateau, avion, "
-                 "terrasse, vitres, locaux, bureaux et fin de chantier à Paris et en Île-de-France.",
+                 "Toutes les prestations MathClean : nettoyage automobile, textile, bateau, "
+                 "terrasse, vitres, entreprise et fin de chantier à Paris et en Île-de-France.",
                  "services.html", base, schema=[crumb_schema([("Prestations", "services.html")])])
             + header(base, "services") + body + footer(base))
     return write("services.html", html)
@@ -1041,24 +1045,7 @@ def build_realisations():
   </div>
 </section>
 
-<section class="section">
-  <div class="container container-narrow">
-    <div class="section-head center">
-      <span class="eyebrow">Avis clients</span>
-      <h2>Des avis publics, pas des témoignages choisis</h2>
-    </div>
-    <div class="notice notice-blue">
-      {icon('star')}
-      <p>
-        Nous ne publions aucun avis rédigé par nos soins. Tous nos retours clients figurent sur notre
-        fiche Google, avec le nom et la date de chacun, consultables dans leur intégralité.
-      </p>
-    </div>
-    <div class="btn-row center" style="margin-top:26px">
-      <a class="btn" href="{SITE['review_url']}" target="_blank" rel="noopener">Lire les avis sur Google</a>
-    </div>
-  </div>
-</section>
+{reviews_section(base, soft=False)}
 
 {cta_band(base)}
 """
@@ -1200,7 +1187,7 @@ def build_zone(z):
          "url": "%s/zones/%s.html" % (SITE["url"], z["slug"])},
     ]
     html = (head("Entreprise de nettoyage en %s (%s) | MathClean" % (z["name"], z["num"]),
-                 "Nettoyage automobile, textile, terrasse, vitres et locaux en %s (%s). "
+                 "Nettoyage automobile, textile, terrasse, vitres et entreprise en %s (%s). "
                  "Intervention à domicile 7j/7, devis gratuit, sans acompte." % (z["name"], z["num"]),
                  "zones/%s.html" % z["slug"], base, schema=schema)
             + header(base, "zones") + body + footer(base))
@@ -1514,12 +1501,12 @@ def build_apropos():
         </p>
         <p>
           Côté professionnels, nous entretenons
-          <a href="services/nettoyage-locaux-paris.html">bureaux, commerces et locaux d'activité</a> en
+          <a href="services/nettoyage-entreprise-paris.html">bureaux, commerces et locaux d'activité</a> en
           passage régulier ou ponctuel, prenons en charge la
           <a href="services/nettoyage-fin-de-chantier-paris.html">remise en état après travaux</a> pour
           les artisans et les agences, et intervenons sur des
-          <a href="services/nettoyage-bateau-paris.html">bateaux à quai</a> comme en
-          <a href="services/nettoyage-avion-paris.html">cabine d'aviation d'affaires</a>.
+          <a href="services/nettoyage-bateau-paris.html">bateaux à quai</a>, sur la Seine
+          comme en port de plaisance.
         </p>
         <p>
           Le détail des villes couvertes, département par département, se trouve sur notre page
@@ -1538,24 +1525,7 @@ def build_apropos():
   </div>
 </section>
 
-<section class="section">
-  <div class="container container-narrow">
-    <div class="section-head center">
-      <span class="eyebrow">Nos clients en parlent</span>
-      <h2>Des avis publics, pas des témoignages choisis</h2>
-    </div>
-    <div class="notice notice-blue">
-      {icon('star')}
-      <p>
-        Nous ne publions aucun avis rédigé par nos soins. Tous nos retours clients sont sur notre fiche
-        Google, avec leur nom et leur date, consultables dans leur intégralité.
-      </p>
-    </div>
-    <div class="btn-row center" style="margin-top:26px">
-      <a class="btn" href="{SITE['review_url']}" target="_blank" rel="noopener">Lire les avis sur Google</a>
-    </div>
-  </div>
-</section>
+{reviews_section(base, soft=False)}
 
 {cta_band(base)}
 """
@@ -1711,7 +1681,7 @@ def build_devis():
 """
     html = (head("Devis gratuit de nettoyage à Paris & Île-de-France | MathClean",
                  "Demandez un devis gratuit et sans engagement pour un nettoyage automobile, textile, "
-                 "terrasse, vitres ou locaux à Paris et en Île-de-France. Réponse sous 24 h.",
+                 "terrasse, vitres ou entreprise à Paris et en Île-de-France. Réponse sous 24 h.",
                  "devis.html", base, schema=[crumb_schema([("Devis gratuit", "devis.html")])])
             + header(base, "devis") + body + footer(base))
     return write("devis.html", html)
@@ -1767,7 +1737,7 @@ def build_contact():
         </ul>
         <div class="btn-row" style="margin-top:2rem">
           <a class="btn" href="tel:{SITE['phone_link']}">{icon('phone')}Appeler maintenant</a>
-          <a class="btn btn-outline" href="{SITE['maps_url']}" target="_blank" rel="noopener">Obtenir l'itinéraire</a>
+          <a class="btn btn-outline" href="{SITE['review_url']}" target="_blank" rel="noopener">{icon('star')}Laisser un avis</a>
         </div>
       </div>
 
@@ -1825,7 +1795,9 @@ def build_contact():
   </div>
 </section>
 
-<section class="section section-soft">
+{find_us(base)}
+
+<section class="section">
   <div class="container container-narrow">
     <div class="section-head center">
       <span class="eyebrow">Questions fréquentes</span>
@@ -2147,6 +2119,340 @@ def build_legal():
 
 
 # ===========================================================================
+# AVIS GOOGLE
+# ===========================================================================
+def stars(n=5):
+    """Cinq étoiles pleines jusqu'à n."""
+    out = ""
+    for i in range(1, 6):
+        cls = "star-on" if i <= n else "star-off"
+        out += '<span class="%s">%s</span>' % (cls, icon("star"))
+    return '<span class="stars" role="img" aria-label="%d étoiles sur 5">%s</span>' % (n, out)
+
+
+def reviews_section(base, soft=True):
+    """
+    Bloc « avis clients ».
+
+    Les avis affichés proviennent exclusivement de `REVIEWS` dans content.py,
+    que le client remplit avec ses vrais avis Google. Tant que la liste est
+    vide, on n'affiche que la note globale et le lien vers la fiche : aucun
+    témoignage n'est inventé.
+    """
+    note = GOOGLE_NOTE
+    cards = ""
+    for auteur, date, score, texte in REVIEWS:
+        initiale = auteur.strip()[:1].upper() or "?"
+        cards += f"""<figure class="review reveal">
+  <div class="review-head">
+    <span class="review-avatar" aria-hidden="true">{initiale}</span>
+    <div>
+      <figcaption class="review-author">{auteur}</figcaption>
+      <span class="review-date">{date}</span>
+    </div>
+    <span class="review-source" title="Avis publié sur Google">G</span>
+  </div>
+  {stars(score)}
+  <blockquote><p>{texte}</p></blockquote>
+</figure>"""
+
+    if cards:
+        corps = f'<div class="grid grid-3" style="margin-top:34px">{cards}</div>'
+        pied = ""
+    else:
+        corps = ""
+        pied = f"""<div class="notice notice-blue" style="margin-top:28px">
+  {icon('info')}
+  <p>
+    Nous ne publions aucun avis rédigé par nos soins. Nos retours clients sont
+    consultables dans leur intégralité sur notre fiche Google, avec le nom et
+    la date de chacun.
+  </p>
+</div>"""
+
+    return f"""<section class="section{' section-soft' if soft else ''}">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Ils nous font confiance</span>
+      <h2>Nos avis Google</h2>
+      <p class="lead">
+        Tous nos avis sont publics et vérifiés sur Google : aucun témoignage
+        n'est reproduit ici sans sa source.
+      </p>
+    </div>
+
+    <div class="rating-card reveal">
+      <div class="rating-score">
+        <strong>{note['score']}</strong>
+        {stars(5)}
+        <span>{note['nombre']} avis Google</span>
+      </div>
+      <p>
+        Chaque prestation est notée par le client lui-même, directement sur notre
+        fiche Google — sans filtre et sans intermédiaire.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="{SITE['review_url']}" target="_blank" rel="noopener">
+          {icon('star')}Lire &amp; laisser un avis
+        </a>
+        <a class="btn btn-outline" href="{SITE['maps_url']}" target="_blank" rel="noopener">
+          {icon('pin')}Voir la fiche Google
+        </a>
+      </div>
+    </div>
+    {corps}
+    {pied}
+  </div>
+</section>"""
+
+
+def find_us(base):
+    """Bloc « nous trouver » : itinéraire et avis Google."""
+    return f"""<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Nous trouver</span>
+      <h2>Venir à l'atelier, ou nous laisser un avis</h2>
+      <p class="lead">
+        Nous nous déplaçons chez vous dans toute l'Île-de-France. L'atelier se
+        situe à {SITE['city']} ({SITE['postcode']}).
+      </p>
+    </div>
+    <div class="find-grid">
+      <div class="find-card reveal">
+        <span class="feature-icon">{icon('pin')}</span>
+        <h3>Itinéraire</h3>
+        <p>{SITE['address']}, {SITE['postcode']} {SITE['city']}</p>
+        <a class="btn btn-block" href="{SITE['maps_url']}" target="_blank" rel="noopener">
+          Ouvrir dans Google Maps
+        </a>
+      </div>
+      <div class="find-card reveal">
+        <span class="feature-icon">{icon('star')}</span>
+        <h3>Laisser un avis</h3>
+        <p>Votre retour sur Google aide énormément — et rassure les prochains clients.</p>
+        <a class="btn btn-gold btn-block" href="{SITE['review_url']}" target="_blank" rel="noopener">
+          Noter MathClean sur Google
+        </a>
+      </div>
+      <div class="find-card reveal">
+        <span class="feature-icon">{icon('phone')}</span>
+        <h3>Nous appeler</h3>
+        <p>{SITE['hours']} — vous parlez directement à la personne qui interviendra.</p>
+        <a class="btn btn-outline btn-block" href="tel:{SITE['phone_link']}">{SITE['phone']}</a>
+      </div>
+    </div>
+  </div>
+</section>"""
+
+
+# ===========================================================================
+# RÉSERVATION EN LIGNE
+# ===========================================================================
+def build_reservation():
+    base = ""
+    trail = [("Réserver", None)]
+
+    # Données de tarification transmises au script du configurateur.
+    data = {
+        "packs": [{"nom": n, "min": lo, "max": hi, "portee": sc, "desc": d, "lignes": li}
+                  for n, lo, hi, sc, d, _f, li in PACKS_AUTO],
+        "options": [{"nom": n, "prix": p, "desc": d} for n, p, d in OPTIONS_AUTO],
+        "textile": [{"nom": n, "prix": p, "desc": d} for n, p, d in TARIFS_TEXTILE],
+        "services": [{"slug": s["slug"], "nav": s["nav"], "prix": s["price"],
+                      "univers": ("auto" if s["slug"].startswith("nettoyage-automobile")
+                                  else "textile" if s["slug"].startswith("nettoyage-textile")
+                                  else "devis")}
+                     for s in SERVICES],
+        "deplacement": DEPLACEMENT,
+        "creneaux": CRENEAUX,
+    }
+    data_json = json.dumps(data, ensure_ascii=False)
+
+    cartes = ""
+    for s in SERVICES:
+        cartes += f"""<label class="pick">
+  <input type="radio" name="univers" value="{s['slug']}">
+  <span class="pick-body">
+    <span class="pick-icon">{icon(s['icon'])}</span>
+    <span class="pick-name">{s['nav']}</span>
+    <span class="pick-price">{s['price']}</span>
+  </span>
+</label>"""
+
+    body = f"""
+{page_title_block(base, trail, "Réserver votre intervention",
+    "Composez votre prestation en quatre étapes : vous voyez le prix se construire au fur et "
+    "à mesure, frais de déplacement compris. Aucun acompte — vous réglez après l'intervention.")}
+
+<section class="section">
+  <div class="container resa-layout">
+    <noscript>
+      <div class="notice">
+        {icon('info')}
+        <p>
+          Le configurateur de réservation a besoin de JavaScript. Vous pouvez tout aussi bien
+          <a href="devis.html">remplir le formulaire de devis</a> ou nous appeler au
+          <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a> — c'est souvent plus rapide.
+        </p>
+      </div>
+    </noscript>
+
+    <div class="resa" id="resa" hidden>
+      <ol class="resa-steps" id="resa-steps">
+        <li class="is-on"><span>1</span>Prestation</li>
+        <li><span>2</span>Détail</li>
+        <li><span>3</span>Lieu &amp; date</li>
+        <li><span>4</span>Coordonnées</li>
+      </ol>
+
+      <form id="resa-form" action="{SITE['form_action']}" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle réservation — MathClean">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="{SITE['url']}/merci.html">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="Récapitulatif" id="resa-recap">
+        <input type="hidden" name="Total estimé" id="resa-total-field">
+
+        <!-- Étape 1 -->
+        <fieldset class="resa-panel is-on" data-step="1">
+          <legend class="resa-legend">Que souhaitez-vous faire nettoyer ?</legend>
+          <div class="pick-grid">{cartes}</div>
+        </fieldset>
+
+        <!-- Étape 2 -->
+        <fieldset class="resa-panel" data-step="2">
+          <legend class="resa-legend">Précisez votre besoin</legend>
+          <div id="resa-detail"></div>
+        </fieldset>
+
+        <!-- Étape 3 -->
+        <fieldset class="resa-panel" data-step="3">
+          <legend class="resa-legend">Où et quand intervenons-nous ?</legend>
+          <div class="form-grid">
+            <div class="field field-full">
+              <label for="r-adr">Adresse d'intervention <span class="req">*</span></label>
+              <input id="r-adr" name="Adresse" type="text" autocomplete="street-address"
+                     placeholder="12 rue de la Paix">
+            </div>
+            <div class="field">
+              <label for="r-cp">Code postal <span class="req">*</span></label>
+              <input id="r-cp" name="Code postal" type="text" inputmode="numeric"
+                     autocomplete="postal-code" placeholder="75002">
+            </div>
+            <div class="field">
+              <label for="r-ville">Ville <span class="req">*</span></label>
+              <input id="r-ville" name="Ville" type="text" autocomplete="address-level2"
+                     placeholder="Paris">
+            </div>
+            <div class="field field-full">
+              <div class="notice notice-blue" id="r-dep-box">
+                {icon('truck')}
+                <p id="r-dep">Renseignez votre adresse pour connaître les frais de déplacement.</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="r-date">Date souhaitée <span class="req">*</span></label>
+              <input id="r-date" name="Date souhaitée" type="date">
+            </div>
+            <div class="field">
+              <label for="r-creneau">Créneau <span class="req">*</span></label>
+              <select id="r-creneau" name="Créneau"></select>
+            </div>
+            <div class="field field-full">
+              <span class="field-hint">
+                La date est une préférence : nous vous la confirmons par téléphone ou par e-mail.
+                Délais habituels — 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne.
+              </span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Étape 4 -->
+        <fieldset class="resa-panel" data-step="4">
+          <legend class="resa-legend">Vos coordonnées</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="r-nom">Nom et prénom <span class="req">*</span></label>
+              <input id="r-nom" name="Nom" type="text" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="r-tel">Téléphone <span class="req">*</span></label>
+              <input id="r-tel" name="Téléphone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field field-full">
+              <label for="r-mail">E-mail <span class="req">*</span></label>
+              <input id="r-mail" name="Email" type="email" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="r-type">Vous êtes</label>
+              <select id="r-type" name="Type de client">
+                <option value="Particulier">Un particulier</option>
+                <option value="Professionnel">Un professionnel / une entreprise</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="r-acces">Accès sur place</label>
+              <input id="r-acces" name="Accès" type="text" placeholder="Étage, parking, digicode…">
+            </div>
+            <div class="field field-full">
+              <label for="r-msg">Précisions utiles</label>
+              <textarea id="r-msg" name="Message" style="min-height:110px"
+                        placeholder="Nature des taches, matière, contraintes d'horaires…"></textarea>
+            </div>
+            <div class="field field-full">
+              <label class="consent">
+                <input type="checkbox" id="r-ok" name="Consentement" value="oui">
+                <span>
+                  J'accepte d'être recontacté au sujet de cette réservation
+                  (<a href="politique-confidentialite.html">politique de confidentialité</a>).
+                </span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="resa-error" id="resa-error" role="alert" hidden></div>
+
+        <div class="resa-nav">
+          <button class="btn btn-outline" type="button" id="resa-prev" hidden>Précédent</button>
+          <button class="btn" type="button" id="resa-next">Continuer</button>
+          <button class="btn btn-gold" type="submit" id="resa-send" hidden>Confirmer ma réservation</button>
+        </div>
+      </form>
+    </div>
+
+    <aside class="resa-ticket" id="resa-ticket" hidden>
+      <h3>Votre réservation</h3>
+      <ul id="resa-lines"><li class="resa-empty">Rien de sélectionné pour l'instant.</li></ul>
+      <div class="resa-total">
+        <span>Total estimé</span>
+        <strong id="resa-total">—</strong>
+      </div>
+      <p class="field-hint" id="resa-note">
+        Prix indicatif : la fourchette dépend du véhicule ou de la pièce. Le montant exact vous
+        est confirmé avant l'intervention. Aucun acompte.
+      </p>
+    </aside>
+  </div>
+</section>
+
+{find_us(base)}
+"""
+    schema = [crumb_schema([("Réserver", "reservation.html")])]
+    html = (head("Réserver un nettoyage en ligne — Paris & Île-de-France | MathClean",
+                 "Réservez votre intervention MathClean en ligne : choisissez la prestation, "
+                 "voyez le prix se construire, frais de déplacement compris. Sans acompte, 7j/7.",
+                 "reservation.html", base, schema=schema)
+            + header(base, "reservation") + body
+            + '<script id="resa-data" type="application/json">' + data_json + '</script>\n'
+            + '<script src="assets/js/reservation.js" defer></script>\n'
+            + footer(base))
+    return write("reservation.html", html)
+
+
+# ===========================================================================
 # SITEMAP & ROBOTS
 # ===========================================================================
 def build_sitemap(urls):
@@ -2169,12 +2475,47 @@ def build_robots():
                  "User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % SITE["url"])
 
 
+def build_redirects():
+    """
+    Redirections 301, lues par Cloudflare Pages et par Workers static assets.
+    La prestation « locaux » a été renommée « entreprise » : l'ancienne adresse,
+    déjà indexée, doit continuer de fonctionner.
+    """
+    lignes = [
+        "/services/nettoyage-locaux-paris.html  /services/nettoyage-entreprise-paris.html  301",
+        "/services/nettoyage-avion-paris.html   /services.html                             301",
+    ]
+    return write("_redirects", "\n".join(lignes) + "\n")
+
+
+def clean_stale(kept):
+    """
+    Supprime les pages générées lors d'un build précédent qui ne le sont plus
+    (une prestation retirée, par exemple). Sans cela, `site/` accumulerait des
+    pages orphelines toujours en ligne.
+    """
+    kept = {os.path.normpath(k) for k in kept}
+    removed = []
+    for root, _dirs, files in os.walk(OUT):
+        if os.path.join(OUT, "assets") in root:
+            continue
+        for f in files:
+            if not f.endswith(".html"):
+                continue
+            rel = os.path.relpath(os.path.join(root, f), OUT)
+            if os.path.normpath(rel) not in kept:
+                os.remove(os.path.join(root, f))
+                removed.append(rel)
+    return removed
+
+
 # ===========================================================================
 # ORCHESTRATION
 # ===========================================================================
 def copy_theme_assets():
     for src, dst in (("theme/theme.css", "site/assets/css/theme.css"),
-                     ("theme/theme.js", "site/assets/js/theme.js")):
+                     ("theme/theme.js", "site/assets/js/theme.js"),
+                     ("theme/reservation.js", "site/assets/js/reservation.js")):
         shutil.copyfile(os.path.join(HERE, src), os.path.join(HERE, dst))
 
 
@@ -2197,19 +2538,25 @@ def main():
         next_post = POSTS[i + 1] if i < len(POSTS) - 1 else None
         pages.append((build_post(p, prev_post, next_post), "0.6", "yearly"))
     pages.append((build_apropos(), "0.8", "yearly"))
+    pages.append((build_reservation(), "1.0", "monthly"))
     pages.append((build_devis(), "0.9", "monthly"))
     pages.append((build_contact(), "0.8", "yearly"))
     for path in build_legal():
         pages.append((path, "0.3", "yearly"))
 
-    build_merci()   # noindex : hors sitemap
-    build_404()     # noindex : hors sitemap
+    extra = [build_merci(), build_404()]   # noindex : hors sitemap
 
     build_sitemap(pages)
     build_robots()
+    build_redirects()
+
+    stale = clean_stale([p for p, _pr, _f in pages] + extra)
 
     print("Site généré dans %s" % OUT)
-    print("%d pages indexables + merci.html, 404.html, sitemap.xml, robots.txt" % len(pages))
+    print("%d pages indexables + merci.html, 404.html, sitemap.xml, robots.txt, _redirects"
+          % len(pages))
+    if stale:
+        print("Pages obsolètes supprimées : %s" % ", ".join(stale))
 
 
 if __name__ == "__main__":

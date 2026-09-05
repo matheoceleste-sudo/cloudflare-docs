@@ -120,10 +120,9 @@
       'Nettoyage automobile'          : 'À partir de 40 € (Extérieur Éclat) — 120 € pour l’Intégral.',
       'Nettoyage textile'             : 'À partir de 15 € la chaise, 39 € le canapé 2 places, 49 € le matelas 2 places.',
       'Nettoyage de bateau'           : 'Sur devis, après échange sur la taille et l’état du bateau.',
-      'Nettoyage d’avion'             : 'Sur devis, selon l’appareil et l’aérodrome.',
       'Nettoyage de terrasse'         : 'Sur devis, selon la surface et le matériau (bois, pierre, béton).',
       'Nettoyage de vitres'           : 'Sur devis, selon le nombre et l’accessibilité des ouvrants.',
-      'Nettoyage de locaux & bureaux' : 'Sur devis, en passage ponctuel ou régulier.',
+      'Nettoyage pour entreprise'     : 'Sur devis, en passage ponctuel ou régulier.',
       'Nettoyage de fin de chantier'  : 'Sur devis, selon la surface et l’ampleur des travaux.'
     };
     var maj = function () {
