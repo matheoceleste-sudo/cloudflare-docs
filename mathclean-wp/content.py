@@ -715,6 +715,14 @@ POSTS = [
             ("h2", "Avant une revente : l'odeur avant tout"),
             ("p", "C'est le point que la plupart des vendeurs sous-estiment. Un acheteur potentiel ouvre la portière et se fait un avis en trois secondes, sur une impression olfactive qu'il ne formulera même pas."),
             ("p", "Un detailing intérieur complet — shampoing des sièges, vapeur, rénovation des plastiques — associé à une neutralisation des odeurs par ozone permet de présenter un véhicule sans trace d'animal ni de tabac. Sur une annonce, cela se traduit très concrètement dans le prix accepté."),
+            ('h2', 'Les trois gestes qui changent tout'),
+            ('p', "Le premier est de traiter immédiatement ce qui est corrosif : fientes d'oiseau, sève d'arbre, insectes écrasés. Ce ne sont pas des salissures ordinaires, ce sont des agents acides qui attaquent le vernis en quelques jours au soleil. Une lingette gardée dans la boîte à gants suffit, à condition de s'en servir le jour même."),
+            ('p', "Le deuxième est de ne jamais essuyer une carrosserie sèche et poussiéreuse. C'est l'origine de la quasi-totalité des micro-rayures circulaires qu'on voit au soleil sur les teintes foncées. Sans lubrification, un chiffon promène la poussière sur le vernis comme un abrasif."),
+            ('p', "Le troisième est d'aspirer l'habitacle plus souvent qu'on ne le lave. Le sable et le gravier ramenés sous les semelles scient les fibres des tapis et des moquettes à chaque appui du pied. Une voiture dont l'intérieur est aspiré tous les quinze jours vieillit visiblement mieux."),
+            ('h2', "La protection, et ce qu'on peut en attendre"),
+            ('p', "Une cire ou un scellant appliqué après lavage crée une couche sacrificielle : l'eau perle, la saleté adhère moins, et le lavage suivant demande moins de frottement. C'est là que se trouve le vrai bénéfice — moins d'agression mécanique à chaque entretien, donc un vernis qui garde sa profondeur."),
+            ('p', "La durée dépend du produit et de l'exposition : quelques semaines pour une cire classique, plusieurs mois pour un scellant synthétique. Aucune protection ne dispense de laver ; elle rend simplement chaque lavage moins agressif."),
+            ('p', "Un mot sur ce qu'elle ne fait pas : une protection ne comble pas une rayure existante et ne protège pas d'un impact. Ce qui a traversé le vernis relève du carrossier, pas de l'entretien."),
         ],
         "cta": "Une voiture à préparer ?",
         "service": "nettoyage-automobile-paris",
@@ -738,6 +746,14 @@ POSTS = [
             ("p", "Mousses, algues et moisissures s'installent d'abord dans les zones d'ombre et les recoins d'écoulement. Traités tôt, ils partent au lavage ; laissés en place une saison, ils pénètrent le gelcoat et laissent une marque durable."),
             ("h2", "Des produits biodégradables, par obligation autant que par principe"),
             ("p", "Tout ce qui sert au rinçage part directement dans l'eau. Ce n'est pas seulement un choix écologique : c'est ce qui conditionne les produits utilisables à quai. Nous travaillons exclusivement en biodégradable sur nos interventions nautiques, du lavage de coque au lustrage du gelcoat."),
+            ('h2', 'Ce qui use réellement un bateau entre deux sorties'),
+            ('p', "Le sel est le premier ennemi, et pas seulement pour la corrosion visible. Il se dépose en cristaux fins qui retiennent l'humidité contre le métal et dans les coutures de la sellerie. Un rinçage à l'eau douce après chaque sortie, même rapide, fait plus pour la longévité du bateau que le meilleur nettoyage annuel."),
+            ('p', "Le second est l'ultraviolet. Il craquelle les vinyles de sellerie, ternit le gelcoat et fragilise les cordages. Une taud de mouillage ou une simple bâche coûte peu et repousse l'échéance de plusieurs saisons."),
+            ('p', "Le troisième, moins évoqué, est l'humidité confinée. Un bateau fermé sans ventilation développe des moisissures dans les coussins et les équipets, particulièrement pendant l'hivernage. Ouvrir les coffres et laisser circuler l'air lors des visites d'hiver change tout."),
+            ('h2', "L'hivernage, moment clé"),
+            ('p', "C'est le seul moment où l'on peut travailler sereinement sur la coque hors d'eau. Le nettoyage de la carène, le lustrage du gelcoat et la remise en état de la sellerie se font bien mieux à terre qu'à flot, et sans la contrainte de la météo."),
+            ('p', "Un point de méthode : ne rangez jamais une sellerie encore humide. La moisissure qui s'installe dans une mousse fermée tout un hiver ne se rattrape pas au printemps. Nettoyez, séchez complètement à l'air libre, puis remisez."),
+            ('p', "Quand une odeur de renfermé persiste malgré tout au printemps, un traitement par ozone la traite efficacement — bateau vide, sans présence humaine ni animale pendant l'opération, puis aération avant utilisation."),
         ],
         "cta": "Un bateau à remettre en état ?",
         "service": "nettoyage-bateau-paris",
@@ -1558,4 +1574,1308 @@ GUIDES = [
    "Pour les prestations à domicile, oui : quelques photos suffisent le plus souvent. Pour les locaux professionnels, une visite reste préférable.")],
  "service": "nettoyage-entreprise-paris",
 },
+
+    # --- Pages issues de l'étude des requêtes les plus demandées en IDF ---
+    {
+        "slug": 'nettoyage-fin-de-bail-paris',
+        "cat": 'Fin de bail',
+        "h1": 'Nettoyage de fin de bail à Paris : récupérer sa caution',
+        "title": 'Nettoyage de fin de bail à Paris',
+        "meta": "Nettoyage de fin de bail à Paris : les points que l'état des lieux contrôle vraiment, ce qui fait retenir une caution, et ce que coûte l'intervention.",
+        "image": 'intervention-2.webp',
+        "lead": "Un état des lieux de sortie ne se joue pas sur l'impression générale, mais sur une poignée de points que les agences vérifient systématiquement. Voici lesquels, et comment les traiter.",
+        "sections": [
+            ('Ce que le bailleur peut réellement vous retenir', [
+                "La loi du 6 juillet 1989 impose au locataire de rendre le logement « en bon état de propreté ». Le bailleur ne peut pas vous facturer l'usure normale — une moquette défraîchie après six ans, une peinture jaunie — mais il peut retenir sur le dépôt de garantie le coût d'un nettoyage que vous n'avez pas fait.",
+                "Dans la pratique, la retenue est presque toujours calculée sur un devis d'entreprise, rarement sur le temps réel passé. C'est ce qui explique l'écart : un ménage que vous auriez fait faire pour 200 € vous est refacturé 400 € parce qu'il a été commandé dans l'urgence, après votre départ, sans que vous puissiez comparer.",
+                "L'intérêt de faire nettoyer avant l'état des lieux est donc autant financier que pratique : vous choisissez le prestataire, vous voyez le résultat, et vous n'avez plus à discuter d'un devis établi sans vous.",
+            ]),
+            ("Les six points qui décident de l'état des lieux", [
+                "Les agences parisiennes travaillent avec des grilles assez proches les unes des autres. Six postes reviennent systématiquement, et ce sont eux qui concentrent l'essentiel des retenues.",
+                "<strong>Les joints de salle de bain.</strong> Un joint noirci par la moisissure est le premier point relevé. C'est aussi le plus mal traité : frotter à l'éponge ne fait rien, la moisissure est dans l'épaisseur du silicone. Il faut un temps de pose d'un produit adapté, et parfois accepter qu'un joint trop attaqué relève du remplacement, pas du nettoyage.",
+                "<strong>La cuisine.</strong> Plaques, four, hotte et plan de travail. La graisse cuite ne part pas au dégraissant ménager : elle demande de la vapeur à haute température, qui la ramollit avant de l'essuyer.",
+                "<strong>Les traces sur les murs.</strong> Sur peinture mate blanche, un lessivage mal conduit laisse une auréole plus visible que la trace d'origine. Mieux vaut ne pas y toucher que mal s'y prendre.",
+                "<strong>Les vitres.</strong> Contrôlées à contre-jour, ce qui révèle les traces qu'on ne voit pas de face. Notre méthode à l'eau osmosée règle ce point : sans minéraux, l'eau sèche sans rien déposer.",
+                "<strong>Les sols.</strong> Un parquet demande un nettoyage à l'humide contrôlé, pas de l'eau. Un carrelage demande surtout un traitement des joints, qui grisent.",
+                '<strong>Les grilles de ventilation et les radiateurs.</strong> Oubliés par presque tout le monde, systématiquement regardés.',
+            ]),
+            ('Ce que coûte un nettoyage de fin de bail', [
+                "Les tarifs relevés à Paris en 2026 vont d'environ 100 à 150 € pour un studio, 150 à 300 € pour un deux-pièces et 250 à 500 € pour un trois-pièces. Au-delà, le prix suit la surface et l'état.",
+                "Ces fourchettes sont larges parce que deux logements de même surface ne demandent pas le même travail. Ce qui fait varier le prix, dans l'ordre : l'état de la cuisine, la présence de moisissure dans la salle de bain, le nombre de fenêtres, et le fait que le logement soit vide ou encore meublé.",
+                "Nous chiffrons sur photos et nous détaillons poste par poste. Un logement déjà vidé et régulièrement entretenu se traite vite ; un logement laissé en l'état après plusieurs années demande une remise en état, ce qui n'est pas le même métier ni le même prix. Nous le disons au devis.",
+            ]),
+            ('Le bon moment pour intervenir', [
+                "Après avoir vidé le logement, avant l'état des lieux. Cela paraît évident et c'est pourtant l'erreur la plus fréquente : faire nettoyer avec les meubles encore en place oblige à repasser derrière une fois qu'ils sont partis, parce que les traces au sol et sur les murs n'apparaissent qu'à ce moment-là.",
+                "Prévoyez au moins vingt-quatre heures entre l'intervention et l'état des lieux. Cela laisse le temps aux sols de sécher complètement et vous laisse une marge si un point doit être repris.",
+                'Nous intervenons sept jours sur sept, y compris le samedi et le dimanche, précisément parce que les déménagements se font en fin de semaine et que les états des lieux suivent de près.',
+            ]),
+        ],
+        "faq": [
+            ('Le nettoyage de fin de bail est-il obligatoire ?',
+             "Vous n'êtes pas obligé de faire appel à une entreprise, mais vous devez rendre le logement propre. Si l'état des lieux relève un défaut de propreté, le bailleur peut retenir le coût du nettoyage sur votre dépôt de garantie, sur la base d'un devis que vous n'aurez pas choisi."),
+            ('Garantissez-vous que je récupérerai ma caution ?',
+             'Non, et méfiez-vous de qui vous le promet. Nous garantissons la propreté du logement, pas la décision du bailleur, qui peut aussi porter sur des dégradations sans rapport avec le nettoyage. Nous vous remettons en revanche le détail de ce qui a été traité, qui vous sert de pièce en cas de désaccord.'),
+            ('Traitez-vous les joints de salle de bain noircis ?',
+             "Oui, avec un produit à temps de pose, ce qui donne de bons résultats sur une moisissure de surface. Quand le silicone est attaqué en profondeur, aucun nettoyage ne le récupère : il faut le remplacer. Nous vous le disons avant d'intervenir plutôt qu'après."),
+            ("Intervenez-vous en urgence, la veille de l'état des lieux ?",
+             "Souvent oui, selon nos disponibilités et votre commune. Appelez-nous plutôt que d'utiliser le formulaire : c'est plus rapide. Sachez seulement qu'un sol lavé la veille peut être encore humide le lendemain matin."),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'nettoyage-etat-des-lieux-sortie',
+        "cat": 'Fin de bail',
+        "h1": 'Nettoyage avant état des lieux de sortie : la liste complète',
+        "title": 'Nettoyage avant état des lieux de sortie',
+        "meta": "La liste pièce par pièce de ce qu'un état des lieux de sortie contrôle, et l'ordre dans lequel traiter un logement pour ne rien oublier.",
+        "image": 'intervention-1.webp',
+        "lead": 'Un état des lieux se déroule toujours dans le même ordre : pièce par pièce, du haut vers le bas. Voici la même liste, dans le même ordre, pour ne rien laisser passer.',
+        "sections": [
+            ("L'ordre qui fait gagner du temps", [
+                'Nettoyer un logement dans le désordre revient à le nettoyer deux fois. La règle tient en une phrase : du haut vers le bas, et du fond vers la sortie.',
+                "Concrètement : luminaires et grilles de ventilation d'abord, puis murs et interrupteurs, puis fenêtres, puis meubles fixes et plinthes, et les sols en dernier, en reculant vers la porte. La poussière tombe, elle ne remonte pas.",
+                "C'est aussi pour cela qu'il faut vider le logement avant. Chaque meuble déplacé après coup redistribue de la poussière sur des surfaces déjà traitées.",
+            ]),
+            ('Cuisine : le poste le plus regardé', [
+                "La cuisine concentre à elle seule une grande part des retenues. Quatre points s'y jouent.",
+                "Le four, d'abord, y compris les grilles et la vitre intérieure — qui se démonte sur la plupart des modèles et qu'on oublie presque toujours. Ensuite la hotte : le filtre métallique passe au lave-vaisselle, le caisson se dégraisse à la vapeur. Puis les plaques, où le point critique est le pourtour, pas la surface. Enfin les meubles hauts, dont le dessus n'est jamais nettoyé pendant l'occupation et se couvre d'un film gras.",
+                "Un mot d'honnêteté sur les hottes : le dégraissage d'un conduit d'extraction en restaurant relève d'une prestation certifiée, exigée par les assureurs, que nous ne réalisons pas. En logement, c'est un simple dégraissage et nous le faisons.",
+            ]),
+            ('Salle de bain : moisissure et calcaire', [
+                'Deux problèmes différents, deux traitements différents. La moisissure est vivante et logée dans le silicone : elle demande un produit à temps de pose. Le calcaire est un dépôt minéral : il demande un acide doux et de la patience.',
+                "Les points contrôlés sont les joints, la robinetterie, la paroi de douche, le siphon et le dessous du lavabo. Les parois de douche en verre relèvent de la même méthode que les vitres : traitées à l'eau osmosée, elles sèchent sans trace.",
+                "Le pommeau de douche entartré se démonte et se trempe. C'est cinq minutes, et cela change l'impression générale.",
+            ]),
+            ('Sols, vitres et finitions', [
+                "Les sols se traitent selon leur nature. Le parquet ne supporte pas l'eau : humidité contrôlée uniquement. Le carrelage demande un travail sur les joints, qui grisent et qu'un simple lavage ne récupère pas. Le vinyle ou le lino se lavent normalement mais marquent au produit trop agressif.",
+                "La moquette relève de l'injection-extraction : on injecte une solution dans la fibre et on l'aspire immédiatement, avec la saleté dissoute. Un shampoing de surface, lui, laisse un résidu qui refixe la poussière et la moquette se resalit en quelques semaines.",
+                "Les vitres se contrôlent à contre-jour. Les plinthes, les portes autour des poignées et les interrupteurs sont les trois finitions qui font qu'un logement paraît soigné ou expédié.",
+            ]),
+        ],
+        "faq": [
+            ('Faut-il nettoyer avant ou après avoir vidé le logement ?',
+             "Après, sans hésiter. Les traces au sol et sur les murs n'apparaissent qu'une fois les meubles partis, et chaque meuble déplacé redistribue de la poussière sur ce qui vient d'être nettoyé."),
+            ('Combien de temps prévoir ?',
+             "Pour un deux-pièces vidé et correctement entretenu, comptez une demi-journée à deux personnes. Un logement laissé en l'état après plusieurs années demande souvent une journée complète et relève de la remise en état."),
+            ('Les joints de carrelage gris se rattrapent-ils ?',
+             "En partie. Un joint grisé par l'encrassement se récupère bien. Un joint poreux teinté dans la masse, non : il faudrait le refaire, ce qui est un travail de carreleur, pas de nettoyage."),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'prix-nettoyage-fin-de-bail',
+        "cat": 'Prix',
+        "h1": "Prix d'un nettoyage de fin de bail en Île-de-France",
+        "title": "Prix d'un nettoyage de fin de bail",
+        "meta": 'Tarifs constatés en Île-de-France pour un nettoyage de fin de bail, du studio au cinq-pièces, et les cinq facteurs qui font varier le devis.',
+        "image": 'intervention-3.webp',
+        "lead": "Les tarifs annoncés vont du simple au triple pour une même surface. Voici les fourchettes réelles du marché francilien, et ce qui explique l'écart.",
+        "sections": [
+            ('Les fourchettes constatées à Paris et en Île-de-France', [
+                "Les prix relevés chez les prestataires franciliens en 2026 s'établissent autour de 100 à 150 € pour un studio, 150 à 300 € pour un deux-pièces, 250 à 500 € pour un trois-pièces, et de 650 à 1 000 € au-delà de quatre pièces.",
+                "L'Île-de-France se situe 15 à 25 % au-dessus du reste du pays sur ce type de prestation. Ce n'est pas une marge supplémentaire : c'est le coût du déplacement en zone dense, du stationnement et des créneaux contraints.",
+                "Un point à surveiller : beaucoup d'annonces affichent un prix « à partir de » qui correspond à un studio vide et récent. Demandez toujours un devis sur votre logement réel.",
+            ]),
+            ('Les cinq facteurs qui font le prix', [
+                "<strong>L'état de la cuisine.</strong> C'est le premier poste. Un four et une hotte encrassés peuvent à eux seuls représenter deux heures de travail.",
+                '<strong>La moisissure en salle de bain.</strong> Elle impose des temps de pose : on applique, on attend, on reprend. Ce temps se facture même si la main ne bouge pas.',
+                "<strong>Le nombre d'ouvrants.</strong> Les vitres se comptent en vantaux, pas en fenêtres. Une baie coulissante à quatre vantaux, ce sont huit faces.",
+                "<strong>La présence de moquette.</strong> L'injection-extraction est une prestation à part entière, facturée au mètre carré.",
+                "<strong>L'accès.</strong> Étage sans ascenseur, absence de stationnement, code d'entrée : cela n'apparaît sur aucune grille tarifaire mais cela pèse sur le temps réel.",
+            ]),
+            ('Ce que notre devis contient', [
+                "Nous détaillons chaque poste séparément : la cuisine, la salle de bain, les sols, les vitres et, s'il y a lieu, la moquette. Vous voyez ce que coûte chaque partie et vous pouvez en retirer une si vous préférez la faire vous-même.",
+                'Les frais de déplacement sont calculés depuis notre atelier de Tremblay-en-France, à 5 € par tranche de 5 km, et annoncés avant que vous validiez. Ils figurent sur le devis, pas sur la facture finale en supplément.',
+                "Aucun acompte n'est demandé. Vous réglez après l'intervention, une fois le résultat constaté — ce qui est particulièrement pertinent sur une prestation dont l'enjeu est justement le résultat visible.",
+            ]),
+            ('Faire soi-même ou faire faire', [
+                "Le calcul est simple et vaut d'être posé. Si votre dépôt de garantie est de 1 200 € et qu'une retenue pour ménage vous coûterait 400 €, une prestation à 250 € est rentable. S'il s'agit d'un studio que vous avez tenu propre, un week-end de votre temps suffit probablement.",
+                "Les deux cas où faire faire s'impose : quand vous n'avez plus accès au logement après le déménagement, et quand la cuisine ou la salle de bain sont au-delà de ce qu'un nettoyage domestique récupère.",
+                "Dans le doute, envoyez-nous trois photos — cuisine, salle de bain, sol le plus abîmé. Nous vous dirons franchement si l'intervention se justifie.",
+            ]),
+        ],
+        "faq": [
+            ('Le prix est-il au mètre carré ?',
+             "Non, pas pour un logement. La surface donne un ordre de grandeur, mais l'état pèse davantage : deux trois-pièces identiques peuvent demander du simple au double selon l'état de la cuisine."),
+            ('Les produits et le matériel sont-ils compris ?',
+             "Oui, toujours, comme l'eau et l'électricité que nous apportons. Vous n'avez rien à fournir et rien à prévoir sur place."),
+            ('Y a-t-il un supplément le week-end ?',
+             'Non. Nous intervenons sept jours sur sept au même tarif, parce que les déménagements se font justement le week-end.'),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'nettoyage-copropriete-parties-communes',
+        "cat": 'Copropriété',
+        "h1": 'Nettoyage des parties communes de copropriété',
+        "title": 'Nettoyage des parties communes',
+        "meta": 'Entretien des parties communes en copropriété : ce que couvre la prestation, à quelle fréquence, et comment un syndic compare deux devis.',
+        "image": 'bureau-entreprise.webp',
+        "lead": "La propreté des parties communes relève du syndic et se finance par les charges. C'est aussi le premier motif de plainte en assemblée générale. Voici comment la prestation se construit.",
+        "sections": [
+            ("Ce que recouvre l'entretien des parties communes", [
+                "Le périmètre standard comprend le hall d'entrée, la cage d'escalier et ses paliers, les couloirs de circulation, l'ascenseur, les boîtes aux lettres, le local poubelles et, selon les immeubles, le parking et la cour.",
+                "Sur chacun, le travail se décompose en trois niveaux : le passage courant — balayage, lavage des sols, sortie et rentrée des conteneurs — le dépoussiérage périodique des rampes, plinthes, interrupteurs et boîtes aux lettres, et l'entretien approfondi, moins fréquent, qui traite les vitrages, les portes vitrées du hall et le local poubelles.",
+                "La désinfection des points de contact — poignées, rampes, boutons d'ascenseur — s'est installée dans les cahiers des charges depuis 2020. Elle relève du nettoyage courant avec un produit adapté, pas d'un traitement biocide réglementé.",
+            ]),
+            ("La bonne fréquence selon l'immeuble", [
+                "Il n'existe pas de norme, seulement des usages qui tiennent au nombre de logements et à la circulation.",
+                "En dessous de dix lots, un passage hebdomadaire suffit généralement, avec une sortie de conteneurs calée sur le calendrier de collecte. Entre dix et trente lots, deux passages par semaine deviennent le standard. Au-delà, ou dès qu'il y a des commerces au rez-de-chaussée, on passe à trois passages ou au quotidien.",
+                "Le facteur qui change tout n'est pas le nombre de logements mais la présence d'un local poubelles intérieur. Un local mal ventilé impose un rythme que la seule circulation ne justifierait pas.",
+                "Un conseil de bon sens : mieux vaut deux passages sérieux qu'un passage quotidien expédié. Sur un immeuble de vingt lots, la différence de perception est nette.",
+            ]),
+            ('Comment un syndic compare deux devis', [
+                "Les devis d'entretien d'immeuble sont difficiles à comparer parce qu'ils n'expriment pas la même chose. Trois vérifications suffisent à les remettre à plat.",
+                "<strong>Le temps de présence par passage.</strong> C'est la seule donnée qui compte vraiment. Un prestataire qui annonce un forfait sans dire combien de temps il reste vous laisse sans repère. Demandez-le et faites le rapport avec le prix.",
+                "<strong>Ce qui est mensuel et ce qui est ponctuel.</strong> Le lavage des vitrages du hall, le décapage annuel des sols, le nettoyage du local poubelles à la haute pression : ces postes sont parfois inclus, parfois facturés en plus. L'écart entre deux devis vient souvent de là.",
+                '<strong>La continuité du service.</strong> Qui passe pendant les congés ? Une entreprise qui ne répond pas à cette question vous laissera un immeuble non entretenu trois semaines en août.',
+            ]),
+            ('Notre positionnement sur la copropriété', [
+                "Nous sommes une entreprise individuelle. C'est une limite qu'il faut dire d'emblée : nous ne sommes pas équipés pour un parc de plusieurs dizaines d'immeubles avec remplacement immédiat en cas d'absence.",
+                "Sur un immeuble ou quelques immeubles proches, en revanche, cela devient un avantage. C'est la même personne qui passe à chaque fois, qui connaît l'immeuble, qui remarque qu'une ampoule est grillée ou qu'une fuite marque le mur du sous-sol, et qui le signale au syndic.",
+                "Nous intervenons aussi ponctuellement : remise en état d'une cage d'escalier après travaux, nettoyage haute pression d'un local poubelles ou d'une cour, vitrerie du hall. Ce sont des prestations que beaucoup de contrats d'entretien courant ne couvrent pas.",
+            ]),
+        ],
+        "faq": [
+            ('Qui décide du prestataire de nettoyage en copropriété ?',
+             "Le syndic met en concurrence et le vote intervient en assemblée générale, à la majorité de l'article 24 pour un contrat d'entretien courant. Le conseil syndical peut demander des devis en amont."),
+            ('Le nettoyage des parties communes est-il obligatoire ?',
+             "L'entretien des parties communes incombe au syndicat des copropriétaires. Rien n'impose de passer par une entreprise — certaines copropriétés emploient un gardien — mais l'entretien lui-même n'est pas optionnel."),
+            ('Sortez-vous les conteneurs ?',
+             "Oui, quand c'est prévu au contrat, avec un passage calé sur le calendrier de collecte de la commune. C'est souvent le point qui détermine le jour d'intervention plutôt que l'inverse."),
+            ('Intervenez-vous ponctuellement, sans contrat ?',
+             'Oui. Une remise en état après travaux, un local poubelles à reprendre à la haute pression ou une vitrerie de hall se traitent en intervention unique, sur devis.'),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'nettoyage-cage-escalier-immeuble',
+        "cat": 'Copropriété',
+        "h1": "Nettoyage de cage d'escalier : méthode et fréquence",
+        "title": "Nettoyage de cage d'escalier",
+        "meta": "Nettoyage de cage d'escalier en immeuble : traiter la marche et la contremarche, les rampes, les paliers, et le rythme qui tient dans la durée.",
+        "image": 'intervention-1.webp',
+        "lead": "Une cage d'escalier est la première chose que voit un visiteur et la dernière que l'on entretient sérieusement. Elle demande une méthode précise, parce qu'on y travaille debout, en hauteur et à contretemps.",
+        "sections": [
+            ("Pourquoi une cage d'escalier se salit autrement", [
+                "Un escalier ne se salit pas comme un sol plat. La saleté s'y dépose en trois endroits distincts : sur le nez de marche, où passent les semelles, dans l'angle entre marche et contremarche, où elle s'accumule sans jamais être délogée, et sur les plinthes latérales, que le balai frôle sans les toucher.",
+                "C'est cet angle qui trahit un entretien bâclé. Une cage balayée rapidement paraît propre de face et montre un liseré gris dès qu'on regarde de biais.",
+                "S'ajoute un phénomène propre aux immeubles : la poussière retombe. Ce qu'on soulève au troisième étage se redépose au premier. D'où la règle du haut vers le bas, sans exception.",
+            ]),
+            ('La méthode, étage par étage', [
+                "On commence par le dernier étage et on descend. Dépoussiérage d'abord — rampe, main courante, plinthes, boîtiers électriques, luminaires — puis balayage humide des marches, angle compris, puis lavage.",
+                "Le choix du produit dépend du revêtement, et c'est là qu'on abîme le plus souvent. Le carrelage et la pierre reconstituée acceptent un détergent neutre. Le marbre et la pierre naturelle, très présents dans les immeubles haussmanniens, ne supportent aucun acide : un détartrant classique les mate définitivement. Le bois demande une humidité contrôlée, jamais d'eau.",
+                "Les paliers et le hall se traitent en dernier, en reculant vers la sortie. Les portes des logements se limitent au pourtour de la poignée : on ne nettoie pas la porte d'un copropriétaire au-delà de ce qui relève des parties communes.",
+            ]),
+            ('Le rythme qui tient', [
+                "Un rythme trop ambitieux ne tient jamais un an. Mieux vaut un engagement modeste et respecté qu'un contrat quotidien qui s'étiole.",
+                'Le schéma qui fonctionne dans la plupart des immeubles franciliens : un passage complet par semaine pour un petit immeuble, deux pour un immeuble de taille moyenne, plus un traitement approfondi trimestriel qui reprend ce que le passage courant ne fait pas — vitrages de la cage, luminaires, dessus des boîtes aux lettres, plinthes en profondeur.',
+                'Le décapage complet des sols, lui, se justifie une fois par an au plus, et seulement sur les revêtements qui le supportent.',
+            ]),
+            ('Les contraintes propres aux immeubles occupés', [
+                "On travaille dans un lieu de passage. Cela impose une signalisation du sol mouillé, un séchage rapide et un horaire choisi : tôt le matin ou en milieu de journée, jamais aux heures de sortie d'école ou de retour du travail.",
+                "L'absence d'ascenseur change le temps d'intervention plus qu'on ne l'imagine : le matériel monte à la main, et l'eau aussi. Nous en tenons compte au devis plutôt que d'expédier les derniers étages.",
+                "Enfin, l'éclairage. Beaucoup de cages sont sur minuterie et mal éclairées : ce qui est propre sous une ampoule de faible intensité ne l'est pas à la lumière du jour. Nous travaillons avec notre propre éclairage quand c'est nécessaire.",
+            ]),
+        ],
+        "faq": [
+            ("À quelle fréquence nettoyer une cage d'escalier ?",
+             'Une fois par semaine pour un petit immeuble, deux fois pour un immeuble de taille moyenne, avec un traitement approfondi trimestriel. Le nombre de logements compte moins que la circulation réelle et la présence de commerces.'),
+            ('Peut-on nettoyer un escalier en marbre au Kärcher ?',
+             'Non. La haute pression et les produits acides matent définitivement le marbre et la pierre naturelle. Ces revêtements demandent un détergent neutre et un lavage manuel.'),
+            ('Nettoyez-vous aussi les vitrages de la cage ?',
+             "Oui, à l'eau osmosée, qui sèche sans laisser de trace. C'est en général une prestation trimestrielle plutôt qu'hebdomadaire."),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'nettoyage-airbnb-paris',
+        "cat": 'Location courte durée',
+        "h1": 'Nettoyage Airbnb à Paris : entre deux voyageurs',
+        "title": 'Nettoyage Airbnb à Paris',
+        "meta": 'Nettoyage de logement Airbnb à Paris : le protocole entre deux séjours, les points qui font baisser une note, et la contrainte des créneaux serrés.',
+        "image": 'canape-nettoyage.webp',
+        "lead": "En location courte durée, la propreté est notée publiquement et la fenêtre d'intervention dure quelques heures. Ce sont deux contraintes qui changent la méthode.",
+        "sections": [
+            ('Ce que les voyageurs remarquent vraiment', [
+                'Les commentaires qui font baisser une note de propreté portent rarement sur le sol. Ils portent sur des détails précis, toujours les mêmes.',
+                "Les cheveux — dans la douche, sur le rebord du lavabo, sous le lit. Les traces de calcaire sur la paroi de douche et la robinetterie. L'odeur à l'ouverture de la porte, qu'un logement fermé plusieurs jours développe naturellement. Le réfrigérateur, dont les joints noircissent vite. La poussière sur les surfaces à hauteur d'œil, qu'on ne voit pas en travaillant debout mais qu'un voyageur assis remarque immédiatement.",
+                "Aucun de ces points ne demande beaucoup de temps. Ils demandent qu'on sache qu'ils existent et qu'on les traite systématiquement, ce que fait un protocole écrit et que ne fait pas un ménage improvisé.",
+            ]),
+            ('La contrainte du créneau', [
+                "Un départ à 11 h, une arrivée à 15 h : quatre heures, déplacement compris, pour un logement entier. Cela impose de savoir à l'avance ce qu'on va faire et dans quel ordre.",
+                "L'ordre qui fonctionne : ouvrir et aérer dès l'arrivée, dépouiller les lits, lancer la machine s'il y en a une sur place, traiter la salle de bain pendant que le linge tourne, puis la cuisine, puis les surfaces, puis les sols en reculant, et refaire les lits en dernier.",
+                "Le linge est le point qui fait déraper les plannings. Une rotation avec deux jeux complets par couchage résout le problème une fois pour toutes : on emporte le sale et on repose du propre, sans dépendre d'un cycle de lavage.",
+            ]),
+            ('Les odeurs, le point faible du meublé', [
+                'Un logement fermé entre deux séjours, surtout sans ventilation traversante, développe une odeur de renfermé que le voyageur associe immédiatement au manque de propreté. Un désodorisant la masque une heure et la rend suspecte ensuite.',
+                "Quand l'odeur est installée — tabac d'un séjour précédent, humidité, cuisine — nous proposons un traitement par ozone. L'ozone détruit les molécules odorantes au lieu de les recouvrir, et il agit dans les textiles et les recoins que le nettoyage n'atteint pas.",
+                "Le protocole est strict : le logement doit être vide de personnes, d'animaux et de plantes pendant le traitement, puis aéré avant la remise des clés. L'ozone est un gaz irritant pour les voies respiratoires ; il ne se pratique pas en présence de qui que ce soit. C'est pour cela qu'il se cale entre deux réservations et pas pendant.",
+            ]),
+            ('Ce que nous faisons, et ce que nous ne faisons pas', [
+                'Nous faisons le nettoyage entre deux séjours, la remise en état saisonnière plus poussée, le traitement des textiles — canapé convertible, matelas, tapis — par injection-extraction, la vitrerie et le traitement des odeurs par ozone.',
+                "Nous ne sommes pas une conciergerie. Nous ne gérons pas les annonces, les arrivées, les clés ni la relation avec les voyageurs. Si vous cherchez ce service complet, il vous faut une conciergerie ; nous pouvons travailler pour elle ou à côté d'elle.",
+                'Nous intervenons sept jours sur sept, jours fériés compris, ce qui est la condition minimale pour être utile en location courte durée. Pour un logement à rotation régulière, nous calons un créneau récurrent plutôt que de reprendre rendez-vous à chaque fois.',
+            ]),
+        ],
+        "faq": [
+            ('Intervenez-vous le dimanche et les jours fériés ?',
+             "Oui, sept jours sur sept, sans supplément. C'est indispensable en location courte durée, où les rotations tombent précisément ces jours-là."),
+            ('Fournissez-vous le linge ?',
+             "Non. Nous nettoyons et nous faisons les lits avec le linge disponible sur place. La gestion du linge relève d'une conciergerie ou d'une blanchisserie, avec qui nous nous coordonnons sans difficulté."),
+            ('Combien de temps faut-il entre deux voyageurs ?',
+             "Trois heures sur place pour un deux-pièces, davantage si un traitement textile ou un passage à l'ozone est prévu. L'ozone impose en plus une aération avant l'arrivée du voyageur suivant."),
+            ('Traitez-vous une odeur de tabac laissée par un voyageur ?',
+             "Oui, par ozone, après nettoyage des surfaces et des textiles. Le traitement se fait logement vide et suivi d'une aération. Sur une odeur ancienne et très incrustée, un second passage est parfois nécessaire ; nous le disons au devis quand nous l'anticipons."),
+        ],
+        "service": 'traitement-ozone-paris',
+    },
+    {
+        "slug": 'nettoyage-matelas-paris',
+        "cat": 'Textile',
+        "h1": 'Nettoyage de matelas à domicile à Paris',
+        "title": 'Nettoyage de matelas à Paris',
+        "meta": 'Nettoyage de matelas à domicile à Paris : injection-extraction, traitement des taches et des acariens, temps de séchage et limites réelles.',
+        "image": 'intervention-2.webp',
+        "lead": "Un matelas absorbe chaque nuit une quantité d'humidité que rien n'évacue. C'est ce qui explique à la fois les auréoles, les odeurs et la population d'acariens qu'il finit par abriter.",
+        "sections": [
+            ("Ce qu'il y a réellement dans un matelas", [
+                "Un dormeur perd entre un tiers et un demi-litre de transpiration par nuit. Une partie s'évapore, le reste descend dans le garnissage, où il ne remonte jamais. Après quelques années, cela représente plusieurs dizaines de litres passés dans la mousse ou le latex.",
+                'Cette humidité, associée aux cellules de peau, nourrit les acariens. Ce ne sont pas eux qui provoquent les réactions allergiques mais leurs déjections, très fines, qui se remettent en suspension à chaque mouvement.',
+                "Un aspirateur domestique ne les atteint pas : ils sont fixés en profondeur dans la fibre, et un aspirateur sans filtration fine les rejette en partie dans la pièce. C'est la différence essentielle avec l'injection-extraction, qui va les chercher et les évacue dans une cuve.",
+            ]),
+            ('La méthode : injection-extraction', [
+                "On injecte sous pression une solution dans le garnissage, on la laisse agir quelques instants, et on l'aspire immédiatement avec ce qu'elle a dissous. Le point clé est le « immédiatement » : il n'y a pas d'eau qui stagne, donc pas d'auréole en séchant.",
+                "C'est ce qui distingue cette méthode d'un shampoing de surface, qui mousse, reste dans la fibre en séchant et refixe la poussière — le matelas paraît propre une semaine puis se resalit plus vite qu'avant.",
+                "Les taches identifiées sont traitées avant, une par une, avec un détachant choisi selon leur nature. On ne traite pas une tache de sang comme une tache d'urine ou de transpiration : le sang réagit à froid, la chaleur le fixe définitivement.",
+                "Une passe à la vapeur haute température peut compléter le traitement en surface. Nous parlons bien d'assainissement, pas de désinfection au sens réglementaire : nous ne sommes pas un applicateur de produits biocides et nous ne revendiquons aucun taux d'élimination.",
+            ]),
+            ("Les taches d'urine, et ce qu'on peut en attendre", [
+                "C'est la demande la plus fréquente et celle où il faut être le plus honnête. Traitée dans les quarante-huit heures, une tache d'urine s'élimine presque toujours, odeur comprise.",
+                "Passé une semaine, l'urine cristallise. Les sels restent dans la fibre et laissent une marque jaunâtre que l'extraction atténue nettement mais n'efface pas toujours. Sur un matelas clair, la marque peut rester visible même après un traitement réussi sur l'odeur.",
+                "L'odeur, elle, se traite bien mieux que la couleur. Elle provient de composés que l'extraction évacue, et un passage à l'ozone finit le travail sur les cas anciens. Nous distinguons donc systématiquement les deux au devis : ce que nous pouvons garantir sur l'odeur, ce que nous espérons sur la marque.",
+            ]),
+            ('Séchage, tarifs et conditions', [
+                'Comptez quatre à six heures de séchage avant de refaire le lit, davantage dans une pièce fermée ou humide. Nous laissons le matelas relevé et la pièce aérée en partant. Traiter le matin permet de dormir dessus le soir même.',
+                'Nos tarifs partent de 15 € pour un couchage simple et suivent la taille du matelas ; le détail figure sur notre grille tarifaire. Les prix relevés à Paris chez les prestataires spécialisés vont plutôt de 60 à 89 € selon la taille et le nombre de faces traitées.',
+                "Traiter les deux faces double le temps mais pas toujours l'intérêt : si le matelas n'a jamais été retourné, la face inférieure est souvent en bien meilleur état. Nous regardons avant de vous le facturer.",
+                "Un matelas à mémoire de forme demande plus de précaution : la mousse retient davantage l'humidité et sèche plus lentement. Nous adaptons le débit d'injection en conséquence.",
+            ]),
+        ],
+        "faq": [
+            ('Combien de temps le matelas met-il à sécher ?',
+             'Quatre à six heures dans une pièce aérée. Nous le laissons relevé en partant. Une intervention le matin permet de se recoucher dessus le soir.'),
+            ("Une tache d'urine ancienne part-elle complètement ?",
+             "L'odeur, presque toujours. La marque, pas systématiquement : au-delà d'une semaine, les sels cristallisent dans la fibre et laissent une trace jaunâtre que l'extraction atténue sans toujours l'effacer. Nous le disons avant, pas après."),
+            ('Éliminez-vous les acariens ?',
+             "L'injection-extraction retire une grande part des acariens et de leurs déjections, qui sont la cause réelle des réactions allergiques. Nous n'annonçons pas de pourcentage : nous ne sommes pas un applicateur de biocides et un chiffre non mesuré ne voudrait rien dire."),
+            ('Faut-il retirer le matelas du lit ?',
+             "Non, nous travaillons sur place. Dégagez simplement l'accès autour du lit et retirez la literie avant notre arrivée."),
+        ],
+        "service": 'nettoyage-textile-paris',
+    },
+    {
+        "slug": 'prix-nettoyage-matelas',
+        "cat": 'Prix',
+        "h1": "Prix d'un nettoyage de matelas",
+        "title": "Prix d'un nettoyage de matelas",
+        "meta": 'Ce que coûte un nettoyage de matelas à domicile en Île-de-France, par taille, et les trois éléments qui font varier le devis.',
+        "image": 'canape-nettoyage.webp',
+        "lead": "Les tarifs vont de quelques dizaines d'euros à près de cent selon la taille et le prestataire. Voici comment le prix se construit réellement.",
+        "sections": [
+            ('Nos tarifs, et ceux du marché', [
+                'Chez nous, le nettoyage textile démarre à 15 € et suit la taille du couchage. Le tarif exact figure sur notre grille, avec les canapés, fauteuils et tapis.',
+                'Les prix relevés chez les prestataires spécialisés en Île-de-France en 2026 se situent autour de 49 à 60 € pour un couchage simple une face, et de 69 à 89 € pour un deux places selon le nombre de faces traitées. À Paris intra-muros, les tarifs affichés démarrent plutôt vers 72 €.',
+                "Cet écart s'explique surtout par le modèle : un prestataire qui se déplace pour un seul matelas doit amortir son déplacement sur cette seule prestation. C'est pourquoi traiter le matelas en même temps que le canapé ou les tapis fait chuter le coût par pièce.",
+            ]),
+            ('Les trois éléments qui font varier le prix', [
+                "<strong>La taille et le nombre de faces.</strong> Un 90 × 190 se traite en une fraction du temps d'un 180 × 200. Traiter les deux faces double le temps de travail et le temps de séchage.",
+                "<strong>Le détachage.</strong> Une tache identifiée demande un traitement individuel avec un produit choisi selon sa nature et un temps de pose. Trois taches anciennes peuvent représenter autant de temps que l'extraction elle-même.",
+                "<strong>Le traitement des odeurs.</strong> Quand l'odeur persiste après extraction, un passage à l'ozone se facture en supplément, à partir de 30 €. Il ne se justifie pas sur tous les matelas : nous ne le proposons que lorsqu'il apportera quelque chose.",
+            ]),
+            ('Le déplacement, et comment ne pas le payer pour rien', [
+                'Nos frais de déplacement sont de 5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France, annoncés avant validation. Sur un seul matelas, ils peuvent représenter une part notable du total.',
+                "Le réflexe utile : regrouper. Un matelas seul, c'est une prestation courte pour un déplacement complet. Deux matelas et un canapé traités le même jour, c'est le même déplacement pour trois fois plus de travail — le coût par pièce chute nettement.",
+                "Si vous hésitez, dites-nous simplement tout ce qui pourrait être traité chez vous. Nous vous dirons ce qui en vaut la peine et ce qui n'en vaut pas, y compris quand la réponse est « celui-là, laissez-le ».",
+            ]),
+            ('Quand le nettoyage ne se justifie plus', [
+                "Un matelas a une durée de vie. Au-delà d'une dizaine d'années, la mousse s'affaisse et le soutien disparaît : un nettoyage le rendra propre mais pas confortable, et l'argent est mieux placé dans un matelas neuf.",
+                "De même, un matelas dont le garnissage est atteint par une moisissure profonde — après un dégât des eaux, par exemple — ne se récupère pas. La moisissure est dans l'épaisseur, l'extraction ne va pas la chercher.",
+                "Nous préférons vous le dire au devis, sur photos, plutôt qu'après une intervention facturée. Un refus argumenté vaut mieux qu'une prestation décevante.",
+            ]),
+        ],
+        "faq": [
+            ('Le déplacement est-il facturé en plus ?',
+             "Oui, 5 € par tranche de 5 km depuis Tremblay-en-France, annoncés avant que vous validiez et figurant sur le devis. Aucun supplément n'apparaît après."),
+            ('Est-ce moins cher de traiter plusieurs pièces le même jour ?',
+             "Nettement. Le déplacement est unique et le matériel est déjà installé. C'est la seule optimisation vraiment efficace sur ce type de prestation."),
+            ('Faut-il payer un acompte ?',
+             "Non, jamais. Vous réglez après l'intervention, une fois le résultat constaté."),
+        ],
+        "service": 'nettoyage-textile-paris',
+    },
+    {
+        "slug": 'nettoyage-moquette-bureau-paris',
+        "cat": 'Professionnels',
+        "h1": 'Nettoyage de moquette de bureau à Paris',
+        "title": 'Nettoyage de moquette de bureau',
+        "meta": 'Nettoyage de moquette en bureau à Paris : injection-extraction, traitement des zones de passage, séchage et intervention hors heures ouvrées.',
+        "image": 'bureau-entreprise.webp',
+        "lead": "Une moquette de bureau ne s'use pas uniformément. Elle noircit d'abord dans les couloirs et devant les postes, et c'est là que se joue l'impression générale du plateau.",
+        "sections": [
+            ('Pourquoi une moquette de bureau grise par endroits', [
+                "La saleté d'une moquette de bureau est essentiellement minérale : de la poussière de rue apportée sous les semelles, qui s'incruste entre les fibres. Elle se concentre là où l'on marche — l'entrée, les couloirs, le mètre carré devant chaque bureau — et laisse le reste presque intact.",
+                "Cette poussière est abrasive. À chaque pas, elle scie la fibre à sa base. Une moquette qu'on ne nettoie jamais ne se contente pas de paraître sale : elle s'use réellement plus vite, et c'est un argument budgétaire plus fort que l'esthétique.",
+                "L'aspiration quotidienne retire ce qui est en surface. Elle ne va pas chercher ce qui est descendu au pied de la fibre, et c'est cette part-là qui donne l'aspect gris.",
+            ]),
+            ('Injection-extraction, et pourquoi pas le shampoing', [
+                "Le shampoing de surface a longtemps été le standard. Il mousse, on brosse, on laisse sécher, on aspire. Le problème est le résidu : le tensioactif reste dans la fibre et devient collant, la poussière s'y fixe, et la moquette se resalit plus vite qu'avant le nettoyage.",
+                "L'injection-extraction injecte la solution sous pression et l'aspire dans le même mouvement. Ce qui ressort dans la cuve est ce qui était dans la fibre. Il ne reste pas de résidu, donc pas d'effet rebond.",
+                "Sur les zones de passage très marquées, un prébrossage et un temps de pose précèdent l'extraction. C'est ce qui fait la différence entre une moquette éclaircie et une moquette réellement récupérée.",
+            ]),
+            ("Séchage et organisation de l'intervention", [
+                "Comptez quatre à huit heures de séchage selon l'épaisseur de la moquette et la ventilation du plateau. C'est le paramètre qui commande tout le reste.",
+                'Le schéma qui fonctionne : intervention le vendredi soir, plateau récupéré le lundi matin. Sur les grands plateaux, on peut aussi travailler par zones sur plusieurs soirées, en laissant chaque zone sécher pendant la nuit.',
+                "Nous intervenons en horaires décalés — tôt le matin, le soir, le week-end — sans supplément. Sur un site occupé, c'est la seule façon de travailler correctement : une extraction faite entre deux réunions n'est pas une extraction.",
+            ]),
+            ('Prix et fréquence raisonnable', [
+                "Les tarifs relevés en Île-de-France pour le shampouinage et l'extraction de moquette professionnelle démarrent autour de 8 € le mètre carré. Le prix baisse nettement avec la surface : un plateau de 300 m² ne se facture pas au même tarif unitaire qu'un bureau de 20 m².",
+                "La fréquence utile est d'une extraction par an sur un plateau standard, deux si l'entrée donne directement sur la rue ou si le site reçoit du public. Entre deux, un traitement ponctuel des seules zones de passage coûte peu et repousse l'échéance.",
+                "Nous chiffrons sur plan ou sur photos, avec le métrage réel des zones à traiter — pas la surface totale du plateau, dont une partie est sous les meubles et n'a pas besoin d'être extraite.",
+            ]),
+        ],
+        "faq": [
+            ('Combien de temps avant de remarcher sur la moquette ?',
+             "Quatre à huit heures selon l'épaisseur et la ventilation. En pratique, une intervention le vendredi soir permet de récupérer le plateau le lundi matin sans contrainte."),
+            ('Faut-il déplacer les bureaux ?',
+             "Pas nécessairement. Nous traitons les zones dégagées et les abords des postes, ce qui couvre l'essentiel de ce qui se voit. Un traitement intégral suppose de dégager, ce qui se planifie plutôt lors d'un déménagement."),
+            ('Intervenez-vous le week-end ?',
+             "Oui, sept jours sur sept et sans supplément. C'est souvent la meilleure option sur un plateau occupé."),
+            ('Une moquette très ancienne se récupère-t-elle ?',
+             "En partie. L'extraction retire la saleté, elle ne restaure pas une fibre usée mécaniquement. Sur une moquette dont la fibre est écrasée dans les couloirs, le résultat sera net mais l'usure restera visible. Nous le disons avant."),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'nettoyage-tapis-paris',
+        "cat": 'Textile',
+        "h1": 'Nettoyage de tapis à domicile à Paris',
+        "title": 'Nettoyage de tapis à Paris',
+        "meta": 'Nettoyage de tapis à domicile à Paris : méthode selon la matière, traitement des taches, séchage, et les tapis que nous ne traitons pas.',
+        "image": 'tapis-karcher.webp',
+        "lead": "Un tapis se nettoie selon sa fibre, pas selon son aspect. C'est la seule règle qui compte, et c'est celle qu'on enfreint le plus souvent en voulant bien faire.",
+        "sections": [
+            ('Identifier la fibre avant tout', [
+                "Les tapis synthétiques — polypropylène, polyester, nylon — représentent l'essentiel des tapis vendus aujourd'hui. Ils supportent l'eau, les détergents courants et l'injection-extraction sans difficulté. C'est le cas le plus simple et le plus fréquent.",
+                "La laine est une autre histoire. C'est une fibre animale : elle craint l'alcalinité, qui la ternit et la feutre, et elle se rétracte à la chaleur. Elle demande un produit neutre ou légèrement acide, une eau tiède et surtout pas de vapeur.",
+                "La viscose est la fibre la plus délicate qui soit. Elle perd sa résistance une fois mouillée et marque définitivement à la moindre goutte. Un tapis en viscose ne se nettoie pas à l'eau, chez vous ou ailleurs : il relève d'un traitement à sec en atelier spécialisé, et nous le disons plutôt que de prendre le risque.",
+                "En cas de doute, l'étiquette au dos donne souvent la composition. Sans étiquette, l'aspect et le toucher permettent de trancher dans la plupart des cas — nous le faisons sur place avant de commencer.",
+            ]),
+            ('La méthode et les taches', [
+                'Sur un tapis synthétique ou en laine robuste, la séquence est la même que pour un canapé : aspiration profonde, traitement individuel des taches, injection-extraction, puis brossage du sens du poil.',
+                "Le brossage final n'est pas cosmétique. Un poil couché dans le mauvais sens sèche ainsi et le tapis paraît terne par zones même parfaitement propre.",
+                "Sur les taches, deux réflexes valent d'être rappelés. Ne frottez jamais : vous étalez la tache et vous cassez la fibre. Tamponnez du bord vers le centre, avec un chiffon blanc — un chiffon coloré peut déteindre.",
+                "Et n'appliquez rien avant notre passage. Un produit ménager mal choisi peut fixer la tache définitivement, ou décolorer le tapis autour, ce qui est irréversible et se voit davantage que la tache d'origine.",
+            ]),
+            ('Séchage et remise en place', [
+                "Comptez quatre à six heures pour un tapis synthétique, davantage pour la laine, qui retient plus d'eau. Nous relevons le tapis ou glissons une protection dessous pour éviter que l'humidité ne marque le sol.",
+                "Un point important sur les parquets : un tapis humide reposé à plat sur du bois peut laisser une auréole sur le parquet lui-même. Nous ne le remettons pas en place tant qu'il n'est pas sec, et nous vous le disons avant de partir.",
+                'Les tapis à franges demandent un traitement à part : elles se nettoient à la main et se peignent au séchage, faute de quoi elles sèchent emmêlées.',
+            ]),
+            ('Ce que nous traitons, et ce que nous refusons', [
+                'Nous traitons à domicile les tapis synthétiques, les tapis de laine courants, les descentes de lit, les tapis de couloir et les moquettes posées.',
+                "Nous ne traitons pas les tapis en viscose ni les tapis d'orient noués main de valeur — soie, laine fine teintée végétalement. Ces pièces demandent un lavage en atelier, à plat, avec un contrôle de la migration des couleurs qu'on ne peut pas assurer chez vous. Vous orienter vers un spécialiste nous coûte une prestation ; vous abîmer une pièce vous coûterait bien davantage.",
+                "Pour tout le reste, envoyez-nous une photo du tapis et une de l'étiquette au dos. Nous vous dirons en quelques minutes si c'est traitable à domicile.",
+            ]),
+        ],
+        "faq": [
+            ('Peut-on nettoyer un tapis en laine à la vapeur ?',
+             "Non. La chaleur feutre la laine de manière irréversible et la fait rétrécir. La laine se traite à l'eau tiède avec un produit neutre à légèrement acide."),
+            ('Traitez-vous les tapis en viscose ?',
+             "Non, et nous le déconseillons à quiconque le proposerait à domicile. La viscose perd sa résistance mouillée et marque définitivement. Elle relève d'un traitement à sec en atelier spécialisé."),
+            ('Le tapis rétrécit-il après nettoyage ?',
+             'Pas sur les fibres synthétiques. Sur la laine, un léger retrait est possible si le tapis a été traité trop chaud ou trop mouillé — raison pour laquelle nous travaillons tiède et en extraction, sans détremper.'),
+            ('Faut-il emporter le tapis ?',
+             'Non, nous travaillons chez vous. Il suffit de dégager la surface et, si le tapis est sur parquet, de nous laisser glisser une protection dessous.'),
+        ],
+        "service": 'nettoyage-textile-paris',
+    },
+    {
+        "slug": 'nettoyage-vitrine-commerce-paris',
+        "cat": 'Vitrerie',
+        "h1": 'Nettoyage de vitrine de commerce à Paris',
+        "title": 'Nettoyage de vitrine à Paris',
+        "meta": 'Nettoyage de vitrine de commerce à Paris : fréquence, horaires avant ouverture, traitement des traces de pluie et des affichages collés.',
+        "image": 'vitre-controle.webp',
+        "lead": "Une vitrine sale annule l'effet de la vitrine elle-même. C'est la seule surface d'un commerce que tous les passants voient, et la seule qui se dégrade en quelques jours.",
+        "sections": [
+            ('Pourquoi une vitrine se salit si vite', [
+                "Une vitrine de rue subit trois agressions simultanées. Les projections de la chaussée, qui montent plus haut qu'on ne l'imagine sur une rue passante. Les pluies chargées de particules urbaines, qui sèchent en laissant un voile minéral. Et les traces de mains, concentrées autour de la poignée et à hauteur d'enfant.",
+                "Le voile minéral est le plus insidieux. Il ne se voit pas de face mais casse la lumière : la vitrine paraît terne sans qu'on sache pourquoi, et les produits exposés perdent leur éclat.",
+                "C'est exactement ce que règle l'eau osmosée. Débarrassée de ses minéraux, elle sèche sans rien déposer : pas de voile, pas de trace, et aucun produit à essuyer.",
+            ]),
+            ('La bonne fréquence pour un commerce', [
+                "Un commerce de rue passante en centre-ville tient rarement plus d'une semaine. Deux passages hebdomadaires sont fréquents en restauration, où s'ajoutent les traces de mains et les projections de la terrasse.",
+                'Un commerce en rue calme ou en galerie couverte tient deux à trois semaines sans que cela se voie.',
+                "Le repère simple : regardez votre vitrine de biais, en fin de journée, avec le soleil rasant. C'est ainsi que la voient les passants qui arrivent de la rue, et c'est ce qui révèle le voile.",
+            ]),
+            ("Travailler avant l'ouverture", [
+                "Nous intervenons tôt le matin, avant l'ouverture, ou après la fermeture. Ce n'est pas une facilité commerciale : nettoyer une vitrine pendant que les clients entrent et sortent donne un mauvais résultat et gêne le commerce.",
+                "L'intervention est courte — quelques minutes par vitrine avec une perche et de l'eau osmosée — ce qui permet de caler plusieurs commerces d'une même rue sur un seul passage. Si vos voisins sont intéressés, dites-le-nous : cela fait baisser le déplacement pour chacun.",
+                "Nous traitons aussi la porte, souvent oubliée alors qu'elle porte l'essentiel des traces de mains, ainsi que le seuil et le bas de vitrine, où les projections se concentrent.",
+            ]),
+            ('Affichages, adhésifs et cas particuliers', [
+                "Le retrait d'un adhésif de vitrine — soldes, promotion, ancien enseigne — laisse une colle qui se traite au solvant doux, jamais à la lame sur un vitrage traité ou teinté, qui se rayerait irrémédiablement.",
+                "Sur les vitrages anti-effraction ou à film solaire, la précaution est la même : ce sont des films, ils se rayent. Nous les traitons uniquement à l'eau et à la raclette souple.",
+                "Les traces de calcaire anciennes, incrustées après des mois de pluie séchée, demandent parfois un passage préalable au produit avant de repasser à l'eau osmosée. Cela se voit au premier coup d'œil et se chiffre à part : une fois le verre remis à zéro, l'entretien régulier suffit ensuite.",
+                "Les tags et rayures profondes, en revanche, relèvent du remplacement ou d'un traitement spécialisé : le nettoyage ne les récupère pas.",
+            ]),
+        ],
+        "faq": [
+            ('À quelle fréquence nettoyer une vitrine ?',
+             'Une fois par semaine en rue passante, deux fois en restauration, deux à trois semaines en rue calme ou en galerie. Le test : regardez la vitrine de biais en lumière rasante.'),
+            ("Intervenez-vous avant l'ouverture du magasin ?",
+             "Oui, tôt le matin ou après la fermeture, sans supplément. C'est la seule façon de travailler correctement sans gêner le commerce."),
+            ('Retirez-vous les anciens adhésifs de vitrine ?',
+             "Oui, au solvant doux. Nous n'utilisons pas de lame sur un vitrage traité, teinté ou filmé, qui se rayerait définitivement."),
+        ],
+        "service": 'nettoyage-vitres-paris',
+    },
+    {
+        "slug": 'prix-nettoyage-vitres-m2',
+        "cat": 'Prix',
+        "h1": "Prix d'un nettoyage de vitres au mètre carré",
+        "title": "Prix d'un nettoyage de vitres au m²",
+        "meta": "Tarifs de nettoyage de vitres en Île-de-France : fourchettes au mètre carré selon la hauteur et l'accès, et pourquoi on compte en vantaux.",
+        "image": 'vitre-controle.webp',
+        "lead": 'Les tarifs au mètre carré circulent partout, mais une vitre ne se facture pas comme un sol. Voici comment le prix se construit réellement.',
+        "sections": [
+            ('Les fourchettes du marché francilien', [
+                "Les tarifs relevés en Île-de-France en 2026 s'échelonnent de 3 à 8 € le mètre carré. Le bas de la fourchette — 3 à 5 € — correspond à des vitrages de plain-pied, accessibles des deux côtés sans matériel particulier.",
+                'Le haut — 6 à 8 € — concerne les vitrages en hauteur, qui demandent une perche télescopique ou une nacelle, et les vitrages à accès contraint : verrière, puits de lumière, baie donnant sur un vide.',
+                "L'Île-de-France se situe globalement 15 à 25 % au-dessus des tarifs nationaux sur ce type de prestation, essentiellement à cause des contraintes de déplacement et de stationnement.",
+            ]),
+            ('Pourquoi on compte en vantaux, pas en fenêtres', [
+                "C'est le malentendu le plus fréquent des devis de vitrerie. Une « fenêtre » n'est pas une unité de travail : une fenêtre à deux battants représente quatre faces à traiter, une baie coulissante à quatre vantaux en représente huit.",
+                "S'ajoutent les éléments qui ne sont pas du verre mais font partie du travail : les encadrements, les rails de coulissants — où s'accumulent poussière et graviers — et les appuis extérieurs.",
+                "Quand vous comparez deux devis, vérifiez d'abord ce qui est compté. Un tarif au mètre carré plus bas qui exclut les encadrements et les rails coûte souvent plus cher au final qu'un tarif plus élevé qui les inclut.",
+            ]),
+            ('Ce qui fait vraiment varier le devis', [
+                "<strong>L'accès extérieur.</strong> Une fenêtre qu'on peut ouvrir et traiter depuis l'intérieur ne coûte pas la même chose qu'une baie fixe donnant sur une cour où il faut installer du matériel.",
+                "<strong>La hauteur.</strong> Jusqu'à trois étages, la perche télescopique alimentée en eau osmosée permet de travailler depuis le sol, ce qui est rapide et sûr. Au-delà, il faut une nacelle ou des cordistes, et l'on change de métier et de tarif.",
+                "<strong>L'état de départ.</strong> Un vitrage jamais nettoyé depuis des années porte un dépôt minéral incrusté qui demande un traitement préalable. C'est une remise à zéro, facturée une fois ; l'entretien courant qui suit est bien moins cher.",
+                "<strong>La fréquence.</strong> Un contrat régulier se facture moins cher au passage qu'une intervention unique, parce que chaque passage est plus rapide et que le déplacement est planifié.",
+            ]),
+            ('Notre façon de chiffrer', [
+                'Nous chiffrons sur photos ou sur place, en comptant les vantaux et en précisant ce qui est inclus : faces intérieures, faces extérieures, encadrements, rails et appuis.',
+                "Nous ne travaillons pas en hauteur avec nacelle ni en accès par cordes : ce sont des métiers réglementés qui demandent des habilitations spécifiques. Nous traitons ce qui se fait depuis le sol à la perche ou depuis l'intérieur, ce qui couvre les maisons, les rez-de-chaussée commerciaux, les vérandas et la plupart des immeubles jusqu'à trois niveaux.",
+                "Quand votre besoin dépasse ce cadre, nous vous le disons plutôt que d'improviser. C'est une question de sécurité avant d'être une question d'assurance.",
+            ]),
+        ],
+        "faq": [
+            ('Pourquoi les devis de vitrerie sont-ils si difficiles à comparer ?',
+             "Parce qu'ils ne comptent pas la même chose. Vérifiez systématiquement si les encadrements, les rails et les appuis sont inclus, et si le prix couvre les deux faces."),
+            ('Travaillez-vous en hauteur ?',
+             "Jusqu'à trois niveaux environ, depuis le sol, avec une perche télescopique alimentée en eau osmosée. Au-delà, il faut une nacelle ou des cordistes : ce sont des métiers réglementés que nous ne pratiquons pas."),
+            ('Un contrat régulier revient-il moins cher ?',
+             "Oui, nettement. Chaque passage est plus rapide sur un vitrage entretenu, et le déplacement est planifié plutôt qu'improvisé."),
+        ],
+        "service": 'nettoyage-vitres-paris',
+    },
+    {
+        "slug": 'demoussage-terrasse-ile-de-france',
+        "cat": 'Extérieur',
+        "h1": 'Démoussage de terrasse en Île-de-France',
+        "title": 'Démoussage de terrasse en IDF',
+        "meta": 'Démoussage de terrasse en Île-de-France : pourquoi la mousse revient, la pression adaptée à chaque support, et la saison qui donne le meilleur résultat.',
+        "image": 'ba-terrasse2-apres.webp',
+        "lead": "La mousse n'est pas de la saleté : c'est un végétal vivant, qui a des racines. C'est pourquoi un simple passage à la haute pression la fait disparaître un mois puis revenir.",
+        "sections": [
+            ('Pourquoi la mousse revient toujours', [
+                'La haute pression arrache la partie visible de la mousse. Elle ne touche pas les spores, ni le mycélium logé dans la porosité du support. Trois semaines plus tard, la colonisation repart du même endroit.',
+                "C'est pour cela qu'un démoussage sérieux se fait en deux temps : décapage mécanique d'abord, traitement anti-mousse ensuite, avec un temps d'action de plusieurs heures à plusieurs jours selon le produit.",
+                "Le traitement seul, sans décapage préalable, ne fonctionne pas mieux : il ne pénètre pas à travers une couche de mousse épaisse. L'ordre compte autant que les deux opérations.",
+                "Les terrasses les plus touchées sont celles exposées au nord, sous les arbres, ou mal drainées. Là où l'eau stagne et où le soleil ne sèche pas, la mousse est structurelle : elle reviendra, et l'objectif réaliste est d'espacer les passages, pas de l'éliminer définitivement.",
+            ]),
+            ('La pression selon le support', [
+                "C'est le point où l'on abîme le plus de terrasses, et les dégâts sont irréversibles.",
+                '<strong>Le bois</strong> ne supporte pas la haute pression frontale : elle arrache les fibres tendres du printemps et laisse un aspect pelucheux qui grisera plus vite ensuite. Il se traite à pression modérée, en éventail, dans le sens de la fibre.',
+                '<strong>La pierre naturelle tendre</strong> — calcaire, pierre de Bourgogne — se creuse. Une pression trop forte laisse des sillons visibles en lumière rasante.',
+                '<strong>Le carrelage extérieur</strong> supporte bien la pression, mais ses joints, non : on les déchausse facilement, et un joint parti se refait au ciment, pas au nettoyeur.',
+                '<strong>Le béton désactivé et les dalles gravillonnées</strong> acceptent la pression la plus forte, à condition de ne pas insister au même endroit.',
+                "Nous réglons la pression et la distance de buse selon le support, et nous faisons un essai sur une zone discrète avant de traiter l'ensemble. C'est une minute qui évite un regret durable.",
+            ]),
+            ('La bonne saison', [
+                "Le printemps et l'automne donnent les meilleurs résultats. Le produit anti-mousse a besoin d'humidité pour agir et de douceur pour ne pas s'évaporer trop vite : en plein été, sur une dalle brûlante, il sèche avant d'avoir pénétré.",
+                "L'automne a un avantage supplémentaire : traiter avant l'hiver empêche la mousse de s'installer pendant la période où elle prospère le plus. Une terrasse traitée en octobre traverse l'hiver bien mieux qu'une terrasse traitée en avril.",
+                "Évitez de traiter juste avant une forte pluie, qui lessive le produit avant qu'il agisse, et par gel, qui bloque son action.",
+            ]),
+            ('Hydrofuge : utile ou non', [
+                "Un traitement hydrofuge appliqué après le démoussage réduit la porosité du support. L'eau perle au lieu de pénétrer, la mousse s'accroche moins bien, et l'intervalle entre deux démoussages s'allonge nettement.",
+                'Il se justifie sur les supports poreux — pierre naturelle, béton, terre cuite — et sur les terrasses exposées au nord. Il se justifie moins sur un carrelage émaillé, déjà peu poreux.',
+                "Un point à connaître : un hydrofuge modifie légèrement l'aspect du support, souvent en le fonçant un peu. Nous faisons systématiquement un essai sur une zone cachée avant de traiter l'ensemble, pour que vous voyiez le rendu avant de décider.",
+            ]),
+        ],
+        "faq": [
+            ('Combien de temps un démoussage tient-il ?',
+             "Un à trois ans selon l'exposition et le drainage. Une terrasse au nord, sous des arbres, se recolonise nettement plus vite qu'une terrasse ensoleillée et bien drainée. Un hydrofuge allonge l'intervalle."),
+            ('Peut-on nettoyer une terrasse en bois au Kärcher ?',
+             'À pression modérée seulement, en éventail et dans le sens de la fibre. La haute pression frontale arrache les fibres tendres et laisse un bois pelucheux qui grisera plus vite.'),
+            ('Le produit anti-mousse est-il dangereux pour les plantes ?',
+             'Nous protégeons les végétaux en bordure et nous rinçons les abords. Dites-nous ce qui est planté autour : cela conditionne le produit que nous employons et les précautions que nous prenons.'),
+            ('Quelle est la meilleure saison ?',
+             "Le printemps et l'automne. En plein été, le produit sèche avant d'avoir pénétré ; par gel, il n'agit pas. L'automne a l'avantage de protéger la terrasse pendant l'hiver."),
+        ],
+        "service": 'nettoyage-terrasse-paris',
+    },
+    {
+        "slug": 'prix-nettoyage-terrasse-m2',
+        "cat": 'Prix',
+        "h1": "Prix d'un nettoyage de terrasse au mètre carré",
+        "title": "Prix d'un nettoyage de terrasse",
+        "meta": 'Ce que coûte un nettoyage de terrasse en Île-de-France : décapage, anti-mousse et hydrofuge, et ce qui fait varier le devis au mètre carré.',
+        "image": 'ba-terrasse2-avant.webp',
+        "lead": "Le prix d'un nettoyage de terrasse dépend moins de la surface que du support et de ce qu'on y ajoute après le décapage.",
+        "sections": [
+            ('Trois prestations, trois prix', [
+                "Ce qu'on appelle « nettoyage de terrasse » recouvre en réalité trois opérations distinctes, qu'il faut distinguer sur un devis.",
+                "<strong>Le décapage seul.</strong> Passage à la pression adaptée au support, évacuation des résidus. C'est la prestation de base, celle qui rend la terrasse propre immédiatement — et celle après laquelle la mousse revient en quelques semaines.",
+                "<strong>Le décapage plus anti-mousse.</strong> On ajoute un traitement à temps d'action qui s'attaque aux spores et au mycélium. C'est ce qui fait la différence entre un an et trois mois de tranquillité.",
+                "<strong>Le décapage, l'anti-mousse et l'hydrofuge.</strong> On termine par un produit qui réduit la porosité du support. C'est le plus cher et le plus durable, justifié sur pierre naturelle, béton et terre cuite.",
+                "Un devis qui n'indique pas laquelle des trois est chiffrée ne veut rien dire. Demandez systématiquement.",
+            ]),
+            ('Ce qui fait varier le prix', [
+                '<strong>Le support.</strong> Un béton désactivé se traite vite. Une terrasse en bois demande un travail dans le sens de la fibre, plus lent. Une pierre tendre impose des précautions qui allongent encore.',
+                "<strong>L'état de départ.</strong> Une mousse épaisse installée depuis des années demande souvent deux passages : un premier décapage, un traitement, puis une reprise.",
+                "<strong>L'accès à l'eau et à l'électricité.</strong> Nous venons avec notre matériel, notre eau et notre groupe si nécessaire — mais une terrasse accessible depuis un point d'eau se traite plus vite qu'un toit-terrasse où tout monte par l'escalier.",
+                '<strong>Les abords.</strong> Une terrasse bordée de plantations demande une protection et un rinçage soigné des abords. Cela prend du temps et ce temps se facture.',
+            ]),
+            ('Repères et façon de chiffrer', [
+                "Nous chiffrons sur devis après photos ou visite, plutôt qu'à un tarif au mètre carré affiché d'avance. Ce n'est pas une réticence commerciale : deux terrasses de 30 m² peuvent demander du simple au triple selon le support et l'état.",
+                "Pour vous donner un ordre de grandeur avant même de nous contacter : c'est le support et l'ancienneté de la mousse qui commandent, pas la surface. Une petite terrasse en pierre tendre très encrassée coûte plus qu'une grande dalle béton entretenue.",
+                "Les frais de déplacement — 5 € par tranche de 5 km depuis Tremblay-en-France — figurent sur le devis. Aucun acompte n'est demandé : vous réglez après avoir vu le résultat, ce qui est particulièrement pertinent sur une prestation aussi visible.",
+            ]),
+            ('Quand grouper les prestations', [
+                "Une terrasse se nettoie rarement seule. Si vous nous faites venir, regardez ce qui l'entoure : le salon de jardin, les dalles de l'allée, le bas de mur, les volets, la façade accessible depuis le sol.",
+                'Le déplacement est le même et le matériel est déjà en place. Le coût par surface traitée chute nettement quand tout se fait le même jour.',
+                "Même logique pour la vitrerie : baies vitrées et véranda donnant sur la terrasse se traitent dans la foulée, à l'eau osmosée, sans nouveau déplacement.",
+            ]),
+        ],
+        "faq": [
+            ('Le prix est-il au mètre carré ?',
+             "Nous chiffrons sur devis. Le support et l'ancienneté de la mousse pèsent plus que la surface : une petite terrasse en pierre tendre très encrassée coûte plus qu'une grande dalle béton entretenue."),
+            ("L'hydrofuge vaut-il son prix ?",
+             "Sur un support poreux — pierre naturelle, béton, terre cuite — et sur une terrasse exposée au nord, oui : il allonge nettement l'intervalle entre deux démoussages. Sur un carrelage émaillé, il apporte peu."),
+            ("Faut-il un point d'eau sur place ?",
+             "Non. Nous venons avec notre eau et notre matériel, y compris un groupe électrogène si nécessaire. Cela dit, un accès direct à l'eau accélère l'intervention et se répercute sur le devis."),
+        ],
+        "service": 'nettoyage-terrasse-paris',
+    },
+    {
+        "slug": 'prix-nettoyage-bureaux-m2',
+        "cat": 'Prix',
+        "h1": "Prix d'un nettoyage de bureaux au mètre carré",
+        "title": "Prix d'un nettoyage de bureaux au m²",
+        "meta": "Tarifs d'entretien de bureaux en Île-de-France : fourchettes au m² et par mois, ce que cache un prix bas, et comment comparer deux devis.",
+        "image": 'bureau-entreprise.webp',
+        "lead": "Le tarif au mètre carré est le repère le plus utilisé et le plus trompeur du nettoyage professionnel. Voici ce qu'il recouvre réellement.",
+        "sections": [
+            ('Les fourchettes constatées', [
+                'Pour un entretien courant de bureaux, les tarifs relevés en France en 2026 se situent entre 1,50 et 4,00 € du mètre carré et par mois. Le cœur de marché, pour des bureaux classiques entretenus plusieurs fois par semaine, tourne autour de 1,50 à 3,00 €.',
+                'Sur un plateau de 100 m² avec un passage hebdomadaire, cela représente en pratique 200 à 400 € par mois.',
+                "L'Île-de-France se situe 10 à 15 % au-dessus de la moyenne nationale, pour des raisons de coût logistique et de tension sur la main-d'œuvre. Les commerces se situent plutôt entre 2 et 4 € du mètre carré et par mois, à cause de l'exposition au public.",
+            ]),
+            ("Ce qu'un prix au m² ne dit pas", [
+                "Un tarif au mètre carré n'a de sens que rapporté à une fréquence et à un périmètre. Trois devis affichant 2 € du m² peuvent recouvrir des prestations très différentes.",
+                '<strong>La fréquence.</strong> Deux euros pour un passage hebdomadaire et deux euros pour trois passages hebdomadaires ne sont évidemment pas la même offre.',
+                "<strong>Le périmètre.</strong> Les sanitaires sont-ils inclus ? Les vitres intérieures ? La cuisine ou l'espace café, qui demandent un traitement à part ? Les postes de travail eux-mêmes, ou seulement les circulations ?",
+                "<strong>Le temps de présence.</strong> C'est la donnée décisive et celle qu'on ne trouve jamais sur un devis. Un prestataire qui reste quarante minutes sur un plateau de 200 m² ne fait pas le même travail que celui qui y reste deux heures, quel que soit le prix affiché.",
+                "Demandez systématiquement le temps de présence par passage. C'est la seule question qui remet trois devis sur la même échelle.",
+            ]),
+            ("Ce qui n'est presque jamais dans le forfait", [
+                'Certains postes sont facturés en supplément par la quasi-totalité des prestataires. Autant le savoir avant de comparer.',
+                "L'extraction des moquettes, une à deux fois par an. Le nettoyage des vitres, en particulier extérieures. Le décapage et la remise en cire des sols durs. La remise en état après travaux ou après déménagement. Et la fourniture des consommables — papier, savon, sacs — qui représente un budget réel.",
+                "Un devis qui inclut tout cela dans un forfait mensuel bas doit vous alerter : soit ces postes ne seront pas faits, soit ils feront l'objet d'un avenant en cours de contrat.",
+            ]),
+            ('Notre positionnement', [
+                'Nous sommes une entreprise individuelle. Nous ne prenons pas de contrats multi-sites à grande échelle, et nous le disons clairement plutôt que de nous engager sur ce que nous ne pourrons pas tenir.',
+                "Sur un site ou quelques sites proches, en revanche, vous avez la même personne à chaque passage. Elle connaît vos locaux, elle sait où sont les points sensibles, et elle remarque ce qui change. C'est une différence réelle par rapport à une rotation d'intervenants.",
+                "Nous chiffrons avec le temps de présence indiqué, poste par poste, et nous distinguons ce qui est mensuel de ce qui est ponctuel. Vous n'aurez pas d'avenant en cours de route pour un poste que nous aurions oublié de mentionner.",
+                "Nous intervenons en horaires décalés — avant ouverture, après fermeture, week-end — sans supplément, parce que c'est la seule façon de travailler correctement sur un site occupé.",
+            ]),
+        ],
+        "faq": [
+            ("Quel est le prix moyen d'un nettoyage de bureaux ?",
+             "Entre 1,50 et 4,00 € du m² et par mois selon la fréquence et le périmètre, soit 200 à 400 € mensuels pour 100 m² avec un passage hebdomadaire. L'Île-de-France se situe 10 à 15 % au-dessus de la moyenne nationale."),
+            ("Comment comparer deux devis d'entretien ?",
+             'Par le temps de présence par passage, pas par le prix au mètre carré. Vérifiez ensuite le périmètre — sanitaires, vitres, espace café — et ce qui est ponctuel plutôt que mensuel.'),
+            ('Les consommables sont-ils inclus ?',
+             "Chez la plupart des prestataires, non : papier, savon et sacs sont facturés à part. Nous l'indiquons explicitement sur le devis, dans un sens comme dans l'autre."),
+            ('Facturez-vous un supplément pour les horaires décalés ?',
+             'Non. Avant ouverture, après fermeture ou le week-end, le tarif est le même.'),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'nettoyage-local-commercial-restaurant',
+        "cat": 'Professionnels',
+        "h1": 'Nettoyage de local commercial et de restaurant',
+        "title": 'Nettoyage de local commercial',
+        "meta": "Nettoyage de local commercial et de restaurant en Île-de-France : salle, sanitaires, vitrerie et sols, et ce qui relève d'un prestataire certifié.",
+        "image": 'bureau-entreprise.webp',
+        "lead": "Un commerce recevant du public se juge sur trois points : le sol, les sanitaires et la vitrine. Voici comment ils se traitent, et où s'arrête notre périmètre.",
+        "sections": [
+            ('Les trois points que voient vos clients', [
+                "<strong>Le sol.</strong> C'est ce que l'on regarde en entrant, souvent sans y penser. Dans un commerce alimentaire ou une restauration, le point critique n'est pas la surface mais les joints de carrelage, qui noircissent et que le lavage quotidien n'atteint pas. Ils demandent un traitement périodique séparé, à la brosse et au produit à temps de pose.",
+                "<strong>Les sanitaires.</strong> Le poste qui fait le plus de dégâts en avis clients. Les points réellement regardés sont le pied de cuvette, le joint entre la cuvette et le sol, le dessous du lavabo et l'état du distributeur. Une désinfection des points de contact, avec un produit adapté et un temps d'action respecté, fait la différence.",
+                "<strong>La vitrine et la porte.</strong> Traitées à l'eau osmosée, elles sèchent sans trace. La porte concentre l'essentiel des traces de mains et s'oublie systématiquement.",
+            ]),
+            ('La contrainte des horaires', [
+                "Un commerce ne se nettoie pas pendant qu'il reçoit du public. En restauration, la fenêtre est encore plus étroite : entre le service du soir et l'ouverture du lendemain, ou entre deux services.",
+                "Nous intervenons avant ouverture, après fermeture et le week-end, sans supplément. Sur un restaurant, cela veut dire tard le soir ou tôt le matin, et nous en tenons compte dans le planning plutôt que d'imposer un créneau qui vous arrangerait mal.",
+                "Le temps de séchage est le second paramètre. Un sol lavé doit être sec à l'ouverture : cela conditionne l'heure d'intervention autant que vos horaires.",
+            ]),
+            ('Ce que nous faisons', [
+                "Salle et circulations : sols, mobilier, banquettes, vitrages intérieurs, luminaires accessibles. Les banquettes en tissu relèvent de l'injection-extraction et se traitent comme un canapé.",
+                'Sanitaires : nettoyage complet, désinfection des points de contact, traitement du calcaire et des joints.',
+                "Vitrerie : vitrine, porte, vitrages intérieurs, à l'eau osmosée.",
+                'Extérieur accessible : devanture, seuil, terrasse en dur, mobilier de terrasse, à la pression adaptée au support.',
+                "Odeurs : traitement par ozone sur un local vide, hors présence de personnes, d'animaux et de plantes, suivi d'une aération. Utile sur une odeur de friture installée ou après un dégât des eaux.",
+                "Remise en état : reprise complète d'un local avant ouverture, après travaux ou en fin de bail commercial.",
+            ]),
+            ('Ce que nous ne faisons pas, et pourquoi', [
+                "<strong>Le dégraissage certifié des hottes et conduits d'extraction.</strong> C'est une obligation d'entretien liée au risque incendie, que les assureurs contrôlent et qui donne lieu à un certificat délivré par une entreprise spécialisée. Nous dégraissons les surfaces et les filtres accessibles ; le conduit et le certificat relèvent d'un autre métier.",
+                '<strong>La désinsectisation et la dératisation.</strong> Ce sont des activités réglementées, avec agrément et produits biocides soumis à autorisation. Nous ne les pratiquons pas et nous ne masquons pas un problème de nuisibles par un nettoyage.',
+                "<strong>Le plan de maîtrise sanitaire HACCP.</strong> Nous pouvons exécuter des tâches qui s'y inscrivent, mais nous ne délivrons pas d'attestation de conformité sanitaire.",
+                "Vous dire non sur ces trois points nous coûte des prestations. Cela vous évite surtout de croire couvert un risque qui ne l'est pas.",
+            ]),
+        ],
+        "faq": [
+            ('Nettoyez-vous les hottes de cuisine professionnelle ?',
+             "Nous dégraissons les surfaces et les filtres accessibles. Le dégraissage du conduit d'extraction avec certificat, exigé par les assureurs au titre du risque incendie, relève d'une entreprise certifiée : ce n'est pas notre métier."),
+            ('Intervenez-vous après le service, tard le soir ?',
+             "Oui, et tôt le matin, sept jours sur sept, sans supplément. Le temps de séchage des sols conditionne l'heure autant que vos horaires d'ouverture."),
+            ('Traitez-vous les banquettes en tissu ?',
+             "Oui, par injection-extraction, comme un canapé. C'est souvent le poste le plus rentable d'un restaurant : une banquette reprise transforme la perception de la salle."),
+            ('Pouvez-vous traiter une odeur de friture installée ?',
+             "Oui, par ozone, après dégraissage des surfaces. Le traitement se fait local vide, hors présence de personnes, d'animaux et de plantes, et suivi d'une aération avant réouverture."),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'prix-nettoyage-fin-de-chantier-m2',
+        "cat": 'Prix',
+        "h1": "Prix d'un nettoyage de fin de chantier au m²",
+        "title": "Prix d'un nettoyage de fin de chantier",
+        "meta": 'Tarifs de nettoyage de fin de chantier en Île-de-France au mètre carré, différence entre premier et second passage, et ce qui fait varier le devis.',
+        "image": 'intervention-3.webp',
+        "lead": "Le nettoyage après travaux se facture au mètre carré, mais la fourchette est large parce qu'elle recouvre deux prestations très différentes.",
+        "sections": [
+            ('Les fourchettes du marché', [
+                "Les tarifs relevés pour un nettoyage de fin de chantier se situent le plus souvent entre 4 et 10 € HT du mètre carré, avec un cœur de marché autour de 5 à 8 €. Certaines grilles montent jusqu'à 15 à 25 € du mètre carré sur des remises en état lourdes.",
+                "Cet écart n'est pas un écart de marge : il recouvre des situations très différentes. Un appartement rénové proprement, protégé pendant les travaux, se traite vite. Un chantier où le plâtre a circulé partout demande plusieurs fois le même temps.",
+                "En Île-de-France, comptez 15 à 25 % au-dessus des tarifs nationaux, essentiellement pour des raisons d'accès, de stationnement et d'évacuation.",
+            ]),
+            ('Premier passage et second passage', [
+                "C'est la distinction que les devis expliquent mal et qui explique la moitié des malentendus.",
+                'Le <strong>premier passage</strong>, ou nettoyage grossier, intervient dès la fin des travaux : évacuation des gravats fins, retrait des protections, décollage des adhésifs, dépoussiérage général. Il rend le chantier praticable.',
+                "Le <strong>second passage</strong>, ou nettoyage de finition, intervient vingt-quatre à quarante-huit heures plus tard. Il est indispensable, et voici pourquoi : la poussière de plâtre est extrêmement fine et reste en suspension longtemps après la fin des travaux. Elle retombe pendant une journée entière. Nettoyer une seule fois, c'est nettoyer avant que la poussière ne soit redescendue.",
+                "Un devis qui n'annonce qu'un seul passage sur un chantier avec plâtrerie vous laissera un logement à reprendre. Nous le disons systématiquement au devis, quitte à ce que notre chiffrage paraisse plus élevé qu'un concurrent qui ne l'annonce pas.",
+            ]),
+            ('Ce qui fait varier le prix', [
+                '<strong>La nature des travaux.</strong> La plâtrerie et le ponçage génèrent la poussière la plus fine et la plus pénétrante. La peinture laisse des projections ponctuelles, plus faciles. La pose de sol laisse des colles et des joints.',
+                "<strong>La protection pendant le chantier.</strong> Un chantier où les artisans ont bâché coûte nettement moins cher à nettoyer. C'est le meilleur investissement possible sur le poste nettoyage.",
+                '<strong>Les vitrages.</strong> Les projections de peinture et de plâtre sur le verre demandent un travail à la lame, lent et minutieux, sur les vitrages qui le supportent.',
+                "<strong>L'évacuation.</strong> Un chantier avec des déchets à évacuer n'est pas un chantier à nettoyer : c'est un débarras, qui relève d'une prestation et d'une filière différentes.",
+                "<strong>L'accès.</strong> Étage sans ascenseur, absence de stationnement, chantier encore actif à côté : cela pèse davantage que la surface.",
+            ]),
+            ('Notre façon de chiffrer', [
+                'Nous chiffrons sur photos ou sur place, en annonçant explicitement le nombre de passages prévus et ce que chacun comprend. Les frais de déplacement figurent au devis, à 5 € par tranche de 5 km depuis Tremblay-en-France.',
+                "Nous n'exigeons aucun acompte. Sur une fin de chantier, où le résultat se juge d'un coup d'œil, cela nous paraît la moindre des choses.",
+                'Un conseil qui ne nous rapporte rien : faites protéger pendant les travaux. Une bâche posée sur un parquet coûte quelques euros et vous économise une remise en état.',
+            ]),
+        ],
+        "faq": [
+            ('Pourquoi faut-il deux passages ?',
+             "La poussière de plâtre est si fine qu'elle reste en suspension et retombe pendant vingt-quatre à quarante-huit heures. Nettoyer une seule fois revient à nettoyer avant qu'elle ne soit redescendue."),
+            ('Évacuez-vous les gravats ?',
+             "Nous évacuons les résidus fins liés au nettoyage. Les gravats, encombrants et déchets de chantier relèvent d'un débarras et d'une filière de traitement différente : c'est un autre métier et un autre devis."),
+            ('Retirez-vous la peinture sur les vitres ?',
+             'Oui, à la lame sur les vitrages qui le supportent. Nous ne le faisons pas sur un verre traité, teinté ou filmé, qui se rayerait définitivement.'),
+        ],
+        "service": 'nettoyage-fin-de-chantier-paris',
+    },
+    {
+        "slug": 'nettoyage-siege-voiture-tache',
+        "cat": 'Automobile',
+        "h1": 'Nettoyage de sièges de voiture et détachage',
+        "title": 'Nettoyage de sièges de voiture',
+        "meta": 'Nettoyage de sièges de voiture à domicile : méthode selon la matière, taches courantes, temps de séchage et ce qui ne part pas.',
+        "image": 'auto-interieur-vw.webp',
+        "lead": 'Un siège de voiture cumule tout ce qui complique un détachage : une fibre serrée, une mousse épaisse en dessous, et un habitacle qui sèche mal.',
+        "sections": [
+            ('Chaque matière, sa méthode', [
+                "<strong>Le tissu</strong> est le cas le plus courant et le plus favorable. Il se traite par injection-extraction : on injecte, on aspire immédiatement, la mousse en dessous ne se gorge pas d'eau.",
+                "<strong>L'alcantara et les microfibres synthétiques</strong> demandent beaucoup plus de retenue. Trop d'eau les tache en auréole et le poil se couche définitivement s'il sèche mal. On travaille par petites zones, avec un brossage du sens du poil au séchage.",
+                "<strong>Le cuir</strong> ne se nettoie pas, il s'entretient. Un nettoyant à pH neutre, puis un nourrissant. Un cuir dégraissé sans être nourri redevient sec et craquelle — le nettoyage l'abîme alors au lieu de le préserver. C'est une prestation en option chez nous, précisément parce qu'elle demande ces deux temps.",
+                '<strong>Le simili</strong> se nettoie facilement mais se raye. On évite tout ce qui est abrasif, y compris les éponges à gratter dites « douces ».',
+            ]),
+            ('Les taches les plus fréquentes', [
+                "<strong>Le café et les sodas.</strong> Sucre et tanins. Ils s'extraient bien s'ils sont récents. Le sucre laisse un résidu collant qui refixe la poussière : c'est pour cela qu'une tache de soda « revient » quelques semaines après un nettoyage superficiel.",
+                "<strong>Le gras et les cosmétiques.</strong> Fond de teint sur l'appuie-tête, crème solaire sur le dossier. Ils demandent un solvant adapté avant l'extraction ; l'eau seule ne fait rien sur un corps gras.",
+                "<strong>Le lait et le vomi.</strong> Sur les sièges enfants surtout. L'urgence n'est pas la tache mais l'odeur, qui vient de la fermentation dans la mousse. Il faut extraire en profondeur, sinon l'odeur revient à la première journée chaude.",
+                "<strong>L'encre et le stylo.</strong> Le cas le plus difficile. Un résultat partiel est fréquent, un échec possible. Nous le disons avant de commencer.",
+                '<strong>Le sang.</strong> Se traite à froid, exclusivement. La chaleur coagule les protéines et fixe la tache définitivement : une eau chaude bien intentionnée rend la tache irrécupérable.',
+            ]),
+            ('Le séchage, vrai point critique en voiture', [
+                "Un habitacle est un volume clos, mal ventilé, où l'humidité ne s'évacue pas. C'est ce qui différencie un siège auto d'un canapé.",
+                "Un siège trop mouillé, dont la mousse s'est gorgée, met plusieurs jours à sécher et développe une odeur de moisi caractéristique. Le remède est alors pire que le mal d'origine.",
+                "C'est pourquoi nous travaillons en extraction contrôlée, en aspirant plus que nous n'injectons, et pourquoi nous laissons les portes ouvertes pendant l'intervention. Comptez deux à quatre heures avant de rouler vitres fermées, davantage par temps humide.",
+                "Un conseil pratique : faites traiter le matin d'une journée sèche plutôt qu'un soir de pluie. Cela change réellement le résultat.",
+            ]),
+            ("Quand l'odeur reste malgré tout", [
+                "Certaines odeurs ne sont pas dans le tissu mais dans le circuit de ventilation, sous les sièges, ou dans la mousse en profondeur. L'extraction ne les atteint pas.",
+                "Dans ces cas, un traitement par ozone finit le travail : le gaz circule dans tout l'habitacle, y compris les conduits d'aération, et détruit les molécules odorantes au lieu de les masquer. C'est la seule méthode efficace sur une odeur de tabac ancienne.",
+                "Le protocole est strict : véhicule vide, personne à bord, puis aération avant restitution. L'ozone est un gaz irritant pour les voies respiratoires ; il ne se pratique jamais en présence de quelqu'un. Nous le proposons à partir de 30 €, en complément d'un nettoyage — jamais à sa place, car une odeur dont la source est encore présente reviendra.",
+            ]),
+        ],
+        "faq": [
+            ('Combien de temps avant de pouvoir rouler ?',
+             'Deux à quatre heures vitres fermées, davantage par temps humide. Nous travaillons en extraction contrôlée pour ne pas gorger la mousse, ce qui est le vrai risque en habitacle clos.'),
+            ('Une tache de stylo part-elle ?',
+             'Rarement complètement. Nous obtenons souvent une atténuation nette, parfois un échec. Nous le disons avant de commencer plutôt que de vous le facturer après.'),
+            ('Que faire immédiatement après avoir renversé quelque chose ?',
+             "Tamponnez avec un chiffon blanc, sans frotter, du bord vers le centre. N'appliquez aucun produit : un produit ménager mal choisi peut fixer la tache ou décolorer le tissu autour."),
+            ('Traitez-vous les sièges en cuir ?',
+             'Oui, en option : nettoyant à pH neutre puis nourrissant. Les deux temps sont indispensables — un cuir dégraissé sans être nourri redevient sec et craquelle.'),
+        ],
+        "service": 'nettoyage-automobile-paris',
+    },
+    {
+        "slug": 'lavage-auto-domicile-paris',
+        "cat": 'Automobile',
+        "h1": 'Lavage auto à domicile à Paris et en Île-de-France',
+        "title": 'Lavage auto à domicile à Paris',
+        "meta": "Lavage auto à domicile à Paris : ce que le lavage sans eau permet, ce qu'il ne permet pas, et l'intérêt d'une intervention sur votre place.",
+        "image": 'auto-interieur-vw.webp',
+        "lead": 'Faire laver sa voiture là où elle est stationnée supprime le seul vrai coût du lavage : le temps que vous y passez. Encore faut-il savoir ce que cela permet techniquement.',
+        "sections": [
+            ('Pourquoi le domicile change tout à Paris', [
+                "En zone dense, aller au lavage représente facilement une heure entre le trajet, l'attente et le retour — sans compter la place de stationnement qu'on abandonne et qu'on ne retrouve pas.",
+                "Une intervention sur place supprime tout cela. Nous venons avec l'eau, l'électricité et le matériel : vous n'avez ni point d'eau ni prise à fournir, ce qui rend l'intervention possible en rue, en parking souterrain ou sur une place d'entreprise.",
+                "Le seul prérequis est un accès raisonnable au véhicule, avec assez d'espace pour ouvrir les portes et tourner autour. En parking souterrain, vérifiez la hauteur sous plafond si vous nous prévenez d'un utilitaire.",
+            ]),
+            ("Lavage sans eau : ce que c'est vraiment", [
+                "Le lavage dit « sans eau » n'est pas magique : c'est un produit lubrifiant pulvérisé qui encapsule la poussière pour qu'elle glisse au lieu de rayer, puis un essuyage à la microfibre propre.",
+                "Il fonctionne très bien sur un véhicule peu sale — poussière, pollen, traces de pluie. C'est le cas d'une voiture entretenue régulièrement, et c'est la majorité des situations en ville.",
+                "Il ne fonctionne pas sur un véhicule réellement encrassé : boue, sable, sel d'hiver, fientes séchées. Sur ces salissures, essuyer sans rincer revient à passer un abrasif sur la peinture. Nous préférons alors un lavage à l'eau, avec la méthode des deux seaux ou au nettoyeur à basse pression.",
+                "Autrement dit, la technique dépend de l'état du véhicule et non d'une préférence commerciale. Nous regardons avant de choisir, et nous vous le disons.",
+            ]),
+            ('Ce qui compte plus que le lavage lui-même', [
+                "La façon d'essuyer fait plus de dégâts que le produit employé. Les micro-rayures circulaires visibles au soleil sur les carrosseries foncées viennent presque toutes d'un essuyage avec une microfibre chargée de poussière, ou d'un rouleau de station.",
+                "Nous travaillons avec plusieurs microfibres, changées dès qu'elles se salissent, et jamais la même pour les bas de caisse et pour le capot. Ce détail explique l'essentiel de la différence de résultat à un an.",
+                "Les jantes se traitent en premier et avec un matériel dédié : la poussière de frein est métallique et abrasive, et une brosse qui a servi aux jantes n'a rien à faire sur la carrosserie.",
+            ]),
+            ('Formules et ce que nous ne faisons pas', [
+                "Nos formules vont de l'extérieur seul à l'intérieur complet, avec un pack combinant les deux. Les tarifs partent de 40 € et figurent sur notre grille tarifaire, avec le détail de ce que chaque formule comprend.",
+                "Les options les plus demandées sont le retrait des poils d'animaux, l'entretien du cuir et le traitement des odeurs par ozone.",
+                "Ce que nous ne faisons pas : le nettoyage moteur sous pression, qui expose les connectiques et l'électronique à un risque disproportionné au bénéfice ; le polissage correctif à la machine sur peinture abîmée, qui relève du carrossier ; et la rénovation d'optiques oxydées, qui demande un ponçage et un vernis.",
+                "Sur une carrosserie très marquée, nous pouvons améliorer nettement l'aspect sans prétendre effacer des rayures qui ont traversé le vernis. Nous le disons au devis, sur photos, avant d'intervenir.",
+            ]),
+        ],
+        "faq": [
+            ("Faut-il un point d'eau ou une prise électrique ?",
+             "Non. Nous venons avec notre eau, notre électricité et notre matériel. L'intervention est possible en rue, en parking souterrain ou sur une place d'entreprise."),
+            ('Le lavage sans eau raye-t-il la peinture ?',
+             "Pas sur un véhicule peu sale, pour lequel il est conçu. Sur un véhicule réellement encrassé — boue, sable, sel — il devient risqué : nous passons alors à un lavage à l'eau. C'est l'état du véhicule qui décide, pas une préférence."),
+            ('Nettoyez-vous le moteur ?',
+             "Pas sous pression. Le risque pour les connectiques et l'électronique est disproportionné par rapport au bénéfice esthétique. Nous nous limitons à un dépoussiérage des abords visibles."),
+            ('Combien de temps dure une intervention ?',
+             "D'environ une heure pour un extérieur seul à trois heures pour un intérieur complet avec extraction des sièges. Le devis précise la durée estimée."),
+        ],
+        "service": 'nettoyage-automobile-paris',
+    },
+    {
+        "slug": 'nettoyage-apres-travaux-appartement',
+        "cat": 'Chantier',
+        "h1": 'Nettoyage après travaux dans un appartement',
+        "title": "Nettoyage après travaux d'appartement",
+        "meta": "Nettoyage après travaux en appartement : pourquoi la poussière de plâtre revient, l'ordre des opérations et les surfaces à ne pas gratter.",
+        "image": 'intervention-3.webp',
+        "lead": "La poussière de chantier n'est pas de la poussière ordinaire. Elle est plus fine, elle vole plus longtemps, et elle se dépose une deuxième fois après votre premier nettoyage.",
+        "sections": [
+            ('Pourquoi elle revient le lendemain', [
+                'Une particule de plâtre poncé mesure quelques microns. À cette taille, elle ne tombe pas : elle flotte. Un grain de sable retombe en une seconde, une particule de plâtre met des heures.',
+                "Elle est aussi remise en suspension au moindre mouvement d'air — une porte qui s'ouvre, un radiateur qui démarre, quelqu'un qui traverse la pièce. C'est un cycle qui se répète pendant vingt-quatre à quarante-huit heures après la fin des travaux.",
+                "D'où la règle : deux passages, espacés d'au moins vingt-quatre heures. Le premier retire l'essentiel, le second récupère ce qui est retombé. Un seul passage donne un logement propre le soir même et poussiéreux le lendemain matin, et c'est le motif de déception numéro un sur ce type de prestation.",
+                "Si vous ne pouvez faire qu'un seul passage, faites-le le plus tard possible : deux jours après la fin des travaux plutôt que le jour même.",
+            ]),
+            ("L'ordre des opérations", [
+                'On commence par ce qui est en hauteur et on descend, comme toujours, mais avec deux étapes propres au chantier.',
+                "D'abord le retrait des protections et des adhésifs — bâches, films de fenêtre, ruban de masquage. Un adhésif laissé trop longtemps au soleil laisse une colle bien plus difficile à retirer : c'est la première chose à faire.",
+                "Ensuite l'aspiration, jamais le balayage. Balayer une poussière de plâtre revient à la remettre en l'air. Il faut un aspirateur à filtration fine, sinon on la rejette par la sortie d'air.",
+                "Puis le lavage des surfaces, du haut vers le bas, avec un rinçage fréquent — le plâtre en suspension dans l'eau de lavage laisse un voile blanc en séchant, et c'est ce qui donne cet aspect terne sur les carrelages après travaux.",
+                "Les sols en dernier, en reculant vers la sortie, et souvent deux fois : un premier lavage qui charge l'eau, un second qui rince réellement.",
+            ]),
+            ('Les surfaces à ne pas gratter', [
+                'Sur un chantier, on est tenté de gratter tout ce qui accroche. Certaines surfaces ne le supportent pas, et les dégâts sont définitifs.',
+                "<strong>Les vitrages traités, teintés ou filmés.</strong> La lame les raye. Nous ne l'utilisons que sur du verre nu, après vérification.",
+                "<strong>Les robinetteries et les inox brossés.</strong> Une éponge abrasive raye le chrome et casse le sens du brossage sur l'inox — la trace reste visible sous tous les éclairages.",
+                "<strong>Les parquets vitrifiés récents.</strong> Le vernis met plusieurs semaines à durcir complètement. Un lavage trop mouillé ou un produit trop alcalin le mate. Nous travaillons à l'humidité minimale sur un parquet neuf.",
+                '<strong>Les peintures fraîches.</strong> Une peinture a besoin de plusieurs semaines pour atteindre sa dureté finale. On dépoussière, on ne lessive pas.',
+            ]),
+            ("Ce qui relève d'un autre métier", [
+                "Le nettoyage de fin de chantier n'est pas un débarras. Nous évacuons les résidus fins liés au nettoyage ; les gravats, les chutes de matériaux et les encombrants relèvent d'une benne et d'une filière de traitement, avec ses propres obligations.",
+                "De même, une tache de peinture sur un carrelage poreux ou une coulure d'enduit dans un joint relèvent parfois de la reprise par l'artisan, pas du nettoyage. Nous vous le signalons plutôt que d'insister au risque d'abîmer le support.",
+                "Enfin, si votre logement a subi un dégât des eaux pendant les travaux, une odeur d'humidité peut persister après séchage. Un traitement par ozone la traite efficacement, à condition que la source ait été traitée d'abord — sinon elle reviendra.",
+            ]),
+        ],
+        "faq": [
+            ('Combien de temps après les travaux faut-il nettoyer ?',
+             'Attendez au moins vingt-quatre heures après le dernier ponçage, le temps que la poussière retombe. Idéalement, prévoyez deux passages espacés de vingt-quatre à quarante-huit heures.'),
+            ('Peut-on laver un parquet vitrifié neuf ?',
+             "Avec une humidité minimale seulement. Le vernis met plusieurs semaines à durcir complètement : trop d'eau ou un produit trop alcalin le mate définitivement."),
+            ('Évacuez-vous les gravats ?',
+             "Non, uniquement les résidus fins liés au nettoyage. Les gravats et encombrants relèvent d'un débarras avec benne, qui est un autre métier et une autre filière."),
+        ],
+        "service": 'nettoyage-fin-de-chantier-paris',
+    },
+    {
+        "slug": 'nettoyage-veranda-baie-vitree',
+        "cat": 'Vitrerie',
+        "h1": 'Nettoyage de véranda et de baie vitrée',
+        "title": 'Nettoyage de véranda et baie vitrée',
+        "meta": "Nettoyage de véranda et de baie vitrée : toiture inclinée, rails de coulissants, joints et structure, et les vitrages qu'on ne gratte jamais.",
+        "image": 'vitre-controle.webp',
+        "lead": "Une véranda pose un problème que n'a pas une fenêtre : sa toiture est inclinée, exposée en permanence, et personne ne la voit jusqu'à ce qu'elle assombrisse la pièce.",
+        "sections": [
+            ('La toiture, la vraie difficulté', [
+                "Le vitrage de toiture d'une véranda reçoit tout : pluie chargée de particules, pollen, fientes, feuilles, et le ruissellement des arbres alentour. Il ne s'auto-nettoie pas, contrairement à une vitre verticale que la pluie rince en partie.",
+                "Le dépôt s'accumule d'abord dans le bas des panneaux, contre les traverses, puis remonte. Le résultat est progressif et donc peu remarqué : la lumière baisse d'année en année sans qu'on identifie la cause.",
+                "Nous traitons ces toitures depuis le sol, avec une perche télescopique alimentée en eau osmosée. C'est plus sûr que de monter dessus — beaucoup de toitures de véranda en polycarbonate ou en verre feuilleté ne sont pas conçues pour supporter un poids — et l'eau osmosée sèche sans laisser de trace, ce qui est décisif sur une surface qu'on ne peut pas essuyer.",
+            ]),
+            ('Les rails, les joints et la structure', [
+                "Les rails de baies coulissantes accumulent de la poussière, du sable et des graviers, qui finissent par gêner le coulissement et user les galets. C'est un point d'entretien mécanique autant que de propreté, et il est presque toujours oublié.",
+                "Ils demandent une aspiration fine avant tout lavage : verser de l'eau dans un rail plein de poussière crée une boue qui durcit et empire les choses.",
+                "Les joints en caoutchouc, eux, se nettoient sans solvant : un solvant les dessèche et les fait craqueler, ce qui compromet l'étanchéité. Eau et produit neutre suffisent.",
+                "La structure — aluminium laqué ou PVC — se lave à l'eau savonneuse. Le PVC jauni par les UV ne se récupère pas au nettoyage : c'est le matériau qui a évolué, pas un encrassement.",
+            ]),
+            ("Ce qu'on ne gratte jamais", [
+                'Le réflexe de la lame sur une trace tenace ruine plus de vitrages que tout le reste.',
+                '<strong>Le polycarbonate</strong>, très courant en toiture de véranda, est un plastique : il se raye au moindre grattage et les rayures se voient à contre-jour de façon permanente.',
+                "<strong>Les vitrages à couche</strong> — autonettoyants, à contrôle solaire, à isolation renforcée — portent un traitement de surface d'une finesse de quelques nanomètres. Une lame ou une éponge abrasive le retire par plaques, et le vitrage devient irrégulier.",
+                '<strong>Les films posés après coup</strong>, solaires ou anti-effraction, se rayent et se décollent.',
+                "En pratique, nous partons du principe qu'un vitrage est traité tant que le contraire n'est pas établi. Sur une trace résistante, nous passons du temps plutôt que d'employer la force.",
+            ]),
+            ('La bonne fréquence', [
+                "Deux passages par an conviennent à la plupart des vérandas : un au printemps, après la saison des pluies et avant les pollens, un à l'automne, après la chute des feuilles.",
+                'Une véranda sous des arbres demande davantage, surtout si des résineux la surplombent : la résine se fixe et devient difficile à retirer si on la laisse cuire au soleil tout un été.',
+                "L'intérieur suit un rythme différent : c'est la condensation qui commande. Une véranda mal ventilée développe des traces de condensation et des moisissures dans les angles bas des vitrages, qu'il vaut mieux traiter avant qu'elles ne s'installent dans les joints.",
+            ]),
+        ],
+        "faq": [
+            ('Montez-vous sur la toiture de la véranda ?',
+             'Non. Beaucoup de toitures en polycarbonate ou en verre feuilleté ne supportent pas un poids. Nous travaillons depuis le sol, à la perche télescopique alimentée en eau osmosée.'),
+            ('Peut-on gratter une trace sur un vitrage de véranda ?',
+             'Nous ne le faisons pas. Le polycarbonate se raye définitivement et les vitrages à couche perdent leur traitement de surface. Nous privilégions le temps de pose à la force.'),
+            ('À quelle fréquence nettoyer une véranda ?',
+             "Deux fois par an, au printemps et à l'automne. Davantage si des arbres la surplombent, en particulier des résineux."),
+        ],
+        "service": 'nettoyage-vitres-paris',
+    },
+    {
+        "slug": 'nettoyage-canape-cuir-alcantara',
+        "cat": 'Textile',
+        "h1": 'Nettoyage de canapé en cuir et en alcantara',
+        "title": 'Nettoyage de canapé cuir et alcantara',
+        "meta": "Entretien d'un canapé en cuir ou en alcantara : pourquoi l'eau ne suffit pas, les produits à éviter, et ce qui ne se rattrape plus.",
+        "image": 'canape-nettoyage.webp',
+        "lead": "Le cuir et l'alcantara sont les deux matières où un nettoyage mal conduit fait plus de dégâts que l'encrassement qu'il prétend traiter.",
+        "sections": [
+            ("Le cuir ne se nettoie pas, il s'entretient", [
+                "Un cuir de canapé est une peau tannée, recouverte le plus souvent d'une finition pigmentée. Ce qui l'abîme n'est pas la saleté mais le dessèchement : les huiles de tannage migrent lentement, la fibre perd sa souplesse et finit par craqueler aux points de flexion — l'assise, les accoudoirs.",
+                "Un nettoyage dégraissant accélère ce processus s'il n'est pas suivi d'un nourrissant. C'est l'erreur la plus fréquente : on nettoie, le cuir paraît net, et six mois plus tard il est plus sec qu'avant.",
+                "L'entretien correct se fait donc en deux temps : un nettoyant à pH neutre qui retire le film de sébum et de poussière, puis un lait nourrissant qui restitue la souplesse. Les deux, systématiquement.",
+                "Ce qui est à proscrire : les lingettes ménagères, les nettoyants multi-usages alcalins, l'alcool, et tout ce qui contient un solvant. Ils dissolvent la finition pigmentée, ce qui se voit d'abord comme un éclaircissement puis comme une usure irrégulière.",
+            ]),
+            ('Le cas particulier du cuir aniline', [
+                "Il existe deux grandes familles. Le cuir pigmenté, majoritaire, porte une couche de finition qui le protège : il tolère un nettoyage aqueux léger. Le cuir aniline ou semi-aniline, plus haut de gamme, est teinté dans la masse sans couche protectrice — c'est ce qui lui donne son toucher et sa patine.",
+                "Sur un aniline, une goutte d'eau laisse une auréole. Un produit aqueux appliqué sur toute la surface en laisse partout.",
+                "Le test qui les distingue, à faire dans un endroit caché : déposez une goutte d'eau. Si elle perle, le cuir est pigmenté. Si elle pénètre et fonce immédiatement, il est aniline et relève d'un entretien à sec, avec des produits spécifiques.",
+                'Nous faisons ce test avant toute intervention. Un canapé aniline mal traité perd sa valeur, et cela ne se rattrape pas.',
+            ]),
+            ("L'alcantara et les microfibres", [
+                "L'alcantara est une microfibre synthétique dont l'aspect vient de la façon dont le poil accroche la lumière. Deux choses le dégradent : trop d'eau, qui laisse une auréole nette au séchage, et un poil couché qui sèche dans cette position.",
+                "On y travaille donc par petites zones, avec une extraction très contrôlée — on aspire beaucoup plus qu'on n'injecte — et un brossage du sens du poil pendant le séchage. Un séchage sans brossage donne des zones mates et des zones brillantes qui se voient sous tous les éclairages.",
+                "Une tache grasse sur alcantara demande un solvant adapté avant l'extraction. L'eau seule n'a aucun effet sur un corps gras, et insister à l'eau ne fait qu'étendre l'auréole.",
+            ]),
+            ('Ce qui ne se rattrape plus', [
+                "Autant le dire clairement, parce que c'est ce que les gens espèrent le plus.",
+                "Un cuir craquelé aux points de flexion ne revient pas. Les fibres sont cassées ; un nourrissant assouplit la zone autour mais ne recolle rien. Cela relève d'une réfection en atelier, voire d'un remplacement de panneau.",
+                "Une finition pigmentée usée jusqu'à laisser apparaître la couleur naturelle du cuir — fréquent sur les accoudoirs — relève d'une retouche de teinte, qui est un métier de sellier.",
+                'Un alcantara dont le poil a été arraché par un frottement répété ne se redresse pas.',
+                'Nous regardons ces points sur vos photos avant de vous proposer une intervention. Quand nous estimons que le résultat vous décevra, nous le disons plutôt que de le facturer.',
+            ]),
+        ],
+        "faq": [
+            ('Comment savoir si mon cuir est aniline ?',
+             "Déposez une goutte d'eau dans un endroit caché. Si elle perle, le cuir est pigmenté. Si elle pénètre et fonce aussitôt, il est aniline : il demande un entretien à sec et ne tolère pas les produits aqueux."),
+            ('Peut-on nettoyer un canapé en cuir avec une lingette ménagère ?',
+             "Non. Les lingettes multi-usages sont alcalines et dessèchent la finition. À terme, elles font davantage de dégâts que la saleté qu'elles retirent."),
+            ('Un canapé en alcantara peut-il être traité à domicile ?',
+             "Oui, avec une extraction très contrôlée et un brossage du poil au séchage. C'est la maîtrise de la quantité d'eau qui fait tout le résultat sur cette matière."),
+            ('Un cuir craquelé se répare-t-il par nettoyage ?',
+             "Non. Les fibres sont cassées : un nourrissant assouplit les abords mais ne reconstitue rien. Cela relève d'une réfection en atelier."),
+        ],
+        "service": 'nettoyage-textile-paris',
+    },
+    {
+        "slug": 'nettoyage-fauteuil-chaise-bureau',
+        "cat": 'Professionnels',
+        "h1": 'Nettoyage de fauteuils et chaises de bureau',
+        "title": 'Nettoyage de fauteuils de bureau',
+        "meta": 'Nettoyage de sièges et fauteuils de bureau en entreprise : assise, dossier, accoudoirs et roulettes, avec un séchage compatible avec la reprise.',
+        "image": 'bureau-entreprise.webp',
+        "lead": 'Un fauteuil de bureau est utilisé sept heures par jour, cinq jours par semaine, par la même personne. Aucun textile domestique ne subit cela.',
+        "sections": [
+            ('Où se concentre réellement la saleté', [
+                "Trois zones, et elles ne sont pas celles qu'on croit.",
+                "<strong>L'assise</strong> reçoit la transpiration et le sébum, en continu. C'est la zone qui fonce le plus, de manière uniforme, si progressivement que personne ne le remarque avant de comparer avec un siège neuf.",
+                "<strong>Le haut du dossier</strong> reçoit le contact des cheveux et des produits capillaires. C'est là qu'apparaît le film gras le plus net, et c'est la zone la plus visible quand on entre dans un open space.",
+                "<strong>Les accoudoirs</strong>, souvent en polyuréthane, deviennent collants. Ce n'est pas de la saleté déposée : c'est le matériau lui-même qui se dégrade par hydrolyse. Un accoudoir vraiment poisseux ne se nettoie pas, il se remplace.",
+                "S'ajoutent les roulettes, où s'enroulent cheveux et fibres de moquette au point de bloquer la rotation. Cela se démonte et se dégage, et c'est cinq minutes qui rendent le siège à nouveau confortable.",
+            ]),
+            ('La méthode et la contrainte de séchage', [
+                "Le tissu d'un siège de bureau est en général un polyester serré, robuste, qui supporte bien l'injection-extraction. La difficulté n'est pas la matière, c'est la mousse dessous : épaisse, elle retient l'eau et sèche lentement.",
+                "On travaille donc en extraction franche, en aspirant nettement plus qu'on n'injecte, avec un prétraitement des zones grasses. Comptez trois à cinq heures de séchage, ce qui impose de traiter en fin de journée ou le vendredi.",
+                "Le mesh, ces dossiers en résille tendue très répandus, se traite différemment : il ne retient pas la saleté en profondeur mais l'accumule sur le cadre et dans la tension du maillage. Un dépoussiérage et un nettoyage de surface suffisent, et une extraction serait inutile.",
+                "Les piètements et vérins se dépoussièrent et se dégraissent : c'est là que se voit la différence entre un siège nettoyé et un siège remis à neuf.",
+            ]),
+            ("Organiser l'intervention sur un plateau", [
+                'Traiter cinquante sièges un par un pendant les heures de bureau ne fonctionne pas : chaque personne perd son poste pendant plusieurs heures.',
+                'Le schéma qui marche : intervention le vendredi après-midi ou le vendredi soir, sièges regroupés par zone, séchage pendant le week-end, plateau récupéré le lundi. Sur les grands plateaux, on procède par zones sur plusieurs semaines.',
+                "Nous traitons volontiers les sièges en même temps que l'extraction de la moquette : le matériel est le même, le déplacement est unique, et le coût par siège baisse nettement. C'est le regroupement le plus rentable sur ce type de prestation.",
+            ]),
+            ('Remplacer ou nettoyer', [
+                "Un siège de bureau correct coûte plusieurs centaines d'euros. Le nettoyer en coûte une fraction, et prolonge son usage de plusieurs années. Le calcul est presque toujours favorable au nettoyage.",
+                "Sauf dans trois cas. Un accoudoir en polyuréthane poisseux, comme dit plus haut : c'est le matériau qui se décompose. Une mousse d'assise affaissée, qui ne soutient plus : c'est un enjeu de confort et de santé au travail, pas de propreté. Et un vérin à gaz qui ne tient plus la hauteur, qui est une pièce d'usure à remplacer.",
+                "Dans ces cas, nettoyer ne sert à rien et nous vous le disons. Le reste du temps, un plateau de sièges repris change l'impression générale des locaux pour un budget sans rapport avec un renouvellement.",
+            ]),
+        ],
+        "faq": [
+            ('Combien de temps un fauteuil de bureau met-il à sécher ?',
+             "Trois à cinq heures. La mousse d'assise est épaisse et retient l'eau : nous travaillons en extraction franche et nous privilégions une intervention le vendredi."),
+            ('Traitez-vous les dossiers en résille ?',
+             "Oui, mais différemment. Le mesh ne retient pas la saleté en profondeur : un dépoussiérage et un nettoyage de surface suffisent, une extraction n'apporterait rien."),
+            ('Un accoudoir collant se nettoie-t-il ?',
+             "Non. Un polyuréthane poisseux se décompose par hydrolyse : c'est le matériau lui-même qui se dégrade. Il se remplace, il ne se nettoie pas."),
+            ('Peut-on traiter les sièges en même temps que la moquette ?',
+             "Oui, et c'est la solution la plus économique : même matériel, même déplacement, coût par siège nettement réduit."),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'nettoyage-salon-jardin-mobilier-exterieur',
+        "cat": 'Extérieur',
+        "h1": 'Nettoyage de salon de jardin et mobilier extérieur',
+        "title": 'Nettoyage de salon de jardin',
+        "meta": "Nettoyage de mobilier de jardin : résine tressée, teck, aluminium et coussins d'extérieur, avec la méthode adaptée à chaque matériau.",
+        "image": 'ba-terrasse2-apres.webp',
+        "lead": "Le mobilier d'extérieur passe l'hiver dehors ou dans un abri humide. Ce qu'il faut en retirer au printemps n'est pas de la poussière : c'est un dépôt vivant.",
+        "sections": [
+            ("Ce qui s'installe pendant l'hiver", [
+                "Sur un salon laissé dehors, trois choses se déposent. Un film vert d'algues microscopiques, qui apparaît d'abord sur les faces nord. Des lichens, sur les surfaces rugueuses et poreuses. Et un dépôt gras de pollution atmosphérique, particulièrement marqué en zone urbaine et près des axes routiers.",
+                'Sous un abri, le problème est différent mais pas moindre : la condensation sans ventilation favorise les moisissures, surtout sur les textiles et les mousses de coussins.',
+                "Aucun de ces dépôts ne part au jet d'eau seul. Ils demandent un produit et un temps d'action, ce qui est exactement l'inverse de ce que l'on fait spontanément avec un nettoyeur haute pression.",
+            ]),
+            ('Chaque matériau, sa méthode', [
+                "<strong>La résine tressée</strong> se nettoie à la brosse souple et au produit neutre. La haute pression casse les brins, et un brin cassé s'effiloche et se propage. C'est le matériau le plus souvent abîmé par excès de zèle.",
+                "<strong>Le teck</strong> grise naturellement sous les UV : ce n'est pas de la saleté, c'est la lignine de surface qui évolue. Si le gris vous convient, un lavage doux suffit. Si vous voulez retrouver le miel d'origine, il faut un dégriseur puis un saturateur — deux produits, deux temps.",
+                "<strong>L'aluminium laqué</strong> se lave à l'eau savonneuse. Rien d'abrasif : la laque se raye et l'aluminium s'oxyde ensuite par ces micro-rayures.",
+                "<strong>Le plastique et le PVC</strong> supportent bien un nettoyage franc, mais un PVC jauni par les UV ne se récupère pas : le matériau a changé, ce n'est plus un encrassement.",
+                "<strong>Le fer forgé</strong> demande de surveiller les points de rouille naissante, à traiter avant qu'ils ne s'étendent sous la peinture.",
+            ]),
+            ("Coussins et textiles d'extérieur", [
+                "C'est le poste le plus négligé et celui qui sent le plus mauvais au printemps.",
+                'Les housses déhoussables se lavent selon leur étiquette, généralement à basse température, sans sèche-linge : la chaleur détruit les traitements déperlants.',
+                "Les coussins non déhoussables relèvent de l'injection-extraction, avec une contrainte forte : la mousse d'extérieur est épaisse et sèche lentement. Il faut extraire beaucoup et sécher à l'air libre, en plein soleil si possible, pendant une journée complète. Un coussin remisé encore humide développe une moisissure interne qui ne se rattrape plus.",
+                "Quand l'odeur d'humidité persiste après nettoyage et séchage, un traitement par ozone la traite efficacement — sur mobilier sorti, hors présence de personnes, d'animaux et de plantes, puis aération.",
+            ]),
+            ('Le bon moment et le regroupement', [
+                "Le meilleur moment est le début du printemps, avant la première utilisation, par temps sec et doux. Les produits anti-mousse ont besoin d'humidité pour agir mais pas de pluie battante, et les coussins ont besoin de soleil pour sécher.",
+                'Un second passage en fin de saison, avant remisage, prolonge nettement la durée de vie du mobilier — surtout pour les textiles, qui ne devraient jamais être rangés sales ni humides.',
+                "Le mobilier se traite naturellement en même temps que la terrasse : même déplacement, même matériel, et la terrasse doit de toute façon être dégagée pour être nettoyée. C'est le regroupement évident.",
+            ]),
+        ],
+        "faq": [
+            ('Peut-on nettoyer de la résine tressée au Kärcher ?',
+             "Non. La haute pression casse les brins, qui s'effilochent ensuite de proche en proche. Brosse souple et produit neutre uniquement."),
+            ("Comment retrouver la couleur d'origine du teck ?",
+             "Avec un dégriseur puis un saturateur. Le gris n'est pas de la saleté mais l'évolution naturelle de la lignine sous les UV : un simple lavage ne le retire pas."),
+            ("Que faire des coussins d'extérieur ?",
+             "Housses déhoussables au lavage selon l'étiquette, sans sèche-linge. Coussins fixes en injection-extraction avec un séchage complet à l'air libre — un coussin remisé humide moisit de l'intérieur."),
+        ],
+        "service": 'nettoyage-terrasse-paris',
+    },
+    {
+        "slug": 'nettoyage-parking-local-poubelles',
+        "cat": 'Copropriété',
+        "h1": 'Nettoyage de parking et de local poubelles',
+        "title": 'Nettoyage de parking et local poubelles',
+        "meta": "Nettoyage de parking souterrain et de local poubelles en copropriété : traces d'huile, odeurs, fréquence, et contraintes d'un espace fermé.",
+        "image": 'intervention-3.webp',
+        "lead": "Ce sont les deux endroits d'un immeuble dont personne ne parle en assemblée générale, jusqu'au jour où l'odeur remonte dans la cage d'escalier.",
+        "sections": [
+            ('Le local poubelles : traiter la cause', [
+                "L'odeur d'un local poubelles ne vient pas des conteneurs mais du sol et des parois. Les jus qui s'écoulent des sacs pénètrent dans la porosité du béton, y fermentent, et continuent de sentir longtemps après que les conteneurs ont été sortis.",
+                "Un lavage de surface ne fait donc rien de durable. Il faut une haute pression avec eau chaude si possible, un dégraissant alcalin sur le sol, un temps de pose, puis un rinçage complet vers l'évacuation.",
+                "Les parois se traitent aussi, jusqu'à hauteur d'homme au minimum : les projections montent plus haut qu'on ne l'imagine lors des manipulations de conteneurs.",
+                "Quand l'odeur persiste après le lavage — parce qu'elle est descendue dans le béton ou installée dans la ventilation — un traitement par ozone la traite en profondeur. Le local est fermé pendant l'opération, sans présence humaine ni animale, puis ventilé avant réouverture. C'est le seul moyen d'atteindre ce que l'eau ne touche pas.",
+            ]),
+            ('Le parking souterrain', [
+                "Deux problèmes distincts s'y cumulent.",
+                "<strong>Les traces d'huile et de carburant.</strong> Elles pénètrent dans le béton et deviennent glissantes quand elles sont humides — c'est un enjeu de sécurité autant que d'aspect. Elles se traitent au dégraissant avec temps de pose, puis à la haute pression. Une tache ancienne ne disparaît jamais totalement : le béton est teinté dans son épaisseur. On retire le gras, pas la coloration.",
+                "<strong>La poussière de frein et de pneu.</strong> Un dépôt noirâtre, très fin, qui se dépose partout, y compris sur les murs et les portes de box. Il se lave mais revient : c'est un entretien périodique, pas une opération unique.",
+                "S'ajoutent les grilles d'évacuation, à curer, et le marquage au sol, qui s'efface et relève d'une reprise en peinture — pas du nettoyage.",
+            ]),
+            ("Les contraintes d'un espace fermé", [
+                "Un parking souterrain est un volume clos, mal ventilé, où l'on travaille à l'eau et à l'électricité. Cela impose plusieurs précautions.",
+                "L'évacuation de l'eau de lavage doit être identifiée avant de commencer. Un parking dont les grilles sont obstruées se transforme en piscine, et l'eau chargée de dégraissant ne doit pas partir n'importe où.",
+                "La ventilation conditionne l'usage des produits : un dégraissant alcalin en espace confiné demande une aération active pendant et après l'intervention.",
+                "Enfin, l'accès : il faut que les places soient libérées. C'est le point d'organisation le plus délicat en copropriété, et il vaut mieux le traiter par zones successives, avec un affichage plusieurs jours à l'avance, que de tenter de vider tout le parking le même jour.",
+            ]),
+            ('Fréquence raisonnable', [
+                "Le local poubelles gagne à être traité en profondeur deux à quatre fois par an, en plus du passage courant de l'entretien hebdomadaire. En été, la fréquence doit augmenter : la fermentation est bien plus rapide.",
+                'Le parking se traite une à deux fois par an. Une fois suffit sur un parking de résidence peu circulé ; deux fois se justifient si des commerces ou des livraisons y accèdent.',
+                "Ce sont des prestations ponctuelles, qui ne figurent presque jamais dans un contrat d'entretien courant. Elles se chiffrent séparément, et c'est souvent l'écart entre deux devis d'entretien d'immeuble : l'un les inclut, l'autre non.",
+            ]),
+        ],
+        "faq": [
+            ("Une tache d'huile ancienne part-elle du béton ?",
+             "Le gras se retire, la coloration non. Le béton est teinté dans son épaisseur : on récupère l'adhérence et l'aspect général, pas la couleur d'origine. Nous le disons avant d'intervenir."),
+            ('Comment traiter une odeur de local poubelles ?',
+             "En traitant le sol et les parois, pas les conteneurs : les jus ont pénétré le béton. Quand l'odeur persiste après lavage, un traitement par ozone l'atteint en profondeur, local fermé et sans présence, puis ventilé."),
+            ('Faut-il vider le parking entièrement ?',
+             "Non, et c'est déconseillé. Mieux vaut procéder par zones successives, avec un affichage plusieurs jours à l'avance, que de tenter de libérer toutes les places le même jour."),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
+    {
+        "slug": 'nettoyage-urgent-7j-7-ile-de-france',
+        "cat": 'Bien choisir',
+        "h1": 'Nettoyage urgent 7j/7 en Île-de-France',
+        "title": 'Nettoyage urgent 7j/7 en Île-de-France',
+        "meta": "Besoin d'un nettoyage en urgence en Île-de-France : ce qui se traite vraiment dans la journée, ce qui demande du temps, et comment nous joindre.",
+        "image": 'intervention-1.webp',
+        "lead": "Certaines situations ne peuvent pas attendre trois jours. D'autres, contrairement à ce qu'on croit, ne gagnent rien à être traitées dans la précipitation. Voici comment distinguer les deux.",
+        "sections": [
+            ('Ce qui se traite réellement en urgence', [
+                'Les situations où intervenir vite change le résultat sont celles où la matière évolue.',
+                "<strong>Une tache fraîche sur un textile.</strong> C'est le cas le plus net. Une tache de vin, de café ou d'urine traitée dans les quarante-huit heures s'élimine presque toujours ; la même tache une semaine plus tard peut être définitive. Ici, l'urgence n'est pas du confort, c'est la différence entre réussite et échec.",
+                "<strong>Un état des lieux ou une visite le lendemain.</strong> L'échéance est imposée de l'extérieur et ne se négocie pas.",
+                "<strong>Une rotation de location courte durée.</strong> Un voyageur arrive à 15 h, il n'y a pas d'autre créneau.",
+                '<strong>Une réouverture de commerce.</strong> Chaque jour de fermeture coûte, et le nettoyage ne doit pas être ce qui retarde.',
+                "Dans ces cas, appelez-nous plutôt que d'écrire : le téléphone est le seul canal réellement rapide. Nous décrochons sept jours sur sept, de 8 h à 20 h.",
+            ]),
+            ('Ce qui ne gagne rien à être précipité', [
+                "Il faut aussi savoir dire quand l'urgence dessert.",
+                '<strong>Un nettoyage de fin de chantier.</strong> Intervenir le jour même du dernier ponçage garantit de devoir repasser : la poussière de plâtre retombe pendant vingt-quatre à quarante-huit heures. Attendre un jour donne un meilleur résultat pour le même prix.',
+                "<strong>Un traitement de terrasse.</strong> L'anti-mousse a besoin d'un temps d'action de plusieurs heures à plusieurs jours. Le presser revient à ne pas le faire.",
+                "<strong>Un traitement par ozone.</strong> Il impose un local vide pendant l'opération puis une aération avant réoccupation. Ce délai n'est pas négociable : l'ozone est un gaz irritant pour les voies respiratoires, et écourter l'aération serait dangereux.",
+                "<strong>Tout ce qui doit sécher.</strong> Un matelas, une moquette, un fauteuil de bureau : le séchage prend le temps qu'il prend. On peut avancer l'intervention, pas raccourcir le séchage.",
+            ]),
+            ('Nos délais réels', [
+                "Nous répondons à toute demande sous vingt-quatre heures, week-ends compris. L'intervention suit généralement sous vingt-quatre à soixante-douze heures selon votre département.",
+                "Le délai est le plus court en Seine-Saint-Denis et dans le Val-d'Oise, où se trouve notre atelier de Tremblay-en-France, ainsi qu'à Paris et en proche couronne. Il s'allonge dans les Yvelines, en Seine-et-Marne et en grande couronne sud.",
+                'Pour une intervention le jour même, tout dépend de notre planning et de votre commune. Nous vous répondons franchement : soit nous pouvons, soit nous vous le disons tout de suite pour que vous cherchiez ailleurs sans perdre une demi-journée.',
+                "Nous intervenons le samedi, le dimanche et les jours fériés au même tarif. Il n'y a pas de majoration de week-end chez nous, parce que les urgences ne choisissent pas leur jour.",
+            ]),
+            ("Ce qu'il faut nous dire pour aller vite", [
+                'Une demande urgente traitée vite est une demande précise. Trois éléments suffisent presque toujours.',
+                "Une ou deux photos de ce qu'il faut traiter, prises de près. C'est ce qui nous renseigne le mieux et le plus vite.",
+                'Votre adresse exacte, pour que nous calculions immédiatement le déplacement et le délai réel.',
+                "Votre échéance : l'heure à laquelle cela doit être fini, pas seulement le jour. Cela conditionne le créneau et parfois la méthode — sur une échéance très courte, nous choisirons une technique qui sèche plus vite quand c'est possible.",
+                "Nous vous répondons avec un devis ferme, sans acompte. Vous réglez après l'intervention, y compris en urgence.",
+            ]),
+        ],
+        "faq": [
+            ('Intervenez-vous le jour même ?',
+             "Parfois, selon notre planning et votre commune. Appelez-nous plutôt que d'utiliser le formulaire : nous vous dirons tout de suite si c'est possible, plutôt que de vous faire perdre une demi-journée."),
+            ('Y a-t-il une majoration le week-end ou les jours fériés ?',
+             'Non. Le tarif est identique sept jours sur sept. Les urgences ne choisissent pas leur jour.'),
+            ('Que faire en attendant sur une tache fraîche ?',
+             "Tamponnez avec un chiffon blanc, du bord vers le centre, sans frotter. N'appliquez aucun produit ménager : mal choisi, il peut fixer la tache définitivement ou décolorer le support autour."),
+            ('Quel est votre délai habituel ?',
+             "Réponse sous vingt-quatre heures, intervention sous vingt-quatre à soixante-douze heures selon le département. Le plus court en Seine-Saint-Denis, dans le Val-d'Oise, à Paris et en proche couronne."),
+        ],
+        "service": 'nettoyage-entreprise-paris',
+    },
 ]
+
+
+# Contenu éditorial propre à chaque département, affiché sur les pages de zone.
+# Chaque entrée décrit ce qui distingue réellement le terrain : type de bâti,
+# demandes dominantes, contraintes d'accès. Rédigé par département pour éviter
+# huit pages interchangeables.
+ZONES_DETAIL = {
+    "75": [
+        ("Le bâti parisien impose ses contraintes", [
+            "Paris se travaille en étage, sans ascenseur une fois sur deux, avec un stationnement "
+            "qui se compte en minutes. Cela conditionne tout : nous venons avec un matériel "
+            "transportable à la main, autonome en eau et en électricité, parce qu'un immeuble "
+            "haussmannien n'offre ni point d'eau au palier ni prise dans la cage d'escalier.",
+            "Les demandes dominantes suivent le bâti. Le textile en premier — canapés d'angle "
+            "et matelas qu'on ne peut pas descendre. Les vitres ensuite, sur des fenêtres à "
+            "petits carreaux qui se comptent en vantaux et non en fenêtres. Les locaux "
+            "professionnels enfin, en horaires décalés, parce qu'un bureau parisien est occupé "
+            "de 8 h à 20 h.",
+        ]),
+        ("Ce qui change d'un arrondissement à l'autre", [
+            "Les arrondissements centraux concentrent les commerces et la restauration : "
+            "vitrines à entretenir chaque semaine, banquettes en tissu, sols carrelés dont les "
+            "joints noircissent. Les arrondissements de l'ouest et du nord-ouest sont davantage "
+            "résidentiels, avec des parquets anciens et des textiles de valeur qui demandent "
+            "une humidité contrôlée plutôt que de l'eau.",
+            "L'est parisien mêle logements récents et locaux reconvertis, où les fins de "
+            "chantier sont fréquentes. Nous y intervenons souvent en deux passages, la poussière "
+            "de plâtre retombant pendant vingt-quatre à quarante-huit heures.",
+        ]),
+    ],
+    "92": [
+        ("Bureaux et résidentiel haut de gamme", [
+            "Les Hauts-de-Seine cumulent deux terrains très différents. Au nord et au centre, "
+            "les quartiers d'affaires : de grands plateaux, des moquettes de bureau à extraire, "
+            "des sièges à reprendre, et une contrainte horaire absolue — on n'intervient pas "
+            "pendant les heures ouvrées.",
+            "Au sud et sur les communes résidentielles, un habitat plus cossu où les demandes "
+            "portent sur les textiles de qualité, les cuirs, les vitrages de grande surface et "
+            "les terrasses. C'est là que la distinction entre cuir pigmenté et cuir aniline "
+            "prend son importance : le second ne tolère aucun produit aqueux.",
+        ]),
+        ("Accès et organisation", [
+            "Le stationnement en heures ouvrées est le vrai sujet, davantage que la distance. "
+            "Nous privilégions les créneaux de début de matinée et de fin de journée, et nous "
+            "travaillons volontiers en parking souterrain, où nous sommes autonomes en eau "
+            "comme en électricité.",
+            "Sur les sites tertiaires, nous groupons ce qui peut l'être : extraction de moquette "
+            "et reprise des sièges le même week-end, vitrerie intérieure dans la foulée. Le "
+            "déplacement est unique et le coût par poste en profite.",
+        ]),
+    ],
+    "93": [
+        ("Notre département d'attache", [
+            "Notre atelier est à Tremblay-en-France. La Seine-Saint-Denis est donc le "
+            "département où nos délais sont les plus courts et nos frais de déplacement les "
+            "plus faibles — parfois nuls sur les communes les plus proches.",
+            "C'est aussi le département où nous pouvons le plus souvent caler une intervention "
+            "le jour même, et où un second passage sur une fin de chantier ne pose aucune "
+            "difficulté d'organisation.",
+        ]),
+        ("Un terrain d'activité autant que d'habitat", [
+            "Le 93 concentre des zones d'activité, des entrepôts, des locaux reconvertis et un "
+            "habitat collectif dense. Les demandes s'y répartissent entre l'entretien de locaux "
+            "professionnels, les fins de chantier — nombreuses, avec les programmes de "
+            "rénovation — et le textile en logement.",
+            "Les copropriétés y sont une part importante de notre activité : parties communes, "
+            "cages d'escalier, locaux poubelles et parkings souterrains, avec la contrainte "
+            "d'un espace fermé où l'évacuation de l'eau de lavage doit être identifiée avant "
+            "de commencer.",
+        ]),
+    ],
+    "94": [
+        ("Pavillonnaire, collectif et bords de Marne", [
+            "Le Val-de-Marne alterne pavillons avec jardin, collectif récent et communes de "
+            "bord de Marne. Cette diversité explique la répartition de nos interventions : "
+            "beaucoup d'extérieurs — terrasses, dallages, mobilier de jardin — dans le "
+            "pavillonnaire, du textile et de la vitrerie dans le collectif.",
+            "Les bords de Marne apportent une demande plus rare ailleurs : l'entretien de "
+            "bateaux de plaisance, coque, pont et sellerie, y compris hors d'eau pendant "
+            "l'hivernage.",
+        ]),
+        ("Le facteur végétal", [
+            "C'est le département où la question de la mousse se pose le plus souvent. Les "
+            "terrasses ombragées, sous les arbres et mal drainées, se recolonisent en une "
+            "saison. Un décapage seul ne tient pas : il faut un traitement anti-mousse à temps "
+            "d'action, et un hydrofuge sur les supports poreux si l'on veut espacer réellement "
+            "les passages.",
+            "Nous conseillons le printemps ou l'automne, jamais le plein été : sur une dalle "
+            "brûlante, le produit sèche avant d'avoir pénétré.",
+        ]),
+    ],
+    "91": [
+        ("Grande couronne sud : espace et accès faciles", [
+            "L'Essonne offre ce que Paris n'a pas : de la place. Les interventions y sont "
+            "matériellement plus simples — on se gare devant, on déploie le matériel, on "
+            "travaille sans contrainte de créneau.",
+            "Les demandes suivent l'habitat : pavillonnaire dominant, donc beaucoup "
+            "d'automobile à domicile, de terrasses, de mobilier de jardin et de vitrages de "
+            "grande surface, vérandas comprises.",
+        ]),
+        ("Grouper, parce que le trajet compte", [
+            "L'Essonne est éloignée de notre atelier de Tremblay-en-France. Nous nous y "
+            "déplaçons volontiers, mais nous vous conseillons de regrouper : la voiture et la "
+            "terrasse, les matelas et le canapé, les vitres et la véranda.",
+            "Le déplacement est unique, le matériel est déjà en place, et le coût par "
+            "prestation baisse nettement. C'est le conseil le plus utile que nous puissions "
+            "donner sur ce département, et il ne va pas dans le sens de notre facturation.",
+        ]),
+    ],
+    "78": [
+        ("Un patrimoine qui impose de la prudence", [
+            "Les Yvelines concentrent un bâti ancien et des matériaux qui ne pardonnent pas "
+            "l'erreur : pierre de taille, pierre tendre, tomettes, parquets anciens, ferronnerie. "
+            "La haute pression y fait plus de dégâts qu'ailleurs.",
+            "Notre règle sur ce type de support est simple : essai sur une zone discrète avant "
+            "toute intervention, pression et distance de buse réglées au cas par cas, et refus "
+            "assumé quand le support ne le permet pas. Une pierre creusée par une pression trop "
+            "forte ne se rattrape pas.",
+        ]),
+        ("Vitrages et extérieurs", [
+            "Le bâti individuel des Yvelines apporte beaucoup de vitrage : vérandas, baies de "
+            "grande dimension, verrières. Nous les traitons à l'eau osmosée depuis le sol, à la "
+            "perche, jusqu'à trois niveaux environ — au-delà, il faut une nacelle et ce n'est "
+            "plus notre métier.",
+            "Les toitures de véranda méritent une attention particulière : personne ne les "
+            "regarde, elles s'encrassent progressivement, et la pièce s'assombrit d'année en "
+            "année sans qu'on identifie la cause.",
+        ]),
+    ],
+    "77": [
+        ("Le département le plus étendu", [
+            "La Seine-et-Marne représente à elle seule près de la moitié de la superficie "
+            "francilienne. D'un bout à l'autre, les temps de trajet n'ont rien de comparable, "
+            "et nos délais varient en conséquence : proches sur l'ouest du département, plus "
+            "longs vers l'est et le sud.",
+            "Nous intervenons partout, mais nous sommes francs sur le délai plutôt que de "
+            "promettre une réactivité que le kilométrage rend impossible.",
+        ]),
+        ("Pavillonnaire, artisanat et locaux d'activité", [
+            "Le terrain mêle habitat individuel avec extérieurs — terrasses, allées, mobilier "
+            "de jardin — et un tissu de locaux d'activité et d'entrepôts. Les fins de chantier "
+            "y sont fréquentes, portées par la construction neuve.",
+            "Comme en Essonne, le conseil qui compte est de grouper. Une venue qui traite la "
+            "terrasse, les vitres, le mobilier de jardin et la voiture vaut mieux que quatre "
+            "déplacements successifs, pour nous comme pour votre facture.",
+        ]),
+    ],
+    "95": [
+        ("Proche de notre atelier", [
+            "Le Val-d'Oise jouxte notre atelier de Tremblay-en-France. C'est, avec la "
+            "Seine-Saint-Denis, le département où nous intervenons le plus vite et où les "
+            "frais de déplacement sont les plus bas.",
+            "Sur les communes de l'est du département, nous sommes souvent à moins de quinze "
+            "minutes. Cela rend possible ce qui est difficile ailleurs : une intervention le "
+            "jour même, ou un retour rapide pour reprendre un point resté en suspens.",
+        ]),
+        ("Habitat mixte et zones d'activité", [
+            "Le 95 alterne collectif dense au sud-est, pavillonnaire au nord et à l'ouest, et "
+            "de vastes zones logistiques autour des plateformes aéroportuaires. Les demandes "
+            "s'y répartissent entre textile en logement, entretien de locaux professionnels et "
+            "remise en état après travaux.",
+            "Les copropriétés y sont nombreuses et les prestations ponctuelles fréquentes : "
+            "reprise d'une cage d'escalier, local poubelles à traiter à la haute pression, "
+            "parking souterrain à dégraisser. Ce sont des postes que les contrats d'entretien "
+            "courant ne couvrent presque jamais.",
+        ]),
+    ],
+}

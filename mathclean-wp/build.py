@@ -27,7 +27,7 @@ sys.path.insert(0, HERE)
 
 from content import (
     DATE_GUIDES, DATE_GUIDES_FR,  # noqa: E402
-    SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER, BEFORE_AFTER_HD,
+    SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER, BEFORE_AFTER_HD, ZONES_DETAIL,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
     GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES,
 )
@@ -1312,6 +1312,20 @@ def build_realisations():
       Le détail par prestation figure sur <a href="services.html">nos pages de prestations</a>, avec
       ce qui est inclus et les tarifs correspondants.
     </p>
+
+    <h2>Pourquoi nous n'affichons pas d'avis clients inventés</h2>
+    <p>
+      Beaucoup de sites de nettoyage affichent des témoignages avec prénom, photo et note. Il est
+      impossible pour un visiteur de savoir s'ils sont réels. Nous avons choisi de ne publier que
+      ce qui est vérifiable&nbsp;: notre fiche d'établissement Google, où les avis sont attachés à
+      des comptes que nous ne contrôlons pas et que vous pouvez consulter vous-même.
+    </p>
+    <p>
+      Le même principe vaut pour les photos ci-dessus. Aucun avant/après de cette page n'associe
+      deux clichés sans rapport&nbsp;: chaque paire provient d'une même intervention, prise au
+      même endroit. C'est une contrainte que nous nous imposons, et elle explique pourquoi cette
+      page compte moins d'images que celle de certains confrères.
+    </p>
   </div>
 </section>
 
@@ -1355,6 +1369,37 @@ def build_zones_archive():
   </div>
 </section>
 
+<section class="section">
+  <div class="container container-narrow">
+    <h2>Une seule zone, huit terrains différents</h2>
+    <p>
+      « Île-de-France » désigne un territoire dont les extrémités n'ont rien en commun. Un
+      appartement du centre de Paris et un pavillon du sud de la Seine-et-Marne ne posent ni
+      les mêmes questions d'accès, ni les mêmes questions de matériaux, ni les mêmes délais.
+    </p>
+    <p>
+      C'est pourquoi chaque département a sa page. Vous y trouvez le type de bâti que nous y
+      rencontrons, les prestations qui y dominent, les contraintes propres au terrain — le
+      stationnement à Paris, les horaires décalés dans les Hauts-de-Seine, la pierre tendre
+      dans les Yvelines, la mousse sur les terrasses ombragées du Val-de-Marne.
+    </p>
+
+    <h2>Notre point de départ, et ce qu'il implique</h2>
+    <p>
+      Nous partons de {SITE['city']} ({SITE['postcode'][:2]}), à la limite du Val-d'Oise. Cela
+      donne un centre de gravité au nord-est de la région&nbsp;: nos délais et nos frais de
+      déplacement y sont les plus bas, et ils augmentent régulièrement vers le sud et l'ouest.
+    </p>
+    <p>
+      Le barème est simple et sans surprise&nbsp;: <strong>{SITE['travel_fee']}</strong>, calculé
+      sur votre adresse exacte et annoncé avant que vous validiez. Il figure sur le devis, jamais
+      en supplément sur la facture. Sur les départements les plus éloignés, notre conseil est
+      toujours le même&nbsp;: groupez les prestations sur une seule venue plutôt que de nous
+      faire venir deux fois.
+    </p>
+  </div>
+</section>
+
 <section class="section section-soft">
   <div class="container container-narrow">
     <div class="notice">
@@ -1376,6 +1421,15 @@ def build_zones_archive():
                  "zones.html", base, schema=[crumb_schema([("Zones d'intervention", "zones.html")])])
             + header(base, "zones") + body + footer(base))
     return write("zones.html", html)
+
+
+def detail_zone(num):
+    """Sections éditoriales propres au département, pour que les huit pages de
+    zone disent chacune quelque chose de différent."""
+    html = ""
+    for titre, paras in ZONES_DETAIL.get(num, []):
+        html += "<h2>%s</h2>" % titre + "".join("<p>%s</p>" % p for p in paras)
+    return html
 
 
 def build_zone(z):
@@ -1417,6 +1471,10 @@ def build_zone(z):
           Appelez-nous pour vérifier notre disponibilité dans votre commune.
         </p>
       </div>
+    </div>
+
+    <div class="container-narrow" style="margin-top:56px;padding:0">
+      {detail_zone(z['num'])}
     </div>
   </div>
 </section>
@@ -2196,6 +2254,57 @@ def build_merci():
   </div>
 </section>
 
+<section class="section">
+  <div class="container container-narrow">
+    <h2>Ce qui se passe maintenant</h2>
+    <p>
+      Votre demande nous arrive directement. Nous la lisons dans la journée et nous vous
+      rappelons <strong>sous vingt-quatre heures</strong>, week-ends compris, pour préciser ce
+      qui doit l'être avant de chiffrer.
+    </p>
+    <p>
+      Vous recevez ensuite un devis <strong>ferme et détaillé poste par poste</strong>&nbsp;:
+      chaque prestation, sa durée estimée, son prix, et les frais de déplacement calculés depuis
+      notre atelier de {SITE['city']} — {SITE['travel_fee']}. Le total affiché est celui que vous
+      réglerez. Aucun acompte ne vous sera demandé, ni à la signature ni avant l'intervention.
+    </p>
+    <p>
+      L'intervention suit généralement sous 24 à 72&nbsp;heures selon votre département&nbsp;:
+      le plus court en Seine-Saint-Denis, dans le Val-d'Oise, à Paris et en proche couronne.
+    </p>
+
+    <h2>Trois choses qui nous aident à chiffrer juste</h2>
+    <ul class="checklist">
+      <li><strong>Deux ou trois photos</strong>, dont une de près sur la zone qui vous gêne.
+        C'est ce qui nous renseigne le mieux — envoyez-les par SMS au {SITE['phone']}.</li>
+      <li><strong>La matière</strong>, si vous la connaissez&nbsp;: tissu, microfibre, alcantara,
+        cuir, laine, pierre, bois. Elle change la méthode, donc le temps, donc le prix.</li>
+      <li><strong>L'accès</strong>&nbsp;: étage, ascenseur, stationnement, code d'entrée. Nous
+        venons avec du matériel, pas seulement avec un chiffon.</li>
+    </ul>
+    <p>
+      Si votre demande est urgente — un état des lieux demain, une rotation de location, une
+      réouverture de commerce — appelez-nous plutôt que d'attendre notre rappel. Le téléphone
+      reste le canal le plus rapide, et nous décrochons 7j/7 de 8&nbsp;h à 20&nbsp;h.
+    </p>
+
+    <h2>Si vous n'avez pas de nouvelles</h2>
+    <p>
+      Cela n'arrive presque jamais, mais un message peut se perdre — un filtre anti-spam trop
+      zélé, une adresse mal saisie. Si vingt-quatre heures se sont écoulées sans réponse de notre
+      part, vérifiez vos indésirables, puis appelez-nous directement plutôt que de renvoyer le
+      formulaire.
+    </p>
+    <p>
+      Vous pouvez aussi consulter en attendant <a href="tarifs.html">notre grille tarifaire</a>,
+      qui donne les prix des prestations courantes, ou
+      <a href="guides.html">nos guides pratiques</a>, qui détaillent les méthodes employées, les
+      prix constatés sur le marché francilien et, surtout, ce qui se récupère et ce qui ne se
+      récupère pas. C'est souvent la lecture la plus utile avant une intervention.
+    </p>
+  </div>
+</section>
+
 <section class="section section-soft">
   <div class="container">
     <div class="section-head center">
@@ -2228,6 +2337,62 @@ def build_404():
       <a class="btn btn-outline" href="services.html">Voir nos prestations</a>
       <a class="btn btn-outline" href="devis.html">Demander un devis</a>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <h2>Ce que vous cherchiez se trouve probablement ici</h2>
+    <p>
+      Le site a été réorganisé&nbsp;: certaines adresses anciennes ont changé. Les redirections
+      couvrent la plupart des cas, mais pas tous. Voici les points d'entrée principaux.
+    </p>
+    <ul class="checklist">
+      <li><a href="services.html">Nos {NB_SERVICES} prestations</a> — automobile, textile,
+        bateau, terrasse, vitres, entreprise, ozone et fin de chantier, chacune avec sa page
+        détaillée&nbsp;: méthode, contenu, tarifs.</li>
+      <li><a href="tarifs.html">La grille tarifaire</a> — packs automobile, tarifs textile à la
+        pièce, et le barème des frais de déplacement.</li>
+      <li><a href="villes.html">Les communes couvertes</a> et
+        <a href="zones.html">les huit départements franciliens</a>, avec pour chacun la distance
+        depuis notre atelier et le délai habituel.</li>
+      <li><a href="guides.html">Nos guides pratiques</a> — prix constatés, méthodes, ce qui se
+        récupère et ce qui ne se récupère pas.</li>
+      <li><a href="realisations.html">Nos réalisations</a>, en avant/après, sur des chantiers
+        réels.</li>
+    </ul>
+    <p>
+      Si vous ne trouvez toujours pas, appelez-nous au
+      <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a>&nbsp;: nous répondons 7j/7 de
+      8&nbsp;h à 20&nbsp;h et nous vous orienterons plus vite qu'un moteur de recherche.
+    </p>
+
+    <h2>Vous arrivez d'un lien externe ou d'un favori ?</h2>
+    <p>
+      Les adresses de l'ancien site ont été conservées et redirigées vers leurs équivalentes.
+      Si vous atterrissez malgré tout ici, c'est que l'adresse comporte une faute de frappe, ou
+      qu'elle pointe vers une page qui n'a jamais existé.
+    </p>
+    <p>
+      Le plus simple est de repartir de <a href="index.html">l'accueil</a> ou d'utiliser les
+      liens ci-dessus. Et si vous pensez avoir trouvé un lien cassé sur notre propre site,
+      dites-le-nous&nbsp;: c'est un service que vous nous rendez, et nous le corrigeons dans la
+      journée.
+    </p>
+
+    <h2>Besoin d'une réponse tout de suite ?</h2>
+    <p>
+      Si vous cherchiez un prix, notre <a href="tarifs.html">grille tarifaire</a> donne les
+      montants des prestations courantes, packs automobile et tarifs textile à la pièce compris,
+      ainsi que le barème des frais de déplacement — {SITE['travel_fee']} depuis notre atelier de
+      {SITE['city']}.
+    </p>
+    <p>
+      Si vous cherchiez à savoir si votre besoin est traitable, envoyez-nous simplement deux ou
+      trois photos par SMS au <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a>. Nous vous
+      répondrons franchement, y compris quand la réponse est que le support est trop dégradé
+      pour qu'une intervention en vaille la peine.
+    </p>
   </div>
 </section>
 
@@ -2290,6 +2455,72 @@ def build_legal():
   Pour en savoir plus sur le traitement de vos données personnelles, consultez notre
   <a href="politique-confidentialite.html">politique de confidentialité</a>. Pour les traceurs utilisés,
   consultez notre <a href="politique-cookies.html">politique de cookies</a>.
+</p>
+
+<h2>Conditions d'intervention</h2>
+<p>
+  Les devis sont gratuits, sans engagement, et valables trente jours à compter de leur émission.
+  Aucun acompte n'est demandé&nbsp;: le règlement intervient après l'intervention, une fois la
+  prestation réalisée. Les moyens de paiement acceptés sont les espèces, la carte bancaire et
+  le virement.
+</p>
+<p>
+  Les frais de déplacement s'élèvent à {SITE['travel_fee']} depuis notre atelier de
+  {SITE['city']}. Ils sont calculés sur l'adresse d'intervention et communiqués avant validation
+  du devis.
+</p>
+<p>
+  Les prix affichés sur ce site sont indiqués en euros et nets de TVA, {SITE['name']} relevant
+  de la franchise en base prévue à l'article 293 B du Code général des impôts. Les fourchettes
+  de prix sont indicatives&nbsp;: seul le devis accepté fait foi.
+</p>
+
+<h2>Droit de rétractation</h2>
+<p>
+  Conformément aux articles L221-18 et suivants du Code de la consommation, le consommateur qui
+  contracte à distance ou hors établissement dispose d'un délai de quatorze jours pour exercer
+  son droit de rétractation, sans avoir à motiver sa décision.
+</p>
+<p>
+  Lorsque l'exécution de la prestation est demandée avant la fin de ce délai, le client peut
+  renoncer expressément à son droit de rétractation. Il reste alors redevable du montant
+  correspondant au service déjà fourni.
+</p>
+
+<h2>Médiation de la consommation</h2>
+<p>
+  Conformément à l'article L612-1 du Code de la consommation, tout consommateur a le droit de
+  recourir gratuitement à un médiateur de la consommation en vue de la résolution amiable d'un
+  litige l'opposant à un professionnel, après avoir tenté de le résoudre directement auprès de
+  celui-ci par une réclamation écrite.
+</p>
+<p>
+  Une plateforme européenne de règlement en ligne des litiges est également accessible aux
+  consommateurs de l'Union européenne. Toute réclamation peut nous être adressée par courriel à
+  <a href="mailto:{SITE['email']}">{SITE['email']}</a> ou par téléphone au
+  <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a>&nbsp;: nous nous engageons à y répondre
+  sous quinze jours.
+</p>
+
+<h2>Assurance et responsabilité</h2>
+<p>
+  {SITE['name']} exerce son activité dans le cadre d'une responsabilité civile professionnelle.
+  L'attestation correspondante est communiquée sur simple demande, avant intervention.
+</p>
+<p>
+  Nous informons le client, préalablement à toute intervention, lorsqu'un support ne permet pas
+  d'obtenir le résultat escompté ou présente un risque de détérioration. Cette information figure
+  au devis. Aucune garantie de résultat ne peut être donnée sur un support déjà dégradé, dont
+  l'état est signalé avant l'intervention.
+</p>
+
+<h2>Propriété intellectuelle</h2>
+<p>
+  L'ensemble des contenus de ce site — textes, photographies, vidéos, éléments graphiques et
+  code — est la propriété de {SITE['name']}, sauf mention contraire. Les photographies
+  d'interventions publiées sur ce site proviennent de chantiers réellement réalisés. Toute
+  reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite
+  préalable est interdite.
 </p>
 
 <h2>6. Droit applicable</h2>
@@ -2371,7 +2602,51 @@ def build_legal():
 <h2>7. Cookies</h2>
 <p>Le détail des traceurs utilisés figure dans notre <a href="politique-cookies.html">politique de cookies</a>.</p>
 
-<h2>8. Mise à jour</h2>
+<h2>8. Sous-traitants et destinataires</h2>
+<p>
+  Vos données ne sont ni vendues, ni louées, ni transmises à des fins commerciales. Elles ne sont
+  accessibles qu'à {SITE['manager']}, responsable du traitement, et aux prestataires techniques
+  strictement nécessaires au fonctionnement du site&nbsp;:
+</p>
+<ul>
+  <li>l'<strong>hébergeur du site</strong>, qui conserve des journaux de connexion techniques&nbsp;;</li>
+  <li>le <strong>service d'acheminement des formulaires</strong>, qui transmet votre demande vers
+    notre boîte de réception&nbsp;;</li>
+  <li>le <strong>service public de géocodage d'adresses</strong>, sollicité par le configurateur
+    de réservation pour convertir une adresse en coordonnées et calculer les frais de
+    déplacement.</li>
+</ul>
+<p>
+  Ce dernier n'est appelé que si vous saisissez volontairement une adresse dans le configurateur.
+  Aucune donnée n'est transmise à un annonceur, à un courtier en données ou à un réseau social.
+</p>
+
+<h2>9. Durées de conservation</h2>
+<p>
+  Une demande de devis restée sans suite est conservée le temps nécessaire à son traitement, puis
+  supprimée. Les échanges liés à une intervention réalisée sont conservés pendant la durée légale
+  applicable aux documents commerciaux et comptables, soit dix ans pour les pièces comptables au
+  titre de l'article L123-22 du Code de commerce.
+</p>
+<p>
+  Les données saisies dans le configurateur de réservation ne sont pas enregistrées sur un
+  serveur&nbsp;: elles restent dans votre navigateur jusqu'à l'envoi du formulaire, et
+  disparaissent si vous quittez la page sans valider.
+</p>
+
+<h2>10. Sécurité</h2>
+<p>
+  Le site est servi exclusivement en HTTPS&nbsp;: les données que vous saisissez transitent
+  chiffrées. Nous ne stockons aucune donnée bancaire, le règlement intervenant après
+  l'intervention, directement entre vous et nous.
+</p>
+<p>
+  Nous appliquons le principe de minimisation prévu par le RGPD&nbsp;: nous ne demandons que ce
+  qui est nécessaire pour vous rappeler et chiffrer votre demande. Vous n'avez pas à créer de
+  compte, ni à fournir de date de naissance, de profession ou de situation familiale.
+</p>
+
+<h2>11. Mise à jour</h2>
 <p>La présente politique peut être mise à jour. Dernière mise à jour : {TODAY}.</p>
 """
     written.append(simple_page(
@@ -2430,11 +2705,46 @@ def build_legal():
   en rien nos prestations.
 </p>
 
-<h2>5. Évolution</h2>
+<h2>5. Pourquoi ce choix</h2>
+<p>
+  Un site de nettoyage n'a pas besoin de vous suivre pour fonctionner. Nous n'avons ni régie
+  publicitaire à alimenter, ni audience à revendre&nbsp;: la seule chose qui nous intéresse est
+  que vous trouviez la prestation qui vous concerne et que vous puissiez nous appeler.
+</p>
+<p>
+  Concrètement, cela signifie que nous ne savons pas quelles pages vous avez consultées, ni d'où
+  vous venez, ni si vous êtes déjà venu. Nous perdons de l'information utile&nbsp;; vous gagnez
+  de ne pas être pisté. C'est un arbitrage assumé, pas un oubli.
+</p>
+<p>
+  Cela a une conséquence pratique&nbsp;: le bandeau que vous voyez en arrivant n'est pas un
+  bandeau de consentement — il n'y a rien à consentir — mais une simple information. Il n'y a ni
+  bouton « refuser » ni réglage granulaire, parce qu'il n'y a rien à refuser ni à régler.
+</p>
+
+<h2>6. Services tiers et contenus externes</h2>
+<p>
+  Certaines pages contiennent des liens vers des services extérieurs&nbsp;: notre fiche
+  d'établissement Google, le formulaire qui achemine vos demandes de devis, ou le service qui
+  convertit une adresse en coordonnées dans le configurateur de réservation.
+</p>
+<p>
+  Ces liens ne déposent rien tant que vous ne les activez pas. En revanche, dès que vous suivez
+  un lien vers un site tiers ou que vous envoyez un formulaire, vous entrez dans le périmètre de
+  la politique de confidentialité de ce service, sur laquelle nous n'avons pas la main. Nous ne
+  chargeons aucun script publicitaire, aucune police distante ni aucun bouton de réseau social
+  sur nos pages.
+</p>
+
+<h2>7. Évolution</h2>
 <p>
   Si nous ajoutions un jour un outil de mesure d'audience ou de publicité (par exemple Google Analytics),
   nous mettrions en place un véritable bandeau de consentement (accepter / refuser) et mettrions à jour
   la présente page.
+</p>
+<p>
+  Cette page est datée&nbsp;: toute modification substantielle donnera lieu à une mise à jour
+  visible ici. Nous n'appliquerons jamais rétroactivement un traceur à une visite passée.
 </p>
 <p>
   Pour toute question : <a href="mailto:{SITE['email']}">{SITE['email']}</a>.
@@ -2771,6 +3081,57 @@ def build_reservation():
   </div>
 </section>
 
+<section class="section section-soft">
+  <div class="container container-narrow">
+    <h2>Comment ce configurateur calcule votre estimation</h2>
+    <p>
+      Rien n'est masqué&nbsp;: le montant affiché est la somme de la prestation choisie, des
+      options cochées et des frais de déplacement calculés sur l'adresse que vous saisissez.
+      Ces frais suivent un barème unique — <strong>{SITE['travel_fee']}</strong> depuis notre
+      atelier de {SITE['city']} — et se calculent sur la distance par la route, pas à vol
+      d'oiseau.
+    </p>
+    <p>
+      Les prix des prestations sont donnés en fourchette lorsque la taille de la pièce ou du
+      véhicule fait varier le travail. Une citadine et un grand break ne demandent pas le même
+      temps&nbsp;; un canapé deux places et un canapé d'angle non plus. Le montant exact vous
+      est confirmé avant l'intervention, après que nous ayons vu vos photos.
+    </p>
+
+    <h2>Ce qu'une estimation en ligne ne peut pas savoir</h2>
+    <p>
+      Un configurateur connaît la prestation, pas son état de départ. Trois choses lui échappent
+      et peuvent modifier le devis&nbsp;:
+    </p>
+    <ul class="checklist">
+      <li>Une <strong>tache ancienne</strong> qui demande un détachage individuel avec temps de
+        pose, ce qui peut représenter autant de temps que la prestation elle-même.</li>
+      <li>Un <strong>accès difficile</strong>&nbsp;: étage sans ascenseur, absence de
+        stationnement, parking à hauteur limitée pour un utilitaire.</li>
+      <li>Une <strong>matière délicate</strong> — cuir aniline, alcantara, viscose, pierre
+        tendre — qui impose une méthode plus lente, voire un refus de notre part quand le
+        support ne permet pas d'intervenir sans risque.</li>
+    </ul>
+    <p>
+      C'est pour cela que nous demandons des photos. Deux ou trois suffisent, dont une de près
+      sur la zone qui vous gêne. Elles valent mieux qu'une longue description.
+    </p>
+
+    <h2>Après votre réservation</h2>
+    <p>
+      Vous recevez une confirmation, puis nous vous rappelons sous vingt-quatre heures pour
+      caler le créneau et préciser ce qui doit l'être. L'intervention suit généralement sous
+      24 à 72&nbsp;heures selon votre département.
+    </p>
+    <p>
+      <strong>Aucun acompte n'est demandé</strong>, ni à la réservation ni avant l'intervention.
+      Vous réglez une fois le travail fait et le résultat constaté. Si nous estimons en voyant
+      vos photos que le résultat vous décevra, nous vous le disons avant de nous déplacer&nbsp;:
+      un refus argumenté vaut mieux qu'une prestation décevante.
+    </p>
+  </div>
+</section>
+
 {find_us(base)}
 """
     schema = [crumb_schema([("Réserver", "reservation.html")])]
@@ -2815,6 +3176,192 @@ def zone_de(dept):
     return next((z for z in ZONES if z["num"] == dept), ZONES[0])
 
 
+# --- Contexte éditorial des pages de commune -------------------------------
+# Chaque page ville doit dire quelque chose qui lui est propre, sinon
+# vingt-huit pages se ressemblent et Google les traite comme des doublons.
+# On compose donc à partir de trois axes réels : la prestation dominante de
+# la commune, sa distance à l'atelier, et son département.
+
+_CONTEXTE_PRESTA = {
+    "nettoyage-automobile-paris":
+        "Sur l'automobile, la contrainte locale est le stationnement. Nous travaillons sur "
+        "votre place, en voirie comme en parking souterrain, en apportant notre eau et notre "
+        "électricité : aucun branchement n'est nécessaire et le véhicule ne bouge pas. Prévoyez "
+        "simplement assez d'espace pour ouvrir les portes et tourner autour.",
+    "nettoyage-textile-paris":
+        "Sur le textile, l'essentiel des demandes porte sur des pièces qu'on ne peut ni démonter "
+        "ni descendre : canapés d'angle, matelas en étage, tapis posés sur parquet. "
+        "L'injection-extraction se pratique sur place, et le point à anticiper est le séchage — "
+        "quatre à six heures pour un matelas, un peu plus pour un canapé épais.",
+    "nettoyage-bateau-paris":
+        "Sur le nautique, nous intervenons au port ou à l'endroit où le bateau est stocké, "
+        "y compris hors d'eau pendant l'hivernage. Coque, pont et sellerie relèvent de trois "
+        "méthodes différentes et d'un devis établi après photos.",
+    "nettoyage-terrasse-paris":
+        "Sur les extérieurs, tout se joue sur le réglage de la pression selon le support. "
+        "Une dalle béton, une pierre tendre et une terrasse en bois ne se traitent pas de la "
+        "même façon, et un mauvais réglage laisse des marques définitives. Nous faisons "
+        "systématiquement un essai sur une zone discrète avant de traiter l'ensemble.",
+    "nettoyage-vitres-paris":
+        "Sur la vitrerie, nous travaillons à l'eau osmosée : privée de ses minéraux, elle sèche "
+        "sans rien déposer, ce qui règle le problème des traces sur les grandes surfaces vitrées. "
+        "Nous intervenons depuis le sol à la perche jusqu'à trois niveaux environ ; au-delà, "
+        "il faut une nacelle et c'est un autre métier.",
+    "nettoyage-entreprise-paris":
+        "Sur les locaux professionnels, la difficulté n'est pas technique mais horaire. Nous "
+        "intervenons avant l'ouverture, après la fermeture ou le week-end, sans supplément : "
+        "c'est la seule façon de travailler correctement sur un site occupé, et cela évite de "
+        "gêner votre activité.",
+    "traitement-ozone-paris":
+        "Sur les odeurs, l'ozone détruit les molécules odorantes au lieu de les masquer, y "
+        "compris dans les textiles et les conduits d'aération que le nettoyage n'atteint pas. "
+        "Le protocole est strict : local ou véhicule vide de personnes, d'animaux et de plantes "
+        "pendant le traitement, puis aération avant restitution.",
+    "nettoyage-fin-de-chantier-paris":
+        "Sur les fins de chantier, la poussière de plâtre reste en suspension et retombe pendant "
+        "vingt-quatre à quarante-huit heures. Un passage unique le jour même donne un logement "
+        "propre le soir et poussiéreux le lendemain : nous prévoyons deux passages et nous "
+        "l'annonçons au devis.",
+}
+
+# Second angle par prestation. Le choix entre les deux variantes est déterminé
+# par le nom de la commune : deux villes voisines qui partagent la même
+# prestation dominante n'affichent donc pas le même paragraphe.
+_CONTEXTE_PRESTA_BIS = {
+    "nettoyage-automobile-paris":
+        "Sur l'automobile, ce qui use une voiture entre deux nettoyages n'est pas la poussière "
+        "mais ce qu'on fait pour la retirer : un essuyage à sec sur une carrosserie sale laisse "
+        "les micro-rayures circulaires qu'on voit au soleil. Nous travaillons avec plusieurs "
+        "microfibres changées en cours d'intervention, et les jantes en premier, avec un "
+        "matériel qui ne touche jamais la carrosserie.",
+    "nettoyage-textile-paris":
+        "Sur le textile, la matière commande la méthode. Un tissu synthétique accepte "
+        "l'injection-extraction sans réserve ; la laine ne supporte ni la chaleur ni "
+        "l'alcalinité ; la viscose ne se traite pas à l'eau du tout. Nous identifions la fibre "
+        "avant de commencer, et nous refusons ce qui relève d'un atelier spécialisé plutôt que "
+        "de prendre le risque.",
+    "nettoyage-bateau-paris":
+        "Sur le nautique, le sel fait plus de dégâts que la saleté visible : il retient "
+        "l'humidité contre le métal et dans les coutures de sellerie. L'hivernage, bateau hors "
+        "d'eau, reste le meilleur moment pour reprendre la coque et la sellerie sans dépendre "
+        "de la météo ni du mouillage.",
+    "nettoyage-terrasse-paris":
+        "Sur les terrasses, la mousse n'est pas de la saleté mais un végétal enraciné dans la "
+        "porosité du support. Un décapage seul la fait disparaître trois semaines. Il faut y "
+        "ajouter un traitement à temps d'action, et un hydrofuge sur les supports poreux si "
+        "l'on veut réellement espacer les passages.",
+    "nettoyage-vitres-paris":
+        "Sur la vitrerie, une vitre se compte en vantaux et non en fenêtres : une baie "
+        "coulissante à quatre vantaux représente huit faces. Nous chiffrons sur ce comptage, en "
+        "précisant si les encadrements, les rails et les appuis sont inclus — c'est là que deux "
+        "devis apparemment proches divergent en réalité.",
+    "nettoyage-entreprise-paris":
+        "Sur les locaux professionnels, la donnée qui compte n'est pas le prix au mètre carré "
+        "mais le temps de présence par passage. C'est la seule qui remette deux devis sur la "
+        "même échelle, et nous l'indiquons systématiquement sur le nôtre, avec ce qui est "
+        "mensuel et ce qui est ponctuel.",
+    "traitement-ozone-paris":
+        "Sur les odeurs, l'ozone ne remplace pas un nettoyage : il le termine. Une odeur dont "
+        "la source est encore présente reviendra, quel que soit le traitement. Nous nettoyons "
+        "d'abord, nous traitons ensuite, et nous le disons au devis quand une odeur très "
+        "ancienne demandera vraisemblablement un second passage.",
+    "nettoyage-fin-de-chantier-paris":
+        "Sur les fins de chantier, tout se joue sur la protection pendant les travaux. Un "
+        "chantier où les artisans ont bâché coûte nettement moins cher à nettoyer, et le "
+        "résultat est meilleur. C'est le conseil le plus rentable que nous puissions donner, "
+        "et il réduit notre propre facture.",
+}
+
+_CONTEXTE_DISTANCE = [
+    (3, "Nous sommes à quelques minutes de chez vous. C'est la zone où nous pouvons le plus "
+        "souvent caler une intervention le jour même quand notre planning le permet, et où un "
+        "second passage — sur une fin de chantier, par exemple — ne pose aucune difficulté."),
+    (12, "La commune est dans notre rayon proche. Les interventions s'y organisent sans "
+         "contrainte particulière, y compris tôt le matin ou en fin de journée, et un retour "
+         "pour finir un point resté en suspens se cale facilement."),
+    (25, "Nous y intervenons régulièrement. À cette distance, nous groupons volontiers plusieurs "
+         "prestations sur une même venue — le canapé et les matelas, la terrasse et les vitres — "
+         "parce que le déplacement est unique et que le coût par pièce en profite directement."),
+    (999, "La commune est à l'autre bout de notre zone. Nous nous y déplaçons, mais autant que "
+          "le trajet serve : nous vous conseillons de regrouper tout ce qui peut l'être sur une "
+          "même intervention plutôt que de nous faire venir deux fois à quelques semaines "
+          "d'intervalle."),
+]
+
+
+_FAQ_PRESTA = {
+    "nettoyage-automobile-paris": (
+        "Où intervenez-vous sur le véhicule à %s ?",
+        "Là où il est stationné : en voirie, en parking souterrain ou sur une place "
+        "d'entreprise. Nous apportons l'eau et l'électricité, donc aucun branchement n'est "
+        "nécessaire et le véhicule ne bouge pas. Il faut simplement assez d'espace pour ouvrir "
+        "les portes et tourner autour."),
+    "nettoyage-textile-paris": (
+        "Combien de temps un canapé met-il à sécher à %s ?",
+        "Quatre à six heures pour un matelas, un peu plus pour un canapé épais, dans une pièce "
+        "aérée. Nous travaillons en injection-extraction : la solution est aspirée immédiatement "
+        "après avoir été injectée, il ne reste donc pas d'eau stagnante et pas d'auréole."),
+    "nettoyage-bateau-paris": (
+        "Intervenez-vous sur un bateau à quai ou hors d'eau près de %s ?",
+        "Les deux. Nous intervenons au port comme sur un bateau hors d'eau pendant l'hivernage, "
+        "qui est d'ailleurs la meilleure période pour reprendre la coque. Coque, pont et "
+        "sellerie relèvent de trois méthodes distinctes et d'un devis établi après photos."),
+    "nettoyage-terrasse-paris": (
+        "La mousse va-t-elle revenir sur ma terrasse à %s ?",
+        "Après un décapage seul, oui, en quelques semaines : la haute pression retire la partie "
+        "visible, pas les spores logées dans la porosité du support. Avec un traitement "
+        "anti-mousse à temps d'action, comptez un à trois ans selon l'exposition et le drainage. "
+        "Un hydrofuge allonge encore l'intervalle."),
+    "nettoyage-vitres-paris": (
+        "Jusqu'à quelle hauteur travaillez-vous à %s ?",
+        "Jusqu'à trois niveaux environ, depuis le sol, avec une perche télescopique alimentée en "
+        "eau osmosée. Au-delà, il faut une nacelle ou des cordistes : ce sont des métiers "
+        "réglementés que nous ne pratiquons pas, et nous vous le disons plutôt que d'improviser."),
+    "nettoyage-entreprise-paris": (
+        "Pouvez-vous intervenir hors des heures d'ouverture à %s ?",
+        "Oui, avant l'ouverture, après la fermeture ou le week-end, sans supplément. C'est la "
+        "seule façon de travailler correctement sur un site occupé, en particulier pour une "
+        "extraction de moquette, qui demande plusieurs heures de séchage."),
+    "traitement-ozone-paris": (
+        "Le traitement par ozone est-il sans danger à %s ?",
+        "L'ozone est un gaz irritant pour les voies respiratoires : le traitement se fait donc "
+        "sur un local ou un véhicule vide de personnes, d'animaux et de plantes, suivi d'une "
+        "aération avant réoccupation. C'est un protocole strict, et c'est ce qui le rend sûr."),
+    "nettoyage-fin-de-chantier-paris": (
+        "Faut-il un ou deux passages après des travaux à %s ?",
+        "Deux, dès qu'il y a eu de la plâtrerie ou du ponçage. La poussière de plâtre reste en "
+        "suspension et retombe pendant vingt-quatre à quarante-huit heures : un passage unique "
+        "donne un logement propre le soir et poussiéreux le lendemain. Nous l'annonçons au devis."),
+}
+
+
+def contexte_ville(nom, presta, km, dept):
+    """Paragraphes propres à une commune, tirés de sa prestation dominante, de
+    sa distance à l'atelier et de son département.
+
+    Le choix entre les deux angles rédactionnels dépend du nom de la commune :
+    deux villes qui partagent la même prestation dominante lisent ainsi des
+    textes différents, ce qui évite vingt-huit pages interchangeables.
+    """
+    bloc = ""
+    graine = sum(ord(c) for c in nom)
+    for i, sl in enumerate(presta[:2]):
+        table = _CONTEXTE_PRESTA if (graine + i) % 2 == 0 else _CONTEXTE_PRESTA_BIS
+        if sl in table:
+            bloc += "<p>%s</p>" % table[sl]
+        elif sl in _CONTEXTE_PRESTA:
+            bloc += "<p>%s</p>" % _CONTEXTE_PRESTA[sl]
+    for seuil, texte in _CONTEXTE_DISTANCE:
+        if km <= seuil:
+            bloc += "<p>%s</p>" % texte
+            break
+    # Une phrase propre au département, reprise de sa page de zone.
+    detail = ZONES_DETAIL.get(dept)
+    if detail:
+        bloc += "<p>%s</p>" % detail[(graine // 3) % len(detail)][1][0]
+    return bloc
+
+
 def build_ville(v):
     slug, nom, cp, dept, lat, lon, angle, presta = v
     base = "../"
@@ -2853,6 +3400,10 @@ def build_ville(v):
          "Non. Nous venons entièrement autonomes, ce qui nous permet d'intervenir en parking "
          "souterrain, en pied d'immeuble ou en copropriété sans accès technique."),
     ]
+    # Question supplémentaire liée à la prestation dominante de la commune.
+    if presta and presta[0] in _FAQ_PRESTA:
+        q, r = _FAQ_PRESTA[presta[0]]
+        faq.append((q % nom, r))
 
     body = f"""
 {page_title_block(base, trail, "Entreprise de nettoyage à %s (%s)" % (nom, cp),
@@ -2896,6 +3447,24 @@ def build_ville(v):
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <h2>Comment nous travaillons à {nom}</h2>
+    {contexte_ville(nom, presta, km, dept)}
+    <p>
+      Dans tous les cas, nous venons avec le matériel, les produits, l'eau et l'électricité.
+      Le devis est gratuit, détaillé poste par poste, et les frais de déplacement y figurent
+      avant que vous validiez quoi que ce soit. Aucun acompte n'est demandé : vous réglez
+      après l'intervention, une fois le résultat constaté.
+    </p>
+    <p>
+      Si votre besoin ne rentre dans aucune de nos {NB_SERVICES} prestations, dites-le-nous
+      quand même. Nous vous répondrons franchement, y compris quand la réponse est que ce
+      n'est pas notre métier — c'est plus utile qu'un devis de complaisance.
+    </p>
   </div>
 </section>
 
@@ -3015,6 +3584,33 @@ def build_villes_archive():
       Pour les professionnels multi-sites, nous établissons un forfait unique plutôt qu'un
       déplacement par adresse&nbsp;: voir le
       <a href="services/nettoyage-entreprise-paris.html">nettoyage pour entreprise</a>.
+    </p>
+
+    <h2>Ce que chaque page de commune vous indique</h2>
+    <p>
+      Chaque commune a sa propre page, et elle n'est pas décorative. Vous y trouvez la distance
+      réelle depuis notre atelier, le montant du déplacement qui en découle, le délai
+      d'intervention habituel dans ce département, et les prestations que nous y réalisons le
+      plus souvent — parce qu'elles diffèrent réellement d'une commune à l'autre.
+    </p>
+    <p>
+      Un centre-ville dense pose des questions de stationnement et d'accès en étage&nbsp;; une
+      commune pavillonnaire pose des questions de terrasse, de mobilier de jardin et de grandes
+      surfaces vitrées. Les pages le disent, plutôt que de répéter la même présentation
+      vingt-huit fois.
+    </p>
+
+    <h2>Les délais selon votre département</h2>
+    <p>
+      Notre atelier est à {SITE['city']}, en Seine-Saint-Denis, à quelques kilomètres de la
+      limite du Val-d'Oise. C'est ce qui explique nos délais&nbsp;: les plus courts en 93, 95,
+      à Paris et en proche couronne — souvent 24 à 48&nbsp;heures — un peu plus longs dans les
+      Yvelines, l'Essonne et la Seine-et-Marne, où comptez plutôt 48 à 72&nbsp;heures.
+    </p>
+    <p>
+      Ces délais sont ceux que nous constatons, pas des engagements commerciaux. Quand notre
+      planning permet mieux, nous le disons&nbsp;; quand il ne le permet pas, nous le disons
+      aussi, plutôt que de vous faire attendre une intervention qui ne viendra pas.
     </p>
     <div class="notice notice-blue" style="margin-top:30px">
       {icon('info')}

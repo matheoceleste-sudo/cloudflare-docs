@@ -327,6 +327,49 @@ puis relancez `python3 build.py`.
    le calcul de déplacement part de l'atelier. Dites-moi si l'un des deux
    doit être corrigé.
 
+## Les 26 pages issues de l'étude des requêtes
+
+Ces pages visent des demandes réellement exprimées en Île-de-France que le site
+ne couvrait pas. La méthode et ses limites sont dites franchement plus bas.
+
+| Créneau | Pages |
+|---|---|
+| Fin de bail et état des lieux | `nettoyage-fin-de-bail-paris`, `nettoyage-etat-des-lieux-sortie`, `prix-nettoyage-fin-de-bail` |
+| Copropriété et immeuble | `nettoyage-copropriete-parties-communes`, `nettoyage-cage-escalier-immeuble`, `nettoyage-parking-local-poubelles` |
+| Location courte durée | `nettoyage-airbnb-paris` |
+| Textile | `nettoyage-matelas-paris`, `prix-nettoyage-matelas`, `nettoyage-tapis-paris`, `nettoyage-canape-cuir-alcantara`, `nettoyage-moquette-bureau-paris`, `nettoyage-fauteuil-chaise-bureau` |
+| Vitrerie | `nettoyage-vitrine-commerce-paris`, `prix-nettoyage-vitres-m2`, `nettoyage-veranda-baie-vitree` |
+| Extérieur | `demoussage-terrasse-ile-de-france`, `prix-nettoyage-terrasse-m2`, `nettoyage-salon-jardin-mobilier-exterieur` |
+| Professionnels | `prix-nettoyage-bureaux-m2`, `nettoyage-local-commercial-restaurant` |
+| Chantier | `prix-nettoyage-fin-de-chantier-m2`, `nettoyage-apres-travaux-appartement` |
+| Automobile | `nettoyage-siege-voiture-tache`, `lavage-auto-domicile-paris` |
+| Urgence | `nettoyage-urgent-7j-7-ile-de-france` |
+
+### Comment ces sujets ont été choisis
+
+**Ce qui n'a pas été fait :** aucun volume de recherche mensuel exact n'a pu être
+mesuré. Ces chiffres ne sont pas publics — ils viennent de Google Keyword Planner
+ou d'outils payants (Semrush, Ahrefs, Haloscan, Ranxplorer), auxquels cette
+session n'a pas accès. Toute personne qui vous annonce « 4 800 recherches par
+mois » sans montrer sa source invente.
+
+**Ce qui a été fait :** une étude des pages qui se positionnent déjà sur ces
+requêtes en Île-de-France, des services que les concurrents mettent en avant, et
+des fourchettes de prix réellement pratiquées. Les repères tarifaires cités dans
+les pages en viennent, et ils sont datés de 2026.
+
+**Le filtre appliqué :** chaque page correspond à une prestation que MathClean
+réalise vraiment. Plusieurs demandes fortes ont été écartées pour cette raison —
+dégraissage certifié des conduits d'extraction, désinsectisation, dératisation,
+nettoyage après décès. Elles relèvent d'activités réglementées ou d'agréments que
+l'entreprise n'a pas. Les pages le disent explicitement plutôt que de laisser
+croire le contraire.
+
+**Pour aller plus loin :** si vous voulez les volumes réels, ouvrez un compte
+Google Ads (gratuit) et utilisez le Keyword Planner sur ces mots-clés, ciblage
+Île-de-France. Vous saurez alors lesquelles de ces 26 pages méritent d'être
+étoffées en priorité.
+
 ## Audit technique du site
 
 Le site est vérifié par deux scripts, à relancer après toute modification
@@ -336,23 +379,26 @@ importante. Ils lisent le dossier `site/` généré, pas les gabarits.
 
 | Contrôle | État |
 |---|---|
-| Liens internes cassés | 0 sur ~8 000 liens |
+| Liens internes cassés | 0 sur ~13 000 liens |
 | Ancres internes (`#…`) qui ne pointent nulle part | 0 |
-| Balises `title` hors des 25–60 caractères affichés par Google | 0 sur 86 |
-| Méta-descriptions hors des 70–160 caractères | 0 sur 86 |
+| Balises `title` hors des 25–60 caractères affichés par Google | 0 sur 112 |
+| Méta-descriptions hors des 70–160 caractères | 0 sur 112 |
 | Titres, descriptions ou `h1` dupliqués | 0 |
 | Pages sans `canonical`, ou avec un `canonical` erroné | 0 |
 | Pages orphelines (aucun lien entrant) | 0 |
 | Écarts entre le sitemap et les fichiers réellement produits | 0 |
-| JSON-LD invalide ou incomplet | 0 sur 213 blocs |
+| JSON-LD invalide ou incomplet | 0 sur 291 blocs |
 | Hiérarchie de titres avec un niveau sauté (`h2` → `h4`) | 0 |
-| Pages sous 300 mots | 0 |
-| Quasi-doublons de contenu entre deux pages | 0 |
+| Pages sous 500 mots | 0 sur 112 |
+| Quasi-doublons de contenu (hors gabarit partagé) | 0 |
 | Balises Open Graph / Twitter manquantes | 0 |
 | Redirections `_redirects` en boucle ou sans cible | 0 |
 | Images sans `alt`, sans dimensions, ou LCP en chargement différé | 0 |
-| Erreurs JavaScript, requêtes échouées, débordement horizontal | 0 sur 86 pages |
+| Erreurs JavaScript, requêtes échouées, débordement horizontal | 0 sur 112 pages |
 | **Photos de définition insuffisante** | **14** — voir « Remplacer les images » |
+
+Le site compte **110 pages indexables**, plus `404.html` et `merci.html` en
+`noindex`. La page la plus courte fait 500 mots, la médiane 668.
 
 ### Relancer les vérifications
 
