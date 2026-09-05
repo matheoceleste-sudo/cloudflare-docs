@@ -22,13 +22,34 @@ mathclean-wp/
 
 ## Mettre le site en ligne
 
+### Cloudflare Workers, depuis ce dépôt (ce qui est configuré ici)
+
+Le fichier `wrangler.jsonc` de ce dossier décrit un Worker « assets seuls » :
+aucun code serveur, Cloudflare se contente de servir les fichiers de `site/`.
+
+Dans le tableau de bord Cloudflare, ouvrez le projet **mathclean** →
+*Settings* → *Build*, et renseignez :
+
+| Réglage | Valeur |
+|---|---|
+| Root directory | `mathclean-wp` |
+| Build command | *(vide — le site est déjà généré)* |
+| Deploy command | `npx wrangler deploy` |
+
+Le **Root directory est le réglage indispensable**. Sans lui, le build lit le
+`wrangler.toml` de la racine du dépôt, qui appartient au projet
+`cloudflare-docs` et vise un autre compte Cloudflare : il échoue en une
+fraction de seconde, sans même compiler.
+
+### Sans passer par ce dépôt
+
 Envoyez **le contenu du dossier `site/`** (pas le dossier lui-même) à la
 racine de votre hébergement. `index.html` doit se retrouver à la racine du
 domaine.
 
-- **Cloudflare Pages** (l'hébergeur actuel de mathclean.fr) : créez un projet,
-  « Direct upload », et déposez le contenu de `site/`. Dans les réglages,
-  indiquez `404.html` comme page d'erreur.
+- **Cloudflare Pages** : créez un projet, « Direct upload », déposez le
+  contenu de `site/`. C'est le chemin le plus court si vous ne voulez pas
+  lier le dépôt.
 - **Netlify** : glissez le dossier `site/` sur app.netlify.com/drop.
 - **OVH / o2switch / hébergement FTP classique** : copiez le contenu de
   `site/` dans `www/` ou `public_html/`.
