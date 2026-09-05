@@ -6,3 +6,11 @@
 /services/nettoyage-matelas-paris.html      /services/nettoyage-textile-paris.html     301
 /services/nettoyage-tapis-paris.html        /services/nettoyage-textile-paris.html     301
 /astuces-nettoyage.html                     /blog.html                                 301
+/services/nettoyage-locaux-paris            /services/nettoyage-entreprise-paris.html  301
+/services/nettoyage-bureau-paris            /services/nettoyage-entreprise-paris.html  301
+/services/nettoyage-avion-paris             /services.html                             301
+/services/polissage-carrosserie-paris       /services/nettoyage-automobile-paris.html  301
+/services/nettoyage-canape-paris            /services/nettoyage-textile-paris.html     301
+/services/nettoyage-matelas-paris           /services/nettoyage-textile-paris.html     301
+/services/nettoyage-tapis-paris             /services/nettoyage-textile-paris.html     301
+/astuces-nettoyage                          /blog.html                                 301

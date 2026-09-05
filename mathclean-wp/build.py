@@ -2461,7 +2461,11 @@ def build_merci():
 
 
 def build_404():
-    base = ""
+    # La page 404 est renvoyée telle quelle à l'URL demandée, y compris
+    # /services/une-page-qui-n-existe-pas.html. Une base relative ferait alors
+    # chercher la feuille de style dans /services/assets/ : la page s'afficherait
+    # sans aucun style, et tous ses liens seraient cassés. La base est donc absolue.
+    base = "/"
     body = f"""
 <section class="section" style="padding-top:70px">
   <div class="container container-narrow text-center">
@@ -2471,9 +2475,9 @@ def build_404():
       Le lien est peut-être ancien, ou comporte une faute de frappe. Voici les pages les plus utiles.
     </p>
     <div class="btn-row center" style="margin-top:28px">
-      <a class="btn" href="index.html">Retour à l'accueil</a>
-      <a class="btn btn-outline" href="services.html">Voir nos prestations</a>
-      <a class="btn btn-outline" href="devis.html">Demander un devis</a>
+      <a class="btn" href="/index.html">Retour à l'accueil</a>
+      <a class="btn btn-outline" href="/services.html">Voir nos prestations</a>
+      <a class="btn btn-outline" href="/devis.html">Demander un devis</a>
     </div>
   </div>
 </section>
@@ -2486,17 +2490,17 @@ def build_404():
       couvrent la plupart des cas, mais pas tous. Voici les points d'entrée principaux.
     </p>
     <ul class="checklist">
-      <li><a href="services.html">Nos {NB_SERVICES} prestations</a> — automobile, textile,
+      <li><a href="/services.html">Nos {NB_SERVICES} prestations</a> — automobile, textile,
         bateau, terrasse, vitres, entreprise, ozone et fin de chantier, chacune avec sa page
         détaillée&nbsp;: méthode, contenu, tarifs.</li>
-      <li><a href="tarifs.html">La grille tarifaire</a> — packs automobile, tarifs textile à la
+      <li><a href="/tarifs.html">La grille tarifaire</a> — packs automobile, tarifs textile à la
         pièce, et le barème des frais de déplacement.</li>
-      <li><a href="villes.html">Les communes couvertes</a> et
-        <a href="zones.html">les huit départements franciliens</a>, avec pour chacun la distance
+      <li><a href="/villes.html">Les communes couvertes</a> et
+        <a href="/zones.html">les huit départements franciliens</a>, avec pour chacun la distance
         depuis notre atelier et le délai habituel.</li>
-      <li><a href="guides.html">Nos guides pratiques</a> — prix constatés, méthodes, ce qui se
+      <li><a href="/guides.html">Nos guides pratiques</a> — prix constatés, méthodes, ce qui se
         récupère et ce qui ne se récupère pas.</li>
-      <li><a href="realisations.html">Nos réalisations</a>, en avant/après, sur des chantiers
+      <li><a href="/realisations.html">Nos réalisations</a>, en avant/après, sur des chantiers
         réels.</li>
     </ul>
     <p>
@@ -2512,7 +2516,7 @@ def build_404():
       qu'elle pointe vers une page qui n'a jamais existé.
     </p>
     <p>
-      Le plus simple est de repartir de <a href="index.html">l'accueil</a> ou d'utiliser les
+      Le plus simple est de repartir de <a href="/index.html">l'accueil</a> ou d'utiliser les
       liens ci-dessus. Et si vous pensez avoir trouvé un lien cassé sur notre propre site,
       dites-le-nous&nbsp;: c'est un service que vous nous rendez, et nous le corrigeons dans la
       journée.
@@ -2520,7 +2524,7 @@ def build_404():
 
     <h2>Besoin d'une réponse tout de suite ?</h2>
     <p>
-      Si vous cherchiez un prix, notre <a href="tarifs.html">grille tarifaire</a> donne les
+      Si vous cherchiez un prix, notre <a href="/tarifs.html">grille tarifaire</a> donne les
       montants des prestations courantes, packs automobile et tarifs textile à la pièce compris,
       ainsi que le barème des frais de déplacement — {SITE['travel_fee']} depuis notre atelier de
       {SITE['city']}.
@@ -4104,7 +4108,15 @@ def build_redirects():
         # La page « astuces » est devenue le blog
         "/astuces-nettoyage.html                     /blog.html                                 301",
     ]
-    return write("_redirects", "\n".join(lignes) + "\n")
+    # Les mêmes adresses sans l'extension .html. Cloudflare ajoute .html de
+    # lui-même quand le fichier existe, mais ces pages-là n'existent plus :
+    # sans ces lignes, un lien dont l'extension a été retirée tomberait en 404.
+    sans_ext = []
+    for ligne in lignes:
+        src, dst, code = ligne.split()
+        if src.endswith(".html"):
+            sans_ext.append("%-44s%-43s%s" % (src[:-5], dst, code))
+    return write("_redirects", "\n".join(lignes + sans_ext) + "\n")
 
 
 def clean_stale(kept):

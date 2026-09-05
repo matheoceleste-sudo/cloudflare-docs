@@ -431,6 +431,33 @@ Ce qui rendrait le prochain film encore plus utile :
   C'est la preuve la plus parlante du métier, et elle passe vite dans le
   montage actuel.
 
+## La page 404, et pourquoi ses chemins sont absolus
+
+Cloudflare renvoie `404.html` **à l'adresse demandée** : si un visiteur ouvre
+`/services/une-page-disparue.html`, il reçoit le contenu de la page 404 mais
+l'adresse affichée reste `/services/une-page-disparue.html`.
+
+Conséquence : avec des chemins relatifs, le navigateur cherche la feuille de
+style dans `/services/assets/css/` — qui n'existe pas. La page s'affiche alors
+**entièrement sans style**, en HTML brut, avec des icônes géantes et des liens
+bleus soulignés. Tous ses liens de navigation sont cassés en prime.
+
+C'est pour cela que `build_404()` utilise `base = "/"` et que ses liens sont
+écrits en absolu. Une seule page du site a besoin de ce traitement, parce
+qu'elle est la seule à être servie à une adresse qui n'est pas la sienne.
+
+> **Effet de bord à connaître :** si vous ouvrez `404.html` en double-cliquant
+> dessus depuis votre disque, elle apparaîtra sans style — un chemin absolu
+> pointe alors vers la racine du disque. C'est normal et sans conséquence :
+> en ligne, servie par un serveur web, elle s'affiche correctement.
+
+### Les anciennes adresses
+
+Les 31 pages de l'ancien site sont toutes couvertes : soit la page existe
+encore, soit une redirection 301 la remplace. `_redirects` liste chaque
+ancienne adresse **avec et sans l'extension `.html`**, parce qu'un lien
+partagé ou recopié perd souvent son extension.
+
 ## Audit technique du site
 
 Le site est vérifié par deux scripts, à relancer après toute modification
