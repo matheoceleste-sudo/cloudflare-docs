@@ -13,6 +13,7 @@ n'importe quel hébergeur.
 Sortie : ./site/
 """
 
+import hashlib
 import json
 import os
 import shutil
@@ -30,6 +31,20 @@ from content import (  # noqa: E402
 
 OUT = os.path.join(HERE, "site")
 TODAY = date.today().isoformat()
+
+
+def empreinte(chemin):
+    """Huit caractères tirés du contenu du fichier, pour casser les caches."""
+    try:
+        with open(os.path.join(HERE, chemin), "rb") as fh:
+            return hashlib.sha1(fh.read()).hexdigest()[:8]
+    except OSError:
+        return "0"
+
+
+V_CSS = empreinte("theme/theme.css")
+V_JS = empreinte("theme/theme.js")
+V_RESA = empreinte("theme/reservation.js")
 
 # ---------------------------------------------------------------------------
 # Jeu d'icônes (contours 24×24, héritent de currentColor)
@@ -105,7 +120,7 @@ def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=N
 <meta name="twitter:description" content="{meta}">
 <meta name="twitter:image" content="{SITE['url']}/{image}">
 <link rel="icon" href="{base}assets/img/lion.svg" type="image/svg+xml">
-<link rel="stylesheet" href="{base}assets/css/theme.css">
+<link rel="stylesheet" href="{base}assets/css/theme.css?v={V_CSS}">
 <script>document.documentElement.className+=' js';</script>
 {ld}</head>
 <body>
@@ -283,7 +298,7 @@ def footer(base):
   <button class="btn btn-sm" id="cookie-ok" type="button">J'ai compris</button>
 </div>
 
-<script src="{base}assets/js/theme.js" defer></script>
+<script src="{base}assets/js/theme.js?v={V_JS}" defer></script>
 </body>
 </html>
 """
@@ -346,8 +361,8 @@ def service_tile(base, s):
     return f"""<a class="tile reveal" href="{base}services/{s['slug']}.html" aria-label="{s['name']}">
   <img src="{base}assets/photos/{s['image']}" alt="{s['name']}" loading="lazy" width="640" height="420">
   <span class="tile-veil"></span>
+  <span class="tile-price">{s['price']}</span>
   <span class="tile-body">
-    <span class="tile-price">{s['price']}</span>
     <span class="tile-name">{s['short']}</span>
     <span class="tile-more">En savoir plus {icon('arrow')}</span>
   </span>
@@ -458,7 +473,9 @@ def write(path, html):
 # ===========================================================================
 def build_home():
     base = ""
-    cards = "".join(service_tile(base, s) for s in SERVICES)
+    # Six vignettes sur l'accueil ; la septième reste accessible par le bouton
+    # « voir toutes les prestations » et par la page Prestations.
+    cards = "".join(service_tile(base, s) for s in SERVICES[:6])
     engagements = "".join(
         f"""<div class="feature reveal">
   <span class="feature-icon">{icon(ic)}</span>
@@ -523,6 +540,9 @@ def build_home():
       </p>
     </div>
     <div class="tile-grid">{cards}</div>
+    <div class="btn-row center" style="margin-top:36px">
+      <a class="btn btn-outline" href="services.html">Voir les sept prestations</a>
+    </div>
   </div>
 </section>
 
@@ -691,7 +711,7 @@ def build_services_archive():
 
 <section class="section">
   <div class="container">
-    <div class="tile-grid">{cards}</div>
+    <div class="tile-grid tile-grid--all">{cards}</div>
   </div>
 </section>
 
@@ -2466,7 +2486,7 @@ def build_reservation():
                  "reservation.html", base, schema=schema)
             + header(base, "reservation") + body
             + '<script id="resa-data" type="application/json">' + data_json + '</script>\n'
-            + '<script src="assets/js/reservation.js" defer></script>\n'
+            + '<script src="assets/js/reservation.js?v=' + V_RESA + '" defer></script>\n'
             + footer(base))
     return write("reservation.html", html)
 

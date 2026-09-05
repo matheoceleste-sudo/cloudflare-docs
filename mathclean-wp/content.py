@@ -784,3 +784,175 @@ HERO = {
     "position": "center 45%",
     "alt": "Technicien MathClean en intervention de nettoyage vapeur, à Paris",
 }
+
+
+# --- Villes couvertes -----------------------------------------------------
+# Une page par ville, avec la distance réelle calculée depuis l'atelier
+# (48.9486, 2.5697). Les coordonnées sont celles du centre communal : la
+# distance affichée est donc « environ », et le montant exact du déplacement
+# reste celui que calcule le configurateur à partir de l'adresse précise.
+#
+# [slug, nom, code postal, département, lat, lon, angle éditorial, prestations mises en avant]
+VILLES = [
+    ("boulogne-billancourt", "Boulogne-Billancourt", "92100", "92", 48.8352, 2.2409,
+     "Première commune d'Île-de-France par la population après Paris, Boulogne-Billancourt "
+     "mêle immeubles haussmanniens, résidences récentes et un tissu dense de sièges sociaux. "
+     "Deux demandes y dominent : le textile en appartement — canapés d'angle qu'on ne peut ni "
+     "démonter ni descendre — et l'entretien de bureaux en horaires décalés.",
+     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+
+    ("neuilly-sur-seine", "Neuilly-sur-Seine", "92200", "92", 48.8846, 2.2697,
+     "À Neuilly, l'essentiel de nos interventions concerne des selleries cuir, des tapis de "
+     "laine et des moquettes de belle facture — des matières qui ne pardonnent pas l'erreur de "
+     "produit. Le diagnostic de la fibre y compte davantage qu'ailleurs.",
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-terrasse-paris"]),
+
+    ("levallois-perret", "Levallois-Perret", "92300", "92", 48.8939, 2.2874,
+     "Levallois concentre bureaux et logements sur un territoire très compact. Le stationnement "
+     "y étant difficile, notre autonomie en eau et en électricité change tout : nous intervenons "
+     "en parking souterrain, sans avoir à tirer un tuyau depuis la rue.",
+     ["nettoyage-entreprise-paris", "nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris"]),
+
+    ("nanterre", "Nanterre", "92000", "92", 48.8924, 2.2069,
+     "Entre la préfecture, les campus et la proximité immédiate de La Défense, Nanterre nous "
+     "sollicite surtout pour l'entretien de locaux professionnels et la remise en état après "
+     "travaux, deux prestations qui se planifient hors des heures d'activité.",
+     ["nettoyage-entreprise-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-vitres-paris", "nettoyage-textile-paris"]),
+
+    ("issy-les-moulineaux", "Issy-les-Moulineaux", "92130", "92", 48.8239, 2.2730,
+     "Pôle tertiaire dense, Issy-les-Moulineaux nous appelle principalement pour la vitrerie de "
+     "grandes surfaces et l'entretien de moquettes de bureaux. L'eau osmosée y prend tout son "
+     "sens sur les façades vitrées.",
+     ["nettoyage-vitres-paris", "nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+
+    ("saint-denis", "Saint-Denis", "93200", "93", 48.9362, 2.3574,
+     "Saint-Denis est en chantier permanent : programmes neufs, réhabilitations, bureaux livrés "
+     "en continu. Notre prestation de fin de chantier y représente une part importante de "
+     "l'activité, souvent en deux passages à quelques jours d'intervalle.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris"]),
+
+    ("montreuil", "Montreuil", "93100", "93", 48.8638, 2.4485,
+     "Montreuil alterne pavillons, lofts d'anciens ateliers et immeubles récents. Les grands "
+     "volumes reconvertis y posent une question précise : des moquettes et des textiles en "
+     "quantité, dans des espaces qu'on ne peut pas vider.",
+     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-terrasse-paris"]),
+
+    ("aulnay-sous-bois", "Aulnay-sous-Bois", "93600", "93", 48.9386, 2.4938,
+     "Aulnay est à quelques minutes de notre atelier : c'est l'une des communes où nous "
+     "intervenons le plus rapidement, souvent dans la journée en cas d'urgence. L'habitat "
+     "pavillonnaire y appelle surtout du textile et du detailing automobile à domicile.",
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-terrasse-paris", "nettoyage-entreprise-paris"]),
+
+    ("tremblay-en-france", "Tremblay-en-France", "93290", "93", 48.9486, 2.5697,
+     "C'est notre commune : l'atelier se trouve au 5 rue Nicolas Copernic. Les frais de "
+     "déplacement y sont nuls ou symboliques, et nous pouvons intervenir dans des délais que "
+     "nous ne tenons nulle part ailleurs.",
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-terrasse-paris", "nettoyage-fin-de-chantier-paris"]),
+
+    ("pantin", "Pantin", "93500", "93", 48.8944, 2.4090,
+     "Pantin s'est couverte de bureaux et d'ateliers reconvertis le long du canal. Nous y "
+     "traitons beaucoup de locaux professionnels, avec la contrainte habituelle des sites "
+     "occupés : intervenir tôt le matin ou après la fermeture.",
+     ["nettoyage-entreprise-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-vitres-paris", "nettoyage-textile-paris"]),
+
+    ("creteil", "Créteil", "94000", "94", 48.7904, 2.4556,
+     "Préfecture du Val-de-Marne, Créteil combine grands ensembles, zones d'activité et "
+     "équipements publics. Les demandes y sont partagées entre entretien de locaux et textile "
+     "à domicile.",
+     ["nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+
+    ("vincennes", "Vincennes", "94300", "94", 48.8478, 2.4390,
+     "Vincennes est un tissu résidentiel serré, aux appartements souvent anciens. Canapés, "
+     "matelas et tapis y constituent l'essentiel des interventions, avec la contrainte "
+     "récurrente des escaliers étroits — qui ne nous gêne pas, puisque nous travaillons sur place.",
+     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-entreprise-paris"]),
+
+    ("saint-maur-des-fosses", "Saint-Maur-des-Fossés", "94100", "94", 48.7994, 2.4934,
+     "Dans la boucle de la Marne, Saint-Maur aligne pavillons avec jardin et terrasses. La "
+     "remise en état des terrasses y suit les saisons, et les bords de Marne nous amènent une "
+     "part de nos interventions nautiques.",
+     ["nettoyage-terrasse-paris", "nettoyage-bateau-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+
+    ("massy", "Massy", "91300", "91", 48.7262, 2.2825,
+     "Massy conjugue quartiers d'affaires, gares et logements neufs. Nous y intervenons pour "
+     "l'entretien de bureaux et la remise en état après travaux, les livraisons de programmes "
+     "y étant fréquentes.",
+     ["nettoyage-entreprise-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris"]),
+
+    ("evry-courcouronnes", "Évry-Courcouronnes", "91000", "91", 48.6238, 2.4297,
+     "Évry-Courcouronnes est l'un des points les plus éloignés de notre atelier : nous y "
+     "groupons volontiers plusieurs interventions sur une même journée, ce qui reste le meilleur "
+     "moyen de contenir les frais de déplacement.",
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-entreprise-paris", "nettoyage-terrasse-paris"]),
+
+    ("versailles", "Versailles", "78000", "78", 48.8014, 2.1301,
+     "À Versailles, nous traitons beaucoup de matières nobles — parquets, tapis de laine, "
+     "selleries cuir — et de terrasses en pierre. Sur ces supports, la question n'est jamais la "
+     "puissance mais le réglage.",
+     ["nettoyage-textile-paris", "nettoyage-terrasse-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+
+    ("saint-germain-en-laye", "Saint-Germain-en-Laye", "78100", "78", 48.8987, 2.0940,
+     "Maisons anciennes, jardins et terrasses en pierre : Saint-Germain-en-Laye appelle surtout "
+     "du nettoyage extérieur au printemps et du textile de valeur le reste de l'année.",
+     ["nettoyage-terrasse-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+
+    ("chelles", "Chelles", "77500", "77", 48.8797, 2.5928,
+     "Chelles est l'une des communes de Seine-et-Marne les plus proches de notre atelier, à "
+     "quelques minutes seulement. Habitat pavillonnaire dominant : terrasses, textile et "
+     "automobile à domicile.",
+     ["nettoyage-terrasse-paris", "nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-entreprise-paris"]),
+
+    ("meaux", "Meaux", "77100", "77", 48.9601, 2.8785,
+     "Meaux marque la limite est de notre zone habituelle. Nous y intervenons volontiers, en "
+     "planifiant la journée autour du déplacement — plusieurs prestations groupées plutôt qu'un "
+     "aller-retour pour une seule.",
+     ["nettoyage-textile-paris", "nettoyage-terrasse-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris"]),
+
+    ("argenteuil", "Argenteuil", "95100", "95", 48.9474, 2.2467,
+     "Argenteuil est la plus peuplée du Val-d'Oise, avec un habitat très varié. Textile à "
+     "domicile et detailing automobile y constituent l'essentiel de nos passages.",
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-entreprise-paris"]),
+
+    ("cergy", "Cergy", "95000", "95", 49.0361, 2.0631,
+     "Ville nouvelle et pôle universitaire, Cergy nous sollicite pour des locaux professionnels "
+     "et des logements étudiants en remise en état, souvent entre deux occupations.",
+     ["nettoyage-entreprise-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris"]),
+
+    ("sarcelles", "Sarcelles", "95200", "95", 48.9959, 2.3785,
+     "Sarcelles est proche de notre atelier, ce qui maintient les frais de déplacement bas. "
+     "Nous y intervenons surtout en textile à domicile et en entretien de commerces.",
+     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+
+    ("paris-8", "Paris 8e", "75008", "75", 48.8721, 2.3120,
+     "Le 8e concentre sièges sociaux, hôtels et commerces de luxe. Vitrines, selleries cuir et "
+     "moquettes de bureaux y forment le gros de nos interventions, presque toujours en horaires "
+     "décalés pour ne pas gêner l'activité.",
+     ["nettoyage-vitres-paris", "nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+
+    ("paris-11", "Paris 11e", "75011", "75", 48.8580, 2.3792,
+     "Le 11e est un arrondissement dense, très résidentiel et très restauré. Nous y traitons "
+     "beaucoup de canapés et de matelas en appartement, et des cuisines professionnelles en "
+     "intervention nocturne.",
+     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+
+    ("paris-12", "Paris 12e", "75012", "75", 48.8409, 2.3876,
+     "Entre Bercy, la Bastille et le bois de Vincennes, le 12e alterne immeubles récents et "
+     "bâti ancien. Textile à domicile et entretien de locaux s'y partagent nos passages.",
+     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+
+    ("paris-15", "Paris 15e", "75015", "75", 48.8412, 2.3003,
+     "Le 15e est le plus peuplé des arrondissements parisiens. Grands appartements familiaux, "
+     "donc grands canapés et moquettes : c'est l'arrondissement où l'injection-extraction à "
+     "domicile prend le plus de sens.",
+     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-entreprise-paris"]),
+
+    ("paris-16", "Paris 16e", "75016", "75", 48.8637, 2.2769,
+     "Le 16e nous amène des matières exigeantes : tapis d'Orient, parquets anciens, selleries "
+     "cuir. Le test de solidité des couleurs y est systématique avant tout lavage.",
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-terrasse-paris"]),
+
+    ("paris-17", "Paris 17e", "75017", "75", 48.8872, 2.3220,
+     "Des Batignolles à la plaine Monceau, le 17e mêle résidentiel haussmannien et bureaux "
+     "récents. Vitrerie, textile et entretien de locaux s'y répartissent assez également.",
+     ["nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris"]),
+]
