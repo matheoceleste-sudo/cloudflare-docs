@@ -1154,7 +1154,8 @@ GUIDES = [
    "Non. C'est de l'eau pure, sans additif ni détergent : elle est moins agressive pour les joints et les menuiseries que la plupart des produits vitres du commerce."),
   ("Pourquoi mes vitres se resalissent-elles si vite ?",
    "Le plus souvent à cause du film laissé par les tensioactifs des nettoyants ménagers, qui retient la poussière. Sans produit, ce film n'existe pas.")],
- "service": "nettoyage-vitres-paris",
+ "video": 'vitres',
+        "service": "nettoyage-vitres-paris",
 },
 {
  "slug": "entreprise-nettoyage-professionnelle",
@@ -1424,7 +1425,8 @@ GUIDES = [
    "Oui, systématiquement, et c'est fait dans la prestation. Injecter sur une fibre chargée de poussière revient à transformer cette poussière en boue."),
   ("Combien de passages faut-il ?",
    "Autant que nécessaire pour que l'eau réaspirée ressorte claire. Sur un canapé très encrassé, cela peut demander plusieurs passages croisés.")],
- "service": "nettoyage-textile-paris",
+ "video": 'textile',
+        "service": "nettoyage-textile-paris",
 },
 {
  "slug": "nettoyage-vapeur-desinfection",
@@ -1482,7 +1484,8 @@ GUIDES = [
    "Des osmoseurs domestiques existent, mais le débit nécessaire pour laver des vitres suppose un matériel professionnel."),
   ("Faut-il essuyer après ?",
    "Non, et c'est tout l'intérêt : on laisse sécher. Essuyer reviendrait à réintroduire des fibres et des traces.")],
- "service": "nettoyage-vitres-paris",
+ "video": 'vitres',
+        "service": "nettoyage-vitres-paris",
 },
 {
  "slug": "nettoyage-fin-chantier-combien-de-passages",
@@ -1872,6 +1875,7 @@ GUIDES = [
             ('Faut-il retirer le matelas du lit ?',
              "Non, nous travaillons sur place. Dégagez simplement l'accès autour du lit et retirez la literie avant notre arrivée."),
         ],
+        "video": 'textile',
         "service": 'nettoyage-textile-paris',
     },
     {
@@ -1954,6 +1958,7 @@ GUIDES = [
             ('Une moquette très ancienne se récupère-t-elle ?',
              "En partie. L'extraction retire la saleté, elle ne restaure pas une fibre usée mécaniquement. Sur une moquette dont la fibre est écrasée dans les couloirs, le résultat sera net mais l'usure restera visible. Nous le disons avant."),
         ],
+        "video": 'textile',
         "service": 'nettoyage-entreprise-paris',
     },
     {
@@ -1998,6 +2003,7 @@ GUIDES = [
             ('Faut-il emporter le tapis ?',
              'Non, nous travaillons chez vous. Il suffit de dégager la surface et, si le tapis est sur parquet, de nous laisser glisser une protection dessous.'),
         ],
+        "video": 'textile',
         "service": 'nettoyage-textile-paris',
     },
     {
@@ -2039,6 +2045,7 @@ GUIDES = [
             ('Retirez-vous les anciens adhésifs de vitrine ?',
              "Oui, au solvant doux. Nous n'utilisons pas de lame sur un vitrage traité, teinté ou filmé, qui se rayerait définitivement."),
         ],
+        "video": 'vitres',
         "service": 'nettoyage-vitres-paris',
     },
     {
@@ -2481,6 +2488,7 @@ GUIDES = [
             ('À quelle fréquence nettoyer une véranda ?',
              "Deux fois par an, au printemps et à l'automne. Davantage si des arbres la surplombent, en particulier des résineux."),
         ],
+        "video": 'vitres',
         "service": 'nettoyage-vitres-paris',
     },
     {

@@ -370,6 +370,67 @@ Google Ads (gratuit) et utilisez le Keyword Planner sur ces mots-clés, ciblage
 Île-de-France. Vous saurez alors lesquelles de ces 26 pages méritent d'être
 étoffées en priorité.
 
+## La vidéo de méthode
+
+Un film de 59 secondes tourné sur une intervention réelle — matelas, canapé,
+puis vitres — est intégré au site. C'est la pièce la plus convaincante dont
+vous disposez : on y voit la personne qui viendra, faisant le geste décrit
+dans les textes.
+
+### Ce qui a été produit
+
+| Fichier | Durée | Poids | Où |
+|---|---|---|---|
+| `methode-mathclean.mp4` | 59 s | 4,5 Mo | Accueil, Réalisations |
+| `methode-textile.mp4` | 37 s | 3,1 Mo | Prestation textile, 4 guides |
+| `methode-vitres.mp4` | 22 s | 1,6 Mo | Prestation vitres, 4 guides |
+
+Chacun a son affiche `.webp` (22 à 34 Ko), tirée de l'encodage final pour que
+les couleurs correspondent exactement.
+
+### Traitements appliqués
+
+- **Conversion HDR → SDR.** L'original est filmé en HLG (HDR). Servi tel quel,
+  il apparaît délavé sur la plupart des écrans. Un tone-mapping *mobius* le
+  ramène en bt709 avec un rattrapage léger de saturation et de contraste.
+- **Compression.** 30 Mo à l'origine, 4,5 Mo pour la version complète, en
+  640 × 1138. Le texte incrusté reste net.
+- **`preload="none"`** sur chaque balise : rien n'est téléchargé tant que le
+  visiteur n'a pas cliqué. Le poids des vidéos ne pèse donc pas sur la vitesse
+  d'affichage des pages.
+- **Format vertical maîtrisé.** Une vidéo 9/16 affichée pleine largeur sur un
+  écran d'ordinateur serait démesurée. Le bloc `.video-split` la contraint à
+  300 px et place le texte à côté ; sur mobile, tout s'empile.
+
+### Ce que cela apporte au référencement
+
+Douze pages portent désormais un balisage `VideoObject`, et le `sitemap.xml`
+déclare les vidéos avec l'extension vidéo de Google (titre, description,
+vignette, durée). Google peut afficher une vignette vidéo dans ses résultats,
+ce qui augmente nettement le taux de clic. Le fichier `llms.txt` mentionne la
+vidéo dans une section « Preuves consultables », pour que les assistants IA
+sachent qu'elle existe et où elle se trouve.
+
+### Ce que la vidéo ne peut pas remplacer
+
+Des images extraites de la vidéo ont été testées pour combler le manque de
+photos. **Le résultat n'est pas utilisable** : le film est vertical, et le
+recadrer en paysage coupe le sujet ; les images sont par ailleurs plus molles
+qu'une photo, et chaque plan porte un filigrane ou un sous-titre incrusté.
+Les 14 photos listées plus haut restent à remplacer par de vraies photos.
+
+### Si vous refaites une vidéo
+
+Ce qui rendrait le prochain film encore plus utile :
+
+- **Quelques plans en format paysage** en plus du vertical. Ils serviraient
+  d'images de page, ce que le vertical ne permet pas.
+- **Des plans fixes de deux à trois secondes** sans mouvement de caméra : ce
+  sont eux qui donnent des images nettes exploitables.
+- **Un plan sur la cuve d'eau sale** en fin d'extraction, tenu plus longtemps.
+  C'est la preuve la plus parlante du métier, et elle passe vite dans le
+  montage actuel.
+
 ## Audit technique du site
 
 Le site est vérifié par deux scripts, à relancer après toute modification
@@ -387,7 +448,7 @@ importante. Ils lisent le dossier `site/` généré, pas les gabarits.
 | Pages sans `canonical`, ou avec un `canonical` erroné | 0 |
 | Pages orphelines (aucun lien entrant) | 0 |
 | Écarts entre le sitemap et les fichiers réellement produits | 0 |
-| JSON-LD invalide ou incomplet | 0 sur 291 blocs |
+| JSON-LD invalide ou incomplet | 0 sur 303 blocs |
 | Hiérarchie de titres avec un niveau sauté (`h2` → `h4`) | 0 |
 | Pages sous 500 mots | 0 sur 112 |
 | Quasi-doublons de contenu (hors gabarit partagé) | 0 |
@@ -395,6 +456,7 @@ importante. Ils lisent le dossier `site/` généré, pas les gabarits.
 | Redirections `_redirects` en boucle ou sans cible | 0 |
 | Images sans `alt`, sans dimensions, ou LCP en chargement différé | 0 |
 | Erreurs JavaScript, requêtes échouées, débordement horizontal | 0 sur 112 pages |
+| Balisage vidéo (`VideoObject` + sitemap vidéo) | 12 pages |
 | **Photos de définition insuffisante** | **14** — voir « Remplacer les images » |
 
 Le site compte **110 pages indexables**, plus `404.html` et `merci.html` en

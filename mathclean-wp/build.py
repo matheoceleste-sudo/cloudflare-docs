@@ -521,6 +521,68 @@ def auteur_schema():
             "worksFor": {"@id": SITE["url"] + "/#business"}}
 
 
+# --- Vidéos de méthode ------------------------------------------------------
+# Films tournés sur des interventions réelles, au format vertical (9/16).
+# Une vidéo verticale affichée pleine largeur est illisible sur un écran
+# d'ordinateur : le bloc la contraint et lui adjoint le texte à côté.
+VIDEOS = {
+    "mathclean": {
+        "fichier": "methode-mathclean", "duree": "PT59S", "secondes": 59,
+        "nom": "La méthode MathClean en une minute",
+        "desc": "Nettoyage d'un matelas et d'un canapé par injection-extraction, "
+                "puis lavage de vitres : le protocole complet, filmé sur une "
+                "intervention réelle en Île-de-France.",
+    },
+    "textile": {
+        "fichier": "methode-textile", "duree": "PT37S", "secondes": 37,
+        "nom": "Nettoyage d'un matelas et d'un canapé par injection-extraction",
+        "desc": "Pulvérisation du détachant, brossage rotatif, traitement vapeur "
+                "puis injection-extraction : l'eau sale est aspirée, pas étalée.",
+    },
+    "vitres": {
+        "fichier": "methode-vitres", "duree": "PT22S", "secondes": 22,
+        "nom": "Nettoyage de vitres, châssis et rainures",
+        "desc": "Vitres, châssis et rainures encrassées, intérieur et extérieur, "
+                "avec reprise manuelle des angles.",
+    },
+}
+
+
+def video_block(base, cle, titre, texte, eyebrow="En vidéo"):
+    """Vidéo verticale et son commentaire, côte à côte."""
+    v = VIDEOS[cle]
+    return f"""<div class="video-split">
+  <div class="video-frame reveal">
+    <video src="{base}assets/videos/{v['fichier']}.mp4"
+           poster="{base}assets/videos/{v['fichier']}.webp"
+           controls playsinline preload="none" width="640" height="1138"
+           aria-label="{esc(v['nom'])}"></video>
+  </div>
+  <div class="reveal">
+    <span class="eyebrow">{eyebrow}</span>
+    <h2>{titre}</h2>
+    {texte}
+  </div>
+</div>"""
+
+
+def video_schema(cle, page):
+    """VideoObject : permet à Google d'afficher une vignette vidéo dans ses
+    résultats, et donne aux assistants une description explicite du contenu."""
+    v = VIDEOS[cle]
+    return {
+        "@context": "https://schema.org", "@type": "VideoObject",
+        "name": v["nom"], "description": v["desc"],
+        "thumbnailUrl": "%s/assets/videos/%s.webp" % (SITE["url"], v["fichier"]),
+        "contentUrl": "%s/assets/videos/%s.mp4" % (SITE["url"], v["fichier"]),
+        "uploadDate": DATE_GUIDES, "duration": v["duree"],
+        "inLanguage": "fr-FR",
+        "publisher": {"@id": SITE["url"] + "/#business"},
+        "isFamilyFriendly": True,
+        "mainEntityOfPage": "%s/%s" % (SITE["url"], page),
+    }
+
+
 def business_schema():
     return {
         "@context": "https://schema.org",
@@ -629,6 +691,29 @@ def build_home():
     )
     posts = "".join(post_card(base, p) for p in POSTS[:3])
 
+    texte_video = f"""<p class="lead">
+    Une minute, sans montage flatteur&nbsp;: un matelas, un canapé, puis des vitres.
+    C'est le protocole que nous appliquons chez vous, et c'est {SITE['manager']} qui
+    travaille sur ces images.
+  </p>
+  <ul class="checklist">
+    <li><strong>Pulvérisation du détachant</strong>, puis brossage rotatif à la brosse
+      mécanique pour décoller la saleté au pied de la fibre.</li>
+    <li><strong>Traitement vapeur</strong> à haute température sur les zones qui le demandent.</li>
+    <li><strong>Injection-extraction</strong>&nbsp;: l'eau est injectée puis aspirée
+      immédiatement. L'eau sale ressort dans la cuve — elle n'est pas étalée dans la fibre,
+      et c'est pour cela qu'il ne reste pas d'auréole.</li>
+    <li><strong>Passe par passe, sur toute la surface</strong>, puis contrôle et finition
+      à la main sur les angles.</li>
+  </ul>
+  <div class="btn-row" style="margin-top:26px">
+    <a class="btn" href="devis.html">Demander un devis gratuit</a>
+    <a class="btn btn-outline" href="realisations.html">Voir nos réalisations</a>
+  </div>"""
+    video_home = video_block(base, "mathclean",
+                             "Notre méthode, filmée sur une intervention réelle",
+                             texte_video)
+
     body = f"""
 <section class="hero">
   <div class="hero-media">
@@ -710,6 +795,12 @@ def build_home():
              loading="lazy" width="760" height="570">
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    {video_home}
   </div>
 </section>
 
@@ -823,6 +914,7 @@ def build_home():
          "@id": SITE["url"] + "/#site", "name": SITE["name"],
          "url": SITE["url"] + "/", "inLanguage": "fr-FR",
          "publisher": {"@id": SITE["url"] + "/#business"}},
+        video_schema("mathclean", ""),
     ]
     html = (
         head(titre_page("Entreprise de nettoyage à Paris et en Île-de-France"),
@@ -930,9 +1022,35 @@ def build_services_archive():
     return write("services.html", html)
 
 
+# Les extraits de la vidéo de méthode qui correspondent à une prestation.
+VIDEO_PAR_SERVICE = {
+    "nettoyage-textile-paris": ("textile",
+        "Le nettoyage d'un matelas et d'un canapé, filmé",
+        "<p>Les deux prestations les plus demandées, dans l'ordre où nous les réalisons "
+        "chez vous. Aucune étape n'est coupée&nbsp;: pulvérisation du détachant, brossage "
+        "rotatif, vapeur, puis injection-extraction.</p>"
+        "<p>Regardez la cuve à la fin de la séquence&nbsp;: l'eau qui en ressort est celle "
+        "qui était dans la fibre. C'est toute la différence avec un shampoing de surface, "
+        "qui laisse un résidu et fait resalir le textile plus vite qu'avant.</p>"),
+    "nettoyage-vitres-paris": ("vitres",
+        "Le lavage des vitres, filmé",
+        "<p>Vitres, châssis et rainures, intérieur et extérieur. Les rainures sont le point "
+        "que l'on saute le plus souvent&nbsp;: elles accumulent poussière et graviers, et "
+        "finissent par gêner le coulissement.</p>"
+        "<p>La finition se fait à la main dans les angles, là où la raclette ne passe pas. "
+        "C'est ce qui distingue une vitre propre d'une vitre propre au centre.</p>"),
+}
+
+
 def build_service(s):
     base = "../"
     trail = [("Prestations", "services.html"), (s["nav"], None)]
+    v = VIDEO_PAR_SERVICE.get(s["slug"])
+    bloc_video = ""
+    if v:
+        bloc_video = ('<section class="section section-soft"><div class="container">'
+                      + video_block(base, v[0], v[1], v[2])
+                      + "</div></section>")
     intro = "".join("<p>%s</p>" % p for p in s["intro"])
     included = "".join("<li>%s</li>" % li for li in s["included"])
     steps = "".join(
@@ -1036,6 +1154,8 @@ def build_service(s):
   </div>
 </section>
 
+{bloc_video}
+
 {cta_band(base, "Besoin de cette prestation ?",
           "Devis gratuit et sans engagement, réponse sous 24 h. Aucun acompte : vous réglez après l'intervention.")}
 
@@ -1059,6 +1179,8 @@ def build_service(s):
          "url": "%s/services/%s.html" % (SITE["url"], s["slug"])},
         faq_schema(s["faq"]),
     ]
+    if v:
+        schema.append(video_schema(v[0], "services/%s.html" % s["slug"]))
     html = (head(titre_page(s["title"]), s["meta"], "services/%s.html" % s["slug"], base, schema=schema)
             + header(base, "services") + body + footer(base))
     return write("services/%s.html" % s["slug"], html)
@@ -1240,6 +1362,15 @@ def build_realisations():
                  for i, (b, a, t, s) in enumerate(BEFORE_AFTER[:BEFORE_AFTER_HD]))
     # Les clichés de faible définition passent dans une grille de trois colonnes :
     # affichés petit, ils restent nets.
+    bloc_video = video_block(
+        base, "mathclean", "Une intervention complète, filmée",
+        '<p class="lead">Les photos montrent le résultat&nbsp;; la vidéo montre le travail. '
+        'Une minute sur une intervention réelle&nbsp;: un matelas, un canapé, puis des '
+        'vitres.</p>'
+        "<p>C'est le même protocole que celui décrit sur nos pages de prestation, et il vaut "
+        "mieux le voir que le lire&nbsp;: la couleur de l'eau qui ressort dans la cuve dit "
+        "mieux que n'importe quel argumentaire ce que l'injection-extraction retire réellement "
+        "d'un textile.</p>")
     ba_petit = "".join(ba_block(base, b, a, t, s, i + BEFORE_AFTER_HD, largeur=380)
                        for i, (b, a, t, s) in enumerate(BEFORE_AFTER[BEFORE_AFTER_HD:]))
     body = f"""
@@ -1276,6 +1407,12 @@ def build_realisations():
                muted loop playsinline controls preload="none"></video>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    {bloc_video}
   </div>
 </section>
 
@@ -1337,7 +1474,8 @@ def build_realisations():
                  "Avant/après de nos interventions de nettoyage à Paris et en Île-de-France : sièges auto, "
                  "canapés, terrasses, tapis, cuisines professionnelles.",
                  "realisations.html", base,
-                 schema=[crumb_schema([("Réalisations", "realisations.html")])])
+                 schema=[crumb_schema([("Réalisations", "realisations.html")]),
+                         video_schema("mathclean", "realisations.html")])
             + header(base, "services") + body + footer(base))
     return write("realisations.html", html)
 
@@ -3665,6 +3803,17 @@ def build_guide(g):
     if len(proches) < 3:
         proches += [o for o in GUIDES if o["slug"] != g["slug"] and o not in proches][:3 - len(proches)]
     autres = "".join(guide_card(base, o) for o in proches)
+    # Un guide peut renvoyer vers l'extrait vidéo qui illustre sa méthode.
+    bloc_video = ""
+    if g.get("video"):
+        cle = g["video"]
+        bloc_video = (
+            '<section class="section section-soft"><div class="container">'
+            + video_block(base, cle, "La méthode en images",
+                          "<p>Ce que décrit ce guide, filmé sur une intervention réelle en "
+                          "Île-de-France. Aucune étape n'est coupée.</p>"
+                          "<p>" + VIDEOS[cle]["desc"] + "</p>")
+            + "</div></section>")
 
     body = f"""
 <section class="page-title">
@@ -3724,6 +3873,8 @@ def build_guide(g):
   </div>
 </section>
 
+{bloc_video}
+
 {cta_band(base)}
 """
     schema = [
@@ -3740,6 +3891,8 @@ def build_guide(g):
          "mainEntityOfPage": "%s/guides/%s.html" % (SITE["url"], g["slug"])},
         faq_schema(g["faq"]),
     ]
+    if g.get("video"):
+        schema.append(video_schema(g["video"], "guides/%s.html" % g["slug"]))
     html = (head(titre_page(g["title"]), g["meta"], "guides/%s.html" % g["slug"], base,
                  image="assets/photos/%s" % g["image"], schema=schema,
                  og_type="article", published=g.get("date", DATE_GUIDES))
@@ -3788,17 +3941,55 @@ def build_guides_archive():
 # ===========================================================================
 # SITEMAP & ROBOTS
 # ===========================================================================
+# Pages portant une vidéo, et l'extrait qu'elles montrent. Sert à enrichir le
+# sitemap : Google peut alors afficher une vignette vidéo dans ses résultats.
+def _pages_video():
+    pages = {"": "mathclean", "realisations.html": "mathclean"}
+    for sl, (cle, _t, _x) in VIDEO_PAR_SERVICE.items():
+        pages["services/%s.html" % sl] = cle
+    for g in GUIDES:
+        if g.get("video"):
+            pages["guides/%s.html" % g["slug"]] = g["video"]
+    return pages
+
+
+def _echappe_xml(txt):
+    return (str(txt).replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
+
+
 def build_sitemap(urls):
+    videos = _pages_video()
     entries = ""
     for path, priority, freq in urls:
         loc = SITE["url"] + "/" + ("" if path == "index.html" else path)
+        bloc_video = ""
+        cle = videos.get("" if path == "index.html" else path)
+        if cle:
+            v = VIDEOS[cle]
+            bloc_video = (
+                "\n    <video:video>"
+                "\n      <video:thumbnail_loc>%s/assets/videos/%s.webp</video:thumbnail_loc>"
+                "\n      <video:title>%s</video:title>"
+                "\n      <video:description>%s</video:description>"
+                "\n      <video:content_loc>%s/assets/videos/%s.mp4</video:content_loc>"
+                "\n      <video:duration>%d</video:duration>"
+                "\n      <video:publication_date>%s</video:publication_date>"
+                "\n      <video:family_friendly>yes</video:family_friendly>"
+                "\n      <video:live>no</video:live>"
+                "\n    </video:video>\n  "
+                % (SITE["url"], v["fichier"], _echappe_xml(v["nom"]),
+                   _echappe_xml(v["desc"]), SITE["url"], v["fichier"],
+                   v["secondes"], DATE_GUIDES)
+            )
         entries += (
             "  <url><loc>%s</loc><lastmod>%s</lastmod>"
-            "<changefreq>%s</changefreq><priority>%s</priority></url>\n"
-            % (loc, TODAY, freq, priority)
+            "<changefreq>%s</changefreq><priority>%s</priority>%s</url>\n"
+            % (loc, TODAY, freq, priority, bloc_video)
         )
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
-           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+           '        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n'
            + entries + "</urlset>\n")
     return write("sitemap.xml", xml)
 
@@ -3850,6 +4041,16 @@ def build_llms_txt():
 - Horaires : {SITE['hours']}
 - Site : {SITE['url']}
 - Fiche Google : {SITE['review_url']}
+
+## Preuves consultables
+- Vidéo de méthode (59 s, tournée sur une intervention réelle) : matelas et canapé par
+  injection-extraction, puis lavage de vitres. {SITE['url']}/assets/videos/methode-mathclean.mp4
+  Elle est visible sur la page d'accueil et sur {SITE['url']}/realisations.html
+- Extrait textile (37 s) : {SITE['url']}/services/nettoyage-textile-paris.html
+- Extrait vitrerie (22 s) : {SITE['url']}/services/nettoyage-vitres-paris.html
+- Avant/après d'interventions réelles : {SITE['url']}/realisations.html — chaque paire provient
+  d'une même intervention, jamais de deux clichés sans rapport.
+- Avis clients : uniquement sur la fiche Google, jamais recopiés sur le site.
 
 ## Engagements vérifiables
 - Devis gratuit, ferme et détaillé poste par poste.
