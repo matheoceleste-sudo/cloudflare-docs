@@ -258,48 +258,21 @@
 }
 </script>
 <style>
-/* ===== Hero immersif : plongée photo au scroll ===== */
-.journey{position:relative;height:460vh}
-.hero.jstage{position:sticky;top:0;height:100vh;height:100dvh;min-height:560px;background:#0b1826}
-.jscene{position:absolute;inset:0;will-change:opacity;background:#0b1826}
+/* ===== Hero statique (plein écran, photo + voile) ===== */
+.journey{position:relative}
+.hero.jstage{position:relative;height:auto;min-height:100vh;min-height:100dvh;background:#0b1826}
+.journey .hero-inner.jcap{padding:104px 24px 60px}
+.jscene{position:absolute;inset:0;background:#0b1826}
 .jscene .jimg{
-  position:absolute;inset:-4%;width:108%;height:108%;
+  position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;object-position:center;
-  will-change:transform;transform-origin:center;
 }
 .jscrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(to bottom,rgba(10,10,12,.62),rgba(10,10,12,.38) 42%,rgba(10,10,12,.72))}
-.jcap{will-change:transform,opacity}
-.jside{
-  position:absolute;left:clamp(24px,7vw,110px);bottom:clamp(100px,17vh,170px);
-  max-width:620px;z-index:2;text-align:left;opacity:0;
-}
-.jside h2{
-  font-family:var(--serif,'Cormorant Garamond',serif);font-weight:600;
-  font-size:clamp(34px,6vw,72px);line-height:1.05;letter-spacing:-1px;
-  color:#f5f2ea;text-shadow:0 4px 40px rgba(0,0,0,.55);margin:10px 0 0;
-}
-.jside p{
-  margin:14px 0 24px;font-size:clamp(15px,1.6vw,18px);line-height:1.6;
-  color:rgba(245,242,234,.85);max-width:480px;text-shadow:0 2px 20px rgba(0,0,0,.6);
-}
-.jdots i{cursor:default}
-.jhide{opacity:0 !important;transition:opacity .6s ease}
-@media (max-width:640px){.jside{bottom:120px}}
 /* Mobile : caler le contenu du hero sous la barre de nav (évite le chevauchement avec le logo) */
 @media (max-width:700px){
-  .journey .jstage{align-items:flex-start}
-  .journey .jcap{padding-top:82px;padding-bottom:20px}
+  .journey .hero-inner.jcap{padding:96px 24px 48px}
   .journey .jcap .eyebrow{display:none}
-}
-/* Mobile : pas d'animation de plongée — un seul hero statique, puis la présentation */
-@media (max-width:700px){
-  .journey{height:auto}
-  .journey .jstage{position:relative;height:100vh;height:100dvh;min-height:560px}
-  .journey .jscene[data-i="1"],.journey .jscene[data-i="2"],.journey .jscene[data-i="3"]{display:none}
-  .journey .jside{display:none}
-  .journey .jdots{display:none}
-  .journey .jcap{opacity:1 !important;transform:none !important}
 }
 .card-photo{display:block;width:100%;height:150px;object-fit:cover;border-radius:12px;background-size:cover;
   background-position:center;margin-bottom:16px;border:1px solid rgba(255,255,255,.06)}
@@ -384,11 +357,9 @@ gtag('js',new Date());gtag('config','G-B58TBB5DQL');gtag('config','GT-5DHFFMX6')
   <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 
-<!-- ============ HERO IMMERSIF (plongée photo au scroll) ============ -->
+<!-- ============ HERO ============ -->
 <div class="journey" id="journey">
   <section class="hero jstage" id="jstage">
-    <div class="jscene" data-i="2" style="background:#26232c"><img class="jimg" data-src="https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1280" data-srcset="https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=480 480w, https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=640 640w, https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=960 960w, https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1280 1280w, https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1600 1600w" sizes="100vw" width="1600" height="1067" alt="Intérieur de jet privé nettoyé, cabine et selleries en cuir" loading="lazy" decoding="async"></div>
-    <div class="jscene" data-i="1" style="background:#1a2129"><img class="jimg" data-src="https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1280" data-srcset="https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=480 480w, https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=640 640w, https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=960 960w, https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1280 1280w, https://images.pexels.com/photos/6873179/pexels-photo-6873179.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1600 1600w" sizes="100vw" width="1600" height="1067" alt="Lavage et nettoyage d’une voiture haut de gamme à domicile" loading="lazy" decoding="async"></div>
     <div class="jscene" data-i="0" style="background:#3a3226"><img class="jimg" src="https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1280" srcset="https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=480 480w, https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=640 640w, https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=960 960w, https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1280 1280w, https://images.pexels.com/photos/9565782/pexels-photo-9565782.jpeg?auto=compress&amp;cs=tinysrgb&amp;q=50&amp;w=1600 1600w" sizes="100vw" width="1600" height="1067" alt="Salon lumineux aux couleurs claires avec un canapé propre" fetchpriority="high" decoding="async"></div>
     <div class="jscrim"></div>
 
@@ -414,23 +385,26 @@ gtag('js',new Date());gtag('config','G-B58TBB5DQL');gtag('config','GT-5DHFFMX6')
         <p class="hd-note">Délais habituels, confirmés par téléphone ou par email après votre demande.</p>
       </div>
     </div>
+  </section>
+</div>
 
-    <div class="jside jcap" data-i="1">
-      <span class="eyebrow">02 — Automobile</span>
-      <h2>Detailing automobile</h2>
-      <p>Intérieur &amp; extérieur, à domicile, dès 40&nbsp;€. La brillance d'un service d'exception.</p>
-      <a href="services/nettoyage-automobile-paris.html" class="btn btn-ghost">Voir la prestation</a>
-    </div>
-
-    <div class="jside jcap" data-i="2">
-      <span class="eyebrow">03 — Aviation privée</span>
-      <h2>Intérieur de jet</h2>
-      <p>Une cabine immaculée, digne des plus hauts standards de l'aviation d'affaires.</p>
-      <a href="services/nettoyage-avion-paris.html" class="btn btn-ghost">Voir la prestation</a>
-    </div>
+<!-- ============ PRÉSENTATION ENTREPRISE ============ -->
+<section class="band apropos">
+  <div class="wrap">
+    <img class="ap-photo reveal-l" src="assets/photos/mathieo-mathclean.webp" alt="Mathéo, fondateur de MathClean, en intervention de nettoyage vapeur à Paris" loading="lazy" decoding="async" width="1000" height="1333">
+    <div class="ap-txt reveal-r d1">
+      <span class="eyebrow">Qui sommes-nous</span>
+      <h2>MathClean, l'art du nettoyage à domicile</h2>
+      <p>Née d'une passion pour le travail bien fait, <b>MathClean</b> est votre entreprise de nettoyage à Paris et en Île-de-France. Depuis notre atelier du <b>5 rue Nicolas Copernic, à Tremblay-en-France</b>, nous redonnons tout leur éclat à vos canapés, matelas, tapis, véhicules, vitres et espaces professionnels — directement chez vous, avec un savoir-faire haut de gamme.</p>
+      <p>Nos techniciens qualifiés se déplacent équipés d'un matériel professionnel et de produits sûrs pour votre famille comme pour vos animaux. Notre engagement : un résultat impeccable, un devis gratuit et transparent, et une <b>exigence de roi</b> à chaque intervention, 7j/7. <a href="a-propos.html">Découvrez notre méthode et nos engagements</a>.</p>
+      <div class="ap-sign">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7cd86"/><stop offset="1" stop-color="#9c7a2e"/></linearGradient></defs><circle cx="32" cy="32" r="28.5" fill="none" stroke="url(#lg2)" stroke-width="2.5"/><text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="&#39;Cormorant Garamond&#39;,Georgia,serif" font-size="27" font-weight="600" fill="url(#lg2)">MC</text></svg>
+        <div><b>Une exigence de roi</b><small>MathClean · Paris &amp; Île-de-France</small></div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <!-- ============ AVANT / APRÈS ============ -->
 <section id="avant-apres" class="band beforeafter">
@@ -841,98 +815,7 @@ gtag('js',new Date());gtag('config','G-B58TBB5DQL');gtag('config','GT-5DHFFMX6')
 </footer>
 
 <script src="assets/app.js"></script>
-<script>
-/* ===== Scènes différées : on ne charge les images 2-4 qu'après le premier rendu ===== */
-(function(){
-  function hydrate(){
-    Array.prototype.forEach.call(document.querySelectorAll('.jimg[data-src]'), function(img){
-      if (img.dataset.srcset) img.srcset = img.dataset.srcset;
-      img.src = img.dataset.src;
-      img.removeAttribute('data-src'); img.removeAttribute('data-srcset');
-    });
-  }
-  /* Inutile sur mobile : les scènes 2-4 y sont masquées et l'animation est désactivée */
-  if (window.matchMedia('(max-width:700px)').matches) return;
-  if (document.readyState === 'complete') hydrate();
-  else window.addEventListener('load', hydrate, { once:true });
-})();
 
-/* ===== Plongée photo au scroll (zoom + fondu vers l'image suivante) ===== */
-(function(){
-  var journey = document.getElementById('journey');
-  if (!journey) return;
-  /* Mobile : hero statique, on ne lance pas l'animation de plongée */
-  if (window.matchMedia('(max-width:700px)').matches) return;
-  /* Le nombre de scènes suit le HTML : retirer une prestation du hero ne doit pas
-     casser l'animation, comme cela s'est produit au retrait du bateau. */
-  var N = document.querySelectorAll('.journey .jscene').length;
-  if (N < 2) return;
-  var scenes = {}, imgs = {}, caps = {};
-  Array.prototype.forEach.call(document.querySelectorAll('.jscene'), function(s){
-    var i = +s.getAttribute('data-i');
-    scenes[i] = s; imgs[i] = s.querySelector('.jimg');
-  });
-  Array.prototype.forEach.call(document.querySelectorAll('.jcap'), function(c){
-    caps[+c.getAttribute('data-i')] = c;
-  });
-  var dots = document.querySelectorAll('.jdots i');
-  var cue  = document.getElementById('jcue');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function clamp01(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
-  function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; }
-
-  var target = 0, current = 0;
-  function measure(){ return Math.max(1, journey.offsetHeight - window.innerHeight); }
-  var maxScroll = measure();
-  window.addEventListener('resize', function(){ maxScroll = measure(); });
-  window.addEventListener('scroll', function(){
-    var top = journey.offsetTop;
-    target = clamp01((window.scrollY - top) / maxScroll);
-    if (cue) cue.classList.toggle('jhide', window.scrollY > 60);
-  }, { passive:true });
-
-  function render(p){
-    var x = p * (N - 1);
-    var active = Math.round(x);
-    for (var i = 0; i < N; i++){
-      var d = x - i, sc = scenes[i];
-      if (d <= 0){                       /* scène à venir : posée, en attente sous la précédente */
-        sc.style.opacity = 1;
-        sc.style.visibility = 'visible';
-        imgs[i].style.transform = 'scale(1)';
-      } else {                           /* on s'enfonce dans l'image : zoom + fondu */
-        var e = ease(Math.min(d, 1));
-        var o = d < 0.45 ? 1 : clamp01(1 - (d - 0.45) / 0.5);
-        sc.style.opacity = o;
-        sc.style.visibility = d >= 0.98 ? 'hidden' : 'visible';
-        imgs[i].style.transform = reduce ? 'scale(1)' : 'scale(' + (1 + e * 1.15).toFixed(4) + ')';
-      }
-      var cap = caps[i];
-      if (cap){
-        var co = clamp01(1 - Math.abs(x - i) * 2.2);
-        cap.style.opacity = co;
-        cap.style.pointerEvents = co > 0.35 ? 'auto' : 'none';
-        if (!reduce) cap.style.transform = 'translateY(' + ((x - i) * -46).toFixed(1) + 'px)';
-      }
-    }
-    for (var m = 0; m < dots.length; m++){
-      dots[m].className = (m === active) ? 'on' : '';
-    }
-  }
-
-  (function loop(){
-    requestAnimationFrame(loop);
-    if (reduce){ current = target; }
-    else {
-      current += (target - current) * 0.08;
-      if (Math.abs(target - current) < 0.0002) current = target;
-    }
-    render(current);
-  })();
-  render(0);
-})();
-</script>
 
 
 </body>
