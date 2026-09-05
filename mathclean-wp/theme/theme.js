@@ -79,12 +79,19 @@
           entry.target.classList.add('is-visible');
           io.unobserve(entry.target);
         });
-      }, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
+      }, {
+        /* Marge généreuse et seuil nul : un bloc apparaît dès qu'il approche
+           de l'écran, jamais après. Sans cela, un défilement rapide ou une
+           arrivée en milieu de page laissait des blocs vides. */
+        rootMargin: '300px 0px 300px 0px',
+        threshold: 0
+      });
       revealables.forEach(function (el) { io.observe(el); });
 
-      /* Filet de sécurité : si l'observateur n'a rien déclenché (capture
-         d'écran, impression, onglet en arrière-plan), on affiche tout. */
-      window.setTimeout(showAll, 2500);
+      /* Filets de sécurité, si l'observateur ne se déclenche pas : capture
+         d'écran, impression, onglet ouvert en arrière-plan. */
+      window.setTimeout(showAll, 1200);
+      window.addEventListener('load', function () { window.setTimeout(showAll, 400); });
       window.addEventListener('beforeprint', showAll);
     } else {
       showAll();

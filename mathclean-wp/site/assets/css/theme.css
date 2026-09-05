@@ -801,3 +801,65 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 }
 .resa-total span{font-size:.88rem;font-weight:650;color:var(--muted)}
 .resa-total strong{font-size:1.35rem;font-weight:800;color:var(--brand);letter-spacing:-.02em;text-align:right}
+
+/* ==========================================================================
+   15. Vignettes de prestations, pleine image
+   Grande photo, nom en capitales par-dessus. Deux colonnes ; quand le nombre
+   de prestations est impair, la dernière occupe toute la largeur.
+   ========================================================================== */
+.tile-grid{display:grid;gap:18px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.tile-grid > .tile:last-child:nth-child(odd){grid-column:1/-1}
+@media(max-width:760px){
+  .tile-grid{grid-template-columns:1fr}
+  .tile-grid > .tile:last-child:nth-child(odd){grid-column:auto}
+}
+
+.tile{
+  position:relative;display:block;overflow:hidden;isolation:isolate;
+  min-height:340px;border-radius:var(--radius-lg);background:var(--bg-dark);
+}
+@media(max-width:760px){.tile{min-height:270px}}
+.tile img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .7s cubic-bezier(.2,.6,.2,1);
+}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.07)}
+
+.tile-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(10,26,44,.20) 0%, rgba(10,26,44,.52) 52%, rgba(10,26,44,.88) 100%);
+  transition:background .35s ease;
+}
+.tile:hover .tile-veil,.tile:focus-visible .tile-veil{
+  background:linear-gradient(180deg,
+    rgba(10,26,44,.34) 0%, rgba(10,26,44,.62) 52%, rgba(10,26,44,.92) 100%);
+}
+
+.tile-body{
+  position:relative;z-index:2;display:flex;flex-direction:column;
+  align-items:flex-start;justify-content:flex-end;gap:12px;
+  min-height:340px;padding:30px 32px;
+}
+@media(max-width:760px){.tile-body{min-height:270px;padding:24px}}
+
+.tile-price{
+  align-self:flex-start;margin-bottom:auto;
+  background:rgba(255,255,255,.94);color:var(--ink);
+  font-size:.8rem;font-weight:700;padding:6px 14px;border-radius:100px;
+}
+.tile-name{
+  color:#fff;font-weight:800;line-height:1.1;letter-spacing:.01em;
+  text-transform:uppercase;text-wrap:balance;
+  font-size:clamp(1.3rem,.95rem + 1.4vw,2rem);
+  text-shadow:0 2px 14px rgba(8,18,32,.45);
+}
+.tile-more{
+  display:inline-flex;align-items:center;gap:9px;
+  color:#fff;font-size:.82rem;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;opacity:.82;
+  transition:opacity .25s ease,gap .25s ease;
+}
+.tile-more svg{width:26px;height:16px;stroke:var(--gold);stroke-width:2;fill:none}
+.tile:hover .tile-more,.tile:focus-visible .tile-more{opacity:1;gap:15px}
+.tile:focus-visible{outline:3px solid var(--gold);outline-offset:3px}

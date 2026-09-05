@@ -39,6 +39,7 @@ SITE = {
 SERVICES = [
     {
         "slug": "nettoyage-automobile-paris",
+        "short": "Automobile",
         "nav": "Nettoyage automobile",
         "name": "Nettoyage automobile à Paris",
         "h1": "Nettoyage automobile à domicile à Paris & en Île-de-France",
@@ -84,6 +85,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-textile-paris",
+        "short": "Textile",
         "nav": "Nettoyage textile (canapé, matelas, tapis)",
         "name": "Nettoyage textile à Paris",
         "h1": "Nettoyage de canapé, matelas et tapis à domicile",
@@ -128,6 +130,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-bateau-paris",
+        "short": "Bateau",
         "nav": "Nettoyage de bateau",
         "name": "Nettoyage de bateau à Paris",
         "h1": "Nettoyage de bateau à quai, en Île-de-France et en mer",
@@ -169,6 +172,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-terrasse-paris",
+        "short": "Terrasse",
         "nav": "Nettoyage de terrasse",
         "name": "Nettoyage de terrasse à Paris",
         "h1": "Nettoyage de terrasse : haute pression maîtrisée & anti-mousse",
@@ -211,6 +215,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-vitres-paris",
+        "short": "Vitres",
         "nav": "Nettoyage de vitres",
         "name": "Nettoyage de vitres à Paris",
         "h1": "Nettoyage de vitres à l'eau osmosée, sans trace",
@@ -253,6 +258,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-entreprise-paris",
+        "short": "Entreprise",
         "nav": "Nettoyage pour entreprise",
         "name": "Nettoyage pour entreprise à Paris",
         "h1": "Nettoyage pour entreprise : bureaux, commerces et locaux",
@@ -294,6 +300,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-fin-de-chantier-paris",
+        "short": "Fin de chantier",
         "nav": "Fin de chantier",
         "name": "Nettoyage fin de chantier à Paris",
         "h1": "Nettoyage de fin de chantier et remise en état après travaux",

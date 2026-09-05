@@ -336,6 +336,24 @@ def service_card(base, s):
 </a>"""
 
 
+def service_tile(base, s):
+    """
+    Vignette pleine image : photo en fond, nom de la prestation en capitales
+    par-dessus. Format immersif, réservé aux deux grandes vitrines
+    (accueil et page Prestations) ; les listes secondaires gardent la carte
+    compacte `service_card`.
+    """
+    return f"""<a class="tile reveal" href="{base}services/{s['slug']}.html" aria-label="{s['name']}">
+  <img src="{base}assets/photos/{s['image']}" alt="{s['name']}" loading="lazy" width="640" height="420">
+  <span class="tile-veil"></span>
+  <span class="tile-body">
+    <span class="tile-price">{s['price']}</span>
+    <span class="tile-name">{s['short']}</span>
+    <span class="tile-more">En savoir plus {icon('arrow')}</span>
+  </span>
+</a>"""
+
+
 def ba_block(base, before, after, title, sub, idx):
     return f"""<div class="reveal">
   <div class="ba" style="--pos:50%">
@@ -440,7 +458,7 @@ def write(path, html):
 # ===========================================================================
 def build_home():
     base = ""
-    cards = "".join(service_card(base, s) for s in SERVICES)
+    cards = "".join(service_tile(base, s) for s in SERVICES)
     engagements = "".join(
         f"""<div class="feature reveal">
   <span class="feature-icon">{icon(ic)}</span>
@@ -498,13 +516,13 @@ def build_home():
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Nos prestations</span>
-      <h2>Huit métiers, une seule exigence</h2>
+      <h2>Sept métiers, une seule exigence</h2>
       <p class="lead">
         Chaque matière appelle un produit et un geste différents. C'est ce travail de diagnostic —
         comprendre la matière avant de la nettoyer — qui sépare un résultat correct d'un résultat qui tient.
       </p>
     </div>
-    <div class="grid grid-3">{cards}</div>
+    <div class="tile-grid">{cards}</div>
   </div>
 </section>
 
@@ -665,15 +683,15 @@ def build_home():
 def build_services_archive():
     base = ""
     trail = [("Prestations", None)]
-    cards = "".join(service_card(base, s) for s in SERVICES)
+    cards = "".join(service_tile(base, s) for s in SERVICES)
     body = f"""
 {page_title_block(base, trail, "Nos prestations de nettoyage",
-    "Huit métiers, à domicile comme en entreprise, partout à Paris et en Île-de-France. "
+    "Sept métiers, à domicile comme en entreprise, partout à Paris et en Île-de-France. "
     "Chaque prestation dispose de sa page dédiée : méthode, contenu détaillé et réponses aux questions courantes.")}
 
 <section class="section">
   <div class="container">
-    <div class="grid grid-3">{cards}</div>
+    <div class="tile-grid">{cards}</div>
   </div>
 </section>
 
@@ -1160,7 +1178,7 @@ def build_zone(z):
     </div>
     <div class="grid grid-3">{services_cards}</div>
     <div class="btn-row center" style="margin-top:34px">
-      <a class="btn btn-outline" href="{base}services.html">Voir les huit prestations</a>
+      <a class="btn btn-outline" href="{base}services.html">Voir les sept prestations</a>
     </div>
   </div>
 </section>
@@ -2483,8 +2501,17 @@ def build_redirects():
     déjà indexée, doit continuer de fonctionner.
     """
     lignes = [
-        "/services/nettoyage-locaux-paris.html  /services/nettoyage-entreprise-paris.html  301",
-        "/services/nettoyage-avion-paris.html   /services.html                             301",
+        # Prestations renommées ou retirées
+        "/services/nettoyage-locaux-paris.html       /services/nettoyage-entreprise-paris.html  301",
+        "/services/nettoyage-bureau-paris.html       /services/nettoyage-entreprise-paris.html  301",
+        "/services/nettoyage-avion-paris.html        /services.html                             301",
+        # L'ancien site relayait déjà ces adresses ; on garde la chaîne intacte
+        "/services/polissage-carrosserie-paris.html  /services/nettoyage-automobile-paris.html  301",
+        "/services/nettoyage-canape-paris.html       /services/nettoyage-textile-paris.html     301",
+        "/services/nettoyage-matelas-paris.html      /services/nettoyage-textile-paris.html     301",
+        "/services/nettoyage-tapis-paris.html        /services/nettoyage-textile-paris.html     301",
+        # La page « astuces » est devenue le blog
+        "/astuces-nettoyage.html                     /blog.html                                 301",
     ]
     return write("_redirects", "\n".join(lignes) + "\n")
 
