@@ -86,10 +86,12 @@ Quelques repères dans `content.py` :
 Les couleurs se règlent en haut de `theme/theme.css`, dans le bloc `:root`
 (`--brand` pour le bleu, `--gold` pour le doré).
 
-## Les 36 pages
+## Les 78 pages indexables
 
-- Accueil, À propos, Tarifs, Réalisations, **Réservation**, Devis, Contact
+- Accueil, À propos, Tarifs, Réalisations, Réservation, Devis, Contact
 - 7 pages de prestations (`services/`)
+- **28 pages villes** (`villes/`) + leur sommaire
+- **12 guides pratiques** (`guides/`) + leur sommaire
 - Zones d'intervention + 8 pages départements (`zones/`)
 - Blog + 8 articles de conseils (`blog/`)
 - Merci, 404, mentions légales, confidentialité, cookies
@@ -112,6 +114,55 @@ récapitulatif de droite.
 
 La demande part par FormSubmit avec un récapitulatif lisible. Sans
 JavaScript, la page renvoie vers le formulaire de devis et le téléphone.
+
+## Villes et guides
+
+Deux familles de pages nourrissent le référencement, chacune pilotée depuis
+`content.py`.
+
+**`VILLES`** — une page par commune. La distance depuis l'atelier et les
+frais de déplacement sont **calculés**, pas écrits à la main : le générateur
+applique la même règle que le configurateur (vol d'oiseau × 1,25, puis 5 €
+par tranche de 5 km). Ajouter une commune revient à ajouter une ligne avec
+ses coordonnées et deux phrases qui lui sont propres.
+
+Les coordonnées sont celles du centre communal : la distance affichée est
+donc annoncée comme approximative, et la page précise que le montant exact
+se calcule sur l'adresse réelle.
+
+**`GUIDES`** — pages de fond répondant à une question précise (« combien
+coûte un nettoyage de canapé », « comment choisir une entreprise »). Ce sont
+elles qui se font citer, par Google comme par les assistants IA : un contenu
+argumenté est repris, une page vide ne l'est pas.
+
+> **À ne pas faire :** dupliquer une page ville en changeant seulement le nom
+> de la commune. Google identifie ces pages sans contenu propre et les
+> déclasse en bloc, y compris le reste du site. Chaque commune ajoutée doit
+> apporter au moins un paragraphe qui n'existe nulle part ailleurs.
+
+## Être recommandé par les assistants IA
+
+Trois dispositifs sont en place :
+
+- **`/llms.txt`** — une fiche de synthèse en texte brut à la racine :
+  identité, SIRET, engagements, tarifs, zone, liens. C'est le format que
+  lisent les robots des assistants ; il est régénéré à chaque build depuis
+  `content.py`, donc toujours à jour.
+- **`robots.txt`** autorise explicitement GPTBot, ClaudeBot, PerplexityBot,
+  Google-Extended et les autres, pour lever toute ambiguïté.
+- **Données structurées** Schema.org sur chaque page : LocalBusiness,
+  Service, FAQPage, Article, BreadcrumbList.
+
+Ce qui compte le plus reste le contenu : un assistant cite ce qui est
+factuel, daté et vérifiable. Les prix chiffrés, le SIRET, l'absence
+d'acompte et la règle de déplacement sont repris parce qu'ils sont
+précis — pas parce qu'ils sont flatteurs.
+
+> **Une allégation à éviter :** « la meilleure entreprise de nettoyage
+> d'Île-de-France ». Elle est invérifiable, exposée au titre de la publicité
+> trompeuse, et contre-productive : Google comme les assistants IA écartent
+> les superlatifs non étayés. Le guide « Comment choisir une entreprise de
+> nettoyage » vise la même requête en donnant des critères vérifiables.
 
 ## La photo d'en-tête
 

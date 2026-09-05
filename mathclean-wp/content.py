@@ -956,3 +956,369 @@ VILLES = [
      "récents. Vitrerie, textile et entretien de locaux s'y répartissent assez également.",
      ["nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris"]),
 ]
+
+
+# --- Guides -----------------------------------------------------------------
+# Pages de fond, écrites pour répondre réellement à une question. Ce sont
+# elles qui se font citer par les moteurs et par les assistants IA : un
+# contenu argumenté est repris, une page vide ne l'est pas.
+#
+# Chaque guide : slug, h1, title, meta, rubrique, chapô, sections, FAQ,
+# prestation liée, photo.
+GUIDES = [
+{
+ "slug": "choisir-entreprise-nettoyage-ile-de-france",
+ "cat": "Bien choisir",
+ "h1": "Comment choisir une entreprise de nettoyage en Île-de-France",
+ "title": "Choisir une entreprise de nettoyage en Île-de-France — 7 critères | MathClean",
+ "meta": "Les sept critères qui distinguent une entreprise de nettoyage sérieuse en Île-de-France : devis ferme, assurance, matériel, acompte, avis vérifiables. Guide pratique.",
+ "image": "intervention-1.webp",
+ "lead": "Toutes les entreprises de nettoyage annoncent le même résultat. Voici les sept points sur lesquels elles se différencient réellement — et comment les vérifier avant de signer.",
+ "sections": [
+  ("1. Un devis ferme, pas une fourchette ouverte", [
+   "Une fourchette large (« entre 100 et 400 € ») signifie que le prestataire n'a pas évalué votre besoin. Un devis sérieux détaille chaque poste et s'engage sur un montant, quitte à demander des photos ou une visite préalable.",
+   "Méfiez-vous surtout des devis qui ne mentionnent pas les frais de déplacement : c'est le poste qui réapparaît le jour de l'intervention. Demandez systématiquement s'ils sont inclus, et sinon comment ils se calculent."]),
+  ("2. Un numéro SIRET vérifiable", [
+   "Toute entreprise déclarée en France possède un SIRET, consultable gratuitement sur l'annuaire des entreprises. Un prestataire qui ne l'affiche pas sur son site ou ses devis vous expose : en cas de dommage, vous n'avez aucun recours.",
+   "Vérifiez aussi que l'activité déclarée correspond bien au nettoyage."]),
+  ("3. Une assurance responsabilité civile professionnelle", [
+   "Un canapé décoloré, un parquet marqué, une vitre rayée : ces incidents existent. La question n'est pas de savoir s'ils sont rares, mais qui paie s'ils surviennent. Demandez l'attestation d'assurance, elle se fournit en une minute."]),
+  ("4. Le matériel, et l'autonomie", [
+   "Une entreprise qui vous demande une prise et un point d'eau vous transfère une contrainte. Celles qui viennent avec leur propre eau et leur propre électricité peuvent intervenir en parking, en pied d'immeuble ou à quai — et cela change ce qu'elles peuvent traiter.",
+   "Sur le textile, exigez de savoir la méthode : injection-extraction, vapeur, ou simple shampoing de surface. Ce n'est pas le même résultat, ni la même durée de séchage."]),
+  ("5. L'acompte", [
+   "Un acompte n'a rien d'illégal, mais il déplace le risque sur vous. Un prestataire confiant dans son résultat accepte d'être réglé après l'intervention, une fois le travail constaté. C'est un signal simple et fiable."]),
+  ("6. Des avis vérifiables, pas des témoignages", [
+   "Les témoignages recopiés sur un site sont invérifiables : n'importe qui peut écrire « Sophie, très satisfaite ». Les avis Google, eux, portent un nom, une date, et un historique de compte.",
+   "Regardez moins la note que le contenu : un avis détaillé qui décrit la prestation vaut mieux que dix « super, je recommande »."]),
+  ("7. La personne qui répond au téléphone", [
+   "Dans le nettoyage à domicile, la sous-traitance en cascade est fréquente : vous appelez une plateforme, un intermédiaire prend la commande, un exécutant que personne n'a briefé se présente chez vous.",
+   "Demandez simplement : « est-ce vous qui interviendrez ? ». La réponse vous en dira long."])],
+ "faq": [
+  ("Quel est le prix moyen d'un nettoyage en Île-de-France ?",
+   "Cela dépend entièrement de la prestation. À titre de repère : un canapé 2 places se traite à partir de 39 €, un detailing automobile à partir de 40 €, et les prestations professionnelles se chiffrent sur devis après visite. Un prix annoncé sans connaître le besoin n'a aucune valeur."),
+  ("Faut-il choisir une grande entreprise ou un indépendant ?",
+   "La taille ne dit rien de la qualité. Ce qui compte, c'est de savoir qui intervient réellement chez vous, avec quel matériel, et qui est responsable en cas de problème. Une structure petite mais directe apporte souvent plus de continuité qu'une chaîne de sous-traitance."),
+  ("Les frais de déplacement sont-ils négociables ?",
+   "Rarement dans leur principe, mais on peut souvent les réduire en groupant plusieurs prestations sur une même intervention : le déplacement n'est alors facturé qu'une fois.")],
+ "service": "nettoyage-entreprise-paris",
+},
+{
+ "slug": "choisir-entreprise-nettoyage-paris",
+ "cat": "Bien choisir",
+ "h1": "Entreprise de nettoyage à Paris : ce qui change intra-muros",
+ "title": "Choisir une entreprise de nettoyage à Paris — les contraintes propres à la capitale | MathClean",
+ "meta": "Stationnement, ascenseurs, horaires de commerce, copropriétés : les contraintes parisiennes qui doivent guider le choix d'une entreprise de nettoyage.",
+ "image": "intervention-2.webp",
+ "lead": "Les critères généraux valent partout. Mais Paris ajoute quatre contraintes matérielles qui éliminent, en pratique, une bonne partie des prestataires.",
+ "sections": [
+  ("Le stationnement décide de tout", [
+   "Un prestataire qui doit se garer à proximité immédiate pour tirer un tuyau ou une rallonge ne peut pas intervenir dans la plupart des rues parisiennes. C'est la raison, rarement dite, pour laquelle certaines demandes sont refusées ou reportées.",
+   "Une équipe autonome en eau et en électricité s'affranchit du problème : elle porte son matériel, se gare où elle peut, et travaille dans l'appartement ou le parking."]),
+  ("Les escaliers et les ascenseurs", [
+   "Beaucoup d'immeubles parisiens n'ont pas d'ascenseur, ou un ascenseur trop étroit pour un canapé. C'est précisément pourquoi le nettoyage textile se fait sur place : rien ne descend, rien ne remonte.",
+   "Vérifiez que le prestataire traite à domicile plutôt qu'en atelier — sinon la logistique devient votre problème."]),
+  ("Les horaires, pour les commerces", [
+   "Un restaurant ou une boutique ne ferme pas pour un nettoyage. Les interventions se font avant l'ouverture, après la fermeture, ou de nuit. Toutes les entreprises ne le proposent pas ; celles qui le font l'annoncent clairement."]),
+  ("Les règles de copropriété", [
+   "Certaines copropriétés interdisent les travaux bruyants à certaines heures, ou l'usage des parties communes. Un prestataire habitué à Paris anticipe ces questions au lieu de les découvrir sur place."])],
+ "faq": [
+  ("Peut-on faire nettoyer un canapé sans le sortir de l'appartement ?",
+   "Oui, c'est même la règle. L'injection-extraction se pratique sur place : la solution est injectée dans la fibre puis immédiatement réaspirée. Le canapé ressort humide, pas trempé, et sèche en 4 à 6 h."),
+  ("Intervenez-vous dans tous les arrondissements ?",
+   "Oui, du 1er au 20e. Les délais sont généralement de 24 à 48 h à Paris et en petite couronne."),
+  ("Faut-il être présent pendant l'intervention ?",
+   "C'est préférable au début, pour le diagnostic, et à la fin pour le contrôle. Entre les deux, vous n'êtes pas obligé de rester.")],
+ "service": "nettoyage-textile-paris",
+},
+{
+ "slug": "entreprise-nettoyage-vitres-specialisee",
+ "cat": "Vitrerie",
+ "h1": "Entreprise spécialisée en nettoyage de vitres : ce qui la distingue",
+ "title": "Entreprise de nettoyage de vitres spécialisée à Paris — méthode et matériel | MathClean",
+ "meta": "Ce qui sépare un laveur de vitres généraliste d'une entreprise spécialisée : eau osmosée, perche télescopique, contrôle en lumière rasante. Devis gratuit en Île-de-France.",
+ "image": "vitre-controle.webp",
+ "lead": "Nettoyer une vitre est facile. La nettoyer sans laisser de trace, sur une véranda ou une façade de six mètres, relève d'un autre métier. Voici ce qui sépare les deux.",
+ "sections": [
+  ("L'eau osmosée, et pourquoi elle change le résultat", [
+   "L'eau d'Île-de-France est très calcaire. En séchant sur une vitre, elle abandonne ses minéraux : c'est ce voile blanchâtre que l'on prend pour de la saleté et que l'on frotte en vain.",
+   "L'osmose inverse retire ces minéraux. L'eau sèche alors sans rien déposer, ce qui permet de se passer totalement de détergent — donc de film résiduel, donc de resalissement accéléré. C'est le marqueur le plus fiable d'une entreprise spécialisée."]),
+  ("Le travail en hauteur", [
+   "La perche télescopique alimentée en eau pure permet de traiter plusieurs étages depuis le sol, sans nacelle ni cordiste. Cela réduit le coût et le risque, et rend accessibles des vérandas et verrières qu'on ne nettoie autrement qu'à grands frais.",
+   "Au-delà d'une certaine hauteur ou en cas d'accès impossible, une entreprise honnête vous le dit avant le devis."]),
+  ("L'ordre des opérations", [
+   "Les encadrements, rails et appuis se dégraissent avant la vitre. L'inverse — nettoyer la vitre puis le cadre — la resalit immédiatement. C'est un détail de méthode, mais il se voit sur le résultat."]),
+  ("Le contrôle en lumière rasante", [
+   "Une vitre se contrôle de biais, à contre-jour, jamais de face. C'est le seul angle qui révèle un voile résiduel. Un professionnel termine toujours par ce contrôle ; un généraliste range son matériel."])],
+ "faq": [
+  ("À quelle fréquence nettoyer une vitrine de commerce ?",
+   "Hebdomadaire ou bimensuel selon l'exposition à la rue et au trafic. Un forfait de passage régulier revient nettement moins cher que des interventions ponctuelles."),
+  ("L'eau osmosée abîme-t-elle les joints ?",
+   "Non. C'est de l'eau pure, sans additif ni détergent : elle est moins agressive pour les joints et les menuiseries que la plupart des produits vitres du commerce."),
+  ("Pourquoi mes vitres se resalissent-elles si vite ?",
+   "Le plus souvent à cause du film laissé par les tensioactifs des nettoyants ménagers, qui retient la poussière. Sans produit, ce film n'existe pas.")],
+ "service": "nettoyage-vitres-paris",
+},
+{
+ "slug": "entreprise-nettoyage-professionnelle",
+ "cat": "Professionnels",
+ "h1": "Entreprise de nettoyage professionnelle : ce que couvre vraiment un contrat",
+ "title": "Entreprise professionnelle de nettoyage à Paris — contrat, fréquence, protocole | MathClean",
+ "meta": "Ce que doit contenir un contrat d'entretien de locaux : protocole écrit, fréquence, zones, horaires, interlocuteur. Guide pour les entreprises d'Île-de-France.",
+ "image": "bureau-entreprise.webp",
+ "lead": "La plupart des litiges d'entretien de locaux viennent du même point : personne n'a écrit ce qui devait être fait, ni à quelle fréquence. Voici ce que doit contenir un contrat sérieux.",
+ "sections": [
+  ("Un protocole écrit, zone par zone", [
+   "« Nettoyage des bureaux » ne veut rien dire. Un protocole utile liste les zones — postes de travail, salles de réunion, sanitaires, cuisine, accueil, circulations — et pour chacune ce qui est fait, et à quelle fréquence.",
+   "C'est ce document qui permet, six mois plus tard, de dire objectivement si la prestation est conforme."]),
+  ("La fréquence, définie par l'usage", [
+   "Des sanitaires dans un open space de cinquante personnes n'ont pas le même besoin que ceux d'un cabinet de trois. La fréquence se déduit du nombre de passages, pas d'un forfait standard.",
+   "Certains postes se traitent en profondeur une à deux fois par an : moquettes en injection-extraction, vitrerie complète, dégraissage de cuisine. Ils doivent apparaître séparément."]),
+  ("Les horaires, et leur coût réel", [
+   "Intervenir hors des heures d'activité est souvent indispensable, mais ce n'est pas neutre. Un contrat clair précise les créneaux et ce qu'ils impliquent, plutôt que de laisser la question se régler au cas par cas."]),
+  ("Un interlocuteur identifié", [
+   "Savoir qui appeler quand quelque chose ne va pas vaut mieux que n'importe quelle clause. Un interlocuteur unique, joignable après chaque passage, règle en pratique la majorité des désaccords avant qu'ils ne deviennent des litiges."])],
+ "faq": [
+  ("Faut-il un contrat annuel ?",
+   "Pas nécessairement. Le passage ponctuel a du sens pour une remise à niveau, un contrôle d'hygiène ou une fin de chantier. Le contrat régulier se justifie dès que la fréquence devient prévisible."),
+  ("Qui fournit les consommables ?",
+   "Cela se décide au contrat. Papier, savon et sacs peuvent être fournis par le prestataire ou par l'entreprise : l'essentiel est que ce soit écrit."),
+  ("Comment est facturée une prestation professionnelle ?",
+   "Sur devis, après visite des locaux et mesure des surfaces, avec facturation entreprise. Un prix au mètre carré annoncé sans visite est un prix approximatif.")],
+ "service": "nettoyage-entreprise-paris",
+},
+{
+ "slug": "prix-nettoyage-canape-paris",
+ "cat": "Prix",
+ "h1": "Combien coûte un nettoyage de canapé à Paris ?",
+ "title": "Prix d'un nettoyage de canapé à Paris — tarifs 2026 par taille | MathClean",
+ "meta": "Prix d'un nettoyage de canapé à domicile à Paris : 39 € le 2 places, 49 € le 3 places, 69 € le canapé d'angle. Ce qui fait varier le tarif, frais de déplacement compris.",
+ "image": "canape-nettoyage.webp",
+ "lead": "Le prix dépend de trois choses : la taille, la matière, et l'état. Voici les tarifs de référence et ce qui les fait bouger.",
+ "sections": [
+  ("Les tarifs par taille", [
+   "Chez MathClean, un canapé 2 places se traite à 39 €, un 3 places à 49 €, un canapé d'angle à 69 €. Un fauteuil est à 25 €, une chaise à 15 €. Ces prix couvrent l'injection-extraction et le détachage.",
+   "S'y ajoutent les frais de déplacement : 5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France. Ils sont annoncés avant que vous validiez, jamais découverts à l'arrivée."]),
+  ("Ce qui fait varier le prix", [
+   "La matière d'abord : un tissu synthétique se traite en injection-extraction, un cuir demande un nettoyage doux puis un nourrissage — ce n'est ni le même temps ni les mêmes produits.",
+   "L'état ensuite. Des taches fraîches partent au passage habituel ; des taches incrustées depuis des mois demandent un pré-traitement et un temps de pause. Un professionnel honnête vous dit ce qui est réaliste avant de commencer."]),
+  ("Faire plusieurs pièces le même jour", [
+   "C'est le levier le plus efficace. Le déplacement n'étant facturé qu'une fois, traiter le canapé, un matelas et un tapis dans la même intervention revient bien moins cher que trois passages séparés."]),
+  ("Ce qu'un prix trop bas cache généralement", [
+   "En dessous d'une vingtaine d'euros pour un canapé, la prestation est presque toujours un shampoing de surface : la mousse est appliquée puis aspirée à sec, sans traitement du cœur de la fibre. Le résultat est visible une semaine, puis les taches remontent."])],
+ "faq": [
+  ("Combien de temps sèche un canapé après nettoyage ?",
+   "De 4 à 6 h selon la ventilation de la pièce. L'injection-extraction réaspire immédiatement la solution injectée : le textile ressort humide, pas trempé."),
+  ("Les taches anciennes partent-elles ?",
+   "Souvent, mais pas systématiquement. Une auréole déjà créée par un détachant ménager ou une décoloration ne se rattrapent pas. Nous vous le disons avant l'intervention plutôt qu'après."),
+  ("Les produits sont-ils sans danger pour les enfants et les animaux ?",
+   "Oui, ils sont choisis pour cela. Quand la vapeur haute température suffit, nous nous passons complètement de produit.")],
+ "service": "nettoyage-textile-paris",
+},
+{
+ "slug": "prix-nettoyage-voiture-domicile",
+ "cat": "Prix",
+ "h1": "Combien coûte un nettoyage de voiture à domicile ?",
+ "title": "Prix d'un nettoyage auto à domicile à Paris — de 40 à 240 € | MathClean",
+ "meta": "Tarifs du detailing automobile à domicile en Île-de-France : 4 formules de 40 à 240 € selon le véhicule. Options, durée et ce qui est inclus.",
+ "image": "auto-interieur-vw.webp",
+ "lead": "Quatre formules, de la carrosserie seule au véhicule entier. Le prix varie surtout selon la taille du véhicule et la présence de cuir.",
+ "sections": [
+  ("Les quatre formules", [
+   "Extérieur Éclat, de 40 à 90 € : lavage complet, jantes, brillant pneus, vitres extérieures, séchage sans trace. Intérieur Essentiel, de 50 à 120 € : aspiration habitacle et coffre, tableau de bord, plastiques, vitres, désinfection vapeur.",
+   "Intérieur Prestige, de 90 à 180 € : tout l'Essentiel, plus le traitement des cuirs ou le pressing des sièges tissu, les tapis, le ciel de toit, les battements de portes. Intégral, de 120 à 240 € : le véhicule entier, dedans comme dehors."]),
+  ("Pourquoi une fourchette et pas un prix fixe", [
+   "Le bas de chaque fourchette correspond à une citadine, le haut à un SUV ou un monospace. Ce n'est ni la même surface ni le même temps. Le montant exact vous est confirmé avant l'intervention, jamais après."]),
+  ("Les options", [
+   "Retrait des poils d'animaux : 10 €. Traitement cuir et alcantara : 20 €. Neutralisation des odeurs par ozone : 30 €, pour un traitement d'une heure qui élimine odeurs, bactéries et moisissures.",
+   "C'est cette dernière option qui fait la différence avant une revente : l'odeur est ce qui se juge en trois secondes à l'ouverture de la portière."]),
+  ("Ce que comprend une prestation sans option", [
+   "Aspiration complète de l'habitacle et du coffre — le coffre est toujours compris, sans supplément —, shampoing des tapis et moquettes, puis désinfection des allergènes et acariens par vapeur haute température."])],
+ "faq": [
+  ("Faut-il une prise électrique ou un point d'eau ?",
+   "Non. Nous venons autonomes en eau et en électricité, ce qui permet d'intervenir en parking souterrain, en pied d'immeuble ou sur un parking d'entreprise."),
+  ("Combien de temps dure l'intervention ?",
+   "De 1 h 30 pour un Extérieur Éclat à environ 4 h pour un Intégral sur grand véhicule."),
+  ("Est-ce rentable avant une revente ?",
+   "C'est l'usage le plus fréquent de nos clients. Un habitacle assaini et sans odeur pèse concrètement sur le prix accepté par l'acheteur.")],
+ "service": "nettoyage-automobile-paris",
+},
+{
+ "slug": "injection-extraction",
+ "cat": "Méthode",
+ "h1": "L'injection-extraction expliquée simplement",
+ "title": "Injection-extraction : comment ça marche et pourquoi ça ne fait pas d'auréole | MathClean",
+ "meta": "L'injection-extraction expliquée : principe, différence avec le shampoing de surface, temps de séchage, matières traitables. Nettoyage textile à domicile en Île-de-France.",
+ "image": "tapis-karcher.webp",
+ "lead": "C'est la méthode de référence pour le textile. Son principe tient en une phrase, et il explique pourquoi elle ne laisse pas d'auréole.",
+ "sections": [
+  ("Le principe", [
+   "Une solution nettoyante est injectée sous pression au cœur de la fibre, puis immédiatement réaspirée avec la saleté qu'elle vient de dissoudre. Injection et extraction se font dans le même geste, à quelques centimètres d'écart.",
+   "C'est cette simultanéité qui fait tout : le textile n'a jamais le temps de se gorger d'eau."]),
+  ("Pourquoi les auréoles n'apparaissent pas", [
+   "Une auréole se forme quand l'eau migre vers les bords de la zone humide en emportant la saleté dissoute, puis sèche sur place en laissant un cerne. C'est le mécanisme de tout nettoyage trop mouillé.",
+   "En réaspirant immédiatement, l'injection-extraction supprime la migration. Le textile ressort humide, pas trempé, et sèche en 4 à 6 h selon la ventilation."]),
+  ("La différence avec un shampoing de surface", [
+   "Le shampoing applique une mousse qu'on laisse sécher avant d'aspirer. Il nettoie ce qui se voit, en surface, et laisse des résidus de détergent dans la fibre — résidus qui retiennent la poussière et font remonter les taches en une à deux semaines.",
+   "C'est la raison pour laquelle un canapé « nettoyé » à bas prix redevient sale très vite."]),
+  ("Ce qui se traite, et ce qui ne se traite pas ainsi", [
+   "Canapés en tissu, matelas, tapis, moquettes, fauteuils, sièges de voiture, selleries textiles : oui. Le cuir, non — il demande un nettoyage doux suivi d'un nourrissage.",
+   "Sur laine et sur soie, un test de solidité des couleurs sur zone cachée est indispensable avant tout passage : certaines teintures dégorgent au contact de l'eau."])],
+ "faq": [
+  ("Puis-je louer une machine et le faire moi-même ?",
+   "C'est possible, mais deux écueils reviennent : un mauvais dosage laisse du détergent dans la fibre, et une extraction insuffisante laisse le textile trop humide, donc auréolé. Sur un textile de valeur, l'essai raté coûte souvent plus que l'intervention."),
+  ("Faut-il aspirer avant ?",
+   "Oui, systématiquement, et c'est fait dans la prestation. Injecter sur une fibre chargée de poussière revient à transformer cette poussière en boue."),
+  ("Combien de passages faut-il ?",
+   "Autant que nécessaire pour que l'eau réaspirée ressorte claire. Sur un canapé très encrassé, cela peut demander plusieurs passages croisés.")],
+ "service": "nettoyage-textile-paris",
+},
+{
+ "slug": "nettoyage-vapeur-desinfection",
+ "cat": "Méthode",
+ "h1": "Nettoyage vapeur : ce qu'il désinfecte vraiment",
+ "title": "Nettoyage vapeur : ce qu'il désinfecte vraiment, et ses limites | MathClean",
+ "meta": "Ce que la vapeur haute température désinfecte réellement, sur quelles surfaces, et où elle ne suffit pas. Sans produit chimique, à Paris et en Île-de-France.",
+ "image": "intervention-3.webp",
+ "lead": "La vapeur désinfecte par la chaleur seule, sans aucun produit. C'est un atout réel — à condition de savoir où elle s'applique et où elle ne suffit pas.",
+ "sections": [
+  ("Le principe : la chaleur, pas le produit", [
+   "La vapeur sèche est projetée à haute température. Ce sont la chaleur et la pression qui décollent les corps gras et détruisent une grande partie des micro-organismes de surface, sans qu'aucune molécule chimique n'intervienne.",
+   "L'avantage est direct : aucun résidu. C'est ce qui la rend précieuse en environnement alimentaire, sur les surfaces que touchent les enfants, et là où quelqu'un est sensible aux produits."]),
+  ("Où elle excelle", [
+   "La graisse cuite d'une plancha ou d'une hotte, que les dégraissants peinent à décoller. Les joints de carrelage. Les sanitaires. L'habitacle d'une voiture — sièges, volant, plastiques — où elle assainit sans détremper.",
+   "Sur les textiles, elle élimine acariens et allergènes par la chaleur, ce qui en fait le complément naturel de l'injection-extraction sur un matelas."]),
+  ("Ses limites, qu'il faut connaître", [
+   "La vapeur ne remplace pas une extraction : elle assainit, elle n'évacue pas la saleté du cœur d'une fibre. Sur un canapé encrassé, la vapeur seule assainit sans nettoyer.",
+   "Elle ne convient pas non plus à toutes les surfaces : certains bois, certains vernis et certains plastiques fins supportent mal la chaleur. Le diagnostic préalable n'est pas une formalité."]),
+  ("Vapeur ou produit : comment on tranche", [
+   "La règle que nous appliquons est simple : quand la vapeur suffit, nous nous passons de produit. Quand elle ne suffit pas, nous employons un produit adapté à la matière, et nous le disons."])],
+ "faq": [
+  ("La vapeur tue-t-elle vraiment les bactéries ?",
+   "Elle réduit fortement la charge microbienne des surfaces par la chaleur. Ce n'est pas une stérilisation au sens médical, et aucun prestataire sérieux ne l'annoncera comme telle."),
+  ("Peut-on utiliser la vapeur sur un parquet ?",
+   "Avec prudence. Sur un parquet vitrifié en bon état, oui, en passage rapide. Sur un parquet huilé, ancien ou dont les joints sont ouverts, l'humidité pose problème."),
+  ("La vapeur laisse-t-elle de l'humidité ?",
+   "Très peu : la vapeur sèche contient une faible proportion d'eau liquide. Les surfaces sont sèches en quelques minutes.")],
+ "service": "nettoyage-automobile-paris",
+},
+{
+ "slug": "eau-osmosee-vitres",
+ "cat": "Vitrerie",
+ "h1": "Eau osmosée : pourquoi elle supprime les traces sur les vitres",
+ "title": "Eau osmosée pour vitres : pourquoi elle ne laisse aucune trace | MathClean",
+ "meta": "Pourquoi l'eau osmosée sèche sans laisser de trace sur une vitre, et pourquoi les produits vitres du commerce font resalir plus vite. Explication et méthode.",
+ "image": "vitre-controle.webp",
+ "lead": "Une vitre garde des traces pour trois raisons, et l'eau osmosée en supprime deux d'un coup.",
+ "sections": [
+  ("Les trois causes des traces", [
+   "L'eau du robinet, très calcaire en Île-de-France : en séchant, elle abandonne ses minéraux sur le verre. Les produits ménagers, dont les tensioactifs laissent un film mince. Et le plein soleil, qui fait sécher l'eau avant qu'on ait pu la racler.",
+   "Les deux premières se règlent par l'eau osmosée. La troisième se règle en choisissant son moment."]),
+  ("Ce qu'est l'osmose inverse", [
+   "L'eau est poussée à travers une membrane qui retient les minéraux dissous. Ce qui en ressort est une eau pure, dépourvue de calcaire.",
+   "En séchant, cette eau ne dépose rien du tout — puisqu'elle ne contient rien. C'est aussi simple que cela."]),
+  ("Pourquoi on peut alors se passer de produit", [
+   "L'eau pure a une forte capacité à capter les salissures : elle « cherche » à se recharger en particules. Associée au brossage, elle nettoie sans détergent.",
+   "Et sans détergent, pas de film résiduel : la vitre reste propre plus longtemps qu'après un nettoyage classique."]),
+  ("Où cela change tout", [
+   "Sur les grandes surfaces, les vérandas, les verrières et les vitrines, où la reprise à la raclette est impossible ou trop lente. Et en hauteur, où la perche télescopique alimentée en eau pure permet de travailler depuis le sol."])],
+ "faq": [
+  ("L'eau osmosée est-elle plus écologique ?",
+   "Sur le principe, oui : aucun détergent ne part à l'égout. La production d'eau osmosée consomme en revanche un volume d'eau supérieur à ce qu'elle produit."),
+  ("Peut-on en faire chez soi ?",
+   "Des osmoseurs domestiques existent, mais le débit nécessaire pour laver des vitres suppose un matériel professionnel."),
+  ("Faut-il essuyer après ?",
+   "Non, et c'est tout l'intérêt : on laisse sécher. Essuyer reviendrait à réintroduire des fibres et des traces.")],
+ "service": "nettoyage-vitres-paris",
+},
+{
+ "slug": "nettoyage-fin-chantier-combien-de-passages",
+ "cat": "Chantier",
+ "h1": "Nettoyage de fin de chantier : un ou deux passages ?",
+ "title": "Nettoyage de fin de chantier : un ou deux passages ? | MathClean",
+ "meta": "Pourquoi la poussière de chantier revient après le premier nettoyage, et quand prévoir un second passage. Remise en état après travaux à Paris et en Île-de-France.",
+ "image": "intervention-1.webp",
+ "lead": "C'est la question que posent tous les artisans et toutes les agences. La réponse dépend d'un phénomène simple : la poussière de chantier ne retombe pas en une journée.",
+ "sections": [
+  ("Pourquoi la poussière revient", [
+   "La poussière de chantier n'est pas de la poussière domestique. Fine, chargée de plâtre et de silice, elle reste en suspension longtemps et se redépose progressivement pendant plusieurs jours après la fin des travaux.",
+   "Un nettoyage effectué le lendemain de la dernière intervention d'un corps de métier sera donc suivi d'un redépôt visible — ce n'est pas un défaut de prestation, c'est de la physique."]),
+  ("Un seul passage : dans quels cas", [
+   "Sur un chantier léger — rafraîchissement, peinture d'une pièce, pose de sol sans découpe — un passage unique suffit, à condition de le programmer au moins 48 h après la fin des travaux.",
+   "C'est aussi le choix raisonnable quand la livraison n'est pas immédiate : le bien restera fermé, la poussière retombera, un coup d'aspirateur suffira."]),
+  ("Deux passages : dans quels cas", [
+   "Sur une rénovation lourde, avec dépose de cloisons, ponçage ou découpe, deux passages sont la norme : un gros nettoyage, puis une finition quelques jours plus tard.",
+   "C'est impératif si le bien est livré, visité ou photographié juste après. Un logement dont les plinthes reblanchissent le jour de la remise des clés fait mauvais effet."]),
+  ("Comment on travaille pour limiter le redépôt", [
+   "De haut en bas, systématiquement, et pièce par pièce en fermant derrière soi. Avec des aspirateurs à filtration fine, pour ne pas remettre en suspension ce qui vient d'être retiré.",
+   "Les résidus de colle, projections de peinture, étiquettes et films de protection se traitent un par un — c'est ce qui distingue une remise en état d'un simple balayage."])],
+ "faq": [
+  ("Évacuez-vous les gravats ?",
+   "Nous évacuons les résidus fins et les protections de chantier. Les gravats lourds relèvent d'une benne, à prévoir séparément."),
+  ("Combien de temps prend une remise en état ?",
+   "Une journée complète est courante pour un appartement après rénovation lourde. Le devis est établi après état des lieux, selon la surface et la nature des travaux."),
+  ("Intervenez-vous pour les artisans et les agences ?",
+   "Régulièrement : entreprises du bâtiment, architectes d'intérieur, agences immobilières et syndics, avec facturation entreprise et devis ferme.")],
+ "service": "nettoyage-fin-de-chantier-paris",
+},
+{
+ "slug": "frequence-nettoyage-bureaux",
+ "cat": "Professionnels",
+ "h1": "À quelle fréquence faire nettoyer ses bureaux ?",
+ "title": "Fréquence de nettoyage des bureaux : le bon rythme selon l'effectif | MathClean",
+ "meta": "Quotidien, trois fois par semaine ou hebdomadaire : comment déterminer la bonne fréquence d'entretien de bureaux selon l'effectif et l'usage. Devis gratuit en Île-de-France.",
+ "image": "bureau-entreprise.webp",
+ "lead": "La fréquence ne se déduit pas de la surface mais du nombre de passages. Voici comment la calculer, poste par poste.",
+ "sections": [
+  ("Les sanitaires donnent le rythme", [
+   "Ce sont eux qui déterminent la fréquence minimale, pas les bureaux. Au-delà d'une vingtaine de personnes, un passage quotidien devient difficile à éviter ; en dessous de dix, trois passages hebdomadaires suffisent généralement.",
+   "C'est aussi le poste sur lequel les remarques remontent le plus vite en interne."]),
+  ("Les postes de travail et les circulations", [
+   "Un dépoussiérage et un passage sur les sols deux à trois fois par semaine couvrent la plupart des situations en bureau classique. Le quotidien se justifie surtout en open space dense ou en accueil de public."]),
+  ("La cuisine et les espaces de pause", [
+   "Ils se salissent vite et se voient beaucoup. Un passage quotidien y est presque toujours pertinent, même quand le reste des locaux est traité moins souvent."]),
+  ("Les prestations périodiques, à ne pas oublier", [
+   "Certaines opérations ne relèvent pas de la fréquence courante : moquettes en injection-extraction une à deux fois par an, vitrerie complète deux à quatre fois par an, dégraissage de cuisine professionnelle selon l'activité.",
+   "Elles doivent figurer séparément au contrat, sinon elles ne sont jamais faites."])],
+ "faq": [
+  ("Intervenez-vous en dehors des heures d'ouverture ?",
+   "Oui, tôt le matin, après la fermeture ou de nuit. C'est même la règle pour les commerces et les restaurants."),
+  ("Peut-on commencer par un passage ponctuel ?",
+   "Oui, et c'est souvent le bon point de départ : une remise à niveau permet de voir le résultat avant de s'engager sur un rythme régulier."),
+  ("Comment est établi le devis ?",
+   "Après visite des locaux : surfaces, zones, contraintes d'accès et d'horaires. Un devis fait sans visite reste une approximation.")],
+ "service": "nettoyage-entreprise-paris",
+},
+{
+ "slug": "devis-nettoyage-questions-a-poser",
+ "cat": "Bien choisir",
+ "h1": "Devis de nettoyage : les 7 questions à poser avant de signer",
+ "title": "Devis de nettoyage : les 7 questions à poser avant de signer | MathClean",
+ "meta": "Les sept questions qui révèlent la qualité d'un devis de nettoyage : méthode, déplacement, acompte, assurance, durée, intervenant, garantie.",
+ "image": "intervention-2.webp",
+ "lead": "Un devis se juge moins à son montant qu'à ce qu'il précise. Sept questions suffisent à faire le tri.",
+ "sections": [
+  ("1. Quelle méthode exactement ?", [
+   "« Nettoyage de canapé » ne dit rien. Injection-extraction, shampoing de surface, vapeur : ce ne sont ni les mêmes résultats, ni les mêmes durées de séchage, ni les mêmes prix. Faites préciser."]),
+  ("2. Les frais de déplacement sont-ils inclus ?", [
+   "C'est le poste qui réapparaît le plus souvent le jour de l'intervention. S'ils ne sont pas inclus, demandez la règle de calcul et le montant pour votre adresse."]),
+  ("3. Y a-t-il un acompte ?", [
+   "Un règlement après intervention, une fois le résultat constaté, est un signal de confiance dans la prestation."]),
+  ("4. Êtes-vous assuré, et pouvez-vous me le prouver ?", [
+   "L'attestation de responsabilité civile professionnelle se fournit en une minute. Une hésitation sur ce point est une réponse en soi."]),
+  ("5. Combien de temps cela va-t-il prendre ?", [
+   "Une estimation de durée engage. Elle vous permet aussi d'organiser votre journée, et de repérer les prestations expédiées."]),
+  ("6. Qui interviendra ?", [
+   "La sous-traitance en cascade est fréquente. Savoir si votre interlocuteur sera aussi l'exécutant change la continuité de l'information — et le résultat."]),
+  ("7. Que se passe-t-il si je ne suis pas satisfait ?", [
+   "La réponse importe moins que la franchise : un prestataire sérieux vous dit avant l'intervention ce qui partira et ce qui ne partira pas, plutôt que de promettre l'impossible."])],
+ "faq": [
+  ("Un devis de nettoyage est-il payant ?",
+   "Il ne devrait jamais l'être pour une prestation courante. Chez MathClean, le devis est gratuit et sans engagement."),
+  ("Combien de temps un devis reste-t-il valable ?",
+   "La durée de validité doit être écrite sur le document. Un mois est une pratique courante."),
+  ("Peut-on obtenir un devis à distance ?",
+   "Pour les prestations à domicile, oui : quelques photos suffisent le plus souvent. Pour les locaux professionnels, une visite reste préférable.")],
+ "service": "nettoyage-entreprise-paris",
+},
+]

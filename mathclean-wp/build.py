@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 from content import (  # noqa: E402
     SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
-    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO,
+    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES,
 )
 
 OUT = os.path.join(HERE, "site")
@@ -157,10 +157,17 @@ def nav_menu(base, current):
   <a href="{base}zones.html">Zones {icon('chevron', 'caret')}</a>
   <ul class="sub-menu">
     {zones_sub}
-    <li><a href="{base}zones.html"><strong>Toutes nos zones</strong></a></li>
+    <li><a href="{base}zones.html"><strong>Les 8 départements</strong></a></li>
+    <li><a href="{base}villes.html"><strong>Toutes les villes</strong></a></li>
   </ul>
 </li>
-<li{cls('blog')}><a href="{base}blog.html">Conseils</a></li>
+<li class="menu-item-has-children{' current-menu-item' if current in ('blog', 'guides') else ''}">
+  <a href="{base}guides.html">Conseils {icon('chevron', 'caret')}</a>
+  <ul class="sub-menu">
+    <li><a href="{base}guides.html"><strong>Guides pratiques</strong></a></li>
+    <li><a href="{base}blog.html"><strong>Astuces &amp; conseils</strong></a></li>
+  </ul>
+</li>
 <li{cls('apropos')}><a href="{base}a-propos.html">À propos</a></li>
 <li{cls('contact')}><a href="{base}contact.html">Contact</a></li>
 </ul>
@@ -259,7 +266,8 @@ def footer(base):
       </div>
       <div>
         <h4>Zones</h4>
-        <ul>{zones_links}<li><a href="{base}zones.html">Toutes nos zones</a></li></ul>
+        <ul>{zones_links}<li><a href="{base}zones.html">Les 8 départements</a></li>
+        <li><a href="{base}villes.html">Toutes les villes</a></li></ul>
       </div>
       <div>
         <h4>L'entreprise</h4>
@@ -267,6 +275,7 @@ def footer(base):
           <li><a href="{base}a-propos.html">À propos</a></li>
           <li><a href="{base}tarifs.html">Tarifs</a></li>
           <li><a href="{base}realisations.html">Réalisations</a></li>
+          <li><a href="{base}guides.html">Guides pratiques</a></li>
           <li><a href="{base}blog.html">Conseils &amp; astuces</a></li>
           <li><a href="{base}reservation.html">Réserver en ligne</a></li>
           <li><a href="{base}devis.html">Devis gratuit</a></li>
@@ -2492,6 +2501,367 @@ def build_reservation():
 
 
 # ===========================================================================
+# VILLES
+# ===========================================================================
+import math  # noqa: E402
+
+
+def distance_atelier(lat, lon):
+    """
+    Distance routière approchée depuis l'atelier, en kilomètres.
+    Vol d'oiseau majoré du même coefficient que le configurateur (1,25).
+    """
+    d = DEPLACEMENT
+    r = math.pi / 180
+    dla = (lat - d["lat"]) * r
+    dlo = (lon - d["lon"]) * r
+    a = (math.sin(dla / 2) ** 2
+         + math.cos(d["lat"] * r) * math.cos(lat * r) * math.sin(dlo / 2) ** 2)
+    km = 6371 * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a)) * d["coef_route"]
+    return km
+
+
+def frais_pour(km):
+    d = DEPLACEMENT
+    return int(math.ceil(km / d["palier_km"]) * d["palier_eur"]) if km > 0.4 else 0
+
+
+def zone_de(dept):
+    return next((z for z in ZONES if z["num"] == dept), ZONES[0])
+
+
+def build_ville(v):
+    slug, nom, cp, dept, lat, lon, angle, presta = v
+    base = "../"
+    z = zone_de(dept)
+    km = distance_atelier(lat, lon)
+    km_txt = ("moins d'un kilomètre" if km < 1
+              else "environ %d km" % round(km))
+    frais = frais_pour(km)
+    frais_txt = ("aucun frais de déplacement" if frais == 0
+                 else "environ %d € de frais de déplacement" % frais)
+    frais_court = "Aucun" if frais == 0 else "~ %d €" % frais
+    delai = ("24 à 48 h" if dept in ("75", "92", "93", "94") else "48 à 72 h")
+
+    trail = [("Villes", "villes.html"), (nom, None)]
+    # Trois vignettes exactement : la grille fait trois colonnes, une ligne
+    # pleine se lit mieux qu'une rangée suivie d'une case orpheline.
+    ordre = {sl: i for i, sl in enumerate(presta)}
+    services = sorted((x for x in SERVICES if x["slug"] in presta),
+                      key=lambda x: ordre[x["slug"]])[:3]
+    tiles = "".join(service_tile(base, x) for x in services)
+    autres = "".join(
+        '<li><a href="%svilles/%s.html">%s</a></li>' % (base, o[0], o[1])
+        for o in VILLES if o[3] == dept and o[0] != slug
+    ) or '<li><a href="%szones/%s.html">Tout le département</a></li>' % (base, z["slug"])
+
+    faq = [
+        ("Intervenez-vous à %s sans supplément ?" % nom,
+         "Nous intervenons à %s comme partout en Île-de-France. Depuis notre atelier de %s, "
+         "comptez %s, soit %s. Le montant exact est calculé sur votre adresse précise dans le "
+         "configurateur de réservation, et affiché avant que vous validiez."
+         % (nom, SITE["city"], km_txt, frais_txt)),
+        ("Quel est le délai d'intervention à %s ?" % nom,
+         "Habituellement %s, 7j/7. Pour une urgence, appelez-nous au %s : nous réorganisons "
+         "la tournée quand c'est possible." % (delai, SITE["phone"])),
+        ("Faut-il fournir de l'eau ou de l'électricité ?",
+         "Non. Nous venons entièrement autonomes, ce qui nous permet d'intervenir en parking "
+         "souterrain, en pied d'immeuble ou en copropriété sans accès technique."),
+    ]
+
+    body = f"""
+{page_title_block(base, trail, "Entreprise de nettoyage à %s (%s)" % (nom, cp),
+   "Nettoyage à domicile et en entreprise à %s : automobile, textile, terrasse, vitres, "
+   "locaux et fin de chantier. Devis gratuit, intervention 7j/7." % nom)}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">MathClean à {nom}</span>
+        <h2>Ce que nous faisons le plus à {nom}</h2>
+        <p>{angle}</p>
+        <p>
+          {nom} dépend du département <a href="{base}zones/{z['slug']}.html">{z['name']} ({dept})</a>.
+          Depuis notre atelier de {SITE['city']}, comptez <strong>{km_txt}</strong> —
+          soit {frais_txt} — et un délai habituel de <strong>{delai}</strong>.
+        </p>
+        <div class="btn-row" style="margin-top:1.5rem">
+          <a class="btn" href="{base}reservation.html">Réserver à {nom}</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique à {nom}</caption>
+            <tbody>
+              <tr><th scope="row">Code postal</th><td class="amount">{cp}</td></tr>
+              <tr><th scope="row">Département</th><td class="amount">{z['name']} ({dept})</td></tr>
+              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Frais de déplacement</th><td class="amount">{frais_court}</td></tr>
+              <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Distance calculée depuis le centre de la commune : le montant exact dépend de votre
+          adresse et vous est confirmé avant validation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Nos prestations</span>
+      <h2>Ce que nous proposons à {nom}</h2>
+    </div>
+    <div class="tile-grid">{tiles}</div>
+    <div class="btn-row center" style="margin-top:34px">
+      <a class="btn btn-outline" href="{base}services.html">Voir les sept prestations</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Nettoyage à {nom} : vos questions</h2>
+    </div>
+    {faq_block(faq, 'faq-ville')}
+  </div>
+</section>
+
+{cta_band(base, "Un besoin à %s ?" % nom,
+          "Devis gratuit et sans engagement, réponse sous 24 h. Aucun acompte à verser.")}
+
+<section class="section section-soft">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">À proximité</span>
+      <h2>Autres villes du {z['num']}</h2>
+    </div>
+    <ul class="city-list">{autres}</ul>
+    <div class="btn-row center" style="margin-top:26px">
+      <a class="btn btn-outline" href="{base}villes.html">Toutes les villes couvertes</a>
+    </div>
+  </div>
+</section>
+"""
+    schema = [
+        crumb_schema([("Villes", "villes.html"), (nom, "villes/%s.html" % slug)]),
+        {"@context": "https://schema.org", "@type": "Service",
+         "name": "Entreprise de nettoyage à %s" % nom,
+         "provider": {"@id": SITE["url"] + "/#business"},
+         "areaServed": {"@type": "City", "name": nom,
+                        "address": {"@type": "PostalAddress", "postalCode": cp,
+                                    "addressLocality": nom, "addressCountry": "FR"}},
+         "url": "%s/villes/%s.html" % (SITE["url"], slug)},
+        faq_schema(faq),
+    ]
+    html = (head("Entreprise de nettoyage à %s (%s) — devis gratuit | MathClean" % (nom, cp),
+                 "Nettoyage à domicile et en entreprise à %s (%s) : automobile, textile, "
+                 "terrasse, vitres, locaux, fin de chantier. Intervention 7j/7, sans acompte."
+                 % (nom, cp),
+                 "villes/%s.html" % slug, base, schema=schema)
+            + header(base, "zones") + body + footer(base))
+    return write("villes/%s.html" % slug, html)
+
+
+def build_villes_archive():
+    base = ""
+    trail = [("Villes", None)]
+    par_dept = {}
+    for v in VILLES:
+        par_dept.setdefault(v[3], []).append(v)
+    blocs = ""
+    for z in ZONES:
+        lst = par_dept.get(z["num"])
+        if not lst:
+            continue
+        items = "".join(
+            '<li><a href="villes/%s.html">%s <span>%s</span></a></li>' % (v[0], v[1], v[2])
+            for v in sorted(lst, key=lambda x: x[1])
+        )
+        blocs += f"""<div class="widget reveal">
+  <h3 class="widget-title"><a href="zones/{z['slug']}.html">{z['name']} ({z['num']})</a></h3>
+  <ul class="widget-links">{items}</ul>
+</div>"""
+    body = f"""
+{page_title_block(base, trail, "Les villes où nous intervenons",
+  "Une page par commune, avec la distance depuis notre atelier de %s, les frais de "
+  "déplacement correspondants et le délai habituel. Cette liste n'est pas exhaustive : "
+  "nous couvrons les huit départements franciliens." % SITE['city'])}
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-3">{blocs}</div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container container-narrow">
+    <div class="notice notice-blue">
+      {icon('info')}
+      <p>
+        <strong>Votre commune n'y figure pas ?</strong> Nous intervenons dans toute
+        l'Île-de-France. Appelez le {SITE['phone']} ou utilisez
+        <a href="reservation.html">le configurateur</a> : il calcule les frais de
+        déplacement sur votre adresse exacte.
+      </p>
+    </div>
+  </div>
+</section>
+
+{cta_band(base)}
+"""
+    html = (head("Villes couvertes — nettoyage à Paris & en Île-de-France | MathClean",
+                 "Toutes les communes où MathClean intervient : Paris, Hauts-de-Seine, "
+                 "Seine-Saint-Denis, Val-de-Marne, Essonne, Yvelines, Seine-et-Marne, Val-d'Oise.",
+                 "villes.html", base, schema=[crumb_schema([("Villes", "villes.html")])])
+            + header(base, "zones") + body + footer(base))
+    return write("villes.html", html)
+
+
+# ===========================================================================
+# GUIDES
+# ===========================================================================
+def guide_card(base, g):
+    return f"""<article class="post-card reveal">
+  <a class="post-thumb" href="{base}guides/{g['slug']}.html" tabindex="-1" aria-hidden="true">
+    <img src="{base}assets/photos/{g['image']}" alt="" loading="lazy" width="640" height="360">
+  </a>
+  <div class="post-body">
+    <div class="post-meta"><span class="post-cat">{g['cat']}</span></div>
+    <h3><a href="{base}guides/{g['slug']}.html">{g['h1']}</a></h3>
+    <p>{g['lead']}</p>
+    <span class="service-more">Lire le guide {icon('arrow')}</span>
+  </div>
+</article>"""
+
+
+def build_guide(g):
+    base = "../"
+    trail = [("Guides", "guides.html"), (g["cat"], None)]
+    service = next((s for s in SERVICES if s["slug"] == g["service"]), SERVICES[0])
+    corps = ""
+    for titre, paras in g["sections"]:
+        corps += "<h2>%s</h2>" % titre + "".join("<p>%s</p>" % p for p in paras)
+    autres = "".join(guide_card(base, o) for o in GUIDES if o["slug"] != g["slug"])[:0]
+    proches = [o for o in GUIDES if o["cat"] == g["cat"] and o["slug"] != g["slug"]][:3]
+    if len(proches) < 3:
+        proches += [o for o in GUIDES if o["slug"] != g["slug"] and o not in proches][:3 - len(proches)]
+    autres = "".join(guide_card(base, o) for o in proches)
+
+    body = f"""
+<section class="page-title">
+  <div class="container">{breadcrumbs(base, trail)}</div>
+</section>
+
+<section class="section">
+  <div class="container blog-layout">
+    <article>
+      <header class="entry-header">
+        <div class="post-meta" style="margin-bottom:14px">
+          <span class="post-cat">{g['cat']}</span>
+          <span>Par {SITE['manager']} — {SITE['name']}</span>
+        </div>
+        <h1>{g['h1']}</h1>
+        <p class="lead">{g['lead']}</p>
+      </header>
+
+      <figure><img src="{base}assets/photos/{g['image']}" alt="{g['h1']}" width="1000" height="600"></figure>
+
+      <div class="entry-content">{corps}</div>
+
+      <h2 style="margin-top:2.2em">Questions fréquentes</h2>
+      {faq_block(g['faq'], 'faq-guide')}
+
+      <div class="notice notice-blue" style="margin-top:34px">
+        {icon('sparkle')}
+        <p>
+          <strong>Besoin d'un devis ?</strong> MathClean intervient à Paris et dans toute
+          l'Île-de-France, 7j/7 et sans acompte. Découvrez notre
+          <a href="{base}services/{service['slug']}.html">{service['nav'].lower()}</a>,
+          <a href="{base}reservation.html">réservez en ligne</a> ou appelez le
+          <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a>.
+        </p>
+      </div>
+
+      <footer class="entry-footer">
+        <ul class="tag-list">
+          <li><a href="{base}guides.html">{g['cat']}</a></li>
+          <li><a href="{base}services/{service['slug']}.html">{service['nav']}</a></li>
+          <li><a href="{base}villes.html">Île-de-France</a></li>
+        </ul>
+      </footer>
+    </article>
+    {sidebar(base)}
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">À lire aussi</span>
+      <h2>Nos autres guides</h2>
+    </div>
+    <div class="grid grid-3">{autres}</div>
+  </div>
+</section>
+
+{cta_band(base)}
+"""
+    schema = [
+        crumb_schema([("Guides", "guides.html"), (g["h1"], "guides/%s.html" % g["slug"])]),
+        {"@context": "https://schema.org", "@type": "Article",
+         "headline": g["h1"], "description": g["lead"],
+         "image": "%s/assets/photos/%s" % (SITE["url"], g["image"]),
+         "inLanguage": "fr-FR",
+         "author": {"@type": "Organization", "name": SITE["name"]},
+         "publisher": {"@id": SITE["url"] + "/#business"},
+         "mainEntityOfPage": "%s/guides/%s.html" % (SITE["url"], g["slug"])},
+        faq_schema(g["faq"]),
+    ]
+    html = (head(g["title"], g["meta"], "guides/%s.html" % g["slug"], base,
+                 image="assets/photos/%s" % g["image"], schema=schema)
+            + header(base, "guides") + body + footer(base))
+    return write("guides/%s.html" % g["slug"], html)
+
+
+def build_guides_archive():
+    base = ""
+    trail = [("Guides", None)]
+    cards = "".join(guide_card(base, g) for g in GUIDES)
+    body = f"""
+{page_title_block(base, trail, "Guides pratiques du nettoyage",
+  "Comment choisir un prestataire, ce que coûte réellement une prestation, comment "
+  "fonctionne l'injection-extraction : nos réponses détaillées aux questions qu'on nous "
+  "pose le plus.")}
+
+<section class="section">
+  <div class="container blog-layout">
+    <div><div class="grid grid-2">{cards}</div></div>
+    {sidebar(base)}
+  </div>
+</section>
+
+{cta_band(base)}
+"""
+    html = (head("Guides pratiques du nettoyage — Paris & Île-de-France | MathClean",
+                 "Guides MathClean : choisir une entreprise de nettoyage, prix d'un canapé ou "
+                 "d'un detailing auto, injection-extraction, eau osmosée, entretien de bureaux.",
+                 "guides.html", base, schema=[crumb_schema([("Guides", "guides.html")])])
+            + header(base, "guides") + body + footer(base))
+    return write("guides.html", html)
+
+
+# ===========================================================================
 # SITEMAP & ROBOTS
 # ===========================================================================
 def build_sitemap(urls):
@@ -2510,8 +2880,84 @@ def build_sitemap(urls):
 
 
 def build_robots():
-    return write("robots.txt",
-                 "User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % SITE["url"])
+    """
+    Accès ouvert à tous les robots, y compris ceux des assistants IA, qu'on
+    nomme explicitement pour lever toute ambiguïté d'interprétation.
+    """
+    ia = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User",
+          "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended",
+          "CCBot", "Bytespider", "meta-externalagent"]
+    lignes = ["User-agent: *", "Allow: /", ""]
+    for bot in ia:
+        lignes += ["User-agent: %s" % bot, "Allow: /", ""]
+    lignes += ["Sitemap: %s/sitemap.xml" % SITE["url"], ""]
+    return write("robots.txt", "\n".join(lignes))
+
+
+def build_llms_txt():
+    """
+    Fiche de synthèse destinée aux robots des assistants IA. Convention
+    /llms.txt : un résumé factuel, court et structuré, plus lisible pour un
+    modèle que le HTML d'un site entier. Tout ce qu'il contient est vérifiable
+    sur le site.
+    """
+    presta = "\n".join(
+        "- %s (%s) : %s %s/services/%s.html"
+        % (s["name"], s["price"], s["excerpt"].split(".")[0].strip(), SITE["url"], s["slug"])
+        for s in SERVICES
+    )
+    guides = "\n".join(
+        "- %s : %s/guides/%s.html" % (g["h1"], SITE["url"], g["slug"]) for g in GUIDES
+    )
+    zones = ", ".join("%s (%s)" % (z["name"], z["num"]) for z in ZONES)
+    villes = ", ".join(v[1] for v in VILLES)
+    txt = f"""# MathClean
+
+> Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit
+> départements d'Île-de-France. Entreprise individuelle dirigée par {SITE['manager']},
+> basée à {SITE['city']} ({SITE['postcode']}).
+
+## Identité
+- Nom : {SITE['name']}
+- SIRET : {SITE['siret']}
+- Adresse : {SITE['address']}, {SITE['postcode']} {SITE['city']}, France
+- Téléphone : {SITE['phone']}
+- E-mail : {SITE['email']}
+- Horaires : {SITE['hours']}
+- Site : {SITE['url']}
+- Fiche Google : {SITE['review_url']}
+
+## Engagements vérifiables
+- Devis gratuit, ferme et détaillé poste par poste.
+- Aucun acompte : le règlement se fait après l'intervention, une fois le résultat constaté.
+- Frais de déplacement : {SITE['travel_fee']}, annoncés avant validation.
+- Intervention 7j/7, y compris week-ends et jours fériés ; horaires décalés pour les commerces.
+- Matériel, produits, eau et électricité fournis : aucun accès technique requis sur place.
+- TVA non applicable, article 293 B du Code général des impôts.
+
+## Prestations
+{presta}
+
+## Tarifs de référence
+- Detailing automobile : 4 formules, de 40 € à 240 € selon le véhicule.
+- Textile : chaise 15 €, fauteuil 25 €, canapé 2 places 39 €, 3 places 49 €, angle 69 €,
+  matelas 1 place 39 €, 2 places 49 €, tapis 39 € à 59 €.
+- Bateau, terrasse, vitres, entreprise, fin de chantier : sur devis après échange ou visite.
+- Grille complète : {SITE['url']}/tarifs.html
+
+## Zone d'intervention
+Départements : {zones}.
+Villes documentées : {villes}.
+
+## Guides de référence
+{guides}
+
+## Réserver
+- Configurateur en ligne : {SITE['url']}/reservation.html
+- Devis : {SITE['url']}/devis.html
+- Téléphone : {SITE['phone']}
+"""
+    return write("llms.txt", txt)
 
 
 def build_redirects():
@@ -2580,6 +3026,12 @@ def main():
     pages.append((build_zones_archive(), "0.8", "monthly"))
     for z in ZONES:
         pages.append((build_zone(z), "0.8", "monthly"))
+    pages.append((build_villes_archive(), "0.8", "monthly"))
+    for v in VILLES:
+        pages.append((build_ville(v), "0.7", "monthly"))
+    pages.append((build_guides_archive(), "0.8", "monthly"))
+    for g in GUIDES:
+        pages.append((build_guide(g), "0.7", "monthly"))
     pages.append((build_blog_archive(), "0.7", "weekly"))
     for i, p in enumerate(POSTS):
         prev_post = POSTS[i - 1] if i > 0 else None
@@ -2597,6 +3049,7 @@ def main():
     build_sitemap(pages)
     build_robots()
     build_redirects()
+    build_llms_txt()
 
     stale = clean_stale([p for p, _pr, _f in pages] + extra)
 
