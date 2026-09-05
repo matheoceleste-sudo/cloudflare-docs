@@ -14,6 +14,8 @@ Sortie : ./site/
 """
 
 import hashlib
+import unicodedata
+import re
 import json
 import os
 import shutil
@@ -23,8 +25,9 @@ from datetime import date
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-from content import (  # noqa: E402
-    SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER,
+from content import (
+    DATE_GUIDES, DATE_GUIDES_FR,  # noqa: E402
+    SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER, BEFORE_AFTER_HD,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
     GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES,
 )
@@ -53,6 +56,41 @@ def en_lettres(n):
 
 NB_SERVICES = en_lettres(len(SERVICES))
 NB_ZONES = en_lettres(len(ZONES))
+
+
+def titre_page(t):
+    """Ajoute la marque au titre, mais seulement si Google peut encore l'afficher.
+
+    Google tronque autour de 60 caractères ; au-delà, le suffixe de marque
+    ne fait que masquer la fin du titre. On l'omet donc quand ça ne rentre pas,
+    et on ne le répète jamais si la marque est déjà dans le titre.
+    """
+    t = t.strip()
+    if SITE["name"].lower() in t.lower():
+        return t
+    suffixe = " | " + SITE["name"]
+    return t + suffixe if len(t) + len(suffixe) <= 60 else t
+
+
+def slug_ancre(txt):
+    """Ancre d'URL lisible : sans accent, sans espace, en minuscules."""
+    base = unicodedata.normalize("NFKD", str(txt))
+    base = "".join(c for c in base if not unicodedata.combining(c))
+    return re.sub(r"[^a-z0-9]+", "-", base.lower()).strip("-")
+
+
+def liste_prestations(sep=", ", fin=" et "):
+    """Énumération des prestations, dérivée de SERVICES pour ne jamais dater."""
+    noms = [s["short"].lower() for s in SERVICES]
+    return sep.join(noms[:-1]) + fin + noms[-1]
+
+
+_AMP = re.compile(r"&(?!(?:[a-zA-Z][a-zA-Z0-9]{1,31}|#\d{1,7}|#[xX][0-9a-fA-F]{1,6});)")
+
+
+def esc(txt):
+    """Échappe une valeur destinée à un attribut HTML, sans doubler les entités."""
+    return _AMP.sub("&amp;", str(txt)).replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
 V_CSS = empreinte("theme/theme.css")
 V_JS = empreinte("theme/theme.js")
@@ -102,39 +140,67 @@ def icon(name, cls=""):
 # ---------------------------------------------------------------------------
 # Gabarits partagés
 # ---------------------------------------------------------------------------
-def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=None, robots=None):
+def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=None,
+         robots=None, og_type="website", published=None, modified=None, preload=None):
+    """En-tête commun à toutes les pages.
+
+    `og_type`  : "article" sur les billets et les guides, "website" ailleurs.
+    `published`/`modified` : dates ISO, ajoutées en Open Graph pour les articles.
+    `preload`  : chemin d'image LCP à précharger (relatif à `base`).
+    """
     ld = ""
     for block in (schema or []):
         ld += '<script type="application/ld+json">%s</script>\n' % json.dumps(
             block, ensure_ascii=False, separators=(",", ":")
         )
-    noindex = '<meta name="robots" content="noindex,follow">\n' if robots == "noindex" else ""
+    if robots == "noindex":
+        directives = "noindex,follow"
+    else:
+        # Autorise les grandes vignettes dans Google Images et Discover,
+        # et lève la limite de longueur des extraits affichés.
+        directives = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    og_art = ""
+    if og_type == "article":
+        if published:
+            og_art += '<meta property="article:published_time" content="%s">\n' % published
+        og_art += '<meta property="article:modified_time" content="%s">\n' % (modified or published or "")
+        og_art += '<meta property="article:author" content="%s">\n' % esc(SITE["manager"])
+    pre = ""
+    if preload:
+        pre = '<link rel="preload" as="image" href="%s%s" fetchpriority="high">\n' % (base, preload)
+    t, m = esc(title), esc(meta)
     return f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title}</title>
-<meta name="description" content="{meta}">
-{noindex}<link rel="canonical" href="{SITE['url']}/{canonical}">
-<meta name="author" content="{SITE['name']}">
+<title>{t}</title>
+<meta name="description" content="{m}">
+<meta name="robots" content="{directives}">
+<link rel="canonical" href="{SITE['url']}/{canonical}">
+<meta name="author" content="{esc(SITE['manager'])}">
 <meta name="theme-color" content="#0e5fbb">
 <meta name="geo.region" content="FR-IDF">
-<meta name="geo.placename" content="{SITE['city']}">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="{SITE['name']}">
+<meta name="geo.placename" content="{esc(SITE['city'])}">
+<meta name="geo.position" content="{SITE['lat']};{SITE['lon']}">
+<meta name="ICBM" content="{SITE['lat']}, {SITE['lon']}">
+<meta property="og:type" content="{og_type}">
+<meta property="og:site_name" content="{esc(SITE['name'])}">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="{title}">
-<meta property="og:description" content="{meta}">
+<meta property="og:title" content="{t}">
+<meta property="og:description" content="{m}">
 <meta property="og:url" content="{SITE['url']}/{canonical}">
 <meta property="og:image" content="{SITE['url']}/{image}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{title}">
-<meta name="twitter:description" content="{meta}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{esc(SITE['name'])} — {esc(SITE['slogan'])}">
+{og_art}<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{t}">
+<meta name="twitter:description" content="{m}">
 <meta name="twitter:image" content="{SITE['url']}/{image}">
 <link rel="icon" href="{base}assets/img/lion.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{base}assets/css/theme.css?v={V_CSS}">
-<script>document.documentElement.className+=' js';</script>
+{pre}<script>document.documentElement.className+=' js';</script>
 {ld}</head>
 <body>
 <a class="skip-link" href="#content">Aller au contenu</a>
@@ -262,8 +328,8 @@ def footer(base):
       <div class="footer-brand">
         <span class="brand-name" style="font-size:1.5rem">Math<span>Clean</span></span>
         <p class="footer-about">
-          Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit départements
-          d'Île-de-France. Automobile, textile, bateau, terrasse, vitres, entreprise et fin de chantier.
+          Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les {NB_ZONES} départements
+          d'Île-de-France&nbsp;: {liste_prestations().capitalize()}.
           Une exigence de roi, du particulier au professionnel.
         </p>
         <div class="footer-contact">
@@ -274,16 +340,16 @@ def footer(base):
         </div>
       </div>
       <div>
-        <h4>Prestations</h4>
+        <h2 class="widget-title">Prestations</h2>
         <ul>{services_links}</ul>
       </div>
       <div>
-        <h4>Zones</h4>
+        <h2 class="widget-title">Zones</h2>
         <ul>{zones_links}<li><a href="{base}zones.html">Les 8 départements</a></li>
         <li><a href="{base}villes.html">Toutes les villes</a></li></ul>
       </div>
       <div>
-        <h4>L'entreprise</h4>
+        <h2 class="widget-title">L'entreprise</h2>
         <ul>
           <li><a href="{base}a-propos.html">À propos</a></li>
           <li><a href="{base}tarifs.html">Tarifs</a></li>
@@ -391,12 +457,16 @@ def service_tile(base, s):
 </a>"""
 
 
-def ba_block(base, before, after, title, sub, idx):
+def ba_block(base, before, after, title, sub, idx, largeur=800):
+    """Comparateur avant/après. `largeur` = largeur d'affichage réelle, déclarée
+    sur les images pour que le navigateur réserve la bonne place."""
     return f"""<div class="reveal">
   <div class="ba" style="--pos:50%">
     <div class="ba-pane">
-      <img src="{base}assets/photos/{before}" alt="{title} avant l'intervention MathClean" loading="lazy">
-      <img class="ba-after" src="{base}assets/photos/{after}" alt="{title} après l'intervention MathClean" loading="lazy">
+      <img src="{base}assets/photos/{before}" alt="{title} avant l'intervention MathClean"
+           loading="lazy" width="{largeur}" height="{largeur * 3 // 4}">
+      <img class="ba-after" src="{base}assets/photos/{after}" alt="{title} après l'intervention MathClean"
+           loading="lazy" width="{largeur}" height="{largeur * 3 // 4}">
     </div>
     <span class="ba-tag ba-tag-before">Avant</span>
     <span class="ba-tag ba-tag-after">Après</span>
@@ -430,6 +500,27 @@ def faq_schema(items):
     }
 
 
+def editeur_schema():
+    """Éditeur des articles : objet complet plutôt qu'un simple @id, pour que
+    les validateurs n'aient pas à résoudre une référence hébergée ailleurs."""
+    return {
+        "@type": "Organization",
+        "@id": SITE["url"] + "/#business",
+        "name": SITE["name"],
+        "url": SITE["url"] + "/",
+        "logo": {"@type": "ImageObject",
+                 "url": SITE["url"] + "/assets/img/og-image.png",
+                 "width": 1200, "height": 630},
+    }
+
+
+def auteur_schema():
+    """Auteur : la personne qui signe les articles sur le site."""
+    return {"@type": "Person", "name": SITE["manager"],
+            "url": SITE["url"] + "/a-propos.html",
+            "worksFor": {"@id": SITE["url"] + "/#business"}}
+
+
 def business_schema():
     return {
         "@context": "https://schema.org",
@@ -437,9 +528,9 @@ def business_schema():
         "@id": SITE["url"] + "/#business",
         "name": SITE["name"],
         "slogan": SITE["slogan"],
-        "description": "Entreprise de nettoyage à domicile à Paris et en Île-de-France : automobile, "
-                       "canapé, matelas, tapis, bateau, terrasse, vitres, bureaux et locaux "
-                       "professionnels, fin de chantier. Devis gratuit, intervention 7j/7.",
+        "description": ("Entreprise de nettoyage à domicile et en entreprise à Paris et en "
+                        "Île-de-France : %s. Devis gratuit, intervention 7j/7, sans acompte."
+                        % liste_prestations()),
         "url": SITE["url"] + "/",
         "logo": SITE["url"] + "/assets/img/lion.svg",
         "image": SITE["url"] + "/assets/img/og-image.png",
@@ -482,11 +573,33 @@ def business_schema():
     }
 
 
+_IMG_LAZY = re.compile(r'<img\b(?![^>]*\bfetchpriority=)[^>]*?\sloading="lazy"[^>]*>')
+
+
+def promouvoir_image_lcp(html):
+    """Sort la première image du contenu du chargement différé.
+
+    C'est presque toujours l'élément LCP de la page : la laisser en
+    `loading="lazy"` retarde son affichage et pénalise le score Core Web
+    Vitals. On la traite ici, une fois pour toutes, plutôt que dans chaque
+    gabarit — l'accueil, lui, précharge déjà son héros et n'est pas concerné.
+    """
+    debut = html.find('<main')
+    if debut == -1 or 'fetchpriority="high"' in html:
+        # La page désigne déjà son élément LCP (le héros de l'accueil).
+        return html
+    m = _IMG_LAZY.search(html, debut)
+    if not m:
+        return html
+    balise = m.group(0).replace(' loading="lazy"', ' loading="eager" fetchpriority="high"')
+    return html[:m.start()] + balise + html[m.end():]
+
+
 def write(path, html):
     full = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as fh:
-        fh.write(html)
+        fh.write(promouvoir_image_lcp(html))
     return path
 
 
@@ -511,7 +624,8 @@ def build_home():
 </a>""" for z in ZONES
     )
     ba = "".join(
-        ba_block(base, b, a, t, s, i) for i, (b, a, t, s) in enumerate(BEFORE_AFTER[:4])
+        ba_block(base, b, a, t, s, i)
+        for i, (b, a, t, s) in enumerate(BEFORE_AFTER[:BEFORE_AFTER_HD])
     )
     posts = "".join(post_card(base, p) for p in POSTS[:3])
 
@@ -527,7 +641,7 @@ def build_home():
       <span class="eyebrow eyebrow-gold">{SITE['name']} · {SITE['slogan']}</span>
       <h1>Entreprise de nettoyage à Paris <em>&amp; en Île-de-France</em></h1>
       <p class="hero-lead">
-        Automobile, textile, bateau, terrasse, vitres, entreprise et fin de chantier.
+        {liste_prestations().capitalize()}.
         Nous venons chez vous, entièrement équipés, 7&nbsp;jours sur 7 — sans acompte,
         et vous ne réglez qu'une fois le résultat constaté.
       </p>
@@ -705,15 +819,17 @@ def build_home():
     schema = [
         business_schema(),
         faq_schema(FAQ),
-        {"@context": "https://schema.org", "@type": "WebSite", "name": SITE["name"],
+        {"@context": "https://schema.org", "@type": "WebSite",
+         "@id": SITE["url"] + "/#site", "name": SITE["name"],
          "url": SITE["url"] + "/", "inLanguage": "fr-FR",
          "publisher": {"@id": SITE["url"] + "/#business"}},
     ]
     html = (
-        head("Entreprise de nettoyage à Paris & Île-de-France | MathClean",
-             "Nettoyage automobile, textile, bateau, terrasse, vitres, entreprise et fin de chantier à "
-             "Paris et en Île-de-France. Intervention à domicile 7j/7, devis gratuit, sans acompte.",
-             "", base, schema=schema)
+        head(titre_page("Entreprise de nettoyage à Paris et en Île-de-France"),
+             "Nettoyage auto, textile, bateau, terrasse, vitres, entreprise et fin de chantier "
+             "à Paris et en Île-de-France. 7j/7, devis gratuit, sans acompte.",
+             "", base, schema=schema,
+             preload="assets/photos/" + HERO["image"])
         + header(base, "home") + body + footer(base)
     )
     return write("index.html", html)
@@ -726,6 +842,20 @@ def build_services_archive():
     base = ""
     trail = [("Prestations", None)]
     cards = "".join(service_tile(base, s) for s in SERVICES)
+    detail = "".join(
+        '<dt><a href="services/%s.html">%s</a> <span class="presta-prix">%s</span></dt>'
+        '<dd>%s</dd>' % (x["slug"], x["name"], x["price"], x["excerpt"])
+        for x in SERVICES
+    )
+    liste_schema = {
+        "@context": "https://schema.org", "@type": "ItemList",
+        "name": "Prestations de nettoyage MathClean",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "name": x["name"],
+             "url": "%s/services/%s.html" % (SITE["url"], x["slug"])}
+            for i, x in enumerate(SERVICES)
+        ],
+    }
     body = f"""
 {page_title_block(base, trail, "Nos prestations de nettoyage",
     "%s métiers, à domicile comme en entreprise, partout à Paris et en Île-de-France. " % NB_SERVICES.capitalize() +
@@ -737,9 +867,44 @@ def build_services_archive():
   </div>
 </section>
 
+<section class="section">
+  <div class="container container-narrow">
+    <h2>Ce que recouvre chaque prestation</h2>
+    <dl class="presta-detail">{detail}</dl>
+  </div>
+</section>
+
 <section class="section section-soft">
   <div class="container container-narrow">
-    <div class="notice notice-blue">
+    <h2>Comment savoir laquelle vous concerne</h2>
+    <p>
+      La question n'est pas tant la surface que la <strong>matière</strong> et l'<strong>état</strong>.
+      Un textile taché en profondeur relève de l'injection-extraction, pas d'un shampoing de surface.
+      Une pierre poreuse ne supporte pas la même pression qu'une dalle béton. Un local vidé après
+      travaux demande deux passages, parce que la poussière de plâtre retombe pendant vingt-quatre heures.
+      C'est pour cela que chaque prestation a sa page&nbsp;: elle décrit la méthode employée, ce qui est
+      inclus, et ce qui ne l'est pas.
+    </p>
+    <p>
+      Trois repères simples pour vous orienter&nbsp;:
+    </p>
+    <ul class="checklist">
+      <li>Une <strong>odeur</strong> qui revient malgré un nettoyage&nbsp;: la source est encore là.
+        C'est le domaine du <a href="services/traitement-ozone-paris.html">traitement par ozone</a>,
+        après nettoyage et non à sa place.</li>
+      <li>Une <strong>tache</strong> ancienne sur un tissu&nbsp;: ne la frottez pas avant notre passage,
+        vous risquez de l'étaler dans la fibre. Voir le
+        <a href="services/nettoyage-textile-paris.html">nettoyage textile</a>.</li>
+      <li>Un <strong>besoin régulier</strong> plutôt qu'une intervention unique&nbsp;: nous établissons
+        un rythme et un tarif fixes. Voir le
+        <a href="services/nettoyage-entreprise-paris.html">nettoyage pour entreprise</a>.</li>
+    </ul>
+    <p>
+      Dans le doute, notre <a href="guides.html">bibliothèque de guides</a> détaille les méthodes,
+      les prix constatés et les erreurs qui coûtent cher. Et si votre besoin n'entre dans aucune
+      case, dites-le-nous&nbsp;: nous vous répondrons franchement, y compris si ce n'est pas notre métier.
+    </p>
+    <div class="notice notice-blue" style="margin-top:30px">
       {icon('info')}
       <p>
         <strong>Vous ne savez pas quelle prestation choisir ?</strong> Décrivez-nous simplement votre
@@ -756,10 +921,11 @@ def build_services_archive():
 
 {cta_band(base)}
 """
-    html = (head("Nos prestations de nettoyage à Paris & Île-de-France | MathClean",
-                 "Toutes les prestations MathClean : nettoyage automobile, textile, bateau, "
-                 "terrasse, vitres, entreprise et fin de chantier à Paris et en Île-de-France.",
-                 "services.html", base, schema=[crumb_schema([("Prestations", "services.html")])])
+    html = (head(titre_page("Nos prestations de nettoyage à Paris et en IDF"),
+                 "Les %s prestations MathClean : auto, textile, bateau, terrasse, vitres, "
+                 "entreprise, ozone, fin de chantier. À Paris et en IDF." % NB_SERVICES,
+                 "services.html", base,
+                 schema=[crumb_schema([("Prestations", "services.html")]), liste_schema])
             + header(base, "services") + body + footer(base))
     return write("services.html", html)
 
@@ -893,7 +1059,7 @@ def build_service(s):
          "url": "%s/services/%s.html" % (SITE["url"], s["slug"])},
         faq_schema(s["faq"]),
     ]
-    html = (head(s["title"], s["meta"], "services/%s.html" % s["slug"], base, schema=schema)
+    html = (head(titre_page(s["title"]), s["meta"], "services/%s.html" % s["slug"], base, schema=schema)
             + header(base, "services") + body + footer(base))
     return write("services/%s.html" % s["slug"], html)
 
@@ -1056,9 +1222,9 @@ def build_tarifs():
           "Décrivez-nous votre besoin en deux minutes. Réponse sous 24 h, sans engagement.")}
 """
     schema = [crumb_schema([("Tarifs", "tarifs.html")]), faq_schema(faq_tarifs)]
-    html = (head("Tarifs de nettoyage à Paris — packs auto dès 40 €, textile dès 15 € | MathClean",
-                 "Tarifs MathClean : packs detailing automobile de 40 à 240 €, nettoyage textile dès 15 €, "
-                 "prestations professionnelles sur devis. Sans acompte, frais de déplacement annoncés d'avance.",
+    html = (head(titre_page("Tarifs de nettoyage à Paris — auto dès 40 €"),
+                 "Tarifs MathClean : packs auto de 40 à 240 €, textile dès 15 €, professionnel "
+                 "sur devis. Sans acompte, frais de déplacement annoncés d'avance.",
                  "tarifs.html", base, schema=schema)
             + header(base, "tarifs") + body + footer(base))
     return write("tarifs.html", html)
@@ -1070,7 +1236,12 @@ def build_tarifs():
 def build_realisations():
     base = ""
     trail = [("Réalisations", None)]
-    ba = "".join(ba_block(base, b, a, t, s, i) for i, (b, a, t, s) in enumerate(BEFORE_AFTER))
+    ba = "".join(ba_block(base, b, a, t, s, i)
+                 for i, (b, a, t, s) in enumerate(BEFORE_AFTER[:BEFORE_AFTER_HD]))
+    # Les clichés de faible définition passent dans une grille de trois colonnes :
+    # affichés petit, ils restent nets.
+    ba_petit = "".join(ba_block(base, b, a, t, s, i + BEFORE_AFTER_HD, largeur=380)
+                       for i, (b, a, t, s) in enumerate(BEFORE_AFTER[BEFORE_AFTER_HD:]))
     body = f"""
 {page_title_block(base, trail, "Nos réalisations",
     "Des interventions réelles, réalisées chez nos clients particuliers et professionnels. "
@@ -1079,6 +1250,8 @@ def build_realisations():
 <section class="section">
   <div class="container">
     <div class="grid grid-2">{ba}</div>
+    <h2 style="margin:56px 0 26px">Nos autres chantiers</h2>
+    <div class="grid grid-3">{ba_petit}</div>
   </div>
 </section>
 
@@ -1106,11 +1279,47 @@ def build_realisations():
   </div>
 </section>
 
+<section class="section">
+  <div class="container container-narrow">
+    <h2>Ce que montrent — et ne montrent pas — ces photos</h2>
+    <p>
+      Toutes ces images viennent de chantiers réels, chez des clients particuliers et professionnels.
+      L'avant et l'après sont pris <strong>au même endroit, sous la même lumière</strong>, à quelques
+      heures d'intervalle. Nous n'associons jamais deux photos qui ne proviennent pas de la même
+      intervention&nbsp;: ce serait montrer un résultat qui n'a pas eu lieu.
+    </p>
+    <p>
+      Il faut aussi dire ce qu'un nettoyage ne fait pas. Une fibre brûlée, un cuir craquelé, une pierre
+      rongée par le gel ou un vernis parti ne reviennent pas&nbsp;: le nettoyage retire ce qui s'est
+      déposé, il ne reconstitue pas ce qui a disparu. Quand nous voyons ce type de dégât sur vos photos,
+      nous vous le disons au devis, avant l'intervention, plutôt que de vous laisser l'espérer.
+    </p>
+
+    <h2>Les méthodes employées sur ces chantiers</h2>
+    <ul class="checklist">
+      <li><strong>Injection-extraction</strong> pour les textiles&nbsp;: on injecte une solution dans la
+        fibre puis on l'aspire immédiatement avec la saleté dissoute. Pas d'auréole, parce qu'il ne
+        reste pas d'eau stagnante. Voir le
+        <a href="guides/injection-extraction.html">guide dédié</a>.</li>
+      <li><strong>Vapeur à haute température</strong> pour les surfaces dures et les recoins&nbsp;:
+        elle décolle le gras sans détergent agressif.</li>
+      <li><strong>Haute pression réglée selon le support</strong> pour les extérieurs&nbsp;: le réglage
+        change du tout au tout entre une dalle béton et une pierre tendre.</li>
+      <li><strong>Eau osmosée</strong> pour les vitres&nbsp;: privée de ses minéraux, elle sèche sans
+        rien déposer. Voir <a href="guides/eau-osmosee-vitres.html">pourquoi ça marche</a>.</li>
+    </ul>
+    <p>
+      Le détail par prestation figure sur <a href="services.html">nos pages de prestations</a>, avec
+      ce qui est inclus et les tarifs correspondants.
+    </p>
+  </div>
+</section>
+
 {reviews_section(base, soft=False)}
 
 {cta_band(base)}
 """
-    html = (head("Nos réalisations — avant / après | MathClean",
+    html = (head(titre_page("Nos réalisations de nettoyage — avant / après"),
                  "Avant/après de nos interventions de nettoyage à Paris et en Île-de-France : sièges auto, "
                  "canapés, terrasses, tapis, cuisines professionnelles.",
                  "realisations.html", base,
@@ -1130,7 +1339,7 @@ def build_zones_archive():
         cities = "".join("<li>%s</li>" % c for c in z["cities"][:8])
         cards += f"""<div class="feature reveal">
   <span class="feature-icon">{icon('pin')}</span>
-  <h3><a href="zones/{z['slug']}.html">{z['name']} ({z['num']})</a></h3>
+  <h2><a href="zones/{z['slug']}.html">{z['name']} ({z['num']})</a></h2>
   <p>{z['intro']}</p>
   <ul class="city-list" style="margin:16px 0">{cities}</ul>
   <a class="service-more" href="zones/{z['slug']}.html">Voir la page {z['name']} {icon('arrow')}</a>
@@ -1161,9 +1370,9 @@ def build_zones_archive():
 
 {cta_band(base)}
 """
-    html = (head("Zones d'intervention — nettoyage à Paris & en Île-de-France | MathClean",
-                 "MathClean intervient à Paris (75), dans les Hauts-de-Seine (92), la Seine-Saint-Denis (93), "
-                 "le Val-de-Marne (94), l'Essonne (91), les Yvelines (78), la Seine-et-Marne (77) et le Val-d'Oise (95).",
+    html = (head(titre_page("Zones d'intervention en Île-de-France"),
+                 "MathClean intervient dans les huit départements d'Île-de-France : Paris 75, "
+                 "92, 93, 94, 91, 78, 77 et 95. Devis gratuit, déplacement annoncé d'avance.",
                  "zones.html", base, schema=[crumb_schema([("Zones d'intervention", "zones.html")])])
             + header(base, "zones") + body + footer(base))
     return write("zones.html", html)
@@ -1247,7 +1456,7 @@ def build_zone(z):
          "areaServed": {"@type": "AdministrativeArea", "name": z["name"]},
          "url": "%s/zones/%s.html" % (SITE["url"], z["slug"])},
     ]
-    html = (head("Entreprise de nettoyage en %s (%s) | MathClean" % (z["name"], z["num"]),
+    html = (head(titre_page("Entreprise de nettoyage en %s (%s)" % (z["name"], z["num"])),
                  "Nettoyage automobile, textile, terrasse, vitres et entreprise en %s (%s). "
                  "Intervention à domicile 7j/7, devis gratuit, sans acompte." % (z["name"], z["num"]),
                  "zones/%s.html" % z["slug"], base, schema=schema)
@@ -1258,17 +1467,19 @@ def build_zone(z):
 # ===========================================================================
 # BLOG
 # ===========================================================================
-def post_card(base, p):
+def post_card(base, p, niveau="h3"):
+    """Carte d'article. `niveau` suit la hiérarchie de la page qui l'accueille."""
     return f"""<article class="post-card reveal">
   <a class="post-thumb" href="{base}blog/{p['slug']}.html" tabindex="-1" aria-hidden="true">
-    <img src="{base}assets/photos/{p['image']}" alt="" loading="lazy" width="640" height="360">
+    <img src="{base}assets/photos/{p['image']}" alt="{p['title']} — conseil de nettoyage MathClean"
+         loading="lazy" width="640" height="360">
   </a>
   <div class="post-body">
     <div class="post-meta">
       <span class="post-cat">{p['cat']}</span>
       <time datetime="{p['date']}">{p['date_fr']}</time>
     </div>
-    <h3><a href="{base}blog/{p['slug']}.html">{p['title']}</a></h3>
+    <{niveau}><a href="{base}blog/{p['slug']}.html">{p['title']}</a></{niveau}>
     <p>{p['excerpt']}</p>
     <span class="service-more">Lire l'article {icon('arrow')}</span>
   </div>
@@ -1290,7 +1501,7 @@ def sidebar(base, current_slug=None):
     for p in POSTS:
         cats[p["cat"]] = cats.get(p["cat"], 0) + 1
     cats_html = "".join(
-        f'<li><a href="{base}blog.html#{c.lower()}">{c}<span>{n}</span></a></li>'
+        f'<li><a href="{base}blog.html#cat-{slug_ancre(c)}">{c}<span>{n}</span></a></li>'
         for c, n in sorted(cats.items())
     )
     services_html = "".join(
@@ -1322,7 +1533,20 @@ def sidebar(base, current_slug=None):
 def build_blog_archive():
     base = ""
     trail = [("Conseils & astuces", None)]
-    cards = "".join(post_card(base, p) for p in POSTS)
+    # Regroupement par catégorie : chaque rubrique porte l'ancre visée par la
+    # colonne latérale, et introduit un h2 qui manquait entre le h1 et les cartes.
+    cats = []
+    for p in POSTS:
+        if p["cat"] not in cats:
+            cats.append(p["cat"])
+    cards = ""
+    for c in sorted(cats):
+        dedans = [p for p in POSTS if p["cat"] == c]
+        cards += (
+            '<section class="cat-block" id="cat-%s">\n<h2 class="cat-title">%s</h2>\n'
+            '<div class="grid grid-2">%s</div>\n</section>\n'
+            % (slug_ancre(c), c, "".join(post_card(base, p) for p in dedans))
+        )
     body = f"""
 {page_title_block(base, trail, "Conseils &amp; astuces de nettoyage",
     "Un bon entretien au quotidien prolonge la vie de vos biens et espace les nettoyages en profondeur. "
@@ -1331,7 +1555,7 @@ def build_blog_archive():
 <section class="section">
   <div class="container blog-layout">
     <div>
-      <div class="grid grid-2">{cards}</div>
+      {cards}
       <div class="notice notice-blue" style="margin-top:38px">
         {icon('info')}
         <p>
@@ -1347,7 +1571,7 @@ def build_blog_archive():
 
 {cta_band(base)}
 """
-    html = (head("Conseils & astuces de nettoyage | MathClean",
+    html = (head(titre_page("Conseils et astuces de nettoyage"),
                  "Nos conseils de professionnels pour entretenir canapé, matelas, tapis, voiture, "
                  "terrasse, vitres et bateau — et savoir quand faire appel à un professionnel.",
                  "blog.html", base, schema=[crumb_schema([("Conseils & astuces", "blog.html")])])
@@ -1440,12 +1664,14 @@ def build_post(p, prev_post, next_post):
          "image": "%s/assets/photos/%s" % (SITE["url"], p["image"]),
          "datePublished": p["date"], "dateModified": p["date"],
          "inLanguage": "fr-FR",
-         "author": {"@type": "Person", "name": SITE["manager"]},
-         "publisher": {"@id": SITE["url"] + "/#business"},
+         "author": auteur_schema(),
+         "publisher": editeur_schema(),
+         "isPartOf": {"@type": "WebSite", "@id": SITE["url"] + "/#site"},
          "mainEntityOfPage": "%s/blog/%s.html" % (SITE["url"], p["slug"])},
     ]
-    html = (head("%s | MathClean" % p["title"], p["meta"], "blog/%s.html" % p["slug"], base,
-                 image="assets/photos/%s" % p["image"], schema=schema)
+    html = (head(titre_page(p["title"]), p["meta"], "blog/%s.html" % p["slug"], base,
+                 image="assets/photos/%s" % p["image"], schema=schema,
+                 og_type="article", published=p["date"])
             + header(base, "blog") + body + footer(base))
     return write("blog/%s.html" % p["slug"], html)
 
@@ -1594,9 +1820,9 @@ def build_apropos():
               {"@context": "https://schema.org", "@type": "AboutPage",
                "name": "À propos de MathClean", "url": SITE["url"] + "/a-propos.html",
                "mainEntity": {"@id": SITE["url"] + "/#business"}}]
-    html = (head("À propos — MathClean, entreprise de nettoyage en Île-de-France | MathClean",
-                 "MathClean, entreprise individuelle installée à Tremblay-en-France : notre méthode "
-                 "(injection-extraction, vapeur, haute pression), nos engagements et notre terrain.",
+    html = (head(titre_page("À propos de MathClean, entreprise de nettoyage"),
+                 "MathClean, entreprise installée à Tremblay-en-France : notre méthode, nos "
+                 "engagements et le terrain que nous couvrons en Île-de-France.",
                  "a-propos.html", base, schema=schema)
             + header(base, "apropos") + body + footer(base))
     return write("a-propos.html", html)
@@ -1739,10 +1965,56 @@ def build_devis():
     </aside>
   </div>
 </section>
+
+<section class="section section-soft">
+  <div class="container container-narrow">
+    <h2>Ce qui nous aide à chiffrer juste du premier coup</h2>
+    <p>
+      Un devis ferme suppose que nous ayons vu le travail. Trois informations suffisent presque
+      toujours à éviter un aller-retour&nbsp;:
+    </p>
+    <ul class="checklist">
+      <li><strong>Deux ou trois photos</strong>, dont une de près sur la zone gênante. C'est ce qui
+        nous renseigne le mieux&nbsp;: la matière, l'ancienneté de la tache, l'état général.</li>
+      <li><strong>La matière</strong> quand vous la connaissez&nbsp;: tissu, microfibre, alcantara,
+        cuir, laine, synthétique. Elle change la méthode, donc le temps, donc le prix.</li>
+      <li><strong>L'accès</strong>&nbsp;: étage, ascenseur, place de stationnement, code d'entrée.
+        Nous venons avec du matériel, pas seulement avec un chiffon.</li>
+    </ul>
+
+    <h2>Ce que contient notre devis</h2>
+    <p>
+      Un montant unique et une ligne vague ne vous permettent pas de comparer. Le nôtre détaille
+      <strong>poste par poste</strong>&nbsp;: chaque prestation, sa durée estimée, son prix, et les
+      frais de déplacement calculés depuis {SITE['city']} — {SITE['travel_fee']}. Le total affiché est
+      celui que vous réglerez&nbsp;: pas de supplément découvert sur place, pas d'acompte demandé
+      à la signature.
+    </p>
+    <p>
+      Si nous estimons qu'une intervention ne donnera pas le résultat que vous espérez — une fibre
+      déjà abîmée, un support attaqué — nous vous le disons dans le devis. Un refus argumenté vaut
+      mieux qu'une prestation décevante.
+    </p>
+    <p>
+      Avant de signer chez nous ou ailleurs, notre guide
+      <a href="guides/devis-nettoyage-questions-a-poser.html">les 7 questions à poser avant de signer</a>
+      liste ce qu'un devis sérieux doit contenir.
+    </p>
+
+    <h2>Délais de réponse et d'intervention</h2>
+    <p>
+      Nous répondons <strong>sous 24 heures</strong>, week-ends compris. L'intervention suit
+      généralement sous 24 à 72 heures selon votre département&nbsp;: le plus court en
+      Seine-Saint-Denis et dans le Val-d'Oise, où se trouve notre atelier, un peu plus long dans
+      les Yvelines et en Seine-et-Marne. Pour un besoin urgent, l'appel au
+      <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a> reste plus rapide que le formulaire.
+    </p>
+  </div>
+</section>
 """
-    html = (head("Devis gratuit de nettoyage à Paris & Île-de-France | MathClean",
-                 "Demandez un devis gratuit et sans engagement pour un nettoyage automobile, textile, "
-                 "terrasse, vitres ou entreprise à Paris et en Île-de-France. Réponse sous 24 h.",
+    html = (head(titre_page("Devis gratuit de nettoyage à Paris et en IDF"),
+                 "Devis gratuit et sans engagement pour un nettoyage auto, textile, terrasse, "
+                 "vitres ou entreprise à Paris et en Île-de-France. Réponse sous 24 h.",
                  "devis.html", base, schema=[crumb_schema([("Devis gratuit", "devis.html")])])
             + header(base, "devis") + body + footer(base))
     return write("devis.html", html)
@@ -1875,7 +2147,7 @@ def build_contact():
                "url": SITE["url"] + "/contact.html",
                "mainEntity": {"@id": SITE["url"] + "/#business"}},
               faq_schema(FAQ)]
-    html = (head("Contact — MathClean, nettoyage à Paris & Île-de-France | MathClean",
+    html = (head(titre_page("Contacter MathClean — nettoyage en Île-de-France"),
                  "Contactez MathClean au 06 23 07 52 59, 7j/7. Devis gratuit sous 24 h pour tout "
                  "nettoyage à domicile ou en entreprise à Paris et en Île-de-France.",
                  "contact.html", base, schema=schema)
@@ -1899,7 +2171,7 @@ def simple_page(slug, title_tag, meta, h1, lead, content, trail_label, robots=No
 
 {cta_band(base)}
 """
-    html = (head(title_tag, meta, slug, base, robots=robots,
+    html = (head(titre_page(title_tag), meta, slug, base, robots=robots,
                  schema=[crumb_schema([(trail_label, slug)])])
             + header(base, current) + body + footer(base))
     return write(slug, html)
@@ -1934,7 +2206,7 @@ def build_merci():
   </div>
 </section>
 """
-    html = (head("Merci — votre demande a bien été envoyée | MathClean",
+    html = (head(titre_page("Merci, votre demande a bien été envoyée"),
                  "Votre demande de devis a bien été transmise à MathClean. Réponse sous 24 h.",
                  "merci.html", base, robots="noindex")
             + header(base) + body + footer(base))
@@ -1966,7 +2238,7 @@ def build_404():
   </div>
 </section>
 """
-    html = (head("Page introuvable | MathClean",
+    html = (head(titre_page("Page introuvable"),
                  "La page demandée n'existe pas. Retrouvez nos prestations de nettoyage à Paris et en Île-de-France.",
                  "404.html", base, robots="noindex")
             + header(base) + body + footer(base))
@@ -2485,7 +2757,7 @@ def build_reservation():
     </div>
 
     <aside class="resa-ticket" id="resa-ticket" hidden>
-      <h3>Votre réservation</h3>
+      <h2>Votre réservation</h2>
       <ul id="resa-lines"><li class="resa-empty">Rien de sélectionné pour l'instant.</li></ul>
       <div class="resa-total">
         <span>Total estimé</span>
@@ -2502,7 +2774,7 @@ def build_reservation():
 {find_us(base)}
 """
     schema = [crumb_schema([("Réserver", "reservation.html")])]
-    html = (head("Réserver un nettoyage en ligne — Paris & Île-de-France | MathClean",
+    html = (head(titre_page("Réserver un nettoyage en ligne à Paris"),
                  "Réservez votre intervention MathClean en ligne : choisissez la prestation, "
                  "voyez le prix se construire, frais de déplacement compris. Sans acompte, 7j/7.",
                  "reservation.html", base, schema=schema)
@@ -2677,10 +2949,9 @@ def build_ville(v):
          "url": "%s/villes/%s.html" % (SITE["url"], slug)},
         faq_schema(faq),
     ]
-    html = (head("Entreprise de nettoyage à %s (%s) — devis gratuit | MathClean" % (nom, cp),
-                 "Nettoyage à domicile et en entreprise à %s (%s) : automobile, textile, "
-                 "terrasse, vitres, locaux, fin de chantier. Intervention 7j/7, sans acompte."
-                 % (nom, cp),
+    html = (head(titre_page("Nettoyage à %s (%s) — devis gratuit" % (nom, cp)),
+                 "Nettoyage à domicile et en entreprise à %s (%s) : auto, textile, "
+                 "terrasse, vitres, locaux. Intervention 7j/7, sans acompte." % (nom, cp),
                  "villes/%s.html" % slug, base, schema=schema)
             + header(base, "zones") + body + footer(base))
     return write("villes/%s.html" % slug, html)
@@ -2702,7 +2973,7 @@ def build_villes_archive():
             for v in sorted(lst, key=lambda x: x[1])
         )
         blocs += f"""<div class="widget reveal">
-  <h3 class="widget-title"><a href="zones/{z['slug']}.html">{z['name']} ({z['num']})</a></h3>
+  <h2 class="widget-title"><a href="zones/{z['slug']}.html">{z['name']} ({z['num']})</a></h2>
   <ul class="widget-links">{items}</ul>
 </div>"""
     body = f"""
@@ -2719,7 +2990,33 @@ def build_villes_archive():
 
 <section class="section section-soft">
   <div class="container container-narrow">
-    <div class="notice notice-blue">
+    <h2>Comment sont calculés les frais de déplacement</h2>
+    <p>
+      Nous partons de notre atelier de {SITE['city']} ({SITE['postcode'][:2]}) et facturons
+      <strong>{SITE['travel_fee']}</strong>. Le compteur est arrondi par tranche entière&nbsp;: une
+      commune à sept kilomètres et une commune à dix kilomètres relèvent du même palier. Le montant
+      vous est annoncé <em>avant</em> que vous validiez quoi que ce soit, jamais découvert sur la facture.
+    </p>
+    <p>
+      Chaque page de commune indique la distance réelle par la route, le montant correspondant et
+      le délai d'intervention habituel. Ces distances sont calculées depuis l'atelier, puis majorées
+      d'un coefficient routier&nbsp;: elles reflètent le trajet, pas la ligne droite.
+    </p>
+
+    <h2>Et si votre commune n'est pas dans la liste</h2>
+    <p>
+      Cette liste réunit les communes où nous intervenons le plus souvent&nbsp;; elle n'est pas
+      limitative. Nous couvrons les {NB_ZONES} départements franciliens, y compris les communes
+      rurales de Seine-et-Marne et du Val-d'Oise. Au-delà de l'Île-de-France, nous étudions au cas
+      par cas&nbsp;: dites-nous où vous êtes, nous vous répondrons franchement si le déplacement
+      n'a pas de sens.
+    </p>
+    <p>
+      Pour les professionnels multi-sites, nous établissons un forfait unique plutôt qu'un
+      déplacement par adresse&nbsp;: voir le
+      <a href="services/nettoyage-entreprise-paris.html">nettoyage pour entreprise</a>.
+    </p>
+    <div class="notice notice-blue" style="margin-top:30px">
       {icon('info')}
       <p>
         <strong>Votre commune n'y figure pas ?</strong> Nous intervenons dans toute
@@ -2733,7 +3030,7 @@ def build_villes_archive():
 
 {cta_band(base)}
 """
-    html = (head("Villes couvertes — nettoyage à Paris & en Île-de-France | MathClean",
+    html = (head(titre_page("Villes couvertes en Île-de-France"),
                  "Toutes les communes où MathClean intervient : Paris, Hauts-de-Seine, "
                  "Seine-Saint-Denis, Val-de-Marne, Essonne, Yvelines, Seine-et-Marne, Val-d'Oise.",
                  "villes.html", base, schema=[crumb_schema([("Villes", "villes.html")])])
@@ -2744,14 +3041,16 @@ def build_villes_archive():
 # ===========================================================================
 # GUIDES
 # ===========================================================================
-def guide_card(base, g):
+def guide_card(base, g, niveau="h3"):
+    """Carte de guide. `niveau` suit la hiérarchie de la page qui l'accueille."""
     return f"""<article class="post-card reveal">
   <a class="post-thumb" href="{base}guides/{g['slug']}.html" tabindex="-1" aria-hidden="true">
-    <img src="{base}assets/photos/{g['image']}" alt="" loading="lazy" width="640" height="360">
+    <img src="{base}assets/photos/{g['image']}" alt="{g['h1']} — guide MathClean"
+         loading="lazy" width="640" height="360">
   </a>
   <div class="post-body">
     <div class="post-meta"><span class="post-cat">{g['cat']}</span></div>
-    <h3><a href="{base}guides/{g['slug']}.html">{g['h1']}</a></h3>
+    <{niveau}><a href="{base}guides/{g['slug']}.html">{g['h1']}</a></{niveau}>
     <p>{g['lead']}</p>
     <span class="service-more">Lire le guide {icon('arrow')}</span>
   </div>
@@ -2783,6 +3082,7 @@ def build_guide(g):
         <div class="post-meta" style="margin-bottom:14px">
           <span class="post-cat">{g['cat']}</span>
           <span>Par {SITE['manager']} — {SITE['name']}</span>
+          <time datetime="{g.get('date', DATE_GUIDES)}">{DATE_GUIDES_FR}</time>
         </div>
         <h1>{g['h1']}</h1>
         <p class="lead">{g['lead']}</p>
@@ -2835,14 +3135,18 @@ def build_guide(g):
         {"@context": "https://schema.org", "@type": "Article",
          "headline": g["h1"], "description": g["lead"],
          "image": "%s/assets/photos/%s" % (SITE["url"], g["image"]),
+         "datePublished": g.get("date", DATE_GUIDES),
+         "dateModified": g.get("date", DATE_GUIDES),
          "inLanguage": "fr-FR",
-         "author": {"@type": "Organization", "name": SITE["name"]},
-         "publisher": {"@id": SITE["url"] + "/#business"},
+         "author": auteur_schema(),
+         "publisher": editeur_schema(),
+         "isPartOf": {"@type": "WebSite", "@id": SITE["url"] + "/#site"},
          "mainEntityOfPage": "%s/guides/%s.html" % (SITE["url"], g["slug"])},
         faq_schema(g["faq"]),
     ]
-    html = (head(g["title"], g["meta"], "guides/%s.html" % g["slug"], base,
-                 image="assets/photos/%s" % g["image"], schema=schema)
+    html = (head(titre_page(g["title"]), g["meta"], "guides/%s.html" % g["slug"], base,
+                 image="assets/photos/%s" % g["image"], schema=schema,
+                 og_type="article", published=g.get("date", DATE_GUIDES))
             + header(base, "guides") + body + footer(base))
     return write("guides/%s.html" % g["slug"], html)
 
@@ -2850,7 +3154,18 @@ def build_guide(g):
 def build_guides_archive():
     base = ""
     trail = [("Guides", None)]
-    cards = "".join(guide_card(base, g) for g in GUIDES)
+    cats = []
+    for g in GUIDES:
+        if g["cat"] not in cats:
+            cats.append(g["cat"])
+    cards = ""
+    for c in sorted(cats):
+        dedans = [g for g in GUIDES if g["cat"] == c]
+        cards += (
+            '<section class="cat-block" id="cat-%s">\n<h2 class="cat-title">%s</h2>\n'
+            '<div class="grid grid-2">%s</div>\n</section>\n'
+            % (slug_ancre(c), c, "".join(guide_card(base, g) for g in dedans))
+        )
     body = f"""
 {page_title_block(base, trail, "Guides pratiques du nettoyage",
   "Comment choisir un prestataire, ce que coûte réellement une prestation, comment "
@@ -2859,14 +3174,14 @@ def build_guides_archive():
 
 <section class="section">
   <div class="container blog-layout">
-    <div><div class="grid grid-2">{cards}</div></div>
+    <div>{cards}</div>
     {sidebar(base)}
   </div>
 </section>
 
 {cta_band(base)}
 """
-    html = (head("Guides pratiques du nettoyage — Paris & Île-de-France | MathClean",
+    html = (head(titre_page("Guides pratiques du nettoyage"),
                  "Guides MathClean : choisir une entreprise de nettoyage, prix d'un canapé ou "
                  "d'un detailing auto, injection-extraction, eau osmosée, entretien de bureaux.",
                  "guides.html", base, schema=[crumb_schema([("Guides", "guides.html")])])

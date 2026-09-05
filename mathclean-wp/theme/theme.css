@@ -278,7 +278,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   background:var(--brand-soft);margin-bottom:18px;
 }
 .feature-icon svg{width:26px;height:26px;stroke:var(--brand);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.feature h3{font-size:1.13rem;margin-bottom:.4em}
+.feature h2,.feature h3{font-size:1.13rem;margin-bottom:.4em}
 .feature p{font-size:.96rem;margin:0}
 
 /* Listes à puces cochées */
@@ -575,10 +575,11 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 
 /* 12. Pied de page & barres flottantes ------------------------------------- */
 .site-footer{background:var(--bg-dark);color:#98a5b4;font-size:.94rem;padding:64px 0 0}
-.site-footer h4{
+.site-footer .widget-title{
   color:#fff;font-size:.83rem;letter-spacing:.13em;text-transform:uppercase;
-  margin-bottom:18px;font-weight:700;
+  margin:0 0 18px;font-weight:700;padding-bottom:0;border-bottom:0;
 }
+.site-footer .widget-title::after{content:none}
 .site-footer a{color:#b6c2d0}
 .site-footer a:hover{color:var(--gold)}
 .footer-grid{display:grid;gap:38px;grid-template-columns:1.5fr 1fr 1fr 1.2fr;padding-bottom:48px}
@@ -790,7 +791,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   border-radius:var(--radius-lg);padding:26px 24px;box-shadow:var(--shadow-sm);
 }
 @media(max-width:980px){.resa-ticket{position:static}}
-.resa-ticket h3{font-size:1.05rem;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--brand-soft)}
+.resa-ticket h2,.resa-ticket h3{font-size:1.05rem;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--brand-soft)}
 .resa-ticket ul{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:11px}
 .resa-ticket li{display:flex;justify-content:space-between;gap:12px;font-size:.93rem;align-items:baseline}
 .resa-ticket li b{color:var(--ink);white-space:nowrap;font-weight:700}
@@ -883,3 +884,56 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 @media(hover:none){
   .tile-more{max-height:32px;opacity:1;transform:none;margin-top:11px}
 }
+
+/* 20. Corrections d'audit --------------------------------------------------
+   Trois défauts relevés lors de l'audit complet du site :
+   1. l'en-tête débordait à droite entre 1081 et 1345 px — le bouton
+      « Réserver » sortait de l'écran sur un portable de 1280 px ;
+   2. un enfant de grille refusait de se comprimer sur mobile, à cause du
+      white-space:nowrap des boutons, d'où 2 px de défilement horizontal ;
+   3. plusieurs cibles tactiles descendaient sous les 24 px recommandés. */
+
+/* 20.1 En-tête : on resserre avant de basculer sur le menu tiroir. */
+@media(max-width:1345px){
+  .header-inner{gap:12px}
+  .main-nav>ul>li>a{padding:12px 9px;font-size:.9rem}
+}
+@media(max-width:1240px){
+  .header-cta .btn-phone{display:none}
+}
+
+/* 20.2 Les enfants de grille doivent pouvoir passer sous leur largeur
+   minimale de contenu, sinon un bouton non sécable élargit la colonne. */
+.split>*,.grid>*,.blog-layout>*{min-width:0}
+.btn{max-width:100%}
+@media(max-width:420px){
+  .btn{white-space:normal}
+}
+
+/* 20.3 Cibles tactiles : 24 px minimum (recommandation WCAG 2.2 / Lighthouse). */
+@media(max-width:900px){
+  .site-footer a,.breadcrumbs a,.topbar a,.widget-links a,.sub-menu a{
+    display:inline-flex;align-items:center;min-height:24px;
+  }
+  .footer-links a,.footer-contact a{min-height:32px}
+}
+
+/* 20.4 Rubriques par catégorie de l'archive du blog. */
+.cat-block+.cat-block{margin-top:52px}
+.cat-title{
+  font-size:1.45rem;margin:0 0 22px;padding-bottom:12px;
+  border-bottom:2px solid var(--brand-soft);
+}
+
+/* 20.5 Liste descriptive des prestations (page Prestations). */
+.presta-detail{margin:0}
+.presta-detail dt{
+  display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  font-weight:700;color:var(--ink);margin-top:26px;font-size:1.05rem;
+}
+.presta-detail dt:first-child{margin-top:0}
+.presta-prix{
+  font-size:.8rem;font-weight:700;color:var(--brand);white-space:nowrap;
+  background:var(--brand-soft);padding:3px 10px;border-radius:999px;
+}
+.presta-detail dd{margin:6px 0 0;padding-bottom:18px;border-bottom:1px solid var(--line)}

@@ -229,12 +229,19 @@ Réalisations.
 
 ## Remplacer les images
 
-**13 des photos actuelles sont trop petites** et paraissent floues une
-fois agrandies. Les plus visibles sont les quatre comparateurs avant/après
-en 192 × 160 px, affichés à plus de 560 px de large.
+**C'est le seul point de l'audit que le code ne peut pas régler seul.**
+14 des 28 photos font moins de 640 px de large et paraissent floues une fois
+agrandies. En attendant de vraies photos, deux mesures ont été prises pour
+limiter la casse :
 
-Déposez simplement le nouveau fichier dans `site/assets/photos/` **sous le
-même nom** : rien d'autre à modifier.
+- les quatre comparateurs avant/après en **haute** définition passent en
+  premier, et ce sont eux que l'accueil affiche ;
+- les quatre comparateurs en 192 × 160 px sont relégués dans une grille de
+  trois colonnes sur la page Réalisations, où ils sont affichés à 380 px
+  au lieu de 800 : ils y restent nets.
+
+Cela reste un pansement. Déposez le nouveau fichier dans
+`site/assets/photos/` **sous le même nom** : rien d'autre à modifier.
 
 | Fichier | Où il s'affiche | Taille minimale conseillée |
 |---|---|---|
@@ -245,7 +252,18 @@ même nom** : rien d'autre à modifier.
 | `bateau-yacht.webp` | Carte + page « Nettoyage de bateau » | 1200 × 800 |
 | `bureau-entreprise.webp` | Carte + page « Nettoyage pour entreprise » | 1200 × 800 |
 | `tapis-karcher.webp` | Article « Raviver un tapis » | 1200 × 800 |
-| `intervention-1/2/3.webp` | Fin de chantier, articles de blog | 1200 × 900 |
+| `intervention-1/2/3.webp` | En-tête des pages Prestations | 1520 × 1140 |
+
+Ordre de priorité, du plus visible au moins visible :
+
+1. `intervention-1/2/3.webp` (620 × 826) — en-tête des huit pages de
+   prestation, c'est-à-dire l'élément le plus grand de vos pages les plus
+   consultées, affiché en 760 × 570.
+2. `bateau-yacht.webp` (420 × 194) et `bureau-entreprise.webp` (506 × 216) —
+   vignettes de l'accueil et de la page Prestations, très recadrées parce que
+   leur format est trop allongé pour un cadre 4/3.
+3. Les huit miniatures avant/après en 192 × 160.
+4. `tapis-karcher.webp` (506 × 250).
 
 **Vos propres photos d'intervention valent mieux que n'importe quelle photo
 de banque** : elles montrent votre travail, et les paires avant/après n'ont
@@ -308,3 +326,56 @@ puis relancez `python3 build.py`.
    2.5697) — environ 8 km d'écart. Les liens Maps pointent sur votre fiche ;
    le calcul de déplacement part de l'atelier. Dites-moi si l'un des deux
    doit être corrigé.
+
+## Audit technique du site
+
+Le site est vérifié par deux scripts, à relancer après toute modification
+importante. Ils lisent le dossier `site/` généré, pas les gabarits.
+
+### Ce qui est contrôlé, et le résultat actuel
+
+| Contrôle | État |
+|---|---|
+| Liens internes cassés | 0 sur ~8 000 liens |
+| Ancres internes (`#…`) qui ne pointent nulle part | 0 |
+| Balises `title` hors des 25–60 caractères affichés par Google | 0 sur 86 |
+| Méta-descriptions hors des 70–160 caractères | 0 sur 86 |
+| Titres, descriptions ou `h1` dupliqués | 0 |
+| Pages sans `canonical`, ou avec un `canonical` erroné | 0 |
+| Pages orphelines (aucun lien entrant) | 0 |
+| Écarts entre le sitemap et les fichiers réellement produits | 0 |
+| JSON-LD invalide ou incomplet | 0 sur 213 blocs |
+| Hiérarchie de titres avec un niveau sauté (`h2` → `h4`) | 0 |
+| Pages sous 300 mots | 0 |
+| Quasi-doublons de contenu entre deux pages | 0 |
+| Balises Open Graph / Twitter manquantes | 0 |
+| Redirections `_redirects` en boucle ou sans cible | 0 |
+| Images sans `alt`, sans dimensions, ou LCP en chargement différé | 0 |
+| Erreurs JavaScript, requêtes échouées, débordement horizontal | 0 sur 86 pages |
+| **Photos de définition insuffisante** | **14** — voir « Remplacer les images » |
+
+### Relancer les vérifications
+
+Le premier script analyse le HTML produit ; le second ouvre chaque page dans
+un vrai navigateur (Chromium via Playwright) et surveille la console, les
+requêtes, la largeur de mise en page et les blocs restés invisibles.
+
+Ils ne sont pas versionnés avec le site : demandez-les si vous en avez
+besoin, ou contentez-vous du contrôle intégré — `python3 build.py` refuse de
+produire une page dont un gabarit est cassé, et `clean_stale()` supprime les
+pages qui ne sont plus générées.
+
+### Points corrigés lors de l'audit complet
+
+- Le bouton **« Réserver »** de l'en-tête sortait de l'écran sur tout écran
+  de 1 081 à 1 345 px de large — donc sur la plupart des ordinateurs
+  portables, sur **chaque page** du site.
+- L'énumération des prestations était écrite en dur à trois endroits et avait
+  oublié l'ozone ; elle se déduit désormais de `SERVICES`.
+- Cinq liens de catégories du blog pointaient vers des ancres inexistantes.
+- Les 17 guides n'avaient pas de date de publication dans leurs données
+  structurées, ce que Google exige pour un `Article`.
+- Les balises `title` dépassaient 60 caractères sur 25 pages, dont deux qui
+  répétaient « MathClean » deux fois.
+- La première image de 51 pages était en chargement différé alors qu'elle est
+  l'élément déterminant du score de vitesse.
