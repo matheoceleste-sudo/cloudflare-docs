@@ -458,6 +458,33 @@ encore, soit une redirection 301 la remplace. `_redirects` liste chaque
 ancienne adresse **avec et sans l'extension `.html`**, parce qu'un lien
 partagé ou recopié perd souvent son extension.
 
+## Les dates dans les données structurées
+
+Google exige un **fuseau horaire** sur les propriétés de date et heure des
+données structurées. Une date nue comme `2026-09-05` est refusée : il faut
+`2026-09-05T12:00:00+02:00`.
+
+C'est ce que la Search Console a signalé sur `uploadDate` — la date de mise en
+ligne des vidéos — le 7 septembre 2026. Deux avertissements pour un seul
+défaut : « fuseau horaire manquant » et « valeur de date et heure incorrecte ».
+
+La fonction `horodatage()` de `build.py` convertit toute date du fichier
+`content.py` au format attendu, avec le décalage de Paris correspondant à la
+saison (+02:00 en été, +01:00 en hiver). Elle s'applique à `uploadDate`,
+`datePublished`, `dateModified`, aux balises Open Graph `article:*` et à la
+date de publication des vidéos dans le sitemap — **114 propriétés au total**.
+
+L'heure retenue est **midi**, à dessein : quel que soit le fuseau du lecteur,
+la date affichée reste la même.
+
+> Le calcul repose sur `zoneinfo`, mais un repli applique la règle européenne
+> à la main (dernier dimanche de mars au dernier dimanche d'octobre) si les
+> données de fuseau manquent sur la machine qui reconstruit le site. Les deux
+> méthodes ont été vérifiées identiques sur les dates de bascule, de 2025 à 2027.
+
+Les dates **visibles** sur les pages restent en `<time datetime="…">` au format
+court : c'est valide en HTML et plus lisible.
+
 ## Audit technique du site
 
 Le site est vérifié par deux scripts, à relancer après toute modification

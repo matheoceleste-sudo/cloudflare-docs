@@ -162,8 +162,12 @@ def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=N
     og_art = ""
     if og_type == "article":
         if published:
-            og_art += '<meta property="article:published_time" content="%s">\n' % published
-        og_art += '<meta property="article:modified_time" content="%s">\n' % (modified or published or "")
+            og_art += ('<meta property="article:published_time" content="%s">\n'
+                       % horodatage(published))
+        _maj = modified or published
+        if _maj:
+            og_art += ('<meta property="article:modified_time" content="%s">\n'
+                       % horodatage(_maj))
         og_art += '<meta property="article:author" content="%s">\n' % esc(SITE["manager"])
     pre = ""
     if preload:
@@ -500,6 +504,48 @@ def faq_schema(items):
     }
 
 
+# --- Horodatage ISO 8601 ---------------------------------------------------
+# Google exige un fuseau horaire sur les propriétés de date et heure des
+# données structurées — uploadDate en particulier, signalé par Search Console.
+# Une date nue « 2026-09-05 » est refusée : il faut « 2026-09-05T12:00:00+02:00 ».
+
+def _decalage_paris(annee, mois, jour):
+    """Décalage horaire de Paris, sans dépendre des données de fuseau système.
+
+    Règle européenne : heure d'été du dernier dimanche de mars au dernier
+    dimanche d'octobre. Repli utilisé seulement si zoneinfo est indisponible.
+    """
+    import calendar
+
+    def dernier_dimanche(m):
+        jours = calendar.monthcalendar(annee, m)
+        return max(sem[calendar.SUNDAY] for sem in jours if sem[calendar.SUNDAY])
+
+    debut, fin = dernier_dimanche(3), dernier_dimanche(10)
+    if (mois, jour) < (3, debut) or (mois, jour) >= (10, fin):
+        return "+01:00"
+    return "+02:00"
+
+
+def horodatage(date_iso, heure="12:00:00"):
+    """« 2026-09-05 » devient « 2026-09-05T12:00:00+02:00 ».
+
+    Midi est choisi à dessein : quel que soit le fuseau du lecteur, la date
+    reste la même. Une valeur déjà horodatée est renvoyée telle quelle.
+    """
+    date_iso = str(date_iso).strip()
+    if "T" in date_iso:
+        return date_iso
+    try:
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        dt = datetime.fromisoformat("%sT%s" % (date_iso, heure))
+        return dt.replace(tzinfo=ZoneInfo("Europe/Paris")).isoformat()
+    except Exception:
+        a, m, j = (int(x) for x in date_iso.split("-"))
+        return "%sT%s%s" % (date_iso, heure, _decalage_paris(a, m, j))
+
+
 def editeur_schema():
     """Éditeur des articles : objet complet plutôt qu'un simple @id, pour que
     les validateurs n'aient pas à résoudre une référence hébergée ailleurs."""
@@ -575,7 +621,7 @@ def video_schema(cle, page):
         "name": v["nom"], "description": v["desc"],
         "thumbnailUrl": "%s/assets/videos/%s.webp" % (SITE["url"], v["fichier"]),
         "contentUrl": "%s/assets/videos/%s.mp4" % (SITE["url"], v["fichier"]),
-        "uploadDate": DATE_GUIDES, "duration": v["duree"],
+        "uploadDate": horodatage(DATE_GUIDES), "duration": v["duree"],
         "inLanguage": "fr-FR",
         "publisher": {"@id": SITE["url"] + "/#business"},
         "isFamilyFriendly": True,
@@ -1858,7 +1904,8 @@ def build_post(p, prev_post, next_post):
         {"@context": "https://schema.org", "@type": "BlogPosting",
          "headline": p["title"], "description": p["excerpt"],
          "image": "%s/assets/photos/%s" % (SITE["url"], p["image"]),
-         "datePublished": p["date"], "dateModified": p["date"],
+         "datePublished": horodatage(p["date"]),
+         "dateModified": horodatage(p["date"]),
          "inLanguage": "fr-FR",
          "author": auteur_schema(),
          "publisher": editeur_schema(),
@@ -3886,8 +3933,8 @@ def build_guide(g):
         {"@context": "https://schema.org", "@type": "Article",
          "headline": g["h1"], "description": g["lead"],
          "image": "%s/assets/photos/%s" % (SITE["url"], g["image"]),
-         "datePublished": g.get("date", DATE_GUIDES),
-         "dateModified": g.get("date", DATE_GUIDES),
+         "datePublished": horodatage(g.get("date", DATE_GUIDES)),
+         "dateModified": horodatage(g.get("date", DATE_GUIDES)),
          "inLanguage": "fr-FR",
          "author": auteur_schema(),
          "publisher": editeur_schema(),
@@ -3984,7 +4031,7 @@ def build_sitemap(urls):
                 "\n    </video:video>\n  "
                 % (SITE["url"], v["fichier"], _echappe_xml(v["nom"]),
                    _echappe_xml(v["desc"]), SITE["url"], v["fichier"],
-                   v["secondes"], DATE_GUIDES)
+                   v["secondes"], horodatage(DATE_GUIDES))
             )
         entries += (
             "  <url><loc>%s</loc><lastmod>%s</lastmod>"
