@@ -485,6 +485,48 @@ la date affichée reste la même.
 Les dates **visibles** sur les pages restent en `<time datetime="…">` au format
 court : c'est valide en HTML et plus lisible.
 
+## Les produits : le pH plutôt que la marque
+
+Le site explique désormais **sur quel critère un produit est choisi**, parce
+que c'est ce qui distingue une intervention professionnelle d'un passage de
+chiffon — et parce que c'est un sujet sur lequel personne d'autre n'écrit
+sérieusement en local.
+
+Une page de fond, `guides/ph-produits-nettoyage-professionnel.html`, développe
+en dix sections :
+
+| Sujet | Ce qui est expliqué |
+| --- | --- |
+| L'échelle de pH | 0 à 14, ce que chaque plage dissout et ce qu'elle abîme |
+| Le cuir | Tanné en milieu acide : d'où l'obligation du pH neutre, gammes de detailing citées |
+| Le mousseur | Peu d'eau, beaucoup de volume — pourquoi une peau saturée craquelle au séchage |
+| L'alcalin | Saponification des corps gras, application localisée, neutralisation obligatoire |
+| L'acide | Calcaire et dépôts minéraux, et les supports sur lesquels il est proscrit |
+| L'inox (1) | Les chlorures percent la couche passive : la Javel fait rouiller l'inox |
+| L'inox (2) | Sens du brossage, et contamination ferreuse par la laine d'acier |
+| Les hottes | Vapeur avant produit, et le piège des filtres aluminium face aux décapants four |
+| Laine et soie | Fibres protéiniques dégradées au-delà de pH 8 |
+| Biodégradable | Ce que le mot recouvre, et ce qu'il ne garantit pas |
+
+Un bloc **« Nos produits »** apparaît en plus sur quatre pages de prestation —
+automobile, textile, entreprise, bateau — sous la forme de six cartes chacune.
+Il se pilote par la clé `chimie` de `content.py` : une prestation qui ne la
+déclare pas n'affiche pas la section.
+
+### Trois points de vocabulaire à connaître
+
+- **« Bio » n'est pas écrit sur le site, volontairement.** Le terme est réservé
+  aux produits certifiés par un organisme agréé. Sans label vérifiable
+  (Écolabel européen, Ecocert), le mot juste est « biodégradable », et c'est
+  celui qui est employé partout. Si vous obtenez une certification, dites-le
+  et les pages seront modifiées en conséquence.
+- **Koch Chemie est cité comme fabricant utilisé**, pas comme partenariat.
+  La page précise d'ailleurs que ce n'est pas une question de marque mais de
+  gammes qui affichent leur pH — ce qu'aucun produit de grande surface ne fait.
+- **Le périmètre des hottes est rappelé** dans le bloc entreprise comme dans la
+  page de fond : surfaces, caissons et filtres accessibles oui, dégraissage
+  certifié du conduit d'extraction non.
+
 ## Audit technique du site
 
 Le site est vérifié par deux scripts, à relancer après toute modification

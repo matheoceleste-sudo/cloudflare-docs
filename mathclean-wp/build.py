@@ -1088,6 +1088,32 @@ VIDEO_PAR_SERVICE = {
 }
 
 
+def bloc_chimie(base, c):
+    """Section « produits » : le pH commande le choix, pas la marque.
+
+    Rendue seulement si la prestation déclare une clé « chimie ».
+    """
+    cartes = "".join(
+        '<div class="feature reveal"><h3>%s</h3><p>%s</p></div>' % (t, d)
+        for t, d in c["points"]
+    )
+    return f"""
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Nos produits</span>
+      <h2>{c['titre']}</h2>
+      <p class="lead">{c['lead']}</p>
+    </div>
+    <div class="grid grid-3" style="margin-top:2.2rem">{cartes}</div>
+    <div class="btn-row center" style="margin-top:2.2rem">
+      <a class="btn btn-outline" href="{base}guides/ph-produits-nettoyage-professionnel.html">Comprendre le rôle du pH</a>
+    </div>
+  </div>
+</section>
+"""
+
+
 def build_service(s):
     base = "../"
     trail = [("Prestations", "services.html"), (s["nav"], None)]
@@ -1097,6 +1123,7 @@ def build_service(s):
         bloc_video = ('<section class="section section-soft"><div class="container">'
                       + video_block(base, v[0], v[1], v[2])
                       + "</div></section>")
+    chimie = bloc_chimie(base, s["chimie"]) if s.get("chimie") else ""
     intro = "".join("<p>%s</p>" % p for p in s["intro"])
     included = "".join("<li>%s</li>" % li for li in s["included"])
     steps = "".join(
@@ -1179,6 +1206,7 @@ def build_service(s):
     <div class="steps">{steps}</div>
   </div>
 </section>
+{chimie}
 
 <section class="section section-soft">
   <div class="container container-narrow">
