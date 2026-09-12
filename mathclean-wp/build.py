@@ -29,7 +29,7 @@ from content import (
     DATE_GUIDES, DATE_GUIDES_FR,  # noqa: E402
     SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER, BEFORE_AFTER_HD, ZONES_DETAIL,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
-    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES,
+    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES, OZONE,
 )
 
 OUT = os.path.join(HERE, "site")
@@ -1114,6 +1114,31 @@ def bloc_chimie(base, c):
 """
 
 
+def bloc_detail(base, d):
+    """Fiche longue d'une prestation : à quoi elle sert, comment elle se mène.
+
+    Rendue seulement si la prestation déclare une clé « détail ». Le corps est une
+    suite de sous-titres et de paragraphes : de la lecture, pas des cartes.
+    """
+    corps = "".join(
+        '<div class="reveal"><h3>%s</h3>%s</div>'
+        % (titre, "".join("<p>%s</p>" % para for para in paras))
+        for titre, paras in d["sections"]
+    )
+    return f"""
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">{d['eyebrow']}</span>
+      <h2>{d['titre']}</h2>
+      <p class="lead">{d['lead']}</p>
+    </div>
+    <div class="entry-content" style="margin-top:2.4rem">{corps}</div>
+  </div>
+</section>
+"""
+
+
 def build_service(s):
     base = "../"
     trail = [("Prestations", "services.html"), (s["nav"], None)]
@@ -1124,6 +1149,7 @@ def build_service(s):
                       + video_block(base, v[0], v[1], v[2])
                       + "</div></section>")
     chimie = bloc_chimie(base, s["chimie"]) if s.get("chimie") else ""
+    detail = bloc_detail(base, s["detail"]) if s.get("detail") else ""
     intro = "".join("<p>%s</p>" % p for p in s["intro"])
     included = "".join("<li>%s</li>" % li for li in s["included"])
     steps = "".join(
@@ -1206,6 +1232,7 @@ def build_service(s):
     <div class="steps">{steps}</div>
   </div>
 </section>
+{detail}
 {chimie}
 
 <section class="section section-soft">
@@ -1268,14 +1295,14 @@ def build_tarifs():
     trail = [("Tarifs", None)]
 
     packs = ""
-    for name, lo, hi, scope, desc, featured, lines in PACKS_AUTO:
+    for name, prix, scope, desc, featured, lines in PACKS_AUTO:
         flag = '<span class="pack-flag">Le plus demandé</span>' if featured else ""
         items = "".join("<li>%s</li>" % li for li in lines)
         packs += f"""<div class="pack reveal{' is-featured' if featured else ''}">
   {flag}
   <div class="pack-scope">{scope}</div>
   <h3>{name}</h3>
-  <div class="pack-price">{lo} € <span>à {hi} €</span></div>
+  <div class="pack-price">{prix} € <span>prix fixe</span></div>
   <p class="pack-desc">{desc}</p>
   <ul class="checklist">{items}</ul>
   <a class="btn btn-outline" href="devis.html?prestation=Nettoyage automobile">Demander ce pack</a>
@@ -1296,10 +1323,14 @@ def build_tarifs():
     )
 
     faq_tarifs = [
-        ("Pourquoi les packs automobiles affichent-ils une fourchette ?",
-         "Parce qu'une citadine et un monospace 7 places ne demandent ni le même temps ni la même quantité "
-         "de produit. Le bas de la fourchette correspond à une citadine, le haut à un grand véhicule. "
-         "Le montant exact vous est confirmé avant l'intervention."),
+        ("Le prix d'un pack automobile change-t-il selon la voiture ?",
+         "Non. Les quatre packs sont à prix fixe, citadine comme monospace 7 places : le montant affiché est "
+         "celui que vous réglez. Seules les options que vous ajoutez et les frais de déplacement s'y "
+         "ajoutent, et ils vous sont annoncés avant que vous validiez."),
+        ("Comment se calcule un traitement par ozone ?",
+         "À 4 € le mètre carré de surface au sol pour un logement ou un local : 30 m² reviennent à 120 €. "
+         "Sur un habitacle automobile, le volume est petit et connu : le traitement reste à 30 € en option "
+         "d'un nettoyage intérieur."),
         ("Comment sont calculés les frais de déplacement ?",
          "5 € par tranche de 5 km entre notre atelier de Tremblay-en-France (93) et votre adresse. "
          "Le montant vous est annoncé avant que vous validiez : rien ne s'ajoute le jour de l'intervention."),
@@ -1326,8 +1357,8 @@ def build_tarifs():
       <span class="eyebrow">Automobile</span>
       <h2>Les quatre packs detailing</h2>
       <p class="lead">
-        À domicile, sur votre place de parking ou sur votre lieu de travail. Le coffre est toujours
-        compris, sans supplément.
+        Prix fixe, citadine comme grand véhicule. À domicile, sur votre place de parking ou sur votre
+        lieu de travail. Le coffre est toujours compris, sans supplément.
       </p>
     </div>
     <div class="grid grid-4">{packs}</div>
@@ -1369,6 +1400,35 @@ def build_tarifs():
 <section class="section">
   <div class="container">
     <div class="section-head center">
+      <span class="eyebrow">Ozone</span>
+      <h2>Traitement ozone : 4 € le mètre carré</h2>
+      <p class="lead">
+        Un logement ou un local se facture sur la surface au sol, un habitacle automobile au forfait.
+        Le calcul est direct : vous pouvez le refaire avant de nous appeler.
+      </p>
+    </div>
+    <div class="table-wrap">
+      <table class="price-table">
+        <caption>Traitement par ozone — odeurs de tabac, d'animaux, d'humidité ou de cuisine</caption>
+        <thead><tr><th scope="col">Prestation</th><th scope="col" style="text-align:right">Tarif</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><a href="services/traitement-ozone-paris.html">Logement, local ou commerce</a><small>Surface au sol, aération comprise</small></th><td class="amount">4 € / m²</td></tr>
+          <tr><th scope="row">Exemple : une pièce de 30 m²<small>30 × 4 €</small></th><td class="amount">120 €</td></tr>
+          <tr><th scope="row">Habitacle automobile<small>En option d'un nettoyage intérieur, traitement d'1 h</small></th><td class="amount">30 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="field-hint" style="margin-top:14px">
+      Le traitement immobilise les lieux pendant sa durée et son aération : comptez environ deux heures
+      pour un habitacle, une demi-journée au-delà de 50 m². Ni personne, ni animaux, ni plantes
+      pendant l'opération.
+    </p>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
       <span class="eyebrow">Sur devis</span>
       <h2>Les prestations chiffrées au cas par cas</h2>
       <p class="lead">
@@ -1385,7 +1445,7 @@ def build_tarifs():
   </div>
 </section>
 
-<section class="section section-soft">
+<section class="section">
   <div class="container container-narrow">
     <div class="notice">
       {icon('pin')}
@@ -1418,9 +1478,9 @@ def build_tarifs():
           "Décrivez-nous votre besoin en deux minutes. Réponse sous 24 h, sans engagement.")}
 """
     schema = [crumb_schema([("Tarifs", "tarifs.html")]), faq_schema(faq_tarifs)]
-    html = (head(titre_page("Tarifs de nettoyage à Paris — auto dès 40 €"),
-                 "Tarifs MathClean : packs auto de 40 à 240 €, textile dès 15 €, professionnel "
-                 "sur devis. Sans acompte, frais de déplacement annoncés d'avance.",
+    html = (head(titre_page("Tarifs de nettoyage à Paris — auto dès 50 €"),
+                 "Tarifs MathClean : packs auto à prix fixe de 50 à 130 €, textile dès 15 €, "
+                 "ozone 4 €/m², professionnel sur devis. Sans acompte, frais annoncés d'avance.",
                  "tarifs.html", base, schema=schema)
             + header(base, "tarifs") + body + footer(base))
     return write("tarifs.html", html)
@@ -2228,7 +2288,7 @@ def build_devis():
       <div class="widget">
         <h3 class="widget-title">Nos tarifs de référence</h3>
         <ul class="widget-links">
-          <li><a href="tarifs.html">Detailing automobile<span>dès 40 €</span></a></li>
+          <li><a href="tarifs.html">Detailing automobile<span>dès 50 €</span></a></li>
           <li><a href="tarifs.html">Canapé, matelas, tapis<span>dès 15 €</span></a></li>
           <li><a href="tarifs.html">Voir toute la grille<span>{icon('arrow')}</span></a></li>
         </ul>
@@ -2688,8 +2748,8 @@ def build_legal():
 </p>
 <p>
   Les prix affichés sur ce site sont indiqués en euros et nets de TVA, {SITE['name']} relevant
-  de la franchise en base prévue à l'article 293 B du Code général des impôts. Les fourchettes
-  de prix sont indicatives&nbsp;: seul le devis accepté fait foi.
+  de la franchise en base prévue à l'article 293 B du Code général des impôts. Les prix des
+  prestations chiffrées sur devis sont indicatifs&nbsp;: seul le devis accepté fait foi.
 </p>
 
 <h2>Droit de rétractation</h2>
@@ -3115,15 +3175,19 @@ def build_reservation():
 
     # Données de tarification transmises au script du configurateur.
     data = {
-        "packs": [{"nom": n, "min": lo, "max": hi, "portee": sc, "desc": d, "lignes": li}
-                  for n, lo, hi, sc, d, _f, li in PACKS_AUTO],
+        "packs": [{"nom": n, "prix": p, "portee": sc, "desc": d, "lignes": li}
+                  for n, p, sc, d, _f, li in PACKS_AUTO],
         "options": [{"nom": n, "prix": p, "desc": d} for n, p, d in OPTIONS_AUTO],
         "textile": [{"nom": n, "prix": p, "desc": d} for n, p, d in TARIFS_TEXTILE],
         "services": [{"slug": s["slug"], "nav": s["nav"], "prix": s["price"],
                       "univers": ("auto" if s["slug"].startswith("nettoyage-automobile")
                                   else "textile" if s["slug"].startswith("nettoyage-textile")
+                                  else "ozone" if s["slug"].startswith("traitement-ozone")
                                   else "devis")}
                      for s in SERVICES],
+        "ozone": OZONE,
+        # Forfait habitacle : repris de l'option automobile, pour qu'un seul chiffre fasse foi.
+        "ozone_auto": next(p for n_, p, _d in OPTIONS_AUTO if "ozone" in n_.lower()),
         "deplacement": DEPLACEMENT,
         "creneaux": CRENEAUX,
     }
@@ -3291,8 +3355,8 @@ def build_reservation():
         <strong id="resa-total">—</strong>
       </div>
       <p class="field-hint" id="resa-note">
-        Prix indicatif : la fourchette dépend du véhicule ou de la pièce. Le montant exact vous
-        est confirmé avant l'intervention. Aucun acompte.
+        Les packs auto, les tarifs textile et le traitement ozone sont à prix fixe. Seuls les frais
+        de déplacement dépendent de votre adresse, et ils sont calculés ici même. Aucun acompte.
       </p>
     </aside>
   </div>
@@ -3309,10 +3373,11 @@ def build_reservation():
       d'oiseau.
     </p>
     <p>
-      Les prix des prestations sont donnés en fourchette lorsque la taille de la pièce ou du
-      véhicule fait varier le travail. Une citadine et un grand break ne demandent pas le même
-      temps&nbsp;; un canapé deux places et un canapé d'angle non plus. Le montant exact vous
-      est confirmé avant l'intervention, après que nous ayons vu vos photos.
+      Les prix des prestations sont <strong>fixes</strong>. Un pack automobile coûte le même
+      montant sur une citadine et sur un grand break&nbsp;; un tarif textile dépend de la pièce
+      traitée, pas de sa taille exacte&nbsp;; un traitement par ozone se calcule sur la surface
+      au sol, à <strong>4&nbsp;€ le mètre carré</strong> — 30&nbsp;m² reviennent à 120&nbsp;€.
+      Vous pouvez refaire chaque calcul vous-même.
     </p>
 
     <h2>Ce qu'une estimation en ligne ne peut pas savoir</h2>
@@ -4143,7 +4208,10 @@ def build_llms_txt():
 {presta}
 
 ## Tarifs de référence
-- Detailing automobile : 4 formules, de 40 € à 240 € selon le véhicule.
+- Detailing automobile : 4 formules à prix fixe — Extérieur Éclat 50 €, Intérieur Essentiel 55 €,
+  Intérieur Prestige 100 €, Intégral 130 €. Options : poils d'animaux 10 €, cuir et alcantara 20 €,
+  ozone 30 €.
+- Traitement par ozone d'un logement ou d'un local : 4 € le m² de surface au sol.
 - Textile : chaise 15 €, fauteuil 25 €, canapé 2 places 39 €, 3 places 49 €, angle 69 €,
   matelas 1 place 39 €, 2 places 49 €, tapis 39 € à 59 €.
 - Bateau, terrasse, vitres, entreprise, fin de chantier : sur devis après échange ou visite.

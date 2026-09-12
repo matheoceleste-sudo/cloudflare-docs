@@ -43,9 +43,9 @@ SERVICES = [
         "nav": "Nettoyage automobile",
         "name": "Nettoyage automobile à Paris",
         "h1": "Nettoyage automobile à domicile à Paris & en Île-de-France",
-        "title": "Nettoyage automobile à Paris — dès 40 €",
-        "meta": "Detailing automobile intérieur et extérieur à domicile à Paris et en Île-de-France. Aspiration, shampoing des sièges, vapeur, cuir. Dès 40 €, 7j/7.",
-        "price": "dès 40 €",
+        "title": "Nettoyage automobile à Paris — dès 50 €",
+        "meta": "Detailing automobile intérieur et extérieur à domicile à Paris et en Île-de-France. Aspiration, shampoing des sièges, vapeur, cuir. Dès 50 €, 7j/7.",
+        "price": "dès 50 €",
         "excerpt": "Detailing intérieur et extérieur à domicile. Aspiration, shampoing des sièges, vapeur haute température, plastiques et vitres — votre voiture retrouve son aspect showroom.",
         "image": "auto-interieur-vw.webp",
         "hero": "auto-interieur-vw.webp",
@@ -98,7 +98,7 @@ SERVICES = [
             ("Faites-vous le nettoyage avant une revente ?",
              "C'est une de nos demandes les plus fréquentes. Le pack Intérieur Prestige, associé à l'option de neutralisation des odeurs par ozone, permet de présenter un véhicule sans odeur d'animal ni de tabac — un point qui pèse lourd à la revente."),
             ("Le prix dépend-il de la taille du véhicule ?",
-             "Oui. Chaque pack affiche une fourchette : le bas correspond à une citadine, le haut à un SUV ou un monospace. Le tarif exact vous est confirmé avant l'intervention."),
+             "Non. Chaque pack est à prix fixe, citadine comme SUV : le montant affiché est celui que vous réglez. Seules les options que vous ajoutez et les frais de déplacement s'ajoutent, et ils vous sont annoncés avant validation."),
         ],
     },
     {
@@ -372,12 +372,12 @@ SERVICES = [
     },
     {
         "slug": "traitement-ozone-paris",
-        "short": "Ozone",
-        "nav": "Traitement par ozone",
+        "short": "Traitement ozone",
+        "nav": "Traitement ozone",
         "name": "Traitement par ozone à Paris",
         "h1": "Traitement par ozone : neutraliser les odeurs à la source",
         "title": "Traitement ozone à Paris — odeurs traitées",
-        "meta": "Traitement par ozone à Paris et en IDF : tabac, animaux, humidité, cuisine. Odeurs détruites à la source, pas masquées. Dès 30 €.",
+        "meta": "Traitement par ozone à Paris et en IDF : tabac, animaux, humidité, cuisine. Odeurs détruites à la source, pas masquées. 4 € le m², dès 30 € sur véhicule.",
         "price": "dès 30 €",
         "excerpt": "Tabac, animaux, humidité, cuisine, fumée : l'ozone détruit les molécules odorantes au lieu de les masquer. Véhicule, appartement, local ou chambre.",
         "image": "intervention-3.webp",
@@ -414,6 +414,141 @@ SERVICES = [
              "Nous aérons, et nous attendons que l'ozone se soit recombiné en oxygène avant de vous "
              "rendre les lieux. Vous ne récupérez jamais un espace encore chargé."),
         ],
+        "detail": {
+            "eyebrow": "La fiche complète",
+            "titre": "Le traitement par ozone, en détail",
+            "lead": "À quoi il sert, ce qu'il détruit réellement, comment il se dose et pourquoi "
+                    "il se manipule avec des règles strictes. Tout ce qu'un prestataire devrait "
+                    "vous expliquer avant de brancher un générateur chez vous.",
+            "sections": [
+                ("Ce qu'est l'ozone, et pourquoi il détruit une odeur", [
+                    "L'ozone est de l'oxygène à trois atomes : <strong>O₃</strong> au lieu du O₂ que nous "
+                    "respirons. Ce troisième atome tient mal. Il se détache à la première occasion et "
+                    "va se fixer sur la première molécule oxydable qu'il rencontre. C'est toute la "
+                    "mécanique du procédé : l'ozone ne recouvre pas une odeur, il casse la molécule "
+                    "qui la porte.",
+                    "Or une odeur est toujours une molécule. Le tabac froid, ce sont des phénols et "
+                    "des dérivés de la nicotine ; l'odeur d'animal, des molécules soufrées et des "
+                    "amines ; le renfermé et la moisissure, des composés volatils émis par les "
+                    "micro-organismes. Toutes sont oxydables. Une fois oxydées, elles ne sentent "
+                    "plus rien, et rien ne les fait revenir : la molécule n'existe plus.",
+                    "C'est la différence de fond avec un désodorisant, qui ajoute une odeur "
+                    "par-dessus une autre. Quand le parfum s'estompe, l'odeur d'origine est "
+                    "toujours là, intacte.",
+                ]),
+                ("À quoi il sert concrètement", [
+                    "L'intérêt de l'ozone n'est pas sa puissance, c'est <strong>sa capacité à aller "
+                    "partout où l'air va</strong>. Un gaz ne s'arrête pas à la surface : il pénètre la "
+                    "mousse d'un siège, le rembourrage d'un ciel de toit, la doublure d'un rideau, "
+                    "l'arrière d'une plinthe, une gaine de ventilation, le vide sous un meuble "
+                    "scellé. Ce sont exactement les endroits qu'aucun nettoyage de surface "
+                    "n'atteint, et où une odeur s'installe durablement.",
+                    "Les demandes que nous traitons le plus souvent : un véhicule préparé pour la "
+                    "revente après des années de tabac, un logement remis en location après un "
+                    "locataire fumeur ou un animal, un appartement après dégât des eaux quand "
+                    "l'odeur d'humidité persiste une fois le support sec, un local de restauration "
+                    "où la friture a imprégné les textiles, une chambre d'hôtel ou un logement "
+                    "meublé à rendre neutre entre deux séjours.",
+                    "Dans tous ces cas, l'objectif est le même : obtenir un espace <strong>sans "
+                    "odeur</strong>, pas un espace parfumé. Une odeur neutre se remarque moins "
+                    "qu'un parfum, et elle vaut nettement plus cher à la revente comme à la "
+                    "location.",
+                ]),
+                ("Ce que l'ozone ne fait pas", [
+                    "Il ne nettoie pas. Un habitacle encrassé traité à l'ozone reste un habitacle "
+                    "encrassé, simplement sans odeur — pendant quelques jours. Si la source est "
+                    "encore présente, elle recommence à émettre dès le lendemain. Une moquette "
+                    "imprégnée d'urine, un textile saturé de nicotine, une zone d'humidité encore "
+                    "active : tout cela doit être traité <em>avant</em>. C'est pourquoi nous "
+                    "proposons presque toujours l'ozone en complément d'un nettoyage, jamais "
+                    "à sa place.",
+                    "Il ne remplace pas non plus une désinfection, et nous n'en faisons pas "
+                    "l'argument. Les allégations biocides et virucides sont encadrées par le "
+                    "règlement européen 528/2012 : annoncer un pourcentage d'élimination de virus "
+                    "sur une prestation d'ozone est juridiquement exposé et, dans les conditions "
+                    "réelles d'un appartement, invérifiable. Ce que l'ozone fait très bien, c'est "
+                    "détruire les molécules odorantes. Cela suffit largement à justifier la "
+                    "prestation.",
+                ]),
+                ("Comment nous l'utilisons : le protocole", [
+                    "<strong>1. Diagnostic.</strong> Nous cherchons d'où vient l'odeur avant de "
+                    "parler de traitement. Si la source est encore en place, l'ozone ne réglera "
+                    "rien et nous le disons. Un prestataire qui vend un traitement au téléphone "
+                    "sans avoir rien vu vend une heure de machine, pas un résultat.",
+                    "<strong>2. Nettoyage préalable.</strong> Retrait de la matière : aspiration, "
+                    "injection-extraction sur les textiles, dégraissage des surfaces. L'ozone "
+                    "intervient sur ce qui a <em>imprégné</em>, pas sur ce qui est encore là.",
+                    "<strong>3. Mise en sécurité.</strong> Le volume est vidé de toute présence "
+                    "vivante — personne, ni animaux, ni plantes. Les accès sont signalés et "
+                    "fermés. Sur un véhicule, la ventilation est mise en recyclage moteur tournant "
+                    "quelques minutes pour que le gaz circule aussi dans les gaines et l'évaporateur "
+                    "de climatisation, souvent le vrai foyer de l'odeur.",
+                    "<strong>4. Traitement.</strong> Le générateur est dimensionné sur le volume et "
+                    "la durée réglée en conséquence. Un traitement se dose : trop court, il ne "
+                    "pénètre pas les mousses ; inutilement long, il commence à attaquer des "
+                    "matériaux (voir plus bas). Nous ne laissons jamais une machine tourner "
+                    "« toute la nuit ».",
+                    "<strong>5. Aération et restitution.</strong> Ouverture, ventilation forcée, puis "
+                    "attente de recombinaison. Nous rendons les lieux quand l'odeur "
+                    "caractéristique de l'ozone a disparu, jamais avant, et nous refaisons un "
+                    "contrôle olfactif avec vous.",
+                ]),
+                ("Le dosage : ce qui compte, c'est le volume", [
+                    "Un traitement à l'ozone se raisonne en <strong>concentration multipliée par "
+                    "durée</strong>. Doubler le volume d'une pièce sans toucher à l'un ou à l'autre "
+                    "revient à diviser l'efficacité par deux. C'est pour cette raison qu'un "
+                    "traitement sérieux se dimensionne, et qu'un même appareil ne donne pas du "
+                    "tout le même résultat dans un habitacle de citadine et dans un plateau de "
+                    "200 m².",
+                    "En pratique, la hauteur sous plafond varie peu d'un logement à l'autre : la "
+                    "<strong>surface au sol</strong> est donc un excellent indicateur du volume à "
+                    "traiter. C'est ce qui nous permet d'annoncer un tarif au mètre carré plutôt "
+                    "qu'un forfait vague, et de le tenir.",
+                ]),
+                ("Combien de temps il faut y consacrer", [
+                    "Comptez, pour un habitacle de voiture, environ une heure de traitement suivie "
+                    "de deux heures d'aération et de recombinaison. Pour une pièce de logement "
+                    "jusqu'à 20 m², une heure trente à deux heures de traitement, puis deux à "
+                    "trois heures avant réoccupation. Au-delà de 50 m², l'intervention se cale "
+                    "sur une demi-journée, souvent en plusieurs positions successives du "
+                    "générateur pour couvrir tout le volume.",
+                    "Ces durées ne sont pas compressibles. C'est le principal malentendu du "
+                    "procédé : un traitement à l'ozone immobilise les lieux, et ce temps-là doit "
+                    "être planifié. Nous le disons à la prise de rendez-vous plutôt qu'en "
+                    "arrivant.",
+                ]),
+                ("Sécurité : les règles non négociables", [
+                    "L'ozone est un <strong>gaz irritant pour les voies respiratoires</strong> ; "
+                    "l'ANSES le rappelle régulièrement dans ses avis sur les épurateurs d'air. Le "
+                    "traitement se fait donc en espace clos et vide, sans personne à l'intérieur, "
+                    "sans animaux et sans plantes — les plantes vertes sont les premières "
+                    "victimes d'un traitement mal encadré.",
+                    "En appartement, cela suppose de quitter les lieux pendant toute la durée, "
+                    "aération comprise. En copropriété, mieux vaut prévenir : l'odeur "
+                    "caractéristique peut se percevoir sur un palier et inquiéter un voisin.",
+                    "Un point technique que peu de prestataires mentionnent : l'ozone attaque les "
+                    "<strong>élastomères</strong>. Caoutchouc naturel, joints, durites, élastiques "
+                    "de vêtements, certaines colles : une exposition prolongée provoque des "
+                    "craquelures, un phénomène connu sous le nom de fissuration par l'ozone. C'est "
+                    "exactement pourquoi on dose une durée au lieu de laisser tourner l'appareil "
+                    "le plus longtemps possible : un traitement excessif abîme ce qu'il est censé "
+                    "assainir.",
+                ]),
+                ("Le tarif : 4 € le mètre carré", [
+                    "Pour un local ou un logement, le traitement est facturé <strong>4 € par mètre "
+                    "carré de surface au sol</strong>. Une pièce de 30 m² revient donc à 120 €, "
+                    "un studio de 25 m² à 100 €. Le calcul est direct et vérifiable : vous "
+                    "pouvez le refaire vous-même avant de nous appeler, et notre configurateur de "
+                    "réservation le fait en direct.",
+                    "Pour un <strong>habitacle automobile</strong>, le traitement reste à 30 € en "
+                    "option d'un nettoyage intérieur : le volume est petit et connu, il n'y a "
+                    "aucune raison de le facturer au mètre carré.",
+                    "Les frais de déplacement s'ajoutent selon notre barème habituel et vous sont "
+                    "annoncés avant que vous validiez. Aucun acompte : vous réglez après "
+                    "l'intervention.",
+                ]),
+            ],
+        },
         "faq": [
             ("L'ozone est-il dangereux ?",
              "Oui, pendant le traitement : c'est un gaz irritant pour les voies respiratoires, et "
@@ -432,9 +567,18 @@ SERVICES = [
              "continuera d'émettre tant qu'elle n'aura pas été traitée. C'est pour cela que nous "
              "diagnostiquons avant de proposer l'ozone."),
             ("Traitez-vous les appartements et les locaux ?",
-             "Oui : logements, chambres d'hôtel, commerces, restaurants, véhicules. Le tarif dépend "
-             "du volume à traiter et s'établit sur devis, sauf pour l'habitacle automobile, "
-             "proposé à 30 € en option d'un nettoyage."),
+             "Oui : logements, chambres d'hôtel, commerces, restaurants, véhicules. Le tarif est de "
+             "4 € par mètre carré de surface au sol — 30 m² reviennent donc à 120 € — sauf pour "
+             "l'habitacle automobile, proposé à 30 € en option d'un nettoyage."),
+            ("Comment est calculé le prix d'un traitement de local ?",
+             "Sur la surface au sol, à 4 € le m². La hauteur sous plafond variant peu d'un logement "
+             "à l'autre, la surface donne une bonne mesure du volume à traiter, donc du dosage et "
+             "de la durée nécessaires. Vous pouvez refaire le calcul vous-même : notre "
+             "configurateur de réservation l'affiche en direct."),
+            ("L'ozone peut-il abîmer quelque chose ?",
+             "Oui, s'il est mal dosé. Une exposition prolongée attaque les élastomères — caoutchouc, "
+             "joints, durites, élastiques — et provoque des craquelures. C'est pour cela qu'un "
+             "traitement se dose en durée et ne se laisse jamais tourner toute la nuit."),
         ],
     },
     {
@@ -484,17 +628,17 @@ SERVICES = [
 
 # --- Tarifs ---------------------------------------------------------------
 PACKS_AUTO = [
-    ("Extérieur Éclat", 40, 90, "Extérieur", "La carrosserie retrouve sa brillance", False,
+    ("Extérieur Éclat", 50, "Extérieur", "La carrosserie retrouve sa brillance", False,
      ["Lavage complet de la carrosserie", "Jantes et passages de roues", "Brillant pneus",
       "Vitres extérieures", "Séchage sans trace"]),
-    ("Intérieur Essentiel", 50, 120, "Intérieur", "Idéal pour un coup de propre régulier (hors cuir et alcantara)", False,
+    ("Intérieur Essentiel", 55, "Intérieur", "Idéal pour un coup de propre régulier (hors cuir et alcantara)", False,
      ["Aspiration de l'habitacle et du coffre", "Nettoyage du tableau de bord", "Nettoyage des plastiques",
       "Vitres intérieures", "Désinfection complète à la vapeur", "Parfum d'ambiance"]),
-    ("Intérieur Prestige", 90, 180, "Intérieur", "Le détail poussé jusqu'au moindre recoin, cuir compris", True,
+    ("Intérieur Prestige", 100, "Intérieur", "Le détail poussé jusqu'au moindre recoin, cuir compris", True,
      ["Tout l'Intérieur Essentiel", "Sièges cuir nettoyés ou pressing des sièges tissu",
       "Pressing des tapis et moquettes", "Protection des plastiques", "Traitement des cuirs",
       "Battements de portes", "Ciel de toit", "Compartiment de la roue de secours"]),
-    ("Intégral", 120, 240, "Intérieur + Extérieur", "Le véhicule entier, dedans comme dehors", False,
+    ("Intégral", 130, "Intérieur + Extérieur", "Le véhicule entier, dedans comme dehors", False,
      ["Tout l'Intérieur Prestige", "Lavage complet de la carrosserie", "Jantes et brillant pneus",
       "Vitres intérieures et extérieures", "Séchage sans trace", "Parfum d'ambiance"]),
 ]
@@ -502,7 +646,7 @@ PACKS_AUTO = [
 OPTIONS_AUTO = [
     ("Retrait des poils d'animaux", 10, "Sièges, tapis et moquettes"),
     ("Traitement cuir & alcantara", 20, "Nettoyage puis nourrissage des cuirs et de l'alcantara"),
-    ("Neutralisation des odeurs par ozone", 30, "Traitement d'1 h : odeurs, bactéries et moisissures éliminées"),
+    ("Neutralisation des odeurs par ozone", 30, "Traitement d'1 h : les molécules odorantes sont détruites, pas masquées"),
 ]
 
 TARIFS_TEXTILE = [
@@ -522,7 +666,6 @@ TARIFS_DEVIS = [
     ("Nettoyage de terrasse", "Haute pression et anti-mousse", "nettoyage-terrasse-paris"),
     ("Nettoyage de vitres", "Vitres, baies vitrées et vitrines", "nettoyage-vitres-paris"),
     ("Nettoyage pour entreprise", "Bureaux, commerces, locaux et vitrerie", "nettoyage-entreprise-paris"),
-    ("Traitement par ozone (local, logement)", "Odeurs neutralisées à la source", "traitement-ozone-paris"),
     ("Nettoyage de fin de chantier", "Remise en état après travaux", "nettoyage-fin-de-chantier-paris"),
 ]
 
@@ -658,8 +801,9 @@ BEFORE_AFTER_HD = 4
 # --- FAQ générale ---------------------------------------------------------
 FAQ = [
     ("Combien coûte un nettoyage automobile ?",
-     "Les packs démarrent à 40 € pour un Extérieur Éclat sur citadine et vont jusqu'à 240 € pour un Intégral sur "
-     "un grand véhicule. Le détail des quatre packs et des options figure sur notre page tarifs."),
+     "Quatre packs à prix fixe : Extérieur Éclat 50 €, Intérieur Essentiel 55 €, Intérieur Prestige 100 € et "
+     "Intégral 130 €, quelle que soit la taille du véhicule. Le détail de chaque pack et des options figure sur "
+     "notre page tarifs."),
     ("Intervenez-vous à domicile ?",
      "Oui, c'est notre mode d'intervention principal, partout en Île-de-France. Nous venons avec notre matériel, "
      "notre eau et notre électricité : vous n'avez ni prise ni point d'eau à fournir."),
@@ -938,6 +1082,15 @@ CRENEAUX = [
     "Fin de journée — 17h à 20h",
 ]
 
+# Traitement par ozone d'un local ou d'un logement : facturé à la surface au sol.
+# L'habitacle automobile reste au forfait, en option d'un nettoyage (OPTIONS_AUTO).
+OZONE = {
+    "eur_m2": 4,
+    "m2_min": 5,
+    "m2_max": 400,
+    "m2_defaut": 30,
+}
+
 
 # --- Photo d'en-tête de l'accueil ------------------------------------------
 # "image"    : fichier dans site/assets/photos/
@@ -1165,7 +1318,7 @@ GUIDES = [
    "Demandez simplement : « est-ce vous qui interviendrez ? ». La réponse vous en dira long."])],
  "faq": [
   ("Quel est le prix moyen d'un nettoyage en Île-de-France ?",
-   "Cela dépend entièrement de la prestation. À titre de repère : un canapé 2 places se traite à partir de 39 €, un detailing automobile à partir de 40 €, et les prestations professionnelles se chiffrent sur devis après visite. Un prix annoncé sans connaître le besoin n'a aucune valeur."),
+   "Cela dépend entièrement de la prestation. À titre de repère : un canapé 2 places se traite à partir de 39 €, un detailing automobile à partir de 50 €, un traitement à l'ozone à 4 € le m², et les prestations professionnelles se chiffrent sur devis après visite. Un prix annoncé sans connaître le besoin n'a aucune valeur."),
   ("Faut-il choisir une grande entreprise ou un indépendant ?",
    "La taille ne dit rien de la qualité. Ce qui compte, c'est de savoir qui intervient réellement chez vous, avec quel matériel, et qui est responsable en cas de problème. Une structure petite mais directe apporte souvent plus de continuité qu'une chaîne de sous-traitance."),
   ("Les frais de déplacement sont-ils négociables ?",
@@ -1290,17 +1443,18 @@ GUIDES = [
  "cat": "Prix",
  "h1": "Combien coûte un nettoyage de voiture à domicile ?",
  "title": "Prix d'un nettoyage auto à domicile",
- "meta": "Tarifs du detailing automobile à domicile en Île-de-France : 4 formules de 40 à 240 € selon le véhicule. Options, durée et ce qui est inclus.",
+ "meta": "Tarifs du detailing automobile à domicile en Île-de-France : 4 formules à prix fixe, de 50 à 130 €. Options, durée et ce qui est inclus.",
  "image": "auto-interieur-vw.webp",
- "lead": "Quatre formules, de la carrosserie seule au véhicule entier. Le prix varie surtout selon la taille du véhicule et la présence de cuir.",
+ "lead": "Quatre formules à prix fixe, de la carrosserie seule au véhicule entier. Le même montant pour une citadine et pour un SUV : ce qui change le prix, c'est le contenu de la formule, pas la taille du véhicule.",
  "sections": [
   ("Les quatre formules", [
-   "Extérieur Éclat, de 40 à 90 € : lavage complet, jantes, brillant pneus, vitres extérieures, séchage sans trace. Intérieur Essentiel, de 50 à 120 € : aspiration habitacle et coffre, tableau de bord, plastiques, vitres, désinfection vapeur.",
-   "Intérieur Prestige, de 90 à 180 € : tout l'Essentiel, plus le traitement des cuirs ou le pressing des sièges tissu, les tapis, le ciel de toit, les battements de portes. Intégral, de 120 à 240 € : le véhicule entier, dedans comme dehors."]),
-  ("Pourquoi une fourchette et pas un prix fixe", [
-   "Le bas de chaque fourchette correspond à une citadine, le haut à un SUV ou un monospace. Ce n'est ni la même surface ni le même temps. Le montant exact vous est confirmé avant l'intervention, jamais après."]),
+   "Extérieur Éclat, 50 € : lavage complet, jantes, brillant pneus, vitres extérieures, séchage sans trace. Intérieur Essentiel, 55 € : aspiration habitacle et coffre, tableau de bord, plastiques, vitres, désinfection vapeur.",
+   "Intérieur Prestige, 100 € : tout l'Essentiel, plus le traitement des cuirs ou le pressing des sièges tissu, les tapis, le ciel de toit, les battements de portes. Intégral, 130 € : le véhicule entier, dedans comme dehors."]),
+  ("Un prix fixe, quelle que soit la voiture", [
+   "Nous avons renoncé aux fourchettes. Une citadine et un SUV ne demandent pas exactement le même temps, mais l'écart ne justifie pas de laisser un client dans le flou jusqu'à l'intervention : le montant affiché est celui que vous réglez.",
+   "Seules deux choses s'ajoutent, et elles sont connues d'avance : les options que vous choisissez et les frais de déplacement, calculés sur votre adresse et annoncés avant que vous validiez."]),
   ("Les options", [
-   "Retrait des poils d'animaux : 10 €. Traitement cuir et alcantara : 20 €. Neutralisation des odeurs par ozone : 30 €, pour un traitement d'une heure qui élimine odeurs, bactéries et moisissures.",
+   "Retrait des poils d'animaux : 10 €. Traitement cuir et alcantara : 20 €. Neutralisation des odeurs par ozone : 30 €, pour un traitement d'une heure qui détruit les molécules odorantes au lieu de les masquer.",
    "C'est cette dernière option qui fait la différence avant une revente : l'odeur est ce qui se juge en trois secondes à l'ouverture de la portière."]),
   ("Ce que comprend une prestation sans option", [
    "Aspiration complète de l'habitacle et du coffre — le coffre est toujours compris, sans supplément —, shampoing des tapis et moquettes, puis désinfection des allergènes et acariens par vapeur haute température."])],
@@ -2456,7 +2610,7 @@ GUIDES = [
                 "Les jantes se traitent en premier et avec un matériel dédié : la poussière de frein est métallique et abrasive, et une brosse qui a servi aux jantes n'a rien à faire sur la carrosserie.",
             ]),
             ('Formules et ce que nous ne faisons pas', [
-                "Nos formules vont de l'extérieur seul à l'intérieur complet, avec un pack combinant les deux. Les tarifs partent de 40 € et figurent sur notre grille tarifaire, avec le détail de ce que chaque formule comprend.",
+                "Nos formules vont de l'extérieur seul à l'intérieur complet, avec un pack combinant les deux. Les tarifs sont fixes, de 50 à 130 €, et figurent sur notre grille tarifaire avec le détail de ce que chaque formule comprend.",
                 "Les options les plus demandées sont le retrait des poils d'animaux, l'entretien du cuir et le traitement des odeurs par ozone.",
                 "Ce que nous ne faisons pas : le nettoyage moteur sous pression, qui expose les connectiques et l'électronique à un risque disproportionné au bénéfice ; le polissage correctif à la machine sur peinture abîmée, qui relève du carrossier ; et la rénovation d'optiques oxydées, qui demande un ponçage et un vernis.",
                 "Sur une carrosserie très marquée, nous pouvons améliorer nettement l'aspect sans prétendre effacer des rayures qui ont traversé le vernis. Nous le disons au devis, sur photos, avant d'intervenir.",

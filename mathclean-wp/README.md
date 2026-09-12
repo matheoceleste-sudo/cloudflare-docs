@@ -104,7 +104,16 @@ détail → lieu et date → coordonnées. Le prix se construit en direct dans l
 récapitulatif de droite.
 
 - **Automobile** : les quatre packs et les trois options de `content.py`.
+  Les packs sont à **prix fixe** : 50 €, 55 €, 100 €, 130 €. Plus aucune
+  fourchette nulle part sur le site.
 - **Textile** : compteurs de quantité par pièce, additionnés.
+- **Traitement ozone** : deux cas. « Logement, local ou commerce » ouvre un
+  champ *surface en m²* et multiplie par le tarif au mètre carré (**4 €**,
+  réglé dans `OZONE` de `content.py`) — 30 m² donnent 120 €, le calcul
+  s'affiche sous le champ. « Habitacle automobile » reprend le forfait de
+  30 €, repris automatiquement de l'option ozone de `OPTIONS_AUTO` pour
+  qu'un seul chiffre fasse foi. La surface est bornée entre 5 et 400 m² ;
+  au-delà, le configurateur renvoie vers le téléphone.
 - **Autres prestations** : passage en « sur devis » avec un champ descriptif.
 - **Frais de déplacement** : calculés depuis l'adresse saisie via l'API
   Adresse de data.gouv.fr (service public français, sans cookie ni compte),
@@ -136,6 +145,36 @@ miracle.
 Cinq pages couvrent la demande : la prestation elle-même, l'entreprise de
 traitement ozone à Paris, le traitement en Île-de-France, le cas du
 véhicule, les règles de sécurité, et le prix.
+
+### La fiche détaillée, sur la page de prestation
+
+La page `services/traitement-ozone-paris.html` porte une **fiche longue** de
+huit sections, rendue par `bloc_detail()` dans `build.py` à partir de la clé
+`detail` du service. Le mécanisme est le même que pour la clé `chimie` : une
+prestation qui ne déclare pas la clé n'affiche pas la section, sans rien
+casser ailleurs.
+
+| Section | Ce qu'elle répond |
+|---|---|
+| Ce qu'est l'ozone | O₃, le troisième atome instable, l'oxydation des molécules odorantes |
+| À quoi il sert | le gaz va où l'air va : mousses, ciels de toit, gaines, doublures |
+| Ce qu'il ne fait pas | il ne nettoie pas, et il ne désinfecte pas au sens du 528/2012 |
+| Le protocole | diagnostic, nettoyage préalable, mise en sécurité, traitement, aération |
+| Le dosage | concentration × durée, et pourquoi la surface au sol mesure le volume |
+| Les durées | une heure pour un habitacle, une demi-journée au-delà de 50 m² |
+| La sécurité | ANSES, local vide, et la fissuration des élastomères par l'ozone |
+| Le tarif | 4 € le m², 30 € l'habitacle, frais de déplacement en plus |
+
+Le point sur les **élastomères** mérite d'être connu : une exposition
+prolongée craquelle le caoutchouc, les joints et les durites. C'est ce qui
+justifie de doser une durée plutôt que de laisser tourner l'appareil toute
+la nuit, et c'est un argument que peu de concurrents savent tenir.
+
+### Le nom de la prestation
+
+La fiche s'appelle **« Traitement ozone »** partout : vignette de la page
+Prestations (`short`), menus et cartes (`nav`), première étape du
+configurateur. Le mot « Ozone » seul ne disait pas ce qu'on achetait.
 
 ## Villes et guides
 
