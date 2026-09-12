@@ -7,3 +7,5 @@ public/__redirects
 public/analytics/static/downloads/main.css
 src/content/workers-ai-models/*.json
 src/content/partials/images/*.mdx
+# site MathClean : sortie régénérée par mathclean-wp/build.py
+mathclean-wp/site
