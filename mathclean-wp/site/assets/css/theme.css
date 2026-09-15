@@ -85,7 +85,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   --btn-bg:var(--brand);--btn-fg:#fff;--btn-bd:var(--brand);
   display:inline-flex;align-items:center;justify-content:center;gap:.55em;
   background:var(--btn-bg);color:var(--btn-fg);border:1.5px solid var(--btn-bd);
-  font-size:.97rem;font-weight:650;line-height:1;padding:15px 26px;
+  font-size:.97rem;font-weight:650;line-height:1;padding:15px 26px;min-height:48px;
   border-radius:var(--radius);cursor:pointer;text-align:center;
   transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease;
 }
@@ -124,7 +124,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .site-header.is-stuck{box-shadow:0 4px 18px rgba(16,33,54,.10)}
 .header-inner{display:flex;align-items:center;gap:20px;min-height:var(--header-h)}
 
-.brand{display:flex;align-items:center;gap:11px;margin-right:auto}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto;min-height:48px}
 .brand-mark{
   width:42px;height:42px;flex:none;border-radius:11px;display:grid;place-items:center;
   background:linear-gradient(150deg,var(--brand) 0%,var(--brand-dark) 100%);
@@ -135,7 +135,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .brand-name{font-size:1.32rem;font-weight:800;color:var(--ink);letter-spacing:-.03em}
 .brand-name span{color:var(--brand)}
 .brand-tag{
-  font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);
+  font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);
   font-weight:700;white-space:nowrap;
 }
 
@@ -166,7 +166,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .header-cta{display:flex;align-items:center;gap:10px}
 
 .nav-toggle{
-  display:none;position:relative;width:46px;height:46px;border:1px solid var(--line);
+  display:none;position:relative;width:48px;height:48px;border:1px solid var(--line);
   background:#fff;border-radius:9px;cursor:pointer;padding:0;
 }
 .nav-toggle span{
@@ -342,7 +342,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .ba-pane img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ba-after{clip-path:inset(0 0 0 var(--pos,50%))}
 .ba-tag{
-  position:absolute;top:12px;z-index:3;font-size:.72rem;font-weight:700;letter-spacing:.09em;
+  position:absolute;top:12px;z-index:3;font-size:.78rem;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;padding:5px 11px;border-radius:100px;color:#fff;
   background:rgba(17,27,39,.72);backdrop-filter:blur(4px);
 }
@@ -391,7 +391,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .pack.is-featured{border-color:var(--brand);box-shadow:var(--shadow)}
 .pack-flag{
   position:absolute;top:-13px;left:26px;background:var(--brand);color:#fff;
-  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   padding:5px 13px;border-radius:100px;
 }
 .pack h3{margin-bottom:.25em}
@@ -426,7 +426,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .post-body{padding:24px;display:flex;flex-direction:column;gap:11px;flex:1}
 .post-meta{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.81rem;color:var(--muted);align-items:center}
 .post-cat{
-  background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:.74rem;
+  background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:.78rem;
   letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;
 }
 .post-body h3{margin:0;font-size:1.17rem;line-height:1.35}
@@ -450,7 +450,8 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .widget-posts a:hover{color:var(--brand)}
 .widget-posts time{display:block;font-size:.79rem;color:var(--muted);font-weight:500;margin-top:3px}
 .widget-links li a{
-  display:flex;justify-content:space-between;gap:10px;font-size:.94rem;font-weight:550;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;
+  font-size:.94rem;font-weight:550;
   color:var(--body);padding-bottom:11px;border-bottom:1px dashed var(--line);
 }
 .widget-links li:last-child a{border-bottom:0;padding-bottom:0}
@@ -460,7 +461,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .widget-cta .widget-title{color:#fff;border-bottom-color:rgba(255,255,255,.25)}
 .widget-cta .widget-title::after{background:var(--gold)}
 .widget-cta p{font-size:.94rem}
-.widget-phone{display:block;font-size:1.42rem;font-weight:800;color:#fff;margin:.5rem 0 1rem;letter-spacing:-.02em}
+.widget-phone{display:inline-flex;align-items:center;min-height:48px;font-size:1.42rem;font-weight:800;color:#fff;margin:.5rem 0 1rem;letter-spacing:-.02em}
 .widget-phone:hover{color:var(--gold)}
 
 /* Corps d'article */
@@ -535,11 +536,16 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .form-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 .field{display:flex;flex-direction:column;gap:7px}
 .field-full{grid-column:1/-1}
-.field label{font-size:.89rem;font-weight:650;color:var(--ink)}
+.field label{
+  font-size:.89rem;font-weight:650;color:var(--ink);
+  /* La zone cliquable atteint 48 px ; les marges négatives annulent l'effet visuel. */
+  padding:16px 0 8px;margin:-16px 0 -8px;
+}
 .field .req{color:#d14343}
 .field input,.field select,.field textarea{
   font-family:inherit;font-size:.97rem;color:var(--ink);background:#fff;
   border:1.5px solid var(--line);border-radius:var(--radius);padding:13px 15px;width:100%;
+  min-height:48px;
   transition:border-color .18s,box-shadow .18s;
 }
 .field textarea{min-height:140px;resize:vertical}
@@ -550,7 +556,18 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm)}
 @media(max-width:520px){.form-card{padding:24px 20px}}
 .consent{display:flex;gap:11px;align-items:flex-start;font-size:.88rem;color:var(--muted)}
-.consent input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--brand)}
+/* Case à cocher : Chrome ignore le remplissage d'une case native, la cible
+   resterait donc à 24 px. On la redessine donc nous-mêmes — le carré visible
+   fait 24 px, dessiné dans la boîte de contenu, et les 12 px de remplissage
+   transparent portent la zone tactile à 48 px. Les marges négatives lui
+   rendent son encombrement d'origine dans la ligne. */
+.consent input[type="checkbox"]{
+  appearance:none;-webkit-appearance:none;box-sizing:content-box;
+  width:24px;height:24px;padding:12px;margin:-10px -12px -12px -12px;
+  flex:none;cursor:pointer;border:0;border-radius:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='1' y='1' width='22' height='22' rx='5' fill='%23fff' stroke='%23c3d0dd' stroke-width='2'/%3E%3C/svg%3E") no-repeat center content-box;background-size:24px 24px;
+}
+.consent input[type="checkbox"]:checked{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='1' y='1' width='22' height='22' rx='5' fill='%230e5fbb'/%3E%3Cpath d='M7 12.4l3.3 3.3L17 9' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
 
 .info-list{list-style:none;margin:0;padding:0;display:grid;gap:22px}
 .info-list li{display:flex;gap:16px;align-items:flex-start}
@@ -600,7 +617,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .footer-legal{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:0;padding:0}
 
 .to-top{
-  position:fixed;right:20px;bottom:84px;z-index:90;width:46px;height:46px;border-radius:50%;
+  position:fixed;right:20px;bottom:84px;z-index:90;width:48px;height:48px;border-radius:50%;
   border:0;background:var(--brand);color:#fff;cursor:pointer;display:grid;place-items:center;
   box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(10px);
   transition:opacity .25s,transform .25s,visibility .25s,background .2s;
@@ -739,9 +756,9 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 
 .pick-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
 .pack-pick{display:grid;gap:12px}
-.pick{cursor:pointer;display:block}
-/* Masqué visuellement mais toujours atteignable au clavier (taille non nulle). */
-.pick input{position:absolute;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
+.pick{cursor:pointer;display:block;position:relative}
+/* Invisible, mais de la taille de la carte : la cible tactile est la carte entière. */
+.pick input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;pointer-events:none}
 .pick-body{
   display:flex;flex-direction:column;gap:6px;height:100%;background:#fff;
   border:1.5px solid var(--line);border-radius:var(--radius);padding:18px 18px;
@@ -753,7 +770,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .pick-icon{width:34px;height:34px}
 .pick-icon svg{width:30px;height:30px;stroke:var(--brand);fill:none;stroke-width:1.7}
 .pick-name{font-weight:700;color:var(--ink);font-size:1rem}
-.pick-scope{font-size:.74rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}
+.pick-scope{font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}
 .pick-price{font-size:.9rem;font-weight:700;color:var(--brand)}
 .pick-desc{font-size:.9rem;color:var(--muted)}
 .pick-wide .pick-body{padding:18px 20px}
@@ -895,7 +912,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
    3. plusieurs cibles tactiles descendaient sous les 24 px recommandés. */
 
 /* 20.1 En-tête : on resserre avant de basculer sur le menu tiroir. */
-@media(max-width:1345px){
+@media(max-width:1420px){
   .header-inner{gap:12px}
   .main-nav>ul>li>a{padding:12px 9px;font-size:.9rem}
 }
@@ -911,12 +928,41 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   .btn{white-space:normal}
 }
 
-/* 20.3 Cibles tactiles : 24 px minimum (recommandation WCAG 2.2 / Lighthouse). */
+/* 20.3 Cibles tactiles : 48 px minimum.
+   C'est le seuil retenu par les audits mobiles (Lighthouse, Solocal). Deux
+   familles de liens demandent deux traitements différents :
+
+   - les liens de navigation (pied de page, fil d'Ariane, menus, listes) sont
+     des blocs : on leur impose une hauteur minimale, la mise en page suit ;
+   - les liens au fil du texte ne peuvent pas grandir sans casser le
+     paragraphe. On leur donne du remplissage vertical : sur un élément en
+     ligne, il agrandit la zone cliquable SANS toucher à l'interlignage. */
 @media(max-width:900px){
-  .site-footer a,.breadcrumbs a,.topbar a,.widget-links a,.sub-menu a{
-    display:inline-flex;align-items:center;min-height:24px;
+  .site-footer a,.breadcrumbs a,.topbar a,.sub-menu a,
+  .footer-links a,.footer-contact a,.footer-legal a,
+  .main-nav>ul>li>a,.cat-title a{
+    display:inline-flex;align-items:center;min-height:48px;min-width:48px;
   }
-  .footer-links a,.footer-contact a{min-height:32px}
+  .widget-links li a,.post-body h3 a,.widget-posts a,.service-more,
+  .post-card .post-cat,.tile-more{min-height:48px;display:flex;align-items:center}
+  .post-body h3 a,.widget-posts a{display:block;padding-block:2px}
+
+  /* Liens au fil du texte : + 14 px de part et d'autre, soit 48 px de haut. */
+  .entry-content p a,.entry-content li a,.entry-content dd a,
+  .lead a,.field-hint a,.notice p a,.consent a,.section-head p a,
+  .faq-answer a,.resa-intro a,p.small a,
+  .checklist li a,.price-table a,.presta-detail a,
+  .info-list a,.qty-row a,.resa-ticket a,
+  p a:not(.btn):not(.widget-phone){
+    padding-block:15px;
+  }
+  /* Ces deux familles ont un interlignage plus serré : il leur faut 2 px de plus. */
+  .field-hint a:not(.btn):not(.widget-phone),
+  .post-meta a:not(.btn):not(.widget-phone){padding-block:17px}
+  /* Dans le pied de page, les liens sont déjà des blocs de 48 px : pas de cumul. */
+  .site-footer p a{padding-block:0}
+  /* Étiquettes de catégorie en bas des guides. */
+  .tag-list a{min-height:48px;display:inline-flex;align-items:center}
 }
 
 /* 20.4 Rubriques par catégorie de l'archive du blog. */
