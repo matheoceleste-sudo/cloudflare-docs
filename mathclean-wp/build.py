@@ -30,6 +30,7 @@ from content import (
     SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER, BEFORE_AFTER_HD, ZONES_DETAIL,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
     GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES, OZONE,
+    PREMIUM_VILLES,
 )
 
 OUT = os.path.join(HERE, "site")
@@ -1186,6 +1187,12 @@ def build_service(s):
                       + video_block(base, v[0], v[1], v[2])
                       + "</div></section>")
     chimie = bloc_chimie(base, s["chimie"]) if s.get("chimie") else ""
+    # Communes disposant d'une page dédiée à cette prestation.
+    communes = "".join(
+        '<li><a href="%svilles/%s-%s.html">%s %s</a></li>'
+        % (base, s["local"]["slug"], pv["slug"], s["local"]["nom"], ville_a(pv["nom"]))
+        for pv in PREMIUM_VILLES if s["local"]["slug"] in pv["angles"]
+    )
     detail = bloc_detail(base, s["detail"]) if s.get("detail") else ""
     intro = "".join("<p>%s</p>" % p for p in s["intro"])
     included = "".join("<li>%s</li>" % li for li in s["included"])
@@ -1298,6 +1305,20 @@ def build_service(s):
           "Devis gratuit et sans engagement, réponse sous 24 h. Aucun acompte : vous réglez après l'intervention.")}
 
 <section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Près de chez vous</span>
+      <h2>{s['local']['nom']} commune par commune</h2>
+      <p class="lead">
+        Distance, frais de déplacement et délai propres à chaque commune, plus ce que le
+        terrain y change concrètement.
+      </p>
+    </div>
+    <ul class="checklist grid grid-3" style="margin-top:2.2rem">{communes}</ul>
+  </div>
+</section>
+
+<section class="section">
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Découvrez aussi</span>
@@ -3850,6 +3871,192 @@ def build_ville(v):
     return write("villes/%s.html" % slug, html)
 
 
+# ===========================================================================
+# PRESTATION × COMMUNE
+# ---------------------------------------------------------------------------
+# Une page par couple : « Nettoyage de canapé au Blanc-Mesnil », « Nettoyage de
+# bureaux à La Défense ». C'est ainsi qu'on cherche depuis une commune, et une
+# page générique sur la prestation répond mal à cette intention.
+#
+# Le contenu propre au couple vient de PREMIUM_VILLES : deux paragraphes et une
+# question qui n'existent que sur cette page. Le reste — tableau pratique,
+# contenu de la prestation, maillage — est commun. C'est ce qui distingue une
+# page utile d'une page satellite : la partie variable doit être la partie qui
+# compte.
+# ===========================================================================
+def premium_par_slug(local_slug):
+    """Retrouve la prestation depuis son mot-clé local (« nettoyage-canape »)."""
+    for s in SERVICES:
+        if s["local"]["slug"] == local_slug:
+            return s
+    raise KeyError(local_slug)
+
+
+def build_local(pv, local_slug):
+    s = premium_par_slug(local_slug)
+    base = "../"
+    nom, cp, dept = pv["nom"], pv["cp"], pv["dept"]
+    a_nom, de_nom = ville_a(nom), ville_de(nom)
+    p1, p2, faq_q, faq_r = pv["angles"][local_slug]
+    titre = "%s %s" % (s["local"]["nom"], a_nom)
+    slug = "%s-%s" % (local_slug, pv["slug"])
+    chemin = "villes/%s.html" % slug
+
+    z = zone_de(dept)
+    km = distance_atelier(pv["lat"], pv["lon"])
+    km_txt = "moins d'un kilomètre" if km < 1 else "environ %d km" % round(km)
+    frais = frais_pour(km)
+    frais_court = "Aucun" if frais == 0 else "~ %d €" % frais
+    delai = "24 à 48 h" if dept in ("75", "92", "93", "94") else "48 à 72 h"
+
+    trail = [("Villes", "villes.html"), (nom, None), (s["local"]["nom"], None)]
+    inclus = "".join("<li>%s</li>" % li for li in s["included"][:6])
+
+    # Les autres prestations proposées dans la même commune.
+    voisines = "".join(
+        '<li><a href="%svilles/%s-%s.html">%s %s</a></li>'
+        % (base, autre, pv["slug"], premium_par_slug(autre)["local"]["nom"], a_nom)
+        for autre in pv["angles"] if autre != local_slug
+    )
+    # La même prestation dans les autres communes couvertes.
+    ailleurs = "".join(
+        '<li><a href="%svilles/%s-%s.html">%s %s</a></li>'
+        % (base, local_slug, o["slug"], s["local"]["nom"], ville_a(o["nom"]))
+        for o in PREMIUM_VILLES if o["slug"] != pv["slug"] and local_slug in o["angles"]
+    )
+
+    faq = [
+        (faq_q, faq_r),
+        ("Quels sont les frais de déplacement %s ?" % a_nom,
+         "Comptez %s entre notre atelier %s et %s, soit %s. Le barème est de 5 € par "
+         "tranche de 5 km, arrondi à la tranche entière. Le montant exact est calculé sur "
+         "votre adresse dans le configurateur de réservation, et affiché avant que vous "
+         "validiez quoi que ce soit."
+         % (km_txt, ville_de(SITE["city"]), nom,
+            "aucun frais" if frais == 0 else "environ %d € de frais de déplacement" % frais)),
+        ("Sous quel délai intervenez-vous %s ?" % a_nom,
+         "Habituellement %s, 7j/7. Pour une urgence, appelez-nous au %s : nous "
+         "réorganisons la tournée quand c'est possible. Aucun acompte n'est demandé, "
+         "vous réglez après l'intervention." % (delai, SITE["phone"])),
+    ]
+
+    body = f"""
+{page_title_block(base, trail, titre,
+    "Intervention à domicile %s, sous %s, sans acompte. Devis gratuit et ferme, "
+    "frais de déplacement annoncés avant que vous validiez." % (a_nom, delai))}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{s['local']['nom']} · {cp}</span>
+        <h2>Ce que nous voyons le plus {a_nom}</h2>
+        <p>{p1}</p>
+        <p>{p2}</p>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}reservation.html">Réserver {a_nom}</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {a_nom}</caption>
+            <tbody>
+              <tr><th scope="row">Prestation</th><td class="amount">{s['local']['nom']}</td></tr>
+              <tr><th scope="row">Tarif</th><td class="amount">{s['price']}</td></tr>
+              <tr><th scope="row">Commune</th><td class="amount">{nom} ({cp})</td></tr>
+              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Frais de déplacement</th><td class="amount">{frais_court}</td></tr>
+              <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Distance calculée depuis le centre de la commune. Le montant exact dépend de votre
+          adresse et vous est confirmé avant que vous validiez.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend la prestation</h2>
+        <ul class="checklist" style="margin-top:1.4rem">{inclus}</ul>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn btn-outline" href="{base}services/{s['slug']}.html">
+            Tout savoir sur le {s['nav'].lower()}
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Intervenir {a_nom}</span>
+        <h2>Ce que la commune change</h2>
+        <p>{pv['profil']}</p>
+        <p>{pv['acces']}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>{titre} : vos questions</h2>
+    </div>
+    {faq_block(faq, 'faq-local')}
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <h2>Nos autres prestations {a_nom}</h2>
+        <ul class="checklist" style="margin-top:1.2rem">{voisines}</ul>
+      </div>
+      <div class="reveal">
+        <h2>{s['local']['nom']} ailleurs en Île-de-France</h2>
+        <ul class="checklist" style="margin-top:1.2rem">{ailleurs}</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis pour %s ?" % titre.lower(),
+          "Gratuit, ferme et détaillé poste par poste. Réponse sous 24 h, sans acompte : "
+          "vous réglez une fois le résultat constaté.")}
+"""
+    schema = [
+        crumb_schema([("Villes", "villes.html"), (nom, None), (s["local"]["nom"], chemin)]),
+        {"@context": "https://schema.org", "@type": "Service",
+         "name": titre,
+         "description": "%s à domicile %s : %s." % (s["local"]["nom"], a_nom, s["price"]),
+         "serviceType": s["local"]["nom"],
+         "provider": {"@id": SITE["url"] + "/#business"},
+         "areaServed": {"@type": "City", "name": nom,
+                        "address": {"@type": "PostalAddress", "postalCode": cp,
+                                    "addressLocality": nom, "addressCountry": "FR"}},
+         "url": "%s/%s" % (SITE["url"], chemin)},
+        faq_schema(faq),
+    ]
+    # Description courte, et variable : le tarif change selon la prestation, le
+    # délai selon le département. Deux pages n'ont donc pas la même description.
+    html = (head(titre_page("%s %s — devis gratuit" % (s["local"]["court"], a_nom)),
+                 "%s. %s, intervention sous %s, sans acompte. Devis gratuit et ferme."
+                 % (titre, s["price"][0].upper() + s["price"][1:], delai),
+                 chemin, base, schema=schema)
+            + header(base, "zones") + body + footer(base))
+    return write(chemin, html)
+
+
 def build_villes_archive():
     base = ""
     trail = [("Villes", None)]
@@ -3869,6 +4076,19 @@ def build_villes_archive():
   <h2 class="widget-title"><a href="zones/{z['slug']}.html">{z['name']} ({z['num']})</a></h2>
   <ul class="widget-links">{items}</ul>
 </div>"""
+    # Pages « prestation × commune » : une entrée par couple, groupée par ville.
+    premium = ""
+    for pv in PREMIUM_VILLES:
+        liens = "".join(
+            '<li><a href="villes/%s-%s.html">%s</a></li>'
+            % (ls, pv["slug"], premium_par_slug(ls)["local"]["nom"])
+            for ls in pv["angles"]
+        )
+        premium += f"""<div class="widget reveal">
+  <h2 class="widget-title">{pv['nom']} <span style="font-weight:500">({pv['cp']})</span></h2>
+  <ul class="widget-links">{liens}</ul>
+</div>"""
+
     body = f"""
 {page_title_block(base, trail, "Les villes où nous intervenons",
   "Une page par commune, avec la distance depuis notre atelier %s, les frais de "
@@ -3878,6 +4098,21 @@ def build_villes_archive():
 <section class="section">
   <div class="container">
     <div class="grid grid-3">{blocs}</div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Par prestation</span>
+      <h2>Chaque prestation, commune par commune</h2>
+      <p class="lead">
+        On ne cherche pas « une entreprise de nettoyage » mais « un nettoyage de canapé
+        près de chez soi ». Ces pages répondent à cette question-là, avec la distance, les
+        frais et le délai propres à la commune.
+      </p>
+    </div>
+    <div class="grid grid-3" style="margin-top:2.2rem">{premium}</div>
   </div>
 </section>
 
@@ -4212,6 +4447,13 @@ def build_llms_txt():
     )
     zones = ", ".join("%s (%s)" % (z["name"], z["num"]) for z in ZONES)
     villes = ", ".join(v[1] for v in VILLES)
+    premium_txt = "\n".join(
+        "- %s : %s" % (
+            pv["nom"],
+            ", ".join("%s (%s/villes/%s-%s.html)"
+                      % (premium_par_slug(ls)["local"]["court"], SITE["url"], ls, pv["slug"])
+                      for ls in pv["angles"]))
+        for pv in PREMIUM_VILLES)
     txt = f"""# MathClean
 
 > Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit
@@ -4262,6 +4504,10 @@ def build_llms_txt():
 ## Zone d'intervention
 Départements : {zones}.
 Villes documentées : {villes}.
+
+## Prestation par commune
+Une page dédiée par couple prestation × commune, sur dix communes d'Île-de-France :
+{premium_txt}
 
 ## Guides de référence
 {guides}
@@ -4351,6 +4597,9 @@ def main():
     pages.append((build_villes_archive(), "0.8", "monthly"))
     for v in VILLES:
         pages.append((build_ville(v), "0.7", "monthly"))
+    for pv in PREMIUM_VILLES:
+        for local_slug in pv["angles"]:
+            pages.append((build_local(pv, local_slug), "0.7", "monthly"))
     pages.append((build_guides_archive(), "0.8", "monthly"))
     for g in GUIDES:
         pages.append((build_guide(g), "0.7", "monthly"))

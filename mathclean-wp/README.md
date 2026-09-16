@@ -176,6 +176,70 @@ La fiche s'appelle **« Traitement ozone »** partout : vignette de la page
 Prestations (`short`), menus et cartes (`nav`), première étape du
 configurateur. Le mot « Ozone » seul ne disait pas ce qu'on achetait.
 
+## Prestation × commune : les 77 pages locales
+
+On ne cherche pas « une entreprise de nettoyage » mais « un nettoyage de canapé
+près de chez soi ». Ces pages répondent à cette intention-là, que ni la page de
+prestation ni la page de commune ne couvrent vraiment.
+
+Dix communes parmi les plus aisées d'Île-de-France, croisées avec chaque
+prestation : `villes/nettoyage-canape-neuilly-sur-seine.html`,
+`villes/nettoyage-entreprise-puteaux.html`, et ainsi de suite.
+
+| Commune | Dép. | Pages |
+|---|---|---|
+| Neuilly-sur-Seine | 92 | 8 |
+| Boulogne-Billancourt | 92 | 8 |
+| Levallois-Perret | 92 | 8 |
+| Puteaux (La Défense) | 92 | 8 |
+| Saint-Cloud | 92 | 8 |
+| Rueil-Malmaison | 92 | 8 |
+| Saint-Germain-en-Laye | 78 | 8 |
+| Versailles | 78 | 7 |
+| Sceaux | 92 | 7 |
+| Le Vésinet | 78 | 7 |
+
+Versailles, Sceaux et Le Vésinet n'ont pas de page « nettoyage de bateau » :
+aucune de ces trois communes n'a de point d'amarrage. Une page sur un service
+qu'on ne peut pas rendre là où la page le prétend dessert plus qu'elle ne sert.
+
+### Ce qui rend chaque page différente
+
+C'est le point qui décide de tout. Quatre-vingts déclinaisons d'un même texte,
+Google les traite comme des pages satellites et les ignore — voire les pénalise.
+Chaque couple porte donc, dans `PREMIUM_VILLES` de `content.py`, un contenu qui
+n'existe que sur cette page :
+
+- **deux paragraphes** sur ce que la commune change concrètement pour cette
+  prestation — les cuirs clairs des parkings souterrains neuillyséens, le badge
+  et le quai de livraison à La Défense, la meulière poreuse de Saint-Cloud, le
+  couvert végétal du Vésinet ;
+- **une question fréquente** et sa réponse, propres au couple.
+
+S'y ajoutent, communs à la commune, son profil et sa contrainte d'accès. Au
+total, sur 227 paragraphes longs de l'ensemble, 227 sont uniques et seuls le
+barème de déplacement et la réponse sur le délai se répètent — et encore, avec
+la distance et le montant propres à chaque commune.
+
+### Maillage
+
+Une page orpheline ne sert à rien. Chacune reçoit des liens depuis :
+
+- la page de prestation correspondante (bloc « commune par commune ») ;
+- l'archive `villes.html` (bloc « chaque prestation, commune par commune ») ;
+- les sept autres prestations de la même commune ;
+- la même prestation dans les neuf autres communes.
+
+Et le `llms.txt` les énumère toutes, pour les assistants qui lisent ce fichier
+plutôt que de parcourir le site.
+
+### Ajouter une commune ou une prestation
+
+Ajoutez une entrée à `PREMIUM_VILLES` avec son `profil`, son `acces` et autant
+d'`angles` que de prestations voulues. Les pages, le maillage, le sitemap et le
+`llms.txt` suivent sans autre intervention. Une prestation qui n'a pas de sens
+dans la commune s'omet simplement du dictionnaire `angles`.
+
 ## Villes et guides
 
 Deux familles de pages nourrissent le référencement, chacune pilotée depuis

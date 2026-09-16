@@ -44,6 +44,7 @@ SITE = {
 SERVICES = [
     {
         "slug": "nettoyage-automobile-paris",
+        "local": {"court": "Nettoyage voiture", "slug": "nettoyage-voiture", "nom": "Nettoyage de voiture", "kw": "nettoyage voiture"},
         "short": "Automobile",
         "nav": "Nettoyage automobile",
         "name": "Nettoyage automobile à Paris",
@@ -108,6 +109,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-textile-paris",
+        "local": {"court": "Nettoyage canapé", "slug": "nettoyage-canape", "nom": "Nettoyage de canapé", "kw": "nettoyage canapé"},
         "short": "Textile",
         "nav": "Nettoyage textile (canapé, matelas, tapis)",
         "name": "Nettoyage textile à Paris",
@@ -171,6 +173,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-bateau-paris",
+        "local": {"court": "Nettoyage bateau", "slug": "nettoyage-bateau", "nom": "Nettoyage de bateau", "kw": "nettoyage bateau"},
         "short": "Bateau",
         "nav": "Nettoyage de bateau",
         "name": "Nettoyage de bateau à Paris",
@@ -231,6 +234,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-terrasse-paris",
+        "local": {"court": "Nettoyage terrasse", "slug": "nettoyage-terrasse", "nom": "Nettoyage de terrasse", "kw": "nettoyage terrasse"},
         "short": "Terrasse",
         "nav": "Nettoyage de terrasse",
         "name": "Nettoyage de terrasse à Paris",
@@ -274,6 +278,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-vitres-paris",
+        "local": {"court": "Nettoyage vitres", "slug": "nettoyage-vitres", "nom": "Nettoyage de vitres", "kw": "nettoyage vitres"},
         "short": "Vitres",
         "nav": "Nettoyage de vitres",
         "name": "Nettoyage de vitres à Paris",
@@ -317,6 +322,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-entreprise-paris",
+        "local": {"court": "Nettoyage bureaux", "slug": "nettoyage-entreprise", "nom": "Nettoyage de bureaux et de locaux", "kw": "nettoyage entreprise"},
         "short": "Entreprise",
         "nav": "Nettoyage pour entreprise",
         "name": "Nettoyage pour entreprise à Paris",
@@ -377,6 +383,7 @@ SERVICES = [
     },
     {
         "slug": "traitement-ozone-paris",
+        "local": {"court": "Traitement ozone", "slug": "traitement-ozone", "nom": "Traitement par ozone", "kw": "traitement ozone"},
         "short": "Traitement ozone",
         "nav": "Traitement ozone",
         "name": "Traitement par ozone à Paris",
@@ -588,6 +595,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-fin-de-chantier-paris",
+        "local": {"court": "Nettoyage fin de chantier", "slug": "nettoyage-fin-de-chantier", "nom": "Nettoyage de fin de chantier", "kw": "nettoyage fin de chantier"},
         "short": "Fin de chantier",
         "nav": "Fin de chantier",
         "name": "Nettoyage fin de chantier à Paris",
@@ -3218,3 +3226,1248 @@ ZONES_DETAIL = {
         ]),
     ],
 }
+
+
+# --- Pages « prestation × commune » ----------------------------------------
+# Dix communes parmi les plus aisées d'Île-de-France, croisées avec chaque
+# prestation. Une page par couple, avec un angle qui lui est propre : sans
+# cela on obtiendrait quatre-vingts variantes du même texte, ce qu'un moteur
+# traite comme des pages satellites et non comme du contenu utile.
+#
+# Chaque commune porte :
+#   profil  — le tissu réel de la commune (habitat, activité)
+#   acces   — la contrainte pratique d'intervention (stationnement, accès)
+#   angles  — par prestation : deux paragraphes, une question, sa réponse
+PREMIUM_VILLES = [
+    {
+        "slug": "neuilly-sur-seine", "nom": "Neuilly-sur-Seine", "cp": "92200",
+        "dept": "92", "lat": 48.8846, "lon": 2.2697,
+        "profil": "Neuilly-sur-Seine aligne de part et d'autre de l'avenue Charles-de-Gaulle des "
+                  "immeubles haussmanniens et Art déco aux appartements familiaux généreux : "
+                  "parquets anciens, moulures, mobilier de valeur. La commune compte aussi une "
+                  "forte proportion de professions libérales qui reçoivent à domicile ou en cabinet, "
+                  "et un bord de Seine résidentiel autour de l'île de la Jatte.",
+        "acces": "Le stationnement est payant et tendu presque partout, et une grande partie des "
+                 "immeubles n'ont qu'un parking souterrain à hauteur limitée. Nous intervenons en "
+                 "véhicule léger, capable de descendre en sous-sol, et nous travaillons sur place "
+                 "sans avoir à déplacer quoi que ce soit.",
+        "angles": {
+            "nettoyage-voiture": (
+                "À Neuilly, la plupart des véhicules dorment en parking souterrain et ne voient "
+                "jamais une station de lavage. L'habitacle vieillit pourtant plus vite qu'ailleurs : "
+                "peu d'aération, beaucoup de trajets courts, et des cuirs clairs — beiges, crème, "
+                "gris perle — qui marquent au moindre transfert de teinture depuis un jean.",
+                "Nous venons sur votre place de parking, y compris en sous-sol, avec notre eau et "
+                "notre électricité. Les cuirs sont traités à pH neutre et au mousseur, jamais "
+                "détrempés : c'est ce qui évite la craquelure sur les sièges clairs, qui est le "
+                "défaut le plus coûteux à rattraper sur ce type de véhicule.",
+                "Pouvez-vous descendre dans un parking souterrain à Neuilly ?",
+                "Oui, c'est même le cas le plus fréquent ici. Notre véhicule passe sous les "
+                "1,90 m qui limitent la plupart des sous-sols neuillyséens. Nous apportons l'eau "
+                "et l'électricité : aucun branchement n'est demandé à la copropriété, et votre "
+                "voiture ne bouge pas de sa place."),
+            "nettoyage-canape": (
+                "Les salons neuillyséens sont grands, et les canapés qui les meublent aussi : "
+                "angles de trois mètres, tissus clairs, lin, coton épais et velours. Sur ces "
+                "matières, la salissure ne se voit pas d'un coup — elle s'installe par un "
+                "grisaillement progressif des assises et des accoudoirs, que l'œil finit par ne "
+                "plus remarquer.",
+                "Nous travaillons à l'injection-extraction : la solution est envoyée dans la fibre "
+                "puis immédiatement réaspirée, sans eau stagnante donc sans auréole. Sur un velours "
+                "ou un lin, le sens du poil est relevé avant de commencer et respecté au séchage. "
+                "Les canapés cuir relèvent d'un autre protocole, à pH neutre.",
+                "Un canapé en lin clair supporte-t-il l'injection-extraction ?",
+                "Oui, à condition de doser l'eau et de tester au préalable sur une zone cachée. Le "
+                "lin rétrécit s'il est détrempé : nous travaillons donc avec un temps de contact "
+                "court et une extraction complète. Sur une housse déhoussable ancienne, nous "
+                "préférons parfois vous le dire franchement et ne pas intervenir."),
+            "nettoyage-bateau": (
+                "Le port de Neuilly et les berges de l'île de la Jatte abritent des péniches "
+                "habitées et des bateaux de plaisance à l'amarre toute l'année. L'exposition y est "
+                "particulière : humidité constante, dépôts verts sur les bords au nord, et un "
+                "gelcoat qui se ternit sans qu'on s'en aperçoive d'une saison à l'autre.",
+                "Nous intervenons à quai, avec notre propre eau et notre électricité. Coque, pont "
+                "et sellerie demandent trois méthodes distinctes : nous établissons le devis après "
+                "photos ou après une visite, en annonçant ce qui relèvera d'un simple nettoyage et "
+                "ce qui demandera une rénovation du gelcoat.",
+                "Intervenez-vous sur une péniche habitée à Neuilly ?",
+                "Oui. Sur une péniche habitée, l'intérieur relève de nos prestations textile et "
+                "vitres, l'extérieur du nettoyage de coque. Nous chiffrons les deux séparément pour "
+                "que vous puissiez n'en prendre qu'un. L'accès au quai et la possibilité de nous "
+                "garer à proximité conditionnent la durée : dites-le-nous à la prise de rendez-vous."),
+            "nettoyage-terrasse": (
+                "À Neuilly, la terrasse est rarement un jardin : c'est un balcon filant, une "
+                "terrasse sur cour ou un dernier étage en retrait, souvent en dalles de pierre "
+                "reconstituée ou en bois exotique. Ces surfaces sont petites mais délicates, et "
+                "voisines immédiates de fenêtres et de garde-corps qu'il ne faut pas éclabousser.",
+                "Nous adaptons la pression à la matière plutôt que l'inverse : la pierre tendre et "
+                "le bois exotique ne supportent pas le décapage qui convient à une dalle béton. "
+                "Un traitement anti-mousse à temps d'action prolonge le résultat d'un à trois ans, "
+                "là où un décapage seul laisse la mousse revenir en quelques semaines.",
+                "Une terrasse d'appartement peut-elle être nettoyée sans inonder les voisins ?",
+                "Oui, et c'est la première question à se poser en copropriété. Sur un balcon ou une "
+                "terrasse d'étage, nous travaillons à basse pression avec récupération, en "
+                "vérifiant d'abord l'évacuation. Si l'écoulement n'est pas maîtrisable, nous vous "
+                "le disons avant de commencer plutôt que de créer un dégât chez le voisin du dessous."),
+            "nettoyage-vitres": (
+                "Les immeubles neuillyséens ont conservé beaucoup de fenêtres anciennes à petits "
+                "bois et de hauteurs sous plafond de trois mètres. Ce sont les vitrages les plus "
+                "longs à faire correctement : chaque carreau demande son passage, et les mastics "
+                "anciens retiennent la poussière que le lavage fait ensuite couler sur la vitre.",
+                "Nous travaillons à l'eau osmosée, déminéralisée : elle sèche sans laisser la trace "
+                "blanche que laisse l'eau du robinet, riche en calcaire en Île-de-France. Les "
+                "encadrements et les appuis sont repris dans le même passage — c'est là que se "
+                "loge la saleté qui salit à nouveau la vitre à la première pluie.",
+                "Comment comptez-vous une fenêtre à petits bois ?",
+                "Au vantail, pas au mètre carré. Une fenêtre à six carreaux demande plusieurs fois "
+                "le temps d'une baie de même surface, et un tarif au mètre carré serait trompeur "
+                "dans un sens comme dans l'autre. Nous comptons les vantaux sur photos, et le "
+                "devis est ferme avant que nous venions."),
+            "nettoyage-entreprise": (
+                "Neuilly concentre des cabinets — médicaux, dentaires, d'avocats — et des sièges "
+                "sociaux installés dans d'anciens appartements. Ce sont des locaux de petite "
+                "surface mais à forte exigence : salle d'attente très fréquentée, moquettes "
+                "claires, et une image qui se juge dès la porte franchie.",
+                "Nous intervenons avant l'ouverture, après la fermeture ou le week-end, sans "
+                "supplément — c'est la seule façon de traiter correctement une moquette, qui "
+                "demande plusieurs heures de séchage. Passage ponctuel ou régulier, avec "
+                "facturation entreprise et un interlocuteur unique : celui qui intervient.",
+                "Pouvez-vous intervenir dans un cabinet médical en dehors des consultations ?",
+                "Oui, et c'est ce que nous recommandons. Nous travaillons tôt le matin, en soirée "
+                "ou le week-end sans majoration. Précisons un point : nous réalisons un nettoyage "
+                "professionnel soigné, pas une désinfection réglementée de bloc ou de dispositif "
+                "médical, qui relève d'un protocole et d'une certification que nous n'avons pas."),
+            "traitement-ozone": (
+                "Sur un bien neuillyséen remis en location ou en vente, l'odeur est ce qui se juge "
+                "en trois secondes à l'ouverture de la porte. Tabac installé dans les moulures et "
+                "les rideaux, animal, humidité après un dégât des eaux : aucune de ces odeurs ne "
+                "part au nettoyage de surface, parce qu'elles ont imprégné ce que le chiffon "
+                "n'atteint pas.",
+                "L'ozone est un gaz : il va partout où l'air va, y compris dans les gaines de "
+                "ventilation et les rembourrages. Il détruit la molécule odorante au lieu de la "
+                "couvrir. Le traitement se fait sur un logement vide, suivi d'une aération, et "
+                "coûte 4 € le mètre carré de surface au sol.",
+                "Combien de temps faut-il quitter l'appartement ?",
+                "Comptez la durée du traitement plus deux à trois heures d'aération : une "
+                "demi-journée pour un appartement neuillysséen courant. Ni personne, ni animaux, "
+                "ni plantes à l'intérieur pendant l'opération. En copropriété, prévenez le "
+                "gardien : l'odeur caractéristique de l'ozone peut se percevoir sur le palier."),
+            "nettoyage-fin-de-chantier": (
+                "Les rénovations d'appartements haussmanniens neuillysséens sont lourdes : reprise "
+                "de parquet, déplacement de cloisons, ponçage d'enduits. Elles laissent une "
+                "poussière de plâtre extrêmement fine, qui se loge dans les moulures, les "
+                "gorges de corniche et les rainures de parquet, et que l'aspirateur domestique "
+                "remet en suspension au lieu de la retirer.",
+                "Nous intervenons en deux passages dès qu'il y a eu de la plâtrerie ou du ponçage. "
+                "La poussière retombe pendant vingt-quatre à quarante-huit heures : un passage "
+                "unique donne un logement propre le soir et poussiéreux le lendemain. Nous "
+                "l'annonçons au devis plutôt que de vous laisser le découvrir.",
+                "Pourquoi deux passages plutôt qu'un seul, plus long ?",
+                "Parce que le problème n'est pas la durée mais le temps de retombée. Tant que la "
+                "poussière de plâtre est en suspension, elle se redépose sur ce qui vient d'être "
+                "nettoyé. Le premier passage retire l'essentiel, le second, un à deux jours plus "
+                "tard, reprend ce qui est retombé. C'est ce qui fait la différence à la remise des clés."),
+        },
+    },
+    {
+        "slug": "boulogne-billancourt", "nom": "Boulogne-Billancourt", "cp": "92100",
+        "dept": "92", "lat": 48.8352, "lon": 2.2409,
+        "profil": "Boulogne-Billancourt est la plus peuplée des communes des Hauts-de-Seine, et "
+                  "l'une des plus contrastées : immeubles modernes du Trapèze et de l'île "
+                  "Seguin d'un côté, maisons d'architecte et immeubles Art déco du vieux "
+                  "Boulogne de l'autre. Beaucoup d'actifs en horaires étendus, et un tissu de "
+                  "sociétés de production et de bureaux hérité des studios.",
+        "acces": "Les programmes récents du Trapèze disposent de parkings accessibles et de locaux "
+                 "de service, ce qui simplifie l'intervention. Dans le vieux Boulogne, le "
+                 "stationnement est plus tendu : nous prévoyons le créneau en conséquence et nous "
+                 "venons autonomes en eau et en électricité.",
+        "angles": {
+            "nettoyage-voiture": (
+                "Boulogne cumule les deux situations qui abîment un habitacle : des trajets "
+                "courts et répétés dans un trafic dense, et un stationnement en sous-sol où la "
+                "voiture ne sèche jamais complètement. Résultat, une odeur de renfermé qui "
+                "s'installe et des plastiques qui grisent sans que la voiture soit sale au sens "
+                "où on l'entend.",
+                "Nous nettoyons sur votre place, en surface comme en sous-sol. La vapeur haute "
+                "température traite les sièges tissu et les surfaces de contact sans produit "
+                "agressif, et les plastiques reçoivent une protection qui les empêche de "
+                "reblanchir au premier soleil. L'option ozone règle le reste de l'odeur.",
+                "Combien de temps faut-il prévoir sur place ?",
+                "De une à trois heures selon la formule : environ une heure pour un extérieur, "
+                "près de trois pour un Intérieur Prestige avec cuir. Nous n'avons besoin ni de "
+                "votre prise ni d'un point d'eau, et la voiture reste sur sa place du début à "
+                "la fin de l'intervention."),
+            "nettoyage-canape": (
+                "Dans les appartements du Trapèze, les canapés sont souvent en tissu déperlant "
+                "de facture récente ; dans le vieux Boulogne, on trouve davantage de pièces "
+                "anciennes retapissées. Les deux demandent une méthode différente, et c'est "
+                "l'erreur la plus fréquente : appliquer à un velours ancien ce qui convient à "
+                "une microfibre moderne.",
+                "Nous relevons la composition et l'étiquette d'entretien avant de commencer, et "
+                "nous testons sur une zone cachée. L'injection-extraction convient à la grande "
+                "majorité des tissus ; sur une viscose ou une soie, qui perdent leur résistance "
+                "une fois mouillées, nous le disons et nous ne forçons pas.",
+                "Vous déplacez-vous pour un seul fauteuil ?",
+                "Oui, mais le déplacement pèse alors lourd dans le total : il n'est facturé "
+                "qu'une fois, quel que soit le nombre de pièces. Si vous avez un canapé, des "
+                "chaises ou un matelas à traiter, regroupez-les sur la même intervention — "
+                "c'est nettement plus avantageux qu'un fauteuil seul."),
+            "nettoyage-bateau": (
+                "Les berges boulonnaises et les abords de l'île Seguin accueillent des bateaux à "
+                "l'amarre longue durée. Un bateau qui ne navigue pas se salit différemment de "
+                "celui qui sort : les dépôts verts s'installent sur les bords ombragés, et le "
+                "gelcoat se ternit par oxydation plutôt que par frottement.",
+                "Nous traitons la coque, le pont et la sellerie comme trois chantiers distincts, "
+                "avec des produits adaptés au gelcoat, à l'inox marin et au teck. Sur un bateau "
+                "hivernant hors d'eau, la période est d'ailleurs idéale pour reprendre la coque "
+                "en profondeur.",
+                "Faut-il sortir le bateau de l'eau ?",
+                "Non, pas pour un nettoyage courant : nous intervenons à quai. La sortie d'eau "
+                "n'est utile que pour reprendre les œuvres vives, sous la ligne de flottaison. "
+                "Nous vous le disons au devis, établi après photos ou après être passés voir le "
+                "bateau à son poste."),
+            "nettoyage-terrasse": (
+                "Les programmes récents de Boulogne ont multiplié les terrasses et les toits "
+                "accessibles, souvent en bois composite ou en dalles sur plots. Ces supports "
+                "posent une question particulière : l'eau de lavage part sous les dalles, et un "
+                "décapage trop violent déchausse les plots ou raye le composite.",
+                "Nous travaillons à pression contrôlée, avec un anti-mousse à temps d'action "
+                "plutôt qu'en comptant sur la seule force du jet. Sur bois composite, le "
+                "nettoyage se fait dans le sens des lames et sans lance rotative — c'est ce qui "
+                "évite le velours blanchâtre caractéristique d'un composite maltraité.",
+                "Le bois composite peut-il être nettoyé au karcher ?",
+                "Pas à pleine pression, et jamais à la lance rotative. Le composite est un mélange "
+                "de bois et de polymère : un jet trop concentré arrache la matrice en surface et "
+                "laisse une zone plus claire, définitive. Nous descendons la pression et nous "
+                "compensons par le produit et le temps de pose."),
+            "nettoyage-vitres": (
+                "Le Trapèze et les immeubles récents de Boulogne ont de grandes surfaces vitrées "
+                "et des garde-corps toute hauteur. Elles se salissent vite — pluie, poussière "
+                "urbaine, proximité du périphérique — et se voient d'autant plus qu'elles sont "
+                "grandes : une trace sur une baie de trois mètres ne passe pas inaperçue.",
+                "L'eau osmosée que nous utilisons ne contient plus de calcaire : elle sèche sans "
+                "dépôt, ce qui permet de ne pas essuyer et donc de ne pas laisser de trace de "
+                "raclette. Jusqu'à trois niveaux, nous travaillons depuis le sol à la perche. "
+                "Au-delà, il faut une nacelle ou des cordistes, métiers que nous ne pratiquons pas.",
+                "Travaillez-vous les vitres des garde-corps en verre ?",
+                "Oui, elles font partie du même passage. Ce sont souvent elles qui donnent "
+                "l'impression que la terrasse est sale : traces de pluie, marques de mains, "
+                "dépôt calcaire au bas du panneau. Nous les comptons comme des vantaux dans le devis."),
+            "nettoyage-entreprise": (
+                "Boulogne accueille beaucoup de sociétés de production, d'agences et de bureaux "
+                "de taille moyenne, souvent installés dans des plateaux ouverts avec moquette. "
+                "La moquette est précisément ce qui vieillit le plus visiblement dans un bureau : "
+                "les couloirs de passage grisent et finissent par dessiner la circulation au sol.",
+                "Nous traitons les moquettes à l'injection-extraction, en dehors des heures "
+                "d'ouverture, avec plusieurs heures de séchage devant nous. Vitrerie, sanitaires, "
+                "cuisines et surfaces de contact peuvent entrer dans le même passage. Facturation "
+                "entreprise, en ponctuel ou en régulier.",
+                "Une moquette de plateau peut-elle être traitée un week-end ?",
+                "C'est même la meilleure fenêtre : l'extraction demande quatre à six heures de "
+                "séchage en pièce aérée, ce qui est incompatible avec un plateau occupé. Nous "
+                "intervenons le samedi ou le dimanche sans supplément, et vos équipes retrouvent "
+                "le lundi une moquette sèche."),
+            "traitement-ozone": (
+                "Sur un plateau de bureaux ou un appartement boulonnais reloué rapidement, "
+                "l'odeur est souvent le seul défaut qui reste après le nettoyage — et c'est "
+                "celui qui se remarque. Tabac, cuisine, humidité de sous-sol : elle a imprégné "
+                "les textiles, les faux plafonds et les gaines de ventilation.",
+                "Le traitement se fait sur un local vide, générateur dimensionné sur le volume, "
+                "puis aération avant restitution. Nous ne prétendons pas désinfecter : ce que "
+                "l'ozone fait très bien, c'est détruire les molécules odorantes par oxydation, "
+                "ce qui est déjà l'essentiel du problème.",
+                "L'ozone remplace-t-il le nettoyage ?",
+                "Non, et personne ne devrait vous le vendre ainsi. Il traite ce qui a imprégné, "
+                "pas ce qui est encore là : si la source de l'odeur reste en place — moquette "
+                "souillée, zone humide active — elle recommencera à émettre dès le lendemain. Le "
+                "nettoyage vient d'abord, l'ozone ensuite."),
+            "nettoyage-fin-de-chantier": (
+                "Boulogne est en rénovation permanente : surélévations, réhabilitations "
+                "d'immeubles anciens, aménagements de plateaux tertiaires. Le point commun de "
+                "ces chantiers est la poussière de ponçage, qui s'infiltre dans les rails de "
+                "menuiserie, les grilles de ventilation et les luminaires encastrés.",
+                "Nous reprenons les sols, les menuiseries, les vitrages intérieurs et extérieurs, "
+                "les sanitaires et les points de contact, en deux passages quand il y a eu de la "
+                "plâtrerie. Nous évacuons les résidus fins et les protections de chantier ; les "
+                "gravats lourds relèvent d'une benne, à prévoir séparément.",
+                "Intervenez-vous avant la livraison d'un plateau de bureaux ?",
+                "Oui, c'est un cas fréquent ici. Nous calons l'intervention sur la date de "
+                "livraison en tenant compte du délai de retombée : le second passage doit tomber "
+                "après que la poussière est redescendue, et avant l'arrivée du mobilier. Dites-nous "
+                "la date de réception, nous remontons le planning depuis là."),
+        },
+    },
+    {
+        "slug": "levallois-perret", "nom": "Levallois-Perret", "cp": "92300",
+        "dept": "92", "lat": 48.8939, "lon": 2.2880,
+        "profil": "Levallois-Perret est l'une des communes les plus densément peuplées d'Europe : "
+                  "des immeubles serrés, beaucoup d'appartements de deux à quatre pièces, une "
+                  "population jeune et active, et un tissu de sièges sociaux concentré autour du "
+                  "front de Seine. Les logements y tournent vite, à la location comme à la vente.",
+        "acces": "La densité se paie au stationnement : peu de places en surface, des parkings "
+                 "souterrains étroits et des ascenseurs de petite capacité. Nous venons en "
+                 "véhicule léger avec un matériel qui passe en ascenseur, et nous calons le "
+                 "créneau en dehors des heures de pointe quand c'est possible.",
+        "angles": {
+            "nettoyage-voiture": (
+                "À Levallois, la voiture sert surtout le week-end et passe la semaine en "
+                "sous-sol. C'est le pire régime pour un habitacle : l'humidité ne s'évacue pas, "
+                "les odeurs s'installent dans les mousses, et la carrosserie reçoit la poussière "
+                "de freinage du parking sans jamais recevoir de pluie pour la rincer.",
+                "Nous intervenons sur votre place de parking, sans que le véhicule ait à sortir. "
+                "L'aspiration, la vapeur et le traitement des plastiques se font en autonomie "
+                "complète : ni prise, ni point d'eau à fournir. Sur un habitacle qui sent le "
+                "renfermé, l'option ozone à 30 € règle ce que le nettoyage seul ne règle pas.",
+                "Faut-il que je sois présent pendant l'intervention ?",
+                "Non, si vous nous laissez l'accès au parking et les clés du véhicule. Beaucoup "
+                "de clients levalloisiens nous ouvrent le matin et récupèrent la voiture le soir. "
+                "Nous vous envoyons des photos à la fin, et le règlement se fait après, une fois "
+                "le résultat constaté."),
+            "nettoyage-canape": (
+                "Dans des appartements de cette taille, le canapé est le meuble le plus sollicité "
+                "de la maison : on y mange, on y travaille, on y dort parfois. Sur un deux-pièces "
+                "levalloisien, il encaisse en trois ans ce qu'un canapé de maison encaisse en dix, "
+                "et l'assise s'affaisse en même temps qu'elle grise.",
+                "L'injection-extraction retire ce que l'aspirateur laisse : la poussière logée au "
+                "cœur de la fibre, les transferts de teinture, les auréoles de boisson. Le "
+                "traitement anti-acariens qui suit a un intérêt réel dans un logement dense et peu "
+                "aéré, davantage que dans une maison avec de grandes ouvertures.",
+                "Combien de temps un canapé met-il à sécher dans un petit appartement ?",
+                "Quatre à six heures en pièce aérée, un peu plus si l'assise est épaisse. Dans un "
+                "logement peu ventilé, ouvrez en grand pendant deux heures après notre départ : "
+                "c'est ce qui fait la différence. Nous n'utilisons pas de shampouineuse à eau "
+                "stagnante, justement parce que le séchage y serait interminable."),
+            "nettoyage-bateau": (
+                "Le port de Levallois, en amont de l'île de la Jatte, accueille des unités de "
+                "plaisance et des bateaux logements à l'année. L'amarrage permanent en milieu "
+                "urbain a une conséquence directe : la coque reçoit en continu les poussières de "
+                "circulation, qui forment un film gras que l'eau claire n'enlève pas.",
+                "Nous intervenons à quai, avec notre eau et notre électricité. Le gelcoat est "
+                "repris avec des produits dosés pour ne pas le mater, l'inox marin sans chlorures "
+                "— l'eau de Javel perce sa couche passive et provoque les piqûres de rouille — et "
+                "le teck dans le sens de la fibre.",
+                "Utilisez-vous de l'eau de Javel sur l'inox d'un bateau ?",
+                "Jamais. L'inox tient sa résistance d'une couche d'oxyde de chrome qui se "
+                "reconstitue seule, et les chlorures la percent : c'est ce qui crée les piqûres de "
+                "rouille qu'on voit sur les balcons et les chandeliers mal entretenus. Nous "
+                "travaillons avec des produits sans chlorures, dans le sens du brossage."),
+            "nettoyage-terrasse": (
+                "Les terrasses levalloisiennes sont des balcons et des toitures-terrasses de "
+                "petite surface, souvent encaissées entre deux immeubles. Peu de soleil, peu "
+                "d'air : la mousse et les lichens s'y installent vite, en particulier sur les "
+                "dalles gravillonnées et les margelles au nord.",
+                "Le décapage seul ne règle rien durablement sur ces surfaces : il retire la partie "
+                "visible et laisse les spores dans la porosité. Nous appliquons un anti-mousse à "
+                "temps d'action, puis nous rinçons à pression maîtrisée, en vérifiant d'abord que "
+                "l'évacuation encaissera le volume d'eau.",
+                "Mon balcon fait 6 m², est-ce que ça vaut un déplacement ?",
+                "Seul, c'est peu au regard des frais de déplacement. En revanche, un balcon se "
+                "combine très bien avec un nettoyage de vitres ou un canapé le même jour : le "
+                "déplacement n'est facturé qu'une fois. C'est ce que nous vous proposerons au devis."),
+            "nettoyage-vitres": (
+                "À Levallois, les vis-à-vis sont proches et les fenêtres nombreuses. Une vitre "
+                "sale s'y remarque davantage qu'ailleurs, simplement parce qu'on la regarde de "
+                "près. Les façades exposées aux axes de circulation reçoivent en plus un film "
+                "gras de particules, que le lave-vitre du commerce étale sans retirer.",
+                "L'eau osmosée retire ce film sans laisser de trace en séchant, puisqu'elle ne "
+                "contient plus de calcaire. Les appuis et les encadrements sont repris dans le "
+                "même geste : c'est de là que repart la coulure qui salit la vitre à la première "
+                "pluie, et c'est ce que la plupart des passages rapides oublient.",
+                "À quelle fréquence faire laver ses vitres ici ?",
+                "Deux à trois fois par an pour un appartement en étage, davantage sur une façade "
+                "donnant sur un axe passant. Ce n'est pas une question d'esthétique seule : le "
+                "film de particules attaque les joints à la longue. Sur une vitrine commerciale, "
+                "le rythme est mensuel, voire hebdomadaire."),
+            "nettoyage-entreprise": (
+                "Levallois concentre des sièges sociaux et des plateaux tertiaires sur un "
+                "territoire réduit. Les prestataires y sont nombreux, et les entreprises passent "
+                "souvent d'un contrat d'entretien à un besoin ponctuel : une remise à niveau avant "
+                "un déménagement, une visite client, un audit.",
+                "C'est exactement le type d'intervention que nous prenons : ponctuelle, chiffrée "
+                "d'avance, réalisée hors des heures d'ouverture. Moquettes en injection-extraction, "
+                "vitrerie intérieure et extérieure jusqu'à trois niveaux, sanitaires, cuisines et "
+                "surfaces de contact. Sans engagement de durée.",
+                "Faites-vous de l'entretien régulier ou seulement du ponctuel ?",
+                "Les deux. Beaucoup de clients commencent par une remise à niveau ponctuelle puis "
+                "passent en régulier — hebdomadaire ou mensuel — quand ils ont vu le résultat. "
+                "Nous n'imposons pas d'engagement de durée : si le service ne convient pas, vous "
+                "arrêtez."),
+            "traitement-ozone": (
+                "À Levallois, les logements changent souvent de mains, et l'odeur du locataire "
+                "précédent est un motif de renégociation courant. Tabac dans un studio mal aéré, "
+                "animal, cuisine sans hotte efficace : ces odeurs ont imprégné les mousses, les "
+                "rideaux et les gaines de VMC, hors de portée d'un nettoyage de surface.",
+                "Le traitement à l'ozone se facture 4 € le mètre carré de surface au sol — 30 m² "
+                "reviennent à 120 €, un studio de 25 m² à 100 €. Il se fait sur un logement vide, "
+                "suivi d'une aération. Sur un habitacle automobile, le forfait est de 30 € en "
+                "option d'un nettoyage intérieur.",
+                "Puis-je faire traiter un studio entre deux locataires ?",
+                "C'est le cas le plus fréquent. Prévoyez une demi-journée : le traitement puis "
+                "l'aération. L'idéal est de le programmer après l'état des lieux de sortie et le "
+                "nettoyage, et avant les visites — c'est à ce moment que l'absence d'odeur pèse "
+                "le plus dans la décision."),
+            "nettoyage-fin-de-chantier": (
+                "Les rénovations levalloisiennes se font en site contraint : ascenseur étroit, "
+                "voisins immédiats, peu de place pour stocker. Le nettoyage final hérite de ces "
+                "contraintes, avec en plus une poussière de plâtre qui a eu tout le temps de se "
+                "répartir dans un volume réduit.",
+                "Nous reprenons sols, menuiseries, vitrages, sanitaires et points de contact, en "
+                "deux passages dès qu'il y a eu du ponçage. Le matériel passe en ascenseur "
+                "standard, et nous évacuons les résidus fins et les protections. Les gravats "
+                "lourds relèvent d'une benne, à prévoir de votre côté.",
+                "Pouvez-vous intervenir sans monopoliser l'ascenseur ?",
+                "Oui. Notre matériel tient dans une cabine standard et nous montons en une à deux "
+                "fois, en dehors des heures de pointe de l'immeuble. C'est un point que nous "
+                "réglons à la prise de rendez-vous : en copropriété dense, il vaut mieux prévenir "
+                "le gardien que s'expliquer après."),
+        },
+    },
+    {
+        "slug": "puteaux", "nom": "Puteaux", "cp": "92800",
+        "dept": "92", "lat": 48.8846, "lon": 2.2386,
+        "profil": "Puteaux porte la moitié du quartier d'affaires de La Défense, et bascule en "
+                  "quelques rues vers un tissu résidentiel plus calme, entre le vieux village et "
+                  "l'île de Puteaux. Deux mondes qui ne se nettoient pas de la même façon : des "
+                  "tours de bureaux d'un côté, des maisons et des immeubles familiaux de l'autre.",
+        "acces": "À La Défense, tout passe par la logistique du site : badge, quai de livraison, "
+                 "créneau imposé. Nous nous y plions et nous demandons ces éléments au devis. "
+                 "Côté résidentiel, le stationnement est plus simple, sauf aux abords immédiats "
+                 "de la dalle.",
+        "angles": {
+            "nettoyage-voiture": (
+                "Une voiture garée dans les parkings de La Défense encaisse un régime particulier : "
+                "poussière de freinage en suspension, ventilation permanente, et aucune exposition "
+                "à la pluie. La carrosserie se couvre d'un voile qui s'incruste, et l'habitacle "
+                "accumule sans jamais se rincer.",
+                "Nous intervenons directement sur la place de parking, en surface comme en "
+                "sous-sol, avec notre eau et notre électricité. Pour un salarié de La Défense, "
+                "c'est l'occasion de faire nettoyer la voiture pendant la journée de travail, "
+                "sans y consacrer une minute de son week-end.",
+                "Intervenez-vous dans les parkings de La Défense ?",
+                "Oui, sous réserve que l'accès nous soit ouvert : la plupart des parkings du "
+                "quartier demandent un badge ou un accompagnement. Dites-nous le niveau et la "
+                "place à la réservation, et prévenez le gardiennage. Notre véhicule passe les "
+                "hauteurs limitées habituelles."),
+            "nettoyage-canape": (
+                "Côté résidentiel, Puteaux mélange des maisons de ville anciennes et des "
+                "appartements familiaux. Les canapés y vivent longtemps et se transmettent : "
+                "beaucoup de pièces de qualité, parfois retapissées, sur lesquelles une méthode "
+                "trop agressive coûte plus cher que la salissure qu'elle enlève.",
+                "Nous relevons la matière et l'étiquette avant de commencer, et nous testons sur "
+                "une zone cachée. Le cuir et l'alcantara relèvent d'un protocole à pH neutre "
+                "appliqué au mousseur, jamais d'une injection-extraction : l'eau en excès est ce "
+                "qui craquelle un cuir, pas le produit.",
+                "Un canapé en cuir se nettoie-t-il comme un canapé en tissu ?",
+                "Non, c'est même l'opposé. Le tissu se traite à l'eau, en injection-extraction. Le "
+                "cuir est une peau tannée stabilisée en milieu acide : un produit alcalin attaque "
+                "sa finition, et l'eau en excès le raidit. Nous y appliquons un nettoyant à pH "
+                "neutre au mousseur, puis un nourrissage."),
+            "nettoyage-bateau": (
+                "L'île de Puteaux et les berges de Seine accueillent des bateaux à l'amarre, entre "
+                "plaisance et bateaux logements. Le voisinage du quartier d'affaires y ajoute une "
+                "contrainte que les ports de plaisance classiques ne connaissent pas : un dépôt "
+                "urbain gras et continu sur le pont et la superstructure.",
+                "Nous intervenons à quai, sans sortie d'eau pour un nettoyage courant. Coque, pont "
+                "et sellerie sont chiffrés séparément, après photos ou visite. L'inox est traité "
+                "sans chlorures et le teck dans le sens de la fibre, à brosse souple plutôt qu'à "
+                "la pression, qui creuse le bois tendre entre les veines.",
+                "Le nettoyage à haute pression abîme-t-il le teck ?",
+                "Oui, s'il est mal employé. Le teck est fait de veines dures et de bois tendre "
+                "entre elles : un jet puissant creuse le tendre et laisse un relief irrégulier "
+                "définitif. Nous travaillons à la brosse souple, dans le sens de la fibre, avec "
+                "un produit adapté — c'est plus long, et c'est la seule façon correcte."),
+            "nettoyage-terrasse": (
+                "Le vieux Puteaux a des terrasses et des cours pavées, les programmes récents des "
+                "toits-terrasses en dalles sur plots. Sur la dalle de La Défense et ses abords, "
+                "les surfaces extérieures reçoivent en plus un dépôt urbain que la pluie fixe au "
+                "lieu de le rincer.",
+                "Nous ajustons la pression à la matière : pierre reconstituée, béton désactivé, "
+                "bois exotique et composite n'encaissent pas la même chose. Sur un toit-terrasse, "
+                "nous vérifions d'abord l'étanchéité et les évacuations — un nettoyage qui "
+                "provoque une infiltration coûte infiniment plus cher qu'il ne rapporte.",
+                "Peut-on nettoyer une terrasse sur plots sans la démonter ?",
+                "Oui dans la plupart des cas : le lavage se fait dalles en place, à pression "
+                "modérée pour ne pas déchausser les plots. Si des dalles sont déjà instables ou si "
+                "le lit de gravier est apparent, nous vous le signalons : mieux vaut reposer les "
+                "plots avant qu'après."),
+            "nettoyage-vitres": (
+                "La Défense, ce sont des façades vitrées à perte de vue — mais l'essentiel se "
+                "traite en nacelle ou en cordiste, deux métiers réglementés que nous ne pratiquons "
+                "pas. Ce que nous faisons, ce sont les rez-de-chaussée, les halls, les vitrines "
+                "et les bureaux jusqu'à trois niveaux, depuis le sol.",
+                "Nous le disons franchement plutôt que de prendre un chantier que nous ne pourrions "
+                "pas tenir. Sur les surfaces accessibles, l'eau osmosée et la perche télescopique "
+                "donnent un résultat sans trace, y compris sur les grandes surfaces vitrées des "
+                "halls d'immeuble et des commerces de la dalle.",
+                "Lavez-vous les vitres des tours de La Défense ?",
+                "Non, pas en hauteur : au-delà de trois niveaux il faut une nacelle ou des "
+                "cordistes, qui relèvent d'habilitations que nous n'avons pas. Nous prenons en "
+                "revanche tout ce qui se traite depuis le sol — halls, rez-de-chaussée, vitrines, "
+                "bureaux bas — et nous vous le disons avant, pas pendant."),
+            "nettoyage-entreprise": (
+                "La Défense est le premier quartier d'affaires européen, et la plupart des tours y "
+                "ont un prestataire d'entretien en titre. Le besoin que nous couvrons est autre : "
+                "l'intervention ponctuelle et rapide qu'un contrat-cadre traite mal — une "
+                "moquette de salle de réunion, un plateau avant une visite, une remise à niveau "
+                "après un déménagement.",
+                "Nous intervenons hors des heures d'ouverture, badge et créneau de livraison "
+                "réglés d'avance, avec facturation entreprise. Moquettes en injection-extraction, "
+                "sanitaires, cuisines, surfaces de contact et vitrerie accessible. Devis ferme, "
+                "sans engagement de durée.",
+                "Travaillez-vous avec les contraintes d'accès de La Défense ?",
+                "Oui : badge visiteur, quai de livraison, créneau imposé, accompagnement par le "
+                "gardiennage. Nous demandons ces éléments au moment du devis pour ne pas les "
+                "découvrir sur place. C'est la principale cause de rendez-vous manqué sur ce "
+                "quartier, et elle est facile à éviter."),
+            "traitement-ozone": (
+                "Dans un bureau, l'odeur vient rarement de là où on la cherche : une moquette "
+                "restée humide, une kitchenette sans extraction, un local poubelle mitoyen, ou "
+                "une reprise d'air qui redistribue l'odeur d'un étage à l'autre. Le nettoyage de "
+                "surface n'y change rien, parce que la source est ailleurs.",
+                "Nous commençons par chercher d'où vient l'odeur, et nous le disons si l'ozone "
+                "n'est pas la réponse. Quand il l'est, le traitement se fait sur un local vide, "
+                "générateur dimensionné sur le volume, à 4 € le mètre carré, suivi d'une aération "
+                "avant que vos équipes reviennent.",
+                "Un plateau de bureaux peut-il être traité un week-end ?",
+                "Oui, et c'est la fenêtre idéale : le local doit être vide de toute présence "
+                "pendant le traitement et son aération. Nous intervenons le samedi, le local est "
+                "restitué aéré, et vos équipes reviennent le lundi sans avoir perdu une heure de "
+                "production."),
+            "nettoyage-fin-de-chantier": (
+                "Les aménagements de plateaux à La Défense se terminent toujours dans l'urgence, "
+                "entre la fin des travaux et l'arrivée du mobilier. Le nettoyage final est le "
+                "dernier maillon, celui qu'on comprime — et c'est précisément celui qui décide de "
+                "l'impression à la livraison.",
+                "Nous calons l'intervention sur la date de réception en remontant le planning : "
+                "premier passage après les travaux, second après la retombée de la poussière, "
+                "avant le mobilier. Sols, menuiseries, vitrages, sanitaires, luminaires et grilles "
+                "de ventilation. Résidus fins et protections évacués.",
+                "Combien de temps avant la livraison faut-il nous prévoir ?",
+                "Idéalement quarante-huit heures, pour caler les deux passages de part et d'autre "
+                "de la retombée de poussière. En dessous de vingt-quatre heures, un seul passage "
+                "est possible mais nous vous prévenons du résultat : propre le soir, poussiéreux "
+                "le lendemain. Autant le savoir avant de s'engager sur une date."),
+        },
+    },
+    {
+        "slug": "saint-cloud", "nom": "Saint-Cloud", "cp": "92210",
+        "dept": "92", "lat": 48.8456, "lon": 2.2189,
+        "profil": "Saint-Cloud est une commune de coteau : des maisons et des hôtels particuliers "
+                  "étagés au-dessus de la Seine, de grands jardins, des propriétés anciennes en "
+                  "pierre meulière et un parc domanial qui borde la ville. L'habitat individuel "
+                  "y domine, avec des extérieurs qui pèsent autant que l'intérieur.",
+        "acces": "Les accès sont en pente et souvent étroits, avec des entrées de propriété en "
+                 "chicane. Nous venons en véhicule léger et nous déroulons nos tuyaux depuis la "
+                 "rue quand l'entrée ne se franchit pas. Prévenez-nous si l'accès est particulier, "
+                 "nous adaptons le matériel.",
+        "angles": {
+            "nettoyage-voiture": (
+                "À Saint-Cloud, les voitures dorment souvent dehors ou sous un auvent, à proximité "
+                "immédiate d'arbres. C'est la configuration qui produit le plus de dégâts "
+                "discrets : résine de platane et de tilleul, fientes, pollen, sève. Autant de "
+                "dépôts acides qui marquent le vernis s'ils restent en place.",
+                "Nous intervenons à domicile, dans l'allée ou devant le portail, en autonomie "
+                "complète. La résine et les fientes se retirent avec un produit dédié et du temps "
+                "de pose, jamais au grattage. Un dépôt laissé plusieurs semaines peut avoir "
+                "marqué le vernis de façon définitive : nous vous le dirons avant, pas après.",
+                "Les taches de résine partent-elles complètement ?",
+                "Le plus souvent oui, si elles n'ont pas séjourné des mois. La résine s'enlève au "
+                "solvant doux avec un temps de pose, pas à la force du bras. Quand elle a gravé le "
+                "vernis — cela arrive après un été entier sous un tilleul — il reste une marque "
+                "que seul un polissage peut atténuer. Nous le disons au diagnostic."),
+            "nettoyage-canape": (
+                "Les maisons clodoaldiennes ont de grands séjours, souvent avec des canapés "
+                "anciens ou de bonne facture, et fréquemment des animaux. Le poil et l'odeur "
+                "s'installent dans les assises bien avant que le tissu paraisse sale, et "
+                "l'aspirateur domestique n'en retire que la couche de surface.",
+                "L'injection-extraction va chercher ce qui est logé au cœur de la fibre. Le "
+                "retrait des poils est traité en amont, mécaniquement, car ils encrassent "
+                "l'extraction. Sur une maison avec animaux, l'association textile plus ozone "
+                "donne un résultat que ni l'un ni l'autre n'obtient seul.",
+                "Que faire d'un canapé qui sent le chien ?",
+                "Deux étapes, dans cet ordre. D'abord l'injection-extraction, qui retire la "
+                "matière — sébum, poils, salissure — car tant qu'elle est là, l'odeur revient. "
+                "Ensuite seulement l'ozone, qui détruit les molécules odorantes ayant imprégné les "
+                "mousses. L'inverse ne tient pas plus de quelques jours."),
+            "nettoyage-bateau": (
+                "Le bord de Seine clodoaldien et les ports voisins abritent des unités de "
+                "plaisance sortant peu. Sous les arbres des berges, la configuration est "
+                "défavorable : ombre, humidité, chute de feuilles et de résine sur le pont et la "
+                "sellerie tout l'automne.",
+                "Nous intervenons à quai, avec notre eau et notre électricité. Le gelcoat oxydé se "
+                "reprend par étapes, la sellerie relève de nos méthodes textile ou cuir selon la "
+                "matière, et le teck se brosse dans le sens de la fibre plutôt que de se passer à "
+                "la pression, qui le creuse irrémédiablement.",
+                "Quelle est la meilleure période pour reprendre une coque ?",
+                "L'hivernage, et de loin, si le bateau sort de l'eau. On accède alors aux œuvres "
+                "vives, et le temps de séchage ne bloque pas une sortie. Sur un bateau resté à "
+                "quai, nous intervenons toute l'année, mais le résultat sur le gelcoat est plus "
+                "durable hors des mois humides."),
+            "nettoyage-terrasse": (
+                "C'est ici que Saint-Cloud se distingue : terrasses en pierre meulière, dallages "
+                "anciens, escaliers de jardin et murets, le tout sur un coteau boisé et humide. "
+                "La mousse y revient vite, et la pierre ancienne ne supporte pas le décapage "
+                "haute pression qu'on inflige à une dalle béton.",
+                "Sur pierre tendre, meulière et pierre reconstituée, nous descendons la pression "
+                "et nous compensons par un anti-mousse à temps d'action. La haute pression sur "
+                "une meulière ouvre sa porosité : elle paraît propre le jour même, et se "
+                "réencrasse deux fois plus vite l'année suivante. Nous ne la pratiquons pas.",
+                "Peut-on passer un nettoyeur haute pression sur de la meulière ?",
+                "Mieux vaut éviter. La meulière est poreuse par nature : un jet puissant arrache "
+                "la croûte de surface et ouvre les pores, ce qui accélère l'encrassement et le "
+                "retour de la mousse. Nous travaillons à pression réduite, avec un produit à "
+                "temps de pose — c'est plus lent et le résultat tient bien plus longtemps."),
+            "nettoyage-vitres": (
+                "Les maisons de coteau ont souvent de grandes baies orientées vers la vue, des "
+                "vérandas et des fenêtres de toit. Ce sont les vitrages les plus exposés : pluie, "
+                "poussière, chute de feuilles, et une saleté qui se remarque immédiatement puisque "
+                "toute la pièce est tournée vers eux.",
+                "L'eau osmosée sèche sans dépôt calcaire, donc sans trace. La perche télescopique "
+                "permet de traiter depuis le sol jusqu'à trois niveaux, y compris des vérandas et "
+                "des baies difficiles d'accès. Au-delà, ou sur une toiture praticable, nous "
+                "renvoyons vers des métiers habilités.",
+                "Nettoyez-vous les vérandas et les fenêtres de toit ?",
+                "Les vérandas, oui, à l'intérieur comme à l'extérieur, toiture comprise quand elle "
+                "se traite depuis le sol à la perche. Les fenêtres de toit se font depuis "
+                "l'intérieur, et depuis l'extérieur seulement si l'accès est sûr sans matériel "
+                "d'élévation. Nous jugeons sur photos avant de nous engager."),
+            "nettoyage-entreprise": (
+                "Saint-Cloud compte peu de plateaux tertiaires mais beaucoup de professions "
+                "libérales installées en maison ou en rez-de-chaussée : cabinets, études, petites "
+                "structures. Le local y est souvent l'extension de l'habitation, et se juge avec "
+                "la même exigence.",
+                "Nous intervenons hors des heures d'ouverture, en ponctuel ou en régulier, avec "
+                "facturation entreprise. Moquettes, sols durs, vitrerie, sanitaires et surfaces "
+                "de contact. La taille réduite de ces locaux rend le passage régulier "
+                "particulièrement efficace : peu de temps, à intervalle court.",
+                "Quel rythme pour un cabinet de deux personnes ?",
+                "Un passage hebdomadaire suffit généralement, avec une remise à niveau complète "
+                "deux fois par an sur les moquettes et la vitrerie. Nous préférons un rythme "
+                "tenable à un contrat surdimensionné : c'est plus honnête, et vous gardez du "
+                "budget pour les interventions qui comptent vraiment."),
+            "traitement-ozone": (
+                "Dans une maison de coteau, l'humidité est le sujet récurrent : sous-sols "
+                "semi-enterrés, caves, buanderies. L'odeur de renfermé s'y installe et remonte "
+                "dans les pièces de vie par la cage d'escalier, sans que la source soit visible "
+                "dans les pièces où on la sent.",
+                "Nous cherchons d'abord d'où vient l'odeur. Si une zone humide est encore active, "
+                "l'ozone ne réglera rien durablement et nous le disons : il faut traiter la cause "
+                "d'abord. Une fois le support sec, le traitement détruit les molécules odorantes "
+                "qui ont imprégné, à 4 € le mètre carré de surface au sol.",
+                "L'ozone peut-il traiter une cave humide ?",
+                "Il traite l'odeur, pas l'humidité. Si l'infiltration est encore active, l'odeur "
+                "reviendra en quelques semaines : c'est de l'argent dépensé pour rien, et nous "
+                "vous le dirons plutôt que de prendre la commande. Une fois l'assèchement fait, le "
+                "traitement est en revanche très efficace sur ce qui a imprégné."),
+            "nettoyage-fin-de-chantier": (
+                "Les rénovations clodoaldiennes touchent souvent des maisons anciennes : reprise "
+                "de meulière, création d'extension, réfection de charpente. Ces chantiers "
+                "produisent une poussière minérale abrasive, différente du plâtre, qui raye les "
+                "sols vitrifiés si on la balaie au lieu de l'aspirer.",
+                "Nous aspirons avant de laver, systématiquement, avec un matériel à filtration "
+                "fine. Sols, menuiseries, vitrages intérieurs et extérieurs, sanitaires et points "
+                "de contact sont repris en deux passages quand il y a eu du ponçage. Les résidus "
+                "fins et les protections de chantier sont évacués.",
+                "Vos équipes gèrent-elles aussi les extérieurs après travaux ?",
+                "Oui, dans la limite de nos prestations : terrasse, dallage, vitrages et abords "
+                "immédiats salis par le chantier. En revanche l'évacuation de gravats lourds et la "
+                "remise en état d'un terrain relèvent d'une benne et d'un paysagiste. Nous le "
+                "distinguons clairement au devis."),
+        },
+    },
+    {
+        "slug": "rueil-malmaison", "nom": "Rueil-Malmaison", "cp": "92500",
+        "dept": "92", "lat": 48.8768, "lon": 2.1801,
+        "profil": "Rueil-Malmaison est l'une des plus vastes communes des Hauts-de-Seine : "
+                  "quartiers pavillonnaires étendus, grandes propriétés autour du parc de "
+                  "Malmaison, bord de Seine à Bougival et un pôle tertiaire important à "
+                  "Rueil-sur-Seine. Beaucoup de maisons avec jardin, garage et extérieurs à "
+                  "entretenir.",
+        "acces": "L'accès y est le plus simple de notre zone premium : allées privatives, places "
+                 "devant la maison, garages. Nous nous garons au plus près et nous travaillons "
+                 "sur place. La contrainte est ailleurs : la commune est étendue, il vaut mieux "
+                 "regrouper plusieurs prestations sur une même venue.",
+        "angles": {
+            "nettoyage-voiture": (
+                "Les foyers rueillois ont souvent deux véhicules, dont un qui sert peu et reste au "
+                "garage ou dans l'allée. C'est celui-là qui pose problème : un habitacle fermé et "
+                "peu utilisé développe une odeur de renfermé, et une carrosserie sous les arbres "
+                "accumule résine et fientes sans jamais être rincée.",
+                "Nous nettoyons les deux voitures sur la même venue, sans que le déplacement soit "
+                "facturé deux fois. Intérieur à la vapeur et au pH adapté, extérieur avec séchage "
+                "sans trace, et l'option ozone pour le véhicule qui sent le renfermé. Tout se fait "
+                "dans votre allée, en autonomie complète.",
+                "Peut-on faire nettoyer deux voitures le même jour ?",
+                "Oui, et c'est ce que nous recommandons ici : les frais de déplacement ne sont "
+                "comptés qu'une fois. Deux Intérieur Essentiel enchaînés tiennent dans une "
+                "demi-journée. Nous prévoyons le créneau en conséquence quand vous nous le dites "
+                "à la réservation."),
+            "nettoyage-canape": (
+                "Les maisons rueilloises ont de grands séjours et souvent plusieurs assises : "
+                "canapé, fauteuils, banquette, sans compter les matelas à l'étage. Traiter "
+                "l'ensemble d'un coup a un intérêt économique direct, puisque le déplacement n'est "
+                "compté qu'une fois.",
+                "Nous chiffrons à la pièce : chaise 15 €, fauteuil 25 €, canapé 2 places 39 €, "
+                "3 places 49 €, angle 69 €, matelas 39 à 49 €. L'injection-extraction et le "
+                "traitement anti-acariens s'enchaînent sur la même venue, avec quatre à six heures "
+                "de séchage en pièce aérée.",
+                "Traitez-vous aussi les matelas des chambres ?",
+                "Oui, sur les deux faces, avec un traitement anti-acariens. C'est même l'ajout le "
+                "plus fréquent quand nous venons pour un canapé : le matelas est le textile le "
+                "plus chargé d'un logement, et il est celui auquel on pense en dernier. Comptez "
+                "39 € pour une place, 49 € pour deux."),
+            "nettoyage-bateau": (
+                "La boucle de Seine entre Rueil, Bougival et Chatou compte plusieurs points "
+                "d'amarrage et de petits ports. Les bateaux y stationnent longtemps, sous les "
+                "arbres pour beaucoup : dépôt vert sur les bords ombragés, feuilles dans les "
+                "gouttières de pont, sellerie qui prend l'humidité.",
+                "Nous intervenons à quai avec notre eau et notre électricité. Coque, pont et "
+                "sellerie sont trois chantiers distincts, chiffrés séparément après photos ou "
+                "visite. L'inox est traité sans chlorures, le teck brossé dans le sens de la "
+                "fibre, et le gelcoat repris sans être maté.",
+                "Intervenez-vous sur les ports de la boucle de Seine ?",
+                "Oui, de Rueil à Chatou et Bougival. La seule question est l'accès : pouvons-nous "
+                "approcher le véhicule à distance raisonnable du poste d'amarrage ? Cela "
+                "conditionne la durée et donc le devis. Précisez-le-nous à la prise de contact."),
+            "nettoyage-terrasse": (
+                "C'est la prestation la plus demandée à Rueil, et c'est logique : les jardins y "
+                "sont grands et les terrasses aussi. Bois exotique, composite, pierre "
+                "reconstituée, béton désactivé, allées gravillonnées — chaque support demande une "
+                "pression et un produit différents.",
+                "Un décapage seul laisse la mousse revenir en quelques semaines, parce qu'il "
+                "retire le visible et laisse les spores dans la porosité. Avec un anti-mousse à "
+                "temps d'action, comptez un à trois ans selon l'exposition et le drainage. Un "
+                "hydrofuge allonge encore l'intervalle sur les supports qui l'acceptent.",
+                "À quelle fréquence faut-il nettoyer une terrasse en bois ?",
+                "Une fois par an sur une exposition ombragée et humide, tous les deux ans au sud "
+                "et bien drainé. Le bon moment est le printemps, quand la mousse d'hiver est "
+                "installée mais pas encore incrustée. Un dégrisage plus lourd tous les trois à "
+                "cinq ans rend au bois exotique sa teinte d'origine."),
+            "nettoyage-vitres": (
+                "Les maisons rueilloises ont beaucoup d'ouvertures : baies sur jardin, vérandas, "
+                "portes-fenêtres, parfois une serre ou un abri de piscine. Le volume vitré y est "
+                "sans commune mesure avec un appartement, et un lavage complet représente une "
+                "vraie demi-journée.",
+                "Nous travaillons à l'eau osmosée, sans calcaire donc sans trace au séchage, avec "
+                "une perche télescopique qui couvre jusqu'à trois niveaux depuis le sol. Les "
+                "encadrements et les appuis sont repris dans le même passage : c'est de là que "
+                "repart la coulure qui salit la vitre à la pluie suivante.",
+                "Comment est calculé le prix sur une maison ?",
+                "Au vantail, après photos : c'est la seule façon d'être juste, parce qu'une "
+                "fenêtre à petits bois demande plusieurs fois le temps d'une baie de même surface. "
+                "Nous comptons les ouvrants, nous annonçons un montant ferme, et nous nous y "
+                "tenons le jour de l'intervention."),
+            "nettoyage-entreprise": (
+                "Rueil-sur-Seine accueille des sièges et des plateaux tertiaires en bord de Seine, "
+                "à côté d'un tissu de PME et de professions libérales réparties dans la commune. "
+                "Deux besoins différents : le plateau qui demande une remise à niveau ponctuelle, "
+                "et le petit local qui a besoin d'un passage régulier.",
+                "Nous prenons les deux, hors des heures d'ouverture, avec facturation entreprise "
+                "et sans engagement de durée. Moquettes en injection-extraction, sols durs, "
+                "vitrerie jusqu'à trois niveaux, sanitaires, cuisines et surfaces de contact. "
+                "Devis ferme établi après visite ou photos.",
+                "Faites-vous le nettoyage des vitres d'un bâtiment de bureaux ?",
+                "Jusqu'à trois niveaux depuis le sol, oui, à la perche et à l'eau osmosée. "
+                "Au-delà, il faut une nacelle ou des cordistes : ce sont des métiers réglementés "
+                "que nous ne pratiquons pas, et nous préférons vous le dire au devis plutôt que "
+                "de découvrir le problème le jour même."),
+            "traitement-ozone": (
+                "Dans une maison, l'odeur vient le plus souvent d'un animal, d'un sous-sol, d'une "
+                "cheminée ou d'un ancien fumeur. Elle a imprégné les textiles, les rideaux, les "
+                "mousses et parfois l'isolation — autant d'endroits qu'un nettoyage de surface "
+                "n'atteindra jamais.",
+                "Le traitement se fait maison vide, sans personne, ni animaux, ni plantes, "
+                "générateur dimensionné sur le volume, puis aération avant restitution. À 4 € le "
+                "mètre carré de surface au sol, une maison de 120 m² revient à 480 €. Nous "
+                "diagnostiquons d'abord : si la source est encore là, nous le disons.",
+                "Que faire des plantes et des animaux pendant le traitement ?",
+                "Ils doivent sortir, sans exception. Les plantes vertes sont les premières "
+                "victimes d'un traitement mal encadré, et l'ozone est un gaz irritant pour les "
+                "voies respiratoires — c'est pour cela qu'il se manipule en espace vide. Prévoyez "
+                "une demi-journée hors de la maison, aération comprise."),
+            "nettoyage-fin-de-chantier": (
+                "Extensions, surélévations, réfections de toiture : les chantiers rueillois "
+                "portent souvent sur des maisons occupées, où les travaux ont été cloisonnés "
+                "pièce par pièce. La poussière a donc circulé plus longtemps et plus loin qu'on "
+                "ne l'imagine, jusque dans les pièces restées fermées.",
+                "Nous reprenons l'ensemble, pas seulement la zone de travaux : sols, menuiseries, "
+                "vitrages, sanitaires, points de contact, grilles de ventilation. Deux passages "
+                "dès qu'il y a eu de la plâtrerie ou du ponçage, en tenant compte des vingt-quatre "
+                "à quarante-huit heures de retombée.",
+                "Faut-il vider la maison avant votre passage ?",
+                "Non, mais plus elle est dégagée, plus le résultat est complet. Sur une maison "
+                "occupée, nous travaillons pièce par pièce, en vous demandant simplement de "
+                "libérer les surfaces. Les meubles lourds restent en place : nous nettoyons "
+                "autour et dessous quand l'accès le permet."),
+        },
+    },
+    {
+        "slug": "versailles", "nom": "Versailles", "cp": "78000",
+        "dept": "78", "lat": 48.8014, "lon": 2.1301,
+        "profil": "Versailles est une ville de pierre et d'histoire : hôtels particuliers du "
+                  "quartier Saint-Louis, immeubles anciens à parquets et cheminées, maisons de "
+                  "ville à Montreuil et à Clagny. Beaucoup de biens classés ou en secteur "
+                  "protégé, avec les contraintes d'intervention qui vont avec, et un tissu de "
+                  "commerces et de professions libérales dense en centre-ville.",
+        "acces": "Le centre versaillais est contraint : rues étroites, stationnement réglementé, "
+                 "cours intérieures fermées. Nous venons en véhicule léger et nous déroulons "
+                 "depuis la rue quand la cour ne s'ouvre pas. Dites-nous si l'immeuble est en "
+                 "secteur protégé, cela conditionne le matériel que nous sortons.",
+        "angles": {
+            "nettoyage-voiture": (
+                "À Versailles, beaucoup de véhicules stationnent en rue ou en cour, sous les "
+                "arbres des avenues. C'est la configuration qui laisse le plus de traces : "
+                "résine, fientes, pollen au printemps, et une carrosserie qui ne sèche jamais "
+                "proprement entre deux averses.",
+                "Nous intervenons là où le véhicule est garé, y compris en rue, avec notre eau et "
+                "notre électricité — aucun branchement à demander à personne. Les dépôts acides "
+                "se retirent avec un produit dédié et un temps de pose, jamais au grattage, qui "
+                "marquerait le vernis plus sûrement que la fiente elle-même.",
+                "Pouvez-vous nettoyer une voiture garée dans la rue ?",
+                "Oui, c'est fréquent ici. Il nous faut simplement assez d'espace pour ouvrir les "
+                "portes et tourner autour du véhicule. Nous sommes autonomes en eau et en "
+                "électricité, et nous travaillons sans écoulement sur la chaussée. Prévoyez que "
+                "la place reste libre pendant la durée de l'intervention."),
+            "nettoyage-canape": (
+                "Les intérieurs versaillais conservent beaucoup de mobilier ancien : canapés à "
+                "structure bois, fauteuils tapissés, velours et tissus d'ameublement d'époque. Ce "
+                "sont précisément les pièces sur lesquelles une méthode standard fait des dégâts "
+                "coûteux — auréoles, rétrécissement, marque de poil.",
+                "Nous relevons la matière avant toute chose, et nous testons sur une zone cachée. "
+                "Sur un velours ancien, le sens du poil est repéré et respecté au séchage. Sur "
+                "une soie ou une viscose, qui perdent leur résistance mouillées, nous préférons "
+                "refuser plutôt que de prendre le risque — et nous le disons.",
+                "Traitez-vous les fauteuils anciens et les tissus d'époque ?",
+                "Avec prudence, et après examen. Beaucoup de tissus anciens supportent une "
+                "extraction douce ; certains non, en particulier les soies et les tissus dont la "
+                "teinture n'est pas stable. Nous testons systématiquement sur une zone cachée, et "
+                "si le test est mauvais, nous nous arrêtons là. Un refus argumenté vaut mieux "
+                "qu'une pièce abîmée."),
+            "nettoyage-terrasse": (
+                "Versailles, c'est de la pierre : terrasses en dallage ancien, cours pavées, "
+                "escaliers et margelles. Ces supports sont poreux et souvent protégés, et ils ne "
+                "supportent pas le décapage haute pression qui convient à une dalle béton "
+                "contemporaine.",
+                "Sur pierre ancienne, nous descendons la pression et nous laissons travailler un "
+                "anti-mousse à temps d'action. La haute pression ouvre la porosité : la surface "
+                "paraît propre le jour même et se réencrasse deux fois plus vite. Sur un bien en "
+                "secteur protégé, c'est aussi une question de conservation, pas seulement "
+                "d'aspect.",
+                "Une cour pavée ancienne peut-elle être nettoyée sans risque ?",
+                "Oui, à condition de ne pas la décaper. Nous travaillons à pression réduite avec "
+                "un produit à temps de pose, ce qui retire la mousse et le noir sans déchausser "
+                "les pavés ni creuser les joints de sable. Sur un pavage ancien, le lessivage des "
+                "joints est le vrai risque, et il est irréversible."),
+            "nettoyage-vitres": (
+                "Le patrimoine versaillais a conservé énormément de fenêtres à petits bois, de "
+                "croisées anciennes et de grandes hauteurs sous plafond. C'est le vitrage le plus "
+                "long à traiter correctement : chaque carreau demande son passage, et les mastics "
+                "anciens relâchent une poussière qui coule sur la vitre pendant le lavage.",
+                "Nous comptons au vantail et non au mètre carré, parce qu'un tarif à la surface "
+                "serait faux dans un sens comme dans l'autre sur ce type de menuiserie. L'eau "
+                "osmosée sèche sans trace, et les bois et mastics sont repris avec ménagement, "
+                "sans détremper une menuiserie ancienne.",
+                "Une croisée ancienne supporte-t-elle un lavage à l'eau ?",
+                "Oui, si l'on ne la noie pas. Le risque sur une menuiserie ancienne n'est pas "
+                "l'eau mais la stagnation : dans une feuillure, elle fait gonfler le bois et "
+                "décoller le mastic. Nous travaillons avec peu d'eau et nous essuyons les "
+                "feuillures — c'est plus lent, et c'est ce que le bois ancien demande."),
+            "nettoyage-entreprise": (
+                "Le centre de Versailles concentre des commerces, des cabinets et des études "
+                "installés dans des immeubles anciens. Les vitrines y comptent double : la "
+                "clientèle est passante, et une devanture ternie se remarque dans une rue de "
+                "pierre claire.",
+                "Nous intervenons avant l'ouverture ou après la fermeture, sans supplément, en "
+                "ponctuel ou en régulier. Vitrines, sols, sanitaires et surfaces de contact, avec "
+                "facturation entreprise. Sur une devanture commerciale, un passage hebdomadaire "
+                "ou bimensuel tient le résultat mieux qu'un grand nettoyage trimestriel.",
+                "À quelle fréquence nettoyer une vitrine de commerce ?",
+                "Hebdomadaire sur une rue passante, bimensuel sur une rue calme. Une vitrine se "
+                "salit par les mains, la pluie et les projections du caniveau, et ces trois "
+                "sources agissent en continu. Un rythme court et régulier coûte moins cher et "
+                "rend mieux qu'une remise à niveau espacée."),
+            "traitement-ozone": (
+                "Dans un immeuble ancien, l'odeur s'installe dans ce qui est poreux et ancien : "
+                "parquets, plâtres, cheminées condamnées, rideaux. Le tabac d'un occupant "
+                "précédent peut se sentir des années après, et aucun nettoyage de surface n'y "
+                "change quoi que ce soit.",
+                "L'ozone va partout où l'air va, y compris dans les conduits et les rembourrages, "
+                "et détruit la molécule odorante au lieu de la masquer. Traitement sur logement "
+                "vide, à 4 € le mètre carré de surface au sol, suivi d'une aération. Sur un bien "
+                "remis en vente, c'est souvent l'intervention au meilleur rapport.",
+                "Le tabac d'un ancien occupant part-il vraiment ?",
+                "Oui, si la source a été retirée. Le tabac froid, ce sont des phénols et des "
+                "dérivés de nicotine déposés sur toutes les surfaces : il faut d'abord laver ce "
+                "qui est lavable — murs, sols, vitres — puis traiter à l'ozone ce qui a imprégné "
+                "en profondeur. Dans cet ordre, le résultat tient."),
+            "nettoyage-fin-de-chantier": (
+                "Rénover à Versailles, c'est souvent travailler sur du bâti ancien : reprise de "
+                "parquet, réfection d'enduits à la chaux, restauration de menuiseries. Ces "
+                "chantiers produisent une poussière minérale fine, plus abrasive que le plâtre, "
+                "qui raye un parquet vitrifié si on la balaie au lieu de l'aspirer.",
+                "Nous aspirons systématiquement avant de laver, avec une filtration fine, et nous "
+                "reprenons moulures, gorges de corniche et rainures de parquet où cette poussière "
+                "se loge. Deux passages dès qu'il y a eu du ponçage, en tenant compte du délai de "
+                "retombée.",
+                "Comment nettoyez-vous un parquet ancien après travaux ?",
+                "À l'aspiration d'abord, jamais au balai : la poussière minérale se comporte comme "
+                "un abrasif sous la brosse et raye le vitrificateur. Ensuite, un lavage très peu "
+                "humide, car un parquet ancien n'aime pas l'eau stagnante dans ses rainures. Le "
+                "geste compte ici plus que le produit."),
+        },
+    },
+    {
+        "slug": "saint-germain-en-laye", "nom": "Saint-Germain-en-Laye", "cp": "78100",
+        "dept": "78", "lat": 48.8989, "lon": 2.0942,
+        "profil": "Saint-Germain-en-Laye combine un centre ancien dense autour du château, des "
+                  "quartiers pavillonnaires étendus vers la forêt, et de grandes propriétés sur "
+                  "les coteaux dominant la Seine. La forêt domaniale, qui borde la ville sur "
+                  "presque tout un côté, pèse directement sur l'entretien des extérieurs et des "
+                  "véhicules.",
+        "acces": "Le centre est contraint, la périphérie pavillonnaire très accessible. Nous "
+                 "adaptons le créneau : centre-ville tôt le matin, quartiers résidentiels dans la "
+                 "journée. La commune étant étendue, regrouper plusieurs prestations sur une même "
+                 "venue change sensiblement le total.",
+        "angles": {
+            "nettoyage-voiture": (
+                "La proximité immédiate de la forêt se voit sur les carrosseries : sève, résine, "
+                "pollen au printemps, feuilles et humidité en automne. Un véhicule garé sous les "
+                "arbres à Saint-Germain accumule en une saison ce qu'une voiture de ville met "
+                "deux ans à prendre.",
+                "Nous intervenons à domicile, allée ou garage, en autonomie complète. Les dépôts "
+                "acides se retirent avec un produit dédié et un temps de pose, et la carrosserie "
+                "reçoit ensuite une protection qui ralentit l'accrochage suivant. Sur un véhicule "
+                "sous arbres, c'est ce dernier point qui fait durer le résultat.",
+                "À quelle fréquence nettoyer une voiture garée sous les arbres ?",
+                "Deux à trois fois par an au minimum, et impérativement après la chute des "
+                "feuilles et la période de sève. Le problème n'est pas l'aspect mais le temps de "
+                "contact : une résine laissée plusieurs mois grave le vernis, et la marque devient "
+                "définitive. Mieux vaut un passage de plus qu'un polissage de rattrapage."),
+            "nettoyage-canape": (
+                "Les maisons saint-germanoises sont grandes et souvent habitées par des familles "
+                "installées de longue date, avec du mobilier de qualité et fréquemment des "
+                "animaux. Les assises accumulent poils, sébum et poussière bien avant de paraître "
+                "sales, et l'aspirateur n'en retire que la surface.",
+                "Nous retirons les poils mécaniquement avant l'extraction — sinon ils encrassent "
+                "le matériel et le résultat s'en ressent — puis nous traitons en "
+                "injection-extraction avec anti-acariens. Sur plusieurs pièces, le déplacement "
+                "n'est facturé qu'une fois : canapé, fauteuils et matelas se font sur la même venue.",
+                "Combien coûte le traitement d'un salon complet ?",
+                "Comptez le prix des pièces additionnées, plus un seul déplacement : par exemple "
+                "un canapé 3 places à 49 €, deux fauteuils à 25 € et un tapis à 39 €, soit 138 € "
+                "plus les frais de déplacement. C'est le regroupement qui rend l'intervention "
+                "intéressante sur une maison."),
+            "nettoyage-bateau": (
+                "La Seine borde la commune en contrebas des coteaux, avec des points d'amarrage "
+                "vers Le Pecq et la boucle. Les bateaux y stationnent souvent sous les arbres des "
+                "berges : dépôt vert sur les bords ombragés, feuilles dans les gouttières de "
+                "pont, sellerie qui prend l'humidité à demeure.",
+                "Nous intervenons à quai, avec notre eau et notre électricité. Coque, pont et "
+                "sellerie relèvent de trois méthodes et de trois devis distincts. L'inox est "
+                "traité sans chlorures, le teck brossé dans le sens de la fibre, et le gelcoat "
+                "repris progressivement plutôt que mat d'un coup.",
+                "Le dépôt vert sur la coque revient-il vite ?",
+                "Il revient d'autant plus vite que le poste d'amarrage est ombragé et peu "
+                "ventilé. Un nettoyage seul tient une saison ; avec un traitement adapté et une "
+                "protection du gelcoat, on passe à un an ou plus. Sur un bateau sous les arbres, "
+                "aucun produit ne fera de miracle durable : c'est l'exposition qui commande."),
+            "nettoyage-terrasse": (
+                "Bordée de forêt, Saint-Germain est l'une des communes où les extérieurs "
+                "verdissent le plus vite. Terrasses en bois, dallages de pierre, allées "
+                "gravillonnées et escaliers de jardin prennent mousse et lichen dès que "
+                "l'exposition est ombragée, ce qui est le cas de la plupart des jardins côté forêt.",
+                "Le décapage seul ne tient pas ici : il retire le visible et laisse les spores "
+                "dans la porosité, qui repartent en quelques semaines. Nous appliquons un "
+                "anti-mousse à temps d'action, puis nous rinçons à pression adaptée au support. "
+                "Sur bois exotique, un dégrisage rend la teinte d'origine.",
+                "Pourquoi la mousse revient-elle si vite malgré le nettoyage ?",
+                "Parce que le décapage haute pression n'enlève que la partie visible. Les spores "
+                "restent logées dans la porosité du support et repartent à la première humidité — "
+                "en quelques semaines sur une exposition nord. Seul un produit à temps de pose "
+                "traite le problème à la racine, et c'est ce qui fait tenir le résultat un à "
+                "trois ans."),
+            "nettoyage-vitres": (
+                "Les maisons saint-germanoises ont beaucoup de surfaces vitrées tournées vers le "
+                "jardin ou la forêt : baies, vérandas, portes-fenêtres. Elles reçoivent le pollen "
+                "au printemps et les projections de terre à la pluie, et se salissent plus vite "
+                "qu'un vitrage de ville.",
+                "L'eau osmosée, déminéralisée, sèche sans trace : c'est ce qui permet de ne pas "
+                "essuyer et donc de ne pas laisser de marque de raclette. Perche télescopique "
+                "jusqu'à trois niveaux depuis le sol. Les appuis et les encadrements sont repris "
+                "dans le même passage, sinon la coulure salit tout à la pluie suivante.",
+                "Le pollen laisse-t-il des traces durables sur les vitres ?",
+                "Il ne grave pas le verre, mais mélangé à la pluie il forme un film jaunâtre "
+                "tenace que le lave-vitre du commerce étale sans retirer. Il faut un lavage "
+                "complet à l'eau pure. Au printemps, deux passages rapprochés valent mieux qu'un "
+                "seul : le premier retire, le second finit le travail après la fin de l'émission."),
+            "nettoyage-entreprise": (
+                "Le centre de Saint-Germain concentre commerces, cabinets et professions "
+                "libérales dans un bâti ancien, souvent en étage. Les locaux y sont de taille "
+                "modeste mais très fréquentés, et la vitrine comme la salle d'attente portent "
+                "l'essentiel de l'impression.",
+                "Nous intervenons hors des heures d'ouverture, sans supplément, en ponctuel ou en "
+                "régulier avec facturation entreprise. Sols, moquettes en injection-extraction, "
+                "vitrines, sanitaires et surfaces de contact. Sur un local de centre-ville, le "
+                "passage court et régulier tient mieux que la remise à niveau espacée.",
+                "Intervenez-vous dans un local en étage sans ascenseur ?",
+                "Oui. Notre matériel se porte et se démonte : c'est une contrainte de temps, pas "
+                "un obstacle. Dites-le-nous au devis pour que nous prévoyions le créneau en "
+                "conséquence — c'est plus honnête que de le découvrir sur place et de bâcler la "
+                "fin de l'intervention."),
+            "traitement-ozone": (
+                "Dans une maison en lisière de forêt, l'humidité est un sujet permanent : "
+                "sous-sols, celliers, buanderies, pièces peu chauffées. L'odeur de renfermé y "
+                "prend et remonte dans les pièces de vie, sans que la source soit visible là où "
+                "on la sent.",
+                "Nous cherchons d'abord d'où vient l'odeur. Si une zone humide est encore active, "
+                "l'ozone ne réglera rien et nous le disons franchement plutôt que de prendre la "
+                "commande. Sur un support assaini, le traitement détruit ce qui a imprégné, à "
+                "4 € le mètre carré de surface au sol.",
+                "Une maison entière peut-elle être traitée en une fois ?",
+                "Oui, en déplaçant le générateur pièce par pièce pour couvrir tout le volume. "
+                "Comptez une demi-journée sur une maison de taille courante, aération comprise, "
+                "pendant laquelle personne ne reste à l'intérieur. Nous vous rendons la maison "
+                "quand l'odeur caractéristique de l'ozone a disparu, jamais avant."),
+            "nettoyage-fin-de-chantier": (
+                "Les chantiers saint-germanois portent souvent sur des maisons occupées ou des "
+                "biens anciens du centre : extension, réfection de combles, reprise de parquet. "
+                "La poussière a circulé longtemps, et jusque dans les pièces restées fermées, "
+                "qu'on oublie précisément parce qu'on n'y a pas travaillé.",
+                "Nous reprenons l'ensemble du logement et pas seulement la zone de travaux, avec "
+                "aspiration à filtration fine avant tout lavage. Sols, menuiseries, vitrages "
+                "intérieurs et extérieurs, sanitaires, points de contact et grilles de "
+                "ventilation. Deux passages dès qu'il y a eu du ponçage.",
+                "Nettoyez-vous aussi les combles et les pièces non concernées ?",
+                "Oui si vous le souhaitez, et c'est souvent utile : la poussière fine circule par "
+                "les portes et les gaines, et se dépose dans des pièces où personne n'a travaillé. "
+                "Nous chiffrons ces pièces séparément pour que vous puissiez décider en "
+                "connaissance de cause plutôt que de tout prendre par défaut."),
+        },
+    },
+    {
+        "slug": "sceaux", "nom": "Sceaux", "cp": "92330",
+        "dept": "92", "lat": 48.7789, "lon": 2.2900,
+        "profil": "Sceaux est une petite ville résidentielle organisée autour de son parc : "
+                  "maisons de ville, villas de la fin du XIXe, immeubles bas et jardins "
+                  "nombreux. Une population de cadres et de professions libérales, beaucoup de "
+                  "familles installées, et un centre commerçant compact mais actif autour de la "
+                  "rue Houdan.",
+        "acces": "Les rues sont calmes et le stationnement praticable, ce qui simplifie "
+                 "l'intervention. La commune est petite et notre atelier en est éloigné : "
+                 "regrouper plusieurs prestations sur une même venue est ici plus qu'ailleurs la "
+                 "bonne façon de procéder.",
+        "angles": {
+            "nettoyage-voiture": (
+                "À Sceaux, la voiture reste souvent devant la maison ou dans une allée bordée "
+                "d'arbres — le parc et les rues plantées font que peu de véhicules échappent aux "
+                "dépôts végétaux. Sève, pollen, fientes et feuilles s'accumulent, et l'habitacle "
+                "suit l'humidité ambiante.",
+                "Nous nettoyons sur place, dans l'allée ou devant le portail, en autonomie "
+                "complète. Intérieur à la vapeur haute température, cuirs au pH neutre et au "
+                "mousseur, extérieur avec retrait des dépôts acides par temps de pose et séchage "
+                "sans trace. Aucun branchement ne vous est demandé.",
+                "Vous déplacez-vous jusqu'à Sceaux pour une seule voiture ?",
+                "Oui, mais Sceaux est loin de notre atelier et le déplacement pèse alors dans le "
+                "total. Si un voisin ou un proche a le même besoin, ou si vous avez un canapé à "
+                "traiter le même jour, le déplacement n'est compté qu'une fois. C'est ce que nous "
+                "proposons systématiquement au devis."),
+            "nettoyage-canape": (
+                "Les maisons scéennes ont des salons de belle taille et du mobilier qui dure : "
+                "canapés en tissu épais, fauteuils anciens, tapis. Ce sont des pièces qu'on "
+                "entretient plutôt qu'on ne remplace, ce qui rend le nettoyage en profondeur "
+                "économiquement évident.",
+                "L'injection-extraction retire ce que l'aspirateur laisse : la poussière au cœur "
+                "de la fibre, les transferts, les auréoles. Sur un tapis en laine — fréquent "
+                "ici — le produit doit rester neutre : la laine est une fibre protéinique que "
+                "l'alcalin abîme, ternit et raidit définitivement.",
+                "Un tapis en laine peut-il être nettoyé à domicile ?",
+                "Oui, à condition d'employer un produit neutre et de maîtriser l'humidité. La "
+                "laine est une protéine, comme un cheveu : un produit alcalin la ternit et la "
+                "raidit sans retour possible. Nous travaillons à pH neutre, avec une extraction "
+                "complète et un séchage surveillé, tapis relevé si nécessaire."),
+            "nettoyage-terrasse": (
+                "Sceaux est une ville de jardins, et les terrasses y sont ombragées par la "
+                "végétation environnante. C'est l'exposition la plus défavorable : mousse et "
+                "lichen s'installent vite sur les dallages, les margelles et les allées, en "
+                "particulier au nord des maisons.",
+                "Un décapage seul ne tient pas dans cette configuration : il retire le visible et "
+                "laisse les spores dans la porosité, qui repartent en quelques semaines. "
+                "L'anti-mousse à temps d'action, suivi d'un rinçage à pression adaptée, donne un "
+                "à trois ans selon l'exposition et le drainage.",
+                "Le traitement anti-mousse est-il dangereux pour les plantations ?",
+                "Il demande des précautions. Nous protégeons les massifs en bordure et nous "
+                "rinçons en dirigeant l'écoulement hors des plantations. Sur une terrasse "
+                "entourée de végétation — le cas courant à Sceaux — dites-nous ce qui est "
+                "sensible : nous adaptons le produit et le sens du rinçage."),
+            "nettoyage-vitres": (
+                "Les maisons scéennes ont des vérandas, des baies sur jardin et des fenêtres "
+                "anciennes à petits bois selon les quartiers. Le vis-à-vis végétal les salit "
+                "vite : pollen, projections de terre à la pluie, résine. Et elles se remarquent, "
+                "puisque toutes les pièces de vie sont tournées vers le jardin.",
+                "Eau osmosée, sans calcaire donc sans trace au séchage, et perche télescopique "
+                "jusqu'à trois niveaux depuis le sol. Nous comptons au vantail, pas au mètre "
+                "carré : sur une maison mêlant baies modernes et croisées anciennes, c'est la "
+                "seule façon d'établir un prix juste.",
+                "Combien de temps faut-il pour les vitres d'une maison ?",
+                "Une demi-journée pour une maison de taille courante avec véranda, une journée "
+                "si les ouvrants sont nombreux et anciens. Nous comptons les vantaux sur photos "
+                "et nous annonçons un montant ferme : vous savez avant que nous venions ce que "
+                "cela coûtera et combien de temps nous resterons."),
+            "nettoyage-entreprise": (
+                "Sceaux a un centre commerçant compact et un tissu de professions libérales "
+                "installées en rez-de-chaussée ou en maison. Les surfaces sont petites, la "
+                "fréquentation forte, et l'exigence d'aspect élevée dans une ville où tout se "
+                "voit.",
+                "Nous intervenons avant l'ouverture ou après la fermeture, sans supplément, en "
+                "ponctuel ou en régulier avec facturation entreprise. Vitrines, sols, moquettes "
+                "en injection-extraction, sanitaires et surfaces de contact. Sans engagement de "
+                "durée : si le service ne convient pas, vous arrêtez.",
+                "Proposez-vous un contrat d'entretien pour un petit commerce ?",
+                "Oui, avec un rythme adapté à la surface plutôt qu'un forfait standard. Sur un "
+                "commerce de centre-ville, un passage hebdomadaire sur les vitrines et les sols, "
+                "plus une remise à niveau semestrielle sur les moquettes, couvre l'essentiel. "
+                "Nous préférons un contrat tenable à un contrat surdimensionné."),
+            "traitement-ozone": (
+                "Dans une maison scéenne, l'odeur vient le plus souvent d'un animal, d'une cave "
+                "ou d'un ancien fumeur. Elle a imprégné les textiles, les rideaux et les mousses, "
+                "et parfois les gaines de ventilation — des endroits que le nettoyage de surface "
+                "n'atteint jamais, quel que soit le soin qu'on y met.",
+                "Le traitement se fait maison vide : ni personne, ni animaux, ni plantes. "
+                "Générateur dimensionné sur le volume, puis aération avant restitution. À 4 € le "
+                "mètre carré de surface au sol. Nous diagnostiquons d'abord : si la source est "
+                "encore en place, l'ozone ne réglera rien et nous vous le dirons.",
+                "L'ozone laisse-t-il une odeur après le traitement ?",
+                "Une odeur caractéristique, un peu piquante, qui disparaît avec l'aération. "
+                "L'ozone se recombine naturellement en oxygène et ne laisse aucun résidu — ni "
+                "film, ni parfum. Nous ne vous rendons les lieux que quand cette odeur a disparu, "
+                "ce qui est précisément le signe que le gaz s'est recombiné."),
+            "nettoyage-fin-de-chantier": (
+                "Les chantiers scéens sont surtout des rénovations de maisons anciennes et des "
+                "extensions : reprise de parquet, création de véranda, réfection de salle de "
+                "bains. Des travaux menés dans un logement souvent encore habité, où la poussière "
+                "a circulé bien au-delà de la zone de chantier.",
+                "Nous aspirons à filtration fine avant tout lavage, puis nous reprenons sols, "
+                "menuiseries, vitrages intérieurs et extérieurs, sanitaires et points de contact. "
+                "Deux passages dès qu'il y a eu de la plâtrerie, en tenant compte des vingt-quatre "
+                "à quarante-huit heures de retombée de la poussière.",
+                "Intervenez-vous sur une extension livrée en plein hiver ?",
+                "Oui, sans difficulté : nous venons avec notre eau et notre électricité, et le "
+                "chauffage n'a pas besoin d'être en service. Le seul point de vigilance est le "
+                "séchage, plus lent par temps froid et humide : nous en tenons compte dans "
+                "l'ordre des opérations et dans le délai que nous vous annonçons."),
+        },
+    },
+    {
+        "slug": "le-vesinet", "nom": "Le Vésinet", "cp": "78110",
+        "dept": "78", "lat": 48.8925, "lon": 2.1330,
+        "profil": "Le Vésinet est une ville-parc, dessinée au XIXe autour de ses lacs et de ses "
+                  "rivières artificielles : des villas sur de grandes parcelles arborées, presque "
+                  "pas d'immeubles, et une réglementation qui protège le paysage. Un habitat "
+                  "individuel de bout en bout, avec des extérieurs qui pèsent lourd dans "
+                  "l'entretien.",
+        "acces": "Les propriétés ont des allées privatives et de la place : l'accès est le plus "
+                 "confortable de notre zone. En contrepartie, la commune est loin de notre "
+                 "atelier et les parcelles sont grandes — le temps sur place et le déplacement "
+                 "comptent tous les deux dans le devis.",
+        "angles": {
+            "nettoyage-voiture": (
+                "Au Vésinet, presque toutes les voitures stationnent sous les arbres : c'est le "
+                "principe même de la ville-parc. Sève de tilleul et de platane, pollen, fientes, "
+                "feuilles en automne — les dépôts sont constants, et ce sont eux, bien plus que "
+                "la poussière de route, qui abîment le vernis.",
+                "Nous intervenons dans l'allée, en autonomie complète. Les dépôts acides se "
+                "retirent avec un produit dédié et un temps de pose, jamais au grattage. La "
+                "protection appliquée ensuite ralentit l'accrochage suivant : sur un véhicule "
+                "garé en permanence sous les arbres, c'est ce qui fait durer le résultat.",
+                "La sève peut-elle marquer définitivement la peinture ?",
+                "Oui, si elle reste des mois. La sève est acide : elle attaque le vernis et finit "
+                "par le graver, laissant une marque en creux qu'aucun lavage ne retire. Prise à "
+                "temps, elle s'enlève entièrement. C'est la raison pour laquelle nous "
+                "recommandons ici deux à trois passages par an plutôt qu'un seul."),
+            "nettoyage-canape": (
+                "Les villas vésigondines ont de grands volumes et du mobilier en conséquence : "
+                "canapés d'angle, plusieurs fauteuils, tapis, sans compter les matelas. Traiter "
+                "l'ensemble en une venue est ici la seule approche raisonnable, la commune étant "
+                "éloignée de notre atelier.",
+                "Nous chiffrons à la pièce et le déplacement n'est compté qu'une fois : chaise "
+                "15 €, fauteuil 25 €, canapé 2 places 39 €, 3 places 49 €, angle 69 €, matelas "
+                "39 à 49 €, tapis 39 à 59 €. Injection-extraction et traitement anti-acariens "
+                "s'enchaînent sur la même intervention.",
+                "Peut-on traiter tout le mobilier textile d'une maison en une journée ?",
+                "Oui dans la plupart des cas : un salon complet et trois ou quatre matelas "
+                "tiennent dans une journée. Le facteur limitant n'est pas notre temps mais le "
+                "séchage — quatre à six heures par pièce en pièce aérée. Nous organisons l'ordre "
+                "des pièces pour que tout soit sec le soir."),
+            "nettoyage-terrasse": (
+                "C'est la demande la plus naturelle au Vésinet : grandes terrasses, dallages, "
+                "allées et abords de lac, le tout sous un couvert végétal dense. L'ombre et "
+                "l'humidité permanentes font verdir les surfaces plus vite que partout ailleurs "
+                "dans notre zone.",
+                "Le décapage seul ne tient pas ici : quelques semaines, et la mousse repart des "
+                "spores restées dans la porosité. Nous appliquons un anti-mousse à temps "
+                "d'action, puis nous rinçons à pression adaptée au support — pierre, bois "
+                "exotique, composite et béton désactivé n'encaissent pas la même chose.",
+                "Sur une grande terrasse, comment est calculé le prix ?",
+                "Au mètre carré, après photos, avec un prix qui dépend du support et de l'état de "
+                "départ : une terrasse entretenue chaque année ne demande pas le même travail "
+                "qu'un dallage laissé cinq ans. Nous annonçons un montant ferme après avoir vu "
+                "les photos, et nous nous y tenons."),
+            "nettoyage-vitres": (
+                "Les villas du Vésinet ont d'immenses surfaces vitrées tournées vers le parc, "
+                "souvent avec des vérandas et des jardins d'hiver. Le couvert végétal les salit "
+                "en continu : pollen, sève, projections de terre. Et comme toute la maison est "
+                "tournée vers l'extérieur, la moindre trace se voit.",
+                "Eau osmosée pour un séchage sans dépôt, perche télescopique jusqu'à trois "
+                "niveaux depuis le sol, encadrements et appuis repris dans le même passage. Sur "
+                "une véranda, la toiture se traite quand elle est accessible à la perche ; "
+                "au-delà, nous renvoyons vers des métiers habilités.",
+                "Nettoyez-vous les toitures de véranda ?",
+                "Oui quand elles se traitent depuis le sol à la perche télescopique, ce qui "
+                "couvre la majorité des vérandas de plain-pied. Si l'accès impose de monter sur "
+                "la structure ou d'utiliser une nacelle, nous ne le faisons pas : c'est une "
+                "question de sécurité, et nous préférons le dire au devis."),
+            "nettoyage-entreprise": (
+                "Le Vésinet compte peu de bureaux et beaucoup de professions libérales installées "
+                "chez elles : cabinets médicaux, praticiens, professions du conseil recevant à "
+                "domicile. Le local professionnel y est souvent une partie de la villa, et se "
+                "juge avec la même exigence que le reste de la maison.",
+                "Nous intervenons hors des heures de consultation, sans supplément, en ponctuel "
+                "ou en régulier avec facturation entreprise. Sols, moquettes, vitrerie, "
+                "sanitaires et surfaces de contact. Précisons-le : nous faisons du nettoyage "
+                "professionnel soigné, pas de la désinfection réglementée de dispositif médical.",
+                "Peut-on facturer à l'entreprise une intervention à domicile ?",
+                "Oui, sur la partie professionnelle du local, avec une facture au nom de la "
+                "structure. C'est un cas courant chez les praticiens installés chez eux. Nous "
+                "distinguons alors clairement au devis ce qui relève du professionnel et ce qui "
+                "relève du privé, pour que votre comptabilité s'y retrouve."),
+            "traitement-ozone": (
+                "Dans une grande villa, l'odeur se loge là où l'air circule mal : sous-sol, "
+                "buanderie, pièces peu chauffées, cave à vin. Elle remonte ensuite par la cage "
+                "d'escalier et s'installe dans les textiles des pièces de vie, loin de sa source "
+                "réelle.",
+                "Nous cherchons d'abord d'où elle vient, et nous le disons si l'ozone n'est pas "
+                "la réponse — une zone humide encore active ne se traite pas au gaz. Sur un "
+                "support assaini, le traitement détruit ce qui a imprégné, à 4 € le mètre carré "
+                "de surface au sol, maison vide et aération comprise.",
+                "Combien coûte le traitement d'une grande maison ?",
+                "4 € le mètre carré de surface au sol : 150 m² reviennent à 600 €, 200 m² à "
+                "800 €. Sur ces surfaces, il est souvent plus pertinent de ne traiter que les "
+                "zones concernées — le sous-sol et les pièces où l'odeur se manifeste — plutôt "
+                "que la maison entière. Nous vous le proposerons au devis."),
+            "nettoyage-fin-de-chantier": (
+                "Les chantiers vésigondins portent sur de grandes maisons anciennes, souvent avec "
+                "des contraintes patrimoniales : réfection de toiture, reprise de façade, "
+                "rénovation intérieure complète. Les volumes sont importants, et la poussière a "
+                "le temps et la place de se répartir partout.",
+                "Nous reprenons l'ensemble, pas seulement la zone de travaux : aspiration à "
+                "filtration fine, puis sols, menuiseries, vitrages intérieurs et extérieurs, "
+                "sanitaires, points de contact et grilles de ventilation. Deux passages dès "
+                "qu'il y a eu de la plâtrerie ou du ponçage.",
+                "Combien de temps prévoir sur une grande maison après travaux ?",
+                "Une à deux journées par passage selon la surface et l'état, donc deux à quatre "
+                "journées au total avec le second passage. Nous établissons le devis après visite "
+                "sur ces volumes : les photos suffisent rarement à juger de l'état réel d'un "
+                "chantier de cette taille, et un devis approximatif ne rend service à personne."),
+        },
+    },
+]
