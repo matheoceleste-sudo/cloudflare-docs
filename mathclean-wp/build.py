@@ -88,6 +88,44 @@ def liste_prestations(sep=", ", fin=" et "):
 _AMP = re.compile(r"&(?!(?:[a-zA-Z][a-zA-Z0-9]{1,31}|#\d{1,7}|#[xX][0-9a-fA-F]{1,6});)")
 
 
+def ville_a(nom):
+    """« à Paris », mais « au Blanc-Mesnil ».
+
+    Une commune dont le nom porte un article le contracte avec la préposition.
+    Écrire « à Le Blanc-Mesnil » serait fautif, et se lirait mal aussi bien
+    pour un visiteur que pour un moteur qui cite la page.
+    """
+    if nom.startswith("Les "):
+        return "aux " + nom[4:]
+    if nom.startswith("Le "):
+        return "au " + nom[3:]
+    return "à " + nom
+
+
+def ville_de(nom):
+    """« de Paris », « du Blanc-Mesnil », « d'Argenteuil »."""
+    if nom.startswith("Les "):
+        return "des " + nom[4:]
+    if nom.startswith("Le "):
+        return "du " + nom[3:]
+    if nom.startswith("La "):
+        return "de " + nom
+    return ("d'" if nom[0] in "AEIOUYÉÈÊÎÔÛ" else "de ") + nom
+
+
+def adresse_postale():
+    """Adresse postale affichée sur le site.
+
+    La rue n'est écrite que si elle est renseignée dans SITE. Tant qu'elle ne
+    l'est pas, on n'affiche que le code postal et la commune : mieux vaut une
+    adresse incomplète qu'une rue qui ne correspondrait pas à la commune
+    déclarée à l'INSEE — c'est précisément ce rapprochement que Google opère.
+    """
+    rue = SITE["address"].strip()
+    ville = "%s %s" % (SITE["postcode"], SITE["city"])
+    return rue + ", " + ville if rue else ville
+
+
 def esc(txt):
     """Échappe une valeur destinée à un attribut HTML, sans doubler les entités."""
     return _AMP.sub("&amp;", str(txt)).replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
@@ -339,7 +377,7 @@ def footer(base):
         <div class="footer-contact">
           <div>{icon('phone')}<a href="tel:{SITE['phone_link']}">{SITE['phone']}</a></div>
           <div>{icon('mail')}<a href="mailto:{SITE['email']}">{SITE['email']}</a></div>
-          <div>{icon('pin')}<span>{SITE['address']}, {SITE['postcode']} {SITE['city']}</span></div>
+          <div>{icon('pin')}<span>{adresse_postale()}</span></div>
           <div>{icon('clock')}<span>{SITE['hours']}</span></div>
         </div>
       </div>
@@ -655,7 +693,6 @@ def business_schema():
         ],
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": SITE["address"],
             "addressLocality": SITE["city"],
             "addressRegion": "Île-de-France",
             "postalCode": SITE["postcode"],
@@ -820,7 +857,7 @@ def build_home():
         <span class="eyebrow">Qui sommes-nous</span>
         <h2>Le nettoyage fait à la main, par la personne qui vient chez vous</h2>
         <p>
-          <strong>MathClean</strong> est une entreprise individuelle installée à {SITE['city']} (93).
+          <strong>MathClean</strong> est une entreprise individuelle installée {ville_a(SITE['city'])} (93).
           Pas de centre d'appels, pas de sous-traitance : quand vous appelez le {SITE['phone']},
           vous parlez directement à la personne qui viendra chez vous.
         </p>
@@ -911,7 +948,7 @@ def build_home():
       <span class="eyebrow">Où nous intervenons</span>
       <h2>Les huit départements d'Île-de-France</h2>
       <p class="lead">
-        Depuis notre atelier de {SITE['city']} (93). Frais de déplacement : {SITE['travel_fee']},
+        Depuis notre atelier {ville_de(SITE['city'])} (93). Frais de déplacement : {SITE['travel_fee']},
         annoncés avant que vous validiez.
       </p>
     </div>
@@ -1332,7 +1369,7 @@ def build_tarifs():
          "Sur un habitacle automobile, le volume est petit et connu : le traitement reste à 30 € en option "
          "d'un nettoyage intérieur."),
         ("Comment sont calculés les frais de déplacement ?",
-         "5 € par tranche de 5 km entre notre atelier de Tremblay-en-France (93) et votre adresse. "
+         "5 € par tranche de 5 km entre notre atelier du Blanc-Mesnil (93) et votre adresse. "
          "Le montant vous est annoncé avant que vous validiez : rien ne s'ajoute le jour de l'intervention."),
         ("Faut-il verser un acompte ?",
          "Non. Vous réglez après l'intervention, une fois le résultat constaté avec vous. "
@@ -1632,8 +1669,8 @@ def build_zones_archive():
 </div>"""
     body = f"""
 {page_title_block(base, trail, "Nos zones d'intervention en Île-de-France",
-    "MathClean intervient dans les huit départements franciliens, depuis son atelier de "
-    + SITE['city'] + " (93). Frais de déplacement : " + SITE['travel_fee'] + ", annoncés avant validation.")}
+    "MathClean intervient dans les huit départements franciliens, depuis son atelier "
+    + ville_de(SITE['city']) + " (93). Frais de déplacement : " + SITE['travel_fee'] + ", annoncés avant validation.")}
 
 <section class="section">
   <div class="container">
@@ -1658,8 +1695,8 @@ def build_zones_archive():
 
     <h2>Notre point de départ, et ce qu'il implique</h2>
     <p>
-      Nous partons de {SITE['city']} ({SITE['postcode'][:2]}), à la limite du Val-d'Oise. Cela
-      donne un centre de gravité au nord-est de la région&nbsp;: nos délais et nos frais de
+      Nous partons {ville_de(SITE['city'])} ({SITE['postcode'][:2]}), au cœur de la Seine-Saint-Denis.
+      Cela donne un centre de gravité au nord-est de la région&nbsp;: nos délais et nos frais de
       déplacement y sont les plus bas, et ils augmentent régulièrement vers le sud et l'ouest.
     </p>
     <p>
@@ -2022,7 +2059,7 @@ def build_apropos():
     )
     body = f"""
 {page_title_block(base, trail, "MathClean, le nettoyage fait à la main",
-    "Une entreprise de nettoyage installée à " + SITE['city'] + ", qui se déplace chez vous dans toute "
+    "Une entreprise de nettoyage installée " + ville_a(SITE['city']) + ", qui se déplace chez vous dans toute "
     "l'Île-de-France. Voici comment nous travaillons, avec quel matériel, et ce sur quoi nous nous engageons.")}
 
 <section class="section">
@@ -2036,7 +2073,7 @@ def build_apropos():
         <span class="eyebrow">Qui est derrière MathClean</span>
         <h2>{SITE['manager']}</h2>
         <p>
-          MathClean est une entreprise individuelle, déclarée au {SITE['address']} à {SITE['city']} ({SITE['postcode'][:2]}).
+          MathClean est une entreprise individuelle, déclarée {ville_a(SITE['city'])} ({SITE['postcode'][:2]}).
           Pas de centre d'appels, pas de sous-traitance : quand vous appelez le {SITE['phone']}, vous parlez
           directement à la personne qui viendra chez vous.
         </p>
@@ -2152,7 +2189,7 @@ def build_apropos():
                "name": "À propos de MathClean", "url": SITE["url"] + "/a-propos.html",
                "mainEntity": {"@id": SITE["url"] + "/#business"}}]
     html = (head(titre_page("À propos de MathClean, entreprise de nettoyage"),
-                 "MathClean, entreprise installée à Tremblay-en-France : notre méthode, nos "
+                 "MathClean, entreprise installée au Blanc-Mesnil : notre méthode, nos "
                  "engagements et le terrain que nous couvrons en Île-de-France.",
                  "a-propos.html", base, schema=schema)
             + header(base, "apropos") + body + footer(base))
@@ -2387,7 +2424,7 @@ def build_contact():
           <li>
             <span class="info-icon">{icon('pin')}</span>
             <div>
-              <strong>{SITE['address']}, {SITE['postcode']} {SITE['city']}</strong>
+              <strong>{adresse_postale()}</strong>
               <span>Notre atelier. Nous nous déplaçons chez vous dans les huit départements franciliens.</span>
             </div>
           </li>
@@ -2538,7 +2575,7 @@ def build_merci():
     <p>
       Vous recevez ensuite un devis <strong>ferme et détaillé poste par poste</strong>&nbsp;:
       chaque prestation, sa durée estimée, son prix, et les frais de déplacement calculés depuis
-      notre atelier de {SITE['city']} — {SITE['travel_fee']}. Le total affiché est celui que vous
+      notre atelier {ville_de(SITE['city'])} — {SITE['travel_fee']}. Le total affiché est celui que vous
       réglerez. Aucun acompte ne vous sera demandé, ni à la signature ni avant l'intervention.
     </p>
     <p>
@@ -2699,7 +2736,7 @@ def build_legal():
 </p>
 <ul>
   <li>Responsable de la publication : {SITE['manager']}.</li>
-  <li>Siège / adresse professionnelle : {SITE['address']}, {SITE['postcode']} {SITE['city']}, France.</li>
+  <li>Siège / adresse professionnelle : {adresse_postale()}, France.</li>
   <li>Téléphone : <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a></li>
   <li>E-mail : <a href="mailto:{SITE['email']}">{SITE['email']}</a></li>
   <li>SIRET : {SITE['siret']} — SIREN : {SITE['siren']}</li>
@@ -2823,7 +2860,7 @@ def build_legal():
 <h2>1. Responsable du traitement</h2>
 <p>
   Le responsable du traitement des données est <strong>{SITE['name']}</strong> ({SITE['manager']},
-  entrepreneur individuel), {SITE['address']}, {SITE['postcode']} {SITE['city']}.
+  entrepreneur individuel), {adresse_postale()}.
   Contact : <a href="mailto:{SITE['email']}">{SITE['email']}</a> — {SITE['phone']}.
 </p>
 
@@ -3135,14 +3172,14 @@ def find_us(base):
       <h2>Venir à l'atelier, ou nous laisser un avis</h2>
       <p class="lead">
         Nous nous déplaçons chez vous dans toute l'Île-de-France. L'atelier se
-        situe à {SITE['city']} ({SITE['postcode']}).
+        situe {ville_a(SITE['city'])} ({SITE['postcode']}).
       </p>
     </div>
     <div class="find-grid">
       <div class="find-card reveal">
         <span class="feature-icon">{icon('pin')}</span>
         <h3>Itinéraire</h3>
-        <p>{SITE['address']}, {SITE['postcode']} {SITE['city']}</p>
+        <p>{adresse_postale()}</p>
         <a class="btn btn-block" href="{SITE['maps_url']}" target="_blank" rel="noopener">
           Ouvrir dans Google Maps
         </a>
@@ -3369,7 +3406,7 @@ def build_reservation():
       Rien n'est masqué&nbsp;: le montant affiché est la somme de la prestation choisie, des
       options cochées et des frais de déplacement calculés sur l'adresse que vous saisissez.
       Ces frais suivent un barème unique — <strong>{SITE['travel_fee']}</strong> depuis notre
-      atelier de {SITE['city']} — et se calculent sur la distance par la route, pas à vol
+      atelier {ville_de(SITE['city'])} — et se calculent sur la distance par la route, pas à vol
       d'oiseau.
     </p>
     <p>
@@ -3573,44 +3610,44 @@ _CONTEXTE_DISTANCE = [
 
 _FAQ_PRESTA = {
     "nettoyage-automobile-paris": (
-        "Où intervenez-vous sur le véhicule à %s ?",
+        "Où intervenez-vous sur le véhicule %(a)s ?",
         "Là où il est stationné : en voirie, en parking souterrain ou sur une place "
         "d'entreprise. Nous apportons l'eau et l'électricité, donc aucun branchement n'est "
         "nécessaire et le véhicule ne bouge pas. Il faut simplement assez d'espace pour ouvrir "
         "les portes et tourner autour."),
     "nettoyage-textile-paris": (
-        "Combien de temps un canapé met-il à sécher à %s ?",
+        "Combien de temps un canapé met-il à sécher %(a)s ?",
         "Quatre à six heures pour un matelas, un peu plus pour un canapé épais, dans une pièce "
         "aérée. Nous travaillons en injection-extraction : la solution est aspirée immédiatement "
         "après avoir été injectée, il ne reste donc pas d'eau stagnante et pas d'auréole."),
     "nettoyage-bateau-paris": (
-        "Intervenez-vous sur un bateau à quai ou hors d'eau près de %s ?",
+        "Intervenez-vous sur un bateau à quai ou hors d'eau près %(de)s ?",
         "Les deux. Nous intervenons au port comme sur un bateau hors d'eau pendant l'hivernage, "
         "qui est d'ailleurs la meilleure période pour reprendre la coque. Coque, pont et "
         "sellerie relèvent de trois méthodes distinctes et d'un devis établi après photos."),
     "nettoyage-terrasse-paris": (
-        "La mousse va-t-elle revenir sur ma terrasse à %s ?",
+        "La mousse va-t-elle revenir sur ma terrasse %(a)s ?",
         "Après un décapage seul, oui, en quelques semaines : la haute pression retire la partie "
         "visible, pas les spores logées dans la porosité du support. Avec un traitement "
         "anti-mousse à temps d'action, comptez un à trois ans selon l'exposition et le drainage. "
         "Un hydrofuge allonge encore l'intervalle."),
     "nettoyage-vitres-paris": (
-        "Jusqu'à quelle hauteur travaillez-vous à %s ?",
+        "Jusqu'à quelle hauteur travaillez-vous %(a)s ?",
         "Jusqu'à trois niveaux environ, depuis le sol, avec une perche télescopique alimentée en "
         "eau osmosée. Au-delà, il faut une nacelle ou des cordistes : ce sont des métiers "
         "réglementés que nous ne pratiquons pas, et nous vous le disons plutôt que d'improviser."),
     "nettoyage-entreprise-paris": (
-        "Pouvez-vous intervenir hors des heures d'ouverture à %s ?",
+        "Pouvez-vous intervenir hors des heures d'ouverture %(a)s ?",
         "Oui, avant l'ouverture, après la fermeture ou le week-end, sans supplément. C'est la "
         "seule façon de travailler correctement sur un site occupé, en particulier pour une "
         "extraction de moquette, qui demande plusieurs heures de séchage."),
     "traitement-ozone-paris": (
-        "Le traitement par ozone est-il sans danger à %s ?",
+        "Le traitement par ozone est-il sans danger %(a)s ?",
         "L'ozone est un gaz irritant pour les voies respiratoires : le traitement se fait donc "
         "sur un local ou un véhicule vide de personnes, d'animaux et de plantes, suivi d'une "
         "aération avant réoccupation. C'est un protocole strict, et c'est ce qui le rend sûr."),
     "nettoyage-fin-de-chantier-paris": (
-        "Faut-il un ou deux passages après des travaux à %s ?",
+        "Faut-il un ou deux passages après des travaux %(a)s ?",
         "Deux, dès qu'il y a eu de la plâtrerie ou du ponçage. La poussière de plâtre reste en "
         "suspension et retombe pendant vingt-quatre à quarante-huit heures : un passage unique "
         "donne un logement propre le soir et poussiéreux le lendemain. Nous l'annonçons au devis."),
@@ -3646,6 +3683,11 @@ def contexte_ville(nom, presta, km, dept):
 
 def build_ville(v):
     slug, nom, cp, dept, lat, lon, angle, presta = v
+    # « à Paris » mais « au Blanc-Mesnil » : la préposition se contracte avec
+    # l'article que porte le nom de certaines communes.
+    a_nom = ville_a(nom)
+    de_nom = ville_de(nom)
+    a_atelier = ville_de(SITE["city"])
     base = "../"
     z = zone_de(dept)
     km = distance_atelier(lat, lon)
@@ -3670,12 +3712,12 @@ def build_ville(v):
     ) or '<li><a href="%szones/%s.html">Tout le département</a></li>' % (base, z["slug"])
 
     faq = [
-        ("Intervenez-vous à %s sans supplément ?" % nom,
-         "Nous intervenons à %s comme partout en Île-de-France. Depuis notre atelier de %s, "
+        ("Intervenez-vous %s sans supplément ?" % a_nom,
+         "Nous intervenons %s comme partout en Île-de-France. Depuis notre atelier %s, "
          "comptez %s, soit %s. Le montant exact est calculé sur votre adresse précise dans le "
          "configurateur de réservation, et affiché avant que vous validiez."
-         % (nom, SITE["city"], km_txt, frais_txt)),
-        ("Quel est le délai d'intervention à %s ?" % nom,
+         % (a_nom, a_atelier, km_txt, frais_txt)),
+        ("Quel est le délai d'intervention %s ?" % a_nom,
          "Habituellement %s, 7j/7. Pour une urgence, appelez-nous au %s : nous réorganisons "
          "la tournée quand c'est possible." % (delai, SITE["phone"])),
         ("Faut-il fournir de l'eau ou de l'électricité ?",
@@ -3685,34 +3727,34 @@ def build_ville(v):
     # Question supplémentaire liée à la prestation dominante de la commune.
     if presta and presta[0] in _FAQ_PRESTA:
         q, r = _FAQ_PRESTA[presta[0]]
-        faq.append((q % nom, r))
+        faq.append((q % {"a": a_nom, "de": de_nom}, r))
 
     body = f"""
-{page_title_block(base, trail, "Entreprise de nettoyage à %s (%s)" % (nom, cp),
-   "Nettoyage à domicile et en entreprise à %s : automobile, textile, terrasse, vitres, "
-   "locaux et fin de chantier. Devis gratuit, intervention 7j/7." % nom)}
+{page_title_block(base, trail, "Entreprise de nettoyage %s (%s)" % (a_nom, cp),
+   "Nettoyage à domicile et en entreprise %s : automobile, textile, terrasse, vitres, "
+   "locaux et fin de chantier. Devis gratuit, intervention 7j/7." % a_nom)}
 
 <section class="section">
   <div class="container">
     <div class="split">
       <div class="reveal">
-        <span class="eyebrow">MathClean à {nom}</span>
-        <h2>Ce que nous faisons le plus à {nom}</h2>
+        <span class="eyebrow">MathClean {a_nom}</span>
+        <h2>Ce que nous faisons le plus {a_nom}</h2>
         <p>{angle}</p>
         <p>
           {nom} dépend du département <a href="{base}zones/{z['slug']}.html">{z['name']} ({dept})</a>.
-          Depuis notre atelier de {SITE['city']}, comptez <strong>{km_txt}</strong> —
+          Depuis notre atelier {ville_de(SITE['city'])}, comptez <strong>{km_txt}</strong> —
           soit {frais_txt} — et un délai habituel de <strong>{delai}</strong>.
         </p>
         <div class="btn-row" style="margin-top:1.5rem">
-          <a class="btn" href="{base}reservation.html">Réserver à {nom}</a>
+          <a class="btn" href="{base}reservation.html">Réserver {a_nom}</a>
           <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
         </div>
       </div>
       <div class="reveal">
         <div class="table-wrap">
           <table class="price-table">
-            <caption>En pratique à {nom}</caption>
+            <caption>En pratique {a_nom}</caption>
             <tbody>
               <tr><th scope="row">Code postal</th><td class="amount">{cp}</td></tr>
               <tr><th scope="row">Département</th><td class="amount">{z['name']} ({dept})</td></tr>
@@ -3734,7 +3776,7 @@ def build_ville(v):
 
 <section class="section">
   <div class="container container-narrow">
-    <h2>Comment nous travaillons à {nom}</h2>
+    <h2>Comment nous travaillons {a_nom}</h2>
     {contexte_ville(nom, presta, km, dept)}
     <p>
       Dans tous les cas, nous venons avec le matériel, les produits, l'eau et l'électricité.
@@ -3754,7 +3796,7 @@ def build_ville(v):
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Nos prestations</span>
-      <h2>Ce que nous proposons à {nom}</h2>
+      <h2>Ce que nous proposons {a_nom}</h2>
     </div>
     <div class="tile-grid">{tiles}</div>
     <div class="btn-row center" style="margin-top:34px">
@@ -3767,13 +3809,13 @@ def build_ville(v):
   <div class="container container-narrow">
     <div class="section-head center">
       <span class="eyebrow">Questions fréquentes</span>
-      <h2>Nettoyage à {nom} : vos questions</h2>
+      <h2>Nettoyage {a_nom} : vos questions</h2>
     </div>
     {faq_block(faq, 'faq-ville')}
   </div>
 </section>
 
-{cta_band(base, "Un besoin à %s ?" % nom,
+{cta_band(base, "Un besoin %s ?" % a_nom,
           "Devis gratuit et sans engagement, réponse sous 24 h. Aucun acompte à verser.")}
 
 <section class="section section-soft">
@@ -3792,7 +3834,7 @@ def build_ville(v):
     schema = [
         crumb_schema([("Villes", "villes.html"), (nom, "villes/%s.html" % slug)]),
         {"@context": "https://schema.org", "@type": "Service",
-         "name": "Entreprise de nettoyage à %s" % nom,
+         "name": "Entreprise de nettoyage %s" % a_nom,
          "provider": {"@id": SITE["url"] + "/#business"},
          "areaServed": {"@type": "City", "name": nom,
                         "address": {"@type": "PostalAddress", "postalCode": cp,
@@ -3800,8 +3842,8 @@ def build_ville(v):
          "url": "%s/villes/%s.html" % (SITE["url"], slug)},
         faq_schema(faq),
     ]
-    html = (head(titre_page("Nettoyage à %s (%s) — devis gratuit" % (nom, cp)),
-                 "Nettoyage à domicile et en entreprise à %s (%s) : auto, textile, "
+    html = (head(titre_page("Nettoyage %s (%s) — devis gratuit" % (a_nom, cp)),
+                 "Nettoyage à domicile et en entreprise %s (%s) : auto, textile, "
                  "terrasse, vitres, locaux. Intervention 7j/7, sans acompte." % (nom, cp),
                  "villes/%s.html" % slug, base, schema=schema)
             + header(base, "zones") + body + footer(base))
@@ -3829,9 +3871,9 @@ def build_villes_archive():
 </div>"""
     body = f"""
 {page_title_block(base, trail, "Les villes où nous intervenons",
-  "Une page par commune, avec la distance depuis notre atelier de %s, les frais de "
+  "Une page par commune, avec la distance depuis notre atelier %s, les frais de "
   "déplacement correspondants et le délai habituel. Cette liste n'est pas exhaustive : "
-  "nous couvrons les huit départements franciliens." % SITE['city'])}
+  "nous couvrons les huit départements franciliens." % ville_de(SITE['city']))}
 
 <section class="section">
   <div class="container">
@@ -3843,7 +3885,7 @@ def build_villes_archive():
   <div class="container container-narrow">
     <h2>Comment sont calculés les frais de déplacement</h2>
     <p>
-      Nous partons de notre atelier de {SITE['city']} ({SITE['postcode'][:2]}) et facturons
+      Nous partons de notre atelier {ville_de(SITE['city'])} ({SITE['postcode'][:2]}) et facturons
       <strong>{SITE['travel_fee']}</strong>. Le compteur est arrondi par tranche entière&nbsp;: une
       commune à sept kilomètres et une commune à dix kilomètres relèvent du même palier. Le montant
       vous est annoncé <em>avant</em> que vous validiez quoi que ce soit, jamais découvert sur la facture.
@@ -3884,7 +3926,7 @@ def build_villes_archive():
 
     <h2>Les délais selon votre département</h2>
     <p>
-      Notre atelier est à {SITE['city']}, en Seine-Saint-Denis, à quelques kilomètres de la
+      Notre atelier est {ville_a(SITE['city'])}, en Seine-Saint-Denis, à quelques kilomètres de la
       limite du Val-d'Oise. C'est ce qui explique nos délais&nbsp;: les plus courts en 93, 95,
       à Paris et en proche couronne — souvent 24 à 48&nbsp;heures — un peu plus longs dans les
       Yvelines, l'Essonne et la Seine-et-Marne, où comptez plutôt 48 à 72&nbsp;heures.
@@ -4174,12 +4216,12 @@ def build_llms_txt():
 
 > Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit
 > départements d'Île-de-France. Entreprise individuelle dirigée par {SITE['manager']},
-> basée à {SITE['city']} ({SITE['postcode']}).
+> basée {ville_a(SITE['city'])} ({SITE['postcode']}).
 
 ## Identité
 - Nom : {SITE['name']}
 - SIRET : {SITE['siret']}
-- Adresse : {SITE['address']}, {SITE['postcode']} {SITE['city']}, France
+- Adresse : {adresse_postale()}, France
 - Téléphone : {SITE['phone']}
 - E-mail : {SITE['email']}
 - Horaires : {SITE['hours']}

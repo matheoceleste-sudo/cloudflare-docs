@@ -17,11 +17,16 @@ SITE = {
     "phone_link": "+33623075259",
     "email": "matheoceleste@gmail.com",
     "form_action": "https://formsubmit.co/matheoceleste@gmail.com",
-    "address": "5 Rue Nicolas Copernic",
-    "postcode": "93290",
-    "city": "Tremblay-en-France",
-    "lat": 48.9486,
-    "lon": 2.5697,
+    # Rue à compléter : elle doit être copiée à l'identique de la fiche INSEE
+    # (SIREN 924 565 990). Tant qu'elle est vide, le site n'affiche que la
+    # commune et le code postal — jamais une rue qui ne correspondrait pas.
+    "address": "",
+    "postcode": "93150",
+    "city": "Le Blanc-Mesnil",
+    # Position de la fiche Google Business, pour que le site et la fiche
+    # désignent exactement le même point.
+    "lat": 48.9499461,
+    "lon": 2.4559529,
     "siret": "924 565 990 00010",
     "siren": "924 565 990",
     "manager": "Mathéo Céleste",
@@ -31,7 +36,7 @@ SITE = {
     "maps_url": "https://www.google.com/maps/place/MathClean/@48.9499461,2.4559529,17z",
     "review_url": "https://www.google.com/maps?cid=8434710860473546146",
     "directions_url": "https://www.google.com/maps/dir/?api=1&destination=MathClean&destination_place_id=",
-    "travel_fee": "5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France (93)",
+    "travel_fee": "5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil (93)",
 }
 
 # --- Prestations ----------------------------------------------------------
@@ -696,7 +701,7 @@ ZONES = [
     },
     {
         "slug": "seine-saint-denis-93", "num": "93", "name": "Seine-Saint-Denis",
-        "intro": "C'est notre département : notre atelier se trouve à Tremblay-en-France. De Saint-Denis à "
+        "intro": "C'est notre département : notre atelier se trouve au Blanc-Mesnil. De Saint-Denis à "
                  "Montreuil, d'Aubervilliers à Noisy-le-Grand, nous y sommes les plus réactifs — et les frais "
                  "de déplacement y sont, mécaniquement, les plus faibles.",
         "focus": "Le 93 est un territoire en pleine transformation, avec de nombreux programmes immobiliers "
@@ -753,7 +758,7 @@ ZONES = [
     {
         "slug": "val-doise-95", "num": "95", "name": "Val-d'Oise",
         "intro": "D'Argenteuil à Cergy, de Sarcelles à Pontoise, le Val-d'Oise fait partie de notre zone "
-                 "proche : notre atelier de Tremblay-en-France se trouve à quelques kilomètres.",
+                 "proche : notre atelier du Blanc-Mesnil n'en est séparé que par quelques kilomètres.",
         "focus": "Proximité oblige, nous y intervenons souvent sous 24 à 48 h. Detailing automobile à "
                  "domicile, injection-extraction sur textile et remise en état après travaux constituent "
                  "l'essentiel de nos passages dans le 95.",
@@ -815,8 +820,8 @@ FAQ = [
      "allergènes et acariens par vapeur haute température sur les sièges, le volant, les tapis et les surfaces "
      "planes. Le coffre est compris, sans supplément."),
     ("Les frais de déplacement sont-ils inclus ?",
-     "Non, ils s'ajoutent au prix de la prestation : 5 € par tranche de 5 km entre notre atelier de "
-     "Tremblay-en-France (93) et votre adresse. Le montant vous est annoncé avant que vous validiez. "
+     "Non, ils s'ajoutent au prix de la prestation : 5 € par tranche de 5 km entre notre atelier "
+     "du Blanc-Mesnil (93) et votre adresse. Le montant vous est annoncé avant que vous validiez. "
      "Aucune surprise à l'arrivée."),
     ("Utilisez-vous des produits écologiques ?",
      "Nous privilégions des produits respectueux de l'environnement et de votre santé, sans danger pour les "
@@ -1069,8 +1074,8 @@ REVIEWS = []
 # --- Réservation en ligne -------------------------------------------------
 # Frais de déplacement : mêmes règles que l'ancien configurateur.
 DEPLACEMENT = {
-    "lat": 48.9486,          # atelier, 5 rue Nicolas Copernic
-    "lon": 2.5697,
+    "lat": 48.9499461,       # atelier du Blanc-Mesnil (position de la fiche Google)
+    "lon": 2.4559529,
     "palier_km": 5,          # tranche facturée
     "palier_eur": 5,         # montant par tranche
     "coef_route": 1.25,      # majoration du vol d'oiseau vers la distance routière
@@ -1105,7 +1110,7 @@ HERO = {
 
 # --- Villes couvertes -----------------------------------------------------
 # Une page par ville, avec la distance réelle calculée depuis l'atelier
-# (48.9486, 2.5697). Les coordonnées sont celles du centre communal : la
+# du Blanc-Mesnil. Les coordonnées sont celles du centre communal : la
 # distance affichée est donc « environ », et le montant exact du déplacement
 # reste celui que calcule le configurateur à partir de l'adresse précise.
 #
@@ -1160,10 +1165,16 @@ VILLES = [
      "pavillonnaire y appelle surtout du textile et du detailing automobile à domicile.",
      ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-terrasse-paris", "nettoyage-entreprise-paris"]),
 
+    ("le-blanc-mesnil", "Le Blanc-Mesnil", "93150", "93", 48.9386, 2.4644,
+     "C'est notre commune : l'atelier s'y trouve. Les frais de déplacement y sont nuls ou "
+     "symboliques, et nous pouvons intervenir dans des délais que nous ne tenons nulle part "
+     "ailleurs — souvent le jour même.",
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-fin-de-chantier-paris"]),
+
     ("tremblay-en-france", "Tremblay-en-France", "93290", "93", 48.9486, 2.5697,
-     "C'est notre commune : l'atelier se trouve au 5 rue Nicolas Copernic. Les frais de "
-     "déplacement y sont nuls ou symboliques, et nous pouvons intervenir dans des délais que "
-     "nous ne tenons nulle part ailleurs.",
+     "Tremblay-en-France est à une quinzaine de minutes de notre atelier du Blanc-Mesnil, par "
+     "l'A104 ou la N2. Pavillons, résidences récentes et zones d'activité proches de Roissy : "
+     "les demandes y vont du detailing automobile au nettoyage de locaux.",
      ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-terrasse-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("pantin", "Pantin", "93500", "93", 48.8944, 2.4090,
@@ -1421,7 +1432,7 @@ GUIDES = [
  "sections": [
   ("Les tarifs par taille", [
    "Chez MathClean, un canapé 2 places se traite à 39 €, un 3 places à 49 €, un canapé d'angle à 69 €. Un fauteuil est à 25 €, une chaise à 15 €. Ces prix couvrent l'injection-extraction et le détachage.",
-   "S'y ajoutent les frais de déplacement : 5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France. Ils sont annoncés avant que vous validiez, jamais découverts à l'arrivée."]),
+   "S'y ajoutent les frais de déplacement : 5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil. Ils sont annoncés avant que vous validiez, jamais découverts à l'arrivée."]),
   ("Ce qui fait varier le prix", [
    "La matière d'abord : un tissu synthétique se traite en injection-extraction, un cuir demande un nettoyage doux puis un nourrissage — ce n'est ni le même temps ni les mêmes produits.",
    "L'état ensuite. Des taches fraîches partent au passage habituel ; des taches incrustées depuis des mois demandent un pré-traitement et un temps de pause. Un professionnel honnête vous dit ce qui est réaliste avant de commencer."]),
@@ -1519,7 +1530,7 @@ GUIDES = [
    "Ces lieux se traitent hors des heures d'ouverture, souvent de nuit, ce qui règle la question de l'évacuation. Pour un hôtel, une chambre libérée le matin peut être remise en service dans la journée.",
    "En restauration, l'ozone intervient après le dégraissage : les odeurs de friture imprègnent les textiles et les conduits, que le nettoyage de surface n'atteint pas."]),
   ("Délais et déplacement", [
-   "Comptez 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne. Les frais de déplacement suivent la règle habituelle : 5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France, annoncés avant validation.",
+   "Comptez 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne. Les frais de déplacement suivent la règle habituelle : 5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil, annoncés avant validation.",
    "Le détail commune par commune figure sur nos pages villes."])],
  "faq": [
   ("Intervenez-vous dans toute l'Île-de-France ?",
@@ -1914,7 +1925,7 @@ GUIDES = [
             ]),
             ('Ce que notre devis contient', [
                 "Nous détaillons chaque poste séparément : la cuisine, la salle de bain, les sols, les vitres et, s'il y a lieu, la moquette. Vous voyez ce que coûte chaque partie et vous pouvez en retirer une si vous préférez la faire vous-même.",
-                'Les frais de déplacement sont calculés depuis notre atelier de Tremblay-en-France, à 5 € par tranche de 5 km, et annoncés avant que vous validiez. Ils figurent sur le devis, pas sur la facture finale en supplément.',
+                'Les frais de déplacement sont calculés depuis notre atelier du Blanc-Mesnil, à 5 € par tranche de 5 km, et annoncés avant que vous validiez. Ils figurent sur le devis, pas sur la facture finale en supplément.',
                 "Aucun acompte n'est demandé. Vous réglez après l'intervention, une fois le résultat constaté — ce qui est particulièrement pertinent sur une prestation dont l'enjeu est justement le résultat visible.",
             ]),
             ('Faire soi-même ou faire faire', [
@@ -2124,7 +2135,7 @@ GUIDES = [
                 "<strong>Le traitement des odeurs.</strong> Quand l'odeur persiste après extraction, un passage à l'ozone se facture en supplément, à partir de 30 €. Il ne se justifie pas sur tous les matelas : nous ne le proposons que lorsqu'il apportera quelque chose.",
             ]),
             ('Le déplacement, et comment ne pas le payer pour rien', [
-                'Nos frais de déplacement sont de 5 € par tranche de 5 km depuis notre atelier de Tremblay-en-France, annoncés avant validation. Sur un seul matelas, ils peuvent représenter une part notable du total.',
+                'Nos frais de déplacement sont de 5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil, annoncés avant validation. Sur un seul matelas, ils peuvent représenter une part notable du total.',
                 "Le réflexe utile : regrouper. Un matelas seul, c'est une prestation courte pour un déplacement complet. Deux matelas et un canapé traités le même jour, c'est le même déplacement pour trois fois plus de travail — le coût par pièce chute nettement.",
                 "Si vous hésitez, dites-nous simplement tout ce qui pourrait être traité chez vous. Nous vous dirons ce qui en vaut la peine et ce qui n'en vaut pas, y compris quand la réponse est « celui-là, laissez-le ».",
             ]),
@@ -2136,7 +2147,7 @@ GUIDES = [
         ],
         "faq": [
             ('Le déplacement est-il facturé en plus ?',
-             "Oui, 5 € par tranche de 5 km depuis Tremblay-en-France, annoncés avant que vous validiez et figurant sur le devis. Aucun supplément n'apparaît après."),
+             "Oui, 5 € par tranche de 5 km depuis Le Blanc-Mesnil, annoncés avant que vous validiez et figurant sur le devis. Aucun supplément n'apparaît après."),
             ('Est-ce moins cher de traiter plusieurs pièces le même jour ?',
              "Nettement. Le déplacement est unique et le matériel est déjà installé. C'est la seule optimisation vraiment efficace sur ce type de prestation."),
             ('Faut-il payer un acompte ?',
@@ -2386,7 +2397,7 @@ GUIDES = [
             ('Repères et façon de chiffrer', [
                 "Nous chiffrons sur devis après photos ou visite, plutôt qu'à un tarif au mètre carré affiché d'avance. Ce n'est pas une réticence commerciale : deux terrasses de 30 m² peuvent demander du simple au triple selon le support et l'état.",
                 "Pour vous donner un ordre de grandeur avant même de nous contacter : c'est le support et l'ancienneté de la mousse qui commandent, pas la surface. Une petite terrasse en pierre tendre très encrassée coûte plus qu'une grande dalle béton entretenue.",
-                "Les frais de déplacement — 5 € par tranche de 5 km depuis Tremblay-en-France — figurent sur le devis. Aucun acompte n'est demandé : vous réglez après avoir vu le résultat, ce qui est particulièrement pertinent sur une prestation aussi visible.",
+                "Les frais de déplacement — 5 € par tranche de 5 km depuis Le Blanc-Mesnil — figurent sur le devis. Aucun acompte n'est demandé : vous réglez après avoir vu le résultat, ce qui est particulièrement pertinent sur une prestation aussi visible.",
             ]),
             ('Quand grouper les prestations', [
                 "Une terrasse se nettoie rarement seule. Si vous nous faites venir, regardez ce qui l'entoure : le salon de jardin, les dalles de l'allée, le bas de mur, les volets, la façade accessible depuis le sol.",
@@ -2523,7 +2534,7 @@ GUIDES = [
                 "<strong>L'accès.</strong> Étage sans ascenseur, absence de stationnement, chantier encore actif à côté : cela pèse davantage que la surface.",
             ]),
             ('Notre façon de chiffrer', [
-                'Nous chiffrons sur photos ou sur place, en annonçant explicitement le nombre de passages prévus et ce que chacun comprend. Les frais de déplacement figurent au devis, à 5 € par tranche de 5 km depuis Tremblay-en-France.',
+                'Nous chiffrons sur photos ou sur place, en annonçant explicitement le nombre de passages prévus et ce que chacun comprend. Les frais de déplacement figurent au devis, à 5 € par tranche de 5 km depuis Le Blanc-Mesnil.',
                 "Nous n'exigeons aucun acompte. Sur une fin de chantier, où le résultat se juge d'un coup d'œil, cela nous paraît la moindre des choses.",
                 'Un conseil qui ne nous rapporte rien : faites protéger pendant les travaux. Une bâche posée sur un parquet coûte quelques euros et vous économise une remise en état.',
             ]),
@@ -2920,7 +2931,7 @@ GUIDES = [
             ]),
             ('Nos délais réels', [
                 "Nous répondons à toute demande sous vingt-quatre heures, week-ends compris. L'intervention suit généralement sous vingt-quatre à soixante-douze heures selon votre département.",
-                "Le délai est le plus court en Seine-Saint-Denis et dans le Val-d'Oise, où se trouve notre atelier de Tremblay-en-France, ainsi qu'à Paris et en proche couronne. Il s'allonge dans les Yvelines, en Seine-et-Marne et en grande couronne sud.",
+                "Le délai est le plus court en Seine-Saint-Denis, où se trouve notre atelier du Blanc-Mesnil, ainsi qu'à Paris, en proche couronne et dans le sud du Val-d'Oise. Il s'allonge dans les Yvelines, en Seine-et-Marne et en grande couronne sud.",
                 'Pour une intervention le jour même, tout dépend de notre planning et de votre commune. Nous vous répondons franchement : soit nous pouvons, soit nous vous le disons tout de suite pour que vous cherchiez ailleurs sans perdre une demi-journée.',
                 "Nous intervenons le samedi, le dimanche et les jours fériés au même tarif. Il n'y a pas de majoration de week-end chez nous, parce que les urgences ne choisissent pas leur jour.",
             ]),
@@ -3091,7 +3102,7 @@ ZONES_DETAIL = {
     ],
     "93": [
         ("Notre département d'attache", [
-            "Notre atelier est à Tremblay-en-France. La Seine-Saint-Denis est donc le "
+            "Notre atelier est au Blanc-Mesnil. La Seine-Saint-Denis est donc le "
             "département où nos délais sont les plus courts et nos frais de déplacement les "
             "plus faibles — parfois nuls sur les communes les plus proches.",
             "C'est aussi le département où nous pouvons le plus souvent caler une intervention "
@@ -3139,7 +3150,7 @@ ZONES_DETAIL = {
             "grande surface, vérandas comprises.",
         ]),
         ("Grouper, parce que le trajet compte", [
-            "L'Essonne est éloignée de notre atelier de Tremblay-en-France. Nous nous y "
+            "L'Essonne est éloignée de notre atelier du Blanc-Mesnil. Nous nous y "
             "déplaçons volontiers, mais nous vous conseillons de regrouper : la voiture et la "
             "terrasse, les matelas et le canapé, les vitres et la véranda.",
             "Le déplacement est unique, le matériel est déjà en place, et le coût par "
@@ -3187,10 +3198,11 @@ ZONES_DETAIL = {
     ],
     "95": [
         ("Proche de notre atelier", [
-            "Le Val-d'Oise jouxte notre atelier de Tremblay-en-France. C'est, avec la "
-            "Seine-Saint-Denis, le département où nous intervenons le plus vite et où les "
-            "frais de déplacement sont les plus bas.",
-            "Sur les communes de l'est du département, nous sommes souvent à moins de quinze "
+            "Le Val-d'Oise commence à quelques kilomètres de notre atelier du Blanc-Mesnil. "
+            "C'est, avec la Seine-Saint-Denis et Paris, le secteur où nous intervenons le plus "
+            "vite et où les frais de déplacement sont les plus bas.",
+            "Sur les communes du sud-est du département — Garges, Sarcelles, Villiers-le-Bel, "
+            "Gonesse — nous sommes souvent à moins de quinze "
             "minutes. Cela rend possible ce qui est difficile ailleurs : une intervention le "
             "jour même, ou un retour rapide pour reprendre un point resté en suspens.",
         ]),
