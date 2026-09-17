@@ -17,10 +17,9 @@ SITE = {
     "phone_link": "+33623075259",
     "email": "matheoceleste@gmail.com",
     "form_action": "https://formsubmit.co/matheoceleste@gmail.com",
-    # Rue à compléter : elle doit être copiée à l'identique de la fiche INSEE
-    # (SIREN 924 565 990). Tant qu'elle est vide, le site n'affiche que la
-    # commune et le code postal — jamais une rue qui ne correspondrait pas.
-    "address": "",
+    # Reprise de la fiche INSEE (SIREN 924 565 990), pour que le site, la fiche
+    # Google et le registre désignent la même adresse.
+    "address": "Rue Poussin",
     "postcode": "93150",
     "city": "Le Blanc-Mesnil",
     # Position de la fiche Google Business, pour que le site et la fiche

@@ -534,6 +534,45 @@ Ce qui rendrait le prochain film encore plus utile :
   C'est la preuve la plus parlante du métier, et elle passe vite dans le
   montage actuel.
 
+## Les adresses n'ont plus d'extension, et pourquoi
+
+Les fichiers s'appellent toujours `tarifs.html`. Mais Cloudflare — Pages comme
+Workers static assets — sert cette page à l'adresse **`/tarifs`** et **redirige
+`/tarifs.html` vers elle**. C'est son comportement par défaut
+(`html_handling: auto-trailing-slash`).
+
+Tant que le site déclarait ses adresses avec l'extension, il désignait partout
+— balise canonique, sitemap, liens internes, données structurées — des adresses
+qui redirigent. Google voyait donc :
+
+- `/tarifs` répond 200, mais sa balise canonique désigne `/tarifs.html` ;
+- `/tarifs.html` redirige vers `/tarifs`.
+
+Autrement dit, la page désignée comme canonique renvoyait vers celle qui la
+désignait. Google tranche seul dans ce cas : il indexe `/tarifs` et classe le
+reste sous **« Page avec redirection »** et **« Autre page avec balise
+canonique correcte »**. Ce sont exactement les deux motifs remontés par la
+Search Console.
+
+Le site parle donc désormais la même langue que le serveur. Une seule fonction,
+`_adresses_publiques()` dans `build.py`, retire l'extension au moment de
+l'écriture de chaque fichier — ce qui couvre d'un seul geste les liens, la
+balise canonique, `og:url`, le sitemap, les données structurées, le `llms.txt`
+et la cible du formulaire. Les cibles de `_redirects` sont également écrites
+sans extension : sinon chaque ancienne adresse produirait une chaîne de deux
+redirections au lieu d'une.
+
+### Conséquence à connaître
+
+Le site **exige désormais un hébergeur qui sert `/tarifs` depuis
+`tarifs.html`**. C'est le cas de Cloudflare Pages et de Workers static assets,
+donc de l'hébergement actuel. Ouvrir le dossier `site/` directement depuis le
+disque, en `file://`, donnera en revanche des liens morts : c'est normal, et
+c'est le prix de la cohérence côté serveur.
+
+Pour tester en local dans les conditions réelles, il faut un serveur qui imite
+ce comportement — un simple `python -m http.server` ne suffit plus.
+
 ## La page 404, et pourquoi ses chemins sont absolus
 
 Cloudflare renvoie `404.html` **à l'adresse demandée** : si un visiteur ouvre

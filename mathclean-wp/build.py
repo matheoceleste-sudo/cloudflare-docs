@@ -741,11 +741,46 @@ def promouvoir_image_lcp(html):
     return html[:m.start()] + balise + html[m.end():]
 
 
+# --- Adresses publiques -----------------------------------------------------
+# Les fichiers s'appellent « tarifs.html », mais l'hébergeur (Cloudflare Pages
+# comme Workers static assets) sert la page à « /tarifs » et redirige
+# « /tarifs.html » vers elle. Si le site continue de déclarer ses adresses avec
+# l'extension, il désigne partout — canonique, sitemap, liens, données
+# structurées — des adresses qui redirigent. Google range alors ces pages sous
+# « Page avec redirection » et sous « Autre page avec balise canonique », et
+# n'indexe pas ce qu'on lui a désigné. Tout le site parle donc la même langue
+# que le serveur : sans extension.
+_LIEN_HTML = re.compile(r'href="([^"#?]*?)\.html([?#][^"]*)?"')
+_ABS_HTML = re.compile(re.escape(SITE["url"]) + r'/([^"\s<]*?)\.html\b')
+
+
+def url_publique(chemin):
+    """« index.html » → « », « tarifs.html » → « tarifs »."""
+    if chemin.endswith("index.html"):
+        return chemin[:-len("index.html")]
+    return chemin[:-5] if chemin.endswith(".html") else chemin
+
+
+def _lien_public(m):
+    cible, suffixe = m.group(1), m.group(2) or ""
+    if cible.endswith("index"):
+        cible = cible[:-len("index")] or "./"
+    return 'href="%s%s"' % (cible, suffixe)
+
+
+def _adresses_publiques(txt):
+    """Retire l'extension .html des liens et des adresses absolues du site."""
+    txt = _LIEN_HTML.sub(_lien_public, txt)
+    return _ABS_HTML.sub(
+        lambda m: SITE["url"] + "/" + ("" if m.group(1) == "index" else m.group(1)),
+        txt)
+
+
 def write(path, html):
     full = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as fh:
-        fh.write(promouvoir_image_lcp(html))
+        fh.write(_adresses_publiques(promouvoir_image_lcp(html)))
     return path
 
 
@@ -4383,7 +4418,7 @@ def build_sitemap(urls):
     videos = _pages_video()
     entries = ""
     for path, priority, freq in urls:
-        loc = SITE["url"] + "/" + ("" if path == "index.html" else path)
+        loc = SITE["url"] + "/" + url_publique(path)
         bloc_video = ""
         cle = videos.get("" if path == "index.html" else path)
         if cle:
@@ -4547,7 +4582,13 @@ def build_redirects():
         src, dst, code = ligne.split()
         if src.endswith(".html"):
             sans_ext.append("%-44s%-43s%s" % (src[:-5], dst, code))
-    return write("_redirects", "\n".join(lignes + sans_ext) + "\n")
+    # La cible est écrite sans extension : sinon chaque ancienne adresse
+    # produirait une chaîne de deux redirections au lieu d'une.
+    finales = []
+    for ligne in lignes + sans_ext:
+        src, dst, code = ligne.split()
+        finales.append("%-44s%-43s%s" % (src, url_publique(dst) or "/", code))
+    return write("_redirects", "\n".join(finales) + "\n")
 
 
 def clean_stale(kept):
