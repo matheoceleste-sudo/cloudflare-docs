@@ -628,6 +628,9 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .to-top:hover{background:var(--brand-dark)}
 .to-top svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4}
 @media(min-width:781px){.to-top{bottom:26px}}
+/* Sur la réservation, la barre de total occupe le bas de l'écran :
+   le bouton « revenir en haut » remonte au-dessus d'elle. */
+@media(max-width:980px){body.page-resa .to-top{bottom:88px}}
 
 .callbar{
   position:fixed;left:0;right:0;bottom:0;z-index:100;display:none;
@@ -640,7 +643,11 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 }
 .callbar a+a{background:var(--brand);color:#fff}
 .callbar svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.1}
-@media(max-width:780px){.callbar{display:grid}body{padding-bottom:56px}}
+@media(max-width:780px){.callbar{display:grid}body{padding-bottom:56px}
+  /* La réservation a sa propre barre basse : la barre d'appel ferait
+     doublon, et son bouton « Réserver » renverrait à la page ouverte. */
+  body.page-resa .callbar{display:none}
+  body.page-resa{padding-bottom:0}}
 
 /* Bandeau cookies (strictement informatif) */
 .cookie-bar{
@@ -738,16 +745,26 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 28px;padding:0;counter-reset:none;
 }
 .resa-steps li{
-  display:flex;align-items:center;gap:9px;flex:1;min-width:135px;font-size:.87rem;
-  font-weight:650;color:var(--muted);padding-bottom:12px;border-bottom:3px solid var(--line);
+  display:flex;flex:1;min-width:135px;border-bottom:3px solid var(--line);
 }
+/* Une étape déjà franchie se reclique : c'est la façon la plus directe de
+   corriger un choix sans repasser par « Précédent » plusieurs fois. */
+.resa-steps button{
+  display:flex;align-items:center;gap:9px;width:100%;min-height:48px;
+  background:none;border:0;padding:0 2px 12px;text-align:left;cursor:pointer;
+  font-size:.87rem;font-weight:650;color:var(--muted);border-radius:6px 6px 0 0;
+}
+.resa-steps button[disabled]{cursor:default}
+.resa-steps button:not([disabled]):hover{color:var(--ink)}
 .resa-steps li span{
   width:26px;height:26px;flex:none;border-radius:50%;display:grid;place-items:center;
   background:var(--line);color:#fff;font-size:.8rem;font-weight:700;
 }
-.resa-steps li.is-on{color:var(--brand);border-bottom-color:var(--brand)}
+.resa-steps li.is-on{border-bottom-color:var(--brand)}
+.resa-steps li.is-on button{color:var(--brand)}
 .resa-steps li.is-on span{background:var(--brand)}
-.resa-steps li.is-done{color:var(--ink);border-bottom-color:var(--gold)}
+.resa-steps li.is-done{border-bottom-color:var(--gold)}
+.resa-steps li.is-done button{color:var(--ink)}
 .resa-steps li.is-done span{background:var(--gold)}
 
 .resa-panel{display:none;border:0;padding:0;margin:0;min-width:0}
@@ -786,9 +803,11 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .qty-row span{font-size:.86rem;color:var(--muted)}
 .qty-price{font-weight:700;color:var(--brand);white-space:nowrap}
 .qty-ctl{display:flex;align-items:center;gap:6px}
+/* 48 px : ces deux boutons sont les plus sollicités du configurateur, et
+   ils se manipulent au pouce. */
 .qty-btn{
-  width:34px;height:34px;border-radius:8px;border:1.5px solid var(--line);background:#fff;
-  font-size:1.15rem;font-weight:700;color:var(--brand);cursor:pointer;line-height:1;
+  width:48px;height:48px;border-radius:9px;border:1.5px solid var(--line);background:#fff;
+  font-size:1.25rem;font-weight:700;color:var(--brand);cursor:pointer;line-height:1;
   transition:border-color .15s,background .15s;
 }
 .qty-btn:hover{border-color:var(--brand);background:var(--brand-soft)}
@@ -822,6 +841,66 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 }
 .resa-total span{font-size:.88rem;font-weight:650;color:var(--muted)}
 .resa-total strong{font-size:1.35rem;font-weight:800;color:var(--brand);letter-spacing:-.02em;text-align:right}
+
+/* Barre basse : sur mobile, le récapitulatif passe sous le formulaire et le
+   total disparaît de l'écran. Cette barre le garde sous les yeux, avec
+   l'action suivante à portée de pouce. */
+.resa-bar{display:none}
+@media(max-width:980px){
+  .resa-bar{
+    display:flex;align-items:center;gap:14px;position:sticky;bottom:0;z-index:60;
+    margin:20px -22px 0;padding:12px 22px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.97);border-top:1px solid var(--line);
+    box-shadow:0 -6px 20px rgba(16,33,54,.10);
+  }
+  .resa-bar-sum{display:flex;flex-direction:column;line-height:1.25;margin-right:auto}
+  .resa-bar-sum span{font-size:.78rem;font-weight:650;color:var(--muted)}
+  .resa-bar-sum strong{font-size:1.15rem;font-weight:800;color:var(--brand)}
+  .resa-bar .btn{min-width:0;padding-inline:20px}
+  /* La barre remplace les boutons du formulaire, qui feraient doublon. */
+  .resa-nav{display:none}
+}
+
+/* Relecture avant envoi : on ne confirme pas une réservation à l'aveugle. */
+.resa-final{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px;margin-bottom:26px;
+}
+.resa-final:empty{display:none}
+.resa-final h3{font-size:1rem;margin-bottom:14px}
+.resa-final ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.resa-final li{display:flex;justify-content:space-between;gap:12px;font-size:.93rem;align-items:baseline}
+.resa-final li b{color:var(--ink);white-space:nowrap}
+.resa-final-total{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  margin:14px 0 10px;padding-top:12px;border-top:1px solid var(--line);
+}
+.resa-final-total span{font-size:.88rem;font-weight:650;color:var(--muted)}
+.resa-final-total strong{font-size:1.2rem;font-weight:800;color:var(--brand)}
+
+/* Erreur posée sous le champ fautif plutôt qu'en tête de formulaire. */
+.field-error{
+  margin:7px 0 0;font-size:.85rem;font-weight:650;color:#b02a2a;
+}
+.is-wrong{border-color:#d14343!important;background:#fffafa}
+
+/* Suggestions d'adresse (API Adresse, data.gouv.fr). */
+.resa-ac{position:relative}
+.ac-list{
+  position:absolute;z-index:40;left:0;right:0;top:100%;margin:4px 0 0;padding:6px;
+  list-style:none;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);max-height:260px;overflow:auto;
+}
+.ac-list li{
+  padding:11px 12px;border-radius:7px;font-size:.92rem;color:var(--ink);cursor:pointer;
+  min-height:48px;display:flex;align-items:center;
+}
+.ac-list li:hover,.ac-list li.is-on{background:var(--brand-soft);color:var(--brand)}
+
+/* Sous-total d'une ligne textile : le client voit son calcul se faire. */
+.qty-sub{display:block;font-style:normal;font-size:.8rem;font-weight:650;color:var(--muted)}
+.qty-sub:empty{display:none}
+.qty-row.is-picked{border-color:var(--brand);background:var(--brand-soft)}
 
 /* ==========================================================================
    15. Vignettes de prestations

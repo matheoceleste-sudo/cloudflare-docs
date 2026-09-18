@@ -29,7 +29,7 @@ from content import (
     DATE_GUIDES, DATE_GUIDES_FR,  # noqa: E402
     SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER, BEFORE_AFTER_HD, ZONES_DETAIL,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
-    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES,
+    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES, DELAIS,
     PREMIUM_VILLES,
 )
 
@@ -56,6 +56,23 @@ def en_lettres(n):
 
 
 NB_SERVICES = en_lettres(len(SERVICES))
+
+
+def delai_intervention(dept):
+    """Délai d'intervention habituel dans un département.
+
+    Un seul endroit décide : l'audit avait relevé trois formulations
+    concurrentes sur le site, faute de source unique.
+    """
+    return DELAIS["proche"] if dept in DELAIS["depts_proches"] else DELAIS["loin"]
+
+
+# Phrase complète, reprise partout où le site parle du délai d'intervention.
+# « Réponse » et « intervention » sont deux choses différentes : le site ne
+# doit jamais laisser croire qu'une réponse sous 24 h vaut une intervention
+# sous 24 h.
+DELAI_PHRASE = "%s à Paris et en petite couronne, %s en grande couronne" % (
+    DELAIS["proche"], DELAIS["loin"])
 NB_ZONES = en_lettres(len(ZONES))
 
 
@@ -179,13 +196,18 @@ def icon(name, cls=""):
 # Gabarits partagés
 # ---------------------------------------------------------------------------
 def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=None,
-         robots=None, og_type="website", published=None, modified=None, preload=None):
+         robots=None, og_type="website", published=None, modified=None, preload=None,
+         body_class=""):
     """En-tête commun à toutes les pages.
 
     `og_type`  : "article" sur les billets et les guides, "website" ailleurs.
     `published`/`modified` : dates ISO, ajoutées en Open Graph pour les articles.
     `preload`  : chemin d'image LCP à précharger (relatif à `base`).
+    `body_class` : classe posée sur <body>, pour les pages qui changent un
+                   comportement global — la réservation masque ainsi la barre
+                   d'appel, qu'elle remplace par sa propre barre de total.
     """
+    _cls = (' class="%s"' % body_class) if body_class else ""
     ld = ""
     for block in (schema or []):
         ld += '<script type="application/ld+json">%s</script>\n' % json.dumps(
@@ -244,7 +266,7 @@ def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=N
 <link rel="stylesheet" href="{base}assets/css/theme.css?v={V_CSS}">
 {pre}<script>document.documentElement.className+=' js';</script>
 {ld}</head>
-<body>
+<body{_cls}>
 <a class="skip-link" href="#content">Aller au contenu</a>
 """
 
@@ -860,7 +882,7 @@ def build_home():
         et vous ne réglez qu'une fois le résultat constaté.
       </p>
       <div class="hero-badges">
-        <span class="badge">{icon('check')}Intervention sous 24 h</span>
+        <span class="badge">{icon('check')}Réponse sous {DELAIS['reponse']}</span>
         <span class="badge">{icon('check')}Devis gratuit et ferme</span>
         <span class="badge">{icon('check')}8 départements couverts</span>
       </div>
@@ -978,7 +1000,7 @@ def build_home():
       </div>
       <div class="step reveal">
         <h3>Nous intervenons chez vous</h3>
-        <p>Sous 24 à 48 h à Paris et en petite couronne, sous 48 à 72 h en grande couronne. Nous venons entièrement équipés.</p>
+        <p>Sous {DELAI_PHRASE}. Nous venons entièrement équipés.</p>
       </div>
       <div class="step reveal">
         <h3>Vous constatez, puis vous réglez</h3>
@@ -1498,8 +1520,8 @@ def build_tarifs():
     <div class="notice">
       {icon('pin')}
       <p>
-        <strong>Frais de déplacement :</strong> {SITE['travel_fee']}. Ils s'ajoutent au prix de la
-        prestation et vous sont annoncés avant que vous validiez. Aucune surprise à l'arrivée.
+        <strong>Frais de déplacement&nbsp;: {SITE['travel_fee']}.</strong>
+        {SITE['travel_rule']}
       </p>
     </div>
     <div class="notice notice-blue" style="margin-top:18px">
@@ -2370,7 +2392,7 @@ def build_devis():
         <div class="steps" style="grid-template-columns:1fr;gap:20px">
           <div class="step"><h3 style="font-size:1rem">Nous vous rappelons</h3><p>Sous 24 h, pour préciser votre besoin.</p></div>
           <div class="step"><h3 style="font-size:1rem">Vous recevez un devis ferme</h3><p>Détaillé poste par poste, frais de déplacement compris.</p></div>
-          <div class="step"><h3 style="font-size:1rem">Nous intervenons</h3><p>Sous 24 à 72 h selon votre département.</p></div>
+          <div class="step"><h3 style="font-size:1rem">Nous intervenons</h3><p>Sous {DELAIS['proche']} ou {DELAIS['loin']} selon votre département.</p></div>
         </div>
       </div>
       <div class="widget">
@@ -2422,8 +2444,8 @@ def build_devis():
 
     <h2>Délais de réponse et d'intervention</h2>
     <p>
-      Nous répondons <strong>sous 24 heures</strong>, week-ends compris. L'intervention suit
-      généralement sous 24 à 72 heures selon votre département&nbsp;: le plus court en
+      Nous répondons <strong>sous {DELAIS['reponse']}</strong>, week-ends compris. L'intervention,
+      elle, suit sous {DELAI_PHRASE}&nbsp;: le plus court en
       Seine-Saint-Denis et dans le Val-d'Oise, où se trouve notre atelier, un peu plus long dans
       les Yvelines et en Seine-et-Marne. Pour un besoin urgent, l'appel au
       <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a> reste plus rapide que le formulaire.
@@ -2483,7 +2505,7 @@ def build_contact():
             <span class="info-icon">{icon('clock')}</span>
             <div>
               <strong>Délais d'intervention</strong>
-              <span>Paris et petite couronne : 24 à 48 h. Grande couronne : 48 à 72 h.</span>
+              <span>Intervention : {DELAI_PHRASE}.</span>
             </div>
           </li>
         </ul>
@@ -2829,9 +2851,7 @@ def build_legal():
   le virement.
 </p>
 <p>
-  Les frais de déplacement s'élèvent à {SITE['travel_fee']}. Ils sont calculés sur
-  l'adresse d'intervention et communiqués avant validation
-  du devis.
+  Les frais de déplacement s'élèvent à {SITE['travel_fee']}. {SITE['travel_rule']}
 </p>
 <p>
   Les prix affichés sur ce site sont indiqués en euros et nets de TVA, {SITE['name']} relevant
@@ -3256,6 +3276,16 @@ def find_us(base):
 # ===========================================================================
 # RÉSERVATION EN LIGNE
 # ===========================================================================
+EXEMPLES_BRIEF = {
+    "nettoyage-vitres-paris":
+        "Exemple : maison avec véranda, une baie coulissante à quatre vantaux et huit fenêtres "
+        "à l'étage, jamais nettoyées depuis l'hiver.",
+    "nettoyage-entreprise-paris":
+        "Exemple : bureau de 120 m², six postes et une salle de réunion, passage souhaité deux "
+        "fois par semaine après 19 h.",
+}
+
+
 def build_reservation():
     base = ""
     trail = [("Réserver", None)]
@@ -3267,15 +3297,32 @@ def build_reservation():
         "options": [{"nom": n, "prix": p, "desc": d} for n, p, d in OPTIONS_AUTO],
         "textile": [{"nom": n, "prix": p, "desc": d} for n, p, d in TARIFS_TEXTILE],
         "services": [{"slug": s["slug"], "nav": s["nav"], "prix": s["price"],
+                      "exemple": EXEMPLES_BRIEF.get(s["slug"], ""),
                       "univers": ("auto" if s["slug"].startswith("nettoyage-automobile")
                                   else "textile" if s["slug"].startswith("nettoyage-textile")
                                   else "devis")}
                      for s in SERVICES],
         "deplacement": DEPLACEMENT,
         "creneaux": CRENEAUX,
+        # Le configurateur adapte la première date proposée au département :
+        # proposer demain à un client de Seine-et-Marne serait un délai que
+        # nous ne tenons pas.
+        "delais": {"proches": list(DELAIS["depts_proches"]),
+                   "proche": DELAIS["proche"], "loin": DELAIS["loin"],
+                   "reponse_txt": DELAIS["reponse"],
+                   "jours_proche": 1, "jours_loin": 2},
     }
     data_json = json.dumps(data, ensure_ascii=False)
 
+    # Chaque carte dit dès l'étape 1 ce qui l'attend à l'étape 2 : un prix
+    # immédiat ou un devis. C'est la question que se pose le visiteur avant
+    # de cliquer, autant y répondre tout de suite.
+    _SUITE = {
+        "nettoyage-automobile-paris": "Prix immédiat — 4 formules au choix",
+        "nettoyage-textile-paris": "Prix immédiat — tarif à la pièce",
+        "nettoyage-vitres-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
+        "nettoyage-entreprise-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
+    }
     cartes = ""
     for s in SERVICES:
         cartes += f"""<label class="pick">
@@ -3284,13 +3331,15 @@ def build_reservation():
     <span class="pick-icon">{icon(s['icon'])}</span>
     <span class="pick-name">{s['nav']}</span>
     <span class="pick-price">{s['price']}</span>
+    <span class="pick-desc">{_SUITE.get(s['slug'], '')}</span>
   </span>
 </label>"""
 
     body = f"""
 {page_title_block(base, trail, "Réserver votre intervention",
-    "Composez votre prestation en quatre étapes : vous voyez le prix se construire au fur et "
-    "à mesure, frais de déplacement compris. Aucun acompte — vous réglez après l'intervention.")}
+    "Quatre étapes, deux minutes. Le prix se construit sous vos yeux, frais de déplacement "
+    "compris, et vous pouvez revenir en arrière à tout moment. Aucun acompte — vous réglez "
+    "après l'intervention.")}
 
 <section class="section">
   <div class="container resa-layout">
@@ -3307,10 +3356,10 @@ def build_reservation():
 
     <div class="resa" id="resa" hidden>
       <ol class="resa-steps" id="resa-steps">
-        <li class="is-on"><span>1</span>Prestation</li>
-        <li><span>2</span>Détail</li>
-        <li><span>3</span>Lieu &amp; date</li>
-        <li><span>4</span>Coordonnées</li>
+        <li class="is-on"><button type="button" data-go="1"><span>1</span>Prestation</button></li>
+        <li><button type="button" data-go="2"><span>2</span>Détail</button></li>
+        <li><button type="button" data-go="3"><span>3</span>Lieu &amp; date</button></li>
+        <li><button type="button" data-go="4"><span>4</span>Coordonnées</button></li>
       </ol>
 
       <form id="resa-form" action="{SITE['form_action']}" method="POST">
@@ -3319,12 +3368,14 @@ def build_reservation():
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="{SITE['url']}/merci.html">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="Prestation" id="resa-presta">
         <input type="hidden" name="Récapitulatif" id="resa-recap">
         <input type="hidden" name="Total estimé" id="resa-total-field">
 
         <!-- Étape 1 -->
         <fieldset class="resa-panel is-on" data-step="1">
           <legend class="resa-legend">Que souhaitez-vous faire nettoyer ?</legend>
+          <p class="resa-intro">Choisissez, et nous passons à la suite automatiquement.</p>
           <div class="pick-grid">{cartes}</div>
         </fieldset>
 
@@ -3338,10 +3389,15 @@ def build_reservation():
         <fieldset class="resa-panel" data-step="3">
           <legend class="resa-legend">Où et quand intervenons-nous ?</legend>
           <div class="form-grid">
-            <div class="field field-full">
+            <div class="field field-full resa-ac">
               <label for="r-adr">Adresse d'intervention <span class="req">*</span></label>
               <input id="r-adr" name="Adresse" type="text" autocomplete="street-address"
-                     placeholder="12 rue de la Paix">
+                     placeholder="Commencez à taper : 12 rue de la Paix, Paris"
+                     role="combobox" aria-expanded="false" aria-autocomplete="list"
+                     aria-controls="r-adr-list">
+              <ul class="ac-list" id="r-adr-list" role="listbox" hidden></ul>
+              <span class="field-hint">Choisissez une suggestion&nbsp;: le code postal et la ville
+                se remplissent seuls, et les frais de déplacement s'affichent aussitôt.</span>
             </div>
             <div class="field">
               <label for="r-cp">Code postal <span class="req">*</span></label>
@@ -3368,9 +3424,9 @@ def build_reservation():
               <select id="r-creneau" name="Créneau"></select>
             </div>
             <div class="field field-full">
-              <span class="field-hint">
-                La date est une préférence : nous vous la confirmons par téléphone ou par e-mail.
-                Délais habituels — 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne.
+              <span class="field-hint" id="r-delai">
+                La date est une préférence&nbsp;: nous vous la confirmons par téléphone ou par
+                e-mail. Délais d'intervention habituels — {DELAI_PHRASE}.
               </span>
             </div>
           </div>
@@ -3379,6 +3435,7 @@ def build_reservation():
         <!-- Étape 4 -->
         <fieldset class="resa-panel" data-step="4">
           <legend class="resa-legend">Vos coordonnées</legend>
+          <div class="resa-final" id="resa-final"></div>
           <div class="form-grid">
             <div class="field">
               <label for="r-nom">Nom et prénom <span class="req">*</span></label>
@@ -3427,6 +3484,17 @@ def build_reservation():
           <button class="btn" type="button" id="resa-next">Continuer</button>
           <button class="btn btn-gold" type="submit" id="resa-send" hidden>Confirmer ma réservation</button>
         </div>
+
+        <!-- Sur mobile, le récapitulatif passe sous le formulaire : cette
+             barre garde le total et le bouton sous les yeux. -->
+        <div class="resa-bar" id="resa-bar" hidden>
+          <div class="resa-bar-sum">
+            <span>Total estimé</span>
+            <strong id="resa-bar-total">—</strong>
+          </div>
+          <button class="btn" type="button" id="resa-bar-next">Continuer</button>
+          <button class="btn btn-gold" type="submit" id="resa-bar-send" hidden>Confirmer</button>
+        </div>
       </form>
     </div>
 
@@ -3451,9 +3519,14 @@ def build_reservation():
     <p>
       Rien n'est masqué&nbsp;: le montant affiché est la somme de la prestation choisie, des
       options cochées et des frais de déplacement calculés sur l'adresse que vous saisissez.
-      Ces frais suivent un barème unique — <strong>{SITE['travel_fee']}</strong> — et se
-      calculent sur la distance par la route, pas à vol
-      d'oiseau.
+      Ces frais suivent un barème unique&nbsp;: <strong>{SITE['travel_fee']}</strong>.
+      {SITE['travel_rule']}
+    </p>
+    <p>
+      Le kilométrage affiché pendant la saisie est une <strong>estimation</strong>, calculée à
+      partir des coordonnées de votre adresse. Le montant définitif est établi sur la distance
+      routière réelle et vous est confirmé avec le devis&nbsp;: il peut différer d'une tranche,
+      jamais davantage.
     </p>
     <p>
       Les prix des prestations sont <strong>fixes</strong>. Un pack automobile coûte le même
@@ -3503,7 +3576,7 @@ def build_reservation():
     html = (head(titre_page("Réserver un nettoyage en ligne à Paris"),
                  "Réservez votre intervention MathClean en ligne : choisissez la prestation, "
                  "voyez le prix se construire, frais de déplacement compris. Sans acompte, 7j/7.",
-                 "reservation.html", base, schema=schema)
+                 "reservation.html", base, schema=schema, body_class="page-resa")
             + header(base, "reservation") + body
             + '<script id="resa-data" type="application/json">' + data_json + '</script>\n'
             + '<script src="assets/js/reservation.js?v=' + V_RESA + '" defer></script>\n'
@@ -3684,7 +3757,7 @@ def build_ville(v):
     frais_txt = ("aucun frais de déplacement" if frais == 0
                  else "environ %d € de frais de déplacement" % frais)
     frais_court = "Aucun" if frais == 0 else "~ %d €" % frais
-    delai = ("24 à 48 h" if dept in ("75", "92", "93", "94") else "48 à 72 h")
+    delai = delai_intervention(dept)
 
     trail = [("Villes", "villes.html"), (nom, None)]
     # Les quatre prestations, dans l'ordre de leur poids dans la commune :
@@ -3873,7 +3946,7 @@ def build_local(pv, local_slug):
     km_txt = "moins d'un kilomètre" if km < 1 else "environ %d km" % round(km)
     frais = frais_pour(km)
     frais_court = "Aucun" if frais == 0 else "~ %d €" % frais
-    delai = "24 à 48 h" if dept in ("75", "92", "93", "94") else "48 à 72 h"
+    delai = delai_intervention(dept)
 
     trail = [("Villes", "villes.html"), (nom, None), (s["local"]["nom"], None)]
     inclus = "".join("<li>%s</li>" % li for li in s["included"][:6])
@@ -4631,6 +4704,78 @@ def copy_theme_assets():
         shutil.copyfile(os.path.join(HERE, src), os.path.join(HERE, dst))
 
 
+# Formulations et valeurs qui ne doivent plus jamais apparaître. Elles ont
+# toutes été relevées par l'audit de septembre 2026 : une ancienne adresse,
+# une ancienne fourchette automobile, et une promesse de délai qui confondait
+# la réponse à une demande et l'intervention elle-même.
+FORMULATIONS_INTERDITES = (
+    ("Nicolas-Copernic", "ancienne adresse de Tremblay-en-France"),
+    ("Tremblay-en-France (77", "Tremblay-en-France est dans le 93"),
+    ("Intervention sous 24 h", "confond le délai de réponse et celui d'intervention"),
+    ("intervention sous 24 h", "confond le délai de réponse et celui d'intervention"),
+    ("jusqu'à 240", "ancienne fourchette automobile"),
+    ("dès 40 €", "ancien prix d'appel automobile"),
+)
+
+def controle_coherence(pages):
+    """Garde-fou exécuté à chaque build.
+
+    L'audit avait relevé quatre contradictions entre pages : deux grilles de
+    tarifs automobiles, deux adresses, un nombre de prestations variable et
+    trois formulations de délai. Rien n'empêchait ces écarts de revenir. Ce
+    contrôle lit les pages produites et fait échouer le build si l'une d'elles
+    contredit les données de content.py.
+    """
+    erreurs = []
+
+    # 1. Les tarifs automobiles annoncés viennent bien de la grille.
+    chemin_tarifs = os.path.join(OUT, "tarifs.html")
+    tarifs_html = open(chemin_tarifs, encoding="utf-8").read()
+    for nom, prix, _sc, _d, _f, _li in PACKS_AUTO:
+        if ("%d €" % prix) not in tarifs_html:
+            erreurs.append("tarifs.html n'affiche pas %s à %d €" % (nom, prix))
+
+    # 2. La réservation calcule sur les mêmes montants que les pages.
+    resa_html = open(os.path.join(OUT, "reservation.html"), encoding="utf-8").read()
+    donnees = json.loads(re.search(
+        r'<script id="resa-data" type="application/json">(.*?)</script>',
+        resa_html, re.S).group(1))
+    if [p["prix"] for p in donnees["packs"]] != [p for _n, p, _s, _d, _f, _l in PACKS_AUTO]:
+        erreurs.append("les packs du configurateur ne correspondent plus à la grille")
+    if [o["prix"] for o in donnees["options"]] != [p for _n, p, _d in OPTIONS_AUTO]:
+        erreurs.append("les options du configurateur ne correspondent plus à la grille")
+    if [t["prix"] for t in donnees["textile"]] != [p for _n, p, _d in TARIFS_TEXTILE]:
+        erreurs.append("les tarifs textile du configurateur ne correspondent plus à la grille")
+    if [x["slug"] for x in donnees["services"]] != [x["slug"] for x in SERVICES]:
+        erreurs.append("le configurateur ne propose pas les mêmes prestations que le site")
+
+    # 3. Chaque page, relue : adresse, délais, nombre de prestations.
+    for chemin, _prio, _freq in pages:
+        html = open(os.path.join(OUT, chemin), encoding="utf-8").read()
+        for motif, raison in FORMULATIONS_INTERDITES:
+            if motif in html:
+                erreurs.append("%s contient « %s » (%s)" % (chemin, motif, raison))
+        # Le menu déroulant et la colonne du pied de page listent le
+        # catalogue. Une page restée sur une liste périmée se verrait ici, et
+        # nulle part ailleurs : c'est exactement l'écart relevé par l'audit.
+        for zone, motif in (("menu", r"<header .*?</header>"),
+                            ("pied de page", r"<footer class=\"site-footer\".*?</footer>")):
+            bloc = re.search(motif, html, re.S)
+            if not bloc:
+                continue
+            presents = [x["slug"] for x in SERVICES if "services/" + x["slug"] in bloc.group(0)]
+            if len(presents) != len(SERVICES):
+                manquants = [x["slug"] for x in SERVICES if x["slug"] not in presents]
+                erreurs.append("%s : le %s ne renvoie pas vers %s"
+                               % (chemin, zone, ", ".join(manquants)))
+
+    if erreurs:
+        for e in erreurs:
+            print("INCOHÉRENCE : %s" % e, file=sys.stderr)
+        raise SystemExit("%d incohérence(s) — build interrompu." % len(erreurs))
+    return len(pages)
+
+
 def main():
     copy_theme_assets()
     pages = []
@@ -4673,6 +4818,8 @@ def main():
     build_llms_txt()
 
     stale = clean_stale([p for p, _pr, _f in pages] + extra)
+
+    controle_coherence(pages)
 
     print("Site généré dans %s" % OUT)
     print("%d pages indexables + merci.html, 404.html, sitemap.xml, robots.txt, _redirects"

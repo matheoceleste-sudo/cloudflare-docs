@@ -28,11 +28,11 @@
 <meta name="twitter:description" content="Réservez votre intervention MathClean en ligne : choisissez la prestation, voyez le prix se construire, frais de déplacement compris. Sans acompte, 7j/7.">
 <meta name="twitter:image" content="https://mathclean.fr/assets/img/og-image.png">
 <link rel="icon" href="assets/img/lion.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/theme.css?v=e0cbd930">
+<link rel="stylesheet" href="assets/css/theme.css?v=882b166f">
 <script>document.documentElement.className+=' js';</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://mathclean.fr/"},{"@type":"ListItem","position":2,"name":"Réserver","item":"https://mathclean.fr/reservation"}]}</script>
 </head>
-<body>
+<body class="page-resa">
 <a class="skip-link" href="#content">Aller au contenu</a>
 <div class="topbar">
   <div class="container">
@@ -105,7 +105,7 @@
   <div class="container">
     <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="./">Accueil</a><span class="sep">›</span><span aria-current="page">Réserver</span></nav>
     <h1>Réserver votre intervention</h1>
-    <p class="lead">Composez votre prestation en quatre étapes : vous voyez le prix se construire au fur et à mesure, frais de déplacement compris. Aucun acompte — vous réglez après l'intervention.</p>
+    <p class="lead">Quatre étapes, deux minutes. Le prix se construit sous vos yeux, frais de déplacement compris, et vous pouvez revenir en arrière à tout moment. Aucun acompte — vous réglez après l'intervention.</p>
   </div>
 </section>
 
@@ -124,10 +124,10 @@
 
     <div class="resa" id="resa" hidden>
       <ol class="resa-steps" id="resa-steps">
-        <li class="is-on"><span>1</span>Prestation</li>
-        <li><span>2</span>Détail</li>
-        <li><span>3</span>Lieu &amp; date</li>
-        <li><span>4</span>Coordonnées</li>
+        <li class="is-on"><button type="button" data-go="1"><span>1</span>Prestation</button></li>
+        <li><button type="button" data-go="2"><span>2</span>Détail</button></li>
+        <li><button type="button" data-go="3"><span>3</span>Lieu &amp; date</button></li>
+        <li><button type="button" data-go="4"><span>4</span>Coordonnées</button></li>
       </ol>
 
       <form id="resa-form" action="https://formsubmit.co/matheoceleste@gmail.com" method="POST">
@@ -136,18 +136,21 @@
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://mathclean.fr/merci">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="Prestation" id="resa-presta">
         <input type="hidden" name="Récapitulatif" id="resa-recap">
         <input type="hidden" name="Total estimé" id="resa-total-field">
 
         <!-- Étape 1 -->
         <fieldset class="resa-panel is-on" data-step="1">
           <legend class="resa-legend">Que souhaitez-vous faire nettoyer ?</legend>
+          <p class="resa-intro">Choisissez, et nous passons à la suite automatiquement.</p>
           <div class="pick-grid"><label class="pick">
   <input type="radio" name="univers" value="nettoyage-automobile-paris">
   <span class="pick-body">
     <span class="pick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M6.5 17V9.7l1.7-3.9A2 2 0 0 1 10 4.6h4a2 2 0 0 1 1.8 1.2l1.7 3.9V17M4 12h16"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/></svg></span>
     <span class="pick-name">Nettoyage automobile</span>
     <span class="pick-price">dès 50 €</span>
+    <span class="pick-desc">Prix immédiat — 4 formules au choix</span>
   </span>
 </label><label class="pick">
   <input type="radio" name="univers" value="nettoyage-textile-paris">
@@ -155,6 +158,7 @@
     <span class="pick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17v-5.5A2.5 2.5 0 0 1 5.5 9h13A2.5 2.5 0 0 1 21 11.5V17M3 17h18M5 17v2M19 17v2M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg></span>
     <span class="pick-name">Nettoyage textile (canapé, matelas, tapis)</span>
     <span class="pick-price">dès 15 €</span>
+    <span class="pick-desc">Prix immédiat — tarif à la pièce</span>
   </span>
 </label><label class="pick">
   <input type="radio" name="univers" value="nettoyage-vitres-paris">
@@ -162,6 +166,7 @@
     <span class="pick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="1.6"/><path d="M12 3.4V20.6M3.4 12h17.2"/></svg></span>
     <span class="pick-name">Nettoyage de vitres</span>
     <span class="pick-price">sur devis</span>
+    <span class="pick-desc">Devis sous 24 h après votre demande</span>
   </span>
 </label><label class="pick">
   <input type="radio" name="univers" value="nettoyage-entreprise-paris">
@@ -169,6 +174,7 @@
     <span class="pick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V6.4a1 1 0 0 1 .7-.95l7-2.3a1 1 0 0 1 1.3.95V21M19 21v-9.4a1 1 0 0 0-.7-.95L14 9.2M8.6 8.4h1.8M8.6 12h1.8M8.6 15.6h1.8"/></svg></span>
     <span class="pick-name">Nettoyage pour entreprise</span>
     <span class="pick-price">sur devis</span>
+    <span class="pick-desc">Devis sous 24 h après votre demande</span>
   </span>
 </label></div>
         </fieldset>
@@ -183,10 +189,15 @@
         <fieldset class="resa-panel" data-step="3">
           <legend class="resa-legend">Où et quand intervenons-nous ?</legend>
           <div class="form-grid">
-            <div class="field field-full">
+            <div class="field field-full resa-ac">
               <label for="r-adr">Adresse d'intervention <span class="req">*</span></label>
               <input id="r-adr" name="Adresse" type="text" autocomplete="street-address"
-                     placeholder="12 rue de la Paix">
+                     placeholder="Commencez à taper : 12 rue de la Paix, Paris"
+                     role="combobox" aria-expanded="false" aria-autocomplete="list"
+                     aria-controls="r-adr-list">
+              <ul class="ac-list" id="r-adr-list" role="listbox" hidden></ul>
+              <span class="field-hint">Choisissez une suggestion&nbsp;: le code postal et la ville
+                se remplissent seuls, et les frais de déplacement s'affichent aussitôt.</span>
             </div>
             <div class="field">
               <label for="r-cp">Code postal <span class="req">*</span></label>
@@ -213,9 +224,9 @@
               <select id="r-creneau" name="Créneau"></select>
             </div>
             <div class="field field-full">
-              <span class="field-hint">
-                La date est une préférence : nous vous la confirmons par téléphone ou par e-mail.
-                Délais habituels — 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne.
+              <span class="field-hint" id="r-delai">
+                La date est une préférence&nbsp;: nous vous la confirmons par téléphone ou par
+                e-mail. Délais d'intervention habituels — 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne.
               </span>
             </div>
           </div>
@@ -224,6 +235,7 @@
         <!-- Étape 4 -->
         <fieldset class="resa-panel" data-step="4">
           <legend class="resa-legend">Vos coordonnées</legend>
+          <div class="resa-final" id="resa-final"></div>
           <div class="form-grid">
             <div class="field">
               <label for="r-nom">Nom et prénom <span class="req">*</span></label>
@@ -272,6 +284,17 @@
           <button class="btn" type="button" id="resa-next">Continuer</button>
           <button class="btn btn-gold" type="submit" id="resa-send" hidden>Confirmer ma réservation</button>
         </div>
+
+        <!-- Sur mobile, le récapitulatif passe sous le formulaire : cette
+             barre garde le total et le bouton sous les yeux. -->
+        <div class="resa-bar" id="resa-bar" hidden>
+          <div class="resa-bar-sum">
+            <span>Total estimé</span>
+            <strong id="resa-bar-total">—</strong>
+          </div>
+          <button class="btn" type="button" id="resa-bar-next">Continuer</button>
+          <button class="btn btn-gold" type="submit" id="resa-bar-send" hidden>Confirmer</button>
+        </div>
       </form>
     </div>
 
@@ -296,9 +319,14 @@
     <p>
       Rien n'est masqué&nbsp;: le montant affiché est la somme de la prestation choisie, des
       options cochées et des frais de déplacement calculés sur l'adresse que vous saisissez.
-      Ces frais suivent un barème unique — <strong>5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil (93)</strong> — et se
-      calculent sur la distance par la route, pas à vol
-      d'oiseau.
+      Ces frais suivent un barème unique&nbsp;: <strong>5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil (93)</strong>.
+      La distance comptée est celle de l'aller simple, par la route, entre notre atelier et votre adresse d'intervention : le retour n'est pas facturé. Toute tranche de 5 km entamée est due — 12 km font donc trois tranches, soit 15 €. Il n'y a pas de plafond, mais le montant vous est annoncé avant que vous validiez, et il ne bouge plus ensuite.
+    </p>
+    <p>
+      Le kilométrage affiché pendant la saisie est une <strong>estimation</strong>, calculée à
+      partir des coordonnées de votre adresse. Le montant définitif est établi sur la distance
+      routière réelle et vous est confirmé avec le devis&nbsp;: il peut différer d'une tranche,
+      jamais davantage.
     </p>
     <p>
       Les prix des prestations sont <strong>fixes</strong>. Un pack automobile coûte le même
@@ -378,8 +406,8 @@
     </div>
   </div>
 </section>
-<script id="resa-data" type="application/json">{"packs": [{"nom": "Extérieur Éclat", "prix": 50, "portee": "Extérieur", "desc": "La carrosserie retrouve sa brillance", "lignes": ["Lavage complet de la carrosserie", "Jantes et passages de roues", "Brillant pneus", "Vitres extérieures", "Séchage sans trace"]}, {"nom": "Intérieur Essentiel", "prix": 55, "portee": "Intérieur", "desc": "Idéal pour un coup de propre régulier (hors cuir et alcantara)", "lignes": ["Aspiration de l'habitacle et du coffre", "Nettoyage du tableau de bord", "Nettoyage des plastiques", "Vitres intérieures", "Désinfection complète à la vapeur", "Parfum d'ambiance"]}, {"nom": "Intérieur Prestige", "prix": 100, "portee": "Intérieur", "desc": "Le détail poussé jusqu'au moindre recoin, cuir compris", "lignes": ["Tout l'Intérieur Essentiel", "Sièges cuir nettoyés ou pressing des sièges tissu", "Pressing des tapis et moquettes", "Protection des plastiques", "Traitement des cuirs", "Battements de portes", "Ciel de toit", "Compartiment de la roue de secours"]}, {"nom": "Intégral", "prix": 130, "portee": "Intérieur + Extérieur", "desc": "Le véhicule entier, dedans comme dehors", "lignes": ["Tout l'Intérieur Prestige", "Lavage complet de la carrosserie", "Jantes et brillant pneus", "Vitres intérieures et extérieures", "Séchage sans trace", "Parfum d'ambiance"]}], "options": [{"nom": "Retrait des poils d'animaux", "prix": 10, "desc": "Sièges, tapis et moquettes"}, {"nom": "Traitement cuir & alcantara", "prix": 20, "desc": "Nettoyage puis nourrissage des cuirs et de l'alcantara"}, {"nom": "Neutralisation des odeurs par ozone", "prix": 30, "desc": "Traitement d'1 h : les molécules odorantes sont détruites, pas masquées"}], "textile": [{"nom": "Chaise / chaise de bureau", "prix": 15, "desc": "Assise et dossier"}, {"nom": "Fauteuil", "prix": 25, "desc": "Assise, dossier et accoudoirs"}, {"nom": "Canapé 2 places", "prix": 39, "desc": "Injection-extraction et détachage"}, {"nom": "Canapé 3 places", "prix": 49, "desc": "Injection-extraction et détachage"}, {"nom": "Canapé d'angle", "prix": 69, "desc": "Injection-extraction et détachage"}, {"nom": "Matelas 1 place", "prix": 39, "desc": "Deux faces, traitement anti-acariens"}, {"nom": "Matelas 2 places", "prix": 49, "desc": "Deux faces, traitement anti-acariens"}, {"nom": "Tapis jusqu'à 6 m²", "prix": 39, "desc": "Lavage des fibres en profondeur"}, {"nom": "Tapis de plus de 6 m²", "prix": 59, "desc": "Lavage des fibres en profondeur"}], "services": [{"slug": "nettoyage-automobile-paris", "nav": "Nettoyage automobile", "prix": "dès 50 €", "univers": "auto"}, {"slug": "nettoyage-textile-paris", "nav": "Nettoyage textile (canapé, matelas, tapis)", "prix": "dès 15 €", "univers": "textile"}, {"slug": "nettoyage-vitres-paris", "nav": "Nettoyage de vitres", "prix": "sur devis", "univers": "devis"}, {"slug": "nettoyage-entreprise-paris", "nav": "Nettoyage pour entreprise", "prix": "sur devis", "univers": "devis"}], "deplacement": {"lat": 48.9499461, "lon": 2.4559529, "palier_km": 5, "palier_eur": 5, "coef_route": 1.25}, "creneaux": ["Matin — 8h à 12h", "Après-midi — 12h à 17h", "Fin de journée — 17h à 20h"]}</script>
-<script src="assets/js/reservation.js?v=c59af476" defer></script>
+<script id="resa-data" type="application/json">{"packs": [{"nom": "Extérieur Éclat", "prix": 50, "portee": "Extérieur", "desc": "La carrosserie retrouve sa brillance", "lignes": ["Lavage complet de la carrosserie", "Jantes et passages de roues", "Brillant pneus", "Vitres extérieures", "Séchage sans trace"]}, {"nom": "Intérieur Essentiel", "prix": 55, "portee": "Intérieur", "desc": "Idéal pour un coup de propre régulier (hors cuir et alcantara)", "lignes": ["Aspiration de l'habitacle et du coffre", "Nettoyage du tableau de bord", "Nettoyage des plastiques", "Vitres intérieures", "Désinfection complète à la vapeur", "Parfum d'ambiance"]}, {"nom": "Intérieur Prestige", "prix": 100, "portee": "Intérieur", "desc": "Le détail poussé jusqu'au moindre recoin, cuir compris", "lignes": ["Tout l'Intérieur Essentiel", "Sièges cuir nettoyés ou pressing des sièges tissu", "Pressing des tapis et moquettes", "Protection des plastiques", "Traitement des cuirs", "Battements de portes", "Ciel de toit", "Compartiment de la roue de secours"]}, {"nom": "Intégral", "prix": 130, "portee": "Intérieur + Extérieur", "desc": "Le véhicule entier, dedans comme dehors", "lignes": ["Tout l'Intérieur Prestige", "Lavage complet de la carrosserie", "Jantes et brillant pneus", "Vitres intérieures et extérieures", "Séchage sans trace", "Parfum d'ambiance"]}], "options": [{"nom": "Retrait des poils d'animaux", "prix": 10, "desc": "Sièges, tapis et moquettes"}, {"nom": "Traitement cuir & alcantara", "prix": 20, "desc": "Nettoyage puis nourrissage des cuirs et de l'alcantara"}, {"nom": "Neutralisation des odeurs par ozone", "prix": 30, "desc": "Traitement d'1 h : les molécules odorantes sont détruites, pas masquées"}], "textile": [{"nom": "Chaise / chaise de bureau", "prix": 15, "desc": "Assise et dossier"}, {"nom": "Fauteuil", "prix": 25, "desc": "Assise, dossier et accoudoirs"}, {"nom": "Canapé 2 places", "prix": 39, "desc": "Injection-extraction et détachage"}, {"nom": "Canapé 3 places", "prix": 49, "desc": "Injection-extraction et détachage"}, {"nom": "Canapé d'angle", "prix": 69, "desc": "Injection-extraction et détachage"}, {"nom": "Matelas 1 place", "prix": 39, "desc": "Deux faces, traitement anti-acariens"}, {"nom": "Matelas 2 places", "prix": 49, "desc": "Deux faces, traitement anti-acariens"}, {"nom": "Tapis jusqu'à 6 m²", "prix": 39, "desc": "Lavage des fibres en profondeur"}, {"nom": "Tapis de plus de 6 m²", "prix": 59, "desc": "Lavage des fibres en profondeur"}], "services": [{"slug": "nettoyage-automobile-paris", "nav": "Nettoyage automobile", "prix": "dès 50 €", "exemple": "", "univers": "auto"}, {"slug": "nettoyage-textile-paris", "nav": "Nettoyage textile (canapé, matelas, tapis)", "prix": "dès 15 €", "exemple": "", "univers": "textile"}, {"slug": "nettoyage-vitres-paris", "nav": "Nettoyage de vitres", "prix": "sur devis", "exemple": "Exemple : maison avec véranda, une baie coulissante à quatre vantaux et huit fenêtres à l'étage, jamais nettoyées depuis l'hiver.", "univers": "devis"}, {"slug": "nettoyage-entreprise-paris", "nav": "Nettoyage pour entreprise", "prix": "sur devis", "exemple": "Exemple : bureau de 120 m², six postes et une salle de réunion, passage souhaité deux fois par semaine après 19 h.", "univers": "devis"}], "deplacement": {"lat": 48.9499461, "lon": 2.4559529, "palier_km": 5, "palier_eur": 5, "coef_route": 1.25}, "creneaux": ["Matin — 8h à 12h", "Après-midi — 12h à 17h", "Fin de journée — 17h à 20h"], "delais": {"proches": ["75", "92", "93", "94"], "proche": "24 à 48 h", "loin": "48 à 72 h", "reponse_txt": "24 h", "jours_proche": 1, "jours_loin": 2}}</script>
+<script src="assets/js/reservation.js?v=5bb5b3e4" defer></script>
 </main>
 
 <footer class="site-footer">

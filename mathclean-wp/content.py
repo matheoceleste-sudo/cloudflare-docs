@@ -36,6 +36,28 @@ SITE = {
     "review_url": "https://www.google.com/maps?cid=8434710860473546146",
     "directions_url": "https://www.google.com/maps/dir/?api=1&destination=MathClean&destination_place_id=",
     "travel_fee": "5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil (93)",
+    # Règle complète, écrite une seule fois : toute page qui parle du
+    # déplacement la reprend telle quelle, pour qu'aucune formulation ne
+    # diverge d'une page à l'autre.
+    "travel_rule": (
+        "La distance comptée est celle de l'aller simple, par la route, entre notre atelier "
+        "et votre adresse d'intervention : le retour n'est pas facturé. Toute tranche de "
+        "5 km entamée est due — 12 km font donc trois tranches, soit 15 €. Il n'y a pas de "
+        "plafond, mais le montant vous est annoncé avant que vous validiez, et il ne bouge "
+        "plus ensuite."
+    ),
+}
+
+# --- Délais ----------------------------------------------------------------
+# Deux délais distincts, que le site ne doit jamais confondre : celui de la
+# RÉPONSE à une demande, et celui de l'INTERVENTION elle-même. L'audit avait
+# relevé trois formulations concurrentes sur le site ; elles viennent
+# désormais toutes d'ici.
+DELAIS = {
+    "reponse": "24 h",
+    "proche": "24 à 48 h",
+    "loin": "48 à 72 h",
+    "depts_proches": ("75", "92", "93", "94"),
 }
 
 # --- Prestations ----------------------------------------------------------
@@ -466,8 +488,10 @@ FAQ = [
      "planes. Le coffre est compris, sans supplément."),
     ("Les frais de déplacement sont-ils inclus ?",
      "Non, ils s'ajoutent au prix de la prestation : 5 € par tranche de 5 km entre notre atelier "
-     "du Blanc-Mesnil (93) et votre adresse. Le montant vous est annoncé avant que vous validiez. "
-     "Aucune surprise à l'arrivée."),
+     "du Blanc-Mesnil (93) et votre adresse. La distance comptée est celle de l'aller simple, par "
+     "la route ; le retour n'est pas facturé. Toute tranche de 5 km entamée est due : 12 km font "
+     "trois tranches, soit 15 €. Il n'y a pas de plafond, mais le montant vous est annoncé avant "
+     "que vous validiez et il ne bouge plus ensuite."),
     ("Utilisez-vous des produits écologiques ?",
      "Nous privilégions des produits respectueux de l'environnement et de votre santé, sans danger pour les "
      "enfants ni les animaux. La vapeur haute température nous permet en outre de désinfecter de nombreuses "
