@@ -429,6 +429,8 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:.78rem;
   letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;
 }
+/* Carte d'un conseil dont le sujet n'est plus au catalogue. */
+.post-cat--off{background:var(--gold-soft,#fdf3dd);color:#7a5a12}
 .post-body h3{margin:0;font-size:1.17rem;line-height:1.35}
 .post-body h3 a{color:var(--ink)}
 .post-body h3 a:hover{color:var(--brand)}
@@ -827,11 +829,15 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
    Au survol : un voile sombre couvre la case et « En savoir plus » apparaît.
    ========================================================================== */
 .tile-grid{display:grid;gap:20px;grid-template-columns:repeat(3,minmax(0,1fr))}
+/* Quatre cases se lisent en 2 × 2 ; en 3 + 1 la dernière reste orpheline. */
+.tile-grid--pair{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:1000px){.tile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.tile-grid{grid-template-columns:1fr}}
 /* Sur la page Prestations, la septième case occupe toute la largeur. */
 .tile-grid--all > .tile:last-child:nth-child(3n+1){grid-column:1/-1}
 .tile-grid--all > .tile:last-child:nth-child(3n+1) .tile-name{font-size:clamp(1.4rem,1rem + 1.6vw,2.1rem)}
+.tile-grid--all.tile-grid--pair > .tile:last-child:nth-child(3n+1){grid-column:auto}
+.tile-grid--all.tile-grid--pair > .tile:last-child:nth-child(3n+1) .tile-name{font-size:clamp(1.1rem,.95rem + .45vw,1.35rem)}
 
 .tile{
   position:relative;display:block;overflow:hidden;isolation:isolate;

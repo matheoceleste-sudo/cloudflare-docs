@@ -28,7 +28,7 @@
 
   var step = 1;
   var state = { service: null, univers: null, pack: null, options: [], textile: {},
-                ozone: 'local', m2: null, dep: null };
+                dep: null };
 
   var eur = function (n) { return Math.round(n) + ' €'; };
 
@@ -77,32 +77,6 @@
       });
       host.innerHTML = t + '</div>';
 
-    } else if (state.univers === 'ozone') {
-      var z = D.ozone;
-      host.innerHTML =
-        '<p class="resa-intro">Un logement ou un local se facture à la surface au sol, ' +
-        '<strong>' + z.eur_m2 + ' € le m²</strong>. Un habitacle de voiture reste au forfait.</p>' +
-        '<div class="pack-pick">' +
-        '<label class="pick pick-wide"><input type="radio" name="ozo" value="local" checked>' +
-        '<span class="pick-body"><span class="pick-name">Logement, local ou commerce</span>' +
-        '<span class="pick-price">' + z.eur_m2 + ' € / m²</span>' +
-        '<span class="pick-desc">Traitement de la surface au sol indiquée, aération comprise.</span>' +
-        '</span></label>' +
-        '<label class="pick pick-wide"><input type="radio" name="ozo" value="auto">' +
-        '<span class="pick-body"><span class="pick-name">Habitacle automobile</span>' +
-        '<span class="pick-price">' + D.ozone_auto + ' €</span>' +
-        '<span class="pick-desc">Forfait d’une heure. Le plus souvent ajouté à un nettoyage intérieur.</span>' +
-        '</span></label></div>' +
-        '<div id="ozo-m2" class="field field-full" style="margin-top:18px">' +
-        '<label for="r-m2">Surface à traiter, en m² <span class="req">*</span></label>' +
-        '<input id="r-m2" name="Surface (m²)" type="number" inputmode="numeric" ' +
-        'min="' + z.m2_min + '" max="' + z.m2_max + '" step="1" placeholder="' + z.m2_defaut + '">' +
-        '<span class="field-hint" id="r-m2-calc">' + z.m2_min + ' m² minimum. ' +
-        'Exemple : 30 m² × ' + z.eur_m2 + ' € = ' + (30 * z.eur_m2) + ' €.</span></div>' +
-        '<div class="notice" style="margin-top:18px"><p>Le traitement immobilise les lieux ' +
-        'pendant sa durée et son aération : ni personne, ni animaux, ni plantes à l’intérieur. ' +
-        'Comptez environ deux heures pour un habitacle, une demi-journée au-delà de 50 m².</p></div>';
-
     } else {
       host.innerHTML =
         '<div class="notice notice-blue"><p><strong>' + state.nav + '</strong> se chiffre au cas par cas : ' +
@@ -130,30 +104,6 @@
         draw();
       });
     });
-    $$('input[name="ozo"]').forEach(function (r) {
-      r.addEventListener('change', function () {
-        state.ozone = r.value;
-        var champ = $('#ozo-m2');
-        if (champ) champ.hidden = (r.value !== 'local');
-        if (r.value !== 'local') { state.m2 = null; if ($('#r-m2')) $('#r-m2').value = ''; }
-        draw();
-      });
-    });
-    var m2 = $('#r-m2');
-    if (m2) {
-      m2.addEventListener('input', function () {
-        var v = parseInt(m2.value, 10);
-        state.m2 = (isNaN(v) || v <= 0) ? null : v;
-        var note = $('#r-m2-calc');
-        if (note) {
-          note.textContent = state.m2
-            ? state.m2 + ' m² × ' + D.ozone.eur_m2 + ' € = ' + (state.m2 * D.ozone.eur_m2) + ' €.'
-            : D.ozone.m2_min + ' m² minimum. Exemple : 30 m² × ' + D.ozone.eur_m2 +
-              ' € = ' + (30 * D.ozone.eur_m2) + ' €.';
-        }
-        draw();
-      });
-    }
     $$('.qty-btn').forEach(function (b) {
       b.addEventListener('click', function () {
         var i = b.getAttribute('data-i');
@@ -187,15 +137,6 @@
         lines.push({ t: a.nom + ' × ' + q, p: eur(a.prix * q) });
         total += a.prix * q;
       });
-    } else if (state.univers === 'ozone') {
-      if (state.ozone === 'auto') {
-        lines.push({ t: 'Traitement ozone — habitacle automobile', p: eur(D.ozone_auto) });
-        total += D.ozone_auto;
-      } else if (state.m2) {
-        lines.push({ t: 'Traitement ozone — ' + state.m2 + ' m²',
-                     p: eur(state.m2 * D.ozone.eur_m2) });
-        total += state.m2 * D.ozone.eur_m2;
-      }
     } else if (state.service) {
       lines.push({ t: state.nav, p: 'sur devis' });
       devis = true;
@@ -279,7 +220,6 @@
       state.univers = s.univers;
       state.nav = s.nav;
       state.pack = null; state.options = []; state.textile = {};
-      state.ozone = 'local'; state.m2 = null;
       buildDetail();
     });
   });
@@ -312,12 +252,6 @@
       if (state.univers === 'textile') {
         var total = Object.keys(state.textile).reduce(function (a, k) { return a + state.textile[k]; }, 0);
         if (!total) return fail('Indiquez au moins une pièce à nettoyer.');
-      }
-      if (state.univers === 'ozone' && state.ozone === 'local') {
-        if (!state.m2) return fail('Indiquez la surface à traiter, en mètres carrés.');
-        if (state.m2 < D.ozone.m2_min || state.m2 > D.ozone.m2_max)
-          return fail('Indiquez une surface comprise entre ' + D.ozone.m2_min +
-                      ' et ' + D.ozone.m2_max + ' m². Au-delà, appelez-nous : nous chiffrons sur place.');
       }
       if (state.univers === 'devis' && !$('#r-brief').value.trim())
         return fail('Décrivez brièvement ce qu’il y a à nettoyer.');

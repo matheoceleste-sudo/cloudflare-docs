@@ -29,7 +29,7 @@ from content import (
     DATE_GUIDES, DATE_GUIDES_FR,  # noqa: E402
     SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER, BEFORE_AFTER_HD, ZONES_DETAIL,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
-    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES, OZONE,
+    GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES,
     PREMIUM_VILLES,
 )
 
@@ -157,7 +157,6 @@ ICONS = {
     "pin":      '<path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>',
     "arrow":    '<path d="M4 12h15M13 6l6 6-6 6"/>',
     "chevron":  '<polyline points="6 9 12 15 18 9"/>',
-    "ozone":    '<circle cx="6.5" cy="14.5" r="3.1"/><circle cx="17.5" cy="14.5" r="3.1"/><circle cx="12" cy="6.5" r="3.1"/><path d="M8.9 12.2 10.4 9.4M13.6 9.4l1.5 2.8M9.6 14.5h4.8"/>',
     "check":    '<polyline points="20 6 9 17 4 12"/>',
     "up":       '<path d="M12 19V6M6 12l6-6 6 6"/>',
     "info":     '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/>',
@@ -787,6 +786,17 @@ def write(path, html):
 # ===========================================================================
 # ACCUEIL
 # ===========================================================================
+def classe_tuiles(n, toutes=False):
+    """Classes de la grille de tuiles.
+
+    Quatre cases se lisent mieux en 2 × 2 qu'en 3 + 1 : la dernière ligne
+    n'est alors ni orpheline ni étirée sur toute la largeur.
+    """
+    return ("tile-grid"
+            + (" tile-grid--all" if toutes else "")
+            + (" tile-grid--pair" if n == 4 else ""))
+
+
 def build_home():
     base = ""
     # Six vignettes sur l'accueil ; la septième reste accessible par le bouton
@@ -879,7 +889,7 @@ def build_home():
         comprendre la matière avant de la nettoyer — qui sépare un résultat correct d'un résultat qui tient.
       </p>
     </div>
-    <div class="tile-grid">{cards}</div>
+    <div class="{classe_tuiles(len(SERVICES[:6]))}">{cards}</div>
     <div class="btn-row center" style="margin-top:36px">
       <a class="btn btn-outline" href="services.html">Voir les {NB_SERVICES} prestations</a>
     </div>
@@ -984,8 +994,7 @@ def build_home():
       <span class="eyebrow">Où nous intervenons</span>
       <h2>Les huit départements d'Île-de-France</h2>
       <p class="lead">
-        Depuis notre atelier {ville_de(SITE['city'])} (93). Frais de déplacement : {SITE['travel_fee']},
-        annoncés avant que vous validiez.
+        Frais de déplacement&nbsp;: {SITE['travel_fee']}, annoncés avant que vous validiez.
       </p>
     </div>
     <div class="grid grid-4">{zones_cards}</div>
@@ -1037,8 +1046,8 @@ def build_home():
     ]
     html = (
         head(titre_page("Entreprise de nettoyage à Paris et en Île-de-France"),
-             "Nettoyage auto, textile, bateau, terrasse, vitres, entreprise et fin de chantier "
-             "à Paris et en Île-de-France. 7j/7, devis gratuit, sans acompte.",
+             "Nettoyage auto, textile, vitres et entreprise à Paris et en Île-de-France. "
+             "7j/7, devis gratuit, sans acompte.",
              "", base, schema=schema,
              preload="assets/photos/" + HERO["image"])
         + header(base, "home") + body + footer(base)
@@ -1074,7 +1083,7 @@ def build_services_archive():
 
 <section class="section">
   <div class="container">
-    <div class="tile-grid tile-grid--all">{cards}</div>
+    <div class="{classe_tuiles(len(SERVICES), toutes=True)}">{cards}</div>
   </div>
 </section>
 
@@ -1100,9 +1109,10 @@ def build_services_archive():
       Trois repères simples pour vous orienter&nbsp;:
     </p>
     <ul class="checklist">
-      <li>Une <strong>odeur</strong> qui revient malgré un nettoyage&nbsp;: la source est encore là.
-        C'est le domaine du <a href="services/traitement-ozone-paris.html">traitement par ozone</a>,
-        après nettoyage et non à sa place.</li>
+      <li>Une <strong>odeur</strong> tenace dans un véhicule&nbsp;: elle vient de l'habitacle, pas
+        de l'air. Elle se traite avec le
+        <a href="services/nettoyage-automobile-paris.html">nettoyage automobile</a>, dont la
+        neutralisation par ozone est une option.</li>
       <li>Une <strong>tache</strong> ancienne sur un tissu&nbsp;: ne la frottez pas avant notre passage,
         vous risquez de l'étaler dans la fibre. Voir le
         <a href="services/nettoyage-textile-paris.html">nettoyage textile</a>.</li>
@@ -1133,8 +1143,8 @@ def build_services_archive():
 {cta_band(base)}
 """
     html = (head(titre_page("Nos prestations de nettoyage à Paris et en IDF"),
-                 "Les %s prestations MathClean : auto, textile, bateau, terrasse, vitres, "
-                 "entreprise, ozone, fin de chantier. À Paris et en IDF." % NB_SERVICES,
+                 "Les %s prestations MathClean : nettoyage de vitres, nettoyage pour entreprise, "
+                 "automobile et textile. À Paris et en Île-de-France." % NB_SERVICES,
                  "services.html", base,
                  schema=[crumb_schema([("Prestations", "services.html")]), liste_schema])
             + header(base, "services") + body + footer(base))
@@ -1187,31 +1197,6 @@ def bloc_chimie(base, c):
 """
 
 
-def bloc_detail(base, d):
-    """Fiche longue d'une prestation : à quoi elle sert, comment elle se mène.
-
-    Rendue seulement si la prestation déclare une clé « détail ». Le corps est une
-    suite de sous-titres et de paragraphes : de la lecture, pas des cartes.
-    """
-    corps = "".join(
-        '<div class="reveal"><h3>%s</h3>%s</div>'
-        % (titre, "".join("<p>%s</p>" % para for para in paras))
-        for titre, paras in d["sections"]
-    )
-    return f"""
-<section class="section">
-  <div class="container container-narrow">
-    <div class="section-head center">
-      <span class="eyebrow">{d['eyebrow']}</span>
-      <h2>{d['titre']}</h2>
-      <p class="lead">{d['lead']}</p>
-    </div>
-    <div class="entry-content" style="margin-top:2.4rem">{corps}</div>
-  </div>
-</section>
-"""
-
-
 def build_service(s):
     base = "../"
     trail = [("Prestations", "services.html"), (s["nav"], None)]
@@ -1228,7 +1213,6 @@ def build_service(s):
         % (base, s["local"]["slug"], pv["slug"], s["local"]["nom"], ville_a(pv["nom"]))
         for pv in PREMIUM_VILLES if s["local"]["slug"] in pv["angles"]
     )
-    detail = bloc_detail(base, s["detail"]) if s.get("detail") else ""
     intro = "".join("<p>%s</p>" % p for p in s["intro"])
     included = "".join("<li>%s</li>" % li for li in s["included"])
     steps = "".join(
@@ -1311,7 +1295,6 @@ def build_service(s):
     <div class="steps">{steps}</div>
   </div>
 </section>
-{detail}
 {chimie}
 
 <section class="section section-soft">
@@ -1420,10 +1403,11 @@ def build_tarifs():
          "Non. Les quatre packs sont à prix fixe, citadine comme monospace 7 places : le montant affiché est "
          "celui que vous réglez. Seules les options que vous ajoutez et les frais de déplacement s'y "
          "ajoutent, et ils vous sont annoncés avant que vous validiez."),
-        ("Comment se calcule un traitement par ozone ?",
-         "À 4 € le mètre carré de surface au sol pour un logement ou un local : 30 m² reviennent à 120 €. "
-         "Sur un habitacle automobile, le volume est petit et connu : le traitement reste à 30 € en option "
-         "d'un nettoyage intérieur."),
+        ("La neutralisation des odeurs par ozone est-elle facturée à part ?",
+         "Oui, 30 € en option d'un nettoyage intérieur automobile. Le traitement dure environ une heure, "
+         "habitacle vide de personnes, d'animaux et de plantes, suivi d'une aération avant restitution. "
+         "L'ozone détruit les molécules odorantes au lieu de les masquer, mais il ne remplace pas le "
+         "nettoyage : il le termine."),
         ("Comment sont calculés les frais de déplacement ?",
          "5 € par tranche de 5 km entre notre atelier du Blanc-Mesnil (93) et votre adresse. "
          "Le montant vous est annoncé avant que vous validiez : rien ne s'ajoute le jour de l'intervention."),
@@ -1431,7 +1415,7 @@ def build_tarifs():
          "Non. Vous réglez après l'intervention, une fois le résultat constaté avec vous. "
          "Espèces, carte bancaire ou virement."),
         ("Pourquoi certaines prestations sont-elles uniquement sur devis ?",
-         "Parce qu'un semi-rigide de 6 mètres et un bateau habitable de 12 mètres, ou un studio et un "
+         "Parce qu'une vitrine de commerce et un pavillon à grandes baies, ou un studio et un "
          "plateau de bureaux, n'ont rien de comparable. Afficher un prix unique n'aurait aucun sens : "
          "nous préférons un devis ferme, établi après échange, auquel nous nous tenons."),
         ("La TVA s'applique-t-elle ?",
@@ -1493,35 +1477,6 @@ def build_tarifs():
 <section class="section">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow">Ozone</span>
-      <h2>Traitement ozone : 4 € le mètre carré</h2>
-      <p class="lead">
-        Un logement ou un local se facture sur la surface au sol, un habitacle automobile au forfait.
-        Le calcul est direct : vous pouvez le refaire avant de nous appeler.
-      </p>
-    </div>
-    <div class="table-wrap">
-      <table class="price-table">
-        <caption>Traitement par ozone — odeurs de tabac, d'animaux, d'humidité ou de cuisine</caption>
-        <thead><tr><th scope="col">Prestation</th><th scope="col" style="text-align:right">Tarif</th></tr></thead>
-        <tbody>
-          <tr><th scope="row"><a href="services/traitement-ozone-paris.html">Logement, local ou commerce</a><small>Surface au sol, aération comprise</small></th><td class="amount">4 € / m²</td></tr>
-          <tr><th scope="row">Exemple : une pièce de 30 m²<small>30 × 4 €</small></th><td class="amount">120 €</td></tr>
-          <tr><th scope="row">Habitacle automobile<small>En option d'un nettoyage intérieur, traitement d'1 h</small></th><td class="amount">30 €</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="field-hint" style="margin-top:14px">
-      Le traitement immobilise les lieux pendant sa durée et son aération : comptez environ deux heures
-      pour un habitacle, une demi-journée au-delà de 50 m². Ni personne, ni animaux, ni plantes
-      pendant l'opération.
-    </p>
-  </div>
-</section>
-
-<section class="section section-soft">
-  <div class="container">
-    <div class="section-head center">
       <span class="eyebrow">Sur devis</span>
       <h2>Les prestations chiffrées au cas par cas</h2>
       <p class="lead">
@@ -1573,7 +1528,7 @@ def build_tarifs():
     schema = [crumb_schema([("Tarifs", "tarifs.html")]), faq_schema(faq_tarifs)]
     html = (head(titre_page("Tarifs de nettoyage à Paris — auto dès 50 €"),
                  "Tarifs MathClean : packs auto à prix fixe de 50 à 130 €, textile dès 15 €, "
-                 "ozone 4 €/m², professionnel sur devis. Sans acompte, frais annoncés d'avance.",
+                 "vitres et entreprise sur devis. Sans acompte, frais annoncés d'avance.",
                  "tarifs.html", base, schema=schema)
             + header(base, "tarifs") + body + footer(base))
     return write("tarifs.html", html)
@@ -1699,7 +1654,7 @@ def build_realisations():
 """
     html = (head(titre_page("Nos réalisations de nettoyage — avant / après"),
                  "Avant/après de nos interventions de nettoyage à Paris et en Île-de-France : sièges auto, "
-                 "canapés, terrasses, tapis, cuisines professionnelles.",
+                 "canapés, tapis, surfaces vitrées, locaux professionnels.",
                  "realisations.html", base,
                  schema=[crumb_schema([("Réalisations", "realisations.html")]),
                          video_schema("mathclean", "realisations.html")])
@@ -1725,8 +1680,8 @@ def build_zones_archive():
 </div>"""
     body = f"""
 {page_title_block(base, trail, "Nos zones d'intervention en Île-de-France",
-    "MathClean intervient dans les huit départements franciliens, depuis son atelier "
-    + ville_de(SITE['city']) + " (93). Frais de déplacement : " + SITE['travel_fee'] + ", annoncés avant validation.")}
+    "MathClean intervient dans les huit départements franciliens. Frais de déplacement : "
+    + SITE['travel_fee'] + ", annoncés avant validation.")}
 
 <section class="section">
   <div class="container">
@@ -1745,8 +1700,8 @@ def build_zones_archive():
     <p>
       C'est pourquoi chaque département a sa page. Vous y trouvez le type de bâti que nous y
       rencontrons, les prestations qui y dominent, les contraintes propres au terrain — le
-      stationnement à Paris, les horaires décalés dans les Hauts-de-Seine, la pierre tendre
-      dans les Yvelines, la mousse sur les terrasses ombragées du Val-de-Marne.
+      stationnement à Paris, les horaires décalés dans les Hauts-de-Seine, les grandes
+      hauteurs sous plafond des Yvelines, les pavillons très vitrés du Val-de-Marne.
     </p>
 
     <h2>Notre point de départ, et ce qu'il implique</h2>
@@ -1880,7 +1835,7 @@ def build_zone(z):
          "url": "%s/zones/%s.html" % (SITE["url"], z["slug"])},
     ]
     html = (head(titre_page("Entreprise de nettoyage en %s (%s)" % (z["name"], z["num"])),
-                 "Nettoyage automobile, textile, terrasse, vitres et entreprise en %s (%s). "
+                 "Nettoyage de vitres, nettoyage pour entreprise, automobile et textile en %s (%s). "
                  "Intervention à domicile 7j/7, devis gratuit, sans acompte." % (z["name"], z["num"]),
                  "zones/%s.html" % z["slug"], base, schema=schema)
             + header(base, "zones") + body + footer(base))
@@ -1890,6 +1845,16 @@ def build_zone(z):
 # ===========================================================================
 # BLOG
 # ===========================================================================
+def marqueur_hors_offre(item):
+    """Pastille des conseils dont le sujet n'est plus au catalogue.
+
+    Le texte reste consultable, mais une carte d'archive ne doit pas se lire
+    comme une prestation commandable.
+    """
+    return ('<span class="post-cat post-cat--off">Hors catalogue</span>'
+            if item.get("hors_offre") else "")
+
+
 def post_card(base, p, niveau="h3"):
     """Carte d'article. `niveau` suit la hiérarchie de la page qui l'accueille."""
     return f"""<article class="post-card reveal">
@@ -1899,7 +1864,7 @@ def post_card(base, p, niveau="h3"):
   </a>
   <div class="post-body">
     <div class="post-meta">
-      <span class="post-cat">{p['cat']}</span>
+      <span class="post-cat">{p['cat']}</span>{marqueur_hors_offre(p)}
       <time datetime="{p['date']}">{p['date_fr']}</time>
     </div>
     <{niveau}><a href="{base}blog/{p['slug']}.html">{p['title']}</a></{niveau}>
@@ -1996,10 +1961,41 @@ def build_blog_archive():
 """
     html = (head(titre_page("Conseils et astuces de nettoyage"),
                  "Nos conseils de professionnels pour entretenir canapé, matelas, tapis, voiture, "
-                 "terrasse, vitres et bateau — et savoir quand faire appel à un professionnel.",
+                 "vitres et locaux professionnels — et savoir quand faire appel à un spécialiste.",
                  "blog.html", base, schema=[crumb_schema([("Conseils & astuces", "blog.html")])])
             + header(base, "blog") + body + footer(base))
     return write("blog.html", html)
+
+
+def bloc_hors_offre(base, item):
+    """Bandeau pour un guide ou un article qui traite un sujet que nous ne
+    prenons plus en charge.
+
+    Le texte reste en ligne parce qu'il est utile à lire, mais il ne doit pas
+    laisser croire que la prestation est commandable : la mention le dit, et
+    renvoie vers le catalogue réel.
+    """
+    if not item.get("hors_offre"):
+        return ""
+    extra = ""
+    if item.get("hors_offre_note") == "ozone":
+        extra = (" La <strong>neutralisation des odeurs par ozone</strong> reste disponible, "
+                 "en option d'un <a href=\"%sservices/nettoyage-automobile-paris.html\">nettoyage "
+                 "intérieur automobile</a>, au forfait de 30&nbsp;€." % base)
+    return f"""
+      <div class="notice" style="margin-top:28px">
+        {icon('info')}
+        <p>
+          <strong>Ce sujet ne fait plus partie de nos prestations.</strong>
+          Nous laissons ce texte en ligne parce qu'il reste utile, mais MathClean ne réalise plus
+          {item['hors_offre']}. Nos {NB_SERVICES} prestations sont le
+          <a href="{base}services/nettoyage-vitres-paris.html">nettoyage de vitres</a>, le
+          <a href="{base}services/nettoyage-entreprise-paris.html">nettoyage pour entreprise</a>, le
+          <a href="{base}services/nettoyage-automobile-paris.html">nettoyage automobile</a> et le
+          <a href="{base}services/nettoyage-textile-paris.html">nettoyage textile</a>.{extra}
+        </p>
+      </div>
+"""
 
 
 def build_post(p, prev_post, next_post):
@@ -2052,7 +2048,7 @@ def build_post(p, prev_post, next_post):
       <figure>
         <img src="{base}assets/photos/{p['image']}" alt="{p['title']}" width="1000" height="600">
       </figure>
-
+{bloc_hors_offre(base, p)}
       <div class="entry-content">{content}</div>
 
       <div class="notice notice-blue" style="margin-top:34px">
@@ -2135,7 +2131,7 @@ def build_apropos():
         </p>
         <p>
           Le nettoyage n'est pas un simple coup de chiffon. Une sellerie en cuir, une moquette en laine,
-          une terrasse en bois exotique et une carrosserie vernie ne se traitent ni avec les mêmes produits,
+          un vitrage teinté et une carrosserie vernie ne se traitent ni avec les mêmes produits,
           ni avec les mêmes gestes. C'est ce travail de diagnostic — <strong>comprendre la matière avant de
           la nettoyer</strong> — qui fait la différence entre un résultat correct et un résultat qui tient.
         </p>
@@ -2173,12 +2169,13 @@ def build_apropos():
         </p>
       </div>
       <div class="feature reveal">
-        <span class="feature-icon">{icon('deck')}</span>
-        <h3>Haute pression maîtrisée</h3>
+        <span class="feature-icon">{icon('window')}</span>
+        <h3>Eau osmosée à la perche</h3>
         <p>
-          Sur une terrasse, la pression se règle selon le support. Le béton, la pierre et le carrelage
-          encaissent ; le bois, non — une pression trop forte ouvre la fibre et abîme la lame durablement.
-          Nous privilégions le brossage doux sur bois, suivi d'un anti-mousse et, si besoin, d'un saturateur.
+          Sur les surfaces vitrées, l'eau est passée sur résine avant d'être projetée : privée de ses
+          minéraux, elle sèche <strong>sans rien déposer</strong>. C'est ce qui supprime les traces sur
+          une baie ou une vitrine, et ce qui permet de travailler depuis le sol, à la perche, jusqu'à
+          trois niveaux environ.
         </p>
       </div>
     </div>
@@ -2206,18 +2203,16 @@ def build_apropos():
           Chez les particuliers, l'essentiel de notre activité tourne autour du
           <a href="services/nettoyage-textile-paris.html">textile</a> — canapés, matelas, tapis et
           moquettes — et du <a href="services/nettoyage-automobile-paris.html">nettoyage automobile</a>
-          à domicile, souvent avant une revente ou après un long trajet. La
-          <a href="services/nettoyage-terrasse-paris.html">remise en état des terrasses</a> complète
-          ces demandes au fil des saisons.
+          à domicile, souvent avant une revente ou après un long trajet. Le
+          <a href="services/nettoyage-vitres-paris.html">nettoyage des vitres</a> complète ces demandes,
+          en particulier sur les pavillons à grandes baies.
         </p>
         <p>
           Côté professionnels, nous entretenons
           <a href="services/nettoyage-entreprise-paris.html">bureaux, commerces et locaux d'activité</a> en
-          passage régulier ou ponctuel, prenons en charge la
-          <a href="services/nettoyage-fin-de-chantier-paris.html">remise en état après travaux</a> pour
-          les artisans et les agences, et intervenons sur des
-          <a href="services/nettoyage-bateau-paris.html">bateaux à quai</a>, sur la Seine
-          comme en port de plaisance.
+          passage régulier ou ponctuel, et nous prenons en charge les
+          <a href="services/nettoyage-vitres-paris.html">vitrines et façades vitrées</a>, avant l'ouverture
+          ou après la fermeture pour ne pas gêner l'activité.
         </p>
         <p>
           Le détail des villes couvertes, département par département, se trouve sur notre page
@@ -2410,7 +2405,7 @@ def build_devis():
     <p>
       Un montant unique et une ligne vague ne vous permettent pas de comparer. Le nôtre détaille
       <strong>poste par poste</strong>&nbsp;: chaque prestation, sa durée estimée, son prix, et les
-      frais de déplacement calculés depuis {SITE['city']} — {SITE['travel_fee']}. Le total affiché est
+      frais de déplacement — {SITE['travel_fee']}. Le total affiché est
       celui que vous réglerez&nbsp;: pas de supplément découvert sur place, pas d'acompte demandé
       à la signature.
     </p>
@@ -2437,8 +2432,8 @@ def build_devis():
 </section>
 """
     html = (head(titre_page("Devis gratuit de nettoyage à Paris et en IDF"),
-                 "Devis gratuit et sans engagement pour un nettoyage auto, textile, terrasse, "
-                 "vitres ou entreprise à Paris et en Île-de-France. Réponse sous 24 h.",
+                 "Devis gratuit et sans engagement pour un nettoyage de vitres, auto, textile "
+                 "ou entreprise à Paris et en Île-de-France. Réponse sous 24 h.",
                  "devis.html", base, schema=[crumb_schema([("Devis gratuit", "devis.html")])])
             + header(base, "devis") + body + footer(base))
     return write("devis.html", html)
@@ -2630,8 +2625,8 @@ def build_merci():
     </p>
     <p>
       Vous recevez ensuite un devis <strong>ferme et détaillé poste par poste</strong>&nbsp;:
-      chaque prestation, sa durée estimée, son prix, et les frais de déplacement calculés depuis
-      notre atelier {ville_de(SITE['city'])} — {SITE['travel_fee']}. Le total affiché est celui que vous
+      chaque prestation, sa durée estimée, son prix, et les frais de déplacement —
+      {SITE['travel_fee']}. Le total affiché est celui que vous
       réglerez. Aucun acompte ne vous sera demandé, ni à la signature ni avant l'intervention.
     </p>
     <p>
@@ -2718,8 +2713,8 @@ def build_404():
       couvrent la plupart des cas, mais pas tous. Voici les points d'entrée principaux.
     </p>
     <ul class="checklist">
-      <li><a href="/services.html">Nos {NB_SERVICES} prestations</a> — automobile, textile,
-        bateau, terrasse, vitres, entreprise, ozone et fin de chantier, chacune avec sa page
+      <li><a href="/services.html">Nos {NB_SERVICES} prestations</a> — nettoyage de vitres,
+        nettoyage pour entreprise, automobile et textile, chacune avec sa page
         détaillée&nbsp;: méthode, contenu, tarifs.</li>
       <li><a href="/tarifs.html">La grille tarifaire</a> — packs automobile, tarifs textile à la
         pièce, et le barème des frais de déplacement.</li>
@@ -2754,8 +2749,7 @@ def build_404():
     <p>
       Si vous cherchiez un prix, notre <a href="/tarifs.html">grille tarifaire</a> donne les
       montants des prestations courantes, packs automobile et tarifs textile à la pièce compris,
-      ainsi que le barème des frais de déplacement — {SITE['travel_fee']} depuis notre atelier de
-      {SITE['city']}.
+      ainsi que le barème des frais de déplacement — {SITE['travel_fee']}.
     </p>
     <p>
       Si vous cherchiez à savoir si votre besoin est traitable, envoyez-nous simplement deux ou
@@ -2835,8 +2829,8 @@ def build_legal():
   le virement.
 </p>
 <p>
-  Les frais de déplacement s'élèvent à {SITE['travel_fee']} depuis notre atelier de
-  {SITE['city']}. Ils sont calculés sur l'adresse d'intervention et communiqués avant validation
+  Les frais de déplacement s'élèvent à {SITE['travel_fee']}. Ils sont calculés sur
+  l'adresse d'intervention et communiqués avant validation
   du devis.
 </p>
 <p>
@@ -3275,12 +3269,8 @@ def build_reservation():
         "services": [{"slug": s["slug"], "nav": s["nav"], "prix": s["price"],
                       "univers": ("auto" if s["slug"].startswith("nettoyage-automobile")
                                   else "textile" if s["slug"].startswith("nettoyage-textile")
-                                  else "ozone" if s["slug"].startswith("traitement-ozone")
                                   else "devis")}
                      for s in SERVICES],
-        "ozone": OZONE,
-        # Forfait habitacle : repris de l'option automobile, pour qu'un seul chiffre fasse foi.
-        "ozone_auto": next(p for n_, p, _d in OPTIONS_AUTO if "ozone" in n_.lower()),
         "deplacement": DEPLACEMENT,
         "creneaux": CRENEAUX,
     }
@@ -3448,7 +3438,7 @@ def build_reservation():
         <strong id="resa-total">—</strong>
       </div>
       <p class="field-hint" id="resa-note">
-        Les packs auto, les tarifs textile et le traitement ozone sont à prix fixe. Seuls les frais
+        Les packs auto et les tarifs textile sont à prix fixe. Seuls les frais
         de déplacement dépendent de votre adresse, et ils sont calculés ici même. Aucun acompte.
       </p>
     </aside>
@@ -3461,16 +3451,16 @@ def build_reservation():
     <p>
       Rien n'est masqué&nbsp;: le montant affiché est la somme de la prestation choisie, des
       options cochées et des frais de déplacement calculés sur l'adresse que vous saisissez.
-      Ces frais suivent un barème unique — <strong>{SITE['travel_fee']}</strong> depuis notre
-      atelier {ville_de(SITE['city'])} — et se calculent sur la distance par la route, pas à vol
+      Ces frais suivent un barème unique — <strong>{SITE['travel_fee']}</strong> — et se
+      calculent sur la distance par la route, pas à vol
       d'oiseau.
     </p>
     <p>
       Les prix des prestations sont <strong>fixes</strong>. Un pack automobile coûte le même
       montant sur une citadine et sur un grand break&nbsp;; un tarif textile dépend de la pièce
-      traitée, pas de sa taille exacte&nbsp;; un traitement par ozone se calcule sur la surface
-      au sol, à <strong>4&nbsp;€ le mètre carré</strong> — 30&nbsp;m² reviennent à 120&nbsp;€.
-      Vous pouvez refaire chaque calcul vous-même.
+      traitée, pas de sa taille exacte. Le nettoyage de vitres et les prestations en entreprise,
+      eux, se chiffrent après échange&nbsp;: vous repartez d'ici avec une demande, pas avec un
+      montant approximatif.
     </p>
 
     <h2>Ce qu'une estimation en ligne ne peut pas savoir</h2>
@@ -3568,15 +3558,6 @@ _CONTEXTE_PRESTA = {
         "ni descendre : canapés d'angle, matelas en étage, tapis posés sur parquet. "
         "L'injection-extraction se pratique sur place, et le point à anticiper est le séchage — "
         "quatre à six heures pour un matelas, un peu plus pour un canapé épais.",
-    "nettoyage-bateau-paris":
-        "Sur le nautique, nous intervenons au port ou à l'endroit où le bateau est stocké, "
-        "y compris hors d'eau pendant l'hivernage. Coque, pont et sellerie relèvent de trois "
-        "méthodes différentes et d'un devis établi après photos.",
-    "nettoyage-terrasse-paris":
-        "Sur les extérieurs, tout se joue sur le réglage de la pression selon le support. "
-        "Une dalle béton, une pierre tendre et une terrasse en bois ne se traitent pas de la "
-        "même façon, et un mauvais réglage laisse des marques définitives. Nous faisons "
-        "systématiquement un essai sur une zone discrète avant de traiter l'ensemble.",
     "nettoyage-vitres-paris":
         "Sur la vitrerie, nous travaillons à l'eau osmosée : privée de ses minéraux, elle sèche "
         "sans rien déposer, ce qui règle le problème des traces sur les grandes surfaces vitrées. "
@@ -3587,16 +3568,6 @@ _CONTEXTE_PRESTA = {
         "intervenons avant l'ouverture, après la fermeture ou le week-end, sans supplément : "
         "c'est la seule façon de travailler correctement sur un site occupé, et cela évite de "
         "gêner votre activité.",
-    "traitement-ozone-paris":
-        "Sur les odeurs, l'ozone détruit les molécules odorantes au lieu de les masquer, y "
-        "compris dans les textiles et les conduits d'aération que le nettoyage n'atteint pas. "
-        "Le protocole est strict : local ou véhicule vide de personnes, d'animaux et de plantes "
-        "pendant le traitement, puis aération avant restitution.",
-    "nettoyage-fin-de-chantier-paris":
-        "Sur les fins de chantier, la poussière de plâtre reste en suspension et retombe pendant "
-        "vingt-quatre à quarante-huit heures. Un passage unique le jour même donne un logement "
-        "propre le soir et poussiéreux le lendemain : nous prévoyons deux passages et nous "
-        "l'annonçons au devis.",
 }
 
 # Second angle par prestation. Le choix entre les deux variantes est déterminé
@@ -3615,16 +3586,6 @@ _CONTEXTE_PRESTA_BIS = {
         "l'alcalinité ; la viscose ne se traite pas à l'eau du tout. Nous identifions la fibre "
         "avant de commencer, et nous refusons ce qui relève d'un atelier spécialisé plutôt que "
         "de prendre le risque.",
-    "nettoyage-bateau-paris":
-        "Sur le nautique, le sel fait plus de dégâts que la saleté visible : il retient "
-        "l'humidité contre le métal et dans les coutures de sellerie. L'hivernage, bateau hors "
-        "d'eau, reste le meilleur moment pour reprendre la coque et la sellerie sans dépendre "
-        "de la météo ni du mouillage.",
-    "nettoyage-terrasse-paris":
-        "Sur les terrasses, la mousse n'est pas de la saleté mais un végétal enraciné dans la "
-        "porosité du support. Un décapage seul la fait disparaître trois semaines. Il faut y "
-        "ajouter un traitement à temps d'action, et un hydrofuge sur les supports poreux si "
-        "l'on veut réellement espacer les passages.",
     "nettoyage-vitres-paris":
         "Sur la vitrerie, une vitre se compte en vantaux et non en fenêtres : une baie "
         "coulissante à quatre vantaux représente huit faces. Nous chiffrons sur ce comptage, en "
@@ -3635,27 +3596,18 @@ _CONTEXTE_PRESTA_BIS = {
         "mais le temps de présence par passage. C'est la seule qui remette deux devis sur la "
         "même échelle, et nous l'indiquons systématiquement sur le nôtre, avec ce qui est "
         "mensuel et ce qui est ponctuel.",
-    "traitement-ozone-paris":
-        "Sur les odeurs, l'ozone ne remplace pas un nettoyage : il le termine. Une odeur dont "
-        "la source est encore présente reviendra, quel que soit le traitement. Nous nettoyons "
-        "d'abord, nous traitons ensuite, et nous le disons au devis quand une odeur très "
-        "ancienne demandera vraisemblablement un second passage.",
-    "nettoyage-fin-de-chantier-paris":
-        "Sur les fins de chantier, tout se joue sur la protection pendant les travaux. Un "
-        "chantier où les artisans ont bâché coûte nettement moins cher à nettoyer, et le "
-        "résultat est meilleur. C'est le conseil le plus rentable que nous puissions donner, "
-        "et il réduit notre propre facture.",
 }
 
 _CONTEXTE_DISTANCE = [
     (3, "Nous sommes à quelques minutes de chez vous. C'est la zone où nous pouvons le plus "
         "souvent caler une intervention le jour même quand notre planning le permet, et où un "
-        "second passage — sur une fin de chantier, par exemple — ne pose aucune difficulté."),
+        "second passage — sur une tache qui demande un temps d'action, par exemple — ne "
+        "pose aucune difficulté."),
     (12, "La commune est dans notre rayon proche. Les interventions s'y organisent sans "
          "contrainte particulière, y compris tôt le matin ou en fin de journée, et un retour "
          "pour finir un point resté en suspens se cale facilement."),
     (25, "Nous y intervenons régulièrement. À cette distance, nous groupons volontiers plusieurs "
-         "prestations sur une même venue — le canapé et les matelas, la terrasse et les vitres — "
+         "prestations sur une même venue — le canapé et les matelas, les vitres et la voiture — "
          "parce que le déplacement est unique et que le coût par pièce en profite directement."),
     (999, "La commune est à l'autre bout de notre zone. Nous nous y déplaçons, mais autant que "
           "le trajet serve : nous vous conseillons de regrouper tout ce qui peut l'être sur une "
@@ -3676,17 +3628,6 @@ _FAQ_PRESTA = {
         "Quatre à six heures pour un matelas, un peu plus pour un canapé épais, dans une pièce "
         "aérée. Nous travaillons en injection-extraction : la solution est aspirée immédiatement "
         "après avoir été injectée, il ne reste donc pas d'eau stagnante et pas d'auréole."),
-    "nettoyage-bateau-paris": (
-        "Intervenez-vous sur un bateau à quai ou hors d'eau près %(de)s ?",
-        "Les deux. Nous intervenons au port comme sur un bateau hors d'eau pendant l'hivernage, "
-        "qui est d'ailleurs la meilleure période pour reprendre la coque. Coque, pont et "
-        "sellerie relèvent de trois méthodes distinctes et d'un devis établi après photos."),
-    "nettoyage-terrasse-paris": (
-        "La mousse va-t-elle revenir sur ma terrasse %(a)s ?",
-        "Après un décapage seul, oui, en quelques semaines : la haute pression retire la partie "
-        "visible, pas les spores logées dans la porosité du support. Avec un traitement "
-        "anti-mousse à temps d'action, comptez un à trois ans selon l'exposition et le drainage. "
-        "Un hydrofuge allonge encore l'intervalle."),
     "nettoyage-vitres-paris": (
         "Jusqu'à quelle hauteur travaillez-vous %(a)s ?",
         "Jusqu'à trois niveaux environ, depuis le sol, avec une perche télescopique alimentée en "
@@ -3697,16 +3638,6 @@ _FAQ_PRESTA = {
         "Oui, avant l'ouverture, après la fermeture ou le week-end, sans supplément. C'est la "
         "seule façon de travailler correctement sur un site occupé, en particulier pour une "
         "extraction de moquette, qui demande plusieurs heures de séchage."),
-    "traitement-ozone-paris": (
-        "Le traitement par ozone est-il sans danger %(a)s ?",
-        "L'ozone est un gaz irritant pour les voies respiratoires : le traitement se fait donc "
-        "sur un local ou un véhicule vide de personnes, d'animaux et de plantes, suivi d'une "
-        "aération avant réoccupation. C'est un protocole strict, et c'est ce qui le rend sûr."),
-    "nettoyage-fin-de-chantier-paris": (
-        "Faut-il un ou deux passages après des travaux %(a)s ?",
-        "Deux, dès qu'il y a eu de la plâtrerie ou du ponçage. La poussière de plâtre reste en "
-        "suspension et retombe pendant vingt-quatre à quarante-huit heures : un passage unique "
-        "donne un logement propre le soir et poussiéreux le lendemain. Nous l'annonçons au devis."),
 }
 
 
@@ -3756,11 +3687,11 @@ def build_ville(v):
     delai = ("24 à 48 h" if dept in ("75", "92", "93", "94") else "48 à 72 h")
 
     trail = [("Villes", "villes.html"), (nom, None)]
-    # Trois vignettes exactement : la grille fait trois colonnes, une ligne
-    # pleine se lit mieux qu'une rangée suivie d'une case orpheline.
+    # Les quatre prestations, dans l'ordre de leur poids dans la commune :
+    # la grille les présente en 2 × 2, sans case orpheline.
     ordre = {sl: i for i, sl in enumerate(presta)}
     services = sorted((x for x in SERVICES if x["slug"] in presta),
-                      key=lambda x: ordre[x["slug"]])[:3]
+                      key=lambda x: ordre[x["slug"]])
     tiles = "".join(service_tile(base, x) for x in services)
     autres = "".join(
         '<li><a href="%svilles/%s.html">%s</a></li>' % (base, o[0], o[1])
@@ -3787,8 +3718,8 @@ def build_ville(v):
 
     body = f"""
 {page_title_block(base, trail, "Entreprise de nettoyage %s (%s)" % (a_nom, cp),
-   "Nettoyage à domicile et en entreprise %s : automobile, textile, terrasse, vitres, "
-   "locaux et fin de chantier. Devis gratuit, intervention 7j/7." % a_nom)}
+   "Nettoyage à domicile et en entreprise %s : vitres, locaux professionnels, automobile "
+   "et textile. Devis gratuit, intervention 7j/7." % a_nom)}
 
 <section class="section">
   <div class="container">
@@ -3854,7 +3785,7 @@ def build_ville(v):
       <span class="eyebrow">Nos prestations</span>
       <h2>Ce que nous proposons {a_nom}</h2>
     </div>
-    <div class="tile-grid">{tiles}</div>
+    <div class="{classe_tuiles(len(services))}">{tiles}</div>
     <div class="btn-row center" style="margin-top:34px">
       <a class="btn btn-outline" href="{base}services.html">Voir les {NB_SERVICES} prestations</a>
     </div>
@@ -3899,8 +3830,8 @@ def build_ville(v):
         faq_schema(faq),
     ]
     html = (head(titre_page("Nettoyage %s (%s) — devis gratuit" % (a_nom, cp)),
-                 "Nettoyage à domicile et en entreprise %s (%s) : auto, textile, "
-                 "terrasse, vitres, locaux. Intervention 7j/7, sans acompte." % (nom, cp),
+                 "Nettoyage à domicile et en entreprise %s (%s) : vitres, locaux, "
+                 "auto et textile. Intervention 7j/7, sans acompte." % (nom, cp),
                  "villes/%s.html" % slug, base, schema=schema)
             + header(base, "zones") + body + footer(base))
     return write("villes/%s.html" % slug, html)
@@ -4189,9 +4120,9 @@ def build_villes_archive():
     </p>
     <p>
       Un centre-ville dense pose des questions de stationnement et d'accès en étage&nbsp;; une
-      commune pavillonnaire pose des questions de terrasse, de mobilier de jardin et de grandes
-      surfaces vitrées. Les pages le disent, plutôt que de répéter la même présentation
-      vingt-huit fois.
+      commune pavillonnaire pose des questions de grandes surfaces vitrées, de vérandas et de
+      places de stationnement devant la maison. Les pages le disent, plutôt que de répéter la
+      même présentation vingt-huit fois.
     </p>
 
     <h2>Les délais selon votre département</h2>
@@ -4239,7 +4170,7 @@ def guide_card(base, g, niveau="h3"):
          loading="lazy" width="640" height="360">
   </a>
   <div class="post-body">
-    <div class="post-meta"><span class="post-cat">{g['cat']}</span></div>
+    <div class="post-meta"><span class="post-cat">{g['cat']}</span>{marqueur_hors_offre(g)}</div>
     <{niveau}><a href="{base}guides/{g['slug']}.html">{g['h1']}</a></{niveau}>
     <p>{g['lead']}</p>
     <span class="service-more">Lire le guide {icon('arrow')}</span>
@@ -4290,7 +4221,7 @@ def build_guide(g):
       </header>
 
       <figure><img src="{base}assets/photos/{g['image']}" alt="{g['h1']}" width="1000" height="600"></figure>
-
+{bloc_hors_offre(base, g)}
       <div class="entry-content">{corps}</div>
 
       <h2 style="margin-top:2.2em">Questions fréquentes</h2>
@@ -4529,11 +4460,10 @@ def build_llms_txt():
 ## Tarifs de référence
 - Detailing automobile : 4 formules à prix fixe — Extérieur Éclat 50 €, Intérieur Essentiel 55 €,
   Intérieur Prestige 100 €, Intégral 130 €. Options : poils d'animaux 10 €, cuir et alcantara 20 €,
-  ozone 30 €.
-- Traitement par ozone d'un logement ou d'un local : 4 € le m² de surface au sol.
+  neutralisation des odeurs par ozone 30 €.
 - Textile : chaise 15 €, fauteuil 25 €, canapé 2 places 39 €, 3 places 49 €, angle 69 €,
   matelas 1 place 39 €, 2 places 49 €, tapis 39 € à 59 €.
-- Bateau, terrasse, vitres, entreprise, fin de chantier : sur devis après échange ou visite.
+- Nettoyage de vitres et nettoyage pour entreprise : sur devis après échange ou visite.
 - Grille complète : {SITE['url']}/tarifs.html
 
 ## Zone d'intervention
@@ -4555,6 +4485,75 @@ Une page dédiée par couple prestation × commune, sur dix communes d'Île-de-F
     return write("llms.txt", txt)
 
 
+# Pages « prestation × commune » retirées avec leur prestation. Elles ont été
+# indexées : chacune est renvoyée vers la page de la même commune qui traite la
+# prestation conservée la plus proche, pas vers un sommaire.
+PAGES_LOCALES_RETIREES = (
+    ("nettoyage-bateau-boulogne-billancourt",
+     "nettoyage-voiture-boulogne-billancourt"),
+    ("nettoyage-bateau-levallois-perret",
+     "nettoyage-voiture-levallois-perret"),
+    ("nettoyage-bateau-neuilly-sur-seine",
+     "nettoyage-voiture-neuilly-sur-seine"),
+    ("nettoyage-bateau-puteaux", "nettoyage-voiture-puteaux"),
+    ("nettoyage-bateau-rueil-malmaison",
+     "nettoyage-voiture-rueil-malmaison"),
+    ("nettoyage-bateau-saint-cloud", "nettoyage-voiture-saint-cloud"),
+    ("nettoyage-bateau-saint-germain-en-laye",
+     "nettoyage-voiture-saint-germain-en-laye"),
+    ("nettoyage-fin-de-chantier-boulogne-billancourt",
+     "nettoyage-entreprise-boulogne-billancourt"),
+    ("nettoyage-fin-de-chantier-le-vesinet",
+     "nettoyage-entreprise-le-vesinet"),
+    ("nettoyage-fin-de-chantier-levallois-perret",
+     "nettoyage-entreprise-levallois-perret"),
+    ("nettoyage-fin-de-chantier-neuilly-sur-seine",
+     "nettoyage-entreprise-neuilly-sur-seine"),
+    ("nettoyage-fin-de-chantier-puteaux",
+     "nettoyage-entreprise-puteaux"),
+    ("nettoyage-fin-de-chantier-rueil-malmaison",
+     "nettoyage-entreprise-rueil-malmaison"),
+    ("nettoyage-fin-de-chantier-saint-cloud",
+     "nettoyage-entreprise-saint-cloud"),
+    ("nettoyage-fin-de-chantier-saint-germain-en-laye",
+     "nettoyage-entreprise-saint-germain-en-laye"),
+    ("nettoyage-fin-de-chantier-sceaux",
+     "nettoyage-entreprise-sceaux"),
+    ("nettoyage-fin-de-chantier-versailles",
+     "nettoyage-entreprise-versailles"),
+    ("nettoyage-terrasse-boulogne-billancourt",
+     "nettoyage-vitres-boulogne-billancourt"),
+    ("nettoyage-terrasse-le-vesinet", "nettoyage-vitres-le-vesinet"),
+    ("nettoyage-terrasse-levallois-perret",
+     "nettoyage-vitres-levallois-perret"),
+    ("nettoyage-terrasse-neuilly-sur-seine",
+     "nettoyage-vitres-neuilly-sur-seine"),
+    ("nettoyage-terrasse-puteaux", "nettoyage-vitres-puteaux"),
+    ("nettoyage-terrasse-rueil-malmaison",
+     "nettoyage-vitres-rueil-malmaison"),
+    ("nettoyage-terrasse-saint-cloud", "nettoyage-vitres-saint-cloud"),
+    ("nettoyage-terrasse-saint-germain-en-laye",
+     "nettoyage-vitres-saint-germain-en-laye"),
+    ("nettoyage-terrasse-sceaux", "nettoyage-vitres-sceaux"),
+    ("nettoyage-terrasse-versailles", "nettoyage-vitres-versailles"),
+    ("traitement-ozone-boulogne-billancourt",
+     "nettoyage-voiture-boulogne-billancourt"),
+    ("traitement-ozone-le-vesinet", "nettoyage-voiture-le-vesinet"),
+    ("traitement-ozone-levallois-perret",
+     "nettoyage-voiture-levallois-perret"),
+    ("traitement-ozone-neuilly-sur-seine",
+     "nettoyage-voiture-neuilly-sur-seine"),
+    ("traitement-ozone-puteaux", "nettoyage-voiture-puteaux"),
+    ("traitement-ozone-rueil-malmaison",
+     "nettoyage-voiture-rueil-malmaison"),
+    ("traitement-ozone-saint-cloud", "nettoyage-voiture-saint-cloud"),
+    ("traitement-ozone-saint-germain-en-laye",
+     "nettoyage-voiture-saint-germain-en-laye"),
+    ("traitement-ozone-sceaux", "nettoyage-voiture-sceaux"),
+    ("traitement-ozone-versailles", "nettoyage-voiture-versailles"),
+)
+
+
 def build_redirects():
     """
     Redirections 301, lues par Cloudflare Pages et par Workers static assets.
@@ -4574,6 +4573,16 @@ def build_redirects():
         # La page « astuces » est devenue le blog
         "/astuces-nettoyage.html                     /blog.html                                 301",
     ]
+    # Catalogue ramené à quatre prestations : les quatre pages retirées
+    # renvoient vers ce qui s'en rapproche le plus, pas vers l'accueil.
+    lignes += [
+        "/services/nettoyage-bateau-paris.html          /services.html                              301",
+        "/services/nettoyage-terrasse-paris.html        /services.html                              301",
+        "/services/traitement-ozone-paris.html          /services/nettoyage-automobile-paris.html   301",
+        "/services/nettoyage-fin-de-chantier-paris.html /services/nettoyage-entreprise-paris.html   301",
+    ]
+    lignes += ["/villes/%s.html /villes/%s.html 301" % (anc, cible)
+               for anc, cible in PAGES_LOCALES_RETIREES]
     # Les mêmes adresses sans l'extension .html. Cloudflare ajoute .html de
     # lui-même quand le fichier existe, mais ces pages-là n'existent plus :
     # sans ces lignes, un lien dont l'extension a été retirée tomberait en 404.
@@ -4581,13 +4590,13 @@ def build_redirects():
     for ligne in lignes:
         src, dst, code = ligne.split()
         if src.endswith(".html"):
-            sans_ext.append("%-44s%-43s%s" % (src[:-5], dst, code))
+            sans_ext.append("%-43s %-42s %s" % (src[:-5], dst, code))
     # La cible est écrite sans extension : sinon chaque ancienne adresse
     # produirait une chaîne de deux redirections au lieu d'une.
     finales = []
     for ligne in lignes + sans_ext:
         src, dst, code = ligne.split()
-        finales.append("%-44s%-43s%s" % (src, url_publique(dst) or "/", code))
+        finales.append("%-43s %-42s %s" % (src, url_publique(dst) or "/", code))
     return write("_redirects", "\n".join(finales) + "\n")
 
 
