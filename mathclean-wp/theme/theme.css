@@ -130,7 +130,11 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   background:linear-gradient(150deg,var(--brand) 0%,var(--brand-dark) 100%);
   box-shadow:0 3px 10px rgba(14,95,187,.32);
 }
-.brand-mark svg{width:24px;height:24px;fill:#fff}
+/* Monogramme MC cerclé, doré sur le carré bleu : le trait est dessiné,
+   pas écrit, donc il reste identique d'un appareil à l'autre. */
+.brand-mark svg{width:30px;height:30px;fill:none;stroke:var(--gold);
+  stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.brand-mark .mc-mark circle{stroke-width:2.6}
 .brand-text{display:flex;flex-direction:column;line-height:1.1}
 .brand-name{font-size:1.32rem;font-weight:800;color:var(--ink);letter-spacing:-.03em}
 .brand-name span{color:var(--brand)}

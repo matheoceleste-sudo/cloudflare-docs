@@ -321,6 +321,22 @@ def nav_menu(base, current):
 </nav>"""
 
 
+def logo_mc():
+    """Monogramme MC de MathClean : les deux lettres cerclées, en doré.
+
+    Tracé au trait plutôt qu'écrit en <text> : une police n'est pas garantie
+    d'un appareil à l'autre, un chemin l'est. Le carré bleu qui l'entoure
+    vient du CSS (.brand-mark), pas d'ici.
+    """
+    return (
+        '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" class="mc-mark">'
+        '<circle cx="32" cy="32" r="27"/>'
+        '<path d="M16.5 41V25l7 8.5 7-8.5v16"/>'      # le M
+        '<path d="M47 27.5a7 7 0 1 0 0 9"/>'           # le C
+        '</svg>'
+    )
+
+
 def header(base, current=""):
     return f"""<div class="topbar">
   <div class="container">
@@ -335,7 +351,7 @@ def header(base, current=""):
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="{base}index.html" aria-label="{SITE['name']} — accueil">
-      <span class="brand-mark">{icon('sparkle')}</span>
+      <span class="brand-mark">{logo_mc()}</span>
       <span class="brand-text">
         <span class="brand-name">Math<span>Clean</span></span>
         <span class="brand-tag">{SITE['slogan']}</span>
