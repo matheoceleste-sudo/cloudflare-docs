@@ -1,7 +1,8 @@
 # Post « nettoyage de canapé » — Instagram & TikTok
 
-Visuels : `social/out/canape-s1..s6.png` (carrousel 1080 × 1350) et
-`social/out/canape-tiktok.png` (couverture 1080 × 1920).
+Visuels : `social/out/canape-s1..s7.png` (carrousel 1080 × 1350),
+`social/out/canape-tiktok.png` (couverture 1080 × 1920) et
+`social/out/canape-tiktok-fin.png` (carte de fin de vidéo).
 Régénérer après modification du gabarit : `python3 social/rendu.py`.
 
 Les chiffres viennent de `content.py` (TARIFS_TEXTILE, SITE). Si la grille
@@ -41,8 +42,44 @@ Déplacement : 5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil,
 annoncé avant que vous validiez. Aucun acompte : vous réglez une fois le
 résultat constaté avec nous.
 
-Paris et les 8 départements d'Île-de-France, 7 j/7.
-📞 06 23 07 52 59 — réservation en ligne sur mathclean.fr
+**Votre prix avant même d'appeler** : choisissez votre canapé sur mathclean.fr,
+entrez votre adresse, le total s'affiche, déplacement compris. Deux minutes,
+sans engagement. Le lien est en bio.
+
+Une question, une tache que vous voulez nous montrer ? Envoyez-nous la photo en
+message privé, on vous dit franchement ce qui est réaliste.
+
+📞 06 23 07 52 59 — 8 h à 20 h, 7 j/7, Paris et les 8 départements d'Île-de-France.
+
+🔖 Enregistrez ce post : vous en aurez besoin le jour où la tache arrive.
+
+### Appel à l'action — variantes
+
+Une seule action par publication. Un post qui propose le site, le téléphone,
+le message privé et le commentaire sur le même plan n'en fait choisir aucun.
+Le reste est secondaire, et doit le rester visuellement.
+
+| Où | Texte | Pourquoi celle-là |
+|---|---|---|
+| **Action principale** (visuel 7 et fin de légende) | « Votre prix avant même d'appeler : mathclean.fr, deux minutes, lien en bio. » | Le configurateur est ce que les concurrents n'ont pas. Il donne un montant sans avoir à parler à quelqu'un — c'est ce qui lève le frein le plus fréquent. |
+| **Premier commentaire**, à poster vous-même juste après | « 👉 Le prix de votre canapé en 2 min : mathclean.fr (lien en bio). Canapé 3 places 49 €, à domicile, sans acompte. » | Le lien n'est pas cliquable dans une légende Instagram. Le premier commentaire rappelle l'adresse au moment où les gens lisent les réponses. |
+| **Enregistrement** | « 🔖 Enregistrez ce post : vous en aurez besoin le jour où la tache arrive. » | L'enregistrement pèse plus que le like dans la distribution, et ici il est sincère : ce contenu sert le jour d'un accident, pas le jour où on le lit. |
+| **Message privé** | « Envoyez-nous la photo de la tache, on vous dit franchement ce qui est réaliste. » | Sans engagement, sans prix à négocier. Ouvre une conversation avec ceux qui n'oseraient pas appeler. |
+| **Story, avec sticker lien** | « Un canapé qui a vécu ? Faites glisser vers le haut, le prix s'affiche en 2 minutes. » | Le sticker lien est cliquable, contrairement à la légende du post. |
+
+**Réponse type en message privé**, à garder sous la main :
+
+> Bonjour, merci pour votre message. Envoyez-moi une photo de la pièce et de la
+> tache si vous en avez une, avec votre code postal : je vous confirme le tarif
+> et le délai dans la journée. Pour un canapé 3 places, c'est 49 €, plus les
+> frais de déplacement (5 € par tranche de 5 km depuis Le Blanc-Mesnil) que je
+> vous annonce avant que vous validiez. Aucun acompte, vous réglez après
+> l'intervention. — Mathéo, MathClean
+
+**Le lien en bio** doit pointer vers la réservation, pas vers l'accueil :
+`mathclean.fr/reservation`. Une personne qui arrive depuis ce post a déjà vu le
+prix ; l'envoyer sur la page d'accueil lui demande de le chercher une seconde
+fois.
 
 ### Hashtags
 
@@ -87,7 +124,14 @@ c'est elle qui fait ressortir les marques sur le tissu.
 | 11 – 17 s | Buse d'injection-extraction en action, passage lent et régulier | **INJECTION-EXTRACTION** | « On injecte la solution au cœur de la fibre, et on la réaspire aussitôt avec la saleté. » |
 | 17 – 22 s | Cuve de récupération : l'eau sale | L'eau qui ressort du canapé | « C'est ce qui sortait de votre canapé. » |
 | 22 – 26 s | Passage final, tissu net, plan large du canapé | Sec en 4 à 6 h · sans auréole | « La mousse n'est jamais détrempée : pas d'auréole au séchage, réutilisable en 4 à 6 heures. » |
-| 26 – 30 s | Plan large avec le logo en incrustation | **49 € le 3 places · Paris & IDF · 7j/7** | « 49 euros le trois places, à domicile. Le lien est en bio. » |
+| 26 – 30 s | **Carte de fin** `canape-tiktok-fin.png`, en plein écran | (déjà sur la carte) | « 49 euros le trois places, à domicile. Votre prix en deux minutes sur mathclean.fr, le lien est en bio. » |
+
+La carte de fin est fournie : `social/out/canape-tiktok-fin.png`. Posez-la sur
+les 3 à 4 dernières secondes, sans transition. Son texte est déjà écrit, ne le
+doublez pas avec un texte TikTok par-dessus.
+
+**Dites l'action à voix haute** en plus de l'afficher. Une bonne partie des
+vues se fait son coupé, mais celles qui convertissent l'écoutent.
 
 **Montage** — coupes franches, pas de transition. Son : le bruit réel de la
 machine porte mieux qu'une musique, gardez-le au premier plan et posez une

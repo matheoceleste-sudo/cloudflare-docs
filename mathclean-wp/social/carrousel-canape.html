@@ -97,6 +97,34 @@
   .bouton{display:inline-block;margin-top:38px;padding:26px 44px;border-radius:14px;
           background:var(--or);color:#16212e;font-size:32px;font-weight:800;letter-spacing:.3px}
 
+  /* --- Carte d'action ------------------------------------------------------
+     Une seule action dominante. Un écran qui propose trois façons de nous
+     joindre n'en fait choisir aucune. */
+  .slide.action{background:linear-gradient(155deg,var(--bleu) 0%,var(--bleu-fonce) 62%,#07386f 100%);color:#fff}
+  .slide.action .pas{color:rgba(255,255,255,.55)}
+  .acte{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
+        justify-content:space-between;padding:56px 72px 64px}
+  .acte h2{font-size:78px;line-height:1.04;color:#fff;letter-spacing:-2px;margin:0}
+  .acte h2 em{font-style:normal;color:var(--or-clair)}
+  .acte .sous{margin-top:26px;font-size:30px;line-height:1.42;color:rgba(255,255,255,.86);max-width:27ch}
+  /* Trois repères dans l'espace qui reste : mieux qu'un vide, et ce sont
+     les trois questions que pose tout client avant de réserver. */
+  .rassure{margin-top:44px;display:flex;flex-direction:column;gap:20px}
+  .rassure div{display:flex;align-items:center;gap:18px;font-size:29px;color:#fff}
+  .rassure i{width:38px;height:38px;flex:none;border-radius:50%;background:rgba(255,255,255,.16);
+             display:grid;place-items:center;font-style:normal;font-size:20px;color:var(--or-clair)}
+  .cta-grand{display:block;margin-top:auto;padding:40px 44px;border-radius:18px;background:var(--or);
+             color:#16212e;text-align:center}
+  .cta-grand b{display:block;font-size:44px;font-weight:800;letter-spacing:-.6px}
+  .cta-grand span{display:block;margin-top:10px;font-size:26px;font-weight:600;color:#4a3c1c}
+  .cta-second{display:flex;gap:18px;margin-top:22px}
+  .cta-second div{flex:1;padding:26px 22px;border:2px solid rgba(255,255,255,.34);border-radius:14px;text-align:center}
+  .cta-second b{display:block;font-size:30px;font-weight:800}
+  .cta-second span{display:block;margin-top:7px;font-size:21px;color:rgba(255,255,255,.72)}
+  .garde{margin-top:30px;display:flex;align-items:center;gap:16px;font-size:26px;line-height:1.4;
+         color:rgba(255,255,255,.88)}
+  .garde i{font-style:normal;font-size:34px}
+
   /* --- Couverture TikTok -------------------------------------------------- */
   .v9-16 .hook{font-size:104px}
   .v9-16 .sur{padding:120px 72px 420px}   /* le bas est mangé par l'interface TikTok */
@@ -107,7 +135,7 @@
 <div class="slide sombre" id="s1">
   <img class="photo" src="../site/assets/photos/canape-avant-reel.webp" alt="">
   <div class="voile"></div>
-  <div class="pas">1 / 6</div>
+  <div class="pas">1 / 7</div>
   <div class="sur">
     <div class="mark clair">
       <span class="sq"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
@@ -123,7 +151,7 @@
 
 <!-- ====================== 2 · ce qu'il encaisse ====================== -->
 <div class="slide" id="s2">
-  <div class="pas">2 / 6</div>
+  <div class="pas">2 / 7</div>
   <div class="corps">
     <p class="eyebrow">Ce qui s'y accumule</p>
     <h2>Un aspirateur<br>prend la surface.<br><em>Le reste est<br>2 cm plus bas.</em></h2>
@@ -138,7 +166,7 @@
 
 <!-- ====================== 3 · l'erreur ====================== -->
 <div class="slide" id="s3">
-  <div class="pas">3 / 6</div>
+  <div class="pas">3 / 7</div>
   <div class="corps">
     <p class="eyebrow">L'erreur la plus fréquente</p>
     <h2>Frotter la tache<br>avec ce qu'on a<br><em>sous l'évier.</em></h2>
@@ -153,7 +181,7 @@
 
 <!-- ====================== 4 · la méthode ====================== -->
 <div class="slide" id="s4">
-  <div class="pas">4 / 6</div>
+  <div class="pas">4 / 7</div>
   <div class="corps">
     <p class="eyebrow">Notre méthode</p>
     <h2>L'injection-<br>extraction,<br><em>étape par étape.</em></h2>
@@ -169,7 +197,7 @@
 
 <!-- ====================== 5 · les prix ====================== -->
 <div class="slide" id="s5">
-  <div class="pas">5 / 6</div>
+  <div class="pas">5 / 7</div>
   <div class="corps">
     <p class="eyebrow">Nos tarifs</p>
     <h2>Le prix est fixe,<br>et il est <em>affiché.</em></h2>
@@ -187,7 +215,7 @@
 <div class="slide sombre" id="s6">
   <img class="photo" src="../site/assets/photos/canape-nettoyage.webp" alt="">
   <div class="voile"></div>
-  <div class="pas">6 / 6</div>
+  <div class="pas">6 / 7</div>
   <div class="fin">
     <div class="mark clair">
       <span class="sq"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
@@ -196,17 +224,48 @@
     <div>
       <h2>On vient<br>chez vous,<br><em>7 j / 7.</em></h2>
       <div class="coord">
-        <div>Paris &amp; Île-de-France <small>— les 8 départements</small></div>
-        <div>06 23 07 52 59 <small>— de 8 h à 20 h</small></div>
-        <div>mathclean.fr <small>— réservation en ligne</small></div>
+        <div>Paris &amp; les 8 départements <small>— d'Île-de-France</small></div>
+        <div>Matériel, eau et électricité <small>— rien à fournir</small></div>
+        <div>Règlement après l'intervention <small>— aucun acompte</small></div>
       </div>
-      <span class="bouton">Devis gratuit, réponse sous 24 h</span>
-      <p class="credit" style="margin-top:26px">Notre matériel chez un client, en Île-de-France.</p>
+      <p class="credit" style="margin-top:34px">Notre matériel chez un client, en Île-de-France.</p>
     </div>
   </div>
 </div>
 
-<!-- ====================== 7 · couverture TikTok (9:16) ====================== -->
+<!-- ====================== 7 · l'action ====================== -->
+<div class="slide action" id="s7">
+  <div class="pas">7 / 7</div>
+  <div class="acte">
+    <div>
+      <div class="mark clair">
+        <span class="sq" style="background:rgba(255,255,255,.12)"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
+        <b>Math<i>Clean</i><small>Une exigence de roi</small></b>
+      </div>
+      <h2 style="margin-top:46px">Votre prix,<br><em>avant d'appeler.</em></h2>
+      <p class="sous">Choisissez votre canapé, entrez votre adresse : le total s'affiche,
+        déplacement compris. Deux minutes, sans engagement.</p>
+      <div class="rassure">
+        <div><i>✓</i> Prix fixe, annoncé avant que vous validiez</div>
+        <div><i>✓</i> Aucun acompte, vous réglez après</div>
+        <div><i>✓</i> Réponse sous 24 h, week-ends compris</div>
+      </div>
+    </div>
+    <div>
+      <span class="cta-grand">
+        <b>mathclean.fr</b>
+        <span>Réservation en ligne · lien en bio</span>
+      </span>
+      <div class="cta-second">
+        <div><b>06 23 07 52 59</b><span>8 h – 20 h, 7 j/7</span></div>
+        <div><b>Message privé</b><span>Envoyez une photo</span></div>
+      </div>
+      <p class="garde"><i>🔖</i> Enregistrez ce post&nbsp;: vous en aurez besoin le jour où la tache arrive.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== 8 · couverture TikTok (9:16) ====================== -->
 <div class="slide sombre v9-16" id="tiktok">
   <img class="photo" src="../site/assets/photos/canape-avant-reel.webp" alt="">
   <div class="voile"></div>
@@ -218,6 +277,32 @@
     <div>
       <p class="hook">Ce canapé<br>a l'air propre.<br><em>Il ne l'est pas.</em></p>
       <p class="legende">Ce qu'un aspirateur ne prend jamais — et comment on le sort.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== 9 · fin de vidéo TikTok (9:16) ====================== -->
+<div class="slide action v9-16" id="tiktok-fin">
+  <div class="acte" style="padding:200px 72px 420px">
+    <div>
+      <div class="mark clair">
+        <span class="sq" style="background:rgba(255,255,255,.12)"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
+        <b>Math<i>Clean</i><small>Une exigence de roi</small></b>
+      </div>
+      <h2 style="margin-top:56px;font-size:92px">49 €<br>le 3 places,<br><em>chez vous.</em></h2>
+      <p class="sous" style="font-size:34px">Paris et les 8 départements d'Île-de-France, 7 j/7.</p>
+      <div class="rassure" style="margin-top:56px">
+        <div style="font-size:33px"><i>✓</i> Prix fixe, quel que soit l'état du tissu</div>
+        <div style="font-size:33px"><i>✓</i> Aucun acompte, vous réglez après</div>
+        <div style="font-size:33px"><i>✓</i> Sec et réutilisable en 4 à 6 h</div>
+      </div>
+    </div>
+    <div>
+      <span class="cta-grand">
+        <b>mathclean.fr</b>
+        <span>Lien en bio · prix en 2 minutes</span>
+      </span>
+      <p class="garde" style="margin-top:26px"><i>📞</i> 06 23 07 52 59</p>
     </div>
   </div>
 </div>
