@@ -588,6 +588,10 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 
 /* Étapes numérotées */
 .steps{counter-reset:step;display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+/* À cinq étapes, la grille par défaut en aligne quatre et laisse la
+   dernière seule. Des colonnes plus larges donnent 3 + 2, et le texte
+   d'une étape respire mieux. */
+.steps--large{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
 .step{position:relative;padding-top:12px}
 .step::before{
   counter-increment:step;content:counter(step,decimal-leading-zero);

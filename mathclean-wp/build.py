@@ -824,6 +824,16 @@ def write(path, html):
 # ===========================================================================
 # ACCUEIL
 # ===========================================================================
+def classe_etapes(n):
+    """Classes de la grille « Comment nous procédons ».
+
+    À quatre étapes la grille par défaut convient. À cinq, elle en aligne
+    quatre et laisse la dernière orpheline : on élargit les colonnes pour
+    obtenir 3 + 2.
+    """
+    return "steps" + (" steps--large" if n == 5 else "")
+
+
 def classe_tuiles(n, toutes=False):
     """Classes de la grille de tuiles.
 
@@ -1330,7 +1340,7 @@ def build_service(s):
       <span class="eyebrow">Notre méthode</span>
       <h2>Comment nous procédons</h2>
     </div>
-    <div class="steps">{steps}</div>
+    <div class="{classe_etapes(len(s['steps']))}">{steps}</div>
   </div>
 </section>
 {chimie}

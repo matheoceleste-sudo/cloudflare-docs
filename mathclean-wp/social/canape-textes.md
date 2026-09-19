@@ -18,10 +18,22 @@ La transpiration et le sébum traversent la housse et se fixent dans la mousse.
 Les miettes descendent dans les coutures. Les poils d'animaux s'enroulent autour
 de la fibre au lieu d'y rester posés. Et l'aspirateur, lui, s'arrête à la surface.
 
-C'est pour ça qu'on travaille en **injection-extraction** : une solution
-nettoyante est injectée au cœur du tissu, puis réaspirée aussitôt avec la saleté
-dissoute. La mousse n'est jamais détrempée — c'est exactement ce qui évite
-l'auréole au séchage. Canapé réutilisable en 4 à 6 h.
+Notre méthode tient en cinq étapes, et l'ordre compte :
+
+1. **Désinfection haute température.** On commence par la vapeur : la chaleur
+seule assainit et traite les acariens, sans le moindre produit.
+2. **Produit adapté à la matière.** Tissu, microfibre, alcantara ou cuir
+n'appellent pas le même produit — et la laine ne supporte ni l'un ni l'autre
+sans précaution.
+3. **Brossage.** Le produit est travaillé dans la fibre au lieu d'être laissé
+en surface. C'est l'étape que la plupart sautent.
+4. **Injection-extraction.** La solution est injectée au cœur du tissu puis
+réaspirée aussitôt avec la saleté dissoute. La mousse n'est jamais détrempée —
+c'est exactement ce qui évite l'auréole au séchage.
+5. **Repassage si nécessaire.** Tous les tissus ne le demandent pas. Quand
+c'est le cas, c'est ce qui finit le travail.
+
+Canapé réutilisable en 4 à 6 h.
 
 Le conseil qu'on donne le plus souvent, et qui ne nous rapporte rien : ne frottez
 pas une tache avec un détachant ménager. Vous ne l'enlevez pas, vous l'étalez
@@ -101,8 +113,10 @@ Ton canapé a l'air propre. Il ne l'est pas 👀
 La transpiration et le sébum traversent la housse et se fixent dans la mousse.
 L'aspirateur, lui, s'arrête à la surface.
 
-L'injection-extraction envoie la solution au cœur de la fibre et la réaspire
-aussitôt : sec en 4 à 6 h, sans auréole.
+Cinq étapes, dans cet ordre : vapeur haute température, produit adapté à la
+matière, brossage, injection-extraction, repassage si le tissu le demande.
+
+Sec et réutilisable en 4 à 6 h, sans auréole.
 
 Canapé 3 places : 49 €, à domicile. Paris + IDF, 7 j/7 📞 06 23 07 52 59
 
@@ -116,15 +130,20 @@ Canapé 3 places : 49 €, à domicile. Paris + IDF, 7 j/7 📞 06 23 07 52 59
 Un seul opérateur, un trépied ou un appui stable. Lumière naturelle de côté :
 c'est elle qui fait ressortir les marques sur le tissu.
 
+Les plans suivent la vraie séquence de l'intervention. Filmez dans l'ordre où
+vous travaillez : vous n'aurez rien à reconstituer au montage.
+
 | Temps | Plan | Texte à l'écran | Voix off |
 |---|---|---|---|
 | 0 – 3 s | Plan serré sur l'assise, caméra qui recule lentement | **CE CANAPÉ A L'AIR PROPRE** | « Ce canapé a l'air propre. » |
 | 3 – 6 s | Chiffon microfibre **blanc** passé fermement sur l'assise, puis montré à l'objectif | **IL NE L'EST PAS** | « Regardez le chiffon. » |
-| 6 – 11 s | Gros plan sur la couture, doigt qui écarte le tissu | Transpiration · sébum · miettes · poils | « Tout ça traverse la housse et se fixe dans la mousse. L'aspirateur s'arrête à la surface. » |
-| 11 – 17 s | Buse d'injection-extraction en action, passage lent et régulier | **INJECTION-EXTRACTION** | « On injecte la solution au cœur de la fibre, et on la réaspire aussitôt avec la saleté. » |
-| 17 – 22 s | Cuve de récupération : l'eau sale | L'eau qui ressort du canapé | « C'est ce qui sortait de votre canapé. » |
-| 22 – 26 s | Passage final, tissu net, plan large du canapé | Sec en 4 à 6 h · sans auréole | « La mousse n'est jamais détrempée : pas d'auréole au séchage, réutilisable en 4 à 6 heures. » |
-| 26 – 30 s | **Carte de fin** `canape-tiktok-fin.png`, en plein écran | (déjà sur la carte) | « 49 euros le trois places, à domicile. Votre prix en deux minutes sur mathclean.fr, le lien est en bio. » |
+| 6 – 9 s | Buse vapeur, jet visible à contre-jour | **1 · VAPEUR HAUTE TEMPÉRATURE** | « On commence par la vapeur. La chaleur seule assainit et traite les acariens, sans produit. » |
+| 9 – 13 s | Le produit versé ou pulvérisé, étiquette lisible une seconde | **2 · LE PRODUIT SELON LA MATIÈRE** | « Ensuite le produit, choisi selon la matière : tissu, microfibre, alcantara et cuir n'appellent pas le même. » |
+| 13 – 17 s | Brossage en plan serré, mousse qui se forme | **3 · BROSSAGE** | « On le travaille dans la fibre, au lieu de le laisser en surface. C'est l'étape que la plupart sautent. » |
+| 17 – 22 s | Buse d'injection-extraction, passages croisés lents | **4 · INJECTION-EXTRACTION** | « On injecte au cœur du tissu, et on réaspire aussitôt avec la saleté dissoute. » |
+| 22 – 25 s | Cuve de récupération : l'eau sale | L'eau qui ressort du canapé | « C'est ce qui sortait de votre canapé. » |
+| 25 – 27 s | Repassage, puis plan large du canapé fini | **5 · REPASSAGE** · sec en 4 à 6 h | « Un repassage si le tissu le demande, et c'est fini : réutilisable en quatre à six heures. » |
+| 27 – 31 s | **Carte de fin** `canape-tiktok-fin.png`, en plein écran | (déjà sur la carte) | « 49 euros le trois places, à domicile. Votre prix en deux minutes sur mathclean.fr, le lien est en bio. » |
 
 La carte de fin est fournie : `social/out/canape-tiktok-fin.png`. Posez-la sur
 les 3 à 4 dernières secondes, sans transition. Son texte est déjà écrit, ne le
@@ -137,8 +156,12 @@ vues se fait son coupé, mais celles qui convertissent l'écoutent.
 machine porte mieux qu'une musique, gardez-le au premier plan et posez une
 musique discrète dessous.
 
-**Le plan qui fait la vidéo** : la cuve d'eau sale (17 – 22 s). C'est le seul
+**Le plan qui fait la vidéo** : la cuve d'eau sale (22 – 25 s). C'est le seul
 moment où le spectateur voit une preuve. Filmez-le en gros plan, bien éclairé.
+
+**Le plan qui vous distingue** : le brossage (13 – 17 s). C'est l'étape que les
+prestataires pressés sautent, et la montrer dit plus long sur votre travail que
+n'importe quelle phrase sur la qualité.
 
 **À ne pas faire** : si le chiffon ressort propre ou si l'eau est claire, ne
 rejouez pas la scène sur un autre canapé pour « avoir l'image ». Prenez la

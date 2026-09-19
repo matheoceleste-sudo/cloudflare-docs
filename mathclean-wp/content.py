@@ -158,10 +158,11 @@ SERVICES = [
             "Détachage ciblé : café, gras, vin, encre, urine, sang",
         ],
         "steps": [
-            ("Test de la fibre", "Laine, soie, viscose, synthétique ou cuir : nous identifions la matière et testons la solidité des couleurs sur une zone cachée avant de commencer."),
-            ("Pré-traitement", "Aspiration profonde, puis application ciblée sur les taches, avec un temps de pause pour dissoudre les corps gras."),
-            ("Injection-extraction", "Passages croisés jusqu'à ce que l'eau réaspirée ressorte claire. Sur les matelas, les deux faces sont traitées."),
-            ("Anti-acariens & séchage", "Traitement haute température des allergènes, puis ventilation. Le textile est réutilisable après 4 à 6 h."),
+            ("Désinfection haute température", "Passage à la vapeur sur toute la surface : la chaleur seule assainit et traite les acariens, sans produit. La laine et la soie font exception — la vapeur les rétracte."),
+            ("Produit adapté à la matière", "Tissu, microfibre, alcantara ou cuir n'appellent pas le même produit. Nous identifions la matière, testons la solidité des couleurs sur une zone cachée, puis appliquons."),
+            ("Brossage", "Le produit est travaillé dans la fibre à la brosse. C'est ce passage qui décolle la saleté au lieu de la laisser remonter en surface."),
+            ("Injection-extraction", "La solution est injectée au cœur de la fibre puis réaspirée aussitôt avec la saleté dissoute. Passages croisés jusqu'à ce que l'eau ressorte claire ; sur les matelas, les deux faces."),
+            ("Repassage si nécessaire", "Tous les tissus ne le demandent pas. Quand c'est le cas, c'est le geste qui finit le travail. Le textile est réutilisable après 4 à 6 h."),
         ],
         "chimie": {
             "titre": 'La fibre décide du produit',
@@ -1887,7 +1888,12 @@ GUIDES = [
                 "En cas de doute, l'étiquette au dos donne souvent la composition. Sans étiquette, l'aspect et le toucher permettent de trancher dans la plupart des cas — nous le faisons sur place avant de commencer.",
             ]),
             ('La méthode et les taches', [
-                'Sur un tapis synthétique ou en laine robuste, la séquence est la même que pour un canapé : aspiration profonde, traitement individuel des taches, injection-extraction, puis brossage du sens du poil.',
+                "Sur un tapis synthétique, la séquence est la même que pour un canapé : "
+                "désinfection à la vapeur haute température, produit choisi selon la fibre, "
+                "brossage, puis injection-extraction. Sur un tapis de laine, la vapeur saute — "
+                "elle rétracte la fibre — et le produit neutre fait le travail seul.",
+                "Le geste final change, lui : là où un canapé demande parfois un repassage, un "
+                "tapis se termine au brossage du sens du poil.",
                 "Le brossage final n'est pas cosmétique. Un poil couché dans le mauvais sens sèche ainsi et le tapis paraît terne par zones même parfaitement propre.",
                 "Sur les taches, deux réflexes valent d'être rappelés. Ne frottez jamais : vous étalez la tache et vous cassez la fibre. Tamponnez du bord vers le centre, avec un chiffon blanc — un chiffon coloré peut déteindre.",
                 "Et n'appliquez rien avant notre passage. Un produit ménager mal choisi peut fixer la tache définitivement, ou décolorer le tapis autour, ce qui est irréversible et se voit davantage que la tache d'origine.",
