@@ -1,0 +1,22 @@
+{
+	// Configuration du site MathClean pour Cloudflare Workers.
+	//
+	// Worker « assets seuls » : il n'y a pas de champ "main", donc aucun code
+	// serveur — Cloudflare se contente de servir les fichiers de ./site.
+	//
+	// Dans le tableau de bord Cloudflare, le projet doit pointer sur ce dossier :
+	//   Root directory  : mathclean-wp
+	//   Build command   : (laisser vide — le site est déjà généré)
+	//   Deploy command  : npx wrangler deploy
+	//
+	// Sans "Root directory", le build lit le wrangler.toml de la racine du dépôt,
+	// qui appartient au projet cloudflare-docs et vise un autre compte : il échoue
+	// immédiatement.
+	"name": "mathclean",
+	"compatibility_date": "2025-06-02",
+	"assets": {
+		"directory": "./site",
+		// Sert site/404.html pour toute adresse inconnue.
+		"not_found_handling": "404-page"
+	}
+}

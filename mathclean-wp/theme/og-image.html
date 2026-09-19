@@ -1,0 +1,39 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1200px;height:630px;background:linear-gradient(145deg,#0d1117 0%,#161b22 55%,#0b0f14 100%);
+       font-family:"Liberation Sans",Arial,sans-serif;display:grid;place-items:center}
+  .frame{position:absolute;inset:28px;border:1px solid rgba(200,160,75,.45);border-radius:10px}
+  .stack{display:flex;flex-direction:column;align-items:center;text-align:center}
+  svg{width:110px;height:110px;margin-bottom:26px}
+  h1{font-family:"Liberation Serif",Georgia,serif;font-size:84px;font-weight:700;letter-spacing:-.5px;
+     color:#f2f4f7;line-height:1}
+  h1 span{color:#e0c274}
+  .slogan{font-family:"Liberation Serif",Georgia,serif;font-style:italic;font-size:38px;color:#d9b866;margin-top:22px}
+  .kicker{margin-top:30px;font-size:22px;letter-spacing:4.5px;color:#9aa4b0;text-transform:uppercase}
+  .line{margin-top:34px;font-size:21px;color:#9aa4b0}
+  .line b{color:#f2f4f7}
+  .line .sep{color:#c8a04b;margin:0 16px}
+</style>
+<div class="frame"></div>
+<div class="stack">
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+    <defs><linearGradient id="or" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7cd86"/><stop offset="1" stop-color="#c8a04b"/></linearGradient></defs>
+    <g fill="none" stroke="url(#or)" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="27" stroke-width="2.4"/>
+      <path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="3.2"/>
+      <path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="3.2"/>
+    </g>
+  </svg>
+  <h1>Math<span>Clean</span></h1>
+  <p class="slogan">Une exigence de roi</p>
+  <p class="kicker">Nettoyage premium · Paris &amp; Île-de-France</p>
+  <p class="line">Auto · Canapé · Matelas · Vitres · Bureaux<span class="sep">|</span><b>06 23 07 52 59</b> · 7j/7</p>
+</div>
+<!-- Source de site/assets/img/og-image.png (1200 × 630), l'aperçu affiché
+     quand le site est partagé. Pour le régénérer après un changement de
+     catalogue ou de logo : ouvrir ce fichier dans un navigateur à 1200 × 630
+     et capturer, ou
+       python3 -c "from playwright.sync_api import sync_playwright as s; ..."
+     Le monogramme est le même tracé que logo_mc() dans build.py. -->
