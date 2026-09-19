@@ -1,0 +1,223 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
+<title>MathClean — carrousel « nettoyage de canapé »</title>
+<!--
+  Source des visuels de social/out/. Chaque .slide est une image finie :
+  1080 × 1350 pour le carrousel Instagram, 1080 × 1920 pour la couverture
+  TikTok. Le script social/rendu.py les capture une par une.
+
+  Règle de maison, qui vaut aussi ici : les deux photos sont réelles et
+  distinctes, et aucune n'est présentée comme l'« après » de l'autre. La
+  première montre un canapé avant intervention, la dernière notre matériel
+  chez un client — ce sont deux chantiers différents, et le texte le dit.
+-->
+<style>
+  @page{margin:0}
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bleu:#0e5fbb; --bleu-fonce:#0a4a94; --or:#c8a04b; --or-clair:#e7cd86;
+    --encre:#16212e; --nuit:#0d1117; --doux:#f5f8fc; --gris:#7b8794;
+    --sans:"Liberation Sans",Arial,Helvetica,sans-serif;
+    --serif:"Liberation Serif",Georgia,serif;
+  }
+  body{background:#222;font-family:var(--sans);display:flex;flex-direction:column;gap:40px;padding:40px}
+  .slide{
+    position:relative;width:1080px;height:1350px;overflow:hidden;
+    background:#fff;color:var(--encre);display:flex;flex-direction:column;
+  }
+  .slide.v9-16{height:1920px}
+
+  /* --- Habillage commun ------------------------------------------------- */
+  .mark{display:flex;align-items:center;gap:16px}
+  .mark svg{width:58px;height:58px;flex:none}
+  .mark .sq{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;
+            background:linear-gradient(150deg,var(--bleu) 0%,var(--bleu-fonce) 100%)}
+  .mark .sq svg{width:42px;height:42px}
+  .mark b{font-size:34px;font-weight:800;letter-spacing:-.5px;color:var(--encre)}
+  .mark b i{font-style:normal;color:var(--bleu)}
+  .mark.clair b{color:#fff}
+  .mark.clair b i{color:var(--or-clair)}
+  .mark small{display:block;font-size:14px;letter-spacing:3.4px;color:var(--or);font-weight:700;text-transform:uppercase}
+
+  .pas{position:absolute;top:56px;right:64px;z-index:5;font-size:22px;font-weight:700;
+       letter-spacing:2px;color:var(--gris)}
+  .slide.sombre .pas{color:rgba(255,255,255,.62)}
+
+  /* --- Slides photo ------------------------------------------------------ */
+  .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .voile{position:absolute;inset:0;
+         background:linear-gradient(180deg,rgba(9,16,26,.78) 0%,rgba(9,16,26,.20) 30%,
+                    rgba(9,16,26,.20) 46%,rgba(9,16,26,.95) 78%,rgba(9,16,26,.97) 100%)}
+  .sur{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
+       justify-content:space-between;padding:56px 64px 64px}
+  .sombre{color:#fff}
+  .hook{font-size:96px;line-height:1.02;font-weight:800;letter-spacing:-2.5px;color:#fff}
+  .hook em{font-style:normal;color:var(--or-clair)}
+  .legende{margin-top:26px;font-size:28px;line-height:1.45;color:rgba(255,255,255,.88);max-width:15ch}
+  .credit{font-size:20px;color:rgba(255,255,255,.62);letter-spacing:.3px}
+  .swipe{display:inline-flex;align-items:center;gap:12px;margin-top:34px;
+         font-size:23px;font-weight:700;letter-spacing:1.5px;color:var(--or-clair);text-transform:uppercase}
+  .swipe span{font-size:30px}
+
+  /* --- Slides texte ------------------------------------------------------ */
+  .corps{flex:1;display:flex;flex-direction:column;padding:56px 72px 64px}
+  .eyebrow{font-size:20px;font-weight:700;letter-spacing:4.5px;text-transform:uppercase;color:var(--bleu)}
+  h2{font-family:var(--sans);font-size:72px;line-height:1.06;font-weight:800;letter-spacing:-1.8px;
+     margin-top:22px;color:var(--encre)}
+  h2 em{font-style:normal;color:var(--bleu)}
+  .liste{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;gap:28px;padding:40px 0}
+  .item{display:flex;gap:22px;align-items:flex-start}
+  .puce{width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;
+        background:var(--bleu);color:#fff;font-size:22px;font-weight:800}
+  .puce.or{background:var(--or)}
+  .item p{font-size:31px;line-height:1.38}
+  .item p b{font-weight:800}
+  .item p span{display:block;font-size:25px;color:var(--gris);margin-top:5px;line-height:1.36}
+  .chute{margin-top:44px;padding:28px 32px;border-left:6px solid var(--or);background:var(--doux);
+         font-size:28px;line-height:1.45}
+  .chute b{font-weight:800}
+
+  /* --- Slide tarifs ------------------------------------------------------ */
+  .prix{flex:1;display:flex;flex-direction:column;justify-content:center;gap:0}
+  .ligne{display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+         padding:30px 0;border-bottom:2px solid #e2e8f0}
+  .ligne:first-child{border-top:2px solid #e2e8f0}
+  .ligne b{font-size:38px;font-weight:700}
+  .ligne strong{font-size:52px;font-weight:800;color:var(--bleu);letter-spacing:-1px}
+  .note{margin-top:38px;font-size:26px;line-height:1.5;color:var(--gris)}
+  .note b{color:var(--encre);font-weight:800}
+
+  /* --- Slide finale ------------------------------------------------------ */
+  .fin{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
+       justify-content:space-between;padding:56px 64px 64px;color:#fff}
+  .fin h2{font-size:82px;color:#fff;letter-spacing:-2px;margin:0}
+  .fin h2 em{color:var(--or-clair);font-style:normal}
+  .coord{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+  .coord div{font-size:34px;font-weight:700;display:flex;align-items:center;gap:16px}
+  .coord div small{font-size:26px;font-weight:400;color:rgba(255,255,255,.72)}
+  .bouton{display:inline-block;margin-top:38px;padding:26px 44px;border-radius:14px;
+          background:var(--or);color:#16212e;font-size:32px;font-weight:800;letter-spacing:.3px}
+
+  /* --- Couverture TikTok -------------------------------------------------- */
+  .v9-16 .hook{font-size:104px}
+  .v9-16 .sur{padding:120px 72px 420px}   /* le bas est mangé par l'interface TikTok */
+  .v9-16 .legende{font-size:34px;max-width:17ch;margin-top:32px}
+</style>
+
+<!-- ====================== 1 · accroche ====================== -->
+<div class="slide sombre" id="s1">
+  <img class="photo" src="../site/assets/photos/canape-avant-reel.webp" alt="">
+  <div class="voile"></div>
+  <div class="pas">1 / 6</div>
+  <div class="sur">
+    <div class="mark clair">
+      <span class="sq"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
+      <b>Math<i>Clean</i><small>Une exigence de roi</small></b>
+    </div>
+    <div>
+      <p class="hook">Ce canapé<br>a l'air propre.<br><em>Il ne l'est pas.</em></p>
+      <p class="legende">Photo prise chez un client, avant notre passage.</p>
+      <p class="swipe">Faites glisser <span>→</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== 2 · ce qu'il encaisse ====================== -->
+<div class="slide" id="s2">
+  <div class="pas">2 / 6</div>
+  <div class="corps">
+    <p class="eyebrow">Ce qui s'y accumule</p>
+    <h2>Un aspirateur<br>prend la surface.<br><em>Le reste est<br>2 cm plus bas.</em></h2>
+    <div class="liste">
+      <div class="item"><span class="puce">1</span><p><b>La transpiration et le sébum</b><span>Ils traversent la housse et se fixent dans la mousse.</span></p></div>
+      <div class="item"><span class="puce">2</span><p><b>Les miettes et la poussière</b><span>Elles descendent dans les coutures, hors de portée de l'aspirateur.</span></p></div>
+      <div class="item"><span class="puce">3</span><p><b>Les poils d'animaux</b><span>Ils s'enroulent autour de la fibre au lieu d'y rester posés.</span></p></div>
+      <div class="item"><span class="puce">4</span><p><b>Les acariens</b><span>Ils s'installent là où c'est tiède et humide : votre assise.</span></p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== 3 · l'erreur ====================== -->
+<div class="slide" id="s3">
+  <div class="pas">3 / 6</div>
+  <div class="corps">
+    <p class="eyebrow">L'erreur la plus fréquente</p>
+    <h2>Frotter la tache<br>avec ce qu'on a<br><em>sous l'évier.</em></h2>
+    <div class="liste">
+      <div class="item"><span class="puce or">✕</span><p><b>Frotter</b><span>Vous n'enlevez pas la tache, vous l'étalez dans la fibre.</span></p></div>
+      <div class="item"><span class="puce or">✕</span><p><b>Détremper au détachant ménager</b><span>Le produit reste dans la mousse et ressort en auréole au séchage.</span></p></div>
+      <div class="item"><span class="puce">✓</span><p><b>Tamponner, du bord vers le centre</b><span>Avec un chiffon blanc, à sec. Puis ne plus y toucher.</span></p></div>
+    </div>
+    <p class="chute">Une tache fraîche part presque toujours. Une auréole déjà créée par un détachant, c'est une autre histoire — et <b>nous vous le disons avant de commencer</b>, pas après.</p>
+  </div>
+</div>
+
+<!-- ====================== 4 · la méthode ====================== -->
+<div class="slide" id="s4">
+  <div class="pas">4 / 6</div>
+  <div class="corps">
+    <p class="eyebrow">Notre méthode</p>
+    <h2>L'injection-<br>extraction,<br><em>étape par étape.</em></h2>
+    <div class="liste">
+      <div class="item"><span class="puce">1</span><p><b>Test de la fibre</b><span>Laine, viscose, synthétique ou cuir : on identifie la matière et on teste les couleurs sur une zone cachée.</span></p></div>
+      <div class="item"><span class="puce">2</span><p><b>Pré-traitement</b><span>Aspiration profonde, puis produit sur les taches avec un temps de pause.</span></p></div>
+      <div class="item"><span class="puce">3</span><p><b>Injection-extraction</b><span>La solution est injectée au cœur de la fibre, puis réaspirée aussitôt avec la saleté dissoute.</span></p></div>
+      <div class="item"><span class="puce">4</span><p><b>Anti-acariens et séchage</b><span>Traitement haute température, puis ventilation. Canapé réutilisable en 4 à 6 h.</span></p></div>
+    </div>
+    <p class="chute">La mousse n'est jamais détrempée. <b>C'est exactement ce qui évite l'auréole au séchage.</b></p>
+  </div>
+</div>
+
+<!-- ====================== 5 · les prix ====================== -->
+<div class="slide" id="s5">
+  <div class="pas">5 / 6</div>
+  <div class="corps">
+    <p class="eyebrow">Nos tarifs</p>
+    <h2>Le prix est fixe,<br>et il est <em>affiché.</em></h2>
+    <div class="prix">
+      <div class="ligne"><b>Canapé 2 places</b><strong>39 €</strong></div>
+      <div class="ligne"><b>Canapé 3 places</b><strong>49 €</strong></div>
+      <div class="ligne"><b>Canapé d'angle</b><strong>69 €</strong></div>
+      <div class="ligne"><b>Fauteuil</b><strong>25 €</strong></div>
+    </div>
+    <p class="note">Le même prix quel que soit l'état du tissu. S'ajoutent les frais de déplacement — <b>5 € par tranche de 5 km</b> depuis notre atelier du Blanc-Mesnil, annoncés avant que vous validiez.<br><br><b>Aucun acompte :</b> vous réglez après l'intervention, une fois le résultat constaté avec nous.</p>
+  </div>
+</div>
+
+<!-- ====================== 6 · on vient chez vous ====================== -->
+<div class="slide sombre" id="s6">
+  <img class="photo" src="../site/assets/photos/canape-nettoyage.webp" alt="">
+  <div class="voile"></div>
+  <div class="pas">6 / 6</div>
+  <div class="fin">
+    <div class="mark clair">
+      <span class="sq"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
+      <b>Math<i>Clean</i><small>Une exigence de roi</small></b>
+    </div>
+    <div>
+      <h2>On vient<br>chez vous,<br><em>7 j / 7.</em></h2>
+      <div class="coord">
+        <div>Paris &amp; Île-de-France <small>— les 8 départements</small></div>
+        <div>06 23 07 52 59 <small>— de 8 h à 20 h</small></div>
+        <div>mathclean.fr <small>— réservation en ligne</small></div>
+      </div>
+      <span class="bouton">Devis gratuit, réponse sous 24 h</span>
+      <p class="credit" style="margin-top:26px">Notre matériel chez un client, en Île-de-France.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== 7 · couverture TikTok (9:16) ====================== -->
+<div class="slide sombre v9-16" id="tiktok">
+  <img class="photo" src="../site/assets/photos/canape-avant-reel.webp" alt="">
+  <div class="voile"></div>
+  <div class="sur">
+    <div class="mark clair">
+      <span class="sq"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
+      <b>Math<i>Clean</i><small>Une exigence de roi</small></b>
+    </div>
+    <div>
+      <p class="hook">Ce canapé<br>a l'air propre.<br><em>Il ne l'est pas.</em></p>
+      <p class="legende">Ce qu'un aspirateur ne prend jamais — et comment on le sort.</p>
+    </div>
+  </div>
+</div>
