@@ -174,4 +174,17 @@
 
   /* -- 8. Année courante dans le pied de page ----------------------------- */
   $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  /* -- 9. Parcours transmis par l'URL ------------------------------------- */
+  /* Les pages Particuliers et Professionnels ajoutent ?client=part|pro à
+     leurs liens. Le champ « Vous êtes » du formulaire de devis se pré-remplit
+     avec, plutôt que de reposer la question à quelqu'un qui vient d'y
+     répondre. La réservation fait de même, dans son propre script. */
+  (function profilDepuisURL() {
+    var q = new URLSearchParams(location.search).get('client');
+    if (!q) return;
+    var champ = document.getElementById('f-type');
+    if (!champ) return;
+    champ.value = (q === 'pro' || q === 'professionnel') ? 'Professionnel' : 'Particulier';
+  })();
 })();

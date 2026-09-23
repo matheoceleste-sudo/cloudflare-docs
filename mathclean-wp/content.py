@@ -3623,3 +3623,79 @@ PREMIUM_VILLES = [
         },
     },
 ]
+
+
+# --- Porte d'entrée : particulier ou professionnel -------------------------
+# Le site s'ouvre sur ce choix. Les deux parcours montrent les mêmes
+# prestations, mais ne répondent pas aux mêmes questions : un particulier
+# veut savoir s'il peut faire confiance et combien ça coûte, une entreprise
+# veut savoir qui vient, quand, et sur quoi elle s'engage.
+PORTES = [
+    {
+        "cle": "particulier",
+        "titre": "Un particulier",
+        "sous": "Chez vous, à domicile",
+        "photo": "canape-nettoyage.webp",
+        "taille": (1125, 1500),
+        "position": "center 60%",
+        "page": "particuliers",
+        "points": ["Prix affichés, sans acompte",
+                   "Réservation en ligne en 2 minutes",
+                   "7 j/7, soirs et week-ends"],
+        "bouton": "Voir les prestations et les prix",
+    },
+    {
+        "cle": "professionnel",
+        "titre": "Un professionnel",
+        "sous": "Bureaux, commerces, restaurants, agences",
+        # PHOTO À REMPLACER EN PRIORITÉ : 506 × 216 px, c'est le cliché le
+        # plus petit de la photothèque et il ouvre désormais le parcours
+        # professionnel. Une photo nette de bureaux ou d'une vitrine, prise
+        # en 1500 px de large minimum, changerait la première impression.
+        "photo": "bureau-entreprise.webp",
+        "taille": (506, 216),
+        "position": "center 45%",
+        "page": "professionnels",
+        "points": ["Un interlocuteur unique, qui exécute lui-même",
+                   "Horaires décalés, sans gêner votre activité",
+                   "Devis ferme et facturation entreprise"],
+        "bouton": "Voir l'offre professionnelle",
+    },
+]
+
+# Qualification du dirigeant. Elle est mise en avant côté professionnel,
+# où elle pèse davantage que n'importe quel argument commercial.
+#
+# À COMPLÉTER : remplacer "intitule" par le libellé exact du diplôme (CAP ou
+# BAC pro hygiène-propreté-stérilisation, CQP agent de propreté, titre
+# professionnel…). Un intitulé précis, avec l'année, vaut beaucoup plus
+# qu'une mention générique face à un acheteur professionnel, qui peut
+# demander le justificatif.
+QUALIFICATION = {
+    "intitule": "Diplôme d'État",
+    "annee": "",
+    "resume": "Formation initiale en hygiène et propreté, sanctionnée par un diplôme d'État.",
+}
+
+# Secteurs pour lesquels nous sommes déjà intervenus. Les enseignes ne sont
+# pas nommées : nous n'avons pas leur autorisation écrite, et une référence
+# citée sans accord se retourne contre celui qui la cite.
+REFERENCES_PRO = [
+    ("building", "Agences immobilières",
+     "Remises en état entre deux locataires, états des lieux, vitrines d'agence. "
+     "Le délai compte plus que tout : un logement propre est un logement qui se reloue."),
+    ("tools", "Chaînes de restauration",
+     "Salles, banquettes, vitrines et sols, sur des établissements implantés dans "
+     "plusieurs villes de France. Intervention avant l'ouverture ou après la fermeture."),
+    ("sofa", "Bureaux et locaux d'activité",
+     "Postes de travail, salles de réunion, moquettes en injection-extraction et "
+     "sanitaires, en passage régulier ou ponctuel."),
+]
+
+# Ce qu'une entreprise demande avant de signer, dans l'ordre où elle le demande.
+ARGUMENTS_PRO = [
+    ("Vous savez qui vient", "C'est toujours la même personne", "%s intervient lui-même sur chaque chantier. Pas de rotation d'intervenants, pas de sous-traitance en cascade, pas de brief à refaire à chaque passage."),
+    ("Vous savez quand", "Avant l'ouverture, après la fermeture, le week-end", "Sans supplément. C'est la seule façon de travailler correctement sur un site occupé — et cela vaut aussi pour une extraction de moquette, qui demande plusieurs heures de séchage."),
+    ("Vous savez sur quoi", "Devis ferme, détaillé poste par poste", "Chaque prestation, sa durée estimée, son prix. Le montant annoncé est celui que vous réglez, et nous indiquons le temps de présence par passage — la seule donnée qui remette deux devis sur la même échelle."),
+    ("Vous savez avec quoi", "Machines, produits, eau et électricité fournis", "Aucun accès technique à prévoir de votre côté. Nous travaillons en parking souterrain comme en étage, en autonomie complète."),
+]

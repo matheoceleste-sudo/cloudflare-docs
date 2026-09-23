@@ -477,6 +477,17 @@
     $$('[name="univers"],[name="pack"],[name="opt"]').forEach(function (e) { e.disabled = true; });
   });
 
+  /* Parcours transmis par l'URL (?client=pro) depuis les pages Particuliers
+     et Professionnels : le champ « Vous êtes » est pré-rempli plutôt que
+     reposé à quelqu'un qui vient d'y répondre. */
+  (function preremplirProfil() {
+    var q = new URLSearchParams(location.search).get('client');
+    if (!q) return;
+    var champ = $('#r-type');
+    if (!champ) return;
+    champ.value = (q === 'pro' || q === 'professionnel') ? 'Professionnel' : 'Particulier';
+  })();
+
   majDate();
   show(1);
   draw();

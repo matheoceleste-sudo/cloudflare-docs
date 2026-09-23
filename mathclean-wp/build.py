@@ -30,6 +30,7 @@ from content import (
     SITE, SERVICES, ZONES, POSTS, FAQ, ENGAGEMENTS, BEFORE_AFTER, BEFORE_AFTER_HD, ZONES_DETAIL,
     PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE, TARIFS_DEVIS,
     GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES, DELAIS,
+    PORTES, QUALIFICATION, REFERENCES_PRO, ARGUMENTS_PRO,
     PREMIUM_VILLES,
 )
 
@@ -344,7 +345,14 @@ def header(base, current=""):
       <span>{icon('phone')}<a href="tel:{SITE['phone_link']}">{SITE['phone']}</a></span>
       <span class="topbar-note">{icon('clock')}{SITE['hours']}</span>
     </div>
-    <span class="topbar-note">{icon('pin')}Paris &amp; Île-de-France · 75 · 77 · 78 · 91 · 92 · 93 · 94 · 95</span>
+    <div class="topbar-right">
+      <span class="topbar-note topbar-zone">{icon('pin')}Paris &amp; Île-de-France</span>
+      <nav class="parcours" aria-label="Choisir votre profil">
+        <span>Vous êtes</span>
+        <a href="{base}particuliers.html"{' class="is-on" aria-current="page"' if current == 'particuliers' else ''}>Particulier</a>
+        <a href="{base}professionnels.html"{' class="is-on" aria-current="page"' if current == 'professionnels' else ''}>Professionnel</a>
+      </nav>
+    </div>
   </div>
 </div>
 
@@ -375,7 +383,23 @@ def header(base, current=""):
 
 def cta_band(base, title="Un besoin de nettoyage ?",
              text="Devis gratuit et sans engagement, réponse sous 24 h. "
-                  "Nous intervenons 7j/7 à Paris et dans toute l'Île-de-France."):
+                  "Nous intervenons 7j/7 à Paris et dans toute l'Île-de-France.",
+             action="reservation", client=""):
+    """Bandeau d'appel à l'action.
+
+    `action` décide de ce qui vient en premier : un particulier réserve en
+    ligne, une entreprise demande un devis. Proposer les deux sur le même
+    plan revient à n'en proposer aucun.
+    """
+    q = ("?client=" + client) if client else ""
+    resa = f'<a class="btn btn-light" href="{base}reservation.html{q}">Réserver en ligne</a>'
+    devis = f'<a class="btn btn-light" href="{base}devis.html{q}">Demander un devis</a>'
+    if action == "devis":
+        principal = devis
+        second = f'<a class="btn btn-ghost-light" href="{base}reservation.html{q}">Réserver en ligne</a>'
+    else:
+        principal = resa
+        second = f'<a class="btn btn-ghost-light" href="{base}devis.html{q}">Demander un devis</a>'
     return f"""<section class="section cta-band">
   <div class="container cta-inner">
     <div>
@@ -383,8 +407,8 @@ def cta_band(base, title="Un besoin de nettoyage ?",
       <p class="lead" style="color:#dbe7f5">{text}</p>
     </div>
     <div class="btn-row">
-      <a class="btn btn-light" href="{base}reservation.html">Réserver en ligne</a>
-      <a class="btn btn-ghost-light" href="{base}devis.html">Demander un devis</a>
+      {principal}
+      {second}
       <a class="btn btn-ghost-light" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
     </div>
   </div>
@@ -845,6 +869,56 @@ def classe_tuiles(n, toutes=False):
             + (" tile-grid--pair" if n == 4 else ""))
 
 
+def bloc_portes(base, titre_h1=True):
+    """Porte d'entrée du site : « Vous êtes ? », écran coupé en deux.
+
+    C'est la première chose qu'on voit, mais ce n'est pas un interstitiel :
+    le bloc fait partie de la page et le reste du contenu suit dessous. Un
+    volet qui masque la page serait pénalisé par Google sur mobile, et
+    l'indexation vient justement d'être réparée.
+
+    Le <h1> reste ici pour que la page d'accueil garde son titre de niveau 1.
+    """
+    portes = ""
+    for p in PORTES:
+        points = "".join("<li>%s</li>" % x for x in p["points"])
+        portes += f"""<a class="porte porte--{p['cle']}" href="{base}{p['page']}.html"
+   data-porte="{p['cle']}">
+  <span class="porte-image" aria-hidden="true">
+    <img class="porte-fond" src="{base}assets/photos/{p['photo']}" alt=""
+         loading="eager" width="{p['taille'][0]}" height="{p['taille'][1]}"
+         style="object-position:{p['position']}">
+    <span class="porte-voile"></span>
+  </span>
+  <span class="porte-corps">
+    <span class="porte-sous">{p['sous']}</span>
+    <span class="porte-titre">{p['titre']}</span>
+    <ul class="porte-points">{points}</ul>
+    <span class="porte-bouton">{p['bouton']} {icon('arrow')}</span>
+  </span>
+</a>"""
+    h1 = ("<h1>Entreprise de nettoyage à Paris <em>&amp; en Île-de-France</em></h1>"
+          if titre_h1 else
+          "<p class=\"portes-h1\">Entreprise de nettoyage à Paris "
+          "<em>&amp; en Île-de-France</em></p>")
+    return f"""
+<section class="portes" id="portes">
+  <div class="container">
+    <div class="portes-tete">
+      <span class="eyebrow eyebrow-gold">{SITE['name']} · {SITE['slogan']}</span>
+      {h1}
+      <p class="portes-question">Vous êtes&nbsp;:</p>
+    </div>
+    <div class="portes-grille">{portes}</div>
+    <p class="portes-note">
+      Les mêmes prestations dans les deux cas — seule la façon de les commander change.
+      <a href="{base}services.html">Voir les {NB_SERVICES} prestations</a>
+    </p>
+  </div>
+</section>
+"""
+
+
 def build_home():
     base = ""
     # Six vignettes sur l'accueil ; la septième reste accessible par le bouton
@@ -892,33 +966,7 @@ def build_home():
                              texte_video)
 
     body = f"""
-<section class="hero">
-  <div class="hero-media">
-    <img src="assets/photos/{HERO['image']}" alt="{HERO['alt']}"
-         width="1125" height="1500" fetchpriority="high"
-         style="object-position:{HERO['position']}">
-  </div>
-  <div class="container">
-    <div class="hero-inner">
-      <span class="eyebrow eyebrow-gold">{SITE['name']} · {SITE['slogan']}</span>
-      <h1>Entreprise de nettoyage à Paris <em>&amp; en Île-de-France</em></h1>
-      <p class="hero-lead">
-        {liste_prestations().capitalize()}.
-        Nous venons chez vous, entièrement équipés, 7&nbsp;jours sur 7 — sans acompte,
-        et vous ne réglez qu'une fois le résultat constaté.
-      </p>
-      <div class="hero-badges">
-        <span class="badge">{icon('check')}Réponse sous {DELAIS['reponse']}</span>
-        <span class="badge">{icon('check')}Devis gratuit et ferme</span>
-        <span class="badge">{icon('check')}8 départements couverts</span>
-      </div>
-      <div class="btn-row">
-        <a class="btn btn-gold" href="reservation.html">Réserver en ligne</a>
-        <a class="btn btn-ghost-light" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
-      </div>
-    </div>
-  </div>
-</section>
+{bloc_portes(base)}
 
 <section class="stats">
   <div class="stat"><div class="stat-num">7j/7</div><div class="stat-label">Disponibilité, jours fériés compris</div></div>
@@ -1097,7 +1145,10 @@ def build_home():
              "Nettoyage auto, textile, vitres et entreprise à Paris et en Île-de-France. "
              "7j/7, devis gratuit, sans acompte.",
              "", base, schema=schema,
-             preload="assets/photos/" + HERO["image"])
+             # Le haut de page est désormais la porte d'entrée : c'est sa
+             # première photo qui est l'élément le plus grand à l'écran, pas
+             # l'ancienne image d'en-tête.
+             preload="assets/photos/" + PORTES[0]["photo"])
         + header(base, "home") + body + footer(base)
     )
     return write("index.html", html)
@@ -2298,6 +2349,393 @@ def build_apropos():
 # ===========================================================================
 # DEVIS
 # ===========================================================================
+
+# ===========================================================================
+# PARCOURS PROFESSIONNEL
+# ===========================================================================
+def build_professionnels():
+    """Page d'entrée des clients professionnels.
+
+    Elle répond dans l'ordre aux trois questions qu'une entreprise pose
+    avant de signer — qui vient, quand, et sur quoi vous vous engagez — et
+    elle dit aussi ce que nous ne prenons pas. Sur un marché où la
+    sous-traitance en cascade est la norme, une limite annoncée vaut plus
+    qu'une promesse de plus.
+    """
+    base = ""
+    trail = [("Professionnels", None)]
+
+    refs = "".join(f"""<div class="ref-card reveal">
+  <span class="ref-icon">{icon(ic)}</span>
+  <h3>{nom}</h3>
+  <p>{txt}</p>
+</div>""" for ic, nom, txt in REFERENCES_PRO)
+
+    args = "".join(f"""<div class="arg reveal">
+  <span class="arg-tag">{tag}</span>
+  <h3>{titre}</h3>
+  <p>{texte % SITE['manager'] if '%s' in texte else texte}</p>
+</div>""" for tag, titre, texte in ARGUMENTS_PRO)
+
+    presta = "".join(f"""<a class="pro-presta" href="services/{x['slug']}.html">
+  <span class="pro-presta-icon">{icon(x['icon'])}</span>
+  <span><strong>{x['name'].replace(' à Paris', '')}</strong>
+    <small>{x['excerpt']}</small></span>
+</a>""" for x in SERVICES)
+
+    faq_pro = [
+        ("Qui intervient réellement dans nos locaux ?",
+         "%s, en personne. MathClean est une entreprise individuelle : il n'y a ni "
+         "rotation d'intervenants, ni sous-traitance. La personne qui établit le devis "
+         "est celle qui exécute, et c'est elle que vous rappelez si quelque chose ne va "
+         "pas." % SITE["manager"]),
+        ("Pouvez-vous intervenir hors des heures d'ouverture ?",
+         "Oui, avant l'ouverture, après la fermeture ou le week-end, sans supplément. "
+         "C'est la seule façon de travailler correctement sur un site occupé, en "
+         "particulier pour une extraction de moquette, qui demande plusieurs heures de "
+         "séchage avant que les postes soient réutilisables."),
+        ("Comment facturez-vous, et la TVA s'applique-t-elle ?",
+         "Facture au nom de votre société, avec le détail poste par poste. MathClean "
+         "bénéficie de la franchise en base de TVA (article 293 B du CGI) : les montants "
+         "sont nets, sans TVA à ajouter — mais sans TVA récupérable de votre côté non "
+         "plus. Nous le disons d'emblée, c'est une information qui compte dans un "
+         "comparatif."),
+        ("Faut-il s'engager sur une durée ?",
+         "Non. Le passage ponctuel et le contrat régulier existent tous les deux, et "
+         "nous n'imposons pas le second. Un rythme se cale après quelques passages, "
+         "quand il est devenu prévisible — pas avant."),
+        ("Quel est le délai entre la demande et l'intervention ?",
+         "Réponse et devis ferme sous %s, week-ends compris. L'intervention suit sous "
+         "%s." % (DELAIS["reponse"], DELAI_PHRASE)),
+        ("Que se passe-t-il si le résultat ne convient pas ?",
+         "Le contrôle se fait avec vous avant notre départ, et le règlement intervient "
+         "après. Aucun acompte n'est demandé : si le résultat n'est pas celui annoncé, "
+         "nous reprenons la zone concernée."),
+    ]
+
+    qualif = QUALIFICATION["intitule"]
+    if QUALIFICATION.get("annee"):
+        qualif += " (%s)" % QUALIFICATION["annee"]
+
+    schema = [
+        crumb_schema([("Professionnels", "professionnels.html")]),
+        faq_schema(faq_pro),
+        {"@context": "https://schema.org", "@type": "Service",
+         "name": "Nettoyage professionnel en Île-de-France",
+         "serviceType": "Nettoyage de bureaux, commerces et locaux d'activité",
+         "provider": {"@id": SITE["url"] + "/#business"},
+         "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
+         "url": SITE["url"] + "/professionnels.html"},
+    ]
+
+    body = f"""
+{page_title_block(base, trail, "MathClean pour les professionnels",
+    "Bureaux, commerces, restaurants et agences immobilières, à Paris et dans les "
+    "huit départements franciliens. Un interlocuteur unique, un devis ferme, "
+    "et des horaires qui ne gênent pas votre activité.")}
+
+<section class="section section-pro">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Qui intervient</span>
+        <h2>Une seule personne,<br>du devis à la facture</h2>
+        <p>
+          MathClean est une entreprise individuelle dirigée par {SITE['manager']}, titulaire
+          d'un <strong>{qualif.lower()}</strong>. {QUALIFICATION['resume']}
+        </p>
+        <p>
+          Dans ce métier, la sous-traitance en cascade est la norme : vous signez avec une
+          enseigne, un intermédiaire prend la commande, un exécutant que personne n'a briefé
+          se présente sur site. Ici, la personne qui établit le devis est celle qui exécute,
+          et c'est elle que vous rappelez.
+        </p>
+        <p>
+          C'est une force sur la continuité et une limite sur le volume — nous ne prenons pas
+          de parc multi-sites à grande échelle, et nous le disons avant que vous perdiez du
+          temps.
+        </p>
+        <div class="pro-idents">
+          <div><span>SIRET</span><strong>{SITE['siret']}</strong></div>
+          <div><span>Qualification</span><strong>{qualif}</strong></div>
+          <div><span>Zone</span><strong>Paris + {NB_ZONES} départements</strong></div>
+        </div>
+      </div>
+      <div class="media-frame reveal">
+        <img src="assets/photos/mathieo-mathclean.webp"
+             alt="{SITE['manager']}, fondateur de {SITE['name']}"
+             loading="lazy" width="760" height="570">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Nos références</span>
+      <h2>Les secteurs pour lesquels nous intervenons</h2>
+      <p class="lead">
+        Nous ne citons pas les enseignes : une référence publiée sans accord écrit se
+        retourne contre celui qui la publie. Les secteurs, eux, disent l'essentiel.
+      </p>
+    </div>
+    <div class="grid grid-3">{refs}</div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Ce qui compte pour vous</span>
+      <h2>Quatre questions, quatre réponses</h2>
+    </div>
+    <div class="arg-grid">{args}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <h2>Ce que nous réalisons</h2>
+    <div class="pro-presta-list">{presta}</div>
+    <p class="field-hint" style="margin-top:20px">
+      Le nettoyage de vitres et les prestations en entreprise se chiffrent après échange ou
+      visite. L'automobile et le textile ont des tarifs fixes, consultables sur la
+      <a href="tarifs.html">grille tarifaire</a> — utile pour une flotte de véhicules ou un
+      parc de sièges de bureau.
+    </p>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container container-narrow">
+    <h2>Ce que nous ne prenons pas</h2>
+    <p>
+      Une entreprise qui accepte tout finit par mal faire quelque part. Voici les demandes que
+      nous refusons, pour que vous n'ayez pas à le découvrir en cours de route :
+    </p>
+    <ul class="checklist checklist-gold">
+      <li><strong>Les parcs multi-sites à grande échelle.</strong> Plusieurs dizaines
+        d'immeubles avec remplacement immédiat en cas d'absence demandent une structure que
+        nous n'avons pas.</li>
+      <li><strong>Le dégraissage certifié de hottes et de conduits.</strong> C'est une
+        activité réglementée, avec attestation à la clé. Nous dégraissons les surfaces de
+        cuisine, pas les réseaux d'extraction soumis à certificat.</li>
+      <li><strong>La désinsectisation et la dératisation.</strong> Elles relèvent d'agréments
+        spécifiques que nous ne détenons pas.</li>
+      <li><strong>Le travail en hauteur au-delà de trois niveaux.</strong> Au-delà, il faut
+        une nacelle ou des cordistes : deux métiers réglementés que nous ne pratiquons pas.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Avant de nous consulter</h2>
+    </div>
+    {faq_block(faq_pro, 'faq-pro')}
+  </div>
+</section>
+
+{cta_band(base, "Parlons de vos locaux",
+          "Décrivez-nous le site et le rythme souhaité : vous recevez un devis ferme, "
+          "détaillé poste par poste, sous " + DELAIS["reponse"] + ".",
+          action="devis", client="pro")}
+"""
+    html = (head(titre_page("Nettoyage professionnel à Paris et en IDF"),
+                 "Nettoyage de bureaux, commerces, restaurants et agences à Paris et en "
+                 "Île-de-France. Interlocuteur unique, devis ferme, horaires décalés sans "
+                 "supplément.",
+                 "professionnels.html", base, schema=schema, body_class="page-pro")
+            + header(base, "professionnels") + body + footer(base))
+    return write("professionnels.html", html)
+
+
+def build_particuliers():
+    """Page d'entrée des particuliers.
+
+    Elle traite d'abord ce qui freine réellement — faire entrer un inconnu
+    chez soi, ne pas savoir ce qu'on va payer, craindre d'abîmer un meuble —
+    puis conduit à la réservation, qui donne un prix sans avoir à appeler.
+    """
+    base = ""
+    trail = [("Particuliers", None)]
+
+    cartes = "".join(service_card(base, x) for x in SERVICES)
+
+    faq_part = [
+        ("Qui va venir chez moi ?",
+         "%s, la personne que vous avez eue au téléphone. MathClean est une entreprise "
+         "individuelle : pas de centre d'appels, pas de sous-traitance, pas d'intervenant "
+         "différent à chaque passage." % SITE["manager"]),
+        ("Combien ça va me coûter, exactement ?",
+         "Le prix des prestations à tarif fixe est affiché : un canapé 3 places coûte le "
+         "même montant chez tout le monde. S'y ajoutent les frais de déplacement — %s — "
+         "calculés sur votre adresse et annoncés avant que vous validiez. "
+         "Le configurateur de réservation fait le calcul sous vos yeux."
+         % SITE["travel_fee"]),
+        ("Faut-il verser quelque chose à la réservation ?",
+         "Non. Aucun acompte. Vous réglez après l'intervention, une fois le résultat "
+         "constaté avec nous — en espèces, par carte ou par virement."),
+        ("Et si le tissu est fragile, ou la tache ancienne ?",
+         "Nous identifions la matière et testons la solidité des couleurs sur une zone "
+         "cachée avant de commencer. Sur une tache ancienne, nous vous disons ce qui est "
+         "réaliste <em>avant</em> de commencer, pas après — et nous refusons ce qui relève "
+         "d'un atelier spécialisé plutôt que de prendre le risque."),
+        ("Faut-il que je fournisse de l'eau ou une prise ?",
+         "Non. Nous venons avec les machines, les produits, l'eau et l'électricité. Vous "
+         "n'avez rien à préparer, et nous intervenons aussi bien en étage qu'en parking."),
+        ("Quand pouvez-vous venir ?",
+         "Réponse sous %s, week-ends compris, et intervention sous %s. Les soirs et les "
+         "week-ends sont possibles sans supplément." % (DELAIS["reponse"], DELAI_PHRASE)),
+    ]
+
+    schema = [crumb_schema([("Particuliers", "particuliers.html")]), faq_schema(faq_part)]
+
+    body = f"""
+{page_title_block(base, trail, "MathClean chez les particuliers",
+    "Canapé, matelas, tapis, voiture et vitres, nettoyés chez vous, 7 j/7. Prix affichés, "
+    "aucun acompte, et le résultat constaté avec vous avant le règlement.")}
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">Ce qui fait hésiter</span>
+      <h2>Faire venir quelqu'un chez soi,<br>ça se mérite</h2>
+      <p class="lead">
+        Trois craintes reviennent systématiquement. Voici ce que nous y répondons, avant
+        même que vous ayez à poser la question.
+      </p>
+    </div>
+    <div class="rassur">
+      <div class="rassur-item reveal">
+        <span class="rassur-num">1</span>
+        <div>
+          <h3>« Je ne sais pas qui va sonner à ma porte »</h3>
+          <p>
+            {SITE['manager']}, la personne que vous avez eue au téléphone. Pas de centre
+            d'appels, pas de sous-traitance : celui qui établit le devis est celui qui
+            travaille chez vous. SIRET {SITE['siret']}, consultable.
+          </p>
+        </div>
+      </div>
+      <div class="rassur-item reveal">
+        <span class="rassur-num">2</span>
+        <div>
+          <h3>« Je vais découvrir le prix à la fin »</h3>
+          <p>
+            Les tarifs sont affichés et fixes. Les frais de déplacement suivent un barème
+            unique — {SITE['travel_fee']} — calculé sur votre adresse et annoncé avant que
+            vous validiez. <strong>Aucun acompte</strong> : vous réglez après, une fois le
+            résultat constaté avec nous.
+          </p>
+        </div>
+      </div>
+      <div class="rassur-item reveal">
+        <span class="rassur-num">3</span>
+        <div>
+          <h3>« J'ai peur qu'on abîme mon canapé »</h3>
+          <p>
+            La matière est identifiée et les couleurs testées sur une zone cachée avant de
+            commencer. Sur une tache ancienne, nous disons ce qui est réaliste avant
+            l'intervention — et nous refusons ce qui relève d'un atelier spécialisé plutôt
+            que de prendre le risque.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Nos prestations</span>
+      <h2>Ce que nous faisons chez vous</h2>
+      <p class="lead">
+        Les mêmes {NB_SERVICES} métiers que pour les professionnels. Deux sont à prix fixe et
+        se réservent en ligne, deux se chiffrent après échange.
+      </p>
+    </div>
+    <div class="grid {'grid-paire' if len(SERVICES) == 4 else 'grid-3'}">{cartes}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="media-frame reveal">
+        <img src="assets/photos/{HERO['image']}" alt="{HERO['alt']}"
+             loading="lazy" width="1125" height="1500"
+             style="object-position:{HERO['position']}">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Sur place</span>
+        <h2>Nous arrivons équipés,<br>vous n'avez rien à prévoir</h2>
+        <p>
+          Machines, produits, eau et électricité : tout est dans le véhicule. Ni prise ni
+          point d'eau à fournir, et nous travaillons aussi bien en étage qu'en parking
+          souterrain.
+        </p>
+        <p>
+          Nous protégeons ce qui entoure la zone traitée avant de commencer, et nous
+          remettons tout en place en partant. Le contrôle final se fait avec vous.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <h2>Comment ça se passe</h2>
+    <div class="steps steps--large">
+      <div class="step reveal"><h3>Vous composez votre demande</h3>
+        <p>En ligne, en deux minutes : la prestation, votre adresse, la date souhaitée.
+          Le total s'affiche, frais de déplacement compris.</p></div>
+      <div class="step reveal"><h3>Nous confirmons</h3>
+        <p>Sous {DELAIS['reponse']}, week-ends compris, par téléphone ou par e-mail. Le
+          créneau est calé avec vous.</p></div>
+      <div class="step reveal"><h3>Nous intervenons</h3>
+        <p>Sous {DELAI_PHRASE}. Nous venons avec les machines, les produits, l'eau et
+          l'électricité : vous n'avez rien à prévoir.</p></div>
+      <div class="step reveal"><h3>Vous constatez, puis vous réglez</h3>
+        <p>Contrôle ensemble avant notre départ. Aucun acompte : le règlement se fait après
+          l'intervention.</p></div>
+    </div>
+    <div class="btn-row center" style="margin-top:38px">
+      <a class="btn btn-gold" href="reservation.html?client=part">Réserver en ligne</a>
+      <a class="btn btn-outline" href="tarifs.html">Consulter les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Ce que vous nous demandez le plus</h2>
+    </div>
+    <div class="container-narrow" style="padding:0">{faq_block(faq_part, 'faq-part')}</div>
+  </div>
+</section>
+
+{reviews_section(base, soft=False)}
+
+{cta_band(base, "Votre prix, avant même d'appeler",
+          "Choisissez votre prestation, entrez votre adresse : le total s'affiche, "
+          "déplacement compris. Deux minutes, sans engagement.", client="part")}
+"""
+    html = (head(titre_page("Nettoyage à domicile à Paris et en Île-de-France"),
+                 "Nettoyage de canapé, matelas, tapis, voiture et vitres à domicile à Paris "
+                 "et en Île-de-France. Prix affichés, aucun acompte, 7j/7.",
+                 "particuliers.html", base, schema=schema)
+            + header(base, "particuliers") + body + footer(base))
+    return write("particuliers.html", html)
+
+
 def build_devis():
     base = ""
     trail = [("Devis gratuit", None)]
@@ -4829,6 +5267,8 @@ def main():
         prev_post = POSTS[i - 1] if i > 0 else None
         next_post = POSTS[i + 1] if i < len(POSTS) - 1 else None
         pages.append((build_post(p, prev_post, next_post), "0.6", "yearly"))
+    pages.append((build_particuliers(), "0.9", "monthly"))
+    pages.append((build_professionnels(), "0.9", "monthly"))
     pages.append((build_apropos(), "0.8", "yearly"))
     pages.append((build_reservation(), "1.0", "monthly"))
     pages.append((build_devis(), "0.9", "monthly"))
