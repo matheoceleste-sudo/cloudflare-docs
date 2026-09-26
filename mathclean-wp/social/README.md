@@ -36,3 +36,29 @@ le formulaire rebute.
 Le lien en bio pointe vers `mathclean.fr/reservation`, pas vers l'accueil :
 quelqu'un qui arrive depuis un post a déjà vu le prix, le renvoyer le chercher
 une deuxième fois est le meilleur moyen de le perdre.
+
+## Imprimés
+
+`flyer-auto.html` produit `out/flyer-auto.pdf`, un A5 recto/verso prêt pour
+l'impression. Le rendu passe par `page.pdf()` et non par une capture : le
+texte reste vectoriel, donc net à n'importe quelle résolution.
+
+**À donner à l'imprimeur**
+
+| | |
+|---|---|
+| Format fini | A5 — 148 × 210 mm, portrait |
+| Fichier fourni | 154 × 216 mm, soit **3 mm de fond perdu** sur chaque bord |
+| Marge de sécurité | 8 mm depuis le bord coupé — aucun texte n'en sort |
+| Pages | 2, recto/verso |
+| Couleurs | **RVB**. Les imprimeurs en ligne convertissent en CMJN ; si le vôtre exige un fichier CMJN, demandez-lui la conversion, elle est gratuite chez la plupart |
+| Papier conseillé | 170 g couché mat ou 250 g pour un flyer qui se garde |
+
+Le QR code (`qr-reservation.svg`) pointe vers `mathclean.fr/reservation`, pas
+vers l'accueil : quelqu'un qui scanne un flyer veut un prix, pas une page de
+présentation. Il est en correction d'erreur « Q », qui reste lisible même
+abîmé ou partiellement masqué.
+
+**Avant de lancer un tirage**, imprimez une page sur votre imprimante et
+scannez le QR avec un téléphone : c'est le seul contrôle qui compte, et il
+coûte deux minutes.

@@ -1,0 +1,281 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
+<title>MathClean — flyer nettoyage automobile (A5 recto/verso)</title>
+<!--
+  Flyer A5 recto/verso, prêt pour l'impression.
+
+  Format : 148 × 210 mm au format fini, 154 × 216 mm ici — soit 3 mm de fond
+  perdu sur chaque bord, ce que demandent les imprimeurs en ligne. Aucun
+  texte ne s'approche à moins de 8 mm du bord coupé.
+
+  Les prix, les options et le barème de déplacement sont recopiés de
+  content.py. Un flyer qui annonce un autre prix que le site fait le même
+  dégât qu'une page incohérente, en pire : il circule sans pouvoir être
+  corrigé.
+
+  Les deux photos du recto sont un avant/après réel du même véhicule, sous
+  le même angle — celui déjà publié sur la page Réalisations. Aucune paire
+  n'est reconstituée.
+
+  Rendu : python3 social/rendu.py  →  out/flyer-auto.pdf (2 pages) + aperçus.
+-->
+<style>
+  @page{size:154mm 216mm;margin:0}
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bleu:#0e5fbb; --nuit:#0a1e38; --nuit2:#061428; --or:#c8a04b; --or-clair:#e7cd86;
+    --encre:#16212e; --gris:#6b7887; --ligne:#dde4ec; --doux:#f4f7fb;
+    --sans:"Liberation Sans",Arial,Helvetica,sans-serif;
+  }
+  html,body{font-family:var(--sans);color:var(--encre);
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  .page{
+    position:relative;width:154mm;height:216mm;overflow:hidden;
+    page-break-after:always;background:#fff;
+  }
+  .page:last-child{page-break-after:auto}
+  /* 3 mm de fond perdu + 8 mm de marge de sécurité = 11 mm depuis le bord. */
+  .zone{position:absolute;inset:11mm;display:flex;flex-direction:column}
+
+  /* ---------- Marque ---------- */
+  .mark{display:flex;align-items:center;gap:3.4mm}
+  .mark .sq{width:12mm;height:12mm;border-radius:3mm;display:grid;place-items:center;
+    background:linear-gradient(150deg,#1668c8 0%,#0a4a94 100%)}
+  .mark .sq svg{width:9mm;height:9mm}
+  .mark b{font-size:6.4mm;font-weight:800;letter-spacing:-.4px;line-height:1}
+  .mark small{display:block;font-size:2.4mm;letter-spacing:1.5px;font-weight:700;
+    text-transform:uppercase;color:var(--or);margin-top:1mm}
+  .clair b{color:#fff}.clair b i{font-style:normal;color:var(--or-clair)}
+  .sombre b{color:var(--encre)}.sombre b i{font-style:normal;color:var(--bleu)}
+
+  /* ================= RECTO ================= */
+  .recto{background:linear-gradient(160deg,var(--nuit) 0%,var(--nuit2) 68%,#04101f 100%);color:#fff}
+  .recto .zone{gap:0}
+  .hook{font-size:9.8mm;line-height:1.05;font-weight:800;letter-spacing:-.42mm;margin-top:4.5mm}
+  .hook em{font-style:normal;color:var(--or-clair)}
+  .sous{margin-top:3mm;font-size:3.5mm;line-height:1.42;color:#c8d4e3;max-width:112mm}
+
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm;margin-top:3.2mm}
+  .ba figure{position:relative;border-radius:2.6mm;overflow:hidden;background:#0b1420;
+    aspect-ratio:1/.93}
+  .ba img{width:100%;height:100%;object-fit:cover;display:block}
+  .ba figcaption{
+    position:absolute;left:2.4mm;top:2.4mm;padding:1.1mm 2.6mm;border-radius:10mm;
+    font-size:2.5mm;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+    background:rgba(255,255,255,.93);color:var(--encre);
+  }
+  .ba figure.apres figcaption{background:var(--or);color:#16212e}
+  .ba-note{margin-top:1.8mm;font-size:2.6mm;color:#8fa1b6;text-align:center}
+
+  .args{display:flex;gap:2.2mm;margin-top:3mm}
+  .args div{flex:1;padding:2.4mm 2.2mm;border-radius:2.2mm;background:rgba(255,255,255,.08);
+    border:.3mm solid rgba(255,255,255,.18);text-align:center}
+  .args b{display:block;font-size:3.5mm;font-weight:800;color:#fff;line-height:1.2}
+  .args span{display:block;margin-top:1mm;font-size:2.6mm;color:#a7b6c8;line-height:1.3}
+
+  .prix-bloc{margin-top:auto;padding-top:3mm;display:flex;align-items:flex-end;
+    justify-content:space-between;gap:5mm}
+  .prix-bloc .des{font-size:3.4mm;color:#a7b6c8;letter-spacing:.5px;text-transform:uppercase;
+    font-weight:700}
+  .prix-bloc .montant{font-size:14.5mm;font-weight:800;line-height:.92;color:var(--or-clair);
+    letter-spacing:-.8mm}
+  .prix-bloc .fixe{font-size:2.9mm;color:#a7b6c8;line-height:1.35;max-width:52mm;text-align:right}
+
+  .contact{
+    margin-top:3.2mm;display:flex;align-items:center;gap:3.4mm;padding:3.2mm;
+    border-radius:2.6mm;background:var(--or);color:#16212e;
+  }
+  .contact .qr{width:17mm;height:17mm;flex:none;background:#fff;border-radius:1.4mm;padding:1mm}
+  .contact .qr img{width:100%;height:100%;display:block}
+  .contact .tel{font-size:6.8mm;font-weight:800;letter-spacing:-.28mm;line-height:1}
+  .contact .web{margin-top:1.4mm;font-size:3.3mm;font-weight:700}
+  .contact .zone-txt{margin-top:1mm;font-size:2.7mm;color:#4a3c1c;line-height:1.35}
+
+  /* ================= VERSO ================= */
+  .verso{background:#fff}
+  .verso .zone{gap:0}
+  .v-tete{display:flex;align-items:flex-end;justify-content:space-between;gap:4mm;
+    padding-bottom:3mm;border-bottom:.5mm solid var(--ligne)}
+  .v-tete h2{font-size:7mm;font-weight:800;letter-spacing:-.35mm;line-height:1.05}
+  .v-tete h2 em{font-style:normal;color:var(--bleu)}
+  .v-tete p{font-size:2.9mm;color:var(--gris);text-align:right;line-height:1.35;max-width:46mm}
+
+  .packs{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm;margin-top:3.4mm}
+  .pack{border:.35mm solid var(--ligne);border-radius:2.2mm;padding:3mm 3.2mm;background:#fff}
+  .pack.fort{border-color:var(--bleu);border-width:.6mm;background:#f7fbff}
+  .pack-tete{display:flex;align-items:baseline;justify-content:space-between;gap:2mm}
+  .pack-nom{font-size:3.7mm;font-weight:800;line-height:1.15}
+  .pack-prix{font-size:5.4mm;font-weight:800;color:var(--bleu);letter-spacing:-.3mm}
+  .pack-portee{font-size:2.4mm;font-weight:700;letter-spacing:.9px;text-transform:uppercase;
+    color:var(--or);margin-top:.6mm}
+  .pack ul{list-style:none;margin-top:2mm;display:grid;gap:.9mm}
+  .pack li{position:relative;padding-left:3.6mm;font-size:2.75mm;line-height:1.32;color:#3f4a58}
+  .pack li::before{content:"";position:absolute;left:0;top:1mm;width:1.5mm;height:1.5mm;
+    border-radius:50%;background:var(--bleu)}
+
+  .opts{margin-top:3.4mm;display:flex;gap:2.4mm}
+  .opts div{flex:1;border-radius:2mm;background:var(--doux);padding:2.6mm 2.8mm}
+  .opts b{display:block;font-size:2.9mm;font-weight:800;line-height:1.25}
+  .opts i{font-style:normal;color:var(--bleu)}
+  .opts span{display:block;margin-top:.8mm;font-size:2.5mm;color:var(--gris);line-height:1.3}
+
+  .etapes{margin-top:3.4mm;display:flex;gap:2.4mm}
+  .etapes>div{flex:1;display:flex;gap:2mm;align-items:flex-start}
+  .etapes>div>div{flex:1;min-width:0}
+  .etapes em{font-style:normal;width:5mm;height:5mm;flex:none;border-radius:50%;
+    background:var(--bleu);color:#fff;font-size:2.7mm;font-weight:800;
+    display:grid;place-items:center}
+  .etapes b{display:block;font-size:2.9mm;font-weight:800;line-height:1.25}
+  .etapes span{display:block;margin-top:.6mm;font-size:2.5mm;color:var(--gris);line-height:1.3}
+
+  .conditions{margin-top:auto;padding:3mm 3.4mm;border-radius:2.2mm;
+    background:var(--doux);border-left:1mm solid var(--or)}
+  .conditions p{font-size:2.75mm;line-height:1.45;color:#3f4a58}
+  .conditions b{color:var(--encre)}
+  .conditions p + p{margin-top:1.4mm}
+
+  .v-pied{margin-top:3.4mm;display:flex;align-items:center;gap:4mm;
+    padding-top:3.4mm;border-top:.5mm solid var(--ligne)}
+  .v-pied .qr{width:18mm;height:18mm;flex:none}
+  .v-pied .qr img{width:100%;height:100%;display:block}
+  .v-pied .tel{font-size:6.4mm;font-weight:800;letter-spacing:-.25mm;line-height:1}
+  .v-pied .web{margin-top:1.2mm;font-size:3.1mm;font-weight:700;color:var(--bleu)}
+  .v-pied .legal{margin-top:1.2mm;font-size:2.4mm;color:var(--gris);line-height:1.35}
+</style>
+
+<!-- ============================ RECTO ============================ -->
+<section class="page recto">
+  <div class="zone">
+    <div class="mark clair">
+      <span class="sq"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
+      <b>Math<i>Clean</i><small>Une exigence de roi</small></b>
+    </div>
+
+    <h1 class="hook">Votre voiture<br>nettoyée <em>devant<br>chez vous.</em></h1>
+    <p class="sous">Machines, eau et électricité fournies. Ni prise ni point d'eau
+      à prévoir, et la voiture ne bouge pas de sa place.</p>
+
+    <div class="ba">
+      <figure>
+        <img src="../site/assets/photos/avant-voiture-siege.webp" alt="">
+        <figcaption>Avant</figcaption>
+      </figure>
+      <figure class="apres">
+        <img src="../site/assets/photos/apres-voiture-siege.webp" alt="">
+        <figcaption>Après</figcaption>
+      </figure>
+    </div>
+    <p class="ba-note">Même véhicule, même angle. Intervention réelle, à domicile.</p>
+
+    <div class="args">
+      <div><b>7 j / 7</b><span>Soirs et week-ends</span></div>
+      <div><b>0 €</b><span>D'acompte</span></div>
+      <div><b>Prix fixes</b><span>Citadine ou monospace</span></div>
+    </div>
+
+    <div class="prix-bloc">
+      <div>
+        <div class="des">À partir de</div>
+        <div class="montant">50 €</div>
+      </div>
+      <p class="fixe">Quatre formules, de l'extérieur seul au véhicule entier.
+        Le détail au dos.</p>
+    </div>
+
+    <div class="contact">
+      <span class="qr"><img src="qr-reservation.svg" alt=""></span>
+      <div>
+        <div class="tel">06 23 07 52 59</div>
+        <div class="web">mathclean.fr — votre prix en 2 minutes</div>
+        <div class="zone-txt">Paris et les 8 départements d'Île-de-France · 8 h – 20 h</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VERSO ============================ -->
+<section class="page verso">
+  <div class="zone">
+    <div class="v-tete">
+      <h2>Quatre formules,<br><em>prix affichés.</em></h2>
+      <p>Le même montant pour une citadine et pour un grand break. Ce que vous lisez
+        est ce que vous réglez.</p>
+    </div>
+
+    <div class="packs">
+      <div class="pack">
+        <div class="pack-tete"><span class="pack-nom">Extérieur Éclat</span><span class="pack-prix">50 €</span></div>
+        <div class="pack-portee">Extérieur</div>
+        <ul>
+          <li>Lavage complet de la carrosserie</li>
+          <li>Jantes et passages de roues</li>
+          <li>Brillant pneus, vitres extérieures</li>
+          <li>Séchage sans trace</li>
+        </ul>
+      </div>
+      <div class="pack">
+        <div class="pack-tete"><span class="pack-nom">Intérieur Essentiel</span><span class="pack-prix">55 €</span></div>
+        <div class="pack-portee">Intérieur</div>
+        <ul>
+          <li>Aspiration habitacle <b>et coffre</b></li>
+          <li>Tableau de bord et plastiques</li>
+          <li>Désinfection complète à la vapeur</li>
+          <li>Vitres intérieures, parfum d'ambiance</li>
+        </ul>
+      </div>
+      <div class="pack">
+        <div class="pack-tete"><span class="pack-nom">Intérieur Prestige</span><span class="pack-prix">100 €</span></div>
+        <div class="pack-portee">Intérieur</div>
+        <ul>
+          <li>Tout l'Intérieur Essentiel</li>
+          <li>Pressing des sièges tissu ou cuirs nettoyés</li>
+          <li>Pressing des tapis et moquettes</li>
+          <li>Ciel de toit, battements de portes</li>
+        </ul>
+      </div>
+      <div class="pack fort">
+        <div class="pack-tete"><span class="pack-nom">Intégral</span><span class="pack-prix">130 €</span></div>
+        <div class="pack-portee">Intérieur + extérieur</div>
+        <ul>
+          <li>Tout l'Intérieur Prestige</li>
+          <li>Lavage complet de la carrosserie</li>
+          <li>Jantes et brillant pneus</li>
+          <li>Vitres intérieures et extérieures</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="opts">
+      <div><b>Poils d'animaux <i>+ 10 €</i></b><span>Sièges, tapis et moquettes</span></div>
+      <div><b>Cuir &amp; alcantara <i>+ 20 €</i></b><span>Nettoyage puis nourrissage</span></div>
+      <div><b>Odeurs — ozone <i>+ 30 €</i></b><span>Traitement d'1 h, molécules détruites</span></div>
+    </div>
+
+    <div class="etapes">
+      <div><em>1</em><div><b>Vous réservez</b><span>En ligne ou au téléphone. Le total s'affiche, déplacement compris.</span></div></div>
+      <div><em>2</em><div><b>Nous venons</b><span>Sur votre place, en voirie ou en parking. Réponse sous 24 h.</span></div></div>
+      <div><em>3</em><div><b>Vous réglez après</b><span>Une fois le résultat constaté avec vous. Espèces, carte, virement.</span></div></div>
+    </div>
+
+    <div class="conditions">
+      <p><b>Frais de déplacement :</b> 5 € par tranche de 5 km depuis notre atelier du
+        Blanc-Mesnil (93). Distance de l'aller simple, par la route ; toute tranche
+        entamée est due. Le montant vous est annoncé avant que vous validiez.</p>
+      <p><b>Aucun acompte.</b> TVA non applicable, article 293 B du Code général des impôts :
+        les prix affichés sont les prix finaux.</p>
+    </div>
+
+    <div class="v-pied">
+      <span class="qr"><img src="qr-reservation.svg" alt=""></span>
+      <div style="flex:1">
+        <div class="tel">06 23 07 52 59</div>
+        <div class="web">mathclean.fr</div>
+        <div class="legal">MathClean — Rue Poussin, 93150 Le Blanc-Mesnil ·
+          SIRET 924 565 990 00010 · Scannez pour obtenir votre prix en 2 minutes.</div>
+      </div>
+      <div class="mark sombre">
+        <span class="sq"><svg viewBox="0 0 64 64"><g fill="none" stroke="#e7cd86" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="27" stroke-width="3"/><path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/><path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/></g></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
