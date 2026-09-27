@@ -56,4 +56,6 @@ export const sprite =
   Object.entries(I).map(([k, v]) => `<symbol id="i-${k}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${v}</symbol>`).join("") +
   "</svg>";
 export const ico = (name, cls = "ico") => `<svg class="${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-export const logo = `<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#0e1c2b"/><rect x="21" y="7" width="6" height="13" rx="1" fill="#9fb1c3"/><path d="M11 31h26l-6-11H17z" fill="#e0701b"/><path d="M11 31h26" stroke="#ffb070" stroke-width="2"/><path d="M15 38c2-2.2 3.5 2.2 5.5 0s3.5 2.2 5.5 0 3.5 2.2 5.5 0" fill="none" stroke="#5fd39c" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+export const mark = (paper = "#f4f1ec") => `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="17" y="3" width="6" height="11" fill="currentColor"/><path d="M4.5 27 L13.5 14 H26.5 L35.5 27 Z" fill="currentColor"/><path d="M12 22.5 H28" stroke="${paper}" stroke-width="1.3"/><rect x="2" y="31" width="36" height="1.6" fill="#a8502a"/></svg>`;
+export const logo = mark();
+export const wordmark = `Hottes <i>ta</i> cuisine`;

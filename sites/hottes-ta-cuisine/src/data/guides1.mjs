@@ -109,7 +109,7 @@ export const guides1 = [
 <h2>Méfiez-vous des certificats trop parfaits</h2>
 <p>Un certificat qui atteste « nettoyage complet » d'un conduit de 15 mètres sans aucune trappe de visite ne tiendra pas face à un expert. Il vaut mieux un certificat honnête, avec réserves, qu'un document de complaisance.</p>
 <h2>Combien de temps le conserver ?</h2>
-<p>Conservez l'historique complet dans votre registre de sécurité. Un minimum de cinq ans est une bonne pratique, et gardez toujours au moins les derniers certificats consultables sur place. Voir un <a href="../certificat-de-degraissage.html">exemple de certificat Clairvent</a>.</p>`
+<p>Conservez l'historique complet dans votre registre de sécurité. Un minimum de cinq ans est une bonne pratique, et gardez toujours au moins les derniers certificats consultables sur place. Voir un <a href="../certificat-de-degraissage.html">exemple de certificat Hottes ta cuisine</a>.</p>`
   },
   {
     slug: "registre-securite-cuisine-erp",

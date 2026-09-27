@@ -1,4 +1,4 @@
-/* Clairvent — assistant de réservation en 5 étapes (sans dépendance) */
+/* Hottes ta cuisine — assistant de réservation en 5 étapes (sans dépendance) */
 (function () {
   "use strict";
   var d = document;
@@ -170,7 +170,7 @@
     var txt = "";
     lines.forEach(function (l) {
       if (!l[1]) return;
-      html += "<dt>" + l[0] + "</dt><dd>" + l[1].replace(/</g, "&lt;") + "</dd>";
+      html += "<div><dt>" + l[0] + "</dt><dd>" + l[1].replace(/</g, "&lt;") + "</dd></div>";
       txt += l[0] + " : " + l[1] + "\n";
     });
     d.getElementById("resa-recap-view").innerHTML = html;

@@ -41,7 +41,7 @@ export const guides2 = [
 <li><strong>Pouvez-vous intervenir en dehors de mes services ?</strong> Nuit, tôt le matin, jour de fermeture.</li>
 <li><strong>Que se passe-t-il si le résultat ne me convient pas ?</strong> Un prestataire sérieux s'engage à reprendre.</li>
 </ol>
-<p>Chez Clairvent, nous répondons à ces huit questions par écrit dans chaque devis. Découvrez <a href="../notre-savoir-faire.html">notre savoir-faire</a>.</p>`
+<p>Chez Hottes ta cuisine, nous répondons à ces huit questions par écrit dans chaque devis. Découvrez <a href="../notre-savoir-faire.html">notre savoir-faire</a>.</p>`
   },
   {
     slug: "qualifications-technicien-nettoyage-hotte",
@@ -65,7 +65,7 @@ export const guides2 = [
 <li><strong>Hygiène alimentaire</strong> : principes HACCP pour intervenir en cuisine sans compromettre la sécurité des denrées.</li>
 <li><strong>Sauveteur secouriste du travail</strong>.</li>
 </ul>
-<p>Chez Clairvent, nos interventions sont réalisées par des techniciens formés et diplômés dans les métiers de la propreté, puis formés en interne à nos protocoles spécifiques d'extraction. Découvrez <a href="../notre-savoir-faire.html">notre équipe et nos engagements</a>.</p>`
+<p>Chez Hottes ta cuisine, nos interventions sont réalisées par des techniciens formés et diplômés dans les métiers de la propreté, puis formés en interne à nos protocoles spécifiques d'extraction. Découvrez <a href="../notre-savoir-faire.html">notre équipe et nos engagements</a>.</p>`
   },
   {
     slug: "reprise-restaurant-etat-extraction",
