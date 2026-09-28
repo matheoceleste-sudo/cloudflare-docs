@@ -755,6 +755,7 @@ def business_schema():
         ],
         "address": {
             "@type": "PostalAddress",
+            "streetAddress": SITE["address"],
             "addressLocality": SITE["city"],
             "addressRegion": "Île-de-France",
             "postalCode": SITE["postcode"],
@@ -5213,7 +5214,28 @@ def controle_coherence(pages):
     if [x["slug"] for x in donnees["services"]] != [x["slug"] for x in SERVICES]:
         erreurs.append("le configurateur ne propose pas les mêmes prestations que le site")
 
-    # 3. Chaque page, relue : adresse, délais, nombre de prestations.
+    # 3. L'adresse de la donnée structurée, champ par champ. C'est elle que
+    #    Google rapproche de la fiche Google Business et du registre : une
+    #    rue absente ici ne se voit nulle part à l'œil, et coûte ce
+    #    rapprochement. Elle avait déjà manqué une fois.
+    fiche = next((json.loads(b) for b in re.findall(
+        r'<script type="application/ld\+json">(.*?)</script>',
+        open(os.path.join(OUT, "index.html"), encoding="utf-8").read(), re.S)
+        if '"LocalBusiness"' in b), None)
+    if not fiche:
+        erreurs.append("index.html ne publie plus de fiche LocalBusiness")
+    else:
+        attendu = {"streetAddress": SITE["address"], "addressLocality": SITE["city"],
+                   "postalCode": SITE["postcode"], "addressCountry": "FR"}
+        for champ, valeur in attendu.items():
+            if fiche.get("address", {}).get(champ) != valeur:
+                erreurs.append("donnée structurée : %s vaut %r au lieu de %r"
+                               % (champ, fiche.get("address", {}).get(champ), valeur))
+        geo = fiche.get("geo", {})
+        if (geo.get("latitude"), geo.get("longitude")) != (SITE["lat"], SITE["lon"]):
+            erreurs.append("donnée structurée : les coordonnées ne suivent plus SITE")
+
+    # 4. Chaque page, relue : adresse, délais, nombre de prestations.
     for chemin, _prio, _freq in pages:
         html = open(os.path.join(OUT, chemin), encoding="utf-8").read()
         for motif, raison in FORMULATIONS_INTERDITES:

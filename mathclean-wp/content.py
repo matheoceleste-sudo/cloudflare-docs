@@ -19,7 +19,7 @@ SITE = {
     "form_action": "https://formsubmit.co/matheoceleste@gmail.com",
     # Reprise de la fiche INSEE (SIREN 924 565 990), pour que le site, la fiche
     # Google et le registre désignent la même adresse.
-    "address": "Rue Poussin",
+    "address": "2 rue Poussin",
     "postcode": "93150",
     "city": "Le Blanc-Mesnil",
     # Position de la fiche Google Business, pour que le site et la fiche
