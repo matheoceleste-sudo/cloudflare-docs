@@ -750,7 +750,22 @@ DEPLACEMENT = {
     "lon": 2.4559529,
     "palier_km": 5,          # tranche facturée
     "palier_eur": 5,         # montant par tranche
-    "coef_route": 1.25,      # majoration du vol d'oiseau vers la distance routière
+
+    # Distance routière réelle, calculée par le service d'itinéraire de
+    # l'IGN (Géoplateforme) : gratuit, sans clé, couverture française.
+    # `start` et `end` se passent en « longitude,latitude », dans cet ordre.
+    # L'itinéraire demandé est le plus rapide, celui que l'on emprunte
+    # vraiment — autoroute comprise — et non le plus court sur la carte.
+    "routage": {
+        "url": "https://data.geopf.fr/navigation/itineraire",
+        "params": "resource=bdtopo-osrm&profile=car&optimization=fastest"
+                  "&geometryFormat=geojson&getSteps=false",
+    },
+
+    # Repli si le service d'itinéraire ne répond pas : vol d'oiseau majoré.
+    # Le configurateur dit alors explicitement qu'il s'agit d'une estimation,
+    # et le récapitulatif envoyé le précise aussi.
+    "coef_route": 1.25,
 }
 
 CRENEAUX = [

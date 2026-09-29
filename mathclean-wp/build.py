@@ -3988,10 +3988,11 @@ def build_reservation():
       {SITE['travel_rule']}
     </p>
     <p>
-      Le kilométrage affiché pendant la saisie est une <strong>estimation</strong>, calculée à
-      partir des coordonnées de votre adresse. Le montant définitif est établi sur la distance
-      routière réelle et vous est confirmé avec le devis&nbsp;: il peut différer d'une tranche,
-      jamais davantage.
+      Le kilométrage affiché pendant la saisie est la <strong>distance routière réelle</strong>,
+      calculée par le service d'itinéraire de l'IGN entre notre atelier et l'adresse que vous
+      saisissez. C'est le trajet que nous parcourons vraiment, autoroute comprise, et non la
+      ligne droite sur la carte. Si ce service ne répond pas, le configurateur le dit et bascule
+      sur une estimation, que nous confirmons alors avec le devis.
     </p>
     <p>
       Les prix des prestations sont <strong>fixes</strong>. Un pack automobile coûte le même
@@ -4057,8 +4058,13 @@ import math  # noqa: E402
 
 def distance_atelier(lat, lon):
     """
-    Distance routière approchée depuis l'atelier, en kilomètres.
-    Vol d'oiseau majoré du même coefficient que le configurateur (1,25).
+    Distance approchée depuis l'atelier, en kilomètres : vol d'oiseau majoré
+    du coefficient de repli (1,25).
+
+    Les pages ville sont générées sans accès réseau, donc sans itinéraire.
+    Le configurateur, lui, interroge le service de l'IGN et affiche la vraie
+    distance routière ; c'est lui qui fait foi, et les textes des pages ville
+    annoncent une distance « approchée » pour ne pas se contredire.
     """
     d = DEPLACEMENT
     r = math.pi / 180
@@ -4291,7 +4297,8 @@ def build_ville(v):
           </table>
         </div>
         <p class="field-hint" style="margin-top:12px">
-          Distance calculée depuis le centre de la commune : le montant exact dépend de votre
+          Distance approchée, depuis le centre de la commune : le montant exact se calcule sur la
+          route et dépend de votre
           adresse et vous est confirmé avant validation.
         </p>
       </div>
@@ -4478,7 +4485,8 @@ def build_local(pv, local_slug):
           </table>
         </div>
         <p class="field-hint" style="margin-top:12px">
-          Distance calculée depuis le centre de la commune. Le montant exact dépend de votre
+          Distance approchée, depuis le centre de la commune. Le montant exact se calcule sur la
+          route et dépend de votre
           adresse et vous est confirmé avant que vous validiez.
         </p>
       </div>

@@ -219,7 +219,11 @@
     }
 
     if (state.dep && state.dep.eur > 0) {
-      lines.push({ t: 'Déplacement (environ ' + state.dep.km + ' km)', p: eur(state.dep.eur) });
+      lines.push({
+        t: 'Déplacement (' + state.dep.km + ' km' +
+           (state.dep.exacte ? ' par la route)' : ', estimation)'),
+        p: eur(state.dep.eur)
+      });
       total += state.dep.eur;
     }
     return { lines: lines, total: total, devis: devis };
@@ -269,16 +273,62 @@
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }
 
+  /* Distance routière réelle, par le service d'itinéraire de l'IGN. C'est
+     le trajet que l'on parcourt vraiment, autoroute comprise, et non la
+     ligne droite. Si le service ne répond pas, on retombe sur le vol
+     d'oiseau majoré — et on le dit, plutôt que de présenter une estimation
+     comme une mesure. */
+  function distanceRoutiere(lat, lon) {
+    var dep = D.deplacement;
+    var repli = {
+      km: volDoiseau(dep.lat, dep.lon, lat, lon) * dep.coef_route,
+      exacte: false
+    };
+    var r = dep.routage;
+    if (!r || !window.fetch) return Promise.resolve(repli);
+
+    var url = r.url + '?' + r.params +
+              '&start=' + dep.lon + ',' + dep.lat +
+              '&end=' + lon + ',' + lat;
+    return fetch(url)
+      .then(function (res) { if (!res.ok) throw 0; return res.json(); })
+      .then(function (j) {
+        var d = parseFloat(j.distance);
+        if (!isFinite(d) || d <= 0) throw 0;
+        /* Le service peut répondre en mètres ou en kilomètres : on se fie à
+           l'unité annoncée, et à défaut à l'ordre de grandeur. */
+        var unite = (j.distanceUnit || j.distance_unit || '').toLowerCase();
+        var km = (unite.indexOf('meter') === 0 || unite === 'm') ? d / 1000
+               : (unite.indexOf('kilo') === 0 || unite === 'km') ? d
+               : (d > 1000 ? d / 1000 : d);
+        /* Garde-fou : un trajet francilien plausible. Au-delà, on préfère
+           l'estimation à une valeur aberrante. */
+        if (km < 0.1 || km > 300) throw 0;
+        return { km: km, exacte: true };
+      })
+      .catch(function () { return repli; });
+  }
+
   function poserDeplacement(lat, lon) {
     var dep = D.deplacement;
-    var km = volDoiseau(dep.lat, dep.lon, lat, lon) * dep.coef_route;
-    var fee = Math.ceil(km / dep.palier_km) * dep.palier_eur;
-    state.dep = { km: km < 10 ? Math.round(km * 10) / 10 : Math.round(km), eur: fee };
-    $('#r-dep').innerHTML =
-      'Environ <strong>' + state.dep.km + ' km</strong> depuis notre atelier, soit ' +
-      '<strong>' + fee + ' €</strong> de déplacement, déjà ajoutés au total. ' +
-      'Toute tranche de 5 km entamée est due ; le retour n’est pas facturé.';
-    draw();
+    $('#r-dep').textContent = 'Calcul de l’itinéraire…';
+    return distanceRoutiere(lat, lon).then(function (res) {
+      var fee = Math.ceil(res.km / dep.palier_km) * dep.palier_eur;
+      state.dep = {
+        km: res.km < 10 ? Math.round(res.km * 10) / 10 : Math.round(res.km),
+        eur: fee,
+        exacte: res.exacte
+      };
+      $('#r-dep').innerHTML = res.exacte
+        ? '<strong>' + state.dep.km + ' km par la route</strong> depuis notre atelier, ' +
+          'soit <strong>' + fee + ' €</strong> de déplacement, déjà ajoutés au total. ' +
+          'Distance de l’aller simple ; toute tranche de 5 km entamée est due, ' +
+          'le retour n’est pas facturé.'
+        : 'Environ <strong>' + state.dep.km + ' km</strong> depuis notre atelier, soit ' +
+          '<strong>' + fee + ' €</strong> de déplacement, déjà ajoutés au total. ' +
+          'Estimation : nous confirmons la distance routière exacte avec le devis.';
+      draw();
+    });
   }
 
   function fermerListe() {
