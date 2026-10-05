@@ -1,2 +1,10 @@
 __pycache__/
 *.pyc
+
+# Archive de dépôt manuel, reconstruite à la demande depuis site/ :
+#   cd site && zip -r -9 ../mathclean-site.zip .
+# Elle ne va pas dans le dépôt. C'est 26 Mo de binaire qui change
+# intégralement à chaque build, et git garde toutes les versions : le dépôt
+# grossirait d'autant à chaque fois, pour un fichier entièrement dérivé de
+# site/, qui est lui déjà suivi.
+mathclean-site.zip
