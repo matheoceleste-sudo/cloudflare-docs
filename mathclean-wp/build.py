@@ -32,6 +32,10 @@ from content import (
     GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES, DELAIS,
     PORTES, QUALIFICATION, REFERENCES_PRO, ARGUMENTS_PRO,
     PREMIUM_VILLES,
+    SECTEURS_HOTTE, SECTEURS_VITRES, SECTEURS_MENAGE,
+    VILLES_PRO, VILLES_APPART, DOSSIERS,
+    HOTTE_PERIMETRE, HOTTE_LIMITES, HOTTE_REGLEMENT,
+    VITRES_PERIMETRE, VITRES_LIMITES,
 )
 
 OUT = os.path.join(HERE, "site")
@@ -292,7 +296,11 @@ def nav_menu(base, current):
   <a href="{base}services.html">Prestations {icon('chevron', 'caret')}</a>
   <ul class="sub-menu">
     {services_sub}
-    <li><a href="{base}services.html"><strong>Toutes nos prestations</strong></a></li>
+    <li class="sub-sep"><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
+    <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
+    <li><a href="{base}menage-regulier.html">Entretien régulier de locaux</a></li>
+    <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
+    <li class="sub-sep"><a href="{base}services.html"><strong>Toutes nos prestations</strong></a></li>
     <li><a href="{base}realisations.html">Nos réalisations (avant/après)</a></li>
   </ul>
 </li>
@@ -309,6 +317,7 @@ def nav_menu(base, current):
   <a href="{base}guides.html">Conseils {icon('chevron', 'caret')}</a>
   <ul class="sub-menu">
     <li><a href="{base}guides.html"><strong>Guides pratiques</strong></a></li>
+    <li><a href="{base}dossiers.html"><strong>Dossiers techniques</strong></a></li>
     <li><a href="{base}blog.html"><strong>Astuces &amp; conseils</strong></a></li>
   </ul>
 </li>
@@ -446,6 +455,13 @@ def footer(base):
       <div>
         <h2 class="widget-title">Prestations</h2>
         <ul>{services_links}</ul>
+        <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
+        <ul>
+          <li><a href="{base}hottes.html">Hottes et conduits</a></li>
+          <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
+          <li><a href="{base}menage-regulier.html">Entretien régulier</a></li>
+          <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
+        </ul>
       </div>
       <div>
         <h2 class="widget-title">Zones</h2>
@@ -459,6 +475,7 @@ def footer(base):
           <li><a href="{base}tarifs.html">Tarifs</a></li>
           <li><a href="{base}realisations.html">Réalisations</a></li>
           <li><a href="{base}guides.html">Guides pratiques</a></li>
+          <li><a href="{base}dossiers.html">Dossiers techniques</a></li>
           <li><a href="{base}blog.html">Conseils &amp; astuces</a></li>
           <li><a href="{base}reservation.html">Réserver en ligne</a></li>
           <li><a href="{base}devis.html">Devis gratuit</a></li>
@@ -2500,11 +2517,35 @@ def build_professionnels():
     <h2>Ce que nous réalisons</h2>
     <div class="pro-presta-list">{presta}</div>
     <p class="field-hint" style="margin-top:20px">
-      Le nettoyage de vitres et les prestations en entreprise se chiffrent après échange ou
+      Le nettoyage de hottes, la vitrerie et l'entretien régulier se chiffrent après échange ou
       visite. L'automobile et le textile ont des tarifs fixes, consultables sur la
       <a href="tarifs.html">grille tarifaire</a> — utile pour une flotte de véhicules ou un
       parc de sièges de bureau.
     </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Votre métier, votre commune</span>
+      <h2>Entrer par ce qui vous concerne</h2>
+      <p class="lead">
+        Le dépôt d'une hotte de pizzeria n'est pas celui d'une hotte de boulangerie, et une
+        vitrine d'agence immobilière ne pose pas le problème d'une vitrine de pharmacie. Ces
+        trois sommaires mènent directement à ce qui vous concerne.
+      </p>
+    </div>
+    <ul class="lien-liste">
+      <li><a href="hottes.html">Nettoyage de hottes et de conduits — par métier et par
+        commune</a></li>
+      <li><a href="vitrerie-professionnelle.html">Vitrerie professionnelle — vitrines, façades
+        et vitrages intérieurs</a></li>
+      <li><a href="menage-regulier.html">Entretien régulier — bureaux, copropriétés,
+        commerces, cabinets</a></li>
+      <li><a href="dossiers.html">Dossiers techniques — réglementation, risque d'incendie,
+        cahier des charges</a></li>
+    </ul>
   </div>
 </section>
 
@@ -2519,9 +2560,12 @@ def build_professionnels():
       <li><strong>Les parcs multi-sites à grande échelle.</strong> Plusieurs dizaines
         d'immeubles avec remplacement immédiat en cas d'absence demandent une structure que
         nous n'avons pas.</li>
-      <li><strong>Le dégraissage certifié de hottes et de conduits.</strong> C'est une
-        activité réglementée, avec attestation à la clé. Nous dégraissons les surfaces de
-        cuisine, pas les réseaux d'extraction soumis à certificat.</li>
+      <li><strong>Les travaux sur un réseau d'extraction.</strong> Nous dégraissons et nous
+        ramonons hotte, filtres et conduits ; la pose d'une trappe de visite, la modification
+        d'un tracé ou le remplacement d'un moteur relèvent d'un installateur. Nous ne
+        délivrons pas non plus d'attestation de conformité : nous remettons un relevé daté de
+        ce que nous avons fait, destiné à votre
+        <a href="dossiers/obligation-nettoyage-hotte-restaurant.html">livret d'entretien</a>.</li>
       <li><strong>La désinsectisation et la dératisation.</strong> Elles relèvent d'agréments
         spécifiques que nous ne détenons pas.</li>
       <li><strong>Le travail en hauteur au-delà de trois niveaux.</strong> Au-delà, il faut
@@ -2597,8 +2641,8 @@ def build_particuliers():
 
     body = f"""
 {page_title_block(base, trail, "MathClean chez les particuliers",
-    "Canapé, matelas, tapis, voiture et vitres, nettoyés chez vous, 7 j/7. Prix affichés, "
-    "aucun acompte, et le résultat constaté avec vous avant le règlement.")}
+    "Appartement, canapé, matelas, tapis, voiture et vitres, nettoyés chez vous, 7 j/7. Prix "
+    "affichés, aucun acompte, et le résultat constaté avec vous avant le règlement.")}
 
 <section class="section">
   <div class="container container-narrow">
@@ -2661,6 +2705,21 @@ def build_particuliers():
       </p>
     </div>
     <div class="grid {'grid-paire' if len(SERVICES) == 4 else 'grid-3'}">{cartes}</div>
+    <div class="section-head" style="margin-top:3rem">
+      <h3>Entrer par votre commune</h3>
+      <p class="lead">
+        Le parc de logements n'est pas le même d'une ville à l'autre : un haussmannien ne se
+        nettoie pas comme un loft d'atelier ou un logement neuf.
+      </p>
+    </div>
+    <ul class="lien-liste">
+      <li><a href="nettoyage-appartement.html">Nettoyage d'appartement, commune par
+        commune</a></li>
+      <li><a href="dossiers/nettoyage-appartement-etat-des-lieux.html">Nettoyage avant état des
+        lieux : la liste de ce qui est vérifié</a></li>
+      <li><a href="villes.html">Toutes les communes que nous documentons</a></li>
+      <li><a href="dossiers.html">Nos dossiers techniques</a></li>
+    </ul>
   </div>
 </section>
 
@@ -3742,10 +3801,16 @@ def find_us(base):
 # RÉSERVATION EN LIGNE
 # ===========================================================================
 EXEMPLES_BRIEF = {
+    "nettoyage-hottes-paris":
+        "Exemple : restaurant de 60 couverts, hotte de 3 m au-dessus du piano, conduit qui "
+        "monte en toiture, jamais nettoyé depuis la reprise du local il y a deux ans.",
+    "nettoyage-appartement-paris":
+        "Exemple : trois-pièces de 62 m² vide, état des lieux de sortie dans cinq jours, four "
+        "et joints de salle de bains à reprendre.",
     "nettoyage-vitres-paris":
         "Exemple : maison avec véranda, une baie coulissante à quatre vantaux et huit fenêtres "
         "à l'étage, jamais nettoyées depuis l'hiver.",
-    "nettoyage-entreprise-paris":
+    "nettoyage-regulier-paris":
         "Exemple : bureau de 120 m², six postes et une salle de réunion, passage souhaité deux "
         "fois par semaine après 19 h.",
 }
@@ -3786,7 +3851,9 @@ def build_reservation():
         "nettoyage-automobile-paris": "Prix immédiat — 4 formules au choix",
         "nettoyage-textile-paris": "Prix immédiat — tarif à la pièce",
         "nettoyage-vitres-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
-        "nettoyage-entreprise-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
+        "nettoyage-regulier-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
+        "nettoyage-hottes-paris": "Devis après constat des trappes",
+        "nettoyage-appartement-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
     }
     cartes = ""
     for s in SERVICES:
@@ -4107,7 +4174,7 @@ _CONTEXTE_PRESTA = {
         "sans rien déposer, ce qui règle le problème des traces sur les grandes surfaces vitrées. "
         "Nous intervenons depuis le sol à la perche jusqu'à trois niveaux environ ; au-delà, "
         "il faut une nacelle et c'est un autre métier.",
-    "nettoyage-entreprise-paris":
+    "nettoyage-regulier-paris":
         "Sur les locaux professionnels, la difficulté n'est pas technique mais horaire. Nous "
         "intervenons avant l'ouverture, après la fermeture ou le week-end, sans supplément : "
         "c'est la seule façon de travailler correctement sur un site occupé, et cela évite de "
@@ -4135,7 +4202,7 @@ _CONTEXTE_PRESTA_BIS = {
         "coulissante à quatre vantaux représente huit faces. Nous chiffrons sur ce comptage, en "
         "précisant si les encadrements, les rails et les appuis sont inclus — c'est là que deux "
         "devis apparemment proches divergent en réalité.",
-    "nettoyage-entreprise-paris":
+    "nettoyage-regulier-paris":
         "Sur les locaux professionnels, la donnée qui compte n'est pas le prix au mètre carré "
         "mais le temps de présence par passage. C'est la seule qui remette deux devis sur la "
         "même échelle, et nous l'indiquons systématiquement sur le nôtre, avec ce qui est "
@@ -4177,7 +4244,7 @@ _FAQ_PRESTA = {
         "Jusqu'à trois niveaux environ, depuis le sol, avec une perche télescopique alimentée en "
         "eau osmosée. Au-delà, il faut une nacelle ou des cordistes : ce sont des métiers "
         "réglementés que nous ne pratiquons pas, et nous vous le disons plutôt que d'improviser."),
-    "nettoyage-entreprise-paris": (
+    "nettoyage-regulier-paris": (
         "Pouvez-vous intervenir hors des heures d'ouverture %(a)s ?",
         "Oui, avant l'ouverture, après la fermeture ou le week-end, sans supplément. C'est la "
         "seule façon de travailler correctement sur un site occupé, en particulier pour une "
@@ -4957,6 +5024,9 @@ def build_llms_txt():
     guides = "\n".join(
         "- %s : %s/guides/%s.html" % (g["h1"], SITE["url"], g["slug"]) for g in GUIDES
     )
+    dossiers = "\n".join(
+        "- %s : %s/dossiers/%s.html" % (d["h1"], SITE["url"], d["slug"]) for d in DOSSIERS
+    )
     zones = ", ".join("%s (%s)" % (z["name"], z["num"]) for z in ZONES)
     villes = ", ".join(v[1] for v in VILLES)
     premium_txt = "\n".join(
@@ -5009,7 +5079,9 @@ def build_llms_txt():
   neutralisation des odeurs par ozone 30 €.
 - Textile : chaise 15 €, fauteuil 25 €, canapé 2 places 39 €, 3 places 49 €, angle 69 €,
   matelas 1 place 39 €, 2 places 49 €, tapis 39 € à 59 €.
-- Nettoyage de vitres et nettoyage pour entreprise : sur devis après échange ou visite.
+- Nettoyage de hottes, vitrerie, entretien régulier et nettoyage d'appartement : sur devis
+  après échange, photos ou visite. Le devis est ferme : le prix ne bouge plus une fois annoncé.
+- Hottes : le devis est établi après constat, trappes de visite ouvertes.
 - Grille complète : {SITE['url']}/tarifs.html
 
 ## Zone d'intervention
@@ -5019,6 +5091,31 @@ Villes documentées : {villes}.
 ## Prestation par commune
 Une page dédiée par couple prestation × commune, sur dix communes d'Île-de-France :
 {premium_txt}
+
+## Pages par métier et par commune
+Le catalogue est doublé de familles de pages sectorielles et locales, chacune
+avec sa contrainte technique propre (dépôt dominant, rythme, horaire d'accès) :
+- Hottes et conduits, par métier ({len(SECTEURS_HOTTE)} métiers) et par commune
+  ({len(VILLES_PRO)} communes) : {SITE['url']}/hottes.html
+- Vitrerie professionnelle, par métier ({len(SECTEURS_VITRES)}) et par commune
+  ({len(VILLES_PRO)}) : {SITE['url']}/vitrerie-professionnelle.html
+- Entretien régulier, par type de site ({len(SECTEURS_MENAGE)}) :
+  {SITE['url']}/menage-regulier.html
+- Nettoyage d'appartement, par commune ({len(VILLES_APPART)}) :
+  {SITE['url']}/nettoyage-appartement.html
+
+## Cadre réglementaire cité (hottes)
+Arrêté du 25 juin 1980, article GC 21, pour les établissements recevant du public
+dotés de grandes cuisines : filtres nettoyés ou remplacés au moins une fois par
+semaine ; ramonage des conduits d'évacuation au moins une fois par an avec
+vérification de leur vacuité ; nettoyage du circuit d'extraction aussi souvent que
+nécessaire ; dates notées par l'exploitant dans un livret d'entretien annexé au
+registre de sécurité.
+MathClean ne délivre ni attestation de conformité ni certificat : l'intervention
+donne lieu à un relevé daté et détaillé, destiné à ce livret.
+
+## Dossiers techniques
+{dossiers}
 
 ## Guides de référence
 {guides}
@@ -5048,25 +5145,25 @@ PAGES_LOCALES_RETIREES = (
     ("nettoyage-bateau-saint-germain-en-laye",
      "nettoyage-voiture-saint-germain-en-laye"),
     ("nettoyage-fin-de-chantier-boulogne-billancourt",
-     "nettoyage-entreprise-boulogne-billancourt"),
+     "menage-regulier-boulogne-billancourt"),
     ("nettoyage-fin-de-chantier-le-vesinet",
-     "nettoyage-entreprise-le-vesinet"),
+     "menage-regulier-le-vesinet"),
     ("nettoyage-fin-de-chantier-levallois-perret",
-     "nettoyage-entreprise-levallois-perret"),
+     "menage-regulier-levallois-perret"),
     ("nettoyage-fin-de-chantier-neuilly-sur-seine",
-     "nettoyage-entreprise-neuilly-sur-seine"),
+     "menage-regulier-neuilly-sur-seine"),
     ("nettoyage-fin-de-chantier-puteaux",
-     "nettoyage-entreprise-puteaux"),
+     "menage-regulier-puteaux"),
     ("nettoyage-fin-de-chantier-rueil-malmaison",
-     "nettoyage-entreprise-rueil-malmaison"),
+     "menage-regulier-rueil-malmaison"),
     ("nettoyage-fin-de-chantier-saint-cloud",
-     "nettoyage-entreprise-saint-cloud"),
+     "menage-regulier-saint-cloud"),
     ("nettoyage-fin-de-chantier-saint-germain-en-laye",
-     "nettoyage-entreprise-saint-germain-en-laye"),
+     "menage-regulier-saint-germain-en-laye"),
     ("nettoyage-fin-de-chantier-sceaux",
-     "nettoyage-entreprise-sceaux"),
+     "menage-regulier-sceaux"),
     ("nettoyage-fin-de-chantier-versailles",
-     "nettoyage-entreprise-versailles"),
+     "menage-regulier-versailles"),
     ("nettoyage-terrasse-boulogne-billancourt",
      "nettoyage-vitres-boulogne-billancourt"),
     ("nettoyage-terrasse-le-vesinet", "nettoyage-vitres-le-vesinet"),
@@ -5100,16 +5197,1101 @@ PAGES_LOCALES_RETIREES = (
 )
 
 
+# ===========================================================================
+# PAGES SECTORIELLES ET LOCALES — HOTTES, VITRERIE, ENTRETIEN, APPARTEMENT
+# ===========================================================================
+# Ces familles de pages répondent à des recherches précises — « nettoyage
+# hotte boulangerie », « nettoyage vitrine Vincennes » — que les pages de
+# prestation, écrites pour être générales, ne peuvent pas servir. Elles ne
+# sont pas des variantes de la même page : ce qui change d'une entrée à
+# l'autre est technique (le dépôt, le rythme, la contrainte d'horaire) et
+# vient de content.py, où il a été écrit une fois.
+#
+# Le périmètre, les limites et le cadre réglementaire sont au contraire
+# identiques partout et viennent d'une source unique : une limite qui varie
+# d'une page à l'autre est une limite à laquelle personne ne croit.
+
+
+def _ul(items, cls="checklist", style="margin-top:1.4rem"):
+    st = (' style="%s"' % style) if style else ""
+    return '<ul class="%s"%s>%s</ul>' % (
+        cls, st, "".join("<li>%s</li>" % i for i in items))
+
+
+def _paras(textes):
+    return "".join("<p>%s</p>" % t for t in textes)
+
+
+def _service_schema(nom, desc, chemin, service_type, zone=None):
+    """Donnée structurée Service. `zone` : commune, sinon l'Île-de-France."""
+    if zone:
+        area = {"@type": "City", "name": zone[0],
+                "address": {"@type": "PostalAddress", "postalCode": zone[1],
+                            "addressLocality": zone[0], "addressCountry": "FR"}}
+    else:
+        area = {"@type": "AdministrativeArea", "name": "Île-de-France"}
+    return {"@context": "https://schema.org", "@type": "Service",
+            "name": nom, "description": desc, "serviceType": service_type,
+            "provider": {"@id": SITE["url"] + "/#business"},
+            "areaServed": area, "url": "%s/%s" % (SITE["url"], chemin)}
+
+
+def _liens(base, titre, entrees):
+    """Colonne de liens internes. `entrees` = [(href, libellé)]."""
+    lis = "".join('<li><a href="%s%s">%s</a></li>' % (base, h, lb) for h, lb in entrees)
+    return ('<div class="reveal"><h2>%s</h2>'
+            '<ul class="checklist" style="margin-top:1.2rem">%s</ul></div>' % (titre, lis))
+
+
+def _bloc_limites(titre, textes):
+    return f"""<section class="section">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">À dire avant, pas après</span>
+      <h2>{titre}</h2>
+    </div>
+    <div class="prose-block">{_paras(textes)}</div>
+  </div>
+</section>"""
+
+
+def _faq_section(titre, faq, group_id):
+    return f"""<section class="section section-soft">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>{titre}</h2>
+    </div>
+    {faq_block(faq, group_id)}
+  </div>
+</section>"""
+
+
+# --- Hottes : par secteur d'activité ---------------------------------------
+def build_hotte_secteur(sec):
+    base = "../"
+    chemin = "hottes/nettoyage-hotte-%s.html" % sec["slug"]
+    h1 = "Nettoyage de hotte et de conduits %s" % sec["dans"]
+    titre_court = "Nettoyage de hotte %s" % sec["dans"]
+    trail = [("Hottes et conduits", "hottes.html"), (sec["nom"].capitalize(), None)]
+
+    faq = [sec["faq"],
+           ("Qu'est-ce qui est compris dans l'intervention ?",
+            "Hotte, filtres et conduits d'extraction, par les trappes de visite, avec "
+            "remontage et essai d'extraction avant que nous partions. Vous recevez un relevé "
+            "daté et détaillé, zone par zone, destiné à votre livret d'entretien."),
+           ("Faut-il fermer la cuisine ?",
+            "Pas forcément la journée entière : comptez trois à six heures pour une cuisine de "
+            "taille courante. Nous travaillons de nuit, après le dernier service ou le jour de "
+            "fermeture, pour que la cuisine soit opérationnelle au service suivant.")]
+
+    autres = [("hottes/nettoyage-hotte-%s.html" % o["slug"],
+               "Nettoyage de hotte %s" % o["dans"])
+              for o in SECTEURS_HOTTE if o["slug"] != sec["slug"]][:7]
+    dossiers_h = [("dossiers/%s.html" % d["slug"], d["h1"])
+                  for d in DOSSIERS if d["cat"] == "Hottes et extraction"]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Dégraissage de la hotte, des filtres et des conduits d'extraction %s, à Paris et en "
+  "Île-de-France. Intervention de nuit ou le jour de fermeture, devis gratuit et ferme."
+  % sec['dans'])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{sec['nom_long']}</span>
+        <h2>Ce qui s'accumule {sec['dans']}</h2>
+        {_paras([sec['probleme'], sec['detail']])}
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html?client=pro">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {sec['dans']}</caption>
+            <tbody>
+              <tr><th scope="row">Dépôt dominant</th><td class="amount">{sec['depot']}</td></tr>
+              <tr><th scope="row">Périmètre</th><td class="amount">Hotte, filtres, conduits</td></tr>
+              <tr><th scope="row">Minimum réglementaire</th><td class="amount">1 ramonage / an</td></tr>
+              <tr><th scope="row">Créneau</th><td class="amount">Nuit ou fermeture</td></tr>
+              <tr><th scope="row">Immobilisation</th><td class="amount">3 à 6 h</td></tr>
+              <tr><th scope="row">Tarif</th><td class="amount">Sur devis après constat</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Le devis se fait sur constat, trappes ouvertes : c'est la seule façon de ne pas se
+          tromper sur l'état réel d'un conduit.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Le cadre</span>
+        <h2>Ce que la réglementation demande</h2>
+        <p>{HOTTE_REGLEMENT}</p>
+        <p><strong>Le rythme conseillé {sec['dans']} :</strong> {sec['rythme']}</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Organisation</span>
+        <h2>Quand nous intervenons</h2>
+        <p>{sec['contrainte']}</p>
+        <h3 style="margin-top:1.6rem">Ce que comprend l'intervention</h3>
+        {_ul(HOTTE_PERIMETRE, style="margin-top:1rem")}
+      </div>
+    </div>
+  </div>
+</section>
+
+{_bloc_limites("Ce que nous ne faisons pas", HOTTE_LIMITES)}
+
+{_faq_section("%s : vos questions" % titre_court, faq, "faq-hotte-%s" % sec["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Hottes : les autres secteurs", autres)}
+      {_liens(base, "Pour aller plus loin", dossiers_h
+              + [("services/nettoyage-hottes-paris.html", "La prestation en détail"),
+                 ("professionnels.html", "Nos prestations pour les professionnels")])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis pour votre %s ?" % sec['nom'],
+          "Gratuit et ferme, établi après constat des trappes. Intervention de nuit ou le jour "
+          "de fermeture, sans acompte : vous réglez après l'intervention.",
+          action="devis", client="pro")}
+"""
+    schema = [crumb_schema([("Hottes et conduits", "hottes.html"),
+                            (sec["nom"].capitalize(), chemin)]),
+              _service_schema(titre_court,
+                              "Dégraissage de hotte, de filtres et de conduits d'extraction %s "
+                              "à Paris et en Île-de-France." % sec["dans"],
+                              chemin, "Dégraissage de hotte professionnelle"),
+              faq_schema(faq)]
+    html = (head(titre_page("%s — Paris et Île-de-France" % titre_court),
+                 "Dégraissage de hotte, filtres et conduits %s. Intervention de nuit, relevé "
+                 "daté pour votre livret d'entretien. Devis gratuit et ferme." % sec["dans"],
+                 chemin, base, schema=schema, body_class="page-pro")
+            + header(base, "services") + body + footer(base))
+    return write(chemin, html)
+
+
+# --- Hottes : par commune --------------------------------------------------
+def build_hotte_ville(v):
+    base = "../"
+    chemin = "hottes/nettoyage-hotte-%s.html" % v["slug"]
+    a_nom = ville_a(v["nom"])
+    h1 = "Nettoyage de hotte %s" % a_nom
+    km = distance_atelier(v["lat"], v["lon"])
+    km_txt = "moins d'un kilomètre" if km < 1 else "environ %d km" % round(km)
+    frais = frais_pour(km)
+    delai = delai_intervention(v["dept"])
+    trail = [("Hottes et conduits", "hottes.html"), (v["nom"], None)]
+
+    faq = [v["faq_hotte"],
+           ("Sous quel délai intervenez-vous %s ?" % a_nom,
+            "Habituellement %s. Le dégraissage se planifie de toute façon sur un créneau de "
+            "nuit ou de fermeture : c'est la date qui compte plus que le délai. Pour une "
+            "urgence, appelez-nous au %s." % (delai, SITE["phone"])),
+           ("Quels sont les frais de déplacement %s ?" % a_nom,
+            "Comptez %s depuis notre atelier %s, soit %s. Le barème est de 5 € par tranche de "
+            "5 km entamée, à l'aller simple, et le montant est annoncé avant que vous validiez."
+            % (km_txt, ville_de(SITE["city"]), "aucun frais" if frais == 0
+               else "environ %d €" % frais))]
+
+    autres = [("hottes/nettoyage-hotte-%s.html" % o["slug"],
+               "Nettoyage de hotte %s" % ville_a(o["nom"]))
+              for o in VILLES_PRO if o["slug"] != v["slug"]][:8]
+    secteurs = [("hottes/nettoyage-hotte-%s.html" % s["slug"],
+                 "Nettoyage de hotte %s" % s["dans"]) for s in SECTEURS_HOTTE[:6]]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Dégraissage de hotte, de filtres et de conduits d'extraction %s (%s). Intervention de nuit "
+  "ou le jour de fermeture, délai habituel de %s, sans acompte." % (a_nom, v['cp'], delai))}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{v['nom']} · {v['cp']}</span>
+        <h2>Les cuisines que nous voyons {a_nom}</h2>
+        <p>{v['hotte']}</p>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html?client=pro">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {a_nom}</caption>
+            <tbody>
+              <tr><th scope="row">Prestation</th><td class="amount">Hotte, filtres, conduits</td></tr>
+              <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
+              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
+              <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
+              <tr><th scope="row">Créneau</th><td class="amount">Nuit ou fermeture</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Distance approchée depuis le centre de la commune. Le montant exact se calcule sur la
+          route, d'après votre adresse, et vous est confirmé avant que vous validiez.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Intervenir {a_nom}</span>
+        <h2>Le tissu local, et l'accès</h2>
+        <p>{v['tissu']}</p>
+        <p>{v['acces']}</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le cadre</span>
+        <h2>Ce que la réglementation demande</h2>
+        <p>{HOTTE_REGLEMENT}</p>
+        <h3 style="margin-top:1.6rem">Ce que comprend l'intervention</h3>
+        {_ul(HOTTE_PERIMETRE, style="margin-top:1rem")}
+      </div>
+    </div>
+  </div>
+</section>
+
+{_bloc_limites("Ce que nous ne faisons pas", HOTTE_LIMITES)}
+
+{_faq_section("Nettoyage de hotte %s : vos questions" % a_nom, faq,
+              "faq-hotte-v-%s" % v["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Nettoyage de hotte dans les autres communes", autres)}
+      {_liens(base, "Votre métier", secteurs
+              + [("vitres/nettoyage-vitrine-%s.html" % v["slug"],
+                  "Nettoyage de vitrine %s" % a_nom)])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis %s ?" % a_nom,
+          "Gratuit et ferme, établi après constat des trappes. Intervention de nuit ou le jour "
+          "de fermeture, sans acompte.", action="devis", client="pro")}
+"""
+    schema = [crumb_schema([("Hottes et conduits", "hottes.html"), (v["nom"], chemin)]),
+              _service_schema(h1, "Dégraissage de hotte, de filtres et de conduits "
+                                  "d'extraction %s (%s)." % (a_nom, v["cp"]),
+                              chemin, "Dégraissage de hotte professionnelle",
+                              zone=(v["nom"], v["cp"])),
+              faq_schema(faq)]
+    html = (head(titre_page("%s — devis gratuit" % h1),
+                 "Dégraissage de hotte, filtres et conduits %s (%s). Intervention de nuit, "
+                 "délai de %s, sans acompte. Devis gratuit et ferme."
+                 % (a_nom, v["cp"], delai),
+                 chemin, base, schema=schema, body_class="page-pro")
+            + header(base, "zones") + body + footer(base))
+    return write(chemin, html)
+
+
+# --- Vitrerie : par secteur d'activité ------------------------------------
+def build_vitres_secteur(sec):
+    base = "../"
+    chemin = "vitres/nettoyage-vitres-%s.html" % sec["slug"]
+    h1 = "Nettoyage de vitres %s" % sec["dans"]
+    trail = [("Vitrerie professionnelle", "vitrerie-professionnelle.html"),
+             (sec["nom"].capitalize(), None)]
+
+    faq = [sec["faq"],
+           ("Pourquoi de l'eau déminéralisée plutôt qu'un produit à vitres ?",
+            "Parce que la trace blanche qui reste au séchage n'est pas de la saleté, c'est le "
+            "calcaire de l'eau du réseau, très présent en Île-de-France. Une eau privée de ses "
+            "minéraux sèche sans rien laisser : il n'y a plus rien à essuyer, donc plus de marque "
+            "de chiffon."),
+           ("Les encadrements et les appuis sont-ils compris ?",
+            "Oui, dans le même passage. C'est important : un appui chargé de poussière fait "
+            "couler une coulure sur la vitre à la première pluie, et le nettoyage du verre seul "
+            "ne tient alors que quelques jours.")]
+
+    autres = [("vitres/nettoyage-vitres-%s.html" % o["slug"],
+               "Nettoyage de vitres %s" % o["dans"])
+              for o in SECTEURS_VITRES if o["slug"] != sec["slug"]][:7]
+    dossiers_v = [("dossiers/%s.html" % d["slug"], d["h1"])
+                  for d in DOSSIERS if d["cat"] == "Vitrerie"]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Vitrerie professionnelle %s, à l'eau déminéralisée, encadrements et appuis compris. "
+  "Intervention avant l'ouverture, à Paris et en Île-de-France." % sec['dans'])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{sec['nom_long']}</span>
+        <h2>{sec['enjeu']}</h2>
+        {_paras([sec['probleme'], sec['detail']])}
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html?client=pro">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {sec['dans']}</caption>
+            <tbody>
+              <tr><th scope="row">Eau</th><td class="amount">Déminéralisée</td></tr>
+              <tr><th scope="row">Périmètre</th><td class="amount">Verre, encadrements, appuis</td></tr>
+              <tr><th scope="row">Hauteur</th><td class="amount">3 niveaux depuis le sol</td></tr>
+              <tr><th scope="row">Rythme conseillé</th><td class="amount">{sec['rythme_court']}</td></tr>
+              <tr><th scope="row">Créneau</th><td class="amount">Avant l'ouverture</td></tr>
+              <tr><th scope="row">Tarif</th><td class="amount">Sur devis</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Le devis se fait sur photos ou après visite, et il est ferme : le prix ne bouge plus
+          une fois annoncé.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Le rythme</span>
+        <h2>À quelle fréquence</h2>
+        <p>{sec['rythme']}</p>
+        <p>{sec['contrainte']}</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend le passage</h2>
+        {_ul(VITRES_PERIMETRE)}
+      </div>
+    </div>
+  </div>
+</section>
+
+{_bloc_limites("Nos limites en hauteur, dites avant le devis", VITRES_LIMITES)}
+
+{_faq_section("%s : vos questions" % h1, faq, "faq-vitres-%s" % sec["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Vitrerie : les autres secteurs", autres)}
+      {_liens(base, "Pour aller plus loin", dossiers_v
+              + [("services/nettoyage-vitres-paris.html", "La prestation en détail"),
+                 ("professionnels.html", "Nos prestations pour les professionnels")])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis de vitrerie %s ?" % sec['dans'],
+          "Gratuit et ferme, sur photos ou après visite. Intervention avant l'ouverture, "
+          "sans acompte : vous réglez une fois le résultat constaté.",
+          action="devis", client="pro")}
+"""
+    schema = [crumb_schema([("Vitrerie professionnelle", "vitrerie-professionnelle.html"),
+                            (sec["nom"].capitalize(), chemin)]),
+              _service_schema(h1, "Nettoyage de vitres et de vitrines %s à l'eau "
+                                  "déminéralisée, à Paris et en Île-de-France." % sec["dans"],
+                              chemin, "Nettoyage de vitres professionnel"),
+              faq_schema(faq)]
+    html = (head(titre_page("%s — devis gratuit" % h1),
+                 "Vitrerie professionnelle %s à l'eau déminéralisée, encadrements et appuis "
+                 "compris. Avant l'ouverture, sans acompte. Devis gratuit." % sec["dans"],
+                 chemin, base, schema=schema, body_class="page-pro")
+            + header(base, "services") + body + footer(base))
+    return write(chemin, html)
+
+
+# --- Vitrerie : par commune -----------------------------------------------
+def build_vitres_ville(v):
+    base = "../"
+    chemin = "vitres/nettoyage-vitrine-%s.html" % v["slug"]
+    a_nom = ville_a(v["nom"])
+    h1 = "Nettoyage de vitrine et de vitres %s" % a_nom
+    km = distance_atelier(v["lat"], v["lon"])
+    km_txt = "moins d'un kilomètre" if km < 1 else "environ %d km" % round(km)
+    frais = frais_pour(km)
+    delai = delai_intervention(v["dept"])
+    trail = [("Vitrerie professionnelle", "vitrerie-professionnelle.html"), (v["nom"], None)]
+
+    faq = [v["faq_vitres"],
+           ("Sous quel délai intervenez-vous %s ?" % a_nom,
+            "Habituellement %s pour un premier passage. Un entretien régulier se fixe ensuite "
+            "sur un jour et une heure qui ne changent plus : c'est ce qui fait la différence "
+            "entre un prestataire sur lequel on compte et un prestataire qu'on relance." % delai),
+           ("Quels sont les frais de déplacement %s ?" % a_nom,
+            "Comptez %s depuis notre atelier %s, soit %s, au barème de 5 € par tranche de 5 km "
+            "entamée à l'aller simple. Sur un contrat régulier, ils sont intégrés au prix du "
+            "passage et annoncés une fois pour toutes."
+            % (km_txt, ville_de(SITE["city"]), "aucun frais" if frais == 0
+               else "environ %d €" % frais))]
+
+    autres = [("vitres/nettoyage-vitrine-%s.html" % o["slug"],
+               "Nettoyage de vitrine %s" % ville_a(o["nom"]))
+              for o in VILLES_PRO if o["slug"] != v["slug"]][:8]
+    secteurs = [("vitres/nettoyage-vitres-%s.html" % s["slug"],
+                 "Nettoyage de vitres %s" % s["dans"]) for s in SECTEURS_VITRES[:6]]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Vitrines, façades accessibles depuis le sol et vitrages intérieurs %s (%s), à l'eau "
+  "déminéralisée. Intervention avant l'ouverture, délai habituel de %s."
+  % (a_nom, v['cp'], delai))}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{v['nom']} · {v['cp']}</span>
+        <h2>Ce que nous traitons {a_nom}</h2>
+        <p>{v['vitres']}</p>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html?client=pro">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {a_nom}</caption>
+            <tbody>
+              <tr><th scope="row">Prestation</th><td class="amount">Vitrines et vitrages</td></tr>
+              <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
+              <tr><th scope="row">Eau</th><td class="amount">Déminéralisée</td></tr>
+              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
+              <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Distance approchée depuis le centre de la commune. Sur un contrat régulier, le
+          déplacement est intégré au prix du passage.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Intervenir {a_nom}</span>
+        <h2>Le tissu local, et l'accès</h2>
+        <p>{v['tissu']}</p>
+        <p>{v['acces']}</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend le passage</h2>
+        {_ul(VITRES_PERIMETRE)}
+      </div>
+    </div>
+  </div>
+</section>
+
+{_bloc_limites("Nos limites en hauteur, dites avant le devis", VITRES_LIMITES)}
+
+{_faq_section("Nettoyage de vitres %s : vos questions" % a_nom, faq,
+              "faq-vitres-v-%s" % v["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Vitrerie dans les autres communes", autres)}
+      {_liens(base, "Votre métier", secteurs
+              + [("hottes/nettoyage-hotte-%s.html" % v["slug"],
+                  "Nettoyage de hotte %s" % a_nom)])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis de vitrerie %s ?" % a_nom,
+          "Gratuit et ferme, sur photos ou après visite. Intervention avant l'ouverture, "
+          "sans acompte.", action="devis", client="pro")}
+"""
+    schema = [crumb_schema([("Vitrerie professionnelle", "vitrerie-professionnelle.html"),
+                            (v["nom"], chemin)]),
+              _service_schema(h1, "Nettoyage de vitrines et de vitrages %s (%s) à l'eau "
+                                  "déminéralisée." % (a_nom, v["cp"]),
+                              chemin, "Nettoyage de vitres professionnel",
+                              zone=(v["nom"], v["cp"])),
+              faq_schema(faq)]
+    html = (head(titre_page("Nettoyage de vitrine %s — devis gratuit" % a_nom),
+                 "Vitrines et vitrages %s (%s) à l'eau déminéralisée, encadrements compris. "
+                 "Avant l'ouverture, délai de %s, sans acompte." % (a_nom, v["cp"], delai),
+                 chemin, base, schema=schema, body_class="page-pro")
+            + header(base, "zones") + body + footer(base))
+    return write(chemin, html)
+
+
+# --- Entretien régulier : par type de site --------------------------------
+def build_menage_secteur(sec):
+    base = "../"
+    chemin = "menage/nettoyage-%s.html" % sec["slug"]
+    h1 = "Nettoyage et entretien régulier %s" % sec["dans"]
+    trail = [("Entretien régulier", "menage-regulier.html"), (sec["nom"].capitalize(), None)]
+
+    faq = [sec["faq"],
+           ("Comment se fixe le prix d'un contrat d'entretien ?",
+            "Sur la surface, le nombre de passages et le périmètre exact, après une visite. Le "
+            "devis détaille zone par zone et fréquence par fréquence : c'est ce qui évite les "
+            "désaccords au troisième mois, et c'est le seul format sur lequel nous travaillons."),
+           ("Peut-on arrêter ou modifier le contrat ?",
+            "Oui. Nous ne demandons pas d'acompte et nous ne pratiquons pas d'engagement long : "
+            "un prestataire d'entretien se garde parce qu'il fait le travail, pas parce que le "
+            "client est lié.")]
+
+    autres = [("menage/nettoyage-%s.html" % o["slug"],
+               "Entretien régulier %s" % o["dans"])
+              for o in SECTEURS_MENAGE if o["slug"] != sec["slug"]]
+    dossiers_m = [("dossiers/%s.html" % d["slug"], d["h1"])
+                  for d in DOSSIERS if d["cat"] == "Entretien régulier"]
+    # Quand le même type de site existe côté vitrerie, on y renvoie
+    # directement ; sinon le sommaire, plutôt qu'une page de bureaux posée
+    # sur une page de copropriété.
+    if any(x["slug"] == sec["slug"] for x in SECTEURS_VITRES):
+        lien_vitrerie = ("vitres/nettoyage-vitres-%s.html" % sec["slug"],
+                         "La vitrerie %s" % sec["dans"])
+    else:
+        lien_vitrerie = ("vitrerie-professionnelle.html",
+                         "La vitrerie professionnelle, en complément")
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Entretien régulier %s à Paris et en Île-de-France : fréquences par zone, horaires hors "
+  "activité, un interlocuteur unique. Devis détaillé après visite." % sec['dans'])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{sec['nom_long']}</span>
+        <h2>{sec['enjeu']}</h2>
+        <p>{sec['probleme']}</p>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html?client=pro">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le périmètre</span>
+        <h2>Ce que nous traitons, zone par zone</h2>
+        {_ul(sec['perimetre'])}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Le rythme</span>
+        <h2>Combien de passages</h2>
+        <p>{sec['rythme']}</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Organisation</span>
+        <h2>Horaires et contraintes</h2>
+        <p>{sec['contrainte']}</p>
+        <p>Matériel, produits, eau et électricité fournis : aucun accès technique ne vous est
+        demandé. Un seul interlocuteur, le même d'un mois sur l'autre, et un planning fixe
+        communiqué à l'avance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{_faq_section("%s : vos questions" % h1, faq, "faq-menage-%s" % sec["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Entretien régulier : les autres sites", autres)}
+      {_liens(base, "Pour aller plus loin", dossiers_m
+              + [("services/nettoyage-regulier-paris.html", "La prestation en détail"),
+                 lien_vitrerie,
+                 ("professionnels.html", "Nos prestations pour les professionnels")])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis d'entretien %s ?" % sec['dans'],
+          "Détaillé zone par zone et fréquence par fréquence, après visite. Sans acompte et "
+          "sans engagement long.", action="devis", client="pro")}
+"""
+    schema = [crumb_schema([("Entretien régulier", "menage-regulier.html"),
+                            (sec["nom"].capitalize(), chemin)]),
+              _service_schema(h1, "Entretien régulier %s à Paris et en Île-de-France : "
+                                  "fréquences par zone, horaires hors activité." % sec["dans"],
+                              chemin, "Nettoyage régulier de locaux professionnels"),
+              faq_schema(faq)]
+    html = (head(titre_page("%s — devis détaillé" % h1),
+                 "Entretien régulier %s : fréquences par zone, horaires hors activité, un "
+                 "interlocuteur. Devis détaillé après visite, sans acompte." % sec["dans"],
+                 chemin, base, schema=schema, body_class="page-pro")
+            + header(base, "services") + body + footer(base))
+    return write(chemin, html)
+
+
+# --- Nettoyage d'appartement : par commune --------------------------------
+def build_appart_ville(v):
+    base = "../"
+    chemin = "appartement/nettoyage-appartement-%s.html" % v["slug"]
+    a_nom = ville_a(v["nom"])
+    h1 = "Nettoyage d'appartement %s" % a_nom
+    km = distance_atelier(v["lat"], v["lon"])
+    km_txt = "moins d'un kilomètre" if km < 1 else "environ %d km" % round(km)
+    frais = frais_pour(km)
+    delai = delai_intervention(v["dept"])
+    trail = [("Nettoyage d'appartement", "nettoyage-appartement.html"), (v["nom"], None)]
+
+    faq = [v["faq"],
+           ("Combien coûte un nettoyage d'appartement %s ?" % a_nom,
+            "Le devis se fait sur la surface, le nombre de pièces et l'état, après photos ou "
+            "visite, et il est ferme : s'il faut plus de temps que prévu, c'est notre affaire. "
+            "Les frais de déplacement %s sont de %s, annoncés avant que vous validiez."
+            % (a_nom, "zéro" if frais == 0 else "environ %d €" % frais)),
+           ("Sous quel délai pouvez-vous venir %s ?" % a_nom,
+            "Habituellement %s, 7j/7, y compris le week-end. Pour un état des lieux qui approche, "
+            "appelez-nous au %s : nous réorganisons la tournée quand c'est possible. Aucun "
+            "acompte n'est demandé." % (delai, SITE["phone"]))]
+
+    autres = [("appartement/nettoyage-appartement-%s.html" % o["slug"],
+               "Nettoyage d'appartement %s" % ville_a(o["nom"]))
+              for o in VILLES_APPART if o["slug"] != v["slug"]][:8]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Grand ménage, nettoyage avant état des lieux, après déménagement ou après travaux %s (%s). "
+  "Devis ferme, sans acompte, délai habituel de %s." % (a_nom, v['cp'], delai))}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{v['nom']} · {v['cp']}</span>
+        <h2>Ce que nous voyons le plus {a_nom}</h2>
+        {_paras([v['angle'], v['pratique']])}
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {a_nom}</caption>
+            <tbody>
+              <tr><th scope="row">Prestation</th><td class="amount">Nettoyage complet</td></tr>
+              <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
+              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
+              <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
+              <tr><th scope="row">Devis</th><td class="amount">Gratuit et ferme</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Distance approchée depuis le centre de la commune. Le montant exact se calcule sur la
+          route, d'après votre adresse, avant que vous validiez.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Le parc local</span>
+        <h2>Les logements {a_nom}</h2>
+        <p>{v['parc']}</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend un nettoyage complet</h2>
+        {_ul(("Sols, plinthes et angles, selon le revêtement",
+              "Cuisine complète : four, réfrigérateur, plans, crédence, hotte",
+              "Salle de bains : détartrage de la robinetterie, parois, joints",
+              "Vitres, encadrements et gorges de fenêtres",
+              "Intérieurs de placards, quand ils sont vides",
+              "Points de contact : poignées, interrupteurs, dessus de portes",
+              "Grilles de ventilation et surfaces masquées par les meubles"))}
+      </div>
+    </div>
+  </div>
+</section>
+
+{_faq_section("Nettoyage d'appartement %s : vos questions" % a_nom, faq,
+              "faq-appart-%s" % v["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Nettoyage d'appartement dans les autres communes", autres)}
+      {_liens(base, "Pour aller plus loin",
+              [("dossiers/nettoyage-appartement-etat-des-lieux.html",
+                "Nettoyage avant état des lieux : la liste complète"),
+               ("services/nettoyage-appartement-paris.html", "La prestation en détail"),
+               ("services/nettoyage-textile-paris.html",
+                "Canapés, matelas et tapis, le même jour"),
+               ("particuliers.html", "Nos prestations pour les particuliers")])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis %s ?" % a_nom,
+          "Gratuit et ferme, sur photos ou après visite. Sans acompte : vous réglez une fois le "
+          "résultat constaté avec nous.")}
+"""
+    schema = [crumb_schema([("Nettoyage d'appartement", "nettoyage-appartement.html"),
+                            (v["nom"], chemin)]),
+              _service_schema(h1, "Grand ménage, état des lieux, après déménagement ou après "
+                                  "travaux %s (%s)." % (a_nom, v["cp"]),
+                              chemin, "Nettoyage d'appartement",
+                              zone=(v["nom"], v["cp"])),
+              faq_schema(faq)]
+    html = (head(titre_page("%s — devis gratuit" % h1),
+                 "Grand ménage, état des lieux, après déménagement %s (%s). Devis ferme, sans "
+                 "acompte, délai de %s." % (a_nom, v["cp"], delai),
+                 chemin, base, schema=schema)
+            + header(base, "zones") + body + footer(base))
+    return write(chemin, html)
+
+
+# --- Dossiers techniques ---------------------------------------------------
+def dossier_card(base, d, niveau="h3"):
+    """Carte de dossier, sans vignette : ces pages n'ont pas de photo propre,
+    et réutiliser une image sans rapport est pire que de ne pas en mettre."""
+    return f"""<article class="post-card post-card--text reveal">
+  <div class="post-body">
+    <div class="post-meta"><span class="post-cat">{d['cat']}</span></div>
+    <{niveau}><a href="{base}dossiers/{d['slug']}.html">{d['h1']}</a></{niveau}>
+    <p>{d['lead']}</p>
+    <span class="service-more">Lire le dossier {icon('arrow')}</span>
+  </div>
+</article>"""
+
+
+def build_dossier(d):
+    base = "../"
+    chemin = "dossiers/%s.html" % d["slug"]
+    trail = [("Dossiers", "dossiers.html"), (d["cat"], None)]
+    service = next(s for s in SERVICES if s["slug"] == d["service"])
+    corps = ""
+    for titre, paras in d["sections"]:
+        corps += "<h2>%s</h2>" % titre + _paras(paras)
+    proches = [o for o in DOSSIERS if o["cat"] == d["cat"] and o["slug"] != d["slug"]][:3]
+    if len(proches) < 3:
+        proches += [o for o in DOSSIERS if o["slug"] != d["slug"] and o not in proches
+                    ][:3 - len(proches)]
+    cartes = "".join(dossier_card(base, o) for o in proches)
+    client = "pro" if d["audience"] == "pro" else ""
+
+    body = f"""
+<section class="page-title">
+  <div class="container">{breadcrumbs(base, trail)}</div>
+</section>
+
+<section class="section">
+  <div class="container blog-layout">
+    <article>
+      <header class="entry-header">
+        <div class="post-meta" style="margin-bottom:14px">
+          <span class="post-cat">{d['cat']}</span>
+          <span>Mis à jour le {DATE_GUIDES_FR}</span>
+        </div>
+        <h1>{d['h1']}</h1>
+        <p class="lead">{d['lead']}</p>
+        <p class="dossier-cle">{icon('check')}<strong>{d['cle']}</strong></p>
+      </header>
+      <div class="entry-content">
+        {corps}
+        <h2>Vos questions</h2>
+        {faq_block(d['faq'], 'faq-dossier-%s' % d['slug'])}
+      </div>
+      <footer class="entry-footer">
+        <p>Cette prestation en détail :
+        <a href="{base}services/{service['slug']}.html">{service['name']}</a>.
+        Un devis gratuit et ferme :
+        <a href="{base}devis.html{'?client=pro' if client else ''}">demander un devis</a>,
+        ou {SITE['phone']}.</p>
+      </footer>
+    </article>
+    {sidebar(base)}
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">À lire aussi</span>
+      <h2>Les autres dossiers</h2>
+    </div>
+    <div class="grid grid-3">{cartes}</div>
+  </div>
+</section>
+
+{cta_band(base, "Une question sur votre installation ?",
+          "Nous répondons sous 24 h, et nous disons quand quelque chose ne relève pas de nous. "
+          "Devis gratuit et ferme, sans acompte.",
+          action="devis" if client else "reservation", client=client)}
+"""
+    schema = [crumb_schema([("Dossiers", "dossiers.html"), (d["h1"], chemin)]),
+              {"@context": "https://schema.org", "@type": "Article",
+               "headline": d["h1"], "description": d["meta"],
+               "inLanguage": "fr-FR",
+               "datePublished": horodatage(DATE_GUIDES),
+               "dateModified": horodatage(DATE_GUIDES),
+               "author": auteur_schema(), "publisher": editeur_schema(),
+               "mainEntityOfPage": {"@type": "WebPage",
+                                    "@id": "%s/%s" % (SITE["url"], chemin)}},
+              faq_schema(d["faq"])]
+    html = (head(titre_page(d["title"]), d["meta"], chemin, base, schema=schema,
+                 og_type="article", published=DATE_GUIDES, modified=DATE_GUIDES)
+            + header(base, "guides") + body + footer(base))
+    return write(chemin, html)
+
+
+# --- Sommaires -------------------------------------------------------------
+def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
+         client="", action="devis"):
+    """Sommaire d'une famille de pages. `blocs` = [(titre, intro, [(href, lib)])]."""
+    base = ""
+    sections = ""
+    for i, (titre, intro, entrees) in enumerate(blocs):
+        lis = "".join('<li><a href="%s">%s</a></li>' % (h, lb) for h, lb in entrees)
+        soft = " section-soft" if i % 2 else ""
+        sections += f"""
+<section class="section{soft}">
+  <div class="container">
+    <div class="section-head">
+      <h2>{titre}</h2>
+      <p class="lead">{intro}</p>
+    </div>
+    <ul class="lien-liste">{lis}</ul>
+  </div>
+</section>"""
+    body = (page_title_block(base, [(h1, None)], h1, lead) + sections
+            + cta_band(base, "Un devis ?", "Gratuit, ferme et détaillé. Réponse sous 24 h, "
+                       "sans acompte : vous réglez une fois le résultat constaté.",
+                       action=action, client=client))
+    schema = [crumb_schema([(h1, slug)]),
+              {"@context": "https://schema.org", "@type": "ItemList",
+               "name": h1,
+               "itemListElement": [
+                   {"@type": "ListItem", "position": n + 1, "name": lb,
+                    "url": "%s/%s" % (SITE["url"], h)}
+                   for n, (h, lb) in enumerate(
+                       [e for _t, _i, es in blocs for e in es])]}]
+    html = (head(titre_page(titre_tag), meta, slug, base, schema=schema,
+                 body_class="page-pro" if client == "pro" else "")
+            + header(base, current) + body + footer(base))
+    return write(slug, html)
+
+
+def build_hub_hottes():
+    return _hub(
+        "hottes.html",
+        "Nettoyage de hottes et de conduits d'extraction",
+        "Hotte, filtres et conduits, par les trappes de visite, avec remontage et essai "
+        "d'extraction. Un ramonage annuel des conduits est le minimum réglementaire ; le "
+        "rythme utile dépend de ce que vous cuisinez.",
+        "Hottes",
+        [("Par métier",
+          "Le dépôt n'est pas le même en boulangerie, en pizzeria ou en friterie, et il ne se "
+          "traite pas de la même façon. Chaque page dit ce qui s'accumule, où, et à quel rythme.",
+          [("hottes/nettoyage-hotte-%s.html" % s["slug"],
+            "Nettoyage de hotte %s" % s["dans"]) for s in SECTEURS_HOTTE]),
+         ("Par commune",
+          "Le tissu commercial, l'accès et le délai depuis notre atelier du Blanc-Mesnil.",
+          [("hottes/nettoyage-hotte-%s.html" % v["slug"],
+            "Nettoyage de hotte %s" % ville_a(v["nom"])) for v in VILLES_PRO]),
+         ("Les dossiers",
+          "Le cadre réglementaire, le mécanisme du risque d'incendie, la fréquence, la méthode "
+          "de dégraissage et le diagnostic d'une extraction qui tire mal.",
+          [("dossiers/%s.html" % d["slug"], d["h1"])
+           for d in DOSSIERS if d["cat"] == "Hottes et extraction"])],
+        "services",
+        "Dégraissage de hotte, de filtres et de conduits d'extraction à Paris et en "
+        "Île-de-France. Par métier et par commune, avec le cadre réglementaire.",
+        "Nettoyage de hottes et de conduits — Paris et Île-de-France",
+        client="pro")
+
+
+def build_hub_vitres():
+    return _hub(
+        "vitrerie-professionnelle.html",
+        "Vitrerie professionnelle : vitrines, façades et vitrages intérieurs",
+        "À l'eau déminéralisée, encadrements et appuis compris, avant l'ouverture. Jusqu'à "
+        "trois niveaux depuis le sol : au-delà, nous ne le faisons pas, et nous le disons "
+        "avant le devis.",
+        "Vitrerie",
+        [("Par métier",
+          "Une vitrine de boulangerie, une vitrine d'agence immobilière et les miroirs d'une "
+          "salle de sport ne posent pas le même problème. Chaque page dit lequel.",
+          [("vitres/nettoyage-vitres-%s.html" % s["slug"],
+            "Nettoyage de vitres %s" % s["dans"]) for s in SECTEURS_VITRES]),
+         ("Par commune",
+          "Le tissu commercial local, l'accès et le délai depuis notre atelier.",
+          [("vitres/nettoyage-vitrine-%s.html" % v["slug"],
+            "Nettoyage de vitrine %s" % ville_a(v["nom"])) for v in VILLES_PRO]),
+         ("Les dossiers",
+          "La fréquence qui tient, l'origine des traces blanches, et nos limites en hauteur.",
+          [("dossiers/%s.html" % d["slug"], d["h1"])
+           for d in DOSSIERS if d["cat"] == "Vitrerie"])],
+        "services",
+        "Nettoyage de vitrines, de façades accessibles depuis le sol et de vitrages intérieurs "
+        "à l'eau déminéralisée. Par métier et par commune, à Paris et en Île-de-France.",
+        "Vitrerie professionnelle — Paris et Île-de-France",
+        client="pro")
+
+
+def build_hub_menage():
+    return _hub(
+        "menage-regulier.html",
+        "Entretien régulier de locaux professionnels",
+        "Une fréquence par zone, pas une fréquence pour le site : c'est ce qui distingue un "
+        "contrat qui tient d'un contrat qu'on résilie au bout de six mois. Horaires hors "
+        "activité, un interlocuteur, un planning fixe.",
+        "Entretien",
+        [("Par type de site",
+          "Une copropriété se juge sur sa cage d'escalier, un cabinet médical sur ses points de "
+          "contact, un commerce sur ses trois premiers mètres. Chaque page dit sur quoi.",
+          [("menage/nettoyage-%s.html" % s["slug"],
+            "Entretien régulier %s" % s["dans"]) for s in SECTEURS_MENAGE]),
+         ("Les dossiers",
+          "Comment rédiger un cahier des charges qui ne se dégrade pas.",
+          [("dossiers/%s.html" % d["slug"], d["h1"])
+           for d in DOSSIERS if d["cat"] == "Entretien régulier"]),
+         ("En complément",
+          "Les deux prestations que les entreprises associent le plus souvent à l'entretien "
+          "courant.",
+          [("hottes.html", "Nettoyage de hottes et de conduits"),
+           ("vitrerie-professionnelle.html", "Vitrerie professionnelle"),
+           ("professionnels.html", "Toutes nos prestations pour les professionnels")])],
+        "services",
+        "Entretien régulier de bureaux, de copropriétés, de commerces et de cabinets à Paris "
+        "et en Île-de-France : fréquences par zone, horaires hors activité, devis détaillé.",
+        "Entretien régulier de locaux professionnels — Paris et Île-de-France",
+        client="pro")
+
+
+def build_hub_appart():
+    return _hub(
+        "nettoyage-appartement.html",
+        "Nettoyage d'appartement à Paris et en Île-de-France",
+        "Grand ménage annuel, nettoyage avant état des lieux, après déménagement ou après "
+        "travaux. Un passage ponctuel et complet, dans un logement vide ou occupé. Devis "
+        "ferme, sans acompte.",
+        "Appartement",
+        [("Par commune",
+          "Le parc de logements n'est pas le même d'une commune à l'autre, et un haussmannien "
+          "ne se nettoie pas comme un loft d'atelier ou un logement neuf.",
+          [("appartement/nettoyage-appartement-%s.html" % v["slug"],
+            "Nettoyage d'appartement %s" % ville_a(v["nom"])) for v in VILLES_APPART]),
+         ("Le dossier à lire avant un état des lieux",
+          "Ce qui est réellement vérifié, dans l'ordre, et ce qui relève de l'usure plutôt que "
+          "du ménage.",
+          [("dossiers/%s.html" % d["slug"], d["h1"])
+           for d in DOSSIERS if d["cat"] == "Appartement"]),
+         ("En complément",
+          "Ce que nous traitons le plus souvent le même jour.",
+          [("services/nettoyage-appartement-paris.html", "La prestation en détail"),
+           ("services/nettoyage-textile-paris.html", "Canapés, matelas et tapis"),
+           ("services/nettoyage-vitres-paris.html", "Vitres et encadrements"),
+           ("particuliers.html", "Toutes nos prestations pour les particuliers")])],
+        "services",
+        "Nettoyage complet d'appartement à Paris et en Île-de-France : grand ménage, état des "
+        "lieux, après déménagement ou après travaux. Devis ferme, sans acompte.",
+        "Nettoyage d'appartement — Paris et Île-de-France",
+        action="reservation")
+
+
+def build_hub_dossiers():
+    cats = []
+    for d in DOSSIERS:
+        if d["cat"] not in cats:
+            cats.append(d["cat"])
+    blocs = []
+    intros = {
+        "Hottes et extraction": "Le cadre réglementaire, le mécanisme du risque d'incendie, la "
+                                "fréquence, la méthode, et le diagnostic d'une extraction qui "
+                                "tire mal.",
+        "Vitrerie": "Pourquoi les traces blanches reviennent, à quel rythme nettoyer une "
+                    "vitrine, et jusqu'où nous allons en hauteur.",
+        "Entretien régulier": "Ce qu'un cahier des charges doit contenir pour ne pas se "
+                              "dégrader.",
+        "Appartement": "Ce qui est vérifié lors d'un état des lieux, et ce qui ne se rattrape "
+                       "pas.",
+    }
+    for c in cats:
+        blocs.append((c, intros.get(c, ""),
+                      [("dossiers/%s.html" % d["slug"], d["h1"])
+                       for d in DOSSIERS if d["cat"] == c]))
+    return _hub(
+        "dossiers.html",
+        "Dossiers techniques",
+        "Des réponses précises à des questions précises, y compris quand la réponse ne nous "
+        "arrange pas. Le cadre réglementaire est cité tel qu'il est écrit, et nos limites sont "
+        "dites avant le devis.",
+        "Dossiers", blocs, "guides",
+        "Dossiers techniques MathClean : réglementation des hottes, risque d'incendie, "
+        "vitrerie, cahier des charges d'entretien, état des lieux.",
+        "Dossiers techniques — MathClean",
+        action="devis")
+
+
 def build_redirects():
     """
     Redirections 301, lues par Cloudflare Pages et par Workers static assets.
-    La prestation « locaux » a été renommée « entreprise » : l'ancienne adresse,
-    déjà indexée, doit continuer de fonctionner.
+
+    Les prestations ont été renommées deux fois : « locaux » est devenu
+    « entreprise », puis « entreprise » est devenu « nettoyage régulier ».
+    Chaque ancienne adresse va directement à sa cible finale, jamais à une
+    adresse intermédiaire : une cible intermédiaire finit par disparaître, et
+    la redirection tombe alors en 404 sans que rien ne le signale. Le contrôle
+    de cohérence relit le fichier produit et refuse ce cas.
     """
     lignes = [
         # Prestations renommées ou retirées
-        "/services/nettoyage-locaux-paris.html       /services/nettoyage-entreprise-paris.html  301",
-        "/services/nettoyage-bureau-paris.html       /services/nettoyage-entreprise-paris.html  301",
+        "/services/nettoyage-locaux-paris.html       /services/nettoyage-regulier-paris.html    301",
+        "/services/nettoyage-bureau-paris.html       /services/nettoyage-regulier-paris.html    301",
         "/services/nettoyage-avion-paris.html        /services.html                             301",
         # L'ancien site relayait déjà ces adresses ; on garde la chaîne intacte
         "/services/polissage-carrosserie-paris.html  /services/nettoyage-automobile-paris.html  301",
@@ -5125,8 +6307,16 @@ def build_redirects():
         "/services/nettoyage-bateau-paris.html          /services.html                              301",
         "/services/nettoyage-terrasse-paris.html        /services.html                              301",
         "/services/traitement-ozone-paris.html          /services/nettoyage-automobile-paris.html   301",
-        "/services/nettoyage-fin-de-chantier-paris.html /services/nettoyage-entreprise-paris.html   301",
+        "/services/nettoyage-fin-de-chantier-paris.html /services/nettoyage-regulier-paris.html     301",
     ]
+    # La prestation « entreprise » est devenue « nettoyage régulier » : la page
+    # de prestation et les dix pages locales correspondantes ont été indexées
+    # sous l'ancien nom. Chacune part vers son équivalent exact.
+    lignes += [
+        "/services/nettoyage-entreprise-paris.html  /services/nettoyage-regulier-paris.html  301",
+    ]
+    lignes += ["/villes/nettoyage-entreprise-%s.html /villes/menage-regulier-%s.html 301"
+               % (pv["slug"], pv["slug"]) for pv in PREMIUM_VILLES]
     lignes += ["/villes/%s.html /villes/%s.html 301" % (anc, cible)
                for anc, cible in PAGES_LOCALES_RETIREES]
     # Les mêmes adresses sans l'extension .html. Cloudflare ajoute .html de
@@ -5263,6 +6453,29 @@ def controle_coherence(pages):
                 erreurs.append("%s : le %s ne renvoie pas vers %s"
                                % (chemin, zone, ", ".join(manquants)))
 
+    # 5. Les redirections, relues sur le fichier produit. Trois défauts se
+    #    glissent sans bruit et ne se voient qu'en production : une cible qui
+    #    n'existe pas (404 au lieu d'une page), une cible qui est elle-même
+    #    une source (chaîne de deux sauts), et une source encore servie comme
+    #    fichier (la redirection ne s'appliquera jamais). Le deuxième cas
+    #    s'est produit au renommage de la prestation « entreprise ».
+    lignes_r = [l.split() for l in
+                open(os.path.join(OUT, "_redirects"), encoding="utf-8").read().splitlines()
+                if l.strip()]
+    sources = {l[0] for l in lignes_r}
+    for source, cible, _code in lignes_r:
+        if cible in sources:
+            erreurs.append("redirection en chaîne : %s renvoie vers %s, qui est lui-même "
+                           "redirigé" % (source, cible))
+        rel = cible.lstrip("/")
+        if rel and not os.path.exists(os.path.join(OUT, rel)) \
+                and not os.path.exists(os.path.join(OUT, rel + ".html")):
+            erreurs.append("redirection vers une page absente : %s → %s" % (source, cible))
+        rel_s = source.lstrip("/")
+        if rel_s and (os.path.exists(os.path.join(OUT, rel_s))
+                      or os.path.exists(os.path.join(OUT, rel_s + ".html"))):
+            erreurs.append("redirection inutile : %s existe encore comme page" % source)
+
     if erreurs:
         for e in erreurs:
             print("INCOHÉRENCE : %s" % e, file=sys.stderr)
@@ -5292,6 +6505,28 @@ def main():
     pages.append((build_guides_archive(), "0.8", "monthly"))
     for g in GUIDES:
         pages.append((build_guide(g), "0.7", "monthly"))
+
+    # Familles sectorielles et locales. Les sommaires portent une priorité
+    # supérieure à leurs pages filles : ce sont eux qui doivent remonter.
+    pages.append((build_hub_hottes(), "0.9", "monthly"))
+    for s in SECTEURS_HOTTE:
+        pages.append((build_hotte_secteur(s), "0.8", "monthly"))
+    for v in VILLES_PRO:
+        pages.append((build_hotte_ville(v), "0.7", "monthly"))
+    pages.append((build_hub_vitres(), "0.9", "monthly"))
+    for s in SECTEURS_VITRES:
+        pages.append((build_vitres_secteur(s), "0.8", "monthly"))
+    for v in VILLES_PRO:
+        pages.append((build_vitres_ville(v), "0.7", "monthly"))
+    pages.append((build_hub_menage(), "0.9", "monthly"))
+    for s in SECTEURS_MENAGE:
+        pages.append((build_menage_secteur(s), "0.8", "monthly"))
+    pages.append((build_hub_appart(), "0.9", "monthly"))
+    for v in VILLES_APPART:
+        pages.append((build_appart_ville(v), "0.7", "monthly"))
+    pages.append((build_hub_dossiers(), "0.8", "monthly"))
+    for d in DOSSIERS:
+        pages.append((build_dossier(d), "0.7", "monthly"))
     pages.append((build_blog_archive(), "0.7", "weekly"))
     for i, p in enumerate(POSTS):
         prev_post = POSTS[i - 1] if i > 0 else None

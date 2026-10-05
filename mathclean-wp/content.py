@@ -33,7 +33,10 @@ SITE = {
     # Fiche Google Business (CID issu de l'URL Maps fournie par le client).
     "google_cid": "8434710860473546146",
     "maps_url": "https://www.google.com/maps/place/MathClean/@48.9499461,2.4559529,17z",
-    "review_url": "https://www.google.com/maps?cid=8434710860473546146",
+    # Lien court fourni par Google : il ouvre directement le formulaire
+    # d'avis, sans passer par la fiche. C'est celui à mettre sur un flyer,
+    # dans une signature ou derrière un QR code.
+    "review_url": "https://g.page/r/CaK1p63WHA51EBM/review",
     "directions_url": "https://www.google.com/maps/dir/?api=1&destination=MathClean&destination_place_id=",
     "travel_fee": "5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil (93)",
     # Règle complète, écrite une seule fois : toute page qui parle du
@@ -64,7 +67,159 @@ DELAIS = {
 # Chaque entrée génère une page dans /services/ et une carte sur l'accueil.
 SERVICES = [
     {
+        "slug": "nettoyage-hottes-paris",
+        "audience": "pro",
+        "local": {"court": "Dégraissage hotte", "slug": "degraissage-hotte",
+                  "nom": "Dégraissage de hotte", "kw": "dégraissage hotte"},
+        "short": "Hottes",
+        "nav": "Dégraissage de hottes",
+        "name": "Dégraissage de hottes à Paris",
+        "h1": "Dégraissage de hotte et de conduits d'extraction",
+        "title": "Dégraissage de hotte professionnelle à Paris",
+        "meta": "Dégraissage de hotte, filtres et conduits d'extraction pour restaurants et boulangeries à Paris et en IDF. Ramonage annuel exigé par l'arrêté du 25 juin 1980.",
+        "price": "sur devis",
+        "excerpt": "Hotte, filtres, bac à graisse et conduits d'extraction jusqu'au ventilateur : le circuit complet, dégraissé en une intervention de nuit.",
+        "image": "bureau-entreprise.webp",
+        "hero": "bureau-entreprise.webp",
+        "icon": "tools",
+        "intro": [
+            "La graisse de cuisson ne reste pas sur la hotte. Elle est aspirée, se condense en remontant dans le conduit, et s'y dépose en une couche "
+            "qui s'épaissit chaque service. Cette couche est combustible : c'est elle qui transforme un départ de feu sur un piano en feu de conduit, "
+            "lequel se propage dans les gaines à travers les planchers. La plupart des incendies de restaurant ne partent pas de la cuisine, ils y passent.",
+            "Le second effet est quotidien et moins spectaculaire : un conduit encrassé perd sa section utile. L'extraction tire moins, les buées restent "
+            "en salle, les odeurs s'installent dans les textiles et le personnel travaille dans une cuisine plus chaude. Une extraction qui faiblit "
+            "progressivement ne se remarque pas — jusqu'au jour où l'on compare avant et après.",
+        ],
+        "included_title": "Ce que couvre l'intervention",
+        "included": [
+            "<strong>Hotte</strong> : intérieur, extérieur, soudures et angles, dégraissage à l'alcalin puis rinçage",
+            "<strong>Filtres à chocs ou à cassettes</strong> : démontage, trempage, rinçage haute pression, remontage",
+            "<strong>Bac à graisse et gouttières</strong> : vidange et nettoyage complet",
+            "<strong>Plafond filtrant</strong> le cas échéant, module par module",
+            "<strong>Conduits d'extraction</strong> : gaines accessibles jusqu'au ventilateur, par les trappes de visite",
+            "<strong>Ventilateur d'extraction</strong> : turbine et volute dégraissées",
+        ],
+        "steps": [
+            ("Repérage et protection", "Relevé du circuit, repérage des trappes de visite, et bâchage du piano, des plans de travail et des sols. Rien ne doit recevoir de produit ni de dépôt."),
+            ("Démontage", "Filtres, gouttières et bac à graisse sont déposés et mis à tremper dans un bain alcalin pendant que le reste est traité."),
+            ("Dégraissage alcalin", "Produit à temps de pose sur la hotte et les parois du conduit, puis action mécanique. La graisse polymérisée par la chaleur ne part pas au chiffon : c'est la chimie et le temps qui la décollent, pas la force."),
+            ("Conduits et ventilateur", "Progression par les trappes de visite jusqu'au ventilateur, turbine et volute comprises. Les zones sans trappe sont signalées plutôt que contournées en silence."),
+            ("Rinçage, remontage, contrôle", "Rinçage complet, remontage, essai de l'extraction, et photos avant/après de chaque zone traitée. Vous notez la date dans votre livret d'entretien."),
+        ],
+        "faq": [
+            ("À quelle fréquence la loi impose-t-elle ce nettoyage ?",
+             "Pour un établissement recevant du public, l'article GC 21 de l'arrêté du 25 juin 1980 impose un ramonage des conduits d'évacuation et une vérification de leur vacuité <strong>au moins une fois par an</strong>, et un nettoyage ou remplacement des filtres <strong>au moins une fois par semaine</strong>. Le circuit d'extraction lui-même doit être nettoyé aussi souvent que nécessaire. Un livret d'entretien, annexé au registre de sécurité, consigne les dates."),
+            ("Faut-il fermer la cuisine ?",
+             "Non. Nous intervenons après le dernier service ou avant l'ouverture, de nuit si besoin, sans supplément. La cuisine est rendue propre et opérationnelle pour le service suivant."),
+            ("Combien de temps dure une intervention ?",
+             "De trois à huit heures selon la longueur du conduit, l'accessibilité des trappes et l'ancienneté du dépôt. Une première intervention sur une installation jamais traitée prend toujours plus longtemps qu'un passage d'entretien."),
+            ("Et s'il n'y a pas de trappe de visite sur le conduit ?",
+             "Nous traitons ce qui est accessible et nous vous le disons par écrit, avec les zones non atteintes repérées sur un schéma. La pose de trappes relève d'un installateur : nous ne perçons pas une gaine, et nous ne faisons pas semblant d'avoir nettoyé ce que nous n'avons pas vu."),
+            ("Que remettez-vous après l'intervention ?",
+             "Un jeu de photos avant/après par zone traitée, et le détail de ce qui a été fait et de ce qui ne l'a pas été. Vous reportez la date dans votre livret d'entretien, qui est le document que vous présentez en cas de contrôle."),
+        ],
+    },
+    {
+        "slug": "nettoyage-regulier-paris",
+        "audience": "pro",
+        "local": {"court": "Ménage régulier", "slug": "menage-regulier",
+                  "nom": "Ménage régulier", "kw": "ménage régulier"},
+        "short": "Ménage régulier",
+        "nav": "Ménage régulier",
+        "name": "Ménage régulier pour entreprises à Paris",
+        "h1": "Ménage régulier de bureaux, commerces et locaux",
+        "title": "Ménage régulier d'entreprise à Paris et en IDF",
+        "meta": "Ménage régulier de bureaux, commerces et restaurants à Paris et en Île-de-France. Passage avant l'ouverture ou après la fermeture, sans supplément.",
+        "price": "sur devis",
+        "excerpt": "Bureaux, commerces, salles de restaurant et parties communes, en passage quotidien, hebdomadaire ou mensuel, aux horaires qui vous arrangent.",
+        "image": "bureau-entreprise.webp",
+        "hero": "bureau-entreprise.webp",
+        "icon": "building",
+        "intro": [
+            "Un contrat d'entretien se juge sur une seule donnée : le temps de présence réel par passage. C'est la seule qui remette deux devis sur la "
+            "même échelle, et c'est celle que presque personne n'écrit. Nous l'indiquons systématiquement, avec la liste des postes couverts à chaque "
+            "fréquence — ce qui est fait tous les jours, ce qui l'est une fois par semaine, ce qui l'est au trimestre.",
+            "L'autre point qui fait la différence est la continuité. C'est la même personne qui revient, qui sait où est le local technique, quel sol "
+            "ne supporte pas l'autolaveuse et à quelle heure la salle de réunion se libère. Un prestataire qui change d'intervenant chaque mois "
+            "recommence son apprentissage à vos frais.",
+        ],
+        "included_title": "Ce que recouvre un passage",
+        "included": [
+            "Bureaux, espaces d'accueil et salles de réunion",
+            "Sanitaires : désinfection complète et réapprovisionnement des consommables",
+            "Sols durs et moquettes, de l'entretien courant à l'injection-extraction périodique",
+            "Cuisines, coins repas et distributeurs",
+            "Parties communes : halls, cages d'escalier, ascenseurs, locaux poubelles",
+            "Vitrerie intérieure, et extérieure jusqu'à trois niveaux",
+        ],
+        "steps": [
+            ("Visite et relevé", "Nous passons sur site, relevons les surfaces, les revêtements et les contraintes d'accès. Un devis au jugé sur plan ne tient jamais."),
+            ("Cahier des charges écrit", "Qui fait quoi, à quelle fréquence, en combien de temps. Le document liste aussi ce qui n'est pas inclus, pour qu'il n'y ait pas de discussion au troisième mois."),
+            ("Passages réguliers", "Avant l'ouverture, après la fermeture ou le week-end, sans supplément. Même intervenant d'un passage à l'autre."),
+            ("Points de contrôle", "Un échange à un mois puis au trimestre pour ajuster les fréquences : certains postes se révèlent inutiles, d'autres méritent un passage de plus."),
+        ],
+        "faq": [
+            ("Faut-il s'engager sur une durée ?",
+             "Non. Le passage ponctuel et le contrat régulier existent tous les deux. Un rythme se cale après quelques passages, quand il devient prévisible — pas avant."),
+            ("Intervenez-vous hors des heures d'ouverture ?",
+             "Oui, avant l'ouverture, après la fermeture ou le week-end, sans supplément. C'est la seule façon de travailler correctement sur un site occupé."),
+            ("Comment comparer votre devis à un autre ?",
+             "Regardez le temps de présence par passage, pas le prix au mètre carré. Deux devis au même montant peuvent recouvrir une heure ou trois heures de travail, et c'est là que tout se joue."),
+        ],
+    },
+    {
+        "slug": "nettoyage-appartement-paris",
+        "audience": "particulier",
+        "local": {"court": "Nettoyage appartement", "slug": "nettoyage-appartement",
+                  "nom": "Nettoyage d'appartement", "kw": "nettoyage appartement"},
+        "short": "Appartement",
+        "nav": "Nettoyage d'appartement",
+        "name": "Nettoyage d'appartement à Paris",
+        "h1": "Nettoyage complet d'appartement, de fond en comble",
+        "title": "Nettoyage d'appartement à Paris et en IDF",
+        "meta": "Nettoyage complet d'appartement à Paris et en Île-de-France : grand ménage, après travaux, avant état des lieux ou entre deux locations. Devis gratuit.",
+        "price": "sur devis",
+        "excerpt": "Grand ménage de printemps, remise en état avant un état des lieux, ou nettoyage complet entre deux locations : l'appartement entier, pièce par pièce.",
+        "image": "intervention-1.webp",
+        "hero": "intervention-1.webp",
+        "icon": "sofa",
+        "intro": [
+            "Un nettoyage d'appartement n'est pas un ménage en plus grand. Le ménage courant entretient ce qui est propre ; ici, on reprend ce qui ne "
+            "l'a pas été depuis longtemps — le calcaire au pied des robinets, le gras au-dessus des meubles de cuisine, les plinthes, les rails de "
+            "fenêtre, l'intérieur des placards. Ce sont des postes qui demandent du temps de pose et de l'huile de coude, pas de la vitesse.",
+            "Trois situations reviennent : le grand nettoyage qu'on repousse depuis deux ans, la remise en état avant un état des lieux de sortie — où "
+            "chaque poste oublié se paie sur le dépôt de garantie — et le passage entre deux locataires ou deux séjours. Le contenu change dans chaque "
+            "cas, et le devis le dit.",
+        ],
+        "included_title": "Ce que recouvre un nettoyage complet",
+        "included": [
+            "<strong>Cuisine</strong> : dégraissage des meubles hauts, plan de travail, crédence, électroménager intérieur et extérieur",
+            "<strong>Salle de bains</strong> : détartrage des robinetteries, parois de douche, joints, WC",
+            "<strong>Sols</strong> : aspiration et lavage adapté au revêtement, plinthes comprises",
+            "<strong>Vitres</strong> : intérieur, rails et appuis de fenêtre",
+            "<strong>Dépoussiérage complet</strong> : dessus de meubles, luminaires, interrupteurs, portes",
+            "<strong>Placards</strong> : intérieur vidé et nettoyé, sur demande",
+        ],
+        "steps": [
+            ("Nous faisons le tour", "Pièce par pièce, pour établir ce qui demande du temps de pose et ce qui relève du courant. C'est ce tour qui fait le devis, pas une surface au mètre carré."),
+            ("Du haut vers le bas", "Luminaires et dessus de meubles d'abord, sols en dernier. L'ordre inverse oblige à repasser deux fois, et c'est le temps que paient les devis bâclés."),
+            ("Temps de pose là où il en faut", "Calcaire, gras de cuisine et joints ne partent pas au premier passage. Le produit travaille pendant qu'on avance ailleurs."),
+            ("Contrôle avec vous", "Tour final ensemble avant notre départ. On reprend ce qui doit l'être sur place, pas après coup."),
+        ],
+        "faq": [
+            ("Faut-il que l'appartement soit vide ?",
+             "Non, sauf pour un nettoyage avant état des lieux, où un logement vide permet de traiter les sols et les placards en entier. Sinon, nous travaillons autour des meubles."),
+            ("Combien de temps faut-il prévoir ?",
+             "Comptez une demi-journée pour un studio ou un deux-pièces en entretien courant, une journée complète pour un trois-pièces jamais repris en profondeur. Nous l'annonçons au devis."),
+            ("Faut-il fournir les produits ou le matériel ?",
+             "Non. Machines, produits, eau et électricité sont fournis. Vous n'avez rien à préparer."),
+            ("Est-ce que cela remplace un ménage régulier ?",
+             "Non, c'est l'inverse : un nettoyage complet remet à zéro, un ménage régulier maintient. Après une remise à niveau, un passage courant suffit à tenir le résultat."),
+        ],
+    },
+    {
         "slug": "nettoyage-automobile-paris",
+        "audience": "particulier",
         "local": {"court": "Nettoyage voiture", "slug": "nettoyage-voiture", "nom": "Nettoyage de voiture", "kw": "nettoyage voiture"},
         "short": "Automobile",
         "nav": "Nettoyage automobile",
@@ -130,6 +285,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-textile-paris",
+        "audience": "particulier",
         "local": {"court": "Nettoyage canapé", "slug": "nettoyage-canape", "nom": "Nettoyage de canapé", "kw": "nettoyage canapé"},
         "short": "Textile",
         "nav": "Nettoyage textile (canapé, matelas, tapis)",
@@ -195,6 +351,7 @@ SERVICES = [
     },
     {
         "slug": "nettoyage-vitres-paris",
+        "audience": "mixte",
         "local": {"court": "Nettoyage vitres", "slug": "nettoyage-vitres", "nom": "Nettoyage de vitres", "kw": "nettoyage vitres"},
         "short": "Vitres",
         "nav": "Nettoyage de vitres",
@@ -237,67 +394,6 @@ SERVICES = [
              "Un passage hebdomadaire ou bimensuel selon l'exposition à la rue. Nous établissons un forfait pour les passages réguliers."),
         ],
     },
-    {
-        "slug": "nettoyage-entreprise-paris",
-        "local": {"court": "Nettoyage bureaux", "slug": "nettoyage-entreprise", "nom": "Nettoyage de bureaux et de locaux", "kw": "nettoyage entreprise"},
-        "short": "Entreprise",
-        "nav": "Nettoyage pour entreprise",
-        "name": "Nettoyage pour entreprise à Paris",
-        "h1": "Nettoyage pour entreprise : bureaux, commerces et locaux",
-        "title": "Nettoyage pour entreprise à Paris",
-        "meta": "Nettoyage pour entreprise à Paris et en IDF : bureaux, commerces, restaurants, locaux. Passage ponctuel ou régulier, horaires décalés.",
-        "price": "sur devis",
-        "excerpt": "Bureaux, commerces, restaurants et locaux d'activité : désinfection, moquettes, sanitaires et vitrerie, en passage ponctuel ou régulier.",
-        "image": "bureau-entreprise.webp",
-        "hero": "bureau-entreprise.webp",
-        "icon": "building",
-        "intro": [
-            "Un local professionnel ne se nettoie pas aux mêmes heures qu'un logement. Nous intervenons tôt le matin, tard le soir ou de nuit "
-            "pour les commerces et les restaurants qui ne peuvent pas fermer en journée — l'espace est opérationnel dès l'ouverture.",
-            "Nous travaillons en passage ponctuel, par exemple pour une remise à niveau avant un contrôle d'hygiène, comme en passage régulier "
-            "avec un protocole écrit et une facturation entreprise.",
-        ],
-        "included_title": "Nos interventions professionnelles",
-        "included": [
-            "Postes de travail, espaces d'accueil et salles de réunion",
-            "Sanitaires : désinfection complète et réapprovisionnement",
-            "Moquettes et sols durs, en injection-extraction ou monobrosse",
-            "Vitrerie intérieure et extérieure",
-            "Cuisines professionnelles : dégraissage vapeur, plancha, hottes, joints",
-        ],
-        "steps": [
-            ("Visite des locaux", "Nous venons sur place mesurer les surfaces et repérer les contraintes d'accès et d'horaires."),
-            ("Protocole écrit", "Fréquence, zones, produits et créneaux : tout est écrit avant de commencer, pour que chacun sache ce qui est fait."),
-            ("Intervention", "En horaires décalés si nécessaire, sans gêner votre activité ni vos clients."),
-            ("Suivi", "Un interlocuteur unique, joignable après chaque passage, et un ajustement du protocole si vos besoins changent."),
-        ],
-        "chimie": {
-            "titre": 'Inox, cuisines et surfaces techniques',
-            "lead": "Dans un local professionnel, le mauvais produit ne salit pas : il corrode. L'inox et l'aluminium sont les deux matières où l'erreur coûte le plus cher.",
-            "points": [
-            ('Inox : aucun produit chloré',
-             "L'eau de Javel et l'acide chlorhydrique percent la couche passive de chrome qui protège l'inox. La corrosion s'installe dessous et donne des piqûres brunes en creux, visibles quelques jours plus tard et irréversibles. Nous dégraissons à l'alcalin sans chlorure et désinfectons à la vapeur."),
-            ('Inox : le sens du brossage',
-             "Un inox satiné a un sens. Nettoyer perpendiculairement laisse un voile croisé visible sous tout éclairage. Nous travaillons dans le sens du brossage, à la microfibre &mdash; jamais à la laine d'acier, qui incruste des particules d'acier ordinaire qui rouillent ensuite."),
-            ('Hottes : la vapeur avant le produit',
-             "La graisse de cuisson est polymérisée par la chaleur. C'est la température qui la ramollit : les caissons et surfaces passent d'abord à la vapeur haute température, le dégraissant ne vient qu'ensuite et en moindre quantité."),
-            ('Filtres aluminium : surtout pas de décapant four',
-             "L'aluminium est attaqué par les bases fortes autant que par les acides. Un dégraissant à base de soude noircit un filtre à chocs, le pique et le rend friable. Nous utilisons un alcalin modéré et un trempage tiède, qui nettoient sans détruire le filtre."),
-            ('Détartrage sans chlorhydrique',
-             "Le calcaire se dissout en milieu acide, à l'acide citrique ou phosphorique. Jamais de chlorhydrique au contact d'un inox, et aucun acide sur une pierre naturelle ou un béton ciré, que le produit dissout au même titre que le dépôt."),
-            ('Le périmètre, dit clairement',
-             "Nous dégraissons les surfaces, les caissons et les filtres accessibles. Le dégraissage du conduit d'extraction avec certificat, exigé par les assureurs au titre du risque incendie, relève d'une entreprise certifiée : ce n'est pas notre métier."),
-        ],
-        },
-        "faq": [
-            ("Proposez-vous un contrat régulier ?",
-             "Oui, en passage quotidien, hebdomadaire ou mensuel, avec un protocole écrit et une facturation entreprise. Le devis est établi après visite des locaux."),
-            ("Intervenez-vous en dehors des heures d'ouverture ?",
-             "Oui. C'est même la règle pour les commerces et les restaurants : nous travaillons tôt le matin, tard le soir ou de nuit."),
-            ("Faites-vous le dégraissage de cuisine professionnelle ?",
-             "Oui, à la vapeur haute température : elle décolle la graisse cuite sans produit chimique agressif, ce qui est un avantage réel dans un environnement alimentaire."),
-        ],
-    },
 ]
 
 # --- Tarifs ---------------------------------------------------------------
@@ -337,7 +433,7 @@ TARIFS_TEXTILE = [
 
 TARIFS_DEVIS = [
     ("Nettoyage de vitres", "Vitres, baies vitrées et vitrines", "nettoyage-vitres-paris"),
-    ("Nettoyage pour entreprise", "Bureaux, commerces, locaux et vitrerie", "nettoyage-entreprise-paris"),
+    ("Nettoyage pour entreprise", "Bureaux, commerces, locaux et vitrerie", "nettoyage-regulier-paris"),
 ]
 
 # --- Zones d'intervention -------------------------------------------------
@@ -800,168 +896,168 @@ VILLES = [
      "mêle immeubles haussmanniens, résidences récentes et un tissu dense de sièges sociaux. "
      "Deux demandes y dominent : le textile en appartement — canapés d'angle qu'on ne peut ni "
      "démonter ni descendre — et l'entretien de bureaux en horaires décalés.",
-     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
 
     ("neuilly-sur-seine", "Neuilly-sur-Seine", "92200", "92", 48.8846, 2.2697,
      "À Neuilly, l'essentiel de nos interventions concerne des selleries cuir, des tapis de "
      "laine et des moquettes de belle facture — des matières qui ne pardonnent pas l'erreur de "
      "produit. Le diagnostic de la fibre y compte davantage qu'ailleurs.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
 
     ("levallois-perret", "Levallois-Perret", "92300", "92", 48.8939, 2.2874,
      "Levallois concentre bureaux et logements sur un territoire très compact. Le stationnement "
      "y étant difficile, notre autonomie en eau et en électricité change tout : nous intervenons "
      "en parking souterrain, sans avoir à tirer un tuyau depuis la rue.",
-     ["nettoyage-entreprise-paris", "nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-regulier-paris", "nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris"]),
 
     ("nanterre", "Nanterre", "92000", "92", 48.8924, 2.2069,
      "Entre la préfecture, les campus et la proximité immédiate de La Défense, Nanterre nous "
      "sollicite surtout pour l'entretien de locaux professionnels et la remise en état après "
      "travaux, deux prestations qui se planifient hors des heures d'activité.",
-     ["nettoyage-entreprise-paris", "nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-regulier-paris", "nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
 
     ("issy-les-moulineaux", "Issy-les-Moulineaux", "92130", "92", 48.8239, 2.2730,
      "Pôle tertiaire dense, Issy-les-Moulineaux nous appelle principalement pour la vitrerie de "
      "grandes surfaces et l'entretien de moquettes de bureaux. L'eau osmosée y prend tout son "
      "sens sur les façades vitrées.",
-     ["nettoyage-vitres-paris", "nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-vitres-paris", "nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
 
     ("saint-denis", "Saint-Denis", "93200", "93", 48.9362, 2.3574,
      "Saint-Denis est en chantier permanent : programmes neufs, réhabilitations, bureaux livrés "
      "en continu. L'entretien de locaux et la vitrerie de façade y représentent une part "
      "importante de l'activité, le plus souvent en passage régulier.",
-     ["nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
 
     ("montreuil", "Montreuil", "93100", "93", 48.8638, 2.4485,
      "Montreuil alterne pavillons, lofts d'anciens ateliers et immeubles récents. Les grands "
      "volumes reconvertis y posent une question précise : des moquettes et des textiles en "
      "quantité, dans des espaces qu'on ne peut pas vider.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
 
     ("aulnay-sous-bois", "Aulnay-sous-Bois", "93600", "93", 48.9386, 2.4938,
      "Aulnay est à quelques minutes de notre atelier : c'est l'une des communes où nous "
      "intervenons le plus rapidement, souvent dans la journée en cas d'urgence. L'habitat "
      "pavillonnaire y appelle surtout du textile et du detailing automobile à domicile.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris"]),
 
     ("le-blanc-mesnil", "Le Blanc-Mesnil", "93150", "93", 48.9386, 2.4644,
      "C'est notre commune : l'atelier s'y trouve. Les frais de déplacement y sont nuls ou "
      "symboliques, et nous pouvons intervenir dans des délais que nous ne tenons nulle part "
      "ailleurs — souvent le jour même.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris"]),
 
     ("tremblay-en-france", "Tremblay-en-France", "93290", "93", 48.9486, 2.5697,
      "Tremblay-en-France est à une quinzaine de minutes de notre atelier du Blanc-Mesnil, par "
      "l'A104 ou la N2. Pavillons, résidences récentes et zones d'activité proches de Roissy : "
      "les demandes y vont du detailing automobile au nettoyage de locaux.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
 
     ("pantin", "Pantin", "93500", "93", 48.8944, 2.4090,
      "Pantin s'est couverte de bureaux et d'ateliers reconvertis le long du canal. Nous y "
      "traitons beaucoup de locaux professionnels, avec la contrainte habituelle des sites "
      "occupés : intervenir tôt le matin ou après la fermeture.",
-     ["nettoyage-entreprise-paris", "nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-regulier-paris", "nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
 
     ("creteil", "Créteil", "94000", "94", 48.7904, 2.4556,
      "Préfecture du Val-de-Marne, Créteil combine grands ensembles, zones d'activité et "
      "équipements publics. Les demandes y sont partagées entre entretien de locaux et textile "
      "à domicile.",
-     ["nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
 
     ("vincennes", "Vincennes", "94300", "94", 48.8478, 2.4390,
      "Vincennes est un tissu résidentiel serré, aux appartements souvent anciens. Canapés, "
      "matelas et tapis y constituent l'essentiel des interventions, avec la contrainte "
      "récurrente des escaliers étroits — qui ne nous gêne pas, puisque nous travaillons sur place.",
-     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris"]),
 
     ("saint-maur-des-fosses", "Saint-Maur-des-Fossés", "94100", "94", 48.7994, 2.4934,
      "Dans la boucle de la Marne, Saint-Maur aligne pavillons avec jardin, vérandas et grandes "
      "baies côté sud. Le nettoyage des vitrages y suit les saisons, et le textile d'intérieur "
      "occupe le reste de l'année.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
 
     ("massy", "Massy", "91300", "91", 48.7262, 2.2825,
      "Massy conjugue quartiers d'affaires, gares et logements neufs. Nous y intervenons pour "
      "l'entretien de bureaux et la remise en état après travaux, les livraisons de programmes "
      "y étant fréquentes.",
-     ["nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
 
     ("evry-courcouronnes", "Évry-Courcouronnes", "91000", "91", 48.6238, 2.4297,
      "Évry-Courcouronnes est l'un des points les plus éloignés de notre atelier : nous y "
      "groupons volontiers plusieurs interventions sur une même journée, ce qui reste le meilleur "
      "moyen de contenir les frais de déplacement.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-entreprise-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris"]),
 
     ("versailles", "Versailles", "78000", "78", 48.8014, 2.1301,
      "À Versailles, nous traitons beaucoup de matières nobles — tapis de laine, selleries cuir — "
      "et de grands vitrages anciens. Sur ces supports, la question n'est jamais la puissance "
      "mais le réglage.",
-     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris"]),
 
     ("saint-germain-en-laye", "Saint-Germain-en-Laye", "78100", "78", 48.8987, 2.0940,
      "Maisons anciennes, grandes fenêtres à petits bois et vérandas : Saint-Germain-en-Laye "
      "appelle surtout de la vitrerie au printemps et du textile de valeur le reste de l'année.",
-     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris"]),
 
     ("chelles", "Chelles", "77500", "77", 48.8797, 2.5928,
      "Chelles est l'une des communes de Seine-et-Marne les plus proches de notre atelier, à "
      "quelques minutes seulement. Habitat pavillonnaire dominant : automobile à domicile, "
      "textile et grandes surfaces vitrées.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris"]),
 
     ("meaux", "Meaux", "77100", "77", 48.9601, 2.8785,
      "Meaux marque la limite est de notre zone habituelle. Nous y intervenons volontiers, en "
      "planifiant la journée autour du déplacement — plusieurs prestations groupées plutôt qu'un "
      "aller-retour pour une seule.",
-     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
 
     ("argenteuil", "Argenteuil", "95100", "95", 48.9474, 2.2467,
      "Argenteuil est la plus peuplée du Val-d'Oise, avec un habitat très varié. Textile à "
      "domicile et detailing automobile y constituent l'essentiel de nos passages.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
 
     ("cergy", "Cergy", "95000", "95", 49.0361, 2.0631,
      "Ville nouvelle et pôle universitaire, Cergy nous sollicite pour des locaux professionnels "
      "et des logements étudiants en remise en état, souvent entre deux occupations.",
-     ["nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
 
     ("sarcelles", "Sarcelles", "95200", "95", 48.9959, 2.3785,
      "Sarcelles est proche de notre atelier, ce qui maintient les frais de déplacement bas. "
      "Nous y intervenons surtout en textile à domicile et en entretien de commerces.",
-     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
 
     ("paris-8", "Paris 8e", "75008", "75", 48.8721, 2.3120,
      "Le 8e concentre sièges sociaux, hôtels et commerces de luxe. Vitrines, selleries cuir et "
      "moquettes de bureaux y forment le gros de nos interventions, presque toujours en horaires "
      "décalés pour ne pas gêner l'activité.",
-     ["nettoyage-vitres-paris", "nettoyage-entreprise-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-vitres-paris", "nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
 
     ("paris-11", "Paris 11e", "75011", "75", 48.8580, 2.3792,
      "Le 11e est un arrondissement dense, très résidentiel et très restauré. Nous y traitons "
      "beaucoup de canapés et de matelas en appartement, et des cuisines professionnelles en "
      "intervention nocturne.",
-     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
 
     ("paris-12", "Paris 12e", "75012", "75", 48.8409, 2.3876,
      "Entre Bercy, la Bastille et le bois de Vincennes, le 12e alterne immeubles récents et "
      "bâti ancien. Textile à domicile et entretien de locaux s'y partagent nos passages.",
-     ["nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
 
     ("paris-15", "Paris 15e", "75015", "75", 48.8412, 2.3003,
      "Le 15e est le plus peuplé des arrondissements parisiens. Grands appartements familiaux, "
      "donc grands canapés et moquettes : c'est l'arrondissement où l'injection-extraction à "
      "domicile prend le plus de sens.",
-     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris"]),
 
     ("paris-16", "Paris 16e", "75016", "75", 48.8637, 2.2769,
      "Le 16e nous amène des matières exigeantes : tapis d'Orient, parquets anciens, selleries "
      "cuir. Le test de solidité des couleurs y est systématique avant tout lavage.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-entreprise-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
 
     ("paris-17", "Paris 17e", "75017", "75", 48.8872, 2.3220,
      "Des Batignolles à la plaine Monceau, le 17e mêle résidentiel haussmannien et bureaux "
      "récents. Vitrerie, textile et entretien de locaux s'y répartissent assez également.",
-     ["nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-entreprise-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-automobile-paris"]),
 ]
 
 
@@ -1013,7 +1109,7 @@ GUIDES = [
    "La taille ne dit rien de la qualité. Ce qui compte, c'est de savoir qui intervient réellement chez vous, avec quel matériel, et qui est responsable en cas de problème. Une structure petite mais directe apporte souvent plus de continuité qu'une chaîne de sous-traitance."),
   ("Les frais de déplacement sont-ils négociables ?",
    "Rarement dans leur principe, mais on peut souvent les réduire en groupant plusieurs prestations sur une même intervention : le déplacement n'est alors facturé qu'une fois.")],
- "service": "nettoyage-entreprise-paris",
+ "service": "nettoyage-regulier-paris",
 },
 {
  "slug": "choisir-entreprise-nettoyage-paris",
@@ -1098,7 +1194,7 @@ GUIDES = [
    "Cela se décide au contrat. Papier, savon et sacs peuvent être fournis par le prestataire ou par l'entreprise : l'essentiel est que ce soit écrit."),
   ("Comment est facturée une prestation professionnelle ?",
    "Sur devis, après visite des locaux et mesure des surfaces, avec facturation entreprise. Un prix au mètre carré annoncé sans visite est un prix approximatif.")],
- "service": "nettoyage-entreprise-paris",
+ "service": "nettoyage-regulier-paris",
 },
 {
  "slug": "prix-nettoyage-canape-paris",
@@ -1190,7 +1286,7 @@ GUIDES = [
    "Oui, sans exception, pendant le traitement et pendant l'aération qui suit. C'est la seule façon de procéder correctement."),
   ("L'odeur peut-elle revenir après le traitement ?",
    "Seulement si la source est toujours en place. C'est pourquoi le diagnostic préalable compte plus que la puissance du générateur.")],
- "service": "nettoyage-entreprise-paris",
+ "service": "nettoyage-regulier-paris",
 },
 {
  "slug": "traitement-ozone-ile-de-france",
@@ -1440,7 +1536,7 @@ GUIDES = [
    "Une journée complète est courante pour un appartement après rénovation lourde. Le devis est établi après état des lieux, selon la surface et la nature des travaux."),
   ("Intervenez-vous pour les artisans et les agences ?",
    "Régulièrement : entreprises du bâtiment, architectes d'intérieur, agences immobilières et syndics, avec facturation entreprise et devis ferme.")],
- "service": "nettoyage-entreprise-paris",
+ "service": "nettoyage-regulier-paris",
 },
 {
  "slug": "frequence-nettoyage-bureaux",
@@ -1468,7 +1564,7 @@ GUIDES = [
    "Oui, et c'est souvent le bon point de départ : une remise à niveau permet de voir le résultat avant de s'engager sur un rythme régulier."),
   ("Comment est établi le devis ?",
    "Après visite des locaux : surfaces, zones, contraintes d'accès et d'horaires. Un devis fait sans visite reste une approximation.")],
- "service": "nettoyage-entreprise-paris",
+ "service": "nettoyage-regulier-paris",
 },
 {
  "slug": "devis-nettoyage-questions-a-poser",
@@ -1500,7 +1596,7 @@ GUIDES = [
    "La durée de validité doit être écrite sur le document. Un mois est une pratique courante."),
   ("Peut-on obtenir un devis à distance ?",
    "Pour les prestations à domicile, oui : quelques photos suffisent le plus souvent. Pour les locaux professionnels, une visite reste préférable.")],
- "service": "nettoyage-entreprise-paris",
+ "service": "nettoyage-regulier-paris",
 },
 
     # --- Pages issues de l'étude des requêtes les plus demandées en IDF ---
@@ -2244,7 +2340,7 @@ GUIDES = [
             ('Retirez-vous la peinture sur les vitres ?',
              'Oui, à la lame sur les vitrages qui le supportent. Nous ne le faisons pas sur un verre traité, teinté ou filmé, qui se rayerait définitivement.'),
         ],
-        "service": "nettoyage-entreprise-paris",
+        "service": "nettoyage-regulier-paris",
     },
     {
         "slug": 'nettoyage-siege-voiture-tache',
@@ -2380,7 +2476,7 @@ GUIDES = [
             ('Évacuez-vous les gravats ?',
              "Non, uniquement les résidus fins liés au nettoyage. Les gravats et encombrants relèvent d'un débarras avec benne, qui est un autre métier et une autre filière."),
         ],
-        "service": "nettoyage-entreprise-paris",
+        "service": "nettoyage-regulier-paris",
     },
     {
         "slug": 'nettoyage-veranda-baie-vitree',
@@ -2982,7 +3078,7 @@ PREMIUM_VILLES = [
                 "le temps d'une baie de même surface, et un tarif au mètre carré serait trompeur "
                 "dans un sens comme dans l'autre. Nous comptons les vantaux sur photos, et le "
                 "devis est ferme avant que nous venions."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Neuilly concentre des cabinets — médicaux, dentaires, d'avocats — et des sièges "
                 "sociaux installés dans d'anciens appartements. Ce sont des locaux de petite "
                 "surface mais à forte exigence : salle d'attente très fréquentée, moquettes "
@@ -3054,7 +3150,7 @@ PREMIUM_VILLES = [
                 "Oui, elles font partie du même passage. Ce sont souvent elles qui donnent "
                 "l'impression que la terrasse est sale : traces de pluie, marques de mains, "
                 "dépôt calcaire au bas du panneau. Nous les comptons comme des vantaux dans le devis."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Boulogne accueille beaucoup de sociétés de production, d'agences et de bureaux "
                 "de taille moyenne, souvent installés dans des plateaux ouverts avec moquette. "
                 "La moquette est précisément ce qui vieillit le plus visiblement dans un bureau : "
@@ -3124,7 +3220,7 @@ PREMIUM_VILLES = [
                 "donnant sur un axe passant. Ce n'est pas une question d'esthétique seule : le "
                 "film de particules attaque les joints à la longue. Sur une vitrine commerciale, "
                 "le rythme est mensuel, voire hebdomadaire."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Levallois concentre des sièges sociaux et des plateaux tertiaires sur un "
                 "territoire réduit. Les prestataires y sont nombreux, et les entreprises passent "
                 "souvent d'un contrat d'entretien à un besoin ponctuel : une remise à niveau avant "
@@ -3194,7 +3290,7 @@ PREMIUM_VILLES = [
                 "cordistes, qui relèvent d'habilitations que nous n'avons pas. Nous prenons en "
                 "revanche tout ce qui se traite depuis le sol — halls, rez-de-chaussée, vitrines, "
                 "bureaux bas — et nous vous le disons avant, pas pendant."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "La Défense est le premier quartier d'affaires européen, et la plupart des tours y "
                 "ont un prestataire d'entretien en titre. Le besoin que nous couvrons est autre : "
                 "l'intervention ponctuelle et rapide qu'un contrat-cadre traite mal — une "
@@ -3265,7 +3361,7 @@ PREMIUM_VILLES = [
                 "se traite depuis le sol à la perche. Les fenêtres de toit se font depuis "
                 "l'intérieur, et depuis l'extérieur seulement si l'accès est sûr sans matériel "
                 "d'élévation. Nous jugeons sur photos avant de nous engager."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Saint-Cloud compte peu de plateaux tertiaires mais beaucoup de professions "
                 "libérales installées en maison ou en rez-de-chaussée : cabinets, études, petites "
                 "structures. Le local y est souvent l'extension de l'habitation, et se juge avec "
@@ -3336,7 +3432,7 @@ PREMIUM_VILLES = [
                 "fenêtre à petits bois demande plusieurs fois le temps d'une baie de même surface. "
                 "Nous comptons les ouvrants, nous annonçons un montant ferme, et nous nous y "
                 "tenons le jour de l'intervention."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Rueil-sur-Seine accueille des sièges et des plateaux tertiaires en bord de Seine, "
                 "à côté d'un tissu de PME et de professions libérales réparties dans la commune. "
                 "Deux besoins différents : le plateau qui demande une remise à niveau ponctuelle, "
@@ -3408,7 +3504,7 @@ PREMIUM_VILLES = [
                 "l'eau mais la stagnation : dans une feuillure, elle fait gonfler le bois et "
                 "décoller le mastic. Nous travaillons avec peu d'eau et nous essuyons les "
                 "feuillures — c'est plus lent, et c'est ce que le bois ancien demande."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Le centre de Versailles concentre des commerces, des cabinets et des études "
                 "installés dans des immeubles anciens. Les vitrines y comptent double : la "
                 "clientèle est passante, et une devanture ternie se remarque dans une rue de "
@@ -3479,7 +3575,7 @@ PREMIUM_VILLES = [
                 "tenace que le lave-vitre du commerce étale sans retirer. Il faut un lavage "
                 "complet à l'eau pure. Au printemps, deux passages rapprochés valent mieux qu'un "
                 "seul : le premier retire, le second finit le travail après la fin de l'émission."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Le centre de Saint-Germain concentre commerces, cabinets et professions "
                 "libérales dans un bâti ancien, souvent en étage. Les locaux y sont de taille "
                 "modeste mais très fréquentés, et la vitrine comme la salle d'attente portent "
@@ -3550,7 +3646,7 @@ PREMIUM_VILLES = [
                 "si les ouvrants sont nombreux et anciens. Nous comptons les vantaux sur photos "
                 "et nous annonçons un montant ferme : vous savez avant que nous venions ce que "
                 "cela coûtera et combien de temps nous resterons."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Sceaux a un centre commerçant compact et un tissu de professions libérales "
                 "installées en rez-de-chaussée ou en maison. Les surfaces sont petites, la "
                 "fréquentation forte, et l'exigence d'aspect élevée dans une ville où tout se "
@@ -3621,7 +3717,7 @@ PREMIUM_VILLES = [
                 "couvre la majorité des vérandas de plain-pied. Si l'accès impose de monter sur "
                 "la structure ou d'utiliser une nacelle, nous ne le faisons pas : c'est une "
                 "question de sécurité, et nous préférons le dire au devis."),
-            "nettoyage-entreprise": (
+            "menage-regulier": (
                 "Le Vésinet compte peu de bureaux et beaucoup de professions libérales installées "
                 "chez elles : cabinets médicaux, praticiens, professions du conseil recevant à "
                 "domicile. Le local professionnel y est souvent une partie de la villa, et se "
@@ -3714,3 +3810,2717 @@ ARGUMENTS_PRO = [
     ("Vous savez sur quoi", "Devis ferme, détaillé poste par poste", "Chaque prestation, sa durée estimée, son prix. Le montant annoncé est celui que vous réglez, et nous indiquons le temps de présence par passage — la seule donnée qui remette deux devis sur la même échelle."),
     ("Vous savez avec quoi", "Machines, produits, eau et électricité fournis", "Aucun accès technique à prévoir de votre côté. Nous travaillons en parking souterrain comme en étage, en autonomie complète."),
 ]
+
+
+# ===========================================================================
+# SECTEURS — dégraissage de hottes
+# ===========================================================================
+# Chaque métier encrasse sa hotte différemment : ce n'est pas la même graisse,
+# ni le même rythme, ni les mêmes horaires d'intervention. Ces différences
+# sont réelles et techniques — ce sont elles qui font que ces pages ne sont
+# pas quatorze fois la même.
+#
+# Cadre réglementaire commun, cité tel quel : arrêté du 25 juin 1980,
+# article GC 21 (ERP). Ramonage des conduits d'évacuation et vérification de
+# leur vacuité au moins une fois par an ; filtres nettoyés ou remplacés au
+# moins une fois par semaine ; livret d'entretien annexé au registre de
+# sécurité, où l'exploitant note les dates.
+SECTEURS_HOTTE = [
+    {
+        "slug": "boulangerie",
+        "nom": "boulangerie",
+        "nom_long": "boulangerie-pâtisserie",
+        "le": "une boulangerie",
+        "dans": "en boulangerie",
+        "depot": "Farine et matière grasse mêlées",
+        "probleme":
+            "Une boulangerie produit un encrassement que les autres métiers ne connaissent pas : la farine en suspension se colle "
+            "au gras de beurre vaporisé par les fours et forme une croûte dense, qui durcit en séchant. Ce dépôt ne coule pas comme "
+            "une graisse de friture — il s'accroche, et un chiffon passe dessus sans rien enlever.",
+        "detail":
+            "Le point sensible est la zone au-dessus du four rotatif, là où les buées sucrées condensent. Le sucre caramélise sur les "
+            "parois chaudes et se mêle à la croûte de farine : il faut un alcalin à temps de pose, pas un dégraissant ménager.",
+        "rythme":
+            "Deux passages par an suffisent dans la plupart des boulangeries, le minimum réglementaire étant d'un ramonage annuel. "
+            "Les filtres, eux, se nettoient chaque semaine et c'est le fournil qui s'en charge.",
+        "contrainte":
+            "Le fournil tourne la nuit, la vente le jour : la fenêtre est étroite. Nous intervenons l'après-midi, entre la fin de la "
+            "cuisson et la reprise du tour de nuit, ou le jour de fermeture.",
+        "faq": ("La farine change-t-elle vraiment quelque chose au nettoyage ?",
+                "Oui, et c'est ce que les prestataires généralistes sous-estiment. Mêlée au gras, elle forme une croûte qui ne réagit "
+                "pas comme un dépôt de friture : il faut un produit alcalin avec un vrai temps de pose, puis une action mécanique. "
+                "Un passage rapide au dégraissant laisse une couche intacte sous la surface nettoyée."),
+    },
+    {
+        "slug": "restaurant",
+        "nom": "restaurant",
+        "nom_long": "restaurant traditionnel",
+        "le": "un restaurant",
+        "dans": "en restaurant",
+        "depot": "Graisse de cuisson mixte",
+        "probleme":
+            "Un restaurant traditionnel cumule tous les modes de cuisson : sauteuse, grillade, friteuse d'appoint, four. Le dépôt est "
+            "hétérogène, plus gras au-dessus du piano, plus sec vers l'entrée du conduit, et c'est précisément cette variété qui le "
+            "rend difficile à traiter d'un seul produit.",
+        "detail":
+            "La zone critique est le coude de départ du conduit, juste après la hotte. La vitesse d'air y chute, les gouttelettes "
+            "condensent, et c'est là que l'épaisseur s'accumule le plus vite — souvent hors de vue, donc hors de contrôle.",
+        "rythme":
+            "Un à deux passages par an selon le volume de couverts, avec le ramonage annuel des conduits comme plancher réglementaire. "
+            "Au-delà de cent couverts par service, deux passages sont le bon rythme.",
+        "contrainte":
+            "Intervention après le dernier service ou avant l'ouverture, de nuit si besoin. La cuisine doit être opérationnelle pour "
+            "le service suivant : le remontage et l'essai d'extraction font partie de l'intervention, pas de la suite.",
+        "faq": ("Mon extraction tire moins qu'avant, est-ce lié ?",
+                "Très probablement. Un conduit encrassé perd de la section utile, et le débit chute proportionnellement. C'est "
+                "progressif, donc invisible au quotidien — jusqu'à ce que les buées restent en salle et que la cuisine devienne "
+                "difficilement tenable aux heures de pointe."),
+    },
+    {
+        "slug": "pizzeria",
+        "nom": "pizzeria",
+        "nom_long": "pizzeria et four à bois",
+        "le": "une pizzeria",
+        "dans": "en pizzeria",
+        "depot": "Suie et graisse combinées",
+        "probleme":
+            "C'est le cas le plus à risque. Un four à bois produit de la suie, qui vient s'ajouter à la graisse des garnitures : "
+            "deux combustibles dans le même conduit, dont l'un s'enflamme à basse température. Un feu de conduit en pizzeria se "
+            "propage plus vite qu'ailleurs, et c'est pour cela que l'intervalle entre deux nettoyages doit y être plus court.",
+        "detail":
+            "Le conduit d'un four à bois demande en outre un vrai ramonage mécanique, pas seulement un dégraissage chimique : la suie "
+            "ne se dissout pas, elle se décolle. Les deux opérations sont distinctes et toutes deux nécessaires.",
+        "rythme":
+            "Deux passages par an au minimum, trois si le four tourne tous les jours. Le ramonage annuel des conduits d'évacuation "
+            "est une obligation, pas une recommandation.",
+        "contrainte":
+            "Le four doit être froid, ce qui impose d'intervenir au moins douze heures après la dernière cuisson. Le jour de "
+            "fermeture est presque toujours le bon créneau.",
+        "faq": ("Faut-il ramoner le conduit du four à bois séparément ?",
+                "Oui. Le conduit de fumée du four et le conduit d'extraction de la hotte sont deux circuits différents, avec deux "
+                "encrassements différents. Le premier relève du ramonage, le second du dégraissage. Traiter l'un en croyant avoir "
+                "fait l'autre est l'erreur la plus fréquente en pizzeria."),
+    },
+    {
+        "slug": "restaurant-asiatique",
+        "nom": "restaurant asiatique",
+        "nom_long": "restaurant asiatique et cuisine au wok",
+        "le": "un restaurant asiatique",
+        "dans": "en cuisine au wok",
+        "depot": "Aérosol d'huile à haute température",
+        "probleme":
+            "Le wok cuit à très haute température, et projette un aérosol d'huile extrêmement fin qui est aspiré avant de pouvoir "
+            "retomber. Ce brouillard se dépose loin dans le conduit, bien au-delà de ce qu'un service classique atteint, et il "
+            "polymérise sur les parois chaudes en un film dur que seul un alcalin à temps de pose décolle.",
+        "detail":
+            "Conséquence pratique : sur une cuisine au wok, nettoyer la hotte sans remonter dans le conduit ne sert presque à rien. "
+            "L'essentiel du dépôt est à plusieurs mètres de la bouche d'aspiration.",
+        "rythme":
+            "Trois passages par an sont souvent nécessaires, et c'est le métier où l'écart entre le minimum réglementaire annuel et "
+            "le rythme réellement utile est le plus grand.",
+        "contrainte":
+            "Service continu dans beaucoup d'établissements : l'intervention se cale de nuit, après la fermeture, avec remise en "
+            "service le matin.",
+        "faq": ("Pourquoi faut-il nettoyer plus souvent qu'un autre restaurant ?",
+                "Parce que la température de cuisson au wok transforme l'huile en aérosol au lieu de la laisser en gouttelettes. "
+                "Le dépôt se forme plus vite, plus loin dans le circuit, et il durcit en polymérisant. À volume de couverts égal, "
+                "une cuisine au wok encrasse un conduit deux à trois fois plus vite."),
+    },
+    {
+        "slug": "kebab-grillades",
+        "nom": "kebab et grillades",
+        "nom_long": "kebab, grillades et broche verticale",
+        "le": "un kebab",
+        "dans": "en grillades",
+        "depot": "Graisse animale qui fige",
+        "probleme":
+            "La broche verticale fait fondre une graisse animale qui se vaporise puis refige dès qu'elle rencontre une paroi plus "
+            "froide. Le dépôt est épais, cireux, et il s'accumule très vite au-dessus de la broche — c'est l'un des encrassements "
+            "les plus rapides de la restauration.",
+        "detail":
+            "La graisse figée piège en plus les particules de combustion du grill, ce qui donne une couche dense et noire, "
+            "franchement combustible. Une intervention tardive demande le double de temps d'une intervention à l'heure.",
+        "rythme":
+            "Deux à trois passages par an, le ramonage annuel des conduits restant le minimum légal. Les filtres se rincent "
+            "chaque semaine et il ne faut pas les sauter.",
+        "contrainte":
+            "Amplitude horaire large, souvent jusqu'à tard : l'intervention se fait de nuit ou en début de matinée.",
+        "faq": ("Les filtres suffisent-ils si on les change souvent ?",
+                "Non. Les filtres retiennent une part des grosses gouttelettes, pas la vapeur grasse qui passe à travers et se "
+                "condense plus haut. Changer les filtres est nécessaire — l'arrêté l'impose chaque semaine — mais cela ne dispense "
+                "jamais du dégraissage du conduit."),
+    },
+    {
+        "slug": "brasserie",
+        "nom": "brasserie",
+        "nom_long": "brasserie et service continu",
+        "le": "une brasserie",
+        "dans": "en brasserie",
+        "depot": "Volume élevé, service continu",
+        "probleme":
+            "Ce n'est pas la nature de la graisse qui pose problème en brasserie, c'est la durée d'exposition. Une cuisine qui tourne "
+            "de 11 h à 23 h sans interruption encrasse son circuit deux fois plus vite qu'une cuisine à deux services, à carte "
+            "équivalente. Le calcul de fréquence se fait sur les heures de cuisson, pas sur les couverts.",
+        "detail":
+            "Les brasseries ont souvent de longs conduits, parce que la cuisine est en sous-sol ou en arrière-salle. Plus le conduit "
+            "est long, plus les trappes de visite comptent : sans elles, la moitié du circuit reste inaccessible.",
+        "rythme":
+            "Deux passages par an, parfois trois sur les établissements à forte amplitude. Ramonage annuel obligatoire.",
+        "contrainte":
+            "La fermeture est courte, parfois nulle. Nous intervenons de nuit, et nous découpons si nécessaire le chantier en deux "
+            "nuits pour que le service ne soit jamais compromis.",
+        "faq": ("Peut-on nettoyer en deux fois pour ne pas fermer ?",
+                "Oui, c'est fréquent en brasserie. On traite la hotte et les filtres une nuit, le conduit et le ventilateur la "
+                "suivante. Le service n'est jamais interrompu, et le surcoût est nul : c'est le même temps de travail, réparti."),
+    },
+    {
+        "slug": "friterie-snack",
+        "nom": "friterie et snack",
+        "nom_long": "friterie, snack et restauration rapide",
+        "le": "une friterie",
+        "dans": "en friterie",
+        "depot": "Huile de friture vaporisée",
+        "probleme":
+            "Une friteuse en service continu vaporise de l'huile en permanence. Le dépôt est liquide à chaud, et se fige en film "
+            "collant en refroidissant : il coule le long des parois et s'accumule au point bas du conduit, où il forme une réserve "
+            "qui s'enflamme particulièrement bien.",
+        "detail":
+            "Le point bas du conduit et le bac à graisse sont les deux zones à vérifier en priorité. Un bac plein qui déborde "
+            "renvoie la graisse dans la gaine, et annule le bénéfice du dernier nettoyage.",
+        "rythme":
+            "Deux à trois passages par an. Le bac à graisse, lui, se vide beaucoup plus souvent — c'est une opération d'exploitation, "
+            "pas d'entretien annuel.",
+        "contrainte":
+            "Amplitude large et fermeture tardive : intervention de nuit ou le jour de repos hebdomadaire.",
+        "faq": ("À quoi sert exactement le bac à graisse ?",
+                "À recueillir ce qui se condense dans la hotte avant que cela ne parte dans le conduit. Quand il est plein, il ne "
+                "recueille plus rien : la graisse poursuit sa route et se dépose dans la gaine. Un bac négligé coûte toujours plus "
+                "cher en nettoyage de conduit qu'il n'aurait coûté en vidanges."),
+    },
+    {
+        "slug": "boucherie-charcuterie",
+        "nom": "boucherie-charcuterie",
+        "nom_long": "boucherie, charcuterie et rôtissoire",
+        "le": "une boucherie",
+        "dans": "en boucherie",
+        "depot": "Graisse de rôtissage",
+        "probleme":
+            "La rôtissoire produit une graisse animale très fluide à chaud qui se dépose en nappes. Elle se charge des jus de "
+            "cuisson et devient rapidement odorante : l'odeur de rance au-dessus d'un rayon est presque toujours le signe d'un "
+            "circuit d'extraction saturé, pas d'un produit en vitrine.",
+        "detail":
+            "La proximité du rayon vente impose une contrainte supplémentaire : aucun produit ne doit se retrouver à proximité des "
+            "denrées. Le bâchage et le rinçage sont ici aussi importants que le dégraissage lui-même.",
+        "rythme":
+            "Deux passages par an si la rôtissoire tourne en continu, un seul sinon, le ramonage annuel restant obligatoire.",
+        "contrainte":
+            "Intervention après fermeture, avec protection complète du rayon et des plans de découpe.",
+        "faq": ("L'odeur de rance peut-elle venir de la hotte ?",
+                "Oui, et c'est le cas le plus fréquent. La graisse déposée dans le circuit s'oxyde avec le temps et dégage une "
+                "odeur caractéristique que la ventilation redistribue dans le magasin. Nettoyer le circuit règle le problème que "
+                "ni les désodorisants ni un nettoyage de surface ne traitent."),
+    },
+    {
+        "slug": "traiteur",
+        "nom": "traiteur",
+        "nom_long": "traiteur et laboratoire de production",
+        "le": "un traiteur",
+        "dans": "en laboratoire",
+        "depot": "Production concentrée",
+        "probleme":
+            "Un laboratoire de traiteur cuisine par séries : des journées très chargées, des journées creuses. L'encrassement se "
+            "fait par à-coups, et une fréquence calée sur un calendrier fixe tombe souvent à côté. Le bon repère est le volume "
+            "produit, pas le nombre de semaines écoulées.",
+        "detail":
+            "Les laboratoires ont souvent plusieurs postes de cuisson sous une même extraction. Le circuit reçoit alors la somme "
+            "des dépôts, et vieillit plus vite que ce que chaque poste laisserait supposer pris isolément.",
+        "rythme":
+            "Deux passages par an sur une production régulière, avec un passage supplémentaire après une grosse saison.",
+        "contrainte":
+            "Pas de service en salle, donc une liberté d'horaires rare dans ce métier : nous intervenons en journée creuse, ce qui "
+            "simplifie tout.",
+        "faq": ("Comment savoir si la fréquence est la bonne ?",
+                "En regardant l'épaisseur relevée au passage précédent. Nous photographions les mêmes points à chaque "
+                "intervention : si le dépôt revient plus vite que prévu, on rapproche ; s'il est léger, on espace. C'est une "
+                "donnée mesurée, pas une estimation commerciale."),
+    },
+    {
+        "slug": "restauration-collective",
+        "nom": "restauration collective",
+        "nom_long": "cantine et restauration collective",
+        "le": "une cantine",
+        "dans": "en restauration collective",
+        "depot": "Gros volumes, créneaux courts",
+        "probleme":
+            "Une cuisine de collectivité produit beaucoup en très peu de temps, souvent sur des équipements puissants : marmites, "
+            "sauteuses basculantes, fours mixtes. L'extraction est dimensionnée en conséquence, et le circuit est long. C'est le "
+            "cas où l'accessibilité des trappes de visite détermine la qualité réelle du nettoyage.",
+        "detail":
+            "Les établissements scolaires et les structures d'accueil ont un avantage : les vacances offrent des fenêtres "
+            "d'intervention longues, pendant lesquelles un circuit entier se traite d'un seul tenant.",
+        "rythme":
+            "Un à deux passages par an selon les volumes, calés sur les périodes de fermeture. Ramonage annuel obligatoire.",
+        "contrainte":
+            "Intervention pendant les vacances ou les jours de fermeture. Le planning se cale plusieurs semaines à l'avance, et "
+            "nous le tenons.",
+        "faq": ("Peut-on intervenir pendant les vacances scolaires ?",
+                "C'est même le meilleur moment : la cuisine est vide, le circuit se traite d'un bout à l'autre sans contrainte "
+                "d'horaire, et la remise en service se fait tranquillement avant la rentrée. Ces créneaux se réservent tôt."),
+    },
+    {
+        "slug": "hotel-restaurant",
+        "nom": "hôtel-restaurant",
+        "nom_long": "hôtel avec restaurant",
+        "le": "un hôtel-restaurant",
+        "dans": "en hôtellerie",
+        "depot": "Service étalé, clients sur place",
+        "probleme":
+            "La difficulté n'est pas technique mais logistique : des clients dorment au-dessus de la cuisine. Le bruit du nettoyage "
+            "haute pression et les odeurs de produit sont incompatibles avec des chambres occupées, et aucune fenêtre n'est "
+            "vraiment libre.",
+        "detail":
+            "La solution tient au séquençage : les opérations bruyantes en fin de soirée, le travail silencieux de nuit, le "
+            "remontage au petit matin avant le service du petit-déjeuner.",
+        "rythme":
+            "Un à deux passages par an selon l'activité de la table, le ramonage annuel restant le socle.",
+        "contrainte":
+            "Chantier découpé pour tenir compte des chambres occupées, et planning validé avec la réception avant intervention.",
+        "faq": ("Le nettoyage dérange-t-il les chambres ?",
+                "Pas si l'on découpe correctement. Nous plaçons les opérations bruyantes avant la nuit, et nous gardons pour les "
+                "heures creuses ce qui se fait sans bruit. C'est une question d'organisation, et elle se règle au moment du devis."),
+    },
+    {
+        "slug": "creperie",
+        "nom": "crêperie",
+        "nom_long": "crêperie et billig",
+        "le": "une crêperie",
+        "dans": "en crêperie",
+        "depot": "Beurre vaporisé",
+        "probleme":
+            "Le billig travaille à température constante et vaporise du beurre en continu. Le dépôt est fin mais régulier, et il "
+            "s'accompagne de particules de pâte brûlée qui s'y collent. Le mélange devient brun et dur en quelques mois.",
+        "detail":
+            "Les crêperies ont souvent plusieurs billigs alignés sous une même hotte courte, ce qui concentre tout le dépôt sur un "
+            "faible linéaire. La hotte sature avant le conduit, et un nettoyage de hotte seul peut suffire plus longtemps "
+            "qu'ailleurs — mais jamais au-delà du ramonage annuel du conduit.",
+        "rythme":
+            "Un à deux passages par an, avec le ramonage annuel des conduits comme obligation.",
+        "contrainte":
+            "Fermeture hebdomadaire généralement respectée : c'est le créneau naturel.",
+        "faq": ("Le beurre encrasse-t-il moins que l'huile ?",
+                "Il encrasse différemment. Le beurre laisse un dépôt plus fin mais qui brunit et durcit en cuisant sur les parois "
+                "chaudes. Après quelques mois, il demande autant de temps de pose qu'une graisse de friture — simplement, il se "
+                "voit moins venir."),
+    },
+    {
+        "slug": "food-truck",
+        "nom": "food truck",
+        "nom_long": "food truck et cuisine mobile",
+        "le": "un food truck",
+        "dans": "en cuisine mobile",
+        "depot": "Extraction compacte et saturée",
+        "probleme":
+            "Une cuisine mobile concentre une puissance de cuisson réelle dans un volume minuscule, avec une extraction courte et "
+            "sous-dimensionnée par construction. Le circuit sature vite, et le moindre dépôt ampute un débit déjà juste.",
+        "detail":
+            "L'avantage est que tout est accessible : pas de gaine encastrée, pas de trappe à chercher. Une intervention complète "
+            "prend beaucoup moins de temps que sur une cuisine fixe, et coûte donc moins cher.",
+        "rythme":
+            "Deux à trois passages par an selon le nombre de services, le circuit étant court et donc vite saturé.",
+        "contrainte":
+            "Intervention sur votre lieu de stationnement, en autonomie complète d'eau et d'électricité : nous n'avons besoin "
+            "d'aucun raccordement sur place.",
+        "faq": ("Faut-il amener le camion quelque part ?",
+                "Non. Nous venons là où il stationne, avec notre eau et notre électricité. C'est précisément le mode de travail "
+                "que nous pratiquons sur toutes nos autres prestations."),
+    },
+    {
+        "slug": "dark-kitchen",
+        "nom": "dark kitchen",
+        "nom_long": "dark kitchen et cuisine de livraison",
+        "le": "une dark kitchen",
+        "dans": "en cuisine de livraison",
+        "depot": "Plusieurs cuisines, un seul conduit",
+        "probleme":
+            "Une dark kitchen fait tourner plusieurs enseignes, parfois plusieurs modes de cuisson, sur un circuit d'extraction "
+            "souvent mutualisé. Le conduit reçoit la somme de tous les dépôts, et personne ne se sent responsable de son entretien "
+            "— chaque exploitant pensant que c'est l'affaire du voisin ou du bailleur.",
+        "detail":
+            "La première question à régler n'est pas technique mais contractuelle : qui entretient le circuit commun. Tant qu'elle "
+            "n'est pas tranchée, le conduit n'est nettoyé par personne, et c'est l'un des cas les plus dégradés que l'on rencontre.",
+        "rythme":
+            "Deux à trois passages par an sur un circuit mutualisé, avec un relevé partagé entre les exploitants.",
+        "contrainte":
+            "Activité quasi continue, pics le soir et le week-end : intervention de nuit en semaine, coordonnée entre les enseignes.",
+        "faq": ("Qui doit payer le nettoyage d'un conduit partagé ?",
+                "Cela dépend du bail, et c'est à vérifier avant tout. En pratique, le plus simple est une intervention unique "
+                "refacturée au prorata entre exploitants : le circuit est traité d'un bout à l'autre, ce qui est la seule façon "
+                "efficace de le faire, et chacun paie sa part."),
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# VITRERIE PAR SECTEUR D'ACTIVITÉ
+# ---------------------------------------------------------------------------
+# Même principe que SECTEURS_HOTTE : ce qui distingue ces pages, c'est le
+# problème technique propre au métier, pas une variation de vocabulaire. Une
+# vitrine de boulangerie et une vitrine de pharmacie ne se salissent pas de la
+# même façon, ne se nettoient pas au même rythme et ne se comptent pas pareil.
+#
+# Deux faits techniques reviennent partout et sont vrais partout :
+# l'eau du réseau francilien est calcaire, et c'est le calcaire — non la
+# saleté — qui laisse la trace blanche au séchage ; et une vitrine de rue
+# reçoit en plus les particules de freinage et les hydrocarbures du trafic,
+# qui sont grasses et ne partent pas à l'eau claire.
+SECTEURS_VITRES = [
+    {
+        "slug": "boulangerie",
+        "nom": "boulangerie",
+        "nom_long": "boulangerie-pâtisserie",
+        "le": "une boulangerie",
+        "dans": "en boulangerie",
+        "enjeu": "La vitrine vend avant le pain",
+        "probleme":
+            "Une vitrine de boulangerie se salit des deux côtés, et le côté intérieur est le plus "
+            "difficile. Les buées de cuisson déposent un film de gras sucré sur le verre : il est "
+            "invisible de face, mais il diffuse la lumière et éteint la couleur des produits en "
+            "vitrine. C'est la raison pour laquelle une boulangerie propre peut paraître terne.",
+        "detail":
+            "Ce film gras ne part pas à la raclette seule : il demande un dégraissage préalable, puis "
+            "un rinçage à l'eau déminéralisée. À l'extérieur, les traces de doigts à hauteur de "
+            "poignée et les projections au ras du trottoir reviennent en deux jours — ce sont les "
+            "deux zones à reprendre entre deux passages complets.",
+        "rythme_court": "Hebdomadaire",
+        "rythme":
+            "Un passage hebdomadaire ou bimensuel sur la vitrine, mensuel sur l'ensemble des "
+            "surfaces vitrées, y compris la façade haute et l'enseigne.",
+        "contrainte":
+            "Nous intervenons avant l'ouverture, entre 6 h et 7 h 30 : le verre est encore froid, le "
+            "séchage est régulier, et aucun client ne traverse le chantier.",
+        "faq": ("Pourquoi ma vitrine reste-t-elle voilée après nettoyage ?",
+                "Parce que le film gras intérieur n'a pas été dégraissé avant d'être lavé. Un produit "
+                "à vitres classique l'étale au lieu de le dissoudre : le verre paraît propre de près "
+                "et reste voilé de loin. Il faut un dégraissant alcalin, puis un rinçage à l'eau "
+                "déminéralisée qui sèche sans dépôt."),
+    },
+    {
+        "slug": "restaurant",
+        "nom": "restaurant",
+        "nom_long": "restaurant et brasserie",
+        "le": "un restaurant",
+        "dans": "en restaurant",
+        "enjeu": "Ce que le passant voit avant d'entrer",
+        "probleme":
+            "Une devanture de restaurant cumule la condensation intérieure des heures de service, les "
+            "traces de mains sur les portes vitrées et, en terrasse, les projections de boissons au "
+            "bas des vitrages. Les baies de grande hauteur ajoutent un problème de séchage : lavées "
+            "en plein soleil, elles sèchent plus vite que la raclette ne descend.",
+        "detail":
+            "Les menuiseries aluminium noires, très répandues sur les devantures récentes, sont la "
+            "difficulté réelle : elles gardent la trace d'eau calcaire comme aucune autre finition. "
+            "Les reprendre à sec après lavage fait plus pour l'aspect de la façade que le verre "
+            "lui-même.",
+        "rythme_court": "Hebdo. à bimensuel",
+        "rythme":
+            "Hebdomadaire sur une devanture de rue passante, bimensuel dans une rue calme. "
+            "Les vitrages intérieurs et les séparations de salle, une fois par mois.",
+        "contrainte":
+            "Intervention le matin avant la mise en place, ou l'après-midi entre les deux services. "
+            "Nous apportons l'eau et l'électricité : aucun point d'eau ne vous est demandé en pleine "
+            "préparation.",
+        "faq": ("Pouvez-vous laver la devanture sans gêner le service ?",
+                "Oui. Le créneau le plus simple reste le matin avant la mise en place, ou le milieu "
+                "d'après-midi. L'intervention dure de vingt minutes à une heure selon la surface, et "
+                "nous travaillons de l'extérieur pour tout ce qui peut l'être."),
+    },
+    {
+        "slug": "pharmacie",
+        "nom": "pharmacie",
+        "nom_long": "pharmacie et parapharmacie",
+        "le": "une pharmacie",
+        "dans": "en pharmacie",
+        "enjeu": "Une vitrine qui doit inspirer le soin",
+        "probleme":
+            "Une pharmacie a souvent la plus grande surface vitrée du quartier et le plus de "
+            "mobilier de vitrine : présentoirs, croix lumineuse, film publicitaire adhésif. Le verre "
+            "n'est donc pas lavable d'un seul geste, et les adhésifs imposent une limite nette — un "
+            "racloir les entame, un produit trop alcalin en décolle les bords.",
+        "detail":
+            "La croix et l'enseigne lumineuse sont presque toujours oubliées. Elles s'encrassent de "
+            "poussière grasse et perdent en luminosité de façon progressive, donc imperceptible. "
+            "Nous les reprenons dans le même passage, à la perche et à l'eau déminéralisée.",
+        "rythme_court": "Bimensuel",
+        "rythme":
+            "Bimensuel sur la vitrine principale, mensuel sur l'ensemble façade, enseigne et "
+            "vitrages intérieurs du comptoir.",
+        "contrainte":
+            "L'officine reçoit en continu : nous intervenons avant 9 h, ou pendant la pause de "
+            "milieu de journée quand elle existe.",
+        "faq": ("Le lavage abîme-t-il les films adhésifs et les vitrophanies ?",
+                "Pas si l'on s'arrête à ce qu'ils supportent. Nous les lavons à la mouillette et au "
+                "produit neutre, sans racloir et sans jet dirigé sur les bords : c'est le bord "
+                "soulevé qui finit par décoller tout l'adhésif. Un film déjà entamé avant notre "
+                "passage, nous vous le signalons avant de commencer."),
+    },
+    {
+        "slug": "agence-immobiliere",
+        "nom": "agence immobilière",
+        "nom_long": "agence immobilière",
+        "le": "une agence immobilière",
+        "dans": "en agence immobilière",
+        "enjeu": "La vitrine est le premier argument de vente",
+        "probleme":
+            "Une agence immobilière vit de sa vitrine : les mandats y sont affichés, et c'est le seul "
+            "support que le passant lit en s'arrêtant. Les écrans rétroéclairés et les porte-affiches "
+            "posés derrière le verre rendent toute trace lisible à contre-jour, bien plus que sur une "
+            "vitrine ordinaire.",
+        "detail":
+            "La difficulté est le reflet. Un verre lavé à l'eau du robinet garde un voile calcaire "
+            "qui ne se voit que lorsqu'une source lumineuse est placée derrière — c'est-à-dire "
+            "exactement la configuration d'une vitrine d'agence. L'eau déminéralisée n'est pas un "
+            "argument commercial ici, c'est la seule méthode qui tienne.",
+        "rythme_court": "Hebdomadaire",
+        "rythme":
+            "Hebdomadaire en rue commerçante, bimensuel ailleurs. Les bureaux et les cloisons vitrées "
+            "intérieures, une fois par mois.",
+        "contrainte":
+            "Intervention avant l'ouverture ou le samedi en fin de journée. Nous travaillons pour "
+            "plusieurs agences parisiennes sur ce rythme, avec un planning fixe annoncé à l'avance.",
+        "faq": ("Intervenez-vous sur plusieurs agences d'un même réseau ?",
+                "Oui, et c'est le cas le plus courant : un planning unique, un interlocuteur, une "
+                "facture par agence ou une facture groupée selon ce qui vous arrange. Les horaires "
+                "sont fixés une fois pour toutes, ce qui évite d'avoir à reprendre contact chaque mois."),
+    },
+    {
+        "slug": "commerce-pret-a-porter",
+        "nom": "boutique de prêt-à-porter",
+        "nom_long": "boutique de prêt-à-porter",
+        "le": "une boutique de prêt-à-porter",
+        "dans": "en boutique de prêt-à-porter",
+        "enjeu": "Du verre qui doit disparaître",
+        "probleme":
+            "Dans le prêt-à-porter, la vitrine réussie est celle qu'on ne voit pas : le regard doit "
+            "aller au produit, pas au verre. Les grandes surfaces vitrées sans menuiserie "
+            "intermédiaire sont les plus exigeantes, parce que le moindre défaut de séchage traverse "
+            "toute la hauteur et devient une rayure lumineuse sous les spots.",
+        "detail":
+            "Les traces de mains d'enfants à mi-hauteur et les marques de sacs au bas du vitrage "
+            "reviennent chaque jour en rue passante. Un nettoyage complet hebdomadaire plus une "
+            "reprise rapide de la zone basse tient mieux qu'un seul grand passage mensuel.",
+        "rythme_court": "Hebdomadaire",
+        "rythme":
+            "Hebdomadaire sur la vitrine, mensuel sur les miroirs de cabine, les cloisons et la "
+            "façade haute.",
+        "contrainte":
+            "Avant l'ouverture, en général entre 8 h et 10 h. En centre commercial, nous nous "
+            "alignons sur les horaires de livraison imposés par la galerie.",
+        "faq": ("Nettoyez-vous aussi les miroirs de cabine ?",
+                "Oui, ils font partie du même passage et c'est souvent ce qui se remarque le plus : "
+                "un miroir de cabine marqué par les doigts et les aérosols de parfum donne une "
+                "impression de négligence au moment précis où le client décide d'acheter."),
+    },
+    {
+        "slug": "opticien",
+        "nom": "opticien",
+        "nom_long": "magasin d'optique",
+        "le": "un magasin d'optique",
+        "dans": "chez un opticien",
+        "enjeu": "La cohérence du métier",
+        "probleme":
+            "Un opticien vend de la clarté : une vitrine voilée le contredit à l'entrée. Le magasin "
+            "cumule en outre plus de verre au mètre carré que presque tout autre commerce — vitrine, "
+            "présentoirs vitrés, miroirs d'essayage, vitrines murales fermées.",
+        "detail":
+            "Les présentoirs intérieurs demandent plus de temps que la vitrine : ils sont manipulés "
+            "en permanence, et les montures y laissent des marques de contact. Ils se nettoient au "
+            "chiffon microfibre et au produit neutre, sans aérosol près des verres traités.",
+        "rythme_court": "Bimensuel",
+        "rythme":
+            "Bimensuel sur la vitrine, hebdomadaire sur les présentoirs et les miroirs d'essayage.",
+        "contrainte":
+            "Avant l'ouverture. Les présentoirs sont refermés comme nous les avons trouvés : nous ne "
+            "déplaçons pas les montures, nous nettoyons autour et dessous quand l'accès le permet.",
+        "faq": ("Le produit utilisé peut-il abîmer les verres des montures exposées ?",
+                "Nous ne pulvérisons jamais près des montures. Les présentoirs sont essuyés au "
+                "chiffon microfibre préalablement humidifié, à l'écart du mobilier : le produit ne "
+                "circule pas en aérosol dans le magasin. C'est une précaution simple et elle évite "
+                "tout risque sur les traitements antireflet."),
+    },
+    {
+        "slug": "hotel",
+        "nom": "hôtel",
+        "nom_long": "hôtel",
+        "le": "un hôtel",
+        "dans": "en hôtel",
+        "enjeu": "La première minute du séjour",
+        "probleme":
+            "Un hôtel se juge dans les dix premiers mètres : porte à tambour, sas d'entrée, vitrage "
+            "du lobby. Ce sont aussi les surfaces les plus touchées de l'établissement, et elles se "
+            "marquent en quelques heures. Les étages posent un autre problème : les fenêtres de "
+            "chambre ne peuvent être lavées qu'entre deux départs.",
+        "detail":
+            "Le sas d'entrée est le point qui décide de l'impression générale, et il demande deux "
+            "passages par semaine là où le reste s'accommode d'un passage mensuel. Pour les chambres, "
+            "nous travaillons par lots, sur la liste des chambres libres communiquée le matin même.",
+        "rythme_court": "2 × / semaine",
+        "rythme":
+            "Deux passages hebdomadaires sur le sas et le lobby, mensuel sur les vitrages communs, "
+            "par campagnes pour les chambres.",
+        "contrainte":
+            "Les horaires sont ceux de la faible fréquentation : tôt le matin pour le lobby, milieu "
+            "de journée pour les chambres, entre le départ et l'arrivée suivante.",
+        "faq": ("Pouvez-vous laver les fenêtres des chambres sans bloquer les réservations ?",
+                "Oui, en travaillant sur les chambres libérées le matin. Vous nous donnez la liste à "
+                "l'arrivée, nous suivons le rythme du ménage et nous passons avant la remise en "
+                "vente. Aucune chambre n'est immobilisée plus longtemps que pour son nettoyage habituel."),
+    },
+    {
+        "slug": "bureaux",
+        "nom": "bureaux",
+        "nom_long": "immeuble de bureaux",
+        "le": "un plateau de bureaux",
+        "dans": "en bureaux",
+        "enjeu": "La lumière du plateau",
+        "probleme":
+            "Sur un plateau de bureaux, le verre encrassé coûte de la lumière naturelle avant de "
+            "coûter de l'allure : un vitrage sale réduit sensiblement l'apport lumineux, et les "
+            "éclairages compensent. Les cloisons vitrées intérieures, elles, portent les traces de "
+            "mains à hauteur de poignée sur toute leur longueur.",
+        "detail":
+            "La question réelle est l'accès. Jusqu'à trois niveaux, la perche télescopique à eau "
+            "déminéralisée suffit depuis le sol et c'est la solution la plus économique. Au-delà, "
+            "ou sur une façade sans recul, il faut un moyen d'accès que nous ne mettons pas en "
+            "œuvre : nous vous le disons avant le devis, pas après.",
+        "rythme_court": "Trimestriel",
+        "rythme":
+            "Trimestriel sur les façades accessibles depuis le sol, mensuel sur les cloisons "
+            "intérieures et les portes vitrées.",
+        "contrainte":
+            "Hors heures d'activité : tôt le matin, en soirée, ou le week-end. Les plateaux occupés "
+            "ne sont jamais traités en pleine journée de travail.",
+        "faq": ("Jusqu'à quelle hauteur pouvez-vous intervenir ?",
+                "Depuis le sol, à la perche, nous atteignons sans difficulté les trois premiers "
+                "niveaux. Au-delà, l'intervention relève du travail en hauteur avec nacelle ou "
+                "cordiste, que nous ne réalisons pas : nous le disons franchement plutôt que de "
+                "prendre le chantier et de vous laisser avec un étage non fait."),
+    },
+    {
+        "slug": "salle-de-sport",
+        "nom": "salle de sport",
+        "nom_long": "salle de sport et studio",
+        "le": "une salle de sport",
+        "dans": "en salle de sport",
+        "enjeu": "Des miroirs qui ne pardonnent rien",
+        "probleme":
+            "Une salle de sport est faite de miroirs sur toute la longueur des murs, et c'est la "
+            "surface la plus exigeante qui existe : la transpiration en aérosol s'y dépose en "
+            "continu, et un miroir mal séché se voit depuis l'autre bout de la salle, ce qui n'est "
+            "pas le cas d'une vitre.",
+        "detail":
+            "Le point à surveiller n'est pas le miroir mais son bas : l'eau qui coule stagne au joint "
+            "inférieur et attaque le tain par l'arrière. C'est irréversible et cela se voit comme une "
+            "frange noire sur le bord. Nous travaillons donc avec peu d'eau et un séchage immédiat du "
+            "bas vers le haut.",
+        "rythme_court": "Hebdomadaire",
+        "rythme":
+            "Hebdomadaire sur les miroirs de plateau, bimensuel sur la façade vitrée et les "
+            "cloisons de studio.",
+        "contrainte":
+            "Les salles ouvrent tôt et ferment tard : nous intervenons en milieu de matinée ou en "
+            "début d'après-midi, aux heures creuses, zone par zone sans fermer la salle.",
+        "faq": ("Comment évitez-vous d'abîmer le tain des miroirs ?",
+                "En limitant l'eau et en séchant le bord bas en premier. Le tain ne s'abîme pas par "
+                "la face, il s'abîme par l'arrière, là où l'eau s'infiltre au joint inférieur. C'est "
+                "la raison pour laquelle un miroir de salle lavé au jet se piquette de noir en "
+                "quelques mois sur toute sa base."),
+    },
+    {
+        "slug": "cabinet-medical",
+        "nom": "cabinet médical",
+        "nom_long": "cabinet médical et paramédical",
+        "le": "un cabinet médical",
+        "dans": "en cabinet médical",
+        "enjeu": "Ce que la salle d'attente dit du soin",
+        "probleme":
+            "Dans un cabinet, le verre n'est pas commercial : il est lu comme un indice de rigueur. "
+            "Les portes vitrées de salle d'attente, les cloisons de secrétariat et les fenêtres "
+            "donnant sur rue sont les trois surfaces que tout patient regarde en attendant, souvent "
+            "longtemps et de très près.",
+        "detail":
+            "La contrainte propre au secteur est la discrétion : nous ne nettoyons que les parties "
+            "communes et les surfaces désignées, jamais un bureau pendant une consultation, et aucun "
+            "document n'est déplacé. Les produits sont sans parfum marqué, ce qui compte en salle "
+            "d'attente fermée.",
+        "rythme_court": "Mensuel",
+        "rythme":
+            "Mensuel sur l'ensemble des vitrages, avec une reprise des portes et des cloisons de "
+            "secrétariat toutes les deux semaines.",
+        "contrainte":
+            "En dehors des plages de consultation : tôt le matin, en fin de journée, ou le jour de "
+            "fermeture hebdomadaire du cabinet.",
+        "faq": ("Intervenez-vous sans être présents pendant les consultations ?",
+                "Oui, c'est la règle. Nous venons avant l'ouverture ou après la dernière "
+                "consultation. Si un créneau de journée est le seul possible, nous nous limitons aux "
+                "parties communes et nous nous arrêtons dès qu'un patient entre."),
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# MÉNAGE RÉGULIER PAR TYPE DE SITE
+# ---------------------------------------------------------------------------
+# Le ménage régulier n'est pas une prestation unique répétée : chaque type de
+# site a un point de contrôle qui décide du résultat, et c'est lui qu'il faut
+# nommer. Une copropriété se juge sur sa cage d'escalier, un cabinet médical
+# sur ses points de contact, un commerce sur son sol au ras des portes.
+SECTEURS_MENAGE = [
+    {
+        "slug": "bureaux",
+        "nom": "bureaux",
+        "nom_long": "plateau de bureaux",
+        "le": "un plateau de bureaux",
+        "dans": "en bureaux",
+        "enjeu": "Les sanitaires décident de la réputation du prestataire",
+        "probleme":
+            "Sur un plateau de bureaux, l'entretien n'est jamais jugé sur les bureaux eux-mêmes mais "
+            "sur deux endroits : les sanitaires et la tisanerie. Un plateau impeccable avec des "
+            "sanitaires moyens est perçu comme mal entretenu, et l'inverse est vrai aussi.",
+        "perimetre": ("Sanitaires : cuvettes, robinetterie, miroirs, réapprovisionnement",
+                      "Tisanerie et point café : plans de travail, évier, micro-ondes, sol",
+                      "Bureaux et postes de travail : poussière des surfaces dégagées, corbeilles",
+                      "Circulations : sols, poignées, interrupteurs, portes vitrées",
+                      "Salles de réunion : table, chaises, tableau, cloisons vitrées"),
+        "rythme":
+            "Trois à cinq passages par semaine selon l'effectif, avec les sanitaires et la tisanerie "
+            "à chaque passage et les surfaces vitrées une fois par mois.",
+        "contrainte":
+            "Avant 8 h 30 ou après 18 h 30. Nous ne déplaçons aucun document et nous ne touchons "
+            "pas aux bureaux encombrés : la poussière est faite sur les surfaces dégagées, ce qui "
+            "est la seule façon honnête de l'annoncer.",
+        "faq": ("Faut-il nous fournir les produits et le matériel ?",
+                "Non, nous venons avec tout. Les consommables sanitaires — papier, savon, sacs — "
+                "peuvent être inclus dans la prestation ou restés à votre charge selon ce que vous "
+                "préférez ; dans les deux cas, c'est écrit sur le devis."),
+    },
+    {
+        "slug": "cabinet-medical",
+        "nom": "cabinet médical",
+        "nom_long": "cabinet médical et paramédical",
+        "le": "un cabinet médical",
+        "dans": "en cabinet médical",
+        "enjeu": "Les points de contact, pas la surface",
+        "probleme":
+            "Dans un cabinet, ce qui compte n'est pas le nombre de mètres carrés traités mais le "
+            "nombre de points de contact repris : poignées, accoudoirs de salle d'attente, "
+            "interrupteurs, comptoir d'accueil, boutons d'ascenseur. Ce sont eux que tout le monde "
+            "touche et que la plupart des prestations oublient.",
+        "perimetre": ("Salle d'attente : sièges, accoudoirs, tables, sol",
+                      "Points de contact : poignées, interrupteurs, comptoir, rampes",
+                      "Sanitaires : à chaque passage, sans exception",
+                      "Sols : lavage avec un produit sans parfum marqué",
+                      "Vitrages et portes vitrées : reprise à chaque passage"),
+        "rythme":
+            "Un passage quotidien ou tous les deux jours, hors plages de consultation.",
+        "contrainte":
+            "Nous n'entrons jamais dans une salle de soins occupée et nous ne manipulons aucun "
+            "dispositif médical. La gestion des déchets de soins reste la vôtre : ce n'est pas notre "
+            "métier et nous ne nous en chargeons pas.",
+        "faq": ("Prenez-vous en charge la désinfection réglementaire des salles de soins ?",
+                "Non. Nous assurons l'entretien courant — sols, points de contact, sanitaires, "
+                "salle d'attente, vitrages. Les protocoles de désinfection propres aux salles de "
+                "soins et la filière des déchets d'activités de soins relèvent du praticien et de "
+                "prestataires spécialisés. Nous préférons le dire d'emblée."),
+    },
+    {
+        "slug": "copropriete",
+        "nom": "copropriété",
+        "nom_long": "copropriété et cage d'escalier",
+        "le": "une copropriété",
+        "dans": "en copropriété",
+        "enjeu": "La cage d'escalier est le seul critère des résidents",
+        "probleme":
+            "Une copropriété se juge sur trois choses : le hall, la cage d'escalier et le local "
+            "poubelles. Les deux premières décident de l'impression — et de la valeur perçue des "
+            "lots ; la troisième décide des réclamations au conseil syndical. Le reste passe "
+            "largement inaperçu.",
+        "perimetre": ("Hall d'entrée : sol, boîtes aux lettres, porte vitrée, miroir",
+                      "Escaliers et paliers : marches, nez de marche, rampe, plinthes",
+                      "Local poubelles : sol, bacs, désodorisation",
+                      "Ascenseur : sol, parois, miroir, boutons d'appel",
+                      "Sous-sol et parkings : balayage des circulations"),
+        "rythme":
+            "Un à trois passages par semaine selon le nombre de lots, avec la sortie et la rentrée "
+            "des bacs calées sur le calendrier de collecte de la commune.",
+        "contrainte":
+            "Les horaires sont fixes et connus des résidents : c'est ce qui fait la différence entre "
+            "un prestataire jugé fiable et un prestataire soupçonné de ne pas être passé. Un relevé "
+            "de passage est laissé dans le hall.",
+        "faq": ("Gérez-vous la sortie et la rentrée des conteneurs ?",
+                "Oui, c'est presque toujours inclus. Nous suivons le calendrier de collecte de la "
+                "commune, qui n'est pas le même d'une ville à l'autre en Île-de-France, et nous "
+                "rentrons les bacs le jour même — c'est le point sur lequel les copropriétés "
+                "changent le plus souvent de prestataire."),
+    },
+    {
+        "slug": "commerce",
+        "nom": "commerce",
+        "nom_long": "commerce de détail",
+        "le": "un commerce",
+        "dans": "en commerce",
+        "enjeu": "Le mètre carré d'entrée",
+        "probleme":
+            "Dans un commerce, la saleté entre par la porte et ne va pas loin : les trois premiers "
+            "mètres reçoivent l'essentiel de ce que les chaussures apportent de la rue. C'est aussi "
+            "la zone que le client voit en premier, et celle qui demande le plus de passages.",
+        "perimetre": ("Zone d'entrée : sol, tapis de propreté, seuil, porte vitrée",
+                      "Surface de vente : sol, poussière des linéaires et des présentoirs",
+                      "Cabines et miroirs quand il y en a",
+                      "Réserve et arrière-boutique : sol, évacuation des cartons",
+                      "Sanitaires du personnel"),
+        "rythme":
+            "Quotidien ou cinq fois par semaine en rue passante, trois fois ailleurs. La zone "
+            "d'entrée est reprise à chaque passage.",
+        "contrainte":
+            "Avant l'ouverture, ou après la fermeture pour les commerces qui ferment tard. En "
+            "centre commercial, nous nous alignons sur les plages d'accès livraison de la galerie.",
+        "faq": ("Intervenez-vous avant l'ouverture, même tôt ?",
+                "Oui. Le créneau le plus demandé se situe entre 6 h 30 et 9 h, et c'est celui sur "
+                "lequel nous construisons les tournées. Un commerce qui ouvre à 10 h peut être "
+                "traité à 8 h sans que personne de l'équipe n'ait à être présent, si vous nous "
+                "confiez un accès."),
+    },
+    {
+        "slug": "agence-immobiliere",
+        "nom": "agence immobilière",
+        "nom_long": "agence immobilière",
+        "le": "une agence immobilière",
+        "dans": "en agence immobilière",
+        "enjeu": "Recevoir des clients dans ses locaux",
+        "probleme":
+            "Une agence immobilière reçoit toute la journée des gens qui s'apprêtent à engager des "
+            "sommes importantes, assis dans ses bureaux. Le niveau d'entretien des locaux est lu "
+            "comme un indice de sérieux, et les surfaces qui le trahissent sont toujours les mêmes : "
+            "la vitrine, la table de réunion et les sièges visiteurs.",
+        "perimetre": ("Vitrine et porte vitrée : à chaque passage",
+                      "Espace d'accueil et sièges visiteurs",
+                      "Bureaux et table de réunion : surfaces dégagées",
+                      "Sols : aspiration et lavage selon le revêtement",
+                      "Point café et sanitaires"),
+        "rythme":
+            "Deux à trois passages par semaine, avec la vitrine reprise à chaque fois et un "
+            "nettoyage textile des sièges et de la moquette une à deux fois par an.",
+        "contrainte":
+            "Avant l'ouverture, ou le samedi en fin de journée pour les agences ouvertes en "
+            "semaine jusqu'à 19 h. Planning fixe, communiqué à l'avance.",
+        "faq": ("Pouvez-vous suivre plusieurs agences d'un même réseau ?",
+                "Oui, c'est l'essentiel de ce que nous faisons côté professionnels : un planning "
+                "commun, un interlocuteur unique, et une facturation par agence ou groupée selon "
+                "votre organisation comptable."),
+    },
+    {
+        "slug": "restaurant",
+        "nom": "restaurant",
+        "nom_long": "restaurant et chaîne de restauration",
+        "le": "un restaurant",
+        "dans": "en restaurant",
+        "enjeu": "Ce que le ménage courant ne couvre pas",
+        "probleme":
+            "En restauration, l'équipe assure déjà le nettoyage quotidien : la question n'est donc "
+            "pas de le refaire mais de traiter ce qu'un service ne permet pas de faire. Les sols en "
+            "profondeur, les joints de carrelage gras, les plinthes, les dessous d'équipements et "
+            "les surfaces en hauteur relèvent d'un passage dédié.",
+        "perimetre": ("Sols de cuisine en profondeur, joints de carrelage inclus",
+                      "Plinthes, bas de murs, dessous et arrières d'équipements mobiles",
+                      "Surfaces en hauteur : étagères, grilles de ventilation, luminaires",
+                      "Salle : banquettes et chaises en textile, vitrages, sols",
+                      "Sanitaires clients : reprise complète"),
+        "rythme":
+            "Un passage hebdomadaire ou bimensuel en complément du nettoyage quotidien de "
+            "l'équipe, plus une remise à niveau complète deux à quatre fois par an.",
+        "contrainte":
+            "La nuit ou le jour de fermeture. La cuisine doit être opérationnelle au service "
+            "suivant : c'est une contrainte que nous intégrons au planning, pas une réserve que "
+            "nous découvrons sur place.",
+        "faq": ("Faites-vous aussi le dégraissage de la hotte lors de ce passage ?",
+                "C'est une prestation distincte, que nous assurons également — hotte, filtres et "
+                "conduits d'extraction. Les deux se planifient souvent ensemble pour ne mobiliser "
+                "la cuisine qu'une fois, mais elles se chiffrent séparément parce qu'elles "
+                "n'emploient ni le même matériel ni le même temps."),
+    },
+    {
+        "slug": "coworking",
+        "nom": "espace de coworking",
+        "nom_long": "espace de coworking",
+        "le": "un espace de coworking",
+        "dans": "en coworking",
+        "enjeu": "Des surfaces partagées par cent personnes",
+        "probleme":
+            "Un espace de coworking a la fréquentation d'un bureau de cent personnes et le mobilier "
+            "d'un café : tables partagées, canapés, cuisine commune. Rien n'est attribué, donc "
+            "personne ne se sent responsable d'une surface, et l'usure visible arrive beaucoup plus "
+            "vite qu'en bureau classique.",
+        "perimetre": ("Cuisine commune : plans, évier, lave-vaisselle, micro-ondes, frigo",
+                      "Tables partagées et postes en flex : désinfection des surfaces",
+                      "Salles de réunion et cabines téléphoniques",
+                      "Canapés et assises textiles : aspiration, détachage ponctuel",
+                      "Sanitaires et circulations : plusieurs reprises par jour"),
+        "rythme":
+            "Un passage quotidien, souvent doublé d'une reprise en milieu de journée sur la cuisine "
+            "et les sanitaires. Nettoyage textile des assises deux fois par an.",
+        "contrainte":
+            "Le site est occupé presque sans interruption : nous travaillons tôt le matin pour le "
+            "gros, et la reprise de milieu de journée se fait zone par zone, sans fermer d'espace.",
+        "faq": ("Le nettoyage des canapés et des assises est-il compris ?",
+                "L'aspiration et le détachage ponctuel, oui. Le nettoyage en profondeur par "
+                "injection-extraction est une intervention séparée, à programmer une à deux fois "
+                "par an : c'est elle qui rattrape le grisaillement des assises, qu'un passage "
+                "quotidien ne traite pas."),
+    },
+    {
+        "slug": "salle-de-sport",
+        "nom": "salle de sport",
+        "nom_long": "salle de sport et studio",
+        "le": "une salle de sport",
+        "dans": "en salle de sport",
+        "enjeu": "Vestiaires et contact machine",
+        "probleme":
+            "Une salle de sport a deux zones qui décident de tout : les vestiaires, où l'humidité "
+            "permanente favorise les odeurs et les moisissures de joints, et les poignées de "
+            "machines, que des dizaines de mains touchent chaque heure. Le reste du plateau est "
+            "secondaire en comparaison.",
+        "perimetre": ("Vestiaires et douches : sols, joints, bancs, casiers",
+                      "Poignées et surfaces de contact des appareils",
+                      "Tapis de sol, sol de plateau, zone de poids libres",
+                      "Miroirs et vitrages",
+                      "Sanitaires et accueil"),
+        "rythme":
+            "Un passage quotidien, avec une reprise des vestiaires en fin de journée, et un "
+            "traitement des joints de douche une fois par mois.",
+        "contrainte":
+            "Les salles ouvrent tôt et ferment tard : l'intervention se place en heures creuses, "
+            "milieu de matinée ou début d'après-midi, zone par zone.",
+        "faq": ("Que faire des odeurs persistantes dans les vestiaires ?",
+                "Elles viennent presque toujours des joints de douche et des siphons, pas de l'air. "
+                "Un désodorisant les masque quelques heures. Le traitement des joints et le "
+                "détartrage des évacuations les font disparaître durablement : c'est plus long à "
+                "faire, et c'est la seule chose qui marche."),
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# COMMUNES — ANGLE PROFESSIONNEL (hottes et vitrerie)
+# ---------------------------------------------------------------------------
+# Une page par couple commune × prestation professionnelle. Ce qui change
+# réellement d'une commune à l'autre : le tissu commercial — un boulevard de
+# restaurants ne pose pas le même problème qu'une zone de bureaux —, l'accès
+# et le stationnement, et la distance depuis l'atelier, qui décide du délai.
+# Sans ces trois éléments, la page n'aurait aucune raison d'exister.
+VILLES_PRO = [
+    {
+        "slug": "saint-denis", "nom": "Saint-Denis", "cp": "93200", "dept": "93",
+        "lat": 48.9362, "lon": 2.3574,
+        "tissu":
+            "Saint-Denis concentre trois tissus commerciaux distincts : le centre ancien autour de "
+            "la basilique et de son marché, l'un des plus fréquentés d'Île-de-France ; les abords du "
+            "Stade de France, où la restauration rapide travaille par pics ; et la Plaine, devenue "
+            "en vingt ans un quartier de bureaux livrés en continu. Les trois appellent des "
+            "interventions à des heures opposées.",
+        "acces":
+            "Le centre ancien est en grande partie piéton, avec des plages de livraison limitées au "
+            "matin. Nous y arrivons avant 7 h, ce qui est aussi le moment où les commerces de bouche "
+            "sont ouverts et où personne ne traverse le chantier.",
+        "hotte":
+            "La restauration dionysienne est dense et très diverse : boulangeries du centre, "
+            "restaurants de cuisine du monde autour du marché, restauration rapide près du stade. "
+            "Les cuisines y sont souvent petites, avec un conduit court mais coudé, et c'est dans "
+            "ces coudes que la graisse s'accumule le plus vite. Beaucoup de locaux ont changé "
+            "plusieurs fois d'enseigne sans que le circuit d'extraction ait jamais été repris : nous "
+            "le constatons régulièrement à la première ouverture des trappes.",
+        "vitres":
+            "Deux chantiers très différents cohabitent. En centre-ville, des vitrines de commerce de "
+            "bouche exposées à un trafic piéton intense, à reprendre chaque semaine. Dans la Plaine, "
+            "des façades de bureaux récentes, en grande partie accessibles depuis le sol à la perche "
+            "— c'est là que l'eau déminéralisée fait la différence la plus visible, parce que les "
+            "menuiseries sombres de ces immeubles gardent la trace calcaire.",
+        "faq_hotte": ("Mon local a déjà changé d'enseigne : le conduit a-t-il été nettoyé ?",
+                      "C'est la question à poser avant la reprise, et presque personne ne la pose. "
+                      "Un conduit encrassé par l'activité précédente reste encrassé après les "
+                      "travaux : la peinture neuve ne change rien à ce qui est à l'intérieur. Nous "
+                      "ouvrons les trappes et nous vous montrons l'état avant de chiffrer."),
+        "faq_vitres": ("Intervenez-vous dans le centre piéton de Saint-Denis ?",
+                       "Oui, avant 7 h, dans la plage de livraison autorisée. C'est le créneau où "
+                       "le verre est froid, ce qui donne un séchage régulier, et où la rue est "
+                       "encore vide."),
+    },
+    {
+        "slug": "aubervilliers", "nom": "Aubervilliers", "cp": "93300", "dept": "93",
+        "lat": 48.9146, "lon": 2.3822,
+        "tissu":
+            "Aubervilliers vit du commerce de gros et de la logistique autant que du commerce de "
+            "détail. Les grossistes du quartier de la Haie-Coq, les entrepôts reconvertis du canal "
+            "et un tissu dense de restauration de quartier forment une clientèle professionnelle qui "
+            "travaille tôt et qui n'a pas de temps mort en journée.",
+        "acces":
+            "La circulation de poids lourds rend les abords difficiles en milieu de matinée. Nous "
+            "intervenons avant 7 h ou en fin de journée, et nous sommes à moins de dix kilomètres de "
+            "notre atelier : c'est l'une des communes où nous pouvons nous engager sur un créneau "
+            "serré.",
+        "hotte":
+            "Les cuisines albertivillariennes sont souvent installées dans des locaux anciens, avec "
+            "des conduits longs qui traversent plusieurs niveaux avant de ressortir en toiture. "
+            "C'est la configuration la plus exigeante : la longueur multiplie les points "
+            "d'accumulation, et un dégraissage limité à la hotte y laisse l'essentiel du dépôt en "
+            "place. Nous travaillons par trappes successives sur toute la ligne.",
+        "vitres":
+            "Les vitrines de grossistes sont grandes, hautes et peu démontables. L'enjeu y est moins "
+            "esthétique que fonctionnel : un vitrage voilé éteint la marchandise exposée. À côté, "
+            "les locaux du canal reconvertis en bureaux ont des verrières d'atelier à petits bois, "
+            "les surfaces les plus longues à faire correctement, qui se comptent au carreau et non "
+            "au mètre carré.",
+        "faq_hotte": ("Pouvez-vous traiter un conduit qui monte sur trois étages ?",
+                      "Oui, à condition que des trappes de visite existent ou puissent être "
+                      "posées. Sans accès intermédiaire, un conduit vertical long ne peut pas être "
+                      "nettoyé sur toute sa hauteur, et nous vous le dirons plutôt que de facturer "
+                      "un dégraissage partiel présenté comme complet."),
+        "faq_vitres": ("Comment chiffrez-vous une verrière d'atelier ?",
+                       "Au carreau. Une verrière à petits bois demande plusieurs fois le temps "
+                       "d'une baie de même surface : un prix au mètre carré serait trompeur. Nous "
+                       "comptons sur photos, et le devis est ferme avant notre venue."),
+    },
+    {
+        "slug": "montreuil", "nom": "Montreuil", "cp": "93100", "dept": "93",
+        "lat": 48.8638, "lon": 2.4485,
+        "tissu":
+            "Montreuil a l'un des tissus de restauration indépendante les plus denses de la petite "
+            "couronne, concentré autour de la Croix-de-Chavaux et de la mairie, avec beaucoup de "
+            "petites salles et de cuisines ouvertes. S'y ajoutent les anciens ateliers des Hauts "
+            "reconvertis en bureaux et en espaces de travail partagés.",
+        "acces":
+            "Les rues du bas Montreuil sont étroites et le stationnement y est tendu. Notre "
+            "véhicule est léger et autonome en eau et en électricité : nous n'avons besoin ni d'un "
+            "point d'eau ni d'une place à proximité immédiate.",
+        "hotte":
+            "La cuisine ouverte, très répandue à Montreuil, change la nature du problème : la hotte "
+            "est visible depuis la salle, donc son aspect compte autant que son état intérieur, et "
+            "les buées non captées se déposent sur le plafond et les luminaires de la salle. Nous "
+            "traitons la hotte, les filtres et le conduit, et nous signalons la zone de plafond "
+            "quand elle est manifestement touchée — c'est un indice fiable d'une extraction "
+            "insuffisante.",
+        "vitres":
+            "Les grandes verrières d'anciens ateliers sont la signature de Montreuil. Elles sont "
+            "magnifiques et très exigeantes : beaucoup de petits bois, souvent des mastics anciens "
+            "qui retiennent la poussière, et des hauteurs qui demandent la perche. Les devantures de "
+            "restaurant du bas Montreuil, elles, se reprennent chaque semaine à cause du trafic.",
+        "faq_hotte": ("Ma cuisine est ouverte sur la salle : l'intervention salit-elle le "
+                      "restaurant ?",
+                      "Non, parce que tout est bâché avant la première ouverture de trappe. Le "
+                      "point de vigilance en cuisine ouverte est le plafond de salle : s'il est "
+                      "jauni au-dessus du piano, l'extraction ne capte pas assez et le dégraissage "
+                      "seul n'y changera rien. Nous vous le disons."),
+        "faq_vitres": ("Nettoyez-vous les verrières d'atelier en hauteur ?",
+                       "Depuis le sol, à la perche télescopique et à l'eau déminéralisée, nous "
+                       "atteignons les trois premiers niveaux. Une verrière de toit ou une façade "
+                       "sans recul relève du travail en hauteur avec nacelle, que nous ne réalisons "
+                       "pas : nous le disons avant le devis."),
+    },
+    {
+        "slug": "pantin", "nom": "Pantin", "cp": "93500", "dept": "93",
+        "lat": 48.8944, "lon": 2.4090,
+        "tissu":
+            "Pantin s'est transformée le long du canal de l'Ourcq : sièges d'entreprises, ateliers "
+            "reconvertis, et une restauration nouvelle qui accompagne cette installation de bureaux. "
+            "Le centre ancien autour de l'église et du marché garde en parallèle son commerce de "
+            "bouche traditionnel.",
+        "acces":
+            "Les quais du canal sont accessibles et le stationnement y est praticable en dehors des "
+            "heures de bureau. Pantin est à une douzaine de kilomètres de notre atelier : nous y "
+            "intervenons habituellement sous 24 à 48 h.",
+        "hotte":
+            "Deux profils : les restaurants d'entreprise et de quartier du canal, aux cuisines "
+            "récentes et bien conçues, où un passage annuel suffit ; et les commerces de bouche du "
+            "centre, dans des locaux anciens, où le conduit est souvent plus court mais bien plus "
+            "chargé. Les premiers se planifient à l'année, les seconds demandent un constat avant "
+            "de pouvoir être chiffrés sérieusement.",
+        "vitres":
+            "Les immeubles de bureaux récents du canal ont de grandes façades vitrées, lisibles de "
+            "loin et donc impitoyables au défaut de séchage. Les rez-de-chaussée commerciaux sont "
+            "accessibles depuis le sol et c'est l'essentiel de la surface visible. En centre ancien, "
+            "le travail est celui d'une rue commerçante classique : vitrine hebdomadaire, façade "
+            "haute mensuelle.",
+        "faq_hotte": ("Peut-on signer un contrat annuel plutôt qu'appeler chaque fois ?",
+                      "Oui, et c'est la formule la plus simple pour un restaurant d'entreprise : "
+                      "un ou deux passages programmés à date fixe, le relevé de chaque "
+                      "intervention qui vient compléter votre livret d'entretien, et plus rien à "
+                      "suivre dans l'année."),
+        "faq_vitres": ("Pouvez-vous intervenir en dehors des heures de bureau ?",
+                       "Oui, et c'est la règle sur les immeubles occupés : tôt le matin, en soirée "
+                       "ou le week-end. Un plateau en activité n'est jamais traité en pleine "
+                       "journée de travail."),
+    },
+    {
+        "slug": "bobigny", "nom": "Bobigny", "cp": "93000", "dept": "93",
+        "lat": 48.9106, "lon": 2.4396,
+        "tissu":
+            "Préfecture de la Seine-Saint-Denis, Bobigny réunit administrations, tribunal, hôpital "
+            "et un centre commercial de centre-ville. La restauration y est largement tournée vers "
+            "le midi : brasseries, restauration rapide, traiteurs qui travaillent sur un créneau "
+            "court et intense.",
+        "acces":
+            "Le centre administratif est bien desservi et le stationnement praticable en dehors des "
+            "heures de bureau. Bobigny est à six kilomètres de notre atelier, ce qui en fait l'une "
+            "des communes où nous intervenons le plus vite, souvent dans la journée.",
+        "hotte":
+            "Une cuisine qui ne travaille qu'au déjeuner produit un encrassement concentré : deux "
+            "heures de production intense par jour, souvent en friture ou en grillade, dans un "
+            "volume réduit. Le dépôt s'accumule aussi vite que dans une cuisine ouverte en continu, "
+            "et c'est un calcul que beaucoup d'exploitants font à l'envers en pensant qu'un service "
+            "unique espace les nettoyages.",
+        "vitres":
+            "Les surfaces sont ici majoritairement tertiaires et administratives : halls, cloisons "
+            "vitrées, portes à grande fréquentation. Les portes vitrées d'un bâtiment recevant du "
+            "public se marquent en une demi-journée, et c'est la seule surface qui justifie un "
+            "passage rapproché ; le reste tient au trimestre.",
+        "faq_hotte": ("Je ne sers qu'au déjeuner, faut-il nettoyer aussi souvent ?",
+                      "Oui, parce que ce qui compte est la quantité de matière grasse vaporisée, "
+                      "pas le nombre d'heures d'ouverture. Un service unique mais intense, en "
+                      "friture ou en grillade, charge un conduit aussi vite qu'un service continu. "
+                      "Le ramonage annuel des conduits reste par ailleurs le plancher réglementaire."),
+        "faq_vitres": ("Pouvez-vous ne traiter que les portes et les halls ?",
+                       "Oui, et c'est souvent le bon arbitrage. Les portes et les halls portent "
+                       "l'essentiel de ce que les visiteurs voient ; les façades peuvent rester au "
+                       "trimestre sans que cela se remarque."),
+    },
+    {
+        "slug": "aulnay-sous-bois", "nom": "Aulnay-sous-Bois", "cp": "93600", "dept": "93",
+        "lat": 48.9386, "lon": 2.4938,
+        "tissu":
+            "Aulnay-sous-Bois aligne un centre commerçant traditionnel autour de la gare, des zones "
+            "d'activité à l'est et un habitat pavillonnaire étendu. Le commerce de bouche de "
+            "proximité — boulangeries, boucheries, restaurants de quartier — y est particulièrement "
+            "présent.",
+        "acces":
+            "Aulnay est à cinq kilomètres de notre atelier, soit dix minutes par la N2 ou l'A104. "
+            "C'est la commune où nos délais sont les plus courts après Le Blanc-Mesnil : souvent le "
+            "jour même en cas d'urgence.",
+        "hotte":
+            "Les boulangeries et les boucheries-charcuteries aulnaysiennes posent le cas le plus "
+            "technique du commerce de bouche : farine mêlée au gras pour les unes, graisses animales "
+            "qui figent en refroidissant pour les autres. Ni l'un ni l'autre ne part au dégraissant "
+            "ménager. Notre proximité permet d'intervenir sur le créneau étroit entre la fin de "
+            "production et la reprise.",
+        "vitres":
+            "Le centre commerçant demande un travail classique de vitrine, à rythme hebdomadaire. "
+            "Les zones d'activité, elles, présentent des façades vitrées de locaux d'activité, "
+            "grandes et simples, accessibles depuis le sol : c'est la configuration la plus "
+            "économique à entretenir, et un passage trimestriel suffit généralement.",
+        "faq_hotte": ("À quelle heure pouvez-vous venir dans un fournil ?",
+                      "L'après-midi, entre la fin de la cuisson et la reprise du tour de nuit, ou "
+                      "le jour de fermeture. Depuis Le Blanc-Mesnil nous sommes chez vous en dix "
+                      "minutes, ce qui permet de tenir un créneau serré sans marge de sécurité "
+                      "inutile."),
+        "faq_vitres": ("Quel est le délai pour une intervention à Aulnay ?",
+                       "Habituellement 24 à 48 h, et souvent le jour même en cas d'urgence : nous "
+                       "sommes à cinq kilomètres. Les frais de déplacement y sont de 5 €, "
+                       "annoncés avant que vous validiez."),
+    },
+    {
+        "slug": "le-blanc-mesnil", "nom": "Le Blanc-Mesnil", "cp": "93150", "dept": "93",
+        "lat": 48.9386, "lon": 2.4644,
+        "tissu":
+            "C'est notre commune : l'atelier s'y trouve, au 2 rue Poussin. Le Blanc-Mesnil réunit un "
+            "centre commerçant, des zones d'activité le long de l'ex-RN2 et la proximité immédiate "
+            "de la zone aéroportuaire, qui amène une restauration tournée vers les équipes et les "
+            "horaires décalés.",
+        "acces":
+            "Nous sommes sur place. Les frais de déplacement sont nuls ou symboliques et nous "
+            "pouvons intervenir dans des délais que nous ne tenons nulle part ailleurs — souvent le "
+            "jour même, y compris sur un créneau de nuit.",
+        "hotte":
+            "Être à quelques minutes change la nature du service : un dégraissage de hotte "
+            "s'organise sur le créneau que votre cuisine peut libérer, même court, même tardif, sans "
+            "que le trajet n'oblige à élargir la plage. C'est la commune où nous intervenons le plus "
+            "souvent en urgence, après un constat d'extraction défaillante ou avant une visite.",
+        "vitres":
+            "Le centre commerçant et les locaux d'activité se traitent au rythme habituel, avec un "
+            "avantage réel : un passage de reprise entre deux nettoyages complets ne coûte presque "
+            "rien en déplacement. C'est ce qui permet, ici, de tenir une vitrine impeccable sans "
+            "payer un passage complet chaque semaine.",
+        "faq_hotte": ("Pouvez-vous intervenir de nuit au Blanc-Mesnil ?",
+                      "Oui, et c'est fréquent : l'atelier est dans la commune, le trajet ne pèse "
+                      "rien dans l'organisation. Une intervention de nuit après le dernier service "
+                      "se planifie sans contrainte particulière."),
+        "faq_vitres": ("Facturez-vous des frais de déplacement au Blanc-Mesnil ?",
+                       "Non, ou de façon symbolique : notre atelier est au 2 rue Poussin. C'est le "
+                       "seul endroit où la question ne se pose pas."),
+    },
+    {
+        "slug": "drancy", "nom": "Drancy", "cp": "93700", "dept": "93",
+        "lat": 48.9227, "lon": 2.4453,
+        "tissu":
+            "Drancy est une commune de commerce de proximité : avenue Henri-Barbusse, marché, "
+            "commerces de bouche de quartier. La restauration y est indépendante, en petites salles, "
+            "avec des cuisines compactes et des conduits souvent anciens.",
+        "acces":
+            "Drancy est à trois kilomètres de notre atelier. Le stationnement en centre est "
+            "praticable tôt le matin, qui est aussi le créneau des commerces de bouche.",
+        "hotte":
+            "Les petites cuisines drancéennes cumulent deux difficultés : un volume réduit, donc une "
+            "concentration de buées élevée, et un circuit d'extraction rarement documenté. Dans la "
+            "plupart des cas, personne ne sait quand le conduit a été nettoyé pour la dernière fois. "
+            "Nous commençons par ouvrir et constater, puis nous chiffrons : c'est la seule façon de "
+            "ne pas se tromper sur un conduit ancien.",
+        "vitres":
+            "Vitrines de commerce de proximité, à rythme hebdomadaire ou bimensuel selon le "
+            "passage. La particularité locale est l'exposition au trafic de l'avenue : les "
+            "particules de freinage et les hydrocarbures forment un film gras sur le verre, qui "
+            "demande un dégraissage et non un simple lavage.",
+        "faq_hotte": ("Je ne sais pas quand mon conduit a été nettoyé la dernière fois.",
+                      "C'est le cas le plus fréquent, et ce n'est pas un problème : nous ouvrons "
+                      "les trappes de visite et nous vous montrons l'état réel. Le devis se fait "
+                      "sur ce constat, pas sur une estimation à l'aveugle. C'est aussi le moment "
+                      "d'ouvrir le livret d'entretien qui doit être annexé à votre registre de "
+                      "sécurité."),
+        "faq_vitres": ("Ma vitrine est sur une avenue passante, pourquoi se salit-elle si vite ?",
+                       "Parce que ce qui s'y dépose n'est pas de la poussière mais un film gras : "
+                       "particules de freinage et résidus d'hydrocarbures. L'eau claire l'étale, "
+                       "elle ne l'enlève pas. Il faut un dégraissage, puis un rinçage à l'eau "
+                       "déminéralisée."),
+    },
+    {
+        "slug": "noisy-le-grand", "nom": "Noisy-le-Grand", "cp": "93160", "dept": "93",
+        "lat": 48.8486, "lon": 2.5527,
+        "tissu":
+            "Noisy-le-Grand réunit le quartier d'affaires du Mont d'Est, un centre commercial "
+            "régional et des quartiers résidentiels étendus. La restauration y est largement "
+            "tertiaire : restauration collective d'entreprise, chaînes, brasseries du midi.",
+        "acces":
+            "Noisy est à une vingtaine de kilomètres de notre atelier, par l'A3 puis l'A86 ou "
+            "l'A4. Le délai habituel y est de 48 à 72 h, et le stationnement est aisé dans les "
+            "parkings du quartier d'affaires.",
+        "hotte":
+            "La restauration collective est le cas le plus encadré et le plus volumineux : plusieurs "
+            "lignes de cuisson, un circuit d'extraction dimensionné en conséquence, et une "
+            "obligation de traçabilité que l'exploitant doit pouvoir présenter. Nous intervenons "
+            "pendant les vacances scolaires ou les fermetures d'établissement, et nous laissons un "
+            "relevé daté de ce qui a été fait, zone par zone.",
+        "vitres":
+            "Les façades du Mont d'Est sont hautes : seuls les premiers niveaux sont accessibles "
+            "depuis le sol, et nous le disons avant le devis. L'essentiel du travail utile se "
+            "concentre sur les halls, les sas d'entrée et les cloisons vitrées intérieures, qui sont "
+            "ce que les occupants voient réellement de près.",
+        "faq_hotte": ("Comment prouver que l'entretien a été fait lors d'un contrôle ?",
+                      "Par le livret d'entretien annexé à votre registre de sécurité : c'est lui "
+                      "qui porte les dates, et c'est à l'exploitant de le tenir. Nous vous "
+                      "remettons un relevé daté et détaillé de l'intervention, zone par zone, qui "
+                      "s'y range directement."),
+        "faq_vitres": ("Traitez-vous les tours du Mont d'Est en entier ?",
+                       "Non, et nous préférons le dire tout de suite : au-delà de trois niveaux, "
+                       "il faut une nacelle ou un cordiste, ce que nous ne faisons pas. Nous "
+                       "traitons les rez-de-chaussée, les halls, les sas et l'intérieur."),
+    },
+    {
+        "slug": "boulogne-billancourt", "nom": "Boulogne-Billancourt", "cp": "92100",
+        "dept": "92", "lat": 48.8352, "lon": 2.2409,
+        "tissu":
+            "Première commune d'Île-de-France après Paris par la population, Boulogne-Billancourt "
+            "réunit un commerce de centre-ville dense — rue du Vieux-Pont-de-Sèvres, rue d'Aguesseau, "
+            "marché Escudier — et un tissu considérable de sièges sociaux et d'agences immobilières.",
+        "acces":
+            "Le stationnement est payant et tendu partout, et beaucoup d'immeubles n'ont qu'un "
+            "parking souterrain à hauteur limitée. Notre véhicule est léger et autonome : nous "
+            "descendons en sous-sol et nous travaillons sans point d'eau sur place.",
+        "hotte":
+            "La restauration boulonnaise est nombreuse et installée dans des immeubles d'habitation, "
+            "ce qui ajoute une contrainte que l'on sous-estime : les nuisances d'odeurs vers les "
+            "logements du dessus sont la première cause de plainte en copropriété, et elles signalent "
+            "presque toujours un circuit d'extraction encrassé plutôt qu'un défaut de conception. Un "
+            "dégraissage complet du conduit règle souvent ce que des mois de discussion n'avaient pas "
+            "réglé.",
+        "vitres":
+            "Les vitrines du centre et les agences immobilières forment l'essentiel de la demande. "
+            "Les agences sont le cas le plus exigeant : les mandats sont rétroéclairés derrière le "
+            "verre, et un voile calcaire invisible de face devient parfaitement lisible à "
+            "contre-jour. L'eau déminéralisée n'y est pas un supplément, c'est la condition du "
+            "résultat.",
+        "faq_hotte": ("Les voisins se plaignent des odeurs de ma cuisine, est-ce lié ?",
+                      "Très souvent, oui. Un conduit chargé perd de la section, l'extraction tire "
+                      "moins, et les buées trouvent un autre chemin. Avant d'envisager des travaux "
+                      "sur le réseau, faites dégraisser le circuit complet et mesurez à nouveau : "
+                      "c'est l'hypothèse la moins coûteuse et la plus fréquente."),
+        "faq_vitres": ("Nous avons plusieurs agences à Boulogne, pouvez-vous les suivre ?",
+                       "Oui. Un planning unique, un interlocuteur, des horaires fixes avant "
+                       "ouverture, et une facture par agence ou groupée selon votre organisation. "
+                       "C'est le format sur lequel nous travaillons avec des agences parisiennes."),
+    },
+    {
+        "slug": "levallois-perret", "nom": "Levallois-Perret", "cp": "92300", "dept": "92",
+        "lat": 48.8939, "lon": 2.2874,
+        "tissu":
+            "Levallois est la commune la plus densément bâtie de France, et son tissu est pour "
+            "l'essentiel tertiaire : sièges sociaux, agences, cabinets, avec une restauration "
+            "entièrement calée sur le déjeuner des salariés.",
+        "acces":
+            "Le stationnement de surface est pratiquement impossible aux heures ouvrables. Nous "
+            "intervenons tôt le matin, ou en sous-sol quand l'immeuble en dispose : notre autonomie "
+            "en eau et en électricité rend cela possible.",
+        "hotte":
+            "Les cuisines levalloisiennes sont petites, insérées dans des immeubles tertiaires, et "
+            "elles produisent sur un créneau de deux heures. La conséquence est toujours la même : "
+            "un encrassement rapide dans un conduit court, et un exploitant persuadé qu'un service "
+            "unique autorise un nettoyage espacé. Le ramonage annuel des conduits reste obligatoire, "
+            "quel que soit le nombre de services.",
+        "vitres":
+            "Du verre partout, et presque tout en intérieur : cloisons de bureaux, portes vitrées, "
+            "salles de réunion. C'est là que se joue l'impression de propreté d'un plateau, bien "
+            "plus que sur la façade. Les cloisons portent les traces de mains à hauteur de poignée "
+            "sur toute leur longueur et demandent un passage mensuel.",
+        "faq_hotte": ("Ma cuisine est minuscule, l'intervention est-elle possible ?",
+                      "Oui, c'est le cas le plus courant en tertiaire. Nous travaillons avec un "
+                      "matériel compact et nous bâchons avant d'ouvrir. Le facteur limitant n'est "
+                      "pas la taille de la cuisine mais l'accès aux trappes du conduit, que nous "
+                      "vérifions au premier rendez-vous."),
+        "faq_vitres": ("Nettoyez-vous les cloisons vitrées intérieures ?",
+                       "Oui, et c'est souvent plus utile que la façade : ce sont elles que les "
+                       "occupants voient de près toute la journée. Un passage mensuel sur les "
+                       "cloisons et les portes vitrées suffit à tenir un plateau."),
+    },
+    {
+        "slug": "neuilly-sur-seine", "nom": "Neuilly-sur-Seine", "cp": "92200", "dept": "92",
+        "lat": 48.8846, "lon": 2.2697,
+        "tissu":
+            "Neuilly réunit un commerce de bouche de qualité le long de l'avenue de Neuilly et de la "
+            "rue de Chartres, une forte densité de professions libérales recevant en cabinet, et des "
+            "agences immobilières nombreuses sur un marché de standing.",
+        "acces":
+            "Stationnement payant et tendu, parkings souterrains à hauteur limitée. Notre véhicule "
+            "passe sous les 1,90 m qui limitent la plupart des sous-sols neuilléens, et nous "
+            "apportons eau et électricité.",
+        "hotte":
+            "Les cuisines neuilléennes sont souvent installées dans des immeubles anciens de "
+            "standing, où la contrainte dominante est la copropriété : horaires encadrés, parties "
+            "communes à protéger, nuisances d'odeurs surveillées de près. Le travail technique est "
+            "classique — hotte, filtres, conduit — mais l'organisation doit être irréprochable, et "
+            "c'est souvent là que les prestataires achoppent.",
+        "vitres":
+            "Beaucoup de fenêtres anciennes à petits bois et de hauteurs sous plafond de trois "
+            "mètres, en cabinet comme en commerce. Ce sont les vitrages les plus longs à faire "
+            "correctement : chaque carreau demande son passage, et les mastics anciens retiennent la "
+            "poussière que le lavage fait ensuite couler sur la vitre. Nous comptons au vantail.",
+        "faq_hotte": ("La copropriété impose des horaires, est-ce compatible ?",
+                      "Oui, nous travaillons dans la plage autorisée et nous protégeons les "
+                      "parties communes traversées. C'est une contrainte d'organisation, pas une "
+                      "contrainte technique : il faut simplement la connaître avant, pas la "
+                      "découvrir sur place."),
+        "faq_vitres": ("Comment comptez-vous une fenêtre à petits bois ?",
+                       "Au vantail, pas au mètre carré. Une fenêtre à six carreaux demande "
+                       "plusieurs fois le temps d'une baie de même surface. Nous comptons les "
+                       "vantaux sur photos et le devis est ferme avant que nous venions."),
+    },
+    {
+        "slug": "courbevoie", "nom": "Courbevoie", "cp": "92400", "dept": "92",
+        "lat": 48.8975, "lon": 2.2567,
+        "tissu":
+            "Courbevoie vit à l'ombre immédiate de La Défense : une partie du quartier d'affaires "
+            "est sur son territoire, et la restauration y sert des milliers de salariés sur un "
+            "créneau de deux heures. Le centre ancien et le quartier Bécon gardent par ailleurs un "
+            "commerce de proximité actif.",
+        "acces":
+            "Les dalles et les parkings du quartier d'affaires imposent des accès réglementés, à "
+            "organiser avec le gestionnaire du site. En centre ancien, l'accès est celui d'une "
+            "commune ordinaire.",
+        "hotte":
+            "La restauration de flux du quartier d'affaires produit un encrassement massif et "
+            "concentré : friteuses et grillades à plein régime sur deux heures, cinq jours par "
+            "semaine. C'est le profil qui demande le rythme le plus soutenu — deux passages par an "
+            "au minimum, et un suivi hebdomadaire des filtres par l'équipe, ce que le texte "
+            "réglementaire prévoit explicitement.",
+        "vitres":
+            "Façades hautes, verre partout, et une limite nette : seuls les premiers niveaux sont "
+            "accessibles à la perche depuis le sol. Nous nous concentrons sur les rez-de-chaussée "
+            "commerciaux, les halls, les sas et l'intérieur, et nous le disons clairement avant le "
+            "devis plutôt que de laisser un étage non fait.",
+        "faq_hotte": ("À quel rythme nettoyer une cuisine de restauration rapide ?",
+                      "Deux passages par an au minimum sur la hotte et le conduit, et un nettoyage "
+                      "ou un remplacement des filtres au moins une fois par semaine par votre "
+                      "équipe — c'est ce que prévoit la réglementation applicable aux grandes "
+                      "cuisines. À très fort volume, trois passages annuels sont plus réalistes."),
+        "faq_vitres": ("Intervenez-vous sur les tours de La Défense ?",
+                       "Pas en façade au-delà de trois niveaux : cela demande une nacelle ou un "
+                       "cordiste, et ce n'est pas notre métier. Nous traitons les commerces de "
+                       "pied d'immeuble, les halls et les surfaces intérieures."),
+    },
+    {
+        "slug": "issy-les-moulineaux", "nom": "Issy-les-Moulineaux", "cp": "92130",
+        "dept": "92", "lat": 48.8239, "lon": 2.2730,
+        "tissu":
+            "Issy-les-Moulineaux est l'un des pôles tertiaires les plus denses d'Île-de-France, avec "
+            "une concentration de sièges de médias et de technologies, et une restauration "
+            "d'entreprise dimensionnée en conséquence.",
+        "acces":
+            "Les immeubles récents disposent de parkings accessibles et de quais de livraison, ce "
+            "qui simplifie l'intervention. Les horaires, eux, sont strictement hors activité.",
+        "hotte":
+            "La restauration collective d'entreprise domine : plusieurs lignes de cuisson, un "
+            "circuit d'extraction long, et une exigence de traçabilité portée par le service "
+            "sécurité du site. Nous intervenons sur fermeture programmée et nous remettons un relevé "
+            "daté, zone par zone, destiné à être rangé dans le livret d'entretien de "
+            "l'établissement.",
+        "vitres":
+            "Les grandes façades vitrées d'Issy sont la vitrine des entreprises qui les occupent, et "
+            "l'eau déminéralisée y prend tout son sens : sur ces surfaces lisses et très étendues, "
+            "le moindre voile calcaire se lit de loin. Les premiers niveaux et l'ensemble des "
+            "surfaces intérieures sont de notre ressort ; au-delà, non.",
+        "faq_hotte": ("Pouvez-vous intervenir pendant une fermeture d'entreprise ?",
+                      "C'est le créneau que nous préférons : site vide, aucune contrainte de "
+                      "service, et le temps de faire la ligne d'extraction complète. Les semaines "
+                      "de fermeture d'août et de fin d'année se réservent plusieurs mois à "
+                      "l'avance."),
+        "faq_vitres": ("Pourquoi l'eau déminéralisée plutôt qu'un produit à vitres ?",
+                       "Parce que la trace blanche qui reste au séchage n'est pas de la saleté, "
+                       "c'est le calcaire de l'eau du réseau, particulièrement présent en "
+                       "Île-de-France. Une eau privée de ses minéraux sèche sans rien laisser : il "
+                       "n'y a pas de produit à repasser, donc pas de film à voiler la vitre."),
+    },
+    {
+        "slug": "nanterre", "nom": "Nanterre", "cp": "92000", "dept": "92",
+        "lat": 48.8924, "lon": 2.2069,
+        "tissu":
+            "Nanterre combine la préfecture des Hauts-de-Seine, l'université, la frange ouest de La "
+            "Défense et des zones d'activité étendues. La restauration y est largement collective ou "
+            "tournée vers le midi des salariés et des étudiants.",
+        "acces":
+            "Les zones d'activité et les campus sont faciles d'accès et de stationnement. Nanterre "
+            "est à une trentaine de kilomètres de notre atelier : le délai habituel y est de 48 à "
+            "72 h, et nous regroupons les interventions de l'ouest sur une même tournée.",
+        "hotte":
+            "La restauration collective d'université et d'administration fonctionne par calendrier : "
+            "des périodes de production intense, puis des fermetures longues. C'est la configuration "
+            "la plus confortable pour un dégraissage complet, à condition de réserver le créneau à "
+            "l'avance — les vacances scolaires sont demandées par tout le monde en même temps.",
+        "vitres":
+            "Façades de bureaux récentes, halls administratifs, bâtiments universitaires : des "
+            "surfaces grandes, régulières, et pour partie accessibles depuis le sol. Les portes et "
+            "les halls à forte fréquentation sont les seules surfaces qui demandent un passage "
+            "rapproché.",
+        "faq_hotte": ("Faut-il réserver longtemps à l'avance pour les vacances scolaires ?",
+                      "Oui, deux à trois mois. Tous les établissements visent les mêmes semaines, "
+                      "et le nombre de créneaux de nuit ou de fermeture est limité. Une date fixée "
+                      "en début d'année scolaire évite de se retrouver sans solution."),
+        "faq_vitres": ("Quel est le délai d'intervention à Nanterre ?",
+                       "Habituellement 48 à 72 h : nous sommes à une trentaine de kilomètres, et "
+                       "nous regroupons les interventions de l'ouest francilien sur une même "
+                       "tournée. Les frais de déplacement sont annoncés avant que vous validiez."),
+    },
+    {
+        "slug": "vincennes", "nom": "Vincennes", "cp": "94300", "dept": "94",
+        "lat": 48.8478, "lon": 2.4390,
+        "tissu":
+            "Vincennes a un commerce de centre-ville exceptionnellement dense pour sa taille : rue "
+            "du Midi, avenue de Paris, marché couvert. Boulangeries, pâtisseries, fromageries, "
+            "restaurants de quartier s'y succèdent sur quelques centaines de mètres.",
+        "acces":
+            "Les rues commerçantes sont étroites et le stationnement très contraint, avec des "
+            "plages de livraison limitées au matin. Nous intervenons avant 7 h 30, qui est de toute "
+            "façon le bon créneau pour un commerce de bouche.",
+        "hotte":
+            "La densité de commerces de bouche fait de Vincennes un cas particulier : beaucoup de "
+            "petits fournils et de cuisines de restaurant dans des immeubles d'habitation anciens, "
+            "avec des conduits partagés ou mitoyens. La question de savoir qui entretient quoi se "
+            "pose souvent, et elle doit être tranchée avant l'intervention plutôt qu'après.",
+        "vitres":
+            "Vitrines de commerce de bouche, à reprendre chaque semaine : le film gras intérieur des "
+            "buées de cuisson est ici le vrai sujet, bien plus que la poussière extérieure. C'est "
+            "lui qui éteint la couleur des produits en vitrine, et il demande un dégraissage avant "
+            "lavage.",
+        "faq_hotte": ("Mon conduit est mitoyen avec le commerce voisin, que faire ?",
+                      "Il faut d'abord établir qui est responsable de quoi, ce qui se lit dans les "
+                      "baux et le règlement de copropriété. En pratique, la solution la plus "
+                      "efficace est une intervention unique sur le circuit complet, refacturée au "
+                      "prorata : un conduit partagé nettoyé par moitié ne sert à rien."),
+        "faq_vitres": ("Pourquoi ma vitrine de pâtisserie reste-t-elle voilée ?",
+                       "À cause du film de gras sucré que les buées de cuisson déposent à "
+                       "l'intérieur du verre. Un produit à vitres l'étale sans le dissoudre : la "
+                       "vitre paraît propre de près et reste voilée de loin. Il faut un dégraissant "
+                       "alcalin, puis un rinçage à l'eau déminéralisée."),
+    },
+    {
+        "slug": "creteil", "nom": "Créteil", "cp": "94000", "dept": "94",
+        "lat": 48.7904, "lon": 2.4556,
+        "tissu":
+            "Préfecture du Val-de-Marne, Créteil réunit administrations, centre hospitalier "
+            "universitaire, université et un centre commercial régional. La restauration y est "
+            "majoritairement collective ou de chaîne.",
+        "acces":
+            "Les grands équipements disposent de quais de livraison et de parkings, ce qui facilite "
+            "l'intervention. Créteil est à une vingtaine de kilomètres de notre atelier, pour un "
+            "délai habituel de 48 à 72 h.",
+        "hotte":
+            "Les cuisines de restauration collective de Créteil sont parmi les plus volumineuses que "
+            "nous rencontrions, et les plus encadrées. L'enjeu n'y est pas la technique mais la "
+            "méthode : une ligne complète, trappe par trappe, un essai d'extraction après remontage, "
+            "et un relevé daté qui permette à l'exploitant de tenir son livret d'entretien à jour.",
+        "vitres":
+            "Halls, circulations, cloisons vitrées et portes à très forte fréquentation. Dans un "
+            "équipement recevant du public, les portes vitrées se marquent en une demi-journée : "
+            "c'est la surface à reprendre souvent, le reste tient au trimestre.",
+        "faq_hotte": ("Vérifiez-vous l'extraction après le nettoyage ?",
+                      "Oui, systématiquement : le remontage et l'essai d'extraction font partie de "
+                      "l'intervention, pas de la suite. Une cuisine doit être opérationnelle au "
+                      "service suivant, et c'est aussi la seule façon de constater le gain réel "
+                      "obtenu sur le débit."),
+        "faq_vitres": ("Comment organiser le nettoyage dans un bâtiment ouvert au public ?",
+                       "Zone par zone, aux heures de faible fréquentation, sans jamais fermer un "
+                       "accès. Les halls et les portes se font tôt le matin ; les cloisons "
+                       "intérieures peuvent se traiter en journée sans gêner personne."),
+    },
+    {
+        "slug": "ivry-sur-seine", "nom": "Ivry-sur-Seine", "cp": "94200", "dept": "94",
+        "lat": 48.8133, "lon": 2.3875,
+        "tissu":
+            "Ivry-sur-Seine mêle habitat, activité industrielle reconvertie et un tissu de "
+            "restauration de quartier dense le long de l'avenue Maurice-Thorez et autour de la "
+            "mairie. Les anciens locaux d'activité reconvertis en bureaux et en ateliers y sont "
+            "nombreux.",
+        "acces":
+            "Le stationnement est praticable hors heures de pointe, et les anciens locaux "
+            "d'activité disposent souvent d'une cour ou d'un accès véhicule. Ivry est à une "
+            "quinzaine de kilomètres de notre atelier.",
+        "hotte":
+            "Les cuisines ivryennes sont pour beaucoup installées dans du bâti ancien, avec des "
+            "conduits qui n'ont pas été conçus pour l'usage actuel du local. C'est la situation où "
+            "le dégraissage révèle parfois autre chose : une section insuffisante, une trappe "
+            "manquante, un tracé qui multiplie les coudes. Nous le signalons, même quand cela ne "
+            "nous concerne pas, parce que c'est l'information utile.",
+        "vitres":
+            "Vitrines de quartier d'un côté, grandes verrières d'ateliers reconvertis de l'autre. "
+            "Les verrières sont le beau travail et le travail long : petits bois nombreux, mastics "
+            "anciens, hauteurs qui demandent la perche. Elles se comptent au carreau.",
+        "faq_hotte": ("Que se passe-t-il si mon conduit n'est pas conforme ?",
+                      "Nous vous le disons, avec ce que nous avons constaté et où. Le dégraissage "
+                      "d'un conduit sous-dimensionné ou mal tracé reste utile, mais il ne règle "
+                      "pas le défaut de conception : il faut alors un installateur. Nous ne faisons "
+                      "pas de travaux sur le réseau et nous n'avons donc aucun intérêt à vous "
+                      "annoncer un problème qui n'existe pas."),
+        "faq_vitres": ("Nettoyez-vous les verrières d'anciens ateliers ?",
+                       "Oui, depuis le sol et jusqu'à trois niveaux, à la perche et à l'eau "
+                       "déminéralisée. Au-delà, ou pour une verrière de toit, il faut un moyen "
+                       "d'accès en hauteur que nous ne mettons pas en œuvre."),
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# COMMUNES — NETTOYAGE D'APPARTEMENT (particuliers)
+# ---------------------------------------------------------------------------
+# Le nettoyage d'appartement n'est pas du ménage hebdomadaire : c'est un
+# passage ponctuel et complet — grand ménage, état des lieux, après
+# déménagement, remise en état d'une location courte durée. Ce qui change
+# d'une commune à l'autre, c'est le parc de logements : un haussmannien, une
+# tour des années 1970 et un loft d'atelier ne demandent ni le même temps ni
+# le même matériel.
+VILLES_APPART = [
+    {
+        "slug": "boulogne-billancourt", "nom": "Boulogne-Billancourt", "cp": "92100",
+        "dept": "92", "lat": 48.8352, "lon": 2.2409,
+        "parc":
+            "Boulogne aligne trois générations de logements : l'immeuble de rapport des années 1930, "
+            "souvent en bel état mais avec des parquets anciens et des huisseries bois ; les "
+            "programmes des années 1970 autour du pont de Sèvres ; et les résidences récentes du "
+            "Trapèze, livrées avec des sols lisses et de grandes baies vitrées.",
+        "angle":
+            "La demande dominante est le grand ménage avant ou après déménagement : un logement "
+            "vide se nettoie entièrement, y compris les intérieurs de placards, les plinthes et les "
+            "surfaces que les meubles masquaient. C'est aussi la prestation qui pèse le plus dans "
+            "un état des lieux de sortie, et où les retenues sur dépôt de garantie se décident.",
+        "pratique":
+            "Le stationnement est tendu partout et beaucoup d'immeubles n'ont qu'un sous-sol à "
+            "hauteur limitée. Notre véhicule est léger et nous apportons l'eau et l'électricité : "
+            "aucun accès technique ne vous est demandé, ce qui compte dans un logement déjà vidé.",
+        "faq": ("Que comprend un grand ménage avant état des lieux ?",
+                "Sols, plinthes, intérieurs de placards, vitres et encadrements, sanitaires "
+                "détartrés, cuisine complète four et réfrigérateur compris, interrupteurs et "
+                "poignées. C'est la liste que les agences vérifient. Nous la parcourons avec vous "
+                "avant de commencer, et nous vous disons franchement ce qui ne se rattrapera pas — "
+                "un joint définitivement marqué, par exemple."),
+    },
+    {
+        "slug": "montreuil", "nom": "Montreuil", "cp": "93100", "dept": "93",
+        "lat": 48.8638, "lon": 2.4485,
+        "parc":
+            "Montreuil est la commune où le parc est le plus varié de la petite couronne : pavillons "
+            "des Murs à pêches, lofts d'anciens ateliers du bas Montreuil, immeubles récents autour "
+            "des stations de métro. Les volumes reconvertis y posent une question précise : de "
+            "grandes surfaces, de grandes hauteurs, et beaucoup de verre.",
+        "angle":
+            "Dans un loft, le nettoyage complet se joue sur deux points que les prestations "
+            "standard laissent de côté : les verrières et les parties hautes, et les sols béton ou "
+            "résine, qui ne se lavent pas comme un carrelage. Nous venons voir avant de chiffrer "
+            "quand la surface dépasse l'appartement classique.",
+        "pratique":
+            "Les rues du bas Montreuil sont étroites, le stationnement difficile. Notre autonomie "
+            "en eau et en électricité nous permet de travailler sans place à proximité immédiate ni "
+            "branchement dans le logement.",
+        "faq": ("Nettoyez-vous les verrières et les parties hautes d'un loft ?",
+                "Depuis le sol et à la perche, jusqu'à une hauteur raisonnable, oui. Au-delà, ou "
+                "pour une verrière de toit, il faut un moyen d'accès en hauteur que nous ne mettons "
+                "pas en œuvre : nous vous le disons au devis plutôt que de laisser la partie haute "
+                "non faite."),
+    },
+    {
+        "slug": "saint-denis", "nom": "Saint-Denis", "cp": "93200", "dept": "93",
+        "lat": 48.9362, "lon": 2.3574,
+        "parc":
+            "Saint-Denis est en renouvellement permanent : programmes neufs livrés en continu dans "
+            "la Plaine et autour du stade, réhabilitations du centre ancien, et un parc social "
+            "important. Les logements neufs arrivent souvent avec des résidus de chantier que la "
+            "livraison n'a pas éliminés.",
+        "angle":
+            "La demande la plus fréquente est le nettoyage de fin de chantier léger, après la "
+            "remise des clés d'un logement neuf : poussière de plâtre dans les gorges de fenêtres, "
+            "film de protection sur les sols, étiquettes et traces de colle sur les vitrages. Ce "
+            "n'est pas du ménage, c'est un décrassage, et il se fait une seule fois mais bien.",
+        "pratique":
+            "Saint-Denis est à huit kilomètres de notre atelier : nous y intervenons sous 24 à "
+            "48 h. Les résidences neuves disposent presque toujours d'un accès véhicule, ce qui "
+            "simplifie l'intervention.",
+        "faq": ("Mon appartement est neuf, pourquoi faut-il le nettoyer ?",
+                "Parce que la poussière de plâtre et de découpe reste dans les gorges de fenêtres, "
+                "les rails de placard et les angles de plinthes, et qu'elle ressort à chaque "
+                "ouverture pendant des mois. Un décrassage complet à la livraison évite cela, et "
+                "c'est le seul moment où le logement est vide, donc le seul où il peut être fait "
+                "entièrement."),
+    },
+    {
+        "slug": "pantin", "nom": "Pantin", "cp": "93500", "dept": "93",
+        "lat": 48.8944, "lon": 2.4090,
+        "parc":
+            "Pantin combine un centre ancien aux immeubles de rapport modestes, des programmes "
+            "récents le long du canal de l'Ourcq, et d'anciens locaux industriels reconvertis en "
+            "logements atypiques. Les parquets anciens du centre et les sols lisses du canal "
+            "demandent des traitements opposés.",
+        "angle":
+            "Beaucoup de locations courte durée à Pantin, et c'est la prestation la plus exigeante "
+            "en régularité : une remise en état entre deux séjours ne tolère ni retard ni "
+            "approximation sur la salle de bain et la cuisine, qui sont les deux points que les "
+            "voyageurs notent. Nous travaillons sur une liste fixe, toujours la même, ce qui est la "
+            "seule façon de ne rien oublier.",
+        "pratique":
+            "Pantin est à douze kilomètres de notre atelier, pour un délai habituel de 24 à 48 h. "
+            "Les remises en état de location se planifient à date et heure fixes, entre le départ "
+            "et l'arrivée suivante.",
+        "faq": ("Intervenez-vous entre deux locations courte durée ?",
+                "Oui, sur créneau fixe. Le point à régler est l'accès : boîte à clés, code ou clé "
+                "confiée. Une fois cela établi, l'intervention se fait sans que vous ayez à être "
+                "présent, et nous vous envoyons les photos du logement prêt si vous le souhaitez."),
+    },
+    {
+        "slug": "vincennes", "nom": "Vincennes", "cp": "94300", "dept": "94",
+        "lat": 48.8478, "lon": 2.4390,
+        "parc":
+            "Vincennes est faite d'immeubles de rapport de la fin du XIXᵉ et du début du XXᵉ siècle, "
+            "très bien tenus : parquets à points de Hongrie, moulures, cheminées de marbre, "
+            "huisseries bois à petits bois. C'est un parc où le nettoyage demande de la prudence "
+            "plus que de la puissance.",
+        "angle":
+            "Sur ces logements, l'erreur coûteuse est le produit : un parquet ancien non vitrifié "
+            "ne supporte pas l'eau en quantité, et un marbre de cheminée se tache définitivement à "
+            "l'acide — y compris celui d'un détartrant ménager courant. Nous identifions les "
+            "matériaux avant de commencer, et nous le disons quand une surface relève d'un artisan "
+            "plutôt que de nous.",
+        "pratique":
+            "Stationnement contraint, immeubles souvent sans ascenseur ou avec un ascenseur étroit. "
+            "Notre matériel est compact et transportable à la main, ce qui règle la question des "
+            "étages.",
+        "faq": ("Comment nettoyez-vous un parquet ancien non vitrifié ?",
+                "À l'humide très mesuré, sans jamais mouiller, et avec un produit neutre. Un "
+                "parquet ancien gonfle et grise à l'eau : la serpillière classique est ce qui "
+                "l'abîme le plus sûrement. Si le parquet est déjà très marqué, le nettoyage le "
+                "rendra propre mais pas neuf, et nous préférons vous le dire avant."),
+    },
+    {
+        "slug": "levallois-perret", "nom": "Levallois-Perret", "cp": "92300", "dept": "92",
+        "lat": 48.8939, "lon": 2.2874,
+        "parc":
+            "Levallois est la commune la plus densément bâtie de France : des appartements compacts, "
+            "souvent récents ou rénovés, avec des cuisines ouvertes et des salles de bains de petite "
+            "surface. La densité a une conséquence pratique : tout est petit, y compris les accès.",
+        "angle":
+            "Dans un appartement compact, le résultat se joue sur la cuisine et la salle de bains, "
+            "qui concentrent l'essentiel du travail réel. Le détartrage complet de la robinetterie "
+            "et des parois de douche — l'eau francilienne est calcaire — change davantage "
+            "l'impression générale que le reste du logement réuni.",
+        "pratique":
+            "Stationnement de surface quasi impossible en journée. Nous intervenons tôt, ou en "
+            "sous-sol quand l'immeuble en dispose. Notre matériel passe dans un ascenseur étroit.",
+        "faq": ("Le calcaire sur une paroi de douche peut-il vraiment partir ?",
+                "Dans la plupart des cas, oui, avec un détartrant adapté et du temps de pose plutôt "
+                "qu'avec de la force. Ce qui ne part pas, c'est le verre déjà attaqué : un dépôt "
+                "laissé des années finit par marquer la surface elle-même, et aucun produit ne la "
+                "reconstitue. Nous vous le dirons après avoir essayé, pas avant."),
+    },
+    {
+        "slug": "neuilly-sur-seine", "nom": "Neuilly-sur-Seine", "cp": "92200", "dept": "92",
+        "lat": 48.8846, "lon": 2.2697,
+        "parc":
+            "Neuilly aligne de part et d'autre de l'avenue Charles-de-Gaulle des immeubles "
+            "haussmanniens et Art déco aux appartements familiaux généreux : parquets anciens, "
+            "moulures, parfois du mobilier de valeur, et des hauteurs sous plafond de trois mètres "
+            "qui changent le temps de travail sur les murs et les vitrages.",
+        "angle":
+            "Sur ce type de logement, le nettoyage complet est d'abord un travail de diagnostic : "
+            "chaque matière — parquet ancien, marbre, laiton, pierre, textile — a son produit et "
+            "ses interdits. Un seul produit universel passé partout est ce qui cause les dommages "
+            "les plus durables, et ils ne se voient qu'après séchage.",
+        "pratique":
+            "Parkings souterrains à hauteur limitée, stationnement payant et tendu. Notre véhicule "
+            "passe sous les 1,90 m de la plupart des sous-sols neuilléens, et nous travaillons sans "
+            "rien déplacer de lourd.",
+        "faq": ("Prenez-vous en charge le nettoyage des textiles et des tapis en même temps ?",
+                "Oui, c'est fréquent sur un grand ménage : canapés, fauteuils, matelas et tapis se "
+                "traitent par injection-extraction, le même jour que le logement si le planning le "
+                "permet. Les tapis de laine relèvent d'un protocole à part, sans vapeur, et nous le "
+                "précisons au devis."),
+    },
+    {
+        "slug": "courbevoie", "nom": "Courbevoie", "cp": "92400", "dept": "92",
+        "lat": 48.8975, "lon": 2.2567,
+        "parc":
+            "Courbevoie juxtapose les tours d'habitation de la frange de La Défense, les immeubles "
+            "de rapport du centre et le tissu pavillonnaire et de petits collectifs de Bécon. Les "
+            "tours ont de grandes surfaces vitrées et des sols lisses ; Bécon, des logements plus "
+            "classiques.",
+        "angle":
+            "Dans un logement en tour, les baies vitrées font la différence : elles représentent "
+            "une part importante des surfaces, elles sont exposées, et leur nettoyage intérieur "
+            "transforme la luminosité du logement. Nous les traitons à l'eau déminéralisée, "
+            "encadrements et rails de coulissant compris — c'est dans les rails que se loge "
+            "l'essentiel.",
+        "pratique":
+            "Les résidences disposent le plus souvent d'un parking visiteurs ou d'un accès livraison. "
+            "Courbevoie est à une vingtaine de kilomètres de notre atelier, pour un délai de 48 à "
+            "72 h.",
+        "faq": ("Nettoyez-vous l'extérieur des baies vitrées en étage ?",
+                "Depuis l'intérieur seulement, quand la menuiserie permet d'accéder à la face "
+                "extérieure sans se mettre en danger. Une baie fixe en étage élevé ne peut pas être "
+                "traitée par l'extérieur sans moyen d'accès en hauteur, ce que nous ne faisons pas, "
+                "et nous ne prendrons pas le risque."),
+    },
+    {
+        "slug": "asnieres-sur-seine", "nom": "Asnières-sur-Seine", "cp": "92600",
+        "dept": "92", "lat": 48.9050, "lon": 2.2850,
+        "parc":
+            "Asnières mêle immeubles de rapport du début du XXᵉ siècle, petits collectifs des années "
+            "1960 et pavillons, avec un bord de Seine en renouvellement. Beaucoup de logements de "
+            "trois à quatre pièces, loués et reloués, donc souvent remis en état.",
+        "angle":
+            "La rotation locative fait du nettoyage de sortie la demande principale : le logement "
+            "est vide, et c'est le seul moment où tout est accessible. L'objectif est précis — "
+            "limiter la retenue sur le dépôt de garantie — et il se joue sur des points que le "
+            "locataire sortant néglige presque toujours : four, réfrigérateur, joints de salle de "
+            "bains, intérieurs de placards.",
+        "pratique":
+            "Stationnement praticable en dehors des heures de pointe. Asnières est à une vingtaine "
+            "de kilomètres de l'atelier, pour un délai de 48 à 72 h ; nous regroupons les "
+            "interventions de l'ouest sur une même tournée.",
+        "faq": ("Un nettoyage de sortie évite-t-il la retenue sur le dépôt de garantie ?",
+                "Il supprime le motif le plus fréquent de retenue, qui est l'état de propreté. Il "
+                "ne couvre pas l'usure ni les dégradations, qui relèvent d'une autre discussion "
+                "avec le bailleur. Nous vous remettons le détail de ce qui a été fait, ce qui est "
+                "utile si l'état des lieux est contesté."),
+    },
+    {
+        "slug": "saint-ouen-sur-seine", "nom": "Saint-Ouen-sur-Seine", "cp": "93400",
+        "dept": "93", "lat": 48.9100, "lon": 2.3330,
+        "parc":
+            "Saint-Ouen s'est largement renouvelée autour des Docks et du nouveau quartier des "
+            "puces : logements neufs livrés par tranches, anciens ateliers reconvertis, et un parc "
+            "ancien du centre en réhabilitation. Les deux extrêmes se côtoient d'une rue à l'autre.",
+        "angle":
+            "Deux demandes distinctes : le décrassage de livraison dans le neuf — poussière de "
+            "chantier, films de protection, traces de colle sur les vitrages — et le grand ménage "
+            "de rénovation dans l'ancien, après des travaux qui ont laissé de la poussière de plâtre "
+            "partout. Dans les deux cas, ce n'est pas du ménage : c'est un passage unique et "
+            "complet.",
+        "pratique":
+            "Saint-Ouen est à dix kilomètres de notre atelier, pour un délai de 24 à 48 h. Les "
+            "programmes neufs disposent d'un accès véhicule ; en centre ancien, nous travaillons "
+            "sans place réservée grâce à notre autonomie.",
+        "faq": ("Faites-vous le nettoyage après des travaux de rénovation ?",
+                "Oui, sur un logement non occupé et une fois les gravats évacués — cela, c'est "
+                "l'affaire de l'entreprise de travaux. Nous prenons la poussière de plâtre, qui "
+                "s'infiltre partout et revient plusieurs fois : un nettoyage après travaux demande "
+                "toujours deux passes, et c'est prévu dans le devis."),
+    },
+    {
+        "slug": "les-lilas", "nom": "Les Lilas", "cp": "93260", "dept": "93",
+        "lat": 48.8790, "lon": 2.4190,
+        "parc":
+            "Les Lilas est une commune de petite taille et de densité moyenne, avec des immeubles "
+            "de rapport, des petits collectifs et un tissu pavillonnaire préservé. Les logements y "
+            "sont souvent familiaux et occupés longtemps, ce qui change la nature de la demande.",
+        "angle":
+            "Un logement occupé depuis dix ou quinze ans accumule ce qu'un ménage courant ne traite "
+            "jamais : dessus de placards, arrières de meubles, gorges de fenêtres, joints de "
+            "carrelage, intérieur de hotte de cuisine. C'est le grand ménage annuel, celui qui "
+            "remet le logement à niveau et qu'on ne fait pas soi-même parce qu'il demande de "
+            "déplacer et de démonter.",
+        "pratique":
+            "Les Lilas est à une dizaine de kilomètres de notre atelier, pour un délai de 24 à "
+            "48 h. Le stationnement résidentiel est praticable.",
+        "faq": ("Que fait un grand ménage que je ne fais pas moi-même ?",
+                "Les surfaces qui demandent de déplacer ou de démonter : arrières et dessus de "
+                "meubles, intérieur de la hotte de cuisine, grilles de ventilation, joints de "
+                "carrelage, gorges et rails de fenêtres, intérieurs de placards vidés. C'est deux à "
+                "quatre heures de travail qu'on ne tient pas sur un week-end, et le résultat se "
+                "voit pendant des mois."),
+    },
+    {
+        "slug": "noisy-le-grand", "nom": "Noisy-le-Grand", "cp": "93160", "dept": "93",
+        "lat": 48.8486, "lon": 2.5527,
+        "parc":
+            "Noisy-le-Grand réunit les grands ensembles d'architecture des années 1980 du Mont "
+            "d'Est, des résidences récentes et un vaste tissu pavillonnaire. Les logements y sont "
+            "généralement spacieux, avec des surfaces vitrées généreuses et des balcons ou "
+            "terrasses.",
+        "angle":
+            "Les grandes surfaces changent l'arbitrage : sur un cinq pièces, un nettoyage complet "
+            "demande une demi-journée à deux intervenants, et il vaut mieux cibler que survoler. "
+            "Nous définissons les priorités avec vous avant de commencer — en général cuisine, "
+            "salles d'eau et vitrages, qui portent les trois quarts de l'effet visible.",
+        "pratique":
+            "Noisy est à une vingtaine de kilomètres de notre atelier, par l'A3 puis l'A86 ou "
+            "l'A4 : délai habituel de 48 à 72 h. Stationnement aisé.",
+        "faq": ("Combien de temps faut-il pour un grand appartement ?",
+                "Comptez une demi-journée pour un quatre ou cinq pièces, parfois plus s'il est "
+                "meublé et occupé. Le devis est ferme : s'il faut davantage de temps que prévu, "
+                "c'est notre affaire, pas la vôtre. En revanche nous vous disons à l'avance si la "
+                "surface demande deux intervenants."),
+    },
+    {
+        "slug": "le-blanc-mesnil", "nom": "Le Blanc-Mesnil", "cp": "93150", "dept": "93",
+        "lat": 48.9386, "lon": 2.4644,
+        "parc":
+            "C'est notre commune : l'atelier est au 2 rue Poussin. Le parc blanc-mesnilois mêle "
+            "pavillons, petits collectifs et résidences, avec beaucoup de logements familiaux "
+            "occupés durablement.",
+        "angle":
+            "Être sur place change ce que nous pouvons proposer : une intervention le jour même, un "
+            "passage de reprise qui ne coûte presque rien en déplacement, et la possibilité de "
+            "revenir si un point n'a pas été fait à votre satisfaction. C'est le seul endroit où "
+            "nous pouvons tenir cela sans conditions.",
+        "pratique":
+            "Frais de déplacement nuls ou symboliques, délais que nous ne tenons nulle part "
+            "ailleurs. Souvent le jour même en cas d'urgence — un état des lieux avancé, un "
+            "logement à rendre le lendemain.",
+        "faq": ("Pouvez-vous venir aujourd'hui au Blanc-Mesnil ?",
+                "Souvent, oui : appelez-nous, nous regardons la tournée du jour. C'est notre "
+                "commune, le trajet ne pèse rien dans l'organisation, et c'est la seule où nous "
+                "pouvons répondre à une urgence sans réorganiser la journée entière."),
+    },
+    {
+        "slug": "aulnay-sous-bois", "nom": "Aulnay-sous-Bois", "cp": "93600", "dept": "93",
+        "lat": 48.9386, "lon": 2.4938,
+        "parc":
+            "Aulnay est largement pavillonnaire, avec des quartiers de petits collectifs et des "
+            "résidences plus récentes. Les maisons individuelles y dominent la demande, ce qui change "
+            "la nature du travail : plus de surfaces au sol, plus de vitrages, des escaliers, "
+            "souvent un garage ou une véranda.",
+        "angle":
+            "Dans une maison, le nettoyage complet gagne à être organisé par étage et à inclure ce "
+            "que les appartements n'ont pas : véranda, escalier, vitrages de toit accessibles depuis "
+            "l'intérieur, et les abords immédiats de l'entrée. Nous commençons par le haut et nous "
+            "descendons, pour ne pas repasser derrière nous.",
+        "pratique":
+            "Aulnay est à cinq kilomètres de notre atelier, soit dix minutes : nous y intervenons "
+            "souvent le jour même en cas d'urgence, et les frais de déplacement y sont de 5 €.",
+        "faq": ("Intervenez-vous dans les maisons, pas seulement les appartements ?",
+                "Oui, et c'est l'essentiel de la demande à Aulnay. Une maison demande plus de temps "
+                "qu'un appartement de même nombre de pièces, à cause des escaliers et des surfaces "
+                "vitrées. Nous venons voir ou nous travaillons sur photos, puis le devis est ferme."),
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# DOSSIERS TECHNIQUES
+# ---------------------------------------------------------------------------
+# Pages de fond, écrites pour être utiles à quelqu'un qui cherche une réponse
+# précise, pas pour aligner des mots-clés. Chacune répond à une question qu'un
+# exploitant ou un particulier se pose réellement, et donne la réponse même
+# quand elle ne nous arrange pas.
+#
+# Le cadre réglementaire cité est l'arrêté du 25 juin 1980 portant règlement
+# de sécurité contre l'incendie dans les établissements recevant du public,
+# article GC 21, applicable aux ERP dotés de grandes cuisines. Les termes
+# employés sont les siens : ramonage des conduits d'évacuation, vérification
+# de leur vacuité, nettoyage ou remplacement des filtres, livret d'entretien
+# annexé au registre de sécurité. Rien n'y est ajouté.
+#
+# Aucun dossier ne promet d'attestation ni de certificat : ce qui est remis à
+# l'issue d'une intervention est un relevé daté et détaillé, destiné à être
+# rangé dans le livret d'entretien que l'exploitant tient lui-même.
+DOSSIERS = [
+    {
+        "slug": "obligation-nettoyage-hotte-restaurant",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Nettoyage de hotte en restaurant : ce que la réglementation impose",
+        "title": "Nettoyage de hotte : obligation réglementaire en restaurant",
+        "meta": "Ramonage annuel des conduits, filtres chaque semaine, livret d'entretien "
+                "annexé au registre de sécurité : ce que l'arrêté du 25 juin 1980 impose "
+                "réellement à un exploitant.",
+        "lead": "Un ramonage par an au minimum, des filtres nettoyés chaque semaine, et un "
+                "livret d'entretien que l'exploitant tient lui-même. Voici le texte, ce qu'il "
+                "dit exactement, et ce qu'il ne dit pas.",
+        "cle": "Ramonage des conduits d'évacuation : au moins une fois par an.",
+        "sections": [
+            ("Le texte applicable", [
+                "L'obligation ne vient pas d'une recommandation de la profession mais d'un texte : "
+                "l'arrêté du 25 juin 1980 portant règlement de sécurité contre l'incendie et la "
+                "panique dans les établissements recevant du public. C'est son article GC 21 qui "
+                "traite de l'entretien des installations de cuisson, et il s'applique aux "
+                "établissements dotés de grandes cuisines, c'est-à-dire à la très grande majorité "
+                "des restaurants, brasseries, boulangeries et cuisines collectives recevant du "
+                "public.",
+                "Le texte distingue trois opérations distinctes, et c'est cette distinction qui est "
+                "le plus souvent perdue : le nettoyage des filtres, le nettoyage du circuit "
+                "d'extraction, et le ramonage des conduits d'évacuation. Elles n'ont ni la même "
+                "fréquence ni le même exécutant.",
+                "Les voici dans les termes du texte. Les filtres sont nettoyés ou remplacés au "
+                "moins une fois par semaine. Les conduits d'évacuation sont ramonés au moins une "
+                "fois par an, et leur vacuité est vérifiée à cette occasion. Le circuit d'extraction "
+                "est nettoyé aussi souvent que nécessaire — le texte ne fixe pas de chiffre, parce "
+                "qu'un conduit de pizzeria et un conduit de salon de thé ne se chargent pas au même "
+                "rythme.",
+            ]),
+            ("Qui fait quoi", [
+                "Les filtres relèvent de l'équipe de cuisine. Une fois par semaine au minimum, ils "
+                "sont retirés, dégraissés ou remplacés. Ce n'est pas une prestation, c'est une "
+                "tâche d'exploitation, et c'est la plus rentable de toutes : un filtre propre "
+                "retient la graisse avant qu'elle n'entre dans le conduit, donc il espace les "
+                "nettoyages de conduit.",
+                "Le ramonage annuel et le nettoyage du circuit relèvent d'un prestataire, parce "
+                "qu'ils demandent d'ouvrir les trappes de visite, d'accéder à la ligne complète et "
+                "de remonter l'installation en état de fonctionner. C'est cette partie que nous "
+                "assurons : hotte, filtres, et conduits d'extraction.",
+                "La responsabilité, en revanche, reste entière du côté de l'exploitant. Le texte "
+                "prévoit un livret d'entretien annexé au registre de sécurité de l'établissement, "
+                "où sont notées les dates des opérations. C'est l'exploitant qui le tient, et c'est "
+                "lui qui le présente en cas de contrôle.",
+            ]),
+            ("Ce que nous remettons après l'intervention", [
+                "Un relevé daté et détaillé : la date, les zones traitées — hotte, filtres, "
+                "plénum, trappes ouvertes, longueur de conduit reprise —, l'état constaté avant, et "
+                "l'essai d'extraction après remontage. Ce document est fait pour être rangé dans "
+                "votre livret d'entretien.",
+                "Nous ne délivrons pas de certificat de conformité et nous nous méfions de ceux qui "
+                "en promettent : la conformité d'une installation ne se juge pas sur un dégraissage, "
+                "elle se juge sur l'installation elle-même, et ce n'est pas le métier d'un "
+                "prestataire de nettoyage. Ce que nous pouvons attester, c'est ce que nous avons "
+                "fait, où, et quand.",
+            ]),
+            ("Le point à vérifier de votre côté", [
+                "Votre contrat d'assurance multirisque professionnelle comporte presque "
+                "certainement une clause relative à l'entretien des installations de cuisson et "
+                "d'extraction. Les formulations varient d'un assureur à l'autre, et les "
+                "conséquences d'un entretien non documenté en cas de sinistre aussi. Lisez-la, ou "
+                "demandez-la à votre courtier : c'est une lecture de dix minutes qui peut peser "
+                "très lourd.",
+                "C'est aussi la raison pour laquelle le livret d'entretien n'est pas une formalité "
+                "administrative. En cas de départ de feu dans un conduit, la question posée sera "
+                "celle des dates, et la réponse ne s'improvise pas après coup.",
+            ]),
+        ],
+        "faq": [
+            ("Un nettoyage par an suffit-il ?",
+             "C'est le plancher réglementaire pour le ramonage des conduits, pas une "
+             "recommandation technique. Le texte demande en outre que le circuit d'extraction soit "
+             "nettoyé « aussi souvent que nécessaire », ce qui veut dire deux passages par an dans "
+             "la plupart des restaurants, et davantage en friture, grillade ou four à bois."),
+            ("Qui peut me demander mon livret d'entretien ?",
+             "Les services de contrôle compétents lors d'une visite de sécurité de l'établissement, "
+             "et votre assureur en cas de sinistre. Dans les deux cas, ce sont les dates qui sont "
+             "regardées : un livret vide a le même effet qu'un entretien non fait."),
+            ("Les filtres doivent-ils vraiment être nettoyés chaque semaine ?",
+             "C'est ce que prévoit le texte : nettoyés ou remplacés au moins une fois par semaine. "
+             "C'est aussi, en pratique, le geste le plus utile de tout le dispositif, parce qu'un "
+             "filtre propre arrête la graisse avant le conduit."),
+        ],
+    },
+    {
+        "slug": "risque-incendie-graisse-hotte",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Pourquoi la graisse accumulée dans une hotte est un risque d'incendie",
+        "title": "Graisse dans une hotte : le mécanisme du risque d'incendie",
+        "meta": "Comment un dépôt de graisse dans une hotte et un conduit d'extraction devient "
+                "un combustible, pourquoi le feu s'y propage vite, et ce qui réduit réellement "
+                "le risque.",
+        "lead": "La graisse qui tapisse un conduit d'extraction n'est pas de la saleté : c'est un "
+                "combustible, placé exactement là où passe l'air chaud. Voici le mécanisme, sans "
+                "dramatisation inutile.",
+        "cle": "Un conduit encrassé est un combustible dans un courant d'air chaud.",
+        "sections": [
+            ("Ce qui s'accumule, et où", [
+                "Toute cuisson à la matière grasse vaporise une partie de cette matière. Les "
+                "particules sont entraînées par le flux d'air de la hotte, elles traversent les "
+                "filtres — jamais totalement —, puis elles condensent sur les parois dès que la "
+                "température de l'air baisse. C'est pour cela que le dépôt est maximal non pas dans "
+                "la hotte, qui est la partie visible, mais dans le premier coude du conduit, juste "
+                "après.",
+                "Le dépôt n'est pas homogène. Frais, il est huileux et coulant. Repris plusieurs "
+                "fois par la chaleur, il se polymérise : il devient dur, sec, adhérent, et il ne "
+                "part plus au dégraissant. C'est un dépôt ancien qui pose le vrai problème, pas le "
+                "film de la semaine.",
+            ]),
+            ("Le mécanisme de l'incendie", [
+                "Trois conditions sont réunies dans un conduit encrassé. Un combustible : le dépôt "
+                "de graisse. Un comburant : l'air, en mouvement permanent et en quantité. Et une "
+                "source d'allumage possible : une flamme de piano qui monte, un flambage, une "
+                "friteuse en surchauffe, une étincelle. Il manque rarement plus d'un élément.",
+                "Ce qui rend un feu de conduit particulier, c'est sa propagation. Le conduit est un "
+                "volume fermé, étroit, ventilé, et il traverse les structures du bâtiment, souvent "
+                "verticalement jusqu'en toiture. Le feu y progresse à l'abri des regards, il "
+                "chauffe les parois sur son passage, et il peut ressortir loin de la cuisine. C'est "
+                "la raison pour laquelle le texte réglementaire s'intéresse aux conduits et pas "
+                "seulement aux hottes.",
+                "Un feu de graisse ne s'éteint pas à l'eau : l'eau projetée sur de la graisse "
+                "enflammée se vaporise instantanément et disperse le combustible. C'est une donnée "
+                "que toute équipe de cuisine devrait avoir en tête avant d'en avoir besoin.",
+            ]),
+            ("Ce qui réduit réellement le risque", [
+                "Par ordre d'efficacité réelle, et non d'apparence. D'abord les filtres, nettoyés "
+                "ou remplacés chaque semaine : c'est ce qui limite la quantité de graisse qui entre "
+                "dans le conduit, et c'est gratuit. Ensuite le dégraissage du circuit complet, "
+                "conduits compris, à un rythme adapté au mode de cuisson. Enfin la vérification de "
+                "l'extraction, parce qu'un débit qui chute augmente la condensation et donc le "
+                "dépôt.",
+                "Ce qui ne réduit pas le risque : nettoyer la partie visible de la hotte. C'est "
+                "l'opération la plus fréquente et la plus trompeuse. Une hotte inox brillante "
+                "au-dessus d'un conduit tapissé donne exactement la mauvaise impression, et c'est "
+                "celle qui rassure le plus.",
+            ]),
+            ("L'indice à surveiller sans attendre", [
+                "Une extraction qui tire moins qu'avant. C'est le signal le plus fiable, et il est "
+                "progressif donc facile à ne pas voir : un conduit qui s'encrasse perd de la section "
+                "utile, le débit chute, les buées commencent à rester en cuisine, puis à passer en "
+                "salle. Le jour où la cuisine devient difficilement tenable aux heures de pointe, "
+                "le dépôt est déjà important.",
+                "L'autre indice est le plafond : un jaunissement au-dessus des zones de cuisson "
+                "signifie que les buées ne sont pas captées. Dans ce cas, le dégraissage est "
+                "nécessaire mais il ne suffira pas — il faut aussi regarder le dimensionnement de "
+                "l'installation.",
+            ]),
+        ],
+        "faq": [
+            ("À partir de quelle épaisseur de dépôt le risque devient-il sérieux ?",
+             "Il n'existe pas de seuil universel, et méfiez-vous de qui vous en annonce un au "
+             "millimètre près. Ce qui compte autant que l'épaisseur, c'est la nature du dépôt : une "
+             "graisse polymérisée, sèche et dure, est plus dangereuse qu'un film huileux plus épais. "
+             "Nous ouvrons les trappes et nous vous montrons."),
+            ("Mon assurance peut-elle refuser d'indemniser un sinistre ?",
+             "C'est une question à poser à votre assureur, pas à nous, et la réponse dépend des "
+             "clauses de votre contrat. Ce que nous constatons, c'est que la question des dates "
+             "d'entretien arrive systématiquement dans un dossier de sinistre lié à l'extraction. "
+             "Vérifiez votre clause d'entretien avant d'en avoir besoin."),
+            ("Un extincteur en cuisine suffit-il ?",
+             "Un extincteur adapté aux feux de graisse — classe F — est indispensable et doit être "
+             "à portée, mais il traite un départ de feu sur l'appareil de cuisson. Il ne peut rien "
+             "contre un feu déjà parti dans un conduit, qui est inaccessible. La prévention et "
+             "l'intervention sont deux sujets distincts."),
+        ],
+    },
+    {
+        "slug": "frequence-nettoyage-hotte-professionnelle",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "À quelle fréquence faire nettoyer sa hotte professionnelle",
+        "title": "Fréquence de nettoyage d'une hotte professionnelle",
+        "meta": "Un, deux ou trois passages par an ? La fréquence dépend du mode de cuisson, pas "
+                "du nombre de couverts. Repères par métier et critères de décision.",
+        "lead": "Le ramonage annuel est le minimum réglementaire. La bonne fréquence, elle, dépend "
+                "de ce que vous cuisinez — et pas du tout de vos heures d'ouverture.",
+        "cle": "Ce qui décide du rythme : le mode de cuisson, pas le nombre d'heures.",
+        "sections": [
+            ("L'erreur de raisonnement la plus courante", [
+                "Beaucoup d'exploitants calculent la fréquence sur le temps d'ouverture : un "
+                "service unique au déjeuner justifierait un nettoyage plus espacé qu'un service "
+                "continu. C'est faux, et c'est une erreur coûteuse.",
+                "Ce qui charge un conduit, c'est la quantité de matière grasse vaporisée. Une "
+                "cuisine qui fait deux heures de friture et de grillade intensive par jour vaporise "
+                "autant, parfois plus, qu'une cuisine ouverte en continu mais travaillant "
+                "majoritairement au four et à la sauteuse. Le bon critère est le mode de cuisson "
+                "dominant.",
+            ]),
+            ("Repères par mode de cuisson", [
+                "Friture et grillade dominantes — kebab, friterie, snack, restauration rapide : "
+                "deux passages par an au minimum, trois à fort volume. C'est le profil qui charge "
+                "le plus vite.",
+                "Four à bois ou charbon — pizzeria, grillades au feu de bois : deux à trois "
+                "passages par an, avec une particularité. La suie ne se dissout pas, elle se "
+                "décolle : le conduit demande un ramonage mécanique en plus du dégraissage, et le "
+                "conduit de fumée du four est un circuit distinct de celui de la hotte.",
+                "Cuisson mixte — restaurant traditionnel, brasserie : un à deux passages par an, "
+                "deux au-delà d'une centaine de couverts par service.",
+                "Four et buées sucrées — boulangerie, pâtisserie, crêperie : deux passages par an "
+                "dans la plupart des cas. Le dépôt est moins abondant mais plus difficile, parce "
+                "que la farine et le sucre forment avec le gras une croûte dure qui ne réagit pas "
+                "comme une graisse de friture.",
+                "Restauration collective : un à deux passages par an selon le nombre de lignes de "
+                "cuisson, à caler sur les périodes de fermeture.",
+            ]),
+            ("Les trois signaux qui disent de ne pas attendre", [
+                "L'extraction tire moins qu'avant. C'est le signal le plus fiable et le plus "
+                "négligé, parce qu'il s'installe progressivement. Un conduit qui perd de la section "
+                "perd du débit, et la cuisine devient peu à peu difficile aux heures de pointe.",
+                "Les buées passent en salle, ou le plafond jaunit au-dessus des zones de cuisson. "
+                "Les buées non captées se déposent ailleurs, et c'est visible.",
+                "Les odeurs se plaignent chez les voisins. En immeuble d'habitation, c'est la "
+                "première cause de conflit en copropriété, et c'est presque toujours un circuit "
+                "encrassé plutôt qu'un défaut de conception. Un dégraissage complet règle souvent "
+                "ce que des mois de discussion n'avaient pas réglé.",
+            ]),
+            ("Comment arrêter un rythme et s'y tenir", [
+                "Le plus simple est de fixer deux dates dans l'année, liées à un repère "
+                "d'exploitation — la fermeture annuelle, une période creuse — plutôt qu'à un "
+                "calendrier abstrait. Un rendez-vous programmé se tient ; une intervention « à "
+                "prévoir » se reporte indéfiniment.",
+                "Le premier passage sert aussi à calibrer le suivant : nous ouvrons les trappes, "
+                "nous constatons l'état réel, et nous vous disons si six mois est le bon intervalle "
+                "ou s'il faut resserrer. C'est un réglage, pas une estimation faite à l'avance.",
+            ]),
+        ],
+        "faq": [
+            ("Puis-je espacer les nettoyages si mon équipe entretient bien les filtres ?",
+             "Oui, et c'est précisément le levier. Des filtres nettoyés chaque semaine arrêtent une "
+             "part importante de la graisse avant le conduit, ce qui allonge réellement "
+             "l'intervalle. Le ramonage annuel des conduits reste cependant le plancher "
+             "réglementaire, quel que soit le soin apporté aux filtres."),
+            ("Faut-il la même fréquence pour la hotte et pour le conduit ?",
+             "Non. La hotte et les filtres se traitent plus souvent que le conduit, et une partie "
+             "relève de votre équipe. Le conduit, lui, demande une intervention complète avec "
+             "ouverture des trappes : c'est ce passage-là qui se compte en nombre de fois par an."),
+            ("Comment savoir si mon intervalle actuel est le bon ?",
+             "En regardant l'état du conduit à l'ouverture des trappes. S'il est propre, "
+             "l'intervalle peut être allongé ; s'il est déjà chargé, il faut le resserrer. C'est le "
+             "seul critère sérieux, et il demande d'ouvrir plutôt que de supposer."),
+        ],
+    },
+    {
+        "slug": "degraissage-conduit-extraction",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Dégraissage d'un conduit d'extraction : comment cela se passe vraiment",
+        "title": "Dégraissage de conduit d'extraction : méthode et étapes",
+        "meta": "Trappes de visite, dégraissage chimique, ramonage mécanique, remontage et essai "
+                "d'extraction : le déroulé réel d'une intervention sur un circuit d'extraction "
+                "de cuisine professionnelle.",
+        "lead": "Une hotte propre ne dit rien du conduit. Voici ce que contient une intervention "
+                "complète, étape par étape, et comment reconnaître une prestation qui s'arrête à "
+                "la partie visible.",
+        "cle": "Sans ouverture des trappes de visite, le conduit n'est pas traité.",
+        "sections": [
+            ("Le préalable : les trappes de visite", [
+                "Un conduit d'extraction ne se nettoie que par ses trappes de visite. Sans accès "
+                "intermédiaire, on ne traite que les premiers mètres depuis la hotte, et le reste "
+                "de la ligne reste intact. C'est la différence, invisible sur une facture, entre un "
+                "dégraissage complet et un dégraissage de façade.",
+                "La première chose que nous faisons est donc d'inventorier les trappes existantes "
+                "et de repérer ce qui n'est pas accessible. Quand il en manque sur une ligne longue, "
+                "nous le disons : la pose relève d'un installateur, pas de nous, et un conduit "
+                "vertical de trois étages sans trappe intermédiaire ne peut pas être nettoyé sur "
+                "toute sa hauteur. Nous préférons l'annoncer que de facturer un travail partiel "
+                "présenté comme complet.",
+            ]),
+            ("Protection et démontage", [
+                "La cuisine est bâchée avant la première ouverture : plans de travail, "
+                "équipements, sols. Ce n'est pas une précaution de confort — ce qui sort d'un "
+                "conduit chargé est une matière noire et grasse qui tache durablement.",
+                "Les filtres sont retirés et traités séparément, par trempage. La hotte est "
+                "démontée dans ses parties démontables, y compris le plénum, qui est souvent "
+                "l'endroit le plus chargé de l'ensemble et le plus régulièrement oublié.",
+            ]),
+            ("Dégraissage et ramonage : deux opérations différentes", [
+                "Le dégraissage chimique s'attaque à la graisse. Un alcalin est appliqué, on "
+                "respecte un temps de pose — c'est lui qui fait le travail, pas la force du bras —, "
+                "puis on rince. Sur un dépôt polymérisé, une seule application ne suffit pas et il "
+                "faut recommencer.",
+                "Le ramonage mécanique s'attaque à ce qui ne se dissout pas : la suie. Un conduit "
+                "de four à bois ou à charbon en produit, et aucun produit chimique ne l'enlève. "
+                "Elle se décolle à la brosse. Les deux opérations sont distinctes, et une cuisine "
+                "qui a un four à bois a besoin des deux.",
+                "Les points sur lesquels nous insistons parce qu'ils sont les plus souvent sautés : "
+                "le plénum, les coudes de départ — là où la vitesse d'air chute et où le dépôt est "
+                "maximal —, et le caisson du moteur d'extraction, dont les pales encrassées "
+                "expliquent une bonne partie des pertes de débit.",
+            ]),
+            ("Remontage et essai : la partie qui n'est pas optionnelle", [
+                "Tout est remonté, les trappes refermées, les filtres remis en place propres ou "
+                "remplacés. Puis nous mettons l'extraction en marche et nous vérifions qu'elle "
+                "fonctionne. Cela paraît évident ; c'est pourtant l'étape que l'on retrouve le plus "
+                "souvent absente, et une cuisine rendue non opérationnelle avant un service est un "
+                "problème sérieux.",
+                "L'essai sert aussi à constater le gain : sur un conduit très chargé, la "
+                "différence de débit est immédiatement perceptible. C'est la seule preuve "
+                "tangible du travail fait sur une partie que vous ne voyez pas.",
+                "Vous recevez ensuite un relevé daté : zones traitées, trappes ouvertes, longueur "
+                "de conduit reprise, état constaté avant, résultat de l'essai. Il est fait pour "
+                "être rangé dans le livret d'entretien annexé à votre registre de sécurité, que "
+                "vous tenez vous-même.",
+            ]),
+        ],
+        "faq": [
+            ("Combien de temps la cuisine est-elle immobilisée ?",
+             "De trois à six heures pour une cuisine de restaurant de taille courante, davantage "
+             "sur une ligne longue ou une cuisine collective. Nous travaillons de nuit, après le "
+             "dernier service ou le jour de fermeture, de façon à ce que la cuisine soit "
+             "opérationnelle au service suivant."),
+            ("Comment savoir si le conduit a vraiment été traité ?",
+             "Demandez quelles trappes ont été ouvertes, et faites-vous montrer l'intérieur avant "
+             "et après. Un prestataire qui a fait le travail n'a aucune difficulté à répondre. Si "
+             "la réponse est vague ou si aucune trappe n'a été ouverte, seule la hotte a été "
+             "nettoyée."),
+            ("Pouvez-vous poser une trappe de visite manquante ?",
+             "Non, c'est une intervention sur le réseau, qui relève d'un installateur. Nous "
+             "signalons l'absence et l'endroit où elle serait nécessaire. Nous n'avons aucun "
+             "intérêt commercial à vous annoncer des travaux que nous ne réalisons pas, ce qui rend "
+             "le constat plus fiable."),
+        ],
+    },
+    {
+        "slug": "extraction-cuisine-qui-tire-mal",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Mon extraction de cuisine tire mal : les causes, dans l'ordre",
+        "title": "Extraction de cuisine qui tire mal : diagnostic",
+        "meta": "Buées en salle, chaleur insupportable aux heures de pointe, plaintes d'odeurs : "
+                "les causes possibles d'une extraction défaillante, de la moins chère à la plus "
+                "coûteuse.",
+        "lead": "Avant d'envisager des travaux sur le réseau, il y a trois hypothèses à écarter, "
+                "et elles coûtent de moins en moins cher à vérifier dans cet ordre.",
+        "cle": "Commencez par le moins coûteux : filtres, conduit, moteur, puis l'installation.",
+        "sections": [
+            ("Les symptômes et ce qu'ils disent", [
+                "Les buées restent en cuisine, puis passent en salle. La chaleur devient difficile "
+                "à tenir aux heures de pointe. Le plafond jaunit au-dessus des zones de cuisson. "
+                "Les voisins se plaignent d'odeurs. Chacun de ces signes dit la même chose : le "
+                "débit d'extraction réel est inférieur à ce qu'il devrait être.",
+                "Le point important est que cette perte est progressive. Elle s'installe sur des "
+                "mois, l'équipe s'y habitue, et le moment où l'on s'en inquiète est toujours bien "
+                "après le moment où elle a commencé. C'est pour cela qu'un constat vaut mieux "
+                "qu'une impression.",
+            ]),
+            ("Hypothèse 1 — les filtres", [
+                "C'est la première à écarter parce qu'elle est gratuite. Des filtres saturés "
+                "réduisent le débit de façon considérable, et ils se saturent en quelques jours en "
+                "friture ou en grillade. Le texte réglementaire prévoit un nettoyage ou un "
+                "remplacement au moins une fois par semaine ; dans beaucoup de cuisines, c'est plus "
+                "souvent qu'il le faudrait réellement.",
+                "Retirez-les, dégraissez-les complètement, remettez-les et mesurez la différence. "
+                "Si l'extraction redevient correcte, le problème était là, et il reviendra au même "
+                "rythme.",
+            ]),
+            ("Hypothèse 2 — le conduit", [
+                "C'est la cause la plus fréquente d'une baisse durable. Un conduit encrassé perd de "
+                "la section utile, et la perte de débit est proportionnelle. Comme le dépôt "
+                "s'accumule surtout dans les coudes et hors de vue, rien ne le signale : la hotte "
+                "peut être impeccable et le conduit à moitié obstrué.",
+                "La vérification demande d'ouvrir les trappes de visite. C'est la seule façon de "
+                "savoir, et c'est aussi ce qui permet de chiffrer un dégraissage sur un constat "
+                "plutôt que sur une estimation.",
+            ]),
+            ("Hypothèse 3 — le moteur d'extraction", [
+                "Le caisson du moteur et ses pales s'encrassent comme le reste, et des pales "
+                "chargées de graisse perdent une partie de leur rendement. C'est une cause "
+                "régulièrement ignorée parce que le caisson est souvent en toiture ou en gaine "
+                "technique, donc jamais ouvert.",
+                "Le nettoyage du caisson fait partie d'une intervention complète. Un moteur "
+                "fatigué ou sous-dimensionné, en revanche, relève du remplacement, et donc d'un "
+                "installateur.",
+            ]),
+            ("Hypothèse 4 — l'installation elle-même", [
+                "Si les trois premières hypothèses sont écartées, le problème est de conception : "
+                "section insuffisante, tracé qui multiplie les coudes, compensation d'air absente — "
+                "une cuisine ne peut pas extraire si rien ne rentre —, ou moteur sous-dimensionné "
+                "pour les appareils installés. C'est fréquent dans les locaux qui ont changé "
+                "d'activité sans que le réseau soit repris.",
+                "Cela relève d'un installateur, pas de nous. Nous le signalons quand nous le "
+                "constatons, avec ce que nous avons vu et où, parce que c'est l'information utile — "
+                "et parce que nous ne vendons pas de travaux sur le réseau, ce qui rend le constat "
+                "désintéressé.",
+            ]),
+        ],
+        "faq": [
+            ("Un dégraissage va-t-il régler mon problème d'extraction ?",
+             "Souvent, oui, et c'est l'hypothèse à tester en premier parce qu'elle est la moins "
+             "coûteuse. Pas toujours : si l'installation est sous-dimensionnée ou si la "
+             "compensation d'air manque, le dégraissage améliorera les choses sans les résoudre. "
+             "Nous vous dirons ce que nous avons constaté."),
+            ("Les plaintes d'odeurs des voisins viennent-elles de là ?",
+             "Dans la grande majorité des cas que nous rencontrons en immeuble d'habitation, oui. "
+             "Un circuit encrassé tire moins, les buées trouvent un autre chemin, et les odeurs "
+             "sortent où elles peuvent. C'est l'hypothèse à vérifier avant d'engager une discussion "
+             "longue avec la copropriété."),
+            ("Faites-vous les travaux sur le réseau d'extraction ?",
+             "Non. Nous dégraissons et nous ramonons hotte, filtres et conduits ; la modification "
+             "du réseau, la pose de trappes et le remplacement d'un moteur relèvent d'un "
+             "installateur. Nous constatons et nous orientons, sans intervenir."),
+        ],
+    },
+]
+
+# Suite des dossiers : vitrerie, entretien régulier, appartement. Écrits
+# séparément pour que le fichier reste lisible, ajoutés à la même liste.
+DOSSIERS += [
+    {
+        "slug": "nettoyage-vitrine-commerce-frequence",
+        "cat": "Vitrerie",
+        "audience": "pro",
+        "service": "nettoyage-vitres-paris",
+        "h1": "Vitrine de commerce : à quelle fréquence la faire nettoyer",
+        "title": "Nettoyage de vitrine de commerce : quelle fréquence",
+        "meta": "Hebdomadaire, bimensuel, mensuel : ce qui décide du rythme de nettoyage d'une "
+                "vitrine, et pourquoi la zone basse et la poignée se reprennent plus souvent que "
+                "le reste.",
+        "lead": "Une vitrine ne se salit pas uniformément. Comprendre où elle se salit permet de "
+                "payer moins de passages complets tout en ayant une devanture toujours nette.",
+        "cle": "Trois zones, trois rythmes : poignée, bas de vitrage, vitrage complet.",
+        "sections": [
+            ("Pourquoi une vitrine se salit par zones", [
+                "Trois sources, trois endroits. Les mains, à hauteur de poignée et de regard, "
+                "laissent des marques en quelques heures en rue passante. Les projections du "
+                "trottoir — eau de pluie chargée, poussière, sel en hiver — salissent les trente "
+                "premiers centimètres au-dessus du sol. Et le film gras du trafic, fait de "
+                "particules de freinage et de résidus d'hydrocarbures, se dépose lentement sur "
+                "toute la surface.",
+                "Ces trois salissures n'ont ni le même rythme ni le même traitement. Les deux "
+                "premières se reprennent en quelques minutes ; la troisième demande un dégraissage "
+                "complet. Un commerce qui fait laver sa vitrine entièrement chaque semaine paie "
+                "trois fois pour un travail dont une partie seulement était nécessaire.",
+            ]),
+            ("Le rythme qui fonctionne en pratique", [
+                "En rue très passante : un nettoyage complet hebdomadaire, avec la poignée et la "
+                "zone basse reprises à chaque passage. En rue moyennement passante : complet toutes "
+                "les deux semaines, reprise hebdomadaire des zones de contact. En rue calme ou en "
+                "galerie : complet mensuel.",
+                "La façade haute, l'enseigne et le bandeau se traitent séparément, au trimestre, et "
+                "c'est souvent ce qui est le plus oublié. Une enseigne encrassée perd en luminosité "
+                "de façon progressive, donc imperceptible — jusqu'à ce qu'on la nettoie et que la "
+                "différence saute aux yeux.",
+            ]),
+            ("Le cas particulier du commerce de bouche", [
+                "Une boulangerie, une pâtisserie ou un restaurant ont un problème que les autres "
+                "commerces n'ont pas : le film gras intérieur. Les buées de cuisson déposent sur la "
+                "face interne du verre une pellicule de gras, sucrée en pâtisserie, qui ne se voit "
+                "pas de face mais diffuse la lumière et éteint la couleur des produits exposés.",
+                "C'est la raison pour laquelle une vitrine de boulangerie peut sembler terne alors "
+                "qu'elle vient d'être lavée : un produit à vitres étale le film sans le dissoudre. "
+                "Il faut un dégraissage alcalin de la face intérieure, puis un rinçage à l'eau "
+                "déminéralisée. Une fois par mois suffit, mais il faut le faire.",
+            ]),
+            ("Ce qu'il faut regarder sur un devis de vitrerie", [
+                "Trois points. Premièrement, ce qui est compris exactement : le verre seul, ou le "
+                "verre plus les encadrements et les appuis ? Les encadrements sont l'essentiel du "
+                "résultat visible, et c'est dans l'appui que se loge la saleté qui salira à nouveau "
+                "la vitre à la première pluie.",
+                "Deuxièmement, l'eau utilisée. L'eau du réseau francilien est calcaire : elle "
+                "laisse au séchage une trace blanche qui n'est pas de la saleté mais du minéral. "
+                "Une eau déminéralisée sèche sans rien laisser, et c'est ce qui dispense d'essuyer.",
+                "Troisièmement, les deux faces ou une seule. Une vitrine lavée à l'extérieur "
+                "seulement reste voilée vue de la rue si la face intérieure est grasse. Cela paraît "
+                "évident et c'est pourtant une imprécision fréquente sur les devis.",
+            ]),
+        ],
+        "faq": [
+            ("Pourquoi des traces blanches réapparaissent-elles après le nettoyage ?",
+             "Parce que l'eau utilisée était calcaire. Ce que vous voyez n'est pas de la saleté "
+             "revenue, c'est le minéral laissé par l'eau en séchant. Une eau déminéralisée supprime "
+             "le phénomène — et avec lui la nécessité d'essuyer, qui est ce qui laisse des traces "
+             "de chiffon."),
+            ("Les encadrements et les appuis sont-ils compris ?",
+             "Chez nous, oui, dans le même passage. C'est important : un appui chargé de poussière "
+             "fait couler une coulure sur la vitre à la première pluie, et le nettoyage du verre "
+             "seul ne tient alors que quelques jours."),
+            ("Peut-on nettoyer une vitrine en plein soleil ?",
+             "Mieux vaut l'éviter. En plein soleil, l'eau sèche plus vite que la raclette ne "
+             "descend et le résultat est marqué quelle que soit la méthode. C'est pour cela que "
+             "nous intervenons tôt le matin, quand le verre est encore froid."),
+        ],
+    },
+    {
+        "slug": "traces-blanches-vitres-calcaire",
+        "cat": "Vitrerie",
+        "audience": "mixte",
+        "service": "nettoyage-vitres-paris",
+        "h1": "Traces blanches sur les vitres : d'où elles viennent et comment les supprimer",
+        "title": "Traces blanches sur les vitres : la cause et la solution",
+        "meta": "La trace blanche qui reste après nettoyage n'est pas de la saleté : c'est le "
+                "calcaire de l'eau du réseau. Pourquoi l'eau déminéralisée règle le problème.",
+        "lead": "Vous lavez, vous essuyez, et le voile revient en séchant. Ce n'est pas une "
+                "question de produit ni de technique : c'est l'eau.",
+        "cle": "La trace blanche est du minéral, pas de la saleté.",
+        "sections": [
+            ("Ce que vous voyez réellement", [
+                "L'eau du réseau contient des minéraux dissous, principalement du calcium et du "
+                "magnésium. En Île-de-France, elle est nettement calcaire sur la plus grande partie "
+                "du territoire. Quand une goutte sèche sur du verre, l'eau s'évapore et les "
+                "minéraux restent : ils forment un dépôt blanchâtre, en gouttes ou en voile selon la "
+                "façon dont l'eau a séché.",
+                "La conséquence est contre-intuitive : plus vous lavez à l'eau du robinet, plus "
+                "vous déposez de minéral. Le verre est propre de saleté et sale de calcaire. C'est "
+                "exactement ce qui se passe quand une vitre paraît pire après nettoyage qu'avant.",
+            ]),
+            ("Pourquoi le produit et le chiffon ne règlent pas le problème", [
+                "Un produit à vitres contient un solvant et un tensioactif, qui dissolvent les "
+                "corps gras et la poussière. Aucun des deux n'enlève le minéral de l'eau de rinçage "
+                "— et le produit lui-même, s'il n'est pas complètement retiré, laisse à son tour un "
+                "film qui voile le verre à contre-jour.",
+                "L'essuyage ne fait que déplacer le problème. Un chiffon, même en microfibre, laisse "
+                "des fibres et des marques sur une grande surface, et il étale le minéral plutôt "
+                "que de l'enlever. C'est pour cela qu'une baie vitrée essuyée au chiffon est "
+                "toujours marquée vue de biais.",
+                "Le vinaigre blanc, souvent conseillé, fonctionne partiellement : son acidité "
+                "dissout le dépôt déjà formé. Mais il ne change rien à l'eau de rinçage, donc le "
+                "voile revient au séchage suivant. Et il est à éviter sur les joints et les "
+                "menuiseries anciennes.",
+            ]),
+            ("L'eau déminéralisée, et pourquoi elle change tout", [
+                "Une eau privée de ses minéraux — par osmose inverse ou par résine échangeuse "
+                "d'ions — ne laisse rien en séchant. Il n'y a donc plus rien à essuyer : la vitre "
+                "est rincée puis laissée sécher seule, et c'est précisément l'absence d'essuyage "
+                "qui donne un résultat sans trace.",
+                "C'est aussi ce qui permet de travailler à la perche télescopique sur les hauteurs "
+                "accessibles depuis le sol : on ne peut pas essuyer à quatre mètres, donc la seule "
+                "méthode possible est une eau qui sèche propre.",
+                "Sur une vitre très entartrée par des années d'arrosage automatique ou de "
+                "ruissellement, l'eau déminéralisée seule ne suffit pas : il faut d'abord dissoudre "
+                "le dépôt existant, puis rincer. Et si le verre est déjà attaqué — c'est le cas "
+                "après plusieurs années —, le dépôt a marqué la surface elle-même et rien ne la "
+                "reconstitue. Nous le disons après avoir essayé, pas avant.",
+            ]),
+            ("Si vous le faites vous-même", [
+                "Trois gestes qui améliorent nettement le résultat sans matériel particulier. "
+                "Travaillez à l'ombre ou tôt le matin : au soleil, l'eau sèche avant que vous ayez "
+                "fini et la trace est inévitable. Utilisez très peu de produit — un excès de "
+                "tensioactif est la première cause de voile. Et terminez à la raclette en "
+                "bandes qui se chevauchent, en essuyant la lame à chaque passage, plutôt qu'au "
+                "chiffon.",
+                "Pour le dernier centimètre en bas du vitrage, où l'eau s'accumule, un chiffon sec "
+                "propre passé une seule fois vaut mieux qu'un essuyage général.",
+            ]),
+        ],
+        "faq": [
+            ("Le vinaigre blanc est-il une bonne solution ?",
+             "Pour dissoudre un dépôt de calcaire déjà formé, oui, ponctuellement. Pas comme "
+             "méthode régulière : il ne change rien à l'eau de rinçage, donc le voile revient, et "
+             "son acidité est à éviter sur les joints, les mastics et les menuiseries anciennes."),
+            ("Un dépôt de calcaire ancien part-il toujours ?",
+             "Pas toujours. Un dépôt laissé plusieurs années finit par attaquer la surface du verre "
+             "elle-même, et aucun produit ne la reconstitue. Nous essayons, et nous vous disons "
+             "franchement si la limite est atteinte plutôt que d'insister au risque de rayer."),
+            ("Faut-il de l'eau déminéralisée pour les vitres de chez soi ?",
+             "Pas nécessairement pour une fenêtre que vous pouvez essuyer facilement. Cela devient "
+             "décisif sur les grandes surfaces, les baies et tout ce qui se travaille à la perche, "
+             "c'est-à-dire tout ce qu'on ne peut pas essuyer."),
+        ],
+    },
+    {
+        "slug": "nettoyage-vitres-en-hauteur-limites",
+        "cat": "Vitrerie",
+        "audience": "pro",
+        "service": "nettoyage-vitres-paris",
+        "h1": "Nettoyage de vitres en hauteur : ce que nous faisons et ce que nous ne faisons pas",
+        "title": "Nettoyage de vitres en hauteur : nos limites, dites avant le devis",
+        "meta": "Jusqu'à trois niveaux depuis le sol à la perche et à l'eau déminéralisée. "
+                "Au-delà, nacelle ou cordiste : nous ne le faisons pas, et nous le disons avant.",
+        "lead": "Une page qui dit surtout ce que nous ne prenons pas. C'est utile : la plupart des "
+                "mauvaises surprises en vitrerie viennent d'un étage non fait que personne n'avait "
+                "annoncé.",
+        "cle": "Trois niveaux depuis le sol. Au-delà, ce n'est pas notre métier.",
+        "sections": [
+            ("Ce que la perche permet, et jusqu'où", [
+                "Une perche télescopique alimentée en eau déminéralisée atteint confortablement les "
+                "trois premiers niveaux d'un bâtiment, soit une dizaine de mètres selon les "
+                "hauteurs d'étage. L'opérateur reste au sol : il n'y a pas de travail en hauteur, "
+                "donc pas de risque de chute, et c'est de loin la solution la plus économique.",
+                "Deux conditions. Il faut un recul suffisant au pied de la façade — une perche "
+                "s'utilise en oblique, pas à la verticale contre le mur — et un sol stable. Une "
+                "façade sur rue étroite, un balcon en surplomb ou une haie dense peuvent empêcher "
+                "l'accès alors que la hauteur, elle, serait atteignable.",
+            ]),
+            ("Ce que nous ne faisons pas, et pourquoi nous le disons", [
+                "Au-delà de trois niveaux, ou quand le recul manque, la façade demande un moyen "
+                "d'accès en hauteur : nacelle, échafaudage, ou travail sur cordes. Nous ne le "
+                "réalisons pas. Ce n'est pas une réserve commerciale, c'est une question de "
+                "compétence et d'équipement : ces interventions relèvent d'entreprises spécialisées "
+                "avec des opérateurs formés et des assurances adaptées.",
+                "Nous le disons avant le devis, pas après l'intervention. C'est le point sur lequel "
+                "la plupart des mauvaises expériences se jouent : un prestataire prend le chantier "
+                "entier, fait ce qu'il peut depuis le sol, et laisse les étages supérieurs en "
+                "l'état sans l'avoir annoncé. Le client découvre le problème une fois payé.",
+                "Nous ne travaillons pas non plus sur échelle appuyée pour laver des vitres. C'est "
+                "une pratique répandue et c'est une mauvaise idée : une échelle impose d'avoir une "
+                "main occupée, ce qui est exactement ce qu'il ne faut pas en hauteur.",
+            ]),
+            ("Ce qui reste de notre ressort sur un bâtiment haut", [
+                "Beaucoup, en réalité, et c'est souvent l'essentiel de ce qui se voit. Les "
+                "rez-de-chaussée et les commerces de pied d'immeuble. Les halls et les sas "
+                "d'entrée, qui sont les surfaces les plus touchées et les plus regardées. Les "
+                "cloisons vitrées intérieures, les portes vitrées, les salles de réunion. Et les "
+                "faces intérieures des vitrages, quand la menuiserie permet d'y accéder sans "
+                "danger.",
+                "Sur un immeuble de bureaux, ce périmètre représente la quasi-totalité de ce que "
+                "les occupants voient de près toute la journée. La façade en étage est une question "
+                "d'image extérieure, et elle se traite par campagnes, avec un prestataire "
+                "spécialisé, une à deux fois par an.",
+            ]),
+            ("Le cas des fenêtres oscillo-battantes et des baies fixes", [
+                "Une fenêtre oscillo-battante se nettoie entièrement depuis l'intérieur, les deux "
+                "faces, en toute sécurité : c'est la configuration idéale en étage et nous la "
+                "traitons sans difficulté.",
+                "Une baie fixe en étage, en revanche, n'offre aucun accès à sa face extérieure "
+                "depuis l'intérieur. Nous ne nous penchons pas, nous ne montons pas sur un garde-"
+                "corps, et nous ne demanderons jamais à quelqu'un de tenir l'échelle. Si la face "
+                "extérieure n'est pas accessible, elle ne sera pas faite, et c'est écrit sur le "
+                "devis.",
+            ]),
+        ],
+        "faq": [
+            ("Jusqu'à quelle hauteur intervenez-vous exactement ?",
+             "Les trois premiers niveaux depuis le sol, à la perche, soit une dizaine de mètres "
+             "selon les hauteurs d'étage, et à condition d'avoir du recul au pied de la façade. "
+             "Nous le vérifions sur photos avant de chiffrer."),
+            ("Pouvez-vous me recommander quelqu'un pour les étages supérieurs ?",
+             "Nous pouvons vous orienter vers des entreprises de travail en hauteur, sans "
+             "commission ni accord d'apport d'affaires. Beaucoup de bâtiments fonctionnent ainsi : "
+             "une campagne de façade annuelle par un spécialiste, et un entretien courant des "
+             "parties basses et intérieures."),
+            ("Pourquoi refuser un chantier que d'autres acceptent ?",
+             "Parce qu'accepter voudrait dire soit prendre un risque pour la personne qui "
+             "intervient, soit facturer un travail partiel en laissant croire qu'il est complet. "
+             "Les deux nous paraissent pires qu'un devis refusé."),
+        ],
+    },
+    {
+        "slug": "cahier-des-charges-nettoyage-bureaux",
+        "cat": "Entretien régulier",
+        "audience": "pro",
+        "service": "nettoyage-regulier-paris",
+        "h1": "Nettoyage de bureaux : rédiger un cahier des charges qui tient",
+        "title": "Cahier des charges de nettoyage de bureaux : ce qu'il doit contenir",
+        "meta": "Fréquences par zone, périmètre précis, consommables, horaires, contrôle : les "
+                "points qui font la différence entre un contrat d'entretien qui tient et un "
+                "contrat qu'on résilie au bout de six mois.",
+        "lead": "La plupart des contrats d'entretien se dégradent pour la même raison : le "
+                "périmètre n'était pas écrit. Voici ce qu'il faut y mettre, point par point.",
+        "cle": "Une fréquence par zone, pas une fréquence pour le site.",
+        "sections": [
+            ("L'erreur de départ : une fréquence unique", [
+                "Un contrat qui dit « passage trois fois par semaine » ne dit rien d'utile. Les "
+                "sanitaires et la tisanerie demandent une reprise à chaque passage ; les surfaces "
+                "vitrées intérieures tiennent au mois ; les plinthes et les bouches de ventilation, "
+                "au trimestre. Une fréquence unique conduit soit à payer trop pour certaines zones, "
+                "soit à ne jamais traiter les autres.",
+                "Le bon cahier des charges liste les zones, et pour chacune une fréquence. C'est "
+                "plus long à écrire une fois, et cela supprime la quasi-totalité des désaccords "
+                "ultérieurs.",
+            ]),
+            ("Les points sur lesquels un contrat doit être explicite", [
+                "Le périmètre des bureaux. Un poste de travail encombré ne peut pas être "
+                "dépoussiéré sans déplacer des documents, ce qu'aucun prestataire sérieux ne fera. "
+                "La formule honnête est « poussière des surfaces dégagées », et il faut qu'elle "
+                "soit écrite, sinon elle sera reprochée.",
+                "Les consommables sanitaires. Papier, savon, sacs : inclus dans la prestation ou à "
+                "votre charge ? Les deux se défendent ; l'absence de réponse écrite est ce qui crée "
+                "le problème, en général un vendredi soir.",
+                "Les horaires et les accès. Avant 8 h 30 ou après 18 h 30, avec quel moyen "
+                "d'accès, et qui détient les clés ou les codes. Un contrat qui ne tranche pas cela "
+                "produit des passages manqués dès le premier mois.",
+                "Ce qui n'est pas compris. Vitrerie extérieure, moquettes en profondeur, remise en "
+                "état après travaux, nettoyage des textiles de sièges : ce sont des prestations "
+                "distinctes, à chiffrer à part. Les laisser dans un flou bienveillant garantit "
+                "qu'elles ne seront jamais faites.",
+            ]),
+            ("Les deux zones qui décident de tout", [
+                "Les sanitaires et la tisanerie. C'est sur elles que la qualité d'un prestataire "
+                "est jugée, par les salariés comme par les visiteurs, et un plateau impeccable avec "
+                "des sanitaires moyens sera perçu comme mal entretenu. Elles doivent être reprises "
+                "à chaque passage, sans exception, et c'est le point sur lequel il faut être le "
+                "plus ferme.",
+                "L'inverse est vrai aussi : des sanitaires irréprochables rachètent beaucoup. Si "
+                "votre budget impose de réduire quelque chose, réduisez ailleurs.",
+            ]),
+            ("Prévoir le contrôle, dès le départ", [
+                "Un contrat d'entretien se dégrade lentement si personne ne regarde. Prévoyez un "
+                "point à trois mois puis une fois par semestre, avec un interlocuteur désigné de "
+                "chaque côté, et un cahier ou un fichier partagé où les remarques sont notées au "
+                "fil de l'eau plutôt qu'accumulées jusqu'à la rupture.",
+                "Prévoyez aussi les remises à niveau périodiques : moquettes et textiles de sièges "
+                "une à deux fois par an, vitrages intérieurs au mois, parties hautes au trimestre. "
+                "Ce sont elles qui empêchent un site de dériver, et elles ne se font jamais si "
+                "elles ne sont pas inscrites au calendrier.",
+            ]),
+        ],
+        "faq": [
+            ("Faut-il fournir les produits et le matériel au prestataire ?",
+             "Non, un prestataire vient avec son matériel et ses produits. Seuls les consommables "
+             "sanitaires se discutent : inclus ou à votre charge, les deux formules existent et la "
+             "seule erreur est de ne pas trancher par écrit."),
+            ("Un prestataire doit-il dépoussiérer les bureaux encombrés ?",
+             "Il ne le fera pas, et c'est normal : déplacer des documents sur un poste de travail "
+             "n'est ni son rôle ni votre intérêt. Faites écrire « surfaces dégagées » dans le "
+             "contrat, et prévoyez une journée de rangement avant une remise à niveau complète."),
+            ("À quelle fréquence nettoyer les cloisons vitrées intérieures ?",
+             "Une fois par mois suffit dans la plupart des cas, avec une reprise des portes vitrées "
+             "et des zones de poignée plus souvent. Ce sont les surfaces que les occupants voient de "
+             "près toute la journée, et elles pèsent plus que la façade sur l'impression générale."),
+        ],
+    },
+    {
+        "slug": "nettoyage-appartement-etat-des-lieux",
+        "cat": "Appartement",
+        "audience": "particulier",
+        "service": "nettoyage-appartement-paris",
+        "h1": "Nettoyage avant état des lieux : la liste de ce qui est réellement vérifié",
+        "title": "Nettoyage avant état des lieux de sortie : la liste complète",
+        "meta": "Four, réfrigérateur, joints, intérieurs de placards, gorges de fenêtres : les "
+                "points sur lesquels se décident les retenues sur dépôt de garantie, et ceux qui "
+                "ne se rattrapent pas.",
+        "lead": "Le motif de retenue le plus fréquent sur un dépôt de garantie est l'état de "
+                "propreté. Voici ce qui est regardé, dans l'ordre, et ce qui relève de l'usure "
+                "plutôt que du ménage.",
+        "cle": "Le logement vide est le seul moment où tout est accessible.",
+        "sections": [
+            ("Ce qui est regardé en premier", [
+                "Trois pièces concentrent l'essentiel de l'attention : la cuisine, la salle de "
+                "bains et les sols. Dans la cuisine, le four et le réfrigérateur sont les deux "
+                "points les plus systématiquement vérifiés, et les deux les plus souvent laissés en "
+                "l'état par le locataire sortant. Le four, en particulier, demande du temps de pose "
+                "et non de la force.",
+                "Dans la salle de bains, ce sont les joints, la robinetterie entartrée et la paroi "
+                "de douche. L'eau francilienne est calcaire : un dépôt s'installe en quelques mois "
+                "et se dissout avec un détartrant adapté et de la patience, pas avec un abrasif qui "
+                "rayera la paroi.",
+                "Pour les sols, l'attention porte sur les plinthes et les angles, qui sont les "
+                "endroits que personne ne fait et que tout le monde regarde.",
+            ]),
+            ("Ce que l'on ne pense pas à faire", [
+                "Les intérieurs de placards et de rangements, vidés — c'est le seul moment où ils "
+                "le sont. Les gorges et les rails de fenêtres, où la poussière de ville "
+                "s'accumule. Les grilles de ventilation, souvent complètement obstruées. Les "
+                "interrupteurs et les poignées, qui gardent la marque des mains. Le dessus des "
+                "portes et des huisseries. L'intérieur de la hotte de cuisine, s'il y en a une.",
+                "Et les surfaces que les meubles masquaient : derrière et sous le réfrigérateur, "
+                "derrière la machine à laver, le long des murs sous les meubles. Un logement meublé "
+                "ne permet pas de les atteindre ; un logement vide, oui, et c'est précisément pour "
+                "cela que le nettoyage de sortie se fait après le déménagement et pas avant.",
+            ]),
+            ("La distinction qui compte : propreté et usure", [
+                "Un bailleur peut retenir sur le dépôt de garantie pour un défaut de propreté. "
+                "L'usure normale, elle, ne peut pas lui être imputée au locataire : un parquet "
+                "patiné par dix ans d'usage, une peinture ternie, un joint définitivement coloré "
+                "relèvent de la vétusté et non du ménage.",
+                "Cette distinction se perd dans la discussion si rien ne la documente. C'est "
+                "pourquoi nous vous remettons le détail de ce qui a été fait, et pourquoi nous "
+                "vous disons avant de commencer ce qui ne se rattrapera pas. Il vaut mieux le savoir "
+                "avant l'état des lieux que de le découvrir pendant.",
+                "Ce qui ne se rattrape pas, le plus souvent : un joint de silicone noirci en "
+                "profondeur, qui se remplace et ne se nettoie pas ; une paroi de douche attaquée "
+                "par des années de calcaire ; un parquet gondolé par l'eau ; un revêtement brûlé "
+                "ou entaillé.",
+            ]),
+            ("Quand le faire, et combien de temps prévoir", [
+                "Après le déménagement complet, avant l'état des lieux, avec au moins un jour de "
+                "marge. Un logement nettoyé la veille au soir et visité le matin est le bon "
+                "enchaînement ; le même jour est risqué, parce que les sols doivent sécher et que "
+                "le four demande du temps.",
+                "Comptez deux à trois heures pour un studio ou un deux-pièces, une demi-journée "
+                "pour un trois ou quatre-pièces vide. Le devis est ferme : s'il faut plus de temps "
+                "que prévu, c'est notre affaire. En revanche nous vous disons à l'avance si la "
+                "surface demande deux intervenants.",
+            ]),
+        ],
+        "faq": [
+            ("Un nettoyage professionnel évite-t-il la retenue sur le dépôt de garantie ?",
+             "Il supprime le motif le plus fréquent, qui est la propreté. Il ne couvre pas l'usure "
+             "ni les dégradations, qui relèvent d'une autre discussion avec le bailleur. Le détail "
+             "écrit de ce qui a été fait est utile si l'état des lieux est contesté."),
+            ("Faut-il être présent pendant l'intervention ?",
+             "Non, dès lors que l'accès est réglé : clé confiée, boîte à clés ou code. Beaucoup de "
+             "nos interventions de sortie se font en l'absence du locataire, qui a déjà déménagé. "
+             "Nous vous envoyons les photos du logement terminé si vous le souhaitez."),
+            ("Nettoyez-vous aussi les vitres à cette occasion ?",
+             "Oui, intérieur et extérieur quand la menuiserie le permet, encadrements et gorges "
+             "comprises. C'est un point régulièrement relevé dans un état des lieux, et c'est "
+             "beaucoup plus simple à faire dans un logement vide."),
+        ],
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# PÉRIMÈTRES ET LIMITES — écrits une fois, repris partout
+# ---------------------------------------------------------------------------
+# Ces blocs sont les mêmes sur toutes les pages hottes et vitrerie. Les
+# dupliquer dans chaque entrée sectorielle ferait dériver les formulations
+# page après page, et c'est exactement ce que l'audit avait relevé ailleurs.
+HOTTE_PERIMETRE = (
+    "Hotte : intérieur, extérieur, plénum et parties démontables",
+    "Filtres : dégraissage par trempage, ou remplacement si nécessaire",
+    "Conduits d'extraction : dégraissage par les trappes de visite",
+    "Ramonage mécanique du conduit quand il y a de la suie (four à bois, charbon)",
+    "Caisson et pales du moteur d'extraction, quand ils sont accessibles",
+    "Protection de la cuisine avant ouverture, nettoyage de la zone après",
+    "Remontage complet et essai d'extraction avant de partir",
+    "Relevé daté et détaillé de l'intervention, zone par zone",
+)
+
+HOTTE_LIMITES = (
+    "Nous ne délivrons ni attestation de conformité ni certificat : nous remettons un relevé "
+    "daté de ce que nous avons fait, où et quand. C'est ce document qui se range dans le livret "
+    "d'entretien annexé à votre registre de sécurité, que vous tenez vous-même.",
+    "Nous n'intervenons pas sur le réseau : pose de trappe de visite, modification de tracé, "
+    "remplacement de moteur relèvent d'un installateur. Nous constatons et nous vous orientons, "
+    "sans rien vendre là-dessus.",
+    "Sans trappe de visite accessible, un conduit ne peut pas être traité sur toute sa longueur. "
+    "Nous le disons avant le devis plutôt que de facturer un dégraissage partiel présenté comme "
+    "complet.",
+)
+
+HOTTE_REGLEMENT = (
+    "Le texte applicable est l'arrêté du 25 juin 1980 portant règlement de sécurité contre "
+    "l'incendie dans les établissements recevant du public, article GC 21, pour les "
+    "établissements dotés de grandes cuisines. Il demande trois choses distinctes : des filtres "
+    "nettoyés ou remplacés au moins une fois par semaine, un ramonage des conduits d'évacuation "
+    "au moins une fois par an avec vérification de leur vacuité, et un nettoyage du circuit "
+    "d'extraction aussi souvent que nécessaire. Les dates sont notées par l'exploitant dans un "
+    "livret d'entretien annexé au registre de sécurité."
+)
+
+VITRES_PERIMETRE = (
+    "Vitrage : les deux faces, quand la menuiserie permet d'accéder à l'extérieur",
+    "Encadrements, montants et appuis repris dans le même passage",
+    "Rails et gorges de coulissants, où se loge l'essentiel de la saleté",
+    "Eau déminéralisée : séchage sans trace, sans essuyage donc sans marque de chiffon",
+    "Dégraissage préalable des faces intérieures grasses (commerce de bouche)",
+    "Perche télescopique jusqu'aux trois premiers niveaux depuis le sol",
+    "Enseignes, bandeaux et vitrophanies, à la mouillette et sans racloir",
+)
+
+VITRES_LIMITES = (
+    "Au-delà de trois niveaux depuis le sol, ou sans recul suffisant au pied de la façade, "
+    "l'intervention demande une nacelle, un échafaudage ou un cordiste. Nous ne le faisons pas : "
+    "ce sont d'autres compétences, d'autres équipements et d'autres assurances. Nous le disons "
+    "avant le devis, jamais après l'intervention.",
+    "Nous ne lavons pas de vitres depuis une échelle appuyée. C'est répandu et c'est une mauvaise "
+    "idée : une main est occupée, ce qui est précisément ce qu'il ne faut pas en hauteur.",
+    "Une baie fixe en étage dont la face extérieure n'est pas accessible depuis l'intérieur ne "
+    "sera pas faite de ce côté, et c'est écrit sur le devis.",
+)

@@ -1269,3 +1269,80 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
      deuxième ligne. */
   .topbar-info{display:none}
 }
+
+/* ===========================================================================
+   24. PAGES SECTORIELLES — sommaires, limites, dossiers
+   =========================================================================== */
+
+/* Liste de liens internes d'un sommaire. Deux à trois colonnes selon la
+   largeur, avec une puce discrète : à quatorze ou dix-huit entrées, une
+   liste sur une seule colonne oblige à faire défiler pour rien.
+   Ne pas confondre avec .ac-list, qui est le menu de suggestions d'adresse
+   de la réservation et se positionne en absolu. */
+.lien-liste{
+  list-style:none;margin:0;padding:0;
+  display:grid;gap:2px 28px;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+}
+/* Le filet est gardé sur tous les éléments, y compris le dernier : à trois
+   colonnes, retirer celui du dernier élément de la liste ne retire que celui
+   d'une colonne et laisse un bord inférieur en escalier. */
+.lien-liste li{border-bottom:1px solid var(--line)}
+.lien-liste a{
+  display:flex;align-items:center;gap:10px;
+  min-height:48px;padding:12px 4px;
+  color:var(--ink);text-decoration:none;font-weight:600;
+}
+.lien-liste a::before{
+  content:"";flex:0 0 6px;width:6px;height:6px;border-radius:50%;
+  background:var(--brand);opacity:.45;transition:opacity .2s,transform .2s;
+}
+.lien-liste a:hover,.lien-liste a:focus-visible{color:var(--brand)}
+.lien-liste a:hover::before{opacity:1;transform:scale(1.4)}
+
+/* Bloc de prose centré, pour les listes de limites : ce sont des phrases
+   entières, pas des puces, et elles se lisent mieux en colonne étroite. */
+.prose-block>p{margin:0 0 1.1rem;color:var(--muted)}
+.prose-block>p:last-child{margin-bottom:0}
+
+/* Le fait saillant d'un dossier, posé juste sous le chapeau. */
+.dossier-cle{
+  display:flex;align-items:flex-start;gap:10px;
+  margin:1.4rem 0 0;padding:14px 16px;
+  background:var(--brand-soft);border-left:3px solid var(--brand);
+  border-radius:0 var(--radius) var(--radius) 0;
+  color:var(--brand);font-size:.95rem;
+}
+.dossier-cle svg{flex:0 0 20px;width:20px;height:20px;margin-top:1px}
+
+/* Carte de dossier sans vignette : la hauteur de la zone image est reprise
+   par un filet haut, sinon la carte paraît tronquée à côté d'une carte de
+   guide illustrée. */
+.post-card--text{border-top:3px solid var(--brand)}
+.post-card--text .post-body{padding-top:20px}
+
+/* Séparateur dans un sous-menu : le sous-menu Prestations réunit maintenant
+   les six prestations, les quatre sommaires sectoriels et deux liens de
+   service. Sans filet, la liste se lit comme un bloc de douze entrées. */
+.sub-menu .sub-sep{border-top:1px solid var(--line);margin-top:6px;padding-top:6px}
+
+/* --- Deux débordements relevés au contrôle mobile ------------------------- */
+
+/* .arg-grid était passé à minmax(400px,1fr) pour éviter une quatrième carte
+   orpheline en 3 + 1. À 390 px de large, 400 px de minimum déborde du
+   conteneur : sous 520 px, une seule colonne pleine largeur. */
+@media(max-width:520px){
+  .arg-grid{grid-template-columns:1fr}
+}
+
+/* .price-table .amount est en nowrap pour qu'un prix ne se coupe pas en deux.
+   Les tableaux « en pratique » des pages sectorielles y mettent en revanche
+   des valeurs descriptives — « Hotte, filtres, conduits » —, qui forcent
+   alors une largeur de 485 px et donc un défilement latéral dans
+   .table-wrap. Sous 560 px, on laisse ces cellules revenir à la ligne : un
+   prix court ne se coupe de toute façon jamais. */
+@media(max-width:560px){
+  .price-table{font-size:.9rem}
+  .price-table th,.price-table td{padding:12px 12px}
+  .price-table .amount{white-space:normal}
+}
