@@ -34,6 +34,7 @@ from content import (
     PREMIUM_VILLES,
     SECTEURS_HOTTE, SECTEURS_VITRES, SECTEURS_MENAGE,
     VILLES_PRO, VILLES_APPART, DOSSIERS,
+    RESTAURANT_PERIMETRE, RESTAURANT_LIMITES,
     HOTTE_PERIMETRE, HOTTE_LIMITES, HOTTE_REGLEMENT,
     VITRES_PERIMETRE, VITRES_LIMITES,
 )
@@ -297,6 +298,7 @@ def nav_menu(base, current):
   <ul class="sub-menu">
     {services_sub}
     <li class="sub-sep"><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
+    <li><a href="{base}nettoyage-restaurant.html">Nettoyage de restaurant</a></li>
     <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
     <li><a href="{base}menage-regulier.html">Entretien régulier de locaux</a></li>
     <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
@@ -458,6 +460,7 @@ def footer(base):
         <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
         <ul>
           <li><a href="{base}hottes.html">Hottes et conduits</a></li>
+          <li><a href="{base}nettoyage-restaurant.html">Nettoyage de restaurant</a></li>
           <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
           <li><a href="{base}menage-regulier.html">Entretien régulier</a></li>
           <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
@@ -1324,12 +1327,31 @@ def build_service(s):
                       + video_block(base, v[0], v[1], v[2])
                       + "</div></section>")
     chimie = bloc_chimie(base, s["chimie"]) if s.get("chimie") else ""
-    # Communes disposant d'une page dédiée à cette prestation.
-    communes = "".join(
-        '<li><a href="%svilles/%s-%s.html">%s %s</a></li>'
-        % (base, s["local"]["slug"], pv["slug"], s["local"]["nom"], ville_a(pv["nom"]))
-        for pv in PREMIUM_VILLES if s["local"]["slug"] in pv["angles"]
-    )
+    # Communes disposant d'une page dédiée à cette prestation. Les familles
+    # sectorielles — hottes, vitrerie, restaurant, appartement — ont leur
+    # propre liste de communes, bien plus large que les dix communes premium :
+    # c'est celle-là qu'il faut servir, sinon la page de prestation renvoie
+    # vers dix villes quand quarante existent.
+    _familles = {
+        "nettoyage-hottes-paris": [
+            ("hottes/nettoyage-hotte-%s.html" % v["slug"],
+             "Dégraissage de hotte %s" % ville_a(v["nom"])) for v in VILLES_PRO],
+        "nettoyage-vitres-paris": [
+            ("vitres/nettoyage-vitrine-%s.html" % v["slug"],
+             "Nettoyage de vitrine %s" % ville_a(v["nom"])) for v in VILLES_PRO],
+        "nettoyage-appartement-paris": [
+            ("appartement/nettoyage-appartement-%s.html" % v["slug"],
+             "Nettoyage d'appartement %s" % ville_a(v["nom"])) for v in VILLES_APPART],
+    }
+    if s["slug"] in _familles:
+        communes = "".join('<li><a href="%s%s">%s</a></li>' % (base, h, lb)
+                           for h, lb in _familles[s["slug"]])
+    else:
+        communes = "".join(
+            '<li><a href="%svilles/%s-%s.html">%s %s</a></li>'
+            % (base, s["local"]["slug"], pv["slug"], s["local"]["nom"], ville_a(pv["nom"]))
+            for pv in PREMIUM_VILLES if s["local"]["slug"] in pv["angles"]
+        )
     intro = "".join("<p>%s</p>" % p for p in s["intro"])
     included = "".join("<li>%s</li>" % li for li in s["included"])
     steps = "".join(
@@ -2539,6 +2561,8 @@ def build_professionnels():
     <ul class="lien-liste">
       <li><a href="hottes.html">Nettoyage de hottes et de conduits — par métier et par
         commune</a></li>
+      <li><a href="nettoyage-restaurant.html">Nettoyage de restaurant — salle, cuisine,
+        sanitaires et vitrine, commune par commune</a></li>
       <li><a href="vitrerie-professionnelle.html">Vitrerie professionnelle — vitrines, façades
         et vitrages intérieurs</a></li>
       <li><a href="menage-regulier.html">Entretien régulier — bureaux, copropriétés,
@@ -5101,6 +5125,8 @@ avec sa contrainte technique propre (dépôt dominant, rythme, horaire d'accès)
   ({len(VILLES_PRO)}) : {SITE['url']}/vitrerie-professionnelle.html
 - Entretien régulier, par type de site ({len(SECTEURS_MENAGE)}) :
   {SITE['url']}/menage-regulier.html
+- Nettoyage de restaurant, par commune ({len(VILLES_PRO)}) :
+  {SITE['url']}/nettoyage-restaurant.html
 - Nettoyage d'appartement, par commune ({len(VILLES_APPART)}) :
   {SITE['url']}/nettoyage-appartement.html
 
@@ -6088,6 +6114,179 @@ def build_dossier(d):
     return write(chemin, html)
 
 
+# --- Nettoyage de restaurant : par commune ---------------------------------
+def build_restaurant_ville(v):
+    """Page « nettoyage de restaurant » pour une commune.
+
+    La prestation est distincte du dégraissage de hotte, et la page le dit :
+    les deux se planifient souvent le même soir pour ne mobiliser la cuisine
+    qu'une fois, mais elles se chiffrent séparément. Les mélanger sur une même
+    page produirait un devis que personne ne peut vérifier.
+    """
+    base = "../"
+    chemin = "restaurants/nettoyage-restaurant-%s.html" % v["slug"]
+    a_nom = ville_a(v["nom"])
+    h1 = "Nettoyage de restaurant %s" % a_nom
+    km = distance_atelier(v["lat"], v["lon"])
+    km_txt = "moins d'un kilomètre" if km < 1 else "environ %d km" % round(km)
+    frais = frais_pour(km)
+    delai = delai_intervention(v["dept"])
+    trail = [("Nettoyage de restaurant", "nettoyage-restaurant.html"), (v["nom"], None)]
+
+    faq = [v["faq_restaurant"],
+           ("Le dégraissage de la hotte est-il compris ?",
+            "Non, c'est une prestation distincte, que nous assurons également — hotte, filtres et "
+            "conduits d'extraction. Les deux se planifient souvent le même soir pour ne mobiliser "
+            "la cuisine qu'une fois, mais elles se chiffrent séparément parce qu'elles n'emploient "
+            "ni le même matériel ni le même temps. Voir le "
+            "<a href=\"%shottes/nettoyage-hotte-%s.html\">dégraissage de hotte %s</a>."
+            % (base, v["slug"], a_nom)),
+           ("Sous quel délai intervenez-vous %s ?" % a_nom,
+            "Habituellement %s pour un premier passage. L'intervention se fait de nuit, après le "
+            "dernier service, ou le jour de fermeture : la cuisine est opérationnelle au service "
+            "suivant. Frais de déplacement : %s depuis notre atelier %s, soit %s, annoncés avant "
+            "que vous validiez."
+            % (delai, km_txt, ville_de(SITE["city"]),
+               "aucun frais" if frais == 0 else "environ %d €" % frais))]
+
+    autres = [("restaurants/nettoyage-restaurant-%s.html" % o["slug"],
+               "Nettoyage de restaurant %s" % ville_a(o["nom"]))
+              for o in VILLES_PRO if o["slug"] != v["slug"]][:9]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Remise à niveau complète d'un restaurant %s (%s) : sols de cuisine et joints en profondeur, "
+  "salle, banquettes, sanitaires et vitrine. De nuit ou le jour de fermeture, délai habituel "
+  "de %s." % (a_nom, v['cp'], delai))}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{v['nom']} · {v['cp']}</span>
+        <h2>Les salles et les cuisines {a_nom}</h2>
+        <p>{v['restaurant']}</p>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html?client=pro">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {a_nom}</caption>
+            <tbody>
+              <tr><th scope="row">Prestation</th><td class="amount">Salle, cuisine, sanitaires</td></tr>
+              <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
+              <tr><th scope="row">Créneau</th><td class="amount">Nuit ou fermeture</td></tr>
+              <tr><th scope="row">Immobilisation</th><td class="amount">3 à 6 h</td></tr>
+              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
+              <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Distance approchée depuis le centre de la commune. Le devis se fait après visite, et il
+          est ferme : le prix ne bouge plus une fois annoncé.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend le passage</h2>
+        {_ul(RESTAURANT_PERIMETRE)}
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Intervenir {a_nom}</span>
+        <h2>Le tissu local, et l'accès</h2>
+        <p>{v['tissu']}</p>
+        <p>{v['acces']}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{_bloc_limites("Ce que ce passage n'est pas", RESTAURANT_LIMITES)}
+
+{_faq_section("Nettoyage de restaurant %s : vos questions" % a_nom, faq,
+              "faq-resto-%s" % v["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Nettoyage de restaurant dans les autres communes", autres)}
+      {_liens(base, "Les prestations qui vont avec",
+              [("hottes/nettoyage-hotte-%s.html" % v["slug"],
+                "Dégraissage de hotte %s" % a_nom),
+               ("vitres/nettoyage-vitrine-%s.html" % v["slug"],
+                "Nettoyage de vitrine %s" % a_nom),
+               ("menage/nettoyage-restaurant.html",
+                "L'entretien régulier en restaurant"),
+               ("hottes/nettoyage-hotte-restaurant.html",
+                "Le dégraissage de hotte, métier par métier"),
+               ("professionnels.html", "Nos prestations pour les professionnels")])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis pour votre restaurant %s ?" % a_nom,
+          "Gratuit et ferme, après visite. Intervention de nuit ou le jour de fermeture, sans "
+          "acompte : la cuisine est opérationnelle au service suivant.",
+          action="devis", client="pro")}
+"""
+    schema = [crumb_schema([("Nettoyage de restaurant", "nettoyage-restaurant.html"),
+                            (v["nom"], chemin)]),
+              _service_schema(h1, "Remise à niveau complète d'un restaurant %s (%s) : cuisine, "
+                                  "salle, sanitaires et vitrine." % (a_nom, v["cp"]),
+                              chemin, "Nettoyage de restaurant",
+                              zone=(v["nom"], v["cp"])),
+              faq_schema(faq)]
+    html = (head(titre_page("%s — devis gratuit" % h1),
+                 "Nettoyage complet de restaurant %s (%s) : sols et joints de cuisine, salle, "
+                 "banquettes, sanitaires, vitrine. De nuit, sans acompte."
+                 % (a_nom, v["cp"]),
+                 chemin, base, schema=schema, body_class="page-pro")
+            + header(base, "zones") + body + footer(base))
+    return write(chemin, html)
+
+
+def build_hub_restaurant():
+    return _hub(
+        "nettoyage-restaurant.html",
+        "Nettoyage de restaurant",
+        "La remise à niveau que le service quotidien ne permet jamais de faire : sols de cuisine "
+        "et joints de carrelage en profondeur, plinthes, dessous d'équipements, parties hautes, "
+        "banquettes, sanitaires et vitrine. De nuit ou le jour de fermeture.",
+        "Restaurants",
+        [("Par commune",
+          "Le tissu de restauration n'est pas le même d'une commune à l'autre, et la contrainte "
+          "d'horaire non plus : une brasserie de gare et un restaurant de quartier n'ont pas la "
+          "même fenêtre d'intervention.",
+          [("restaurants/nettoyage-restaurant-%s.html" % v["slug"],
+            "Nettoyage de restaurant %s" % ville_a(v["nom"])) for v in VILLES_PRO]),
+         ("La prestation qui va avec",
+          "Le dégraissage de la hotte et des conduits est distinct, et c'est lui que la "
+          "réglementation encadre. Les deux se planifient souvent le même soir.",
+          [("hottes.html", "Dégraissage de hottes et de conduits, par métier et par commune"),
+           ("dossiers/obligation-nettoyage-hotte-restaurant.html",
+            "Ce que la réglementation impose en restaurant"),
+           ("menage/nettoyage-restaurant.html", "L'entretien régulier en restaurant"),
+           ("vitrerie-professionnelle.html", "La vitrerie, vitrine et devanture")])],
+        "services",
+        "Nettoyage complet de restaurant à Paris et en Île-de-France : cuisine en profondeur, "
+        "joints, salle, banquettes, sanitaires et vitrine. De nuit, devis ferme, sans acompte.",
+        "Nettoyage de restaurant — Paris et Île-de-France",
+        client="pro")
+
+
 # --- Sommaires -------------------------------------------------------------
 def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
          client="", action="devis"):
@@ -6146,7 +6345,13 @@ def build_hub_hottes():
           "Le cadre réglementaire, le mécanisme du risque d'incendie, la fréquence, la méthode "
           "de dégraissage et le diagnostic d'une extraction qui tire mal.",
           [("dossiers/%s.html" % d["slug"], d["h1"])
-           for d in DOSSIERS if d["cat"] == "Hottes et extraction"])],
+           for d in DOSSIERS if d["cat"] == "Hottes et extraction"]),
+         ("La prestation qui va avec",
+          "La remise à niveau de la salle et de la cuisine se planifie souvent le même soir que "
+          "le dégraissage, pour ne mobiliser le restaurant qu'une fois.",
+          [("nettoyage-restaurant.html", "Nettoyage de restaurant, commune par commune"),
+           ("menage-regulier.html", "Entretien régulier de locaux professionnels"),
+           ("vitrerie-professionnelle.html", "Vitrerie professionnelle")])],
         "services",
         "Dégraissage de hotte, de filtres et de conduits d'extraction à Paris et en "
         "Île-de-France. Par métier et par commune, avec le cadre réglementaire.",
@@ -6521,6 +6726,9 @@ def main():
     pages.append((build_hub_menage(), "0.9", "monthly"))
     for s in SECTEURS_MENAGE:
         pages.append((build_menage_secteur(s), "0.8", "monthly"))
+    pages.append((build_hub_restaurant(), "0.9", "monthly"))
+    for v in VILLES_PRO:
+        pages.append((build_restaurant_ville(v), "0.7", "monthly"))
     pages.append((build_hub_appart(), "0.9", "monthly"))
     for v in VILLES_APPART:
         pages.append((build_appart_ville(v), "0.7", "monthly"))

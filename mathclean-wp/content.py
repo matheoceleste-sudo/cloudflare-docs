@@ -6524,3 +6524,1129 @@ VITRES_LIMITES = (
     "Une baie fixe en étage dont la face extérieure n'est pas accessible depuis l'intérieur ne "
     "sera pas faite de ce côté, et c'est écrit sur le devis.",
 )
+
+
+# Suite de VILLES_PRO : les 22 communes qui étaient documentées ailleurs sur
+# le site (VILLES, PREMIUM_VILLES) mais n'avaient pas encore d'angle hottes ni
+# vitrerie. Les arrondissements parisiens sont les plus denses en restauration
+# et ne pouvaient pas rester absents d'un catalogue qui met les hottes en avant.
+VILLES_PRO += [
+    {
+        "slug": "paris-8", "nom": "Paris 8e", "cp": "75008", "dept": "75",
+        "lat": 48.8721, "lon": 2.3120,
+        "tissu":
+            "Le 8e arrondissement réunit la restauration d'affaires des Champs-Élysées et du "
+            "quartier de la Madeleine, les palaces et leurs cuisines, et un commerce de luxe qui "
+            "tient sa vitrine comme une devanture de bijouterie. C'est l'arrondissement où "
+            "l'exigence de discrétion est la plus forte.",
+        "acces":
+            "Stationnement quasi impossible, livraisons réglementées et horaires d'accès encadrés "
+            "par la Ville comme par les établissements eux-mêmes. Nous intervenons sur créneau "
+            "convenu à l'avance, en véhicule léger, avec notre eau et notre électricité.",
+        "hotte":
+            "Les cuisines du 8e sont souvent dimensionnées pour un service soutenu dans des "
+            "immeubles haussmanniens qui n'avaient pas été conçus pour cela : conduits longs, "
+            "tracés contraints par la structure, et des exigences de copropriété qui ferment la "
+            "plupart des créneaux de journée. Le travail technique est classique ; c'est "
+            "l'organisation qui demande du soin, et une intervention de nuit annoncée plusieurs "
+            "semaines à l'avance.",
+        "vitres":
+            "La vitrine de luxe est le cas le plus exigeant qui existe : grandes surfaces sans "
+            "menuiserie intermédiaire, éclairage rasant qui révèle le moindre défaut de séchage, "
+            "et des laitons ou inox de devanture qui gardent la trace d'eau calcaire. L'eau "
+            "déminéralisée et la reprise des encadrements ne sont pas des options ici.",
+        "faq_hotte": ("Pouvez-vous intervenir de nuit dans un immeuble haussmannien ?",
+                      "Oui, dans la plage autorisée par la copropriété, en protégeant les parties "
+                      "communes traversées. La contrainte n'est pas technique, elle est "
+                      "d'organisation : il faut la connaître avant, et c'est pour cela que nous "
+                      "demandons le règlement de copropriété au premier rendez-vous."),
+        "faq_vitres": ("Comment éviter les traces sur une grande devanture éclairée ?",
+                       "En rinçant à l'eau déminéralisée et en ne l'essuyant pas. La trace vient "
+                       "du calcaire de l'eau du réseau et de l'essuyage ; une eau privée de ses "
+                       "minéraux sèche sans rien laisser, ce qui supprime les deux causes à la "
+                       "fois. C'est exactement la configuration où cela se voit le plus."),
+    },
+    {
+        "slug": "paris-11", "nom": "Paris 11e", "cp": "75011", "dept": "75",
+        "lat": 48.8580, "lon": 2.3792,
+        "tissu":
+            "Le 11e est l'arrondissement qui compte le plus de restaurants et de bars de Paris : "
+            "rue de Charonne, rue Oberkampf, Bastille, Sainte-Marthe. Des petites salles, des "
+            "cuisines ouvertes, une rotation d'enseignes rapide, et presque toujours des logements "
+            "au-dessus.",
+        "acces":
+            "Rues étroites, stationnement très contraint, livraisons tolérées le matin. Notre "
+            "véhicule est léger et autonome en eau et en électricité : nous n'avons besoin ni "
+            "d'une place devant la porte ni d'un point d'eau en cuisine.",
+        "hotte":
+            "C'est l'arrondissement où nous trouvons le plus de conduits jamais repris. La "
+            "rotation des enseignes y est telle qu'un local change deux ou trois fois d'exploitant "
+            "sans que le circuit d'extraction ne soit jamais ouvert : chacun hérite du dépôt du "
+            "précédent et personne ne s'en sait responsable. Les logements au-dessus rendent par "
+            "ailleurs les plaintes d'odeurs fréquentes, et elles signalent presque toujours un "
+            "conduit chargé plutôt qu'un défaut de conception.",
+        "vitres":
+            "Devantures de bar et de restaurant, très sollicitées : traces de mains sur les portes "
+            "vitrées, projections au bas du vitrage côté terrasse, et condensation intérieure aux "
+            "heures de service. La zone basse et les poignées se reprennent chaque semaine, le "
+            "vitrage complet toutes les deux semaines.",
+        "faq_hotte": ("Je reprends un local, le conduit a-t-il été nettoyé ?",
+                      "C'est la question à poser avant la reprise, et dans le 11e c'est presque "
+                      "toujours non. Nous ouvrons les trappes et nous vous montrons l'état réel "
+                      "avant de chiffrer : un conduit hérité est un coût à connaître avant la "
+                      "signature, pas après."),
+        "faq_vitres": ("Pouvez-vous passer avant l'ouverture dans une rue piétonne ?",
+                       "Oui, entre 7 h et 9 h, dans la plage de livraison. C'est aussi le moment "
+                       "où le verre est encore froid, ce qui donne un séchage régulier, et où "
+                       "personne ne traverse le chantier."),
+    },
+    {
+        "slug": "paris-12", "nom": "Paris 12e", "cp": "75012", "dept": "75",
+        "lat": 48.8409, "lon": 2.3876,
+        "tissu":
+            "Le 12e mêle le marché d'Aligre et son commerce de bouche traditionnel, la "
+            "restauration du quartier de Bercy, et les grandes brasseries des abords de la gare de "
+            "Lyon, qui travaillent en service continu de très gros volumes.",
+        "acces":
+            "Les abords de la gare sont difficiles aux heures de pointe, le reste de "
+            "l'arrondissement est praticable. Nous intervenons tôt le matin ou de nuit selon "
+            "l'établissement.",
+        "hotte":
+            "Les brasseries de gare sont le profil le plus chargé que nous rencontrions dans "
+            "Paris : service continu de 7 h à minuit, friture et grillade en permanence, et un "
+            "conduit qui n'a pas de période creuse pour refroidir. Deux passages par an y sont un "
+            "minimum, trois sont souvent plus réalistes. Autour d'Aligre, le profil est inverse : "
+            "petits commerces de bouche, conduits courts mais anciens.",
+        "vitres":
+            "Grandes devantures de brasserie, hautes et exposées au trafic de l'avenue Daumesnil "
+            "et du boulevard Diderot : le dépôt y est gras, fait de particules de freinage, et il "
+            "demande un dégraissage avant lavage. Les commerces d'Aligre relèvent du travail de "
+            "vitrine classique, hebdomadaire.",
+        "faq_hotte": ("Une brasserie en service continu, à quel rythme ?",
+                      "Deux passages par an au minimum sur la hotte et le conduit, trois à très "
+                      "fort volume, et des filtres nettoyés ou remplacés au moins une fois par "
+                      "semaine par votre équipe. Le service continu ne laisse aucune période de "
+                      "refroidissement au conduit, et c'est ce qui accélère le dépôt."),
+        "faq_vitres": ("Pourquoi ma devanture se salit-elle si vite sur le boulevard ?",
+                       "Parce que ce qui s'y dépose n'est pas de la poussière mais un film gras : "
+                       "particules de freinage et résidus d'hydrocarbures. L'eau claire l'étale au "
+                       "lieu de l'enlever. Il faut un dégraissage, puis un rinçage à l'eau "
+                       "déminéralisée."),
+    },
+    {
+        "slug": "paris-15", "nom": "Paris 15e", "cp": "75015", "dept": "75",
+        "lat": 48.8412, "lon": 2.3003,
+        "tissu":
+            "Le 15e est le plus peuplé des arrondissements parisiens, et sa restauration est celle "
+            "d'un grand quartier résidentiel : commerces de bouche de proximité rue du Commerce et "
+            "rue de la Convention, restaurants de quartier, et une restauration d'entreprise autour "
+            "du front de Seine et de Balard.",
+        "acces":
+            "Stationnement contraint mais praticable tôt le matin, et les immeubles récents du "
+            "front de Seine disposent de parkings accessibles. L'arrondissement est étendu : nous "
+            "regroupons les interventions par secteur.",
+        "hotte":
+            "Deux profils bien distincts. Les boulangeries et les commerces de bouche de proximité, "
+            "où la farine mêlée au gras forme une croûte dure qui ne part pas au dégraissant "
+            "ménager, et qui demandent un créneau d'après-midi entre la fin de cuisson et la "
+            "reprise du tour de nuit. Et les restaurants d'entreprise de Balard, plus volumineux, "
+            "qui se traitent pendant les fermetures.",
+        "vitres":
+            "Vitrines de rue commerçante à rythme hebdomadaire, et de grandes façades vitrées "
+            "d'immeubles tertiaires sur le front de Seine, dont seuls les premiers niveaux sont "
+            "accessibles depuis le sol. Nous le disons avant le devis plutôt que de laisser un "
+            "étage non fait.",
+        "faq_hotte": ("À quelle heure intervenir dans une boulangerie du 15e ?",
+                      "L'après-midi, entre la fin de la cuisson et la reprise du tour de nuit, ou "
+                      "le jour de fermeture. C'est la seule fenêtre réelle, et elle est étroite : "
+                      "nous la réservons à l'avance plutôt que de l'improviser."),
+        "faq_vitres": ("Traitez-vous les tours du front de Seine ?",
+                       "Pas en façade au-delà de trois niveaux : cela demande une nacelle ou un "
+                       "cordiste, ce qui n'est pas notre métier. Nous traitons les commerces de "
+                       "pied d'immeuble, les halls, les sas et toutes les surfaces intérieures."),
+    },
+    {
+        "slug": "paris-16", "nom": "Paris 16e", "cp": "75016", "dept": "75",
+        "lat": 48.8637, "lon": 2.2769,
+        "tissu":
+            "Le 16e est résidentiel et bourgeois : un commerce de bouche de qualité rue de Passy "
+            "et rue de l'Annonciation, des restaurants de quartier plutôt que de flux, et une "
+            "forte densité de cabinets libéraux et d'agences immobilières sur un marché de "
+            "standing.",
+        "acces":
+            "Stationnement payant partout et parkings souterrains à hauteur limitée. Notre "
+            "véhicule passe sous les 1,90 m de la plupart des sous-sols, et nous apportons eau et "
+            "électricité.",
+        "hotte":
+            "Les cuisines du 16e sont installées dans des immeubles d'habitation de standing, où "
+            "la contrainte dominante est la copropriété : horaires encadrés, parties communes à "
+            "protéger, et des plaintes d'odeurs suivies de près par le syndic. Un dégraissage "
+            "complet du circuit règle le plus souvent ce que des mois de courriers n'avaient pas "
+            "réglé — et c'est l'hypothèse la moins coûteuse à tester avant d'envisager des travaux.",
+        "vitres":
+            "Beaucoup de fenêtres anciennes à petits bois et de hauteurs sous plafond de trois "
+            "mètres, en cabinet comme en commerce. Ce sont les vitrages les plus longs à faire "
+            "correctement : chaque carreau demande son passage, et nous comptons au vantail et non "
+            "au mètre carré.",
+        "faq_hotte": ("Le syndic me reproche des odeurs, que faire en premier ?",
+                      "Faites dégraisser le circuit complet, conduits compris, et mesurez à "
+                      "nouveau. Un conduit chargé perd de la section, l'extraction tire moins, et "
+                      "les buées trouvent un autre chemin. C'est l'hypothèse la plus fréquente et "
+                      "la moins chère ; des travaux sur le réseau ne se décident qu'après."),
+        "faq_vitres": ("Comment comptez-vous une fenêtre à petits bois ?",
+                       "Au vantail. Une fenêtre à six carreaux demande plusieurs fois le temps "
+                       "d'une baie de même surface, et un prix au mètre carré serait trompeur dans "
+                       "un sens comme dans l'autre. Nous comptons sur photos, devis ferme."),
+    },
+    {
+        "slug": "paris-17", "nom": "Paris 17e", "cp": "75017", "dept": "75",
+        "lat": 48.8872, "lon": 2.3220,
+        "tissu":
+            "Le 17e a deux visages : les Batignolles, devenus en dix ans l'un des quartiers de "
+            "restauration les plus actifs de Paris, et la plaine Monceau, résidentielle et "
+            "tertiaire. S'y ajoute le quartier d'affaires de Clichy-Batignolles, livré récemment.",
+        "acces":
+            "Les Batignolles sont difficiles d'accès aux heures de service ; les immeubles récents "
+            "de Clichy-Batignolles disposent de parkings et de quais. Nous intervenons tôt le matin "
+            "ou de nuit.",
+        "hotte":
+            "Les Batignolles concentrent beaucoup de petites cuisines ouvertes, installées dans des "
+            "immeubles d'habitation, avec des conduits courts mais très sollicités. La cuisine "
+            "ouverte ajoute une contrainte : la hotte est visible depuis la salle, donc son aspect "
+            "compte, et les buées non captées se déposent sur le plafond et les luminaires. Un "
+            "plafond jauni au-dessus du piano est un indice fiable d'extraction insuffisante.",
+        "vitres":
+            "Devantures de restaurant à reprendre chaque semaine aux Batignolles, et façades de "
+            "bureaux récentes à Clichy-Batignolles, lisibles de loin et donc impitoyables au défaut "
+            "de séchage. Les rez-de-chaussée et les halls sont de notre ressort, les étages non.",
+        "faq_hotte": ("Ma cuisine est ouverte sur la salle, l'intervention salit-elle le "
+                      "restaurant ?",
+                      "Non : tout est bâché avant la première ouverture de trappe, et la zone est "
+                      "nettoyée après. Le point de vigilance en cuisine ouverte est le plafond de "
+                      "salle — s'il est jauni, l'extraction ne capte pas assez et le dégraissage "
+                      "seul n'y suffira pas."),
+        "faq_vitres": ("Intervenez-vous le week-end aux Batignolles ?",
+                       "Oui, et c'est souvent le meilleur créneau pour un restaurant qui ne "
+                       "déjeune pas le dimanche. Les horaires décalés ne sont pas facturés en "
+                       "supplément."),
+    },
+    {
+        "slug": "puteaux", "nom": "Puteaux", "cp": "92800", "dept": "92",
+        "lat": 48.8846, "lon": 2.2386,
+        "tissu":
+            "Puteaux porte une grande partie de La Défense sur son territoire : une restauration de "
+            "flux dimensionnée pour des milliers de salariés sur deux heures de déjeuner, et, en "
+            "contrebas, un centre-ville ancien avec son commerce de proximité.",
+        "acces":
+            "Les dalles et parkings du quartier d'affaires imposent des accès réglementés, à "
+            "organiser avec le gestionnaire du site. Le centre ancien est d'accès ordinaire.",
+        "hotte":
+            "La restauration de flux produit l'encrassement le plus massif et le plus concentré "
+            "que nous rencontrions : friteuses et grillades à plein régime sur deux heures, cinq "
+            "jours sur sept. C'est le profil qui demande le rythme le plus soutenu — deux passages "
+            "par an au minimum, trois à très fort volume — et un suivi hebdomadaire des filtres par "
+            "l'équipe, que la réglementation prévoit explicitement.",
+        "vitres":
+            "Verre partout et une limite nette : seuls les trois premiers niveaux sont accessibles "
+            "à la perche depuis le sol. Nous nous concentrons sur les commerces de pied d'immeuble, "
+            "les halls, les sas et l'intérieur, et nous l'annonçons avant le devis.",
+        "faq_hotte": ("Combien de passages pour une cuisine qui ne sert qu'au déjeuner ?",
+                      "Deux par an au minimum, et c'est contre-intuitif : ce qui charge un conduit "
+                      "est la quantité de matière grasse vaporisée, pas le nombre d'heures "
+                      "d'ouverture. Deux heures de friture intensive par jour chargent autant qu'un "
+                      "service continu plus doux."),
+        "faq_vitres": ("Intervenez-vous sur les tours de La Défense ?",
+                       "Pas en façade au-delà de trois niveaux : il faut une nacelle ou un "
+                       "cordiste, et ce n'est pas notre métier. Nous traitons les commerces de pied "
+                       "d'immeuble, les halls et toutes les surfaces intérieures."),
+    },
+    {
+        "slug": "rueil-malmaison", "nom": "Rueil-Malmaison", "cp": "92500", "dept": "92",
+        "lat": 48.8768, "lon": 2.1801,
+        "tissu":
+            "Rueil-Malmaison réunit un centre-ville commerçant actif, plusieurs sièges sociaux "
+            "installés dans des parcs d'activité, et un habitat résidentiel étendu. La restauration "
+            "y est à la fois de quartier et d'entreprise.",
+        "acces":
+            "Stationnement praticable, parcs d'activité bien desservis. Rueil est à une trentaine "
+            "de kilomètres de notre atelier : nous regroupons les interventions de l'ouest "
+            "francilien sur une même tournée.",
+        "hotte":
+            "Les restaurants d'entreprise des parcs d'activité se planifient à l'année et "
+            "s'entretiennent bien ; les restaurants du centre, installés dans du bâti plus ancien, "
+            "demandent un constat avant de pouvoir être chiffrés sérieusement. Dans les deux cas, "
+            "le ramonage annuel des conduits est le plancher réglementaire, et le rythme utile "
+            "dépend du mode de cuisson dominant.",
+        "vitres":
+            "Vitrines de centre-ville à rythme hebdomadaire ou bimensuel, et façades de bureaux de "
+            "parcs d'activité, grandes, régulières et accessibles depuis le sol : c'est la "
+            "configuration la plus économique à entretenir, un passage trimestriel suffit "
+            "généralement.",
+        "faq_hotte": ("Peut-on signer un contrat annuel plutôt qu'appeler chaque fois ?",
+                      "Oui, et c'est la formule la plus simple pour un restaurant d'entreprise : "
+                      "un ou deux passages à date fixe, le relevé de chaque intervention qui vient "
+                      "compléter votre livret d'entretien, et plus rien à suivre dans l'année."),
+        "faq_vitres": ("Quel est le délai d'intervention à Rueil ?",
+                       "Habituellement 48 à 72 h. Nous regroupons les interventions de l'ouest sur "
+                       "une même tournée, ce qui limite les frais de déplacement ; ils sont "
+                       "annoncés avant que vous validiez."),
+    },
+    {
+        "slug": "saint-cloud", "nom": "Saint-Cloud", "cp": "92210", "dept": "92",
+        "lat": 48.8456, "lon": 2.2189,
+        "tissu":
+            "Saint-Cloud est une commune résidentielle de standing, avec un commerce de bouche de "
+            "qualité en centre-ville, quelques restaurants de quartier, et un tissu de bureaux "
+            "limité mais présent.",
+        "acces":
+            "Rues en pente et stationnement contraint en centre, praticable ailleurs. Saint-Cloud "
+            "est à une trentaine de kilomètres de notre atelier.",
+        "hotte":
+            "Peu de restauration de flux, beaucoup de petites cuisines dans des immeubles "
+            "d'habitation. La contrainte est donc celle de la copropriété — horaires encadrés, "
+            "parties communes à protéger — plutôt que celle du volume. Un passage annuel suffit "
+            "souvent, deux si la cuisson dominante est la friture ou la grillade.",
+        "vitres":
+            "Vitrines de commerce de bouche et vitrages de cabinets. Les buées de cuisson déposent "
+            "sur la face intérieure du verre un film gras qui éteint la couleur des produits "
+            "exposés : c'est là que se joue l'aspect d'une vitrine de boulangerie, bien plus que "
+            "sur la face extérieure.",
+        "faq_hotte": ("Un seul passage par an suffit-il ?",
+                      "C'est le plancher réglementaire pour le ramonage des conduits, et cela "
+                      "suffit souvent sur une cuisson douce. En friture ou en grillade, deux "
+                      "passages sont le bon rythme. Le premier passage permet de calibrer le "
+                      "suivant, trappes ouvertes."),
+        "faq_vitres": ("Pourquoi ma vitrine reste-t-elle voilée après nettoyage ?",
+                       "Parce que le film gras déposé à l'intérieur du verre par les buées de "
+                       "cuisson n'a pas été dégraissé avant d'être lavé. Un produit à vitres "
+                       "l'étale sans le dissoudre : propre de près, voilé de loin."),
+    },
+    {
+        "slug": "saint-germain-en-laye", "nom": "Saint-Germain-en-Laye", "cp": "78100",
+        "dept": "78", "lat": 48.8987, "lon": 2.0940,
+        "tissu":
+            "Saint-Germain-en-Laye a un centre historique commerçant dense, piétonnier sur une "
+            "bonne partie, avec un commerce de bouche de qualité et une restauration de terrasse "
+            "active autour du château et du marché.",
+        "acces":
+            "Centre en grande partie piéton, avec des plages de livraison limitées au matin. Nous "
+            "arrivons avant 7 h 30, qui est de toute façon le bon créneau pour un commerce de "
+            "bouche.",
+        "hotte":
+            "Les cuisines du centre historique sont installées dans du bâti ancien, souvent "
+            "protégé, avec des conduits contraints par la structure et parfois mitoyens. La "
+            "question de savoir qui entretient quoi s'y pose plus souvent qu'ailleurs, et elle doit "
+            "être tranchée avant l'intervention plutôt qu'après.",
+        "vitres":
+            "Vitrines de commerce de bouche et de boutiques, à reprendre chaque semaine en saison. "
+            "Le centre piéton limite le film gras du trafic, mais les terrasses ajoutent des "
+            "projections au bas des vitrages, qui se reprennent à chaque passage.",
+        "faq_hotte": ("Mon conduit est mitoyen avec le commerce voisin, que faire ?",
+                      "Il faut d'abord établir qui est responsable de quoi, ce qui se lit dans les "
+                      "baux et le règlement de copropriété. En pratique, le plus efficace est une "
+                      "intervention unique sur le circuit complet, refacturée au prorata : un "
+                      "conduit partagé nettoyé par moitié ne sert à rien."),
+        "faq_vitres": ("Intervenez-vous dans le centre piéton ?",
+                       "Oui, avant 7 h 30, dans la plage de livraison autorisée. C'est aussi le "
+                       "moment où le verre est encore froid, ce qui donne un séchage régulier."),
+    },
+    {
+        "slug": "sceaux", "nom": "Sceaux", "cp": "92330", "dept": "92",
+        "lat": 48.7789, "lon": 2.2900,
+        "tissu":
+            "Sceaux est une petite commune résidentielle au commerce de centre-ville soigné, avec "
+            "un marché actif, des commerces de bouche de qualité et une restauration de quartier "
+            "plutôt que de flux.",
+        "acces":
+            "Centre compact, stationnement praticable tôt le matin. Sceaux est à une trentaine de "
+            "kilomètres de notre atelier : nous y intervenons dans le cadre d'une tournée du sud "
+            "francilien.",
+        "hotte":
+            "Des cuisines de petite taille, dans des immeubles d'habitation, avec des conduits "
+            "courts. Le volume est modeste mais les locaux sont anciens, et le circuit "
+            "d'extraction est rarement documenté : dans la plupart des cas, personne ne sait quand "
+            "il a été nettoyé pour la dernière fois. Nous commençons par ouvrir et constater.",
+        "vitres":
+            "Vitrines de commerce de proximité, bimensuelles, et vitrages de cabinets libéraux. Le "
+            "trafic est modéré, donc le film gras extérieur l'est aussi : l'essentiel du travail se "
+            "joue sur les faces intérieures et les encadrements.",
+        "faq_hotte": ("Je ne sais pas quand mon conduit a été nettoyé la dernière fois.",
+                      "C'est le cas le plus fréquent et ce n'est pas un problème : nous ouvrons "
+                      "les trappes de visite et nous vous montrons l'état réel. Le devis se fait "
+                      "sur ce constat, pas sur une estimation à l'aveugle."),
+        "faq_vitres": ("Un passage par mois suffit-il pour ma vitrine ?",
+                       "Dans une rue au trafic modéré comme le centre de Sceaux, oui, avec une "
+                       "reprise des poignées et de la zone basse entre deux passages. En rue "
+                       "passante, il faudrait un passage hebdomadaire."),
+    },
+]
+
+# Fin de VILLES_PRO : la grande couronne et les communes de l'est, où le
+# facteur dominant n'est plus l'accès mais la distance — donc le délai, et
+# le regroupement des interventions sur une même tournée.
+VILLES_PRO += [
+    {
+        "slug": "versailles", "nom": "Versailles", "cp": "78000", "dept": "78",
+        "lat": 48.8014, "lon": 2.1301,
+        "tissu":
+            "Versailles a une restauration touristique concentrée autour du château et du quartier "
+            "Notre-Dame, un marché couvert très actif, et un commerce de bouche de qualité. "
+            "L'activité y est fortement saisonnière, ce qui change le calendrier d'entretien.",
+        "acces":
+            "Centre contraint, livraisons encadrées, forte affluence touristique en journée. Nous "
+            "intervenons tôt le matin. Versailles est à une quarantaine de kilomètres de notre "
+            "atelier : les interventions s'y planifient, elles ne s'improvisent pas.",
+        "hotte":
+            "La saisonnalité est le point à exploiter : une cuisine qui double son volume d'avril "
+            "à septembre doit être dégraissée à la sortie de la haute saison, pas au hasard du "
+            "calendrier. Beaucoup de cuisines sont par ailleurs installées dans du bâti ancien "
+            "protégé, avec des conduits contraints par la structure et peu de trappes de visite.",
+        "vitres":
+            "Vitrines de commerce de bouche et de boutiques touristiques, à reprendre chaque "
+            "semaine en saison, toutes les deux semaines hors saison. Les terrasses ajoutent des "
+            "projections au bas des vitrages.",
+        "faq_hotte": ("Quand faire dégraisser une cuisine saisonnière ?",
+                      "À la sortie de la haute saison, pas au milieu. Le dépôt accumulé pendant "
+                      "les mois pleins est celui qu'il faut retirer, et l'intervention se place "
+                      "alors dans une période creuse où la cuisine peut être immobilisée sans "
+                      "coût. C'est le meilleur arbitrage, et il est rarement fait."),
+        "faq_vitres": ("Quel est le délai d'intervention à Versailles ?",
+                       "Habituellement 48 à 72 h : nous sommes à une quarantaine de kilomètres et "
+                       "nous regroupons les interventions de l'ouest sur une même tournée. Les "
+                       "frais de déplacement sont annoncés avant que vous validiez."),
+    },
+    {
+        "slug": "le-vesinet", "nom": "Le Vésinet", "cp": "78110", "dept": "78",
+        "lat": 48.8925, "lon": 2.1330,
+        "tissu":
+            "Le Vésinet est une commune résidentielle de villas et de parcs, au commerce "
+            "concentré autour du centre et de la gare : commerces de bouche, quelques restaurants "
+            "de quartier, des cabinets libéraux.",
+        "acces":
+            "Stationnement aisé, voirie dégagée. Le Vésinet est à une quarantaine de kilomètres de "
+            "notre atelier, dans la même tournée ouest que Saint-Germain-en-Laye et "
+            "Rueil-Malmaison.",
+        "hotte":
+            "Peu d'établissements, mais presque tous en immeuble ou en rez-de-chaussée "
+            "d'habitation : la contrainte est celle du voisinage et des horaires plutôt que celle "
+            "du volume. Un passage annuel suffit dans la plupart des cas, deux en cuisson grasse. "
+            "Le ramonage annuel des conduits reste le plancher réglementaire.",
+        "vitres":
+            "Vitrines de centre et vitrages de cabinets. Le trafic est faible, donc le film gras "
+            "extérieur aussi : l'essentiel du travail se joue sur les encadrements, les appuis et "
+            "les faces intérieures, qui sont ce qui salit à nouveau le verre.",
+        "faq_hotte": ("Mon restaurant est en bas d'un immeuble, quelles précautions ?",
+                      "Protection des parties communes traversées, intervention dans la plage "
+                      "autorisée par la copropriété, et une attention particulière au circuit "
+                      "d'extraction : c'est lui qui, encrassé, provoque les remontées d'odeurs "
+                      "vers les logements et les plaintes qui suivent."),
+        "faq_vitres": ("Les encadrements sont-ils compris dans le passage ?",
+                       "Oui, toujours, ainsi que les appuis. C'est important : un appui chargé de "
+                       "poussière fait couler une coulure sur la vitre à la première pluie, et le "
+                       "nettoyage du verre seul ne tient alors que quelques jours."),
+    },
+    {
+        "slug": "saint-maur-des-fosses", "nom": "Saint-Maur-des-Fossés", "cp": "94100",
+        "dept": "94", "lat": 48.7994, "lon": 2.4934,
+        "tissu":
+            "Saint-Maur-des-Fossés est une grande commune résidentielle en boucle de Marne, avec "
+            "plusieurs centres commerçants distincts — Le Parc, La Varenne, Champignol — et une "
+            "restauration de quartier répartie entre eux plutôt que concentrée.",
+        "acces":
+            "Stationnement praticable, mais la commune est étendue et ses centres sont éloignés "
+            "les uns des autres : nous groupons les interventions par quartier pour limiter les "
+            "trajets.",
+        "hotte":
+            "Des restaurants de quartier, en petites salles, souvent en rez-de-chaussée "
+            "d'immeuble, avec des conduits courts mais anciens. Les bords de Marne ajoutent des "
+            "guinguettes et des établissements saisonniers, dont le rythme d'entretien doit suivre "
+            "la saison plutôt que le calendrier.",
+        "vitres":
+            "Vitrines de commerce de proximité, bimensuelles, réparties sur plusieurs centres. "
+            "C'est le cas où un contrat régulier couvrant plusieurs établissements d'un même "
+            "quartier fait réellement baisser le coût au passage.",
+        "faq_hotte": ("Faut-il dégraisser une cuisine saisonnière à la même fréquence ?",
+                      "Non : il faut la caler sur la saison. Une guinguette ou une terrasse qui "
+                      "travaille d'avril à septembre se dégraisse à la fermeture de saison, quand "
+                      "le dépôt est à son maximum et que la cuisine peut être immobilisée sans "
+                      "coût."),
+        "faq_vitres": ("Nous avons plusieurs commerces dans la commune, est-ce plus avantageux ?",
+                       "Oui, nettement : un passage unique couvrant plusieurs établissements d'un "
+                       "même secteur répartit le déplacement, qui est la part fixe du coût. Nous "
+                       "établissons alors un prix au passage et non à l'établissement."),
+    },
+    {
+        "slug": "tremblay-en-france", "nom": "Tremblay-en-France", "cp": "93290",
+        "dept": "93", "lat": 48.9486, "lon": 2.5697,
+        "tissu":
+            "Tremblay-en-France vit en grande partie de la proximité de Roissy : zones d'activité "
+            "et de logistique, hôtellerie, et une restauration tournée vers les équipes "
+            "aéroportuaires, qui travaillent en horaires décalés et en continu.",
+        "acces":
+            "Voirie dégagée, stationnement aisé, accès direct par l'A104 et la N2. Tremblay est à "
+            "une quinzaine de minutes de notre atelier : c'est l'une des communes où nous pouvons "
+            "nous engager sur un créneau serré.",
+        "hotte":
+            "La restauration d'hôtel et de zone aéroportuaire fonctionne sans période creuse : "
+            "petits-déjeuners tôt, service continu, équipes de nuit. Il n'y a pas de fenêtre "
+            "évidente, et c'est justement là que notre proximité compte — nous nous calons sur le "
+            "créneau que vous pouvez libérer, même court, même à 3 h du matin, sans que le trajet "
+            "n'oblige à élargir la plage.",
+        "vitres":
+            "Façades vitrées de locaux d'activité et d'hôtels : grandes, régulières, accessibles "
+            "depuis le sol. C'est la configuration la plus économique à entretenir. Pour les "
+            "hôtels, le sas d'entrée demande deux passages par semaine là où le reste tient au "
+            "mois.",
+        "faq_hotte": ("Pouvez-vous intervenir de nuit à Tremblay ?",
+                      "Oui, et sans difficulté : nous sommes à quinze minutes. Une cuisine qui "
+                      "n'a qu'une fenêtre de trois heures entre deux services est précisément le "
+                      "cas où la proximité de l'atelier change ce que nous pouvons proposer."),
+        "faq_vitres": ("Quel est le délai d'intervention à Tremblay ?",
+                       "Habituellement 24 à 48 h, et souvent le jour même en cas d'urgence. Les "
+                       "frais de déplacement y sont faibles : nous sommes à une quinzaine de "
+                       "kilomètres."),
+    },
+    {
+        "slug": "chelles", "nom": "Chelles", "cp": "77500", "dept": "77",
+        "lat": 48.8797, "lon": 2.5928,
+        "tissu":
+            "Chelles est la plus grande commune de Seine-et-Marne par la population : un "
+            "centre-ville commerçant actif autour de la gare et du marché, des zones d'activité, "
+            "et un habitat largement pavillonnaire.",
+        "acces":
+            "Stationnement praticable, accès par l'A104 ou la N34. Chelles est à une vingtaine de "
+            "kilomètres de notre atelier : nous y intervenons dans un délai de 48 à 72 h, en "
+            "groupant les interventions de l'est francilien.",
+        "hotte":
+            "Un tissu de restauration de proximité et de commerces de bouche, en locaux souvent "
+            "anciens, avec des conduits rarement documentés. La boulangerie y est particulièrement "
+            "présente, et c'est le cas le plus technique : la farine mêlée au gras forme une croûte "
+            "dure qui ne réagit pas comme une graisse de friture et demande un alcalin à temps de "
+            "pose.",
+        "vitres":
+            "Vitrines de centre-ville, hebdomadaires ou bimensuelles selon la rue, et façades "
+            "vitrées de locaux d'activité, accessibles depuis le sol et traitées au trimestre.",
+        "faq_hotte": ("La farine change-t-elle quelque chose au nettoyage ?",
+                      "Oui, et c'est ce que les prestataires généralistes sous-estiment. Mêlée au "
+                      "gras, elle forme une croûte qui ne part pas au dégraissant ménager : il "
+                      "faut un alcalin avec un vrai temps de pose, puis une action mécanique."),
+        "faq_vitres": ("Quel est le délai d'intervention à Chelles ?",
+                       "Habituellement 48 à 72 h. Nous groupons les interventions de l'est "
+                       "francilien sur une même tournée, ce qui limite les frais de déplacement ; "
+                       "ils sont annoncés avant que vous validiez."),
+    },
+    {
+        "slug": "meaux", "nom": "Meaux", "cp": "77100", "dept": "77",
+        "lat": 48.9601, "lon": 2.8785,
+        "tissu":
+            "Meaux a un centre historique commerçant autour de la cathédrale et du marché, une "
+            "tradition de commerce de bouche marquée, et des zones d'activité en périphérie. "
+            "C'est la commune la plus éloignée de notre atelier.",
+        "acces":
+            "Centre contraint, périphérie dégagée. Meaux est à une cinquantaine de kilomètres : "
+            "les interventions s'y planifient à l'avance et se groupent, elles ne se font pas en "
+            "urgence.",
+        "hotte":
+            "Commerces de bouche et restauration de centre-ville, en bâti ancien, avec des "
+            "conduits contraints et peu de trappes de visite. C'est la configuration où le constat "
+            "préalable compte le plus : sans accès intermédiaire, une ligne longue ne peut pas "
+            "être traitée sur toute sa hauteur, et il vaut mieux le savoir avant le devis.",
+        "vitres":
+            "Vitrines de centre historique, bimensuelles, et façades de locaux d'activité en "
+            "périphérie, trimestrielles. La distance rend un contrat régulier plus avantageux "
+            "qu'une suite d'interventions ponctuelles.",
+        "faq_hotte": ("Intervenez-vous jusqu'à Meaux ?",
+                      "Oui, en planifiant. Nous sommes à une cinquantaine de kilomètres : "
+                      "l'intervention se cale sur une date convenue à l'avance, de préférence "
+                      "groupée avec d'autres établissements du secteur. Les frais de déplacement "
+                      "sont annoncés avant que vous validiez."),
+        "faq_vitres": ("Un contrat régulier est-il plus intéressant à cette distance ?",
+                       "Oui, nettement. Le déplacement est la part fixe du coût : réparti sur des "
+                       "passages programmés, et mieux encore sur plusieurs établissements d'un même "
+                       "secteur, il pèse beaucoup moins qu'en intervention isolée."),
+    },
+    {
+        "slug": "argenteuil", "nom": "Argenteuil", "cp": "95100", "dept": "95",
+        "lat": 48.9474, "lon": 2.2467,
+        "tissu":
+            "Argenteuil est l'une des plus grandes communes du Val-d'Oise : un centre commerçant "
+            "dense autour de la gare et du marché Héloïse, un commerce de bouche très présent, et "
+            "des zones d'activité le long de la Seine.",
+        "acces":
+            "Centre chargé aux heures de marché, périphérie dégagée. Argenteuil est à une "
+            "vingtaine de kilomètres de notre atelier, pour un délai habituel de 48 à 72 h.",
+        "hotte":
+            "Un tissu dense de restauration indépendante et de commerces de bouche, en locaux "
+            "souvent anciens et fréquemment repris. Le conduit hérité d'une activité précédente "
+            "est ici un cas courant : la peinture neuve ne change rien à ce qui est à l'intérieur, "
+            "et nous ouvrons les trappes avant de chiffrer.",
+        "vitres":
+            "Vitrines de commerce de bouche et de proximité, hebdomadaires en rue passante. Le "
+            "trafic du centre dépose un film gras — particules de freinage et hydrocarbures — qui "
+            "demande un dégraissage et non un simple lavage.",
+        "faq_hotte": ("Je reprends un local, faut-il faire nettoyer le conduit ?",
+                      "Oui, et avant l'ouverture plutôt qu'après. Un conduit encrassé par "
+                      "l'activité précédente reste encrassé après les travaux, et vous en héritez "
+                      "avec la responsabilité qui va avec. Nous ouvrons les trappes et vous "
+                      "montrons l'état avant de chiffrer."),
+        "faq_vitres": ("Pourquoi ma vitrine se salit-elle si vite en centre-ville ?",
+                       "Parce que ce qui s'y dépose est gras : particules de freinage et résidus "
+                       "d'hydrocarbures. L'eau claire l'étale au lieu de l'enlever. Il faut un "
+                       "dégraissage, puis un rinçage à l'eau déminéralisée."),
+    },
+    {
+        "slug": "sarcelles", "nom": "Sarcelles", "cp": "95200", "dept": "95",
+        "lat": 48.9959, "lon": 2.3785,
+        "tissu":
+            "Sarcelles a un commerce de proximité très dense, avec une restauration de cuisines du "
+            "monde particulièrement présente et un centre commercial de centre-ville. Les "
+            "commerces de bouche y travaillent sur des volumes importants.",
+        "acces":
+            "Stationnement praticable hors heures de pointe. Sarcelles est à une quinzaine de "
+            "kilomètres de notre atelier, pour un délai habituel de 48 à 72 h.",
+        "hotte":
+            "Les cuisines du monde — wok, grillades, fritures — produisent les dépôts les plus "
+            "difficiles. Le wok en particulier : la très haute température transforme l'huile en "
+            "aérosol fin qui traverse les filtres et se dépose loin dans le conduit, bien au-delà "
+            "de ce qu'un dégraissage de hotte seule atteint. Deux à trois passages par an sont ici "
+            "le bon rythme.",
+        "vitres":
+            "Vitrines de commerce de proximité, hebdomadaires. Les commerces de bouche cumulent le "
+            "film gras intérieur des buées de cuisson et le dépôt extérieur du trafic : les deux "
+            "faces demandent un dégraissage, pas seulement un lavage.",
+        "faq_hotte": ("La cuisson au wok demande-t-elle un traitement particulier ?",
+                      "Oui. La très haute température vaporise l'huile en aérosol beaucoup plus "
+                      "fin que la friture classique : il traverse les filtres et se dépose loin "
+                      "dans le conduit. Un dégraissage limité à la hotte laisse l'essentiel en "
+                      "place. Il faut traiter la ligne par les trappes de visite."),
+        "faq_vitres": ("Les deux faces du vitrage sont-elles comprises ?",
+                       "Oui, quand la menuiserie permet d'accéder à l'extérieur. Sur un commerce "
+                       "de bouche, la face intérieure est même la plus importante : c'est le film "
+                       "gras des buées qui éteint la couleur des produits en vitrine."),
+    },
+    {
+        "slug": "cergy", "nom": "Cergy", "cp": "95000", "dept": "95",
+        "lat": 49.0361, "lon": 2.0631,
+        "tissu":
+            "Cergy réunit une préfecture, une université, un quartier d'affaires et un centre "
+            "commercial régional. La restauration y est largement collective ou de chaîne, calée "
+            "sur le déjeuner des salariés et des étudiants.",
+        "acces":
+            "Dalles et parkings du quartier d'affaires d'accès réglementé, à organiser avec le "
+            "gestionnaire du site. Cergy est à une quarantaine de kilomètres de notre atelier : "
+            "les interventions s'y planifient.",
+        "hotte":
+            "La restauration collective universitaire et administrative fonctionne par calendrier : "
+            "des périodes de production intense, puis des fermetures longues. C'est la "
+            "configuration la plus confortable pour un dégraissage complet, à condition de réserver "
+            "le créneau plusieurs mois à l'avance — tous les établissements visent les mêmes "
+            "semaines de vacances scolaires.",
+        "vitres":
+            "Façades de bureaux et bâtiments universitaires : des surfaces grandes et régulières, "
+            "pour partie accessibles depuis le sol. Les portes et les halls à forte fréquentation "
+            "sont les seules surfaces qui demandent un passage rapproché ; le reste tient au "
+            "trimestre.",
+        "faq_hotte": ("Faut-il réserver longtemps à l'avance pour les vacances scolaires ?",
+                      "Oui, deux à trois mois. Tous les établissements visent les mêmes semaines "
+                      "et le nombre de créneaux de fermeture est limité. Une date fixée en début "
+                      "d'année scolaire évite de se retrouver sans solution."),
+        "faq_vitres": ("Quel est le délai d'intervention à Cergy ?",
+                       "Habituellement 48 à 72 h pour une intervention ponctuelle. Nous sommes à "
+                       "une quarantaine de kilomètres : un contrat régulier, avec des passages "
+                       "programmés, est nettement plus avantageux à cette distance."),
+    },
+    {
+        "slug": "massy", "nom": "Massy", "cp": "91300", "dept": "91",
+        "lat": 48.7262, "lon": 2.2825,
+        "tissu":
+            "Massy réunit un pôle tertiaire autour de la gare TGV, des zones d'activité étendues "
+            "et un centre commerçant. La restauration y est principalement d'entreprise et de "
+            "chaîne, concentrée sur le déjeuner.",
+        "acces":
+            "Zones d'activité bien desservies et faciles d'accès, parkings disponibles. Massy est "
+            "à une quarantaine de kilomètres de notre atelier, pour un délai de 48 à 72 h.",
+        "hotte":
+            "Restauration de flux et restauration d'entreprise : production concentrée sur deux "
+            "heures, souvent en friture et en grillade, dans des cuisines bien dimensionnées. Le "
+            "rythme utile y est de deux passages par an, et le suivi hebdomadaire des filtres par "
+            "l'équipe fait ici une différence réelle sur l'intervalle entre deux dégraissages de "
+            "conduit.",
+        "vitres":
+            "Façades de bureaux et de locaux d'activité, grandes et régulières, accessibles depuis "
+            "le sol jusqu'à trois niveaux : la configuration la plus économique à entretenir. Les "
+            "halls et les portes vitrées demandent en revanche un passage rapproché.",
+        "faq_hotte": ("Les filtres changent-ils vraiment l'intervalle entre deux nettoyages ?",
+                      "Oui, nettement. Un filtre propre arrête une part importante de la graisse "
+                      "avant le conduit. Des filtres nettoyés ou remplacés chaque semaine — ce que "
+                      "la réglementation prévoit — allongent réellement l'intervalle, et c'est le "
+                      "geste le plus rentable de tout le dispositif."),
+        "faq_vitres": ("Jusqu'à quelle hauteur intervenez-vous ?",
+                       "Les trois premiers niveaux depuis le sol, à la perche et à l'eau "
+                       "déminéralisée, à condition d'avoir du recul au pied de la façade. Au-delà, "
+                       "il faut une nacelle ou un cordiste, et nous ne le faisons pas."),
+    },
+    {
+        "slug": "evry-courcouronnes", "nom": "Évry-Courcouronnes", "cp": "91000",
+        "dept": "91", "lat": 48.6238, "lon": 2.4297,
+        "tissu":
+            "Évry-Courcouronnes réunit une préfecture, une université, un centre hospitalier et un "
+            "centre commercial régional. La restauration y est en grande partie collective, avec "
+            "des cuisines de gros volume.",
+        "acces":
+            "Grands équipements dotés de quais de livraison et de parkings. Évry-Courcouronnes est "
+            "à une cinquantaine de kilomètres de notre atelier : les interventions s'y planifient "
+            "à l'avance.",
+        "hotte":
+            "Les cuisines de restauration collective sont ici parmi les plus volumineuses et les "
+            "plus encadrées : plusieurs lignes de cuisson, un circuit d'extraction long, et une "
+            "exigence de traçabilité portée par le service sécurité de l'établissement. "
+            "L'intervention se fait sur fermeture programmée, trappe par trappe, avec un essai "
+            "d'extraction après remontage et un relevé daté zone par zone.",
+        "vitres":
+            "Halls, circulations et portes vitrées à très forte fréquentation. Dans un équipement "
+            "recevant du public, les portes se marquent en une demi-journée : c'est la surface à "
+            "reprendre souvent, le reste tient au trimestre.",
+        "faq_hotte": ("Comment prouver que l'entretien a été fait lors d'un contrôle ?",
+                      "Par le livret d'entretien annexé à votre registre de sécurité : c'est lui "
+                      "qui porte les dates, et c'est à l'exploitant de le tenir. Nous vous "
+                      "remettons un relevé daté et détaillé, zone par zone, qui s'y range "
+                      "directement."),
+        "faq_vitres": ("Comment organiser le nettoyage dans un bâtiment ouvert au public ?",
+                       "Zone par zone, aux heures de faible fréquentation, sans jamais fermer un "
+                       "accès. Les halls et les portes se font tôt le matin ; les cloisons "
+                       "intérieures peuvent se traiter en journée sans gêner personne."),
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# NETTOYAGE DE RESTAURANT — angle par commune
+# ---------------------------------------------------------------------------
+# Le nettoyage de restaurant n'est pas le ménage quotidien que l'équipe assure
+# déjà : c'est le passage qui traite ce qu'un service ne permet jamais de
+# faire — sols en profondeur, joints de carrelage gras, plinthes, dessous
+# d'équipements, surfaces en hauteur, banquettes. Il se vend presque toujours
+# avec le dégraissage de hotte, mais il se chiffre séparément.
+#
+# Écrit à part de VILLES_PRO puis fusionné : garder les quarante angles d'une
+# même prestation dans un seul bloc permet de les relire ensemble et de voir
+# tout de suite si deux communes disent la même chose.
+ANGLES_RESTAURANT = {
+    "paris-8": (
+        "Les établissements du 8e ont un niveau d'exigence de salle que peu de quartiers "
+        "connaissent, et une contrainte qui va avec : rien ne doit se voir. Les banquettes de "
+        "velours, les moquettes de salle et les nappages fixes sont les surfaces qui trahissent "
+        "l'usage, et elles relèvent de l'injection-extraction, pas du nettoyage courant. Les "
+        "cuisines, elles, sont souvent en sous-sol, avec des sols et des joints de carrelage que "
+        "le service quotidien ne traite jamais en profondeur.",
+        ("Pouvez-vous intervenir sans que la salle soit vue en chantier ?",
+         "Oui, c'est la règle ici : intervention de nuit ou le jour de fermeture, salle remise "
+         "exactement en l'état, et aucun matériel laissé sur place. Les banquettes et les "
+         "moquettes sont traitées par injection-extraction, qui sèche en quelques heures.")),
+    "paris-11": (
+        "Le 11e, c'est la petite salle : trente à cinquante couverts, cuisine ouverte, banquettes "
+        "le long des murs et un sol qui prend tout. Le point qui décide du résultat est le joint "
+        "de carrelage de cuisine — gras, noirci, impossible à reprendre pendant un service — et "
+        "les dessous d'équipements mobiles, que personne ne déplace en semaine. C'est exactement "
+        "ce qu'un passage dédié traite et que le nettoyage quotidien ne peut pas atteindre.",
+        ("L'équipe nettoie déjà tous les soirs, qu'apportez-vous de plus ?",
+         "Ce qu'un service ne permet pas de faire : les sols en profondeur, joints compris, les "
+         "plinthes et les bas de murs, les dessous et arrières d'équipements, les surfaces en "
+         "hauteur, et les banquettes en textile. C'est un passage complémentaire, pas un "
+         "remplacement du vôtre.")),
+    "paris-12": (
+        "Les brasseries des abords de la gare de Lyon posent un problème de volume : grande salle, "
+        "service continu, et aucune fenêtre de fermeture longue. Le travail se fait de nuit, par "
+        "zones, en plusieurs passages plutôt qu'en une remise à niveau unique. Autour d'Aligre, le "
+        "profil est inverse : petites salles, fermeture hebdomadaire, et une remise à niveau "
+        "complète possible en une fois.",
+        ("Comment faire quand le restaurant ne ferme jamais ?",
+         "En découpant : une zone par passage, de nuit, plutôt qu'une remise à niveau complète "
+         "qui demanderait une fermeture. La salle une nuit, la cuisine une autre, les sanitaires "
+         "et les vitrages une troisième. Le résultat est le même, étalé sur trois semaines.")),
+    "paris-15": (
+        "Le 15e est un arrondissement de restaurants de quartier, fidélisés et installés depuis "
+        "longtemps. C'est le profil où la remise à niveau périodique compte le plus : dans une "
+        "salle qui tourne depuis dix ans, le gras s'est installé en haut — corniches, luminaires, "
+        "grilles de ventilation — et sur les assises textiles, bien avant de se voir au sol.",
+        ("À quelle fréquence prévoir une remise à niveau complète ?",
+         "Deux à quatre fois par an selon le volume, en complément du nettoyage quotidien de "
+         "l'équipe. Les banquettes et les chaises en textile, elles, une à deux fois par an : "
+         "c'est ce qui rattrape le grisaillement que personne ne voit arriver.")),
+    "paris-16": (
+        "Les restaurants du 16e sont en rez-de-chaussée d'immeubles de standing, avec une salle "
+        "soignée et une copropriété attentive. Deux conséquences : les horaires d'intervention "
+        "sont encadrés, et les parties communes traversées doivent être protégées et rendues "
+        "propres. Le travail technique est classique ; c'est la tenue de l'intervention qui est "
+        "jugée.",
+        ("La copropriété impose des horaires, est-ce compatible ?",
+         "Oui. Nous travaillons dans la plage autorisée et nous protégeons les parties communes "
+         "traversées. C'est une contrainte d'organisation, pas une contrainte technique : il faut "
+         "simplement la connaître avant, pas la découvrir sur place.")),
+    "paris-17": (
+        "Aux Batignolles, les salles sont petites et les cuisines ouvertes sur la salle. Cela "
+        "change la liste : le plafond et les luminaires de salle font partie du périmètre, parce "
+        "que les buées non captées s'y déposent, et parce que le client les voit. C'est aussi "
+        "l'indice à surveiller — un plafond jauni au-dessus du piano dit que l'extraction ne capte "
+        "pas assez.",
+        ("Le plafond au-dessus de la cuisine ouverte est jauni, est-ce rattrapable ?",
+         "Le dépôt se nettoie, oui. Mais s'il revient en quelques mois, le problème n'est pas le "
+         "nettoyage : c'est l'extraction qui ne capte pas assez. Nous vous le disons, et nous "
+         "regardons d'abord l'état du conduit, qui est l'hypothèse la moins coûteuse.")),
+    "saint-denis": (
+        "La restauration dionysienne est diverse et travaille en volume : cuisines du monde autour "
+        "du marché, restauration rapide près du stade, brasseries du centre. Les cuisines sont "
+        "souvent petites pour le volume produit, et c'est le sol et les joints qui en souffrent "
+        "d'abord — un carrelage de cuisine gras devient glissant, ce qui est un sujet de sécurité "
+        "avant d'être un sujet de propreté.",
+        ("Un sol de cuisine glissant, est-ce rattrapable ?",
+         "Oui, dans la plupart des cas : ce qui rend un carrelage glissant est le film gras qui "
+         "s'est polymérisé dans le relief antidérapant et l'a comblé. Un dégraissage alcalin avec "
+         "temps de pose et une action mécanique le rouvrent. Si le relief est usé, en revanche, "
+         "c'est le revêtement qu'il faut reprendre.")),
+    "aubervilliers": (
+        "Les établissements albertivillariens travaillent tôt et sans temps mort : restauration "
+        "de quartier, cantines de grossistes, traiteurs. Les cuisines sont installées dans des "
+        "locaux anciens où les plinthes, les bas de murs et les arrières d'équipements n'ont "
+        "souvent jamais été repris. C'est là que se trouve l'essentiel du travail réel, pas sur "
+        "les surfaces visibles.",
+        ("Faut-il vider la cuisine avant votre passage ?",
+         "Non. Nous déplaçons les équipements mobiles nous-mêmes et nous les remettons en place. "
+         "Ce que nous vous demandons, c'est de dégager les denrées et le petit matériel : le reste "
+         "fait partie de l'intervention.")),
+    "montreuil": (
+        "Montreuil a l'un des tissus de restauration indépendante les plus denses de la petite "
+        "couronne, avec beaucoup de cuisines ouvertes et de grands volumes reconvertis. Les "
+        "anciens ateliers transformés en salles posent une question propre : des hauteurs sous "
+        "plafond importantes, donc des parties hautes — verrières, poutres, luminaires, grilles — "
+        "que personne ne traite et qui portent pourtant le dépôt.",
+        ("Traitez-vous les parties hautes d'une salle en ancien atelier ?",
+         "Depuis le sol et à la perche, jusqu'à une hauteur raisonnable, oui : verrières, poutres "
+         "basses, luminaires accessibles. Au-delà, il faut un moyen d'accès en hauteur que nous ne "
+         "mettons pas en œuvre, et nous le disons au devis.")),
+    "pantin": (
+        "Pantin mêle une restauration nouvelle le long du canal, dans des locaux récents et bien "
+        "conçus, et un commerce de bouche de centre ancien. Les premiers s'entretiennent avec un "
+        "passage programmé deux à quatre fois par an ; les seconds demandent un vrai rattrapage "
+        "initial avant de pouvoir être tenus à un rythme régulier.",
+        ("Faut-il un premier passage plus lourd que les suivants ?",
+         "Souvent, oui, et nous le chiffrons à part. Sur un local qui n'a jamais eu de remise à "
+         "niveau, le premier passage est un rattrapage ; les suivants, qui entretiennent un état "
+         "déjà atteint, sont plus courts et moins chers. Nous l'annonçons dès le devis.")),
+    "bobigny": (
+        "La restauration balbynienne est largement tournée vers le midi : brasseries, traiteurs, "
+        "restauration rapide autour des administrations et de l'hôpital. Deux heures de service "
+        "intense, puis plus rien — ce qui laisse une vraie fenêtre d'intervention l'après-midi, "
+        "et c'est rare. Le point sensible reste la cuisine, dont le sol et les joints encaissent "
+        "tout le service en une fois.",
+        ("Pouvez-vous intervenir l'après-midi, entre deux services ?",
+         "Oui, et à Bobigny c'est souvent le meilleur créneau : nous sommes à six kilomètres, "
+         "donc une fenêtre de trois heures suffit sans marge de sécurité inutile.")),
+    "aulnay-sous-bois": (
+        "Aulnay a surtout des restaurants de quartier et des commerces de bouche, en salles "
+        "moyennes, avec des équipes réduites. L'intérêt d'un passage dédié y est direct : il libère "
+        "l'équipe de ce qu'elle ne peut pas faire correctement en fin de service — les sols en "
+        "profondeur, les joints, les surfaces en hauteur — sans allonger ses horaires.",
+        ("Est-ce rentable pour un petit établissement ?",
+         "Souvent oui, parce que l'alternative est de faire faire ce travail par l'équipe en "
+         "heures supplémentaires, moins bien et avec le matériel du bord. Nous sommes à cinq "
+         "kilomètres, ce qui rend le déplacement négligeable et un passage court réellement "
+         "viable.")),
+    "le-blanc-mesnil": (
+        "C'est notre commune, et cela change ce que nous pouvons proposer aux restaurants : un "
+        "passage court mais fréquent, qui serait absurde ailleurs à cause du trajet, devient ici "
+        "la meilleure formule. Un passage hebdomadaire d'une heure sur les sols de cuisine et les "
+        "sanitaires tient un établissement mieux qu'une grosse remise à niveau trimestrielle.",
+        ("Pouvez-vous passer chaque semaine, même pour une heure ?",
+         "Oui, et c'est au Blanc-Mesnil que cela a le plus de sens : l'atelier est dans la "
+         "commune, le trajet ne pèse rien. Un passage court et régulier tient un établissement "
+         "mieux qu'une intervention lourde tous les trois mois.")),
+    "drancy": (
+        "Les restaurants drancéens sont en petites salles, avec des cuisines compactes où tout est "
+        "serré. La difficulté n'est pas la surface mais l'accès : il faut déplacer pour atteindre, "
+        "et c'est précisément ce qu'une équipe ne fait pas en fin de service. Les arrières et "
+        "dessous d'équipements sont ici l'essentiel du travail.",
+        ("Combien de temps dure une remise à niveau de cuisine ?",
+         "Trois à six heures pour une cuisine de taille courante, selon l'état et le nombre "
+         "d'équipements à déplacer. Nous travaillons de nuit ou le jour de fermeture, et la "
+         "cuisine est opérationnelle au service suivant.")),
+    "noisy-le-grand": (
+        "La restauration noiséenne est largement tertiaire et de chaîne : des établissements "
+        "standardisés, avec des procédures d'entretien internes et des attentes précises sur ce "
+        "qui est fait et tracé. C'est le profil qui demande un relevé écrit de chaque passage, "
+        "zone par zone, plus qu'un simple accord verbal.",
+        ("Fournissez-vous un relevé de ce qui a été fait ?",
+         "Oui, daté et détaillé zone par zone, à chaque passage. Pour une enseigne de chaîne, "
+         "c'est ce qui permet au siège comme au gérant de suivre, et cela évite les discussions "
+         "sur ce qui était compris ou non.")),
+    "boulogne-billancourt": (
+        "Les restaurants boulonnais sont pour la plupart en rez-de-chaussée d'immeubles "
+        "d'habitation, ce qui ajoute une contrainte constante : le bruit et les odeurs vers les "
+        "logements du dessus. L'intervention se fait donc dans une plage encadrée, et la question "
+        "de l'extraction revient presque toujours dans la conversation — c'est elle qui cause les "
+        "plaintes, pas le nettoyage de salle.",
+        ("Les voisins se plaignent, le nettoyage peut-il aider ?",
+         "Sur les odeurs, ce n'est pas le nettoyage de salle qui agit mais le dégraissage du "
+         "circuit d'extraction : un conduit chargé tire moins, et les buées trouvent un autre "
+         "chemin. C'est une prestation distincte, que nous assurons aussi, et c'est par là qu'il "
+         "faut commencer.")),
+    "levallois-perret": (
+        "La restauration levalloisienne est calée sur le déjeuner des salariés : service court et "
+        "dense, petites salles, cuisines insérées dans des immeubles tertiaires. La fenêtre "
+        "d'intervention est large l'après-midi et le soir, ce qui est confortable ; la contrainte "
+        "est l'accès au bâtiment en dehors des heures de bureau.",
+        ("Comment accéder au local en dehors des heures de bureau ?",
+         "Par un accès confié — clé, badge ou code — convenu une fois pour toutes, ou en présence "
+         "d'un membre de votre équipe. C'est le point à régler au premier rendez-vous : sans lui, "
+         "un planning du soir ne tient pas.")),
+    "neuilly-sur-seine": (
+        "Les établissements neuilléens ont une salle soignée et une clientèle attentive au détail. "
+        "Les surfaces qui trahissent sont les assises en textile, les moquettes et les vitrages "
+        "intérieurs — jamais les sols, que l'équipe tient bien. Un passage dédié y porte donc "
+        "surtout sur le textile et sur les parties hautes.",
+        ("Traitez-vous les banquettes et les chaises en tissu ?",
+         "Oui, par injection-extraction : la solution est envoyée dans la fibre puis réaspirée "
+         "aussitôt, sans eau stagnante donc sans auréole. Le séchage est de quatre à six heures, "
+         "ce qui permet une intervention de nuit avant un service du midi.")),
+    "courbevoie": (
+        "La restauration de flux du quartier d'affaires produit un volume considérable en deux "
+        "heures : sols de salle piétinés, sanitaires très sollicités, cuisine saturée. Le rythme "
+        "utile n'est pas le même pour les trois — les sanitaires demandent une reprise "
+        "quotidienne, la cuisine un passage profond mensuel, la salle quelque chose entre les "
+        "deux.",
+        ("Peut-on ne traiter que les sanitaires et la cuisine ?",
+         "Oui, et c'est souvent le bon arbitrage quand le budget est contraint. Les sanitaires "
+         "clients et la cuisine portent l'essentiel de ce qui se juge ; la salle peut rester au "
+         "rythme de votre équipe avec une remise à niveau trimestrielle.")),
+    "issy-les-moulineaux": (
+        "La restauration isséenne est majoritairement d'entreprise, avec des cuisines dimensionnées "
+        "et des services sécurité qui attendent de la traçabilité. L'intervention se cale sur les "
+        "fermetures programmées, et le relevé écrit compte autant que le travail lui-même dans le "
+        "dossier de l'établissement.",
+        ("Pouvez-vous intervenir pendant une fermeture d'entreprise ?",
+         "C'est le créneau que nous préférons : site vide, aucune contrainte de service, et le "
+         "temps de faire les sols en profondeur et les parties hautes. Les semaines de fermeture "
+         "d'août et de fin d'année se réservent plusieurs mois à l'avance.")),
+}
+
+ANGLES_RESTAURANT.update({
+    "nanterre": (
+        "La restauration nanterrienne est largement collective — universitaire, administrative, "
+        "d'entreprise — avec de grandes salles et des sols qui encaissent un passage considérable "
+        "sur des créneaux courts. Le travail utile y porte sur les sols en profondeur et les "
+        "circulations, plus que sur le mobilier, et il se cale sur les périodes de fermeture.",
+        ("Quand intervenir sur un restaurant universitaire ?",
+         "Pendant les vacances scolaires ou les fermetures d'établissement, et il faut réserver "
+         "deux à trois mois à l'avance : tous les établissements visent les mêmes semaines.")),
+    "vincennes": (
+        "Vincennes a une densité de commerces de bouche et de restaurants exceptionnelle pour sa "
+        "taille, sur quelques centaines de mètres. Les salles sont petites, les cuisines aussi, et "
+        "presque tout est en rez-de-chaussée d'immeuble ancien. La contrainte est l'horaire : la "
+        "rue est commerçante et le voisinage proche.",
+        ("Intervenez-vous tôt le matin à Vincennes ?",
+         "Oui, avant 7 h 30, dans la plage de livraison autorisée. C'est le créneau qui gêne le "
+         "moins le voisinage et qui laisse la salle prête pour le service du midi.")),
+    "creteil": (
+        "La restauration cristolienne est majoritairement collective ou de chaîne : centre "
+        "hospitalier, université, centre commercial. Les volumes sont importants et les exigences "
+        "de traçabilité réelles. L'intervention se fait par zones, sur fermeture programmée, avec "
+        "un relevé daté que l'établissement range dans son dossier.",
+        ("Travaillez-vous avec des établissements de santé ?",
+         "Sur la restauration et les espaces communs, oui. En revanche, les protocoles de "
+         "désinfection propres aux zones de soins et la filière des déchets d'activités de soins "
+         "ne relèvent pas de nous : ce n'est pas notre métier et nous le disons d'emblée.")),
+    "ivry-sur-seine": (
+        "Les restaurants ivryens sont souvent installés dans d'anciens locaux d'activité "
+        "reconvertis : grands volumes, hauteurs importantes, sols béton ou résine. Ces sols ne se "
+        "lavent pas comme un carrelage — un produit trop alcalin ternit une résine de façon "
+        "irréversible — et c'est le point que nous vérifions avant de commencer.",
+        ("Comment nettoyez-vous un sol béton ciré ou en résine ?",
+         "À pH neutre, jamais à l'alcalin fort, qui ternit la résine de façon irréversible. Nous "
+         "identifions le revêtement avant de commencer et nous testons sur une zone cachée. Sur un "
+         "sol déjà attaqué, le nettoyage le rendra propre mais pas neuf, et nous le disons "
+         "avant.")),
+    "puteaux": (
+        "La restauration de flux de La Défense sert des milliers de couverts en deux heures, cinq "
+        "jours sur sept. Les sanitaires clients et les sols de salle sont les deux surfaces qui "
+        "décaissent tout, et elles demandent une reprise quotidienne ; la cuisine, elle, un "
+        "passage profond mensuel.",
+        ("Quel rythme pour un établissement à très fort volume ?",
+         "Sanitaires et sols de salle repris chaque jour, cuisine en profondeur une fois par "
+         "mois, et une remise à niveau complète deux à quatre fois par an. C'est la seule façon de "
+         "tenir un site qui ne connaît pas de période creuse.")),
+    "rueil-malmaison": (
+        "Rueil mêle restaurants de centre-ville et restauration d'entreprise dans les parcs "
+        "d'activité. Les seconds se planifient à l'année et s'entretiennent bien ; les premiers, "
+        "en bâti plus ancien, demandent un rattrapage initial avant de pouvoir être tenus à un "
+        "rythme régulier.",
+        ("Le premier passage coûte-t-il plus cher que les suivants ?",
+         "Sur un local qui n'a jamais eu de remise à niveau, oui, et nous le chiffrons à part. Les "
+         "passages suivants entretiennent un état déjà atteint : ils sont plus courts et moins "
+         "chers. C'est annoncé dès le devis.")),
+    "saint-cloud": (
+        "Saint-Cloud a peu d'établissements mais presque tous en rez-de-chaussée d'immeuble de "
+        "standing, avec une salle soignée et une copropriété attentive. L'intervention se fait "
+        "dans une plage encadrée, parties communes protégées, et c'est la tenue de l'intervention "
+        "qui est jugée autant que le résultat.",
+        ("Les parties communes de l'immeuble sont-elles protégées ?",
+         "Oui, systématiquement : bâchage du parcours emprunté et nettoyage de la zone après notre "
+         "passage. C'est ce que la copropriété regarde, et c'est ce qui décide si vous pourrez "
+         "refaire intervenir quelqu'un l'année suivante.")),
+    "saint-germain-en-laye": (
+        "Le centre historique saint-germanois concentre des restaurants de terrasse et des "
+        "commerces de bouche dans du bâti ancien, souvent protégé. Les salles ont du caractère — "
+        "parquets, pierres, boiseries — et chaque matière a son produit et ses interdits : c'est "
+        "un travail de diagnostic avant d'être un travail de nettoyage.",
+        ("Avez-vous l'habitude des salles en bâti ancien ?",
+         "Oui, et la règle y est la prudence : un parquet ancien non vitrifié ne supporte pas "
+         "l'eau en quantité, une pierre calcaire se tache définitivement à l'acide. Nous "
+         "identifions les matières avant de commencer et nous disons quand une surface relève d'un "
+         "artisan plutôt que de nous.")),
+    "versailles": (
+        "La restauration versaillaise est saisonnière : le volume double d'avril à septembre. "
+        "Cela devrait décider du calendrier d'entretien — une remise à niveau complète à la sortie "
+        "de la haute saison, quand le dépôt est maximal et que la salle peut être immobilisée sans "
+        "coût — et c'est un arbitrage que presque personne ne fait.",
+        ("Quand faire la remise à niveau d'un restaurant saisonnier ?",
+         "À la sortie de la haute saison, pas au milieu. C'est le moment où le dépôt accumulé est "
+         "à son maximum et où l'établissement peut être immobilisé sans manque à gagner. "
+         "L'intervention coûte le même prix et sert deux fois plus.")),
+    "le-vesinet": (
+        "Peu d'établissements au Vésinet, et presque tous de quartier, avec une clientèle "
+        "d'habitués. Le résultat se joue sur la salle — assises textiles, vitrages, luminaires — "
+        "plus que sur la cuisine, que des équipes stables tiennent généralement bien.",
+        ("Traitez-vous les assises en tissu de la salle ?",
+         "Oui, par injection-extraction, qui sèche en quatre à six heures : une intervention de "
+         "nuit permet de rouvrir au service du midi. C'est ce qui rattrape le grisaillement "
+         "progressif des assises, qu'un nettoyage courant ne traite pas.")),
+    "sceaux": (
+        "Les restaurants scéens sont petits, de quartier, avec des équipes réduites et des "
+        "cuisines compactes. Un passage dédié y vaut surtout pour ce que l'équipe ne peut pas "
+        "faire en fin de service : joints de carrelage, dessous d'équipements, surfaces en "
+        "hauteur, grilles de ventilation.",
+        ("Un petit établissement a-t-il intérêt à un passage dédié ?",
+         "Oui, parce que l'alternative est de le faire faire par l'équipe en heures "
+         "supplémentaires, moins bien et avec le matériel du bord. Un passage trimestriel de trois "
+         "heures suffit souvent, et il se chiffre modestement.")),
+    "saint-maur-des-fosses": (
+        "Saint-Maur a des restaurants de quartier répartis entre plusieurs centres, plus des "
+        "établissements de bord de Marne très saisonniers. Les seconds appellent une remise à "
+        "niveau à la fermeture de saison ; les premiers, un rythme régulier. Grouper plusieurs "
+        "établissements d'un même quartier fait réellement baisser le coût au passage.",
+        ("Peut-on grouper plusieurs établissements ?",
+         "Oui, et c'est avantageux : le déplacement est la part fixe du coût. Réparti sur "
+         "plusieurs établissements d'un même secteur, il pèse beaucoup moins, et nous chiffrons "
+         "alors au passage et non à l'établissement.")),
+    "tremblay-en-france": (
+        "La restauration tremblaysienne sert les équipes de la zone aéroportuaire : horaires "
+        "décalés, service continu, pas de fenêtre évidente. Notre proximité est ici l'argument "
+        "réel — nous nous calons sur le créneau que vous pouvez libérer, même court, même à 3 h du "
+        "matin, sans que le trajet n'oblige à élargir la plage.",
+        ("Pouvez-vous intervenir en pleine nuit ?",
+         "Oui, nous sommes à quinze minutes. Un établissement qui n'a qu'une fenêtre de trois "
+         "heures entre deux services est précisément le cas où la proximité de l'atelier change ce "
+         "que nous pouvons proposer.")),
+    "chelles": (
+        "Chelles a une restauration de proximité et des commerces de bouche en locaux souvent "
+        "anciens. Le premier passage y est presque toujours un rattrapage : plinthes, bas de murs, "
+        "arrières d'équipements et joints de carrelage n'ont jamais été repris. Les suivants, qui "
+        "entretiennent, sont nettement plus courts.",
+        ("Quelle différence entre le premier passage et les suivants ?",
+         "Le premier rattrape ce qui ne l'a jamais été, et il est plus long. Les suivants "
+         "entretiennent un état déjà atteint : comptez la moitié du temps. Nous chiffrons les deux "
+         "séparément dès le devis, pour que vous sachiez à quoi vous engager.")),
+    "meaux": (
+        "Meaux a une restauration de centre historique et une tradition de commerce de bouche "
+        "marquée, dans du bâti ancien. La distance depuis notre atelier change l'économie de la "
+        "prestation : un contrat régulier, avec des passages programmés et si possible groupés "
+        "avec d'autres établissements du secteur, est nettement plus avantageux qu'une suite "
+        "d'interventions isolées.",
+        ("La distance renchérit-elle beaucoup la prestation ?",
+         "Sur une intervention isolée, oui. Sur un contrat régulier, le déplacement est réparti "
+         "sur des passages programmés, et il pèse peu. C'est encore mieux si plusieurs "
+         "établissements du secteur sont traités le même jour.")),
+    "argenteuil": (
+        "Argenteuil a un tissu dense de restauration indépendante, en locaux fréquemment repris. "
+        "Le cas courant est celui d'un établissement qui hérite de l'état laissé par le précédent "
+        "exploitant : une remise à niveau complète au moment de la reprise coûte moins cher et "
+        "sert plus longtemps qu'une suite de rattrapages partiels.",
+        ("Je reprends un local, par quoi commencer ?",
+         "Par une remise à niveau complète avant l'ouverture, pendant que le local est vide : "
+         "c'est le seul moment où tout est accessible. Et par un constat du conduit d'extraction, "
+         "qui est ce dont on hérite sans le voir.")),
+    "sarcelles": (
+        "La restauration sarcelloise est dense et variée, avec beaucoup de cuisines du monde "
+        "travaillant au wok et à la friture. Ces cuissons déposent un film gras fin bien au-delà "
+        "de la cuisine : murs, plafond, grilles de ventilation et jusqu'en salle. Le périmètre "
+        "utile est donc plus large qu'une simple remise à niveau de sols.",
+        ("Le gras se dépose-t-il vraiment jusqu'en salle ?",
+         "En cuisson au wok ou en friture, oui, et c'est ce qui rend les surfaces collantes au "
+         "toucher bien après le service. L'aérosol est très fin et il circule. Les parties hautes "
+         "et les grilles de ventilation font donc partie du périmètre, pas seulement les sols.")),
+    "cergy": (
+        "La restauration cergyssoise est largement collective — universitaire, administrative — "
+        "avec de grandes salles et des sols très sollicités sur des créneaux courts. "
+        "L'intervention se cale sur les fermetures, qui sont longues et prévisibles : c'est la "
+        "configuration la plus confortable, à condition de réserver tôt.",
+        ("Faut-il réserver longtemps à l'avance ?",
+         "Oui, deux à trois mois pour les vacances scolaires : tous les établissements visent les "
+         "mêmes semaines. Une date fixée en début d'année scolaire évite de se retrouver sans "
+         "solution.")),
+    "massy": (
+        "La restauration massicoise est d'entreprise et de chaîne, concentrée sur le déjeuner. Les "
+        "cuisines sont bien dimensionnées et les procédures internes existent : ce qui manque "
+        "généralement, c'est le passage profond que le quotidien ne couvre pas — joints, plinthes, "
+        "dessous d'équipements, parties hautes.",
+        ("Que couvre exactement le passage profond ?",
+         "Les sols en profondeur avec les joints de carrelage, les plinthes et bas de murs, les "
+         "dessous et arrières d'équipements mobiles, les surfaces en hauteur et les grilles de "
+         "ventilation, la salle et les sanitaires clients. C'est ce qu'un service quotidien ne "
+         "permet jamais de faire.")),
+    "evry-courcouronnes": (
+        "La restauration évryenne est en grande partie collective, avec de gros volumes et des "
+        "exigences de traçabilité réelles. L'intervention se fait par zones, sur fermeture "
+        "programmée, et le relevé daté remis à la fin compte autant que le travail dans le dossier "
+        "de l'établissement.",
+        ("Fournissez-vous un document à l'issue de l'intervention ?",
+         "Oui : un relevé daté et détaillé, zone par zone, de ce qui a été traité. Pour un "
+         "établissement collectif, c'est ce qui permet au service sécurité comme à la direction de "
+         "suivre, et cela évite les discussions sur ce qui était compris.")),
+})
+
+# Fusion dans VILLES_PRO. Un angle manquant ferait une page sans contenu : on
+# le refuse ici plutôt que de le découvrir en relisant le site.
+for _v in VILLES_PRO:
+    _a = ANGLES_RESTAURANT.get(_v["slug"])
+    if _a is None:
+        raise SystemExit("angle restaurant manquant pour %s" % _v["slug"])
+    _v["restaurant"], _v["faq_restaurant"] = _a
+del _v, _a
+
+
+# ---------------------------------------------------------------------------
+# NETTOYAGE DE RESTAURANT — périmètre et limites communs
+# ---------------------------------------------------------------------------
+RESTAURANT_PERIMETRE = (
+    "Sols de cuisine en profondeur, joints de carrelage compris",
+    "Plinthes, bas de murs, dessous et arrières d'équipements mobiles",
+    "Inox : plans, dossenets, étagères, hottes en surface",
+    "Surfaces en hauteur : étagères, luminaires, grilles de ventilation",
+    "Salle : sols, banquettes et chaises en textile, vitrages intérieurs",
+    "Sanitaires clients : détartrage complet, joints, robinetterie",
+    "Vitrines et devanture, à l'eau déminéralisée",
+    "Remise en place complète : la cuisine est opérationnelle au service suivant",
+)
+
+RESTAURANT_LIMITES = (
+    "Ce passage ne remplace pas le nettoyage quotidien de votre équipe : il traite ce qu'un "
+    "service ne permet jamais de faire. Les deux sont complémentaires, et un prestataire qui "
+    "vous propose de remplacer l'un par l'autre vous vend soit trop, soit trop peu.",
+    "Le dégraissage de la hotte, des filtres et des conduits d'extraction est une prestation "
+    "distincte, que nous assurons également. Les deux se planifient souvent le même soir pour ne "
+    "mobiliser la cuisine qu'une fois, mais elles se chiffrent séparément : ni le même matériel, "
+    "ni le même temps.",
+    "Nous ne faisons ni désinsectisation ni dératisation : elles relèvent d'agréments que nous ne "
+    "détenons pas. Nous signalons ce que nous constatons, et nous nous arrêtons là.",
+    "Nous n'intervenons pas sur les équipements eux-mêmes : nous nettoyons autour, dessous et "
+    "derrière, mais le démontage d'un four ou d'une friteuse relève de votre mainteneur.",
+)

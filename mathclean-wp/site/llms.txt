@@ -72,11 +72,13 @@ Une page dédiée par couple prestation × commune, sur dix communes d'Île-de-F
 Le catalogue est doublé de familles de pages sectorielles et locales, chacune
 avec sa contrainte technique propre (dépôt dominant, rythme, horaire d'accès) :
 - Hottes et conduits, par métier (14 métiers) et par commune
-  (18 communes) : https://mathclean.fr/hottes
+  (40 communes) : https://mathclean.fr/hottes
 - Vitrerie professionnelle, par métier (10) et par commune
-  (18) : https://mathclean.fr/vitrerie-professionnelle
+  (40) : https://mathclean.fr/vitrerie-professionnelle
 - Entretien régulier, par type de site (8) :
   https://mathclean.fr/menage-regulier
+- Nettoyage de restaurant, par commune (40) :
+  https://mathclean.fr/nettoyage-restaurant
 - Nettoyage d'appartement, par commune (14) :
   https://mathclean.fr/nettoyage-appartement
 
