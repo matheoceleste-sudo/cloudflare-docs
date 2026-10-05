@@ -122,14 +122,14 @@ SERVICES = [
     {
         "slug": "nettoyage-regulier-paris",
         "audience": "pro",
-        "local": {"court": "Ménage régulier", "slug": "menage-regulier",
-                  "nom": "Ménage régulier", "kw": "ménage régulier"},
+        "local": {"court": "Nettoyage entreprise", "slug": "menage-regulier",
+                  "nom": "Nettoyage d'entreprise", "kw": "nettoyage d'entreprise"},
         "short": "Ménage régulier",
-        "nav": "Ménage régulier",
-        "name": "Ménage régulier pour entreprises à Paris",
-        "h1": "Ménage régulier de bureaux, commerces et locaux",
-        "title": "Ménage régulier d'entreprise à Paris et en IDF",
-        "meta": "Ménage régulier de bureaux, commerces et restaurants à Paris et en Île-de-France. Passage avant l'ouverture ou après la fermeture, sans supplément.",
+        "nav": "Nettoyage d'entreprise",
+        "name": "Nettoyage d'entreprise à Paris",
+        "h1": "Nettoyage d'entreprise : bureaux, commerces et locaux",
+        "title": "Nettoyage d'entreprise à Paris et en Île-de-France",
+        "meta": "Nettoyage d'entreprise à Paris et en Île-de-France : bureaux, commerces, restaurants, parties communes. Passage avant l'ouverture ou après la fermeture.",
         "price": "sur devis",
         "excerpt": "Bureaux, commerces, salles de restaurant et parties communes, en passage quotidien, hebdomadaire ou mensuel, aux horaires qui vous arrangent.",
         "image": "bureau-entreprise.webp",
@@ -5669,9 +5669,8 @@ DOSSIERS = [
         "service": "nettoyage-hottes-paris",
         "h1": "Nettoyage de hotte en restaurant : ce que la réglementation impose",
         "title": "Nettoyage de hotte : obligation réglementaire en restaurant",
-        "meta": "Ramonage annuel des conduits, filtres chaque semaine, livret d'entretien "
-                "annexé au registre de sécurité : ce que l'arrêté du 25 juin 1980 impose "
-                "réellement à un exploitant.",
+        "meta": "Ramonage annuel, filtres chaque semaine, livret d'entretien : ce que l'arrêté "
+                "du 25 juin 1980 impose réellement à un exploitant.",
         "lead": "Un ramonage par an au minimum, des filtres nettoyés chaque semaine, et un "
                 "livret d'entretien que l'exploitant tient lui-même. Voici le texte, ce qu'il "
                 "dit exactement, et ce qu'il ne dit pas.",
@@ -5757,9 +5756,8 @@ DOSSIERS = [
         "service": "nettoyage-hottes-paris",
         "h1": "Pourquoi la graisse accumulée dans une hotte est un risque d'incendie",
         "title": "Graisse dans une hotte : le mécanisme du risque d'incendie",
-        "meta": "Comment un dépôt de graisse dans une hotte et un conduit d'extraction devient "
-                "un combustible, pourquoi le feu s'y propage vite, et ce qui réduit réellement "
-                "le risque.",
+        "meta": "Comment la graisse d'un conduit d'extraction devient un combustible, pourquoi "
+                "le feu s'y propage vite, et ce qui réduit réellement le risque.",
         "lead": "La graisse qui tapisse un conduit d'extraction n'est pas de la saleté : c'est un "
                 "combustible, placé exactement là où passe l'air chaud. Voici le mécanisme, sans "
                 "dramatisation inutile.",
@@ -5918,9 +5916,8 @@ DOSSIERS = [
         "service": "nettoyage-hottes-paris",
         "h1": "Dégraissage d'un conduit d'extraction : comment cela se passe vraiment",
         "title": "Dégraissage de conduit d'extraction : méthode et étapes",
-        "meta": "Trappes de visite, dégraissage chimique, ramonage mécanique, remontage et essai "
-                "d'extraction : le déroulé réel d'une intervention sur un circuit d'extraction "
-                "de cuisine professionnelle.",
+        "meta": "Trappes de visite, dégraissage, ramonage mécanique, remontage et essai "
+                "d'extraction : le déroulé réel d'une intervention en cuisine.",
         "lead": "Une hotte propre ne dit rien du conduit. Voici ce que contient une intervention "
                 "complète, étape par étape, et comment reconnaître une prestation qui s'arrête à "
                 "la partie visible.",
@@ -6000,9 +5997,8 @@ DOSSIERS = [
         "service": "nettoyage-hottes-paris",
         "h1": "Mon extraction de cuisine tire mal : les causes, dans l'ordre",
         "title": "Extraction de cuisine qui tire mal : diagnostic",
-        "meta": "Buées en salle, chaleur insupportable aux heures de pointe, plaintes d'odeurs : "
-                "les causes possibles d'une extraction défaillante, de la moins chère à la plus "
-                "coûteuse.",
+        "meta": "Buées en salle, chaleur aux heures de pointe, plaintes d'odeurs : les causes "
+                "d'une extraction défaillante, de la moins chère à la plus coûteuse.",
         "lead": "Avant d'envisager des travaux sur le réseau, il y a trois hypothèses à écarter, "
                 "et elles coûtent de moins en moins cher à vérifier dans cet ordre.",
         "cle": "Commencez par le moins coûteux : filtres, conduit, moteur, puis l'installation.",
@@ -6086,9 +6082,8 @@ DOSSIERS += [
         "service": "nettoyage-vitres-paris",
         "h1": "Vitrine de commerce : à quelle fréquence la faire nettoyer",
         "title": "Nettoyage de vitrine de commerce : quelle fréquence",
-        "meta": "Hebdomadaire, bimensuel, mensuel : ce qui décide du rythme de nettoyage d'une "
-                "vitrine, et pourquoi la zone basse et la poignée se reprennent plus souvent que "
-                "le reste.",
+        "meta": "Hebdomadaire, bimensuel ou mensuel : ce qui décide du rythme, et pourquoi la "
+                "zone basse et la poignée se reprennent plus souvent que le reste.",
         "lead": "Une vitrine ne se salit pas uniformément. Comprendre où elle se salit permet de "
                 "payer moins de passages complets tout en ayant une devanture toujours nette.",
         "cle": "Trois zones, trois rythmes : poignée, bas de vitrage, vitrage complet.",
@@ -6237,7 +6232,7 @@ DOSSIERS += [
         "audience": "pro",
         "service": "nettoyage-vitres-paris",
         "h1": "Nettoyage de vitres en hauteur : ce que nous faisons et ce que nous ne faisons pas",
-        "title": "Nettoyage de vitres en hauteur : nos limites, dites avant le devis",
+        "title": "Nettoyage de vitres en hauteur : nos limites",
         "meta": "Jusqu'à trois niveaux depuis le sol à la perche et à l'eau déminéralisée. "
                 "Au-delà, nacelle ou cordiste : nous ne le faisons pas, et nous le disons avant.",
         "lead": "Une page qui dit surtout ce que nous ne prenons pas. C'est utile : la plupart des "
@@ -6314,10 +6309,9 @@ DOSSIERS += [
         "audience": "pro",
         "service": "nettoyage-regulier-paris",
         "h1": "Nettoyage de bureaux : rédiger un cahier des charges qui tient",
-        "title": "Cahier des charges de nettoyage de bureaux : ce qu'il doit contenir",
-        "meta": "Fréquences par zone, périmètre précis, consommables, horaires, contrôle : les "
-                "points qui font la différence entre un contrat d'entretien qui tient et un "
-                "contrat qu'on résilie au bout de six mois.",
+        "title": "Cahier des charges de nettoyage de bureaux",
+        "meta": "Fréquences par zone, périmètre, consommables, horaires, contrôle : ce qui "
+                "distingue un contrat d'entretien qui tient d'un contrat qu'on résilie.",
         "lead": "La plupart des contrats d'entretien se dégradent pour la même raison : le "
                 "périmètre n'était pas écrit. Voici ce qu'il faut y mettre, point par point.",
         "cle": "Une fréquence par zone, pas une fréquence pour le site.",
@@ -6390,9 +6384,8 @@ DOSSIERS += [
         "service": "nettoyage-appartement-paris",
         "h1": "Nettoyage avant état des lieux : la liste de ce qui est réellement vérifié",
         "title": "Nettoyage avant état des lieux de sortie : la liste complète",
-        "meta": "Four, réfrigérateur, joints, intérieurs de placards, gorges de fenêtres : les "
-                "points sur lesquels se décident les retenues sur dépôt de garantie, et ceux qui "
-                "ne se rattrapent pas.",
+        "meta": "Four, réfrigérateur, joints, placards, gorges de fenêtres : les points où se "
+                "décident les retenues sur dépôt de garantie, et ceux qui ne se rattrapent pas.",
         "lead": "Le motif de retenue le plus fréquent sur un dépôt de garantie est l'état de "
                 "propreté. Voici ce qui est regardé, dans l'ordre, et ce qui relève de l'usure "
                 "plutôt que du ménage.",

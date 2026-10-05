@@ -1346,3 +1346,14 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   .price-table th,.price-table td{padding:12px 12px}
   .price-table .amount{white-space:normal}
 }
+
+/* Repli sans JavaScript du configurateur de réservation.
+   Ces trois blocs portaient l'attribut hidden, retiré par le script après le
+   premier rendu : la page s'allongeait brutalement et tout ce qui suit
+   descendait — 0,19 de décalage cumulé sur la page de réservation, la seule
+   du site à en produire. La classe `js` est posée en ligne dans le <head>,
+   donc avant le premier affichage : rien ne bouge, et le visiteur sans
+   JavaScript voit toujours le message qui le renvoie vers le téléphone. */
+html:not(.js) #resa,
+html:not(.js) #resa-ticket,
+html:not(.js) #resa-bar{display:none}

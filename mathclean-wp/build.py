@@ -21,6 +21,7 @@ import os
 import shutil
 import sys
 from datetime import date
+from urllib.parse import quote
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -94,6 +95,19 @@ def titre_page(t):
         return t
     suffixe = " | " + SITE["name"]
     return t + suffixe if len(t) + len(suffixe) <= 60 else t
+
+
+def avec_suffixe(titre, suffixe, limite=60):
+    """Ajoute un complément de titre seulement s'il reste affichable.
+
+    Google tronque le titre autour de 60 caractères. Sur les familles
+    générées — une page par commune, par métier —, la longueur varie avec le
+    nom : « Nettoyage de restaurant à Pantin » tient largement, le même titre
+    à Saint-Germain-en-Laye déborde. Plutôt que de raccourcir le modèle pour
+    tout le monde, on laisse tomber le complément là où il ne rentre pas.
+    """
+    titre = titre.strip()
+    return titre + suffixe if len(titre) + len(suffixe) <= limite else titre
 
 
 def slug_ancre(txt):
@@ -237,7 +251,27 @@ def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=N
         og_art += '<meta property="article:author" content="%s">\n' % esc(SITE["manager"])
     pre = ""
     if preload:
-        pre = '<link rel="preload" as="image" href="%s%s" fetchpriority="high">\n' % (base, preload)
+        # Le préchargement doit décrire les mêmes variantes que la balise img,
+        # sinon il télécharge l'original en priorité haute et le navigateur
+        # s'en contente : le srcset ne sert alors plus à rien, et c'est
+        # exactement ce qui se passait sur l'accueil.
+        fichier = preload.rsplit("/", 1)[-1]
+        larg = VARIANTES_PHOTOS.get(fichier) if fichier.endswith(".webp") else None
+        attrs = ""
+        if larg:
+            racine, prefixe = fichier[:-5], preload[:-len(fichier)]
+            sources = ["%s%s%s-%d.webp %dw" % (base, prefixe, racine, l, l) for l in larg]
+            try:
+                with open(os.path.join(OUT, "assets", "photos", fichier), "rb") as fh:
+                    origine = _largeur_webp(fh.read(40))
+            except Exception:
+                origine = None
+            if origine:
+                sources.append("%s%s %dw" % (base, preload, origine))
+            attrs = (' imagesrcset="%s" imagesizes="(max-width:900px) 92vw, 640px"'
+                     % ", ".join(sources))
+        pre = ('<link rel="preload" as="image" href="%s%s"%s fetchpriority="high">\n'
+               % (base, preload, attrs))
     t, m = esc(title), esc(meta)
     return f"""<!DOCTYPE html>
 <html lang="fr">
@@ -858,11 +892,99 @@ def _adresses_publiques(txt):
         txt)
 
 
+
+# Variantes responsives disponibles, relevées une fois sur le disque. Une
+# photo n'en a que si elle est assez lourde pour que cela vaille la peine :
+# bin_images.py s'en charge, et c'est lui qui décide.
+def _variantes_disponibles():
+    dossier = os.path.join(OUT, "assets", "photos")
+    index = {}
+    if not os.path.isdir(dossier):
+        return index
+    for nom in os.listdir(dossier):
+        if not nom.endswith(".webp"):
+            continue
+        racine, _, fin = nom[:-5].rpartition("-")
+        if racine and fin.isdigit():
+            index.setdefault(racine + ".webp", []).append(int(fin))
+    for k in index:
+        index[k].sort()
+    return index
+
+
+VARIANTES_PHOTOS = _variantes_disponibles()
+
+_IMG_PHOTO = re.compile(
+    r'<img\b(?![^>]*\bsrcset=)([^>]*?)src="([^"]*assets/photos/)([^"/]+\.webp)"([^>]*)>')
+
+
+def ajouter_srcset(html):
+    """Déclare les variantes responsives sur les photos qui en ont.
+
+    Le site servait une seule taille à tout le monde : une image de 1125 px
+    de large arrivait entière sur un téléphone qui l'affiche dans 346 px.
+    Le navigateur sait choisir, encore faut-il lui donner le choix.
+
+    `sizes` est déduit de l'attribut width, plafonné à 800 px. Le plafond
+    n'est pas un détail : sur les images posées en fond de bloc, width porte
+    la taille intrinsèque du fichier (1125 px) et non la largeur d'affichage
+    (557 px au plus). Sans plafond, ces balises réclamaient l'original pendant
+    que le préchargement prenait la variante 800 — deux fichiers téléchargés
+    pour une seule image, 505 Ko au lieu de 160.
+
+    Plafonner à 800 fait en outre converger toute la page vers la même
+    variante, quel que soit l'écran : une seule image en cache au lieu de
+    trois. Aucun emplacement de la maquette ne dépasse 800 px de large.
+    """
+    PLAFOND = 800
+    def remplace(m):
+        avant, prefixe, fichier, apres = m.groups()
+        larg = VARIANTES_PHOTOS.get(fichier)
+        if not larg:
+            return m.group(0)
+        racine = fichier[:-5]
+        # Largeur réelle de l'original : elle ferme le srcset et sert de repli
+        # aux écrans qui demandent plus que la plus grande variante.
+        try:
+            with open(os.path.join(OUT, "assets", "photos", fichier), "rb") as fh:
+                origine = _largeur_webp(fh.read(40))
+        except Exception:
+            origine = None
+        sources = ["%s%s-%d.webp %dw" % (prefixe, racine, l, l) for l in larg]
+        if origine:
+            sources.append("%s%s %dw" % (prefixe, fichier, origine))
+        mw = re.search(r'\bwidth="(\d+)"', avant + apres)
+        if not mw:
+            return m.group(0)
+        w = int(mw.group(1))
+        # Une vignette garde sa taille à toutes les largeurs d'écran ; une
+        # photo de contenu occupe presque toute la largeur sur téléphone.
+        sizes = ("%dpx" % w) if w <= 200 else "(max-width:900px) 92vw, %dpx" % min(w, PLAFOND)
+        return '<img%ssrc="%s%s"%s srcset="%s" sizes="%s">' % (
+            avant, prefixe, fichier, apres.rstrip(">").rstrip(),
+            ", ".join(sources), sizes)
+
+    return _IMG_PHOTO.sub(remplace, html)
+
+
+def _largeur_webp(entete):
+    """Largeur en pixels d'un fichier WebP, lue dans son en-tête."""
+    marque = entete[12:16]
+    if marque == b"VP8X":
+        return int.from_bytes(entete[24:27], "little") + 1
+    if marque == b"VP8L":
+        bits = int.from_bytes(entete[21:25], "little")
+        return (bits & 0x3FFF) + 1
+    if marque == b"VP8 ":
+        return int.from_bytes(entete[26:28], "little") & 0x3FFF
+    return None
+
+
 def write(path, html):
     full = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as fh:
-        fh.write(_adresses_publiques(promouvoir_image_lcp(html)))
+        fh.write(_adresses_publiques(ajouter_srcset(promouvoir_image_lcp(html))))
     return path
 
 
@@ -1163,8 +1285,12 @@ def build_home():
     ]
     html = (
         head(titre_page("Entreprise de nettoyage à Paris et en Île-de-France"),
-             "Nettoyage auto, textile, vitres et entreprise à Paris et en Île-de-France. "
-             "7j/7, devis gratuit, sans acompte.",
+             # La description listait « auto, textile, vitres et entreprise » :
+             # une prestation qui n'existe plus sous ce nom, et pas un mot des
+             # hottes, qui sont désormais la prestation phare. C'est la ligne
+             # que Google affiche sous le titre.
+             "Nettoyage d'entreprise, dégraissage de hottes, vitrerie, appartement, textile "
+             "et automobile. Paris et Île-de-France, 7j/7, devis gratuit, sans acompte.",
              "", base, schema=schema,
              # Le haut de page est désormais la porte d'entrée : c'est sa
              # première photo qui est l'élément le plus grand à l'écran, pas
@@ -1385,7 +1511,7 @@ def build_service(s):
         <h2>{s['name']}</h2>
         {intro}
         <div class="btn-row" style="margin-top:1.6rem">
-          <a class="btn" href="{base}devis.html?prestation={s['nav']}">Demander un devis gratuit</a>
+          <a class="btn" href="{base}devis.html?prestation={quote(s['nav'])}">Demander un devis gratuit</a>
           {tarif_cta}
         </div>
       </div>
@@ -1520,7 +1646,7 @@ def build_tarifs():
   <div class="pack-price">{prix} € <span>prix fixe</span></div>
   <p class="pack-desc">{desc}</p>
   <ul class="checklist">{items}</ul>
-  <a class="btn btn-outline" href="devis.html?prestation=Nettoyage automobile">Demander ce pack</a>
+  <a class="btn btn-outline" href="devis.html?prestation=Nettoyage%20automobile">Demander ce pack</a>
 </div>"""
 
     options = "".join(
@@ -3910,7 +4036,7 @@ def build_reservation():
       </div>
     </noscript>
 
-    <div class="resa" id="resa" hidden>
+    <div class="resa" id="resa">
       <ol class="resa-steps" id="resa-steps">
         <li class="is-on"><button type="button" data-go="1"><span>1</span>Prestation</button></li>
         <li><button type="button" data-go="2"><span>2</span>Détail</button></li>
@@ -4043,7 +4169,7 @@ def build_reservation():
 
         <!-- Sur mobile, le récapitulatif passe sous le formulaire : cette
              barre garde le total et le bouton sous les yeux. -->
-        <div class="resa-bar" id="resa-bar" hidden>
+        <div class="resa-bar" id="resa-bar">
           <div class="resa-bar-sum">
             <span>Total estimé</span>
             <strong id="resa-bar-total">—</strong>
@@ -4054,7 +4180,7 @@ def build_reservation():
       </form>
     </div>
 
-    <aside class="resa-ticket" id="resa-ticket" hidden>
+    <aside class="resa-ticket" id="resa-ticket">
       <h2>Votre réservation</h2>
       <ul id="resa-lines"><li class="resa-empty">Rien de sélectionné pour l'instant.</li></ul>
       <div class="resa-total">
@@ -4982,8 +5108,58 @@ def _echappe_xml(txt):
             .replace(">", "&gt;").replace('"', "&quot;"))
 
 
+
+# Dates de dernière modification réelle, par page. Le sitemap datait les 334
+# URL du jour du build : une page inchangée depuis des mois annonçait une
+# modification quotidienne. Un <lastmod> qui ment sur toutes les pages est un
+# signal que les moteurs finissent par ignorer, et on perd alors la capacité
+# de signaler les pages qui ont vraiment bougé.
+#
+# On garde donc une empreinte du contenu de chaque page, hors éléments qui
+# changent à chaque build (horodatages, empreintes de cache). La date n'avance
+# que si l'empreinte a changé.
+JOURNAL_DATES = os.path.join(HERE, "lastmod.json")
+
+_VOLATIL = (
+    re.compile(r'\?v=[0-9a-f]{8}'),          # empreintes de cache CSS/JS
+    re.compile(r'<span data-year>\d{4}</span>'),
+    re.compile(r'"dateModified":"[^"]*"'),
+    re.compile(r'"uploadDate":"[^"]*"'),
+)
+
+
+def _empreinte_page(html):
+    for motif in _VOLATIL:
+        html = motif.sub("", html)
+    return hashlib.sha1(html.encode("utf-8")).hexdigest()[:16]
+
+
+def dates_modification(chemins):
+    """Renvoie {chemin: date ISO} et met le journal à jour sur le disque."""
+    try:
+        with open(JOURNAL_DATES, encoding="utf-8") as fh:
+            journal = json.load(fh)
+    except (OSError, ValueError):
+        journal = {}
+    dates = {}
+    for chemin in chemins:
+        with open(os.path.join(OUT, chemin), encoding="utf-8") as fh:
+            emp = _empreinte_page(fh.read())
+        ancien = journal.get(chemin)
+        if not ancien or ancien.get("h") != emp:
+            journal[chemin] = {"h": emp, "d": TODAY}
+        dates[chemin] = journal[chemin]["d"]
+    # Les pages disparues sortent du journal, sinon il gonfle indéfiniment.
+    for disparue in set(journal) - set(chemins):
+        del journal[disparue]
+    with open(JOURNAL_DATES, "w", encoding="utf-8") as fh:
+        json.dump(journal, fh, ensure_ascii=False, indent=0, sort_keys=True)
+    return dates
+
+
 def build_sitemap(urls):
     videos = _pages_video()
+    dates = dates_modification([p for p, _pr, _f in urls])
     entries = ""
     for path, priority, freq in urls:
         loc = SITE["url"] + "/" + url_publique(path)
@@ -5009,7 +5185,7 @@ def build_sitemap(urls):
         entries += (
             "  <url><loc>%s</loc><lastmod>%s</lastmod>"
             "<changefreq>%s</changefreq><priority>%s</priority>%s</url>\n"
-            % (loc, TODAY, freq, priority, bloc_video)
+            % (loc, dates[path], freq, priority, bloc_video)
         )
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
@@ -5406,7 +5582,7 @@ def build_hotte_secteur(sec):
                               "à Paris et en Île-de-France." % sec["dans"],
                               chemin, "Dégraissage de hotte professionnelle"),
               faq_schema(faq)]
-    html = (head(titre_page("%s — Paris et Île-de-France" % titre_court),
+    html = (head(titre_page(avec_suffixe(titre_court, " — Paris et IDF")),
                  "Dégraissage de hotte, filtres et conduits %s. Intervention de nuit, relevé "
                  "daté pour votre livret d'entretien. Devis gratuit et ferme." % sec["dans"],
                  chemin, base, schema=schema, body_class="page-pro")
@@ -5530,7 +5706,7 @@ def build_hotte_ville(v):
                               chemin, "Dégraissage de hotte professionnelle",
                               zone=(v["nom"], v["cp"])),
               faq_schema(faq)]
-    html = (head(titre_page("%s — devis gratuit" % h1),
+    html = (head(titre_page(avec_suffixe(h1, " — devis gratuit")),
                  "Dégraissage de hotte, filtres et conduits %s (%s). Intervention de nuit, "
                  "délai de %s, sans acompte. Devis gratuit et ferme."
                  % (a_nom, v["cp"], delai),
@@ -5649,7 +5825,7 @@ def build_vitres_secteur(sec):
                                   "déminéralisée, à Paris et en Île-de-France." % sec["dans"],
                               chemin, "Nettoyage de vitres professionnel"),
               faq_schema(faq)]
-    html = (head(titre_page("%s — devis gratuit" % h1),
+    html = (head(titre_page(avec_suffixe(h1, " — devis gratuit")),
                  "Vitrerie professionnelle %s à l'eau déminéralisée, encadrements et appuis "
                  "compris. Avant l'ouverture, sans acompte. Devis gratuit." % sec["dans"],
                  chemin, base, schema=schema, body_class="page-pro")
@@ -5774,7 +5950,7 @@ def build_vitres_ville(v):
                               chemin, "Nettoyage de vitres professionnel",
                               zone=(v["nom"], v["cp"])),
               faq_schema(faq)]
-    html = (head(titre_page("Nettoyage de vitrine %s — devis gratuit" % a_nom),
+    html = (head(titre_page(avec_suffixe("Nettoyage de vitrine %s" % a_nom, " — devis gratuit")),
                  "Vitrines et vitrages %s (%s) à l'eau déminéralisée, encadrements compris. "
                  "Avant l'ouverture, délai de %s, sans acompte." % (a_nom, v["cp"], delai),
                  chemin, base, schema=schema, body_class="page-pro")
@@ -5884,7 +6060,7 @@ def build_menage_secteur(sec):
                                   "fréquences par zone, horaires hors activité." % sec["dans"],
                               chemin, "Nettoyage régulier de locaux professionnels"),
               faq_schema(faq)]
-    html = (head(titre_page("%s — devis détaillé" % h1),
+    html = (head(titre_page(avec_suffixe("Nettoyage %s" % sec["dans"], " — devis détaillé")),
                  "Entretien régulier %s : fréquences par zone, horaires hors activité, un "
                  "interlocuteur. Devis détaillé après visite, sans acompte." % sec["dans"],
                  chemin, base, schema=schema, body_class="page-pro")
@@ -6012,7 +6188,7 @@ def build_appart_ville(v):
                               chemin, "Nettoyage d'appartement",
                               zone=(v["nom"], v["cp"])),
               faq_schema(faq)]
-    html = (head(titre_page("%s — devis gratuit" % h1),
+    html = (head(titre_page(avec_suffixe(h1, " — devis gratuit")),
                  "Grand ménage, état des lieux, après déménagement %s (%s). Devis ferme, sans "
                  "acompte, délai de %s." % (a_nom, v["cp"], delai),
                  chemin, base, schema=schema)
@@ -6249,7 +6425,7 @@ def build_restaurant_ville(v):
                               chemin, "Nettoyage de restaurant",
                               zone=(v["nom"], v["cp"])),
               faq_schema(faq)]
-    html = (head(titre_page("%s — devis gratuit" % h1),
+    html = (head(titre_page(avec_suffixe(h1, " — devis gratuit")),
                  "Nettoyage complet de restaurant %s (%s) : sols et joints de cuisine, salle, "
                  "banquettes, sanitaires, vitrine. De nuit, sans acompte."
                  % (a_nom, v["cp"]),
@@ -6281,9 +6457,9 @@ def build_hub_restaurant():
            ("menage/nettoyage-restaurant.html", "L'entretien régulier en restaurant"),
            ("vitrerie-professionnelle.html", "La vitrerie, vitrine et devanture")])],
         "services",
-        "Nettoyage complet de restaurant à Paris et en Île-de-France : cuisine en profondeur, "
-        "joints, salle, banquettes, sanitaires et vitrine. De nuit, devis ferme, sans acompte.",
-        "Nettoyage de restaurant — Paris et Île-de-France",
+        "Nettoyage complet de restaurant à Paris et en Île-de-France : cuisine en "
+        "profondeur, salle, banquettes, sanitaires, vitrine. De nuit, sans acompte.",
+        "Nettoyage de restaurant — Paris et IDF",
         client="pro")
 
 
@@ -6355,7 +6531,7 @@ def build_hub_hottes():
         "services",
         "Dégraissage de hotte, de filtres et de conduits d'extraction à Paris et en "
         "Île-de-France. Par métier et par commune, avec le cadre réglementaire.",
-        "Nettoyage de hottes et de conduits — Paris et Île-de-France",
+        "Nettoyage de hottes et de conduits — Paris et IDF",
         client="pro")
 
 
@@ -6381,8 +6557,8 @@ def build_hub_vitres():
           [("dossiers/%s.html" % d["slug"], d["h1"])
            for d in DOSSIERS if d["cat"] == "Vitrerie"])],
         "services",
-        "Nettoyage de vitrines, de façades accessibles depuis le sol et de vitrages intérieurs "
-        "à l'eau déminéralisée. Par métier et par commune, à Paris et en Île-de-France.",
+        "Vitrines, façades accessibles depuis le sol et vitrages intérieurs à l'eau "
+        "déminéralisée. Par métier et par commune, à Paris et en Île-de-France.",
         "Vitrerie professionnelle — Paris et Île-de-France",
         client="pro")
 
@@ -6411,9 +6587,9 @@ def build_hub_menage():
            ("vitrerie-professionnelle.html", "Vitrerie professionnelle"),
            ("professionnels.html", "Toutes nos prestations pour les professionnels")])],
         "services",
-        "Entretien régulier de bureaux, de copropriétés, de commerces et de cabinets à Paris "
-        "et en Île-de-France : fréquences par zone, horaires hors activité, devis détaillé.",
-        "Entretien régulier de locaux professionnels — Paris et Île-de-France",
+        "Nettoyage d'entreprise à Paris et en Île-de-France : bureaux, copropriétés, "
+        "commerces, cabinets. Fréquences par zone, horaires hors activité.",
+        "Nettoyage d'entreprise et de locaux — Paris et IDF",
         client="pro")
 
 
@@ -6444,7 +6620,7 @@ def build_hub_appart():
         "services",
         "Nettoyage complet d'appartement à Paris et en Île-de-France : grand ménage, état des "
         "lieux, après déménagement ou après travaux. Devis ferme, sans acompte.",
-        "Nettoyage d'appartement — Paris et Île-de-France",
+        "Nettoyage d'appartement — Paris et IDF",
         action="reservation")
 
 
@@ -6658,7 +6834,25 @@ def controle_coherence(pages):
                 erreurs.append("%s : le %s ne renvoie pas vers %s"
                                % (chemin, zone, ", ".join(manquants)))
 
-    # 5. Les redirections, relues sur le fichier produit. Trois défauts se
+    # 5. Longueur des titres et des descriptions. Google tronque le titre
+    #    autour de 60 caractères et la description autour de 160 : au-delà,
+    #    la fin n'est pas affichée, et c'est souvent elle qui portait
+    #    l'argument. Vingt titres avaient dérivé sans que rien ne le signale.
+    for chemin, _prio, _freq in pages:
+        html = open(os.path.join(OUT, chemin), encoding="utf-8").read()
+        titre = re.search(r"<title>(.*?)</title>", html, re.S)
+        desc = re.search(r'<meta name="description" content="(.*?)"', html, re.S)
+        if not titre or not desc:
+            erreurs.append("%s n'a pas de titre ou pas de description" % chemin)
+            continue
+        if len(titre.group(1)) > 60:
+            erreurs.append("%s : titre de %d caractères, tronqué dans les résultats (%s)"
+                           % (chemin, len(titre.group(1)), titre.group(1)))
+        if len(desc.group(1)) > 160:
+            erreurs.append("%s : description de %d caractères, tronquée dans les résultats"
+                           % (chemin, len(desc.group(1))))
+
+    # 6. Les redirections, relues sur le fichier produit. Trois défauts se
     #    glissent sans bruit et ne se voient qu'en production : une cible qui
     #    n'existe pas (404 au lieu d'une page), une cible qui est elle-même
     #    une source (chaîne de deux sauts), et une source encore servie comme

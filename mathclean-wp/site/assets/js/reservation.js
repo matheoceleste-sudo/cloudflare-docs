@@ -34,9 +34,10 @@
   var barSend  = $('#resa-bar-send');
   var barTotal = $('#resa-bar-total');
 
-  box.hidden = false;
-  ticket.hidden = false;
-  bar.hidden = false;
+  /* La visibilité du configurateur est désormais décidée par le CSS, à
+     partir de la classe `js` posée en ligne dans le <head>. La régler ici
+     revenait à la régler après le premier rendu : la page s'allongeait
+     d'un coup et tout ce qui suit descendait. */
 
   var step = 1;
   var atteinte = 1;   /* étape la plus avancée visitée : les précédentes sont cliquables */
@@ -450,7 +451,7 @@
   });
 
   /* -- Navigation entre les étapes ---------------------------------------- */
-  function show(n) {
+  function show(n, initial) {
     step = n;
     atteinte = Math.max(atteinte, n);
     panels.forEach(function (p) { p.classList.toggle('is-on', +p.getAttribute('data-step') === n); });
@@ -467,7 +468,11 @@
     barNext.hidden = n === 4;
     barSend.hidden = n !== 4;
     nettoyerErreurs();
-    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Pas de défilement au premier affichage. La page se replaçait toute
+    // seule sur le configurateur au chargement, ce qui escamotait l'en-tête
+    // sans que le visiteur ait rien demandé — et déplaçait la mise en page
+    // après le premier rendu, ce que Google compte comme un décalage.
+    if (!initial) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   function valid(n) {
@@ -539,6 +544,6 @@
   })();
 
   majDate();
-  show(1);
+  show(1, true);
   draw();
 })();
