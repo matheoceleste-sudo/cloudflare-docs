@@ -36,6 +36,7 @@ from content import (
     SECTEURS_HOTTE, SECTEURS_VITRES, SECTEURS_MENAGE,
     VILLES_PRO, VILLES_APPART, DOSSIERS,
     RESTAURANT_PERIMETRE, RESTAURANT_LIMITES,
+    SURFACES_HP, HP_PERIMETRE, HP_LIMITES,
     HOTTE_PERIMETRE, HOTTE_LIMITES, HOTTE_REGLEMENT,
     VITRES_PERIMETRE, VITRES_LIMITES,
 )
@@ -333,6 +334,7 @@ def nav_menu(base, current):
     {services_sub}
     <li class="sub-sep"><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
     <li><a href="{base}nettoyage-restaurant.html">Nettoyage de restaurant</a></li>
+    <li><a href="{base}nettoyage-haute-pression.html">Nettoyage haute pression</a></li>
     <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
     <li><a href="{base}menage-regulier.html">Entretien régulier de locaux</a></li>
     <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
@@ -495,6 +497,7 @@ def footer(base):
         <ul>
           <li><a href="{base}hottes.html">Hottes et conduits</a></li>
           <li><a href="{base}nettoyage-restaurant.html">Nettoyage de restaurant</a></li>
+          <li><a href="{base}nettoyage-haute-pression.html">Nettoyage haute pression</a></li>
           <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
           <li><a href="{base}menage-regulier.html">Entretien régulier</a></li>
           <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
@@ -2689,6 +2692,8 @@ def build_professionnels():
         commune</a></li>
       <li><a href="nettoyage-restaurant.html">Nettoyage de restaurant — salle, cuisine,
         sanitaires et vitrine, commune par commune</a></li>
+      <li><a href="nettoyage-haute-pression.html">Nettoyage haute pression — parkings, quais,
+        locaux poubelles et cours d'immeuble</a></li>
       <li><a href="vitrerie-professionnelle.html">Vitrerie professionnelle — vitrines, façades
         et vitrages intérieurs</a></li>
       <li><a href="menage-regulier.html">Entretien régulier — bureaux, copropriétés,
@@ -2865,6 +2870,8 @@ def build_particuliers():
     <ul class="lien-liste">
       <li><a href="nettoyage-appartement.html">Nettoyage d'appartement, commune par
         commune</a></li>
+      <li><a href="nettoyage-haute-pression.html">Nettoyage haute pression : terrasse, allée,
+        cour, façade</a></li>
       <li><a href="dossiers/nettoyage-appartement-etat-des-lieux.html">Nettoyage avant état des
         lieux : la liste de ce qui est vérifié</a></li>
       <li><a href="villes.html">Toutes les communes que nous documentons</a></li>
@@ -3957,6 +3964,9 @@ EXEMPLES_BRIEF = {
     "nettoyage-appartement-paris":
         "Exemple : trois-pièces de 62 m² vide, état des lieux de sortie dans cinq jours, four "
         "et joints de salle de bains à reprendre.",
+    "nettoyage-haute-pression-paris":
+        "Exemple : terrasse en pierre de 40 m² côté nord, verte depuis deux hivers, plus une "
+        "allée de 15 m avec des traces d'huile au droit du stationnement.",
     "nettoyage-vitres-paris":
         "Exemple : maison avec véranda, une baie coulissante à quatre vantaux et huit fenêtres "
         "à l'étage, jamais nettoyées depuis l'hiver.",
@@ -4003,6 +4013,7 @@ def build_reservation():
         "nettoyage-vitres-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
         "nettoyage-regulier-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
         "nettoyage-hottes-paris": "Devis après constat des trappes",
+        "nettoyage-haute-pression-paris": "Devis au m², après visite ou photos",
         "nettoyage-appartement-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
     }
     cartes = ""
@@ -5366,21 +5377,16 @@ PAGES_LOCALES_RETIREES = (
      "menage-regulier-sceaux"),
     ("nettoyage-fin-de-chantier-versailles",
      "menage-regulier-versailles"),
-    ("nettoyage-terrasse-boulogne-billancourt",
-     "nettoyage-vitres-boulogne-billancourt"),
-    ("nettoyage-terrasse-le-vesinet", "nettoyage-vitres-le-vesinet"),
-    ("nettoyage-terrasse-levallois-perret",
-     "nettoyage-vitres-levallois-perret"),
-    ("nettoyage-terrasse-neuilly-sur-seine",
-     "nettoyage-vitres-neuilly-sur-seine"),
-    ("nettoyage-terrasse-puteaux", "nettoyage-vitres-puteaux"),
-    ("nettoyage-terrasse-rueil-malmaison",
-     "nettoyage-vitres-rueil-malmaison"),
-    ("nettoyage-terrasse-saint-cloud", "nettoyage-vitres-saint-cloud"),
-    ("nettoyage-terrasse-saint-germain-en-laye",
-     "nettoyage-vitres-saint-germain-en-laye"),
-    ("nettoyage-terrasse-sceaux", "nettoyage-vitres-sceaux"),
-    ("nettoyage-terrasse-versailles", "nettoyage-vitres-versailles"),
+    ("nettoyage-terrasse-boulogne-billancourt", "@haute-pression"),
+    ("nettoyage-terrasse-le-vesinet", "@haute-pression"),
+    ("nettoyage-terrasse-levallois-perret", "@haute-pression"),
+    ("nettoyage-terrasse-neuilly-sur-seine", "@haute-pression"),
+    ("nettoyage-terrasse-puteaux", "@haute-pression"),
+    ("nettoyage-terrasse-rueil-malmaison", "@haute-pression"),
+    ("nettoyage-terrasse-saint-cloud", "@haute-pression"),
+    ("nettoyage-terrasse-saint-germain-en-laye", "@haute-pression"),
+    ("nettoyage-terrasse-sceaux", "@haute-pression"),
+    ("nettoyage-terrasse-versailles", "@haute-pression"),
     ("traitement-ozone-boulogne-billancourt",
      "nettoyage-voiture-boulogne-billancourt"),
     ("traitement-ozone-le-vesinet", "nettoyage-voiture-le-vesinet"),
@@ -6463,6 +6469,173 @@ def build_hub_restaurant():
         client="pro")
 
 
+# --- Haute pression : par support ------------------------------------------
+def build_hp_surface(sec):
+    """Page « nettoyage haute pression » pour un support.
+
+    C'est la prestation où le matériau décide de tout : une même machine mal
+    réglée nettoie un grès cérame et détruit une pierre tendre. Chaque page
+    porte donc le réglage réel et le risque réel, et dit quand nous refusons.
+    """
+    base = "../"
+    chemin = "haute-pression/nettoyage-%s.html" % sec["slug"]
+    h1 = "Nettoyage haute pression : %s" % sec["nom_long"]
+    titre_court = "Nettoyage %s haute pression" % sec["nom"]
+    trail = [("Haute pression", "nettoyage-haute-pression.html"),
+             (sec["nom"][0].upper() + sec["nom"][1:], None)]
+    client = "pro" if sec["pour"] == "pro" else ""
+
+    faq = [sec["faq"],
+           ("Comment se calcule le prix ?",
+            "Au mètre carré, après visite ou sur photos avec les dimensions. Le devis est ferme : "
+            "s'il faut plus de temps que prévu, c'est notre affaire. Les frais de déplacement "
+            "suivent le barème unique du site et vous sont annoncés avant que vous validiez."),
+           ("Faut-il nous fournir l'eau et l'électricité ?",
+            "Non, nous sommes autonomes. C'est ce qui nous permet d'intervenir en sous-sol, en "
+            "cour fermée ou sur un site vide sans branchement. En revanche, l'évacuation des eaux "
+            "de lavage se vérifie avant l'intervention, pas pendant.")]
+
+    autres = [("haute-pression/nettoyage-%s.html" % o["slug"],
+               "Nettoyage haute pression : %s" % o["nom"])
+              for o in SURFACES_HP if o["slug"] != sec["slug"]]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Pression réglée sur le support, essai sur une zone cachée avant de traiter, et refus annoncé "
+  "quand le matériau ne le supporte pas. Paris et Île-de-France, devis au m².")}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{sec['nom_long']}</span>
+        <h2>{sec['enjeu']}</h2>
+        {_paras([sec['probleme'], sec['detail']])}
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html{'?client=pro' if client else ''}">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique sur {sec['le']}</caption>
+            <tbody>
+              <tr><th scope="row">Support</th><td class="amount">{sec['nom_long']}</td></tr>
+              <tr><th scope="row">Pour</th><td class="amount">{
+                {'pro': 'Professionnels', 'particulier': 'Particuliers',
+                 'mixte': 'Particuliers et pros'}[sec['pour']]}</td></tr>
+              <tr><th scope="row">Méthode</th><td class="amount">Hydro-brosse rotative</td></tr>
+              <tr><th scope="row">Essai préalable</th><td class="amount">Systématique</td></tr>
+              <tr><th scope="row">Tarif</th><td class="amount">Au m², sur devis</td></tr>
+              <tr><th scope="row">Devis</th><td class="amount">Ferme</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          La pression détache, le débit évacue. Monter la pression sans monter le débit abîme le
+          support sans mieux nettoyer : c'est la faute la plus répandue du métier.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Le réglage</span>
+        <h2>Comment nous travaillons sur ce support</h2>
+        <p>{sec['reglage']}</p>
+        <p>{sec['contrainte']}</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend l'intervention</h2>
+        {_ul(HP_PERIMETRE)}
+      </div>
+    </div>
+  </div>
+</section>
+
+{_bloc_limites("Ce que nous refusons, et pourquoi", HP_LIMITES)}
+
+{_faq_section("%s : vos questions" % titre_court, faq, "faq-hp-%s" % sec["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Les autres supports", autres)}
+      {_liens(base, "Pour aller plus loin",
+              [("services/nettoyage-haute-pression-paris.html", "La prestation en détail"),
+               ("guides/prix-nettoyage-terrasse-m2.html", "Le prix d'un nettoyage de terrasse au m²"),
+               ("guides/demoussage-terrasse-ile-de-france.html", "Démoussage : ce qui marche et ce qui revient"),
+               ("blog/nettoyer-terrasse-sans-abimer.html", "Nettoyer sa terrasse sans l'abîmer"),
+               ("professionnels.html" if client else "particuliers.html",
+                "Nos prestations pour les %s" % ("professionnels" if client else "particuliers"))])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis pour %s ?" % sec['le'],
+          "Gratuit et ferme, au mètre carré, après visite ou sur photos. Essai sur une zone "
+          "cachée avant de traiter, et refus annoncé si le support ne le supporte pas.",
+          action="devis", client=client)}
+"""
+    schema = [crumb_schema([("Haute pression", "nettoyage-haute-pression.html"),
+                            (sec["nom"][0].upper() + sec["nom"][1:], chemin)]),
+              _service_schema(titre_court,
+                              "Nettoyage haute pression de %s à Paris et en Île-de-France, "
+                              "pression réglée sur le support." % sec["nom_long"],
+                              chemin, "Nettoyage haute pression"),
+              faq_schema(faq)]
+    html = (head(titre_page(avec_suffixe(titre_court, " — devis au m²")),
+                 "Nettoyage haute pression de %s : pression réglée sur le support, essai "
+                 "préalable, devis ferme au m². Paris et IDF." % sec["nom"],
+                 chemin, base, schema=schema,
+                 body_class="page-pro" if client else "")
+            + header(base, "services") + body + footer(base))
+    return write(chemin, html)
+
+
+def build_hub_hp():
+    particuliers = [s for s in SURFACES_HP if s["pour"] in ("particulier", "mixte")]
+    pros = [s for s in SURFACES_HP if s["pour"] in ("pro", "mixte")]
+    return _hub(
+        "nettoyage-haute-pression.html",
+        "Nettoyage haute pression",
+        "Terrasses, allées, cours, parkings, quais et façades accessibles depuis le sol. La "
+        "pression est réglée sur le support, jamais l'inverse : c'est la prestation où un "
+        "prestataire pressé fait des dégâts qui ne se réparent pas.",
+        "Haute pression",
+        [("Chez les particuliers",
+          "Terrasse, allée, cour, façade de maison : des supports très différents, chacun avec "
+          "sa pression maximale. Le bois et la pierre tendre sont ceux qui pardonnent le moins.",
+          [("haute-pression/nettoyage-%s.html" % s["slug"],
+            "Nettoyage haute pression : %s" % s["nom_long"]) for s in particuliers]),
+         ("Pour les professionnels",
+          "Parkings, quais de livraison, locaux poubelles et cours d'immeuble : l'eau chaude y "
+          "est une nécessité, et la question de l'évacuation des eaux se règle avant de "
+          "commencer, pas pendant.",
+          [("haute-pression/nettoyage-%s.html" % s["slug"],
+            "Nettoyage haute pression : %s" % s["nom_long"]) for s in pros]),
+         ("À lire avant de faire laver",
+          "Le prix au mètre carré, ce que le démoussage règle vraiment, et les erreurs qui "
+          "abîment une terrasse définitivement.",
+          [("services/nettoyage-haute-pression-paris.html", "La prestation en détail"),
+           ("guides/prix-nettoyage-terrasse-m2.html", "Prix d'un nettoyage de terrasse au m²"),
+           ("guides/demoussage-terrasse-ile-de-france.html",
+            "Démoussage en Île-de-France : ce qui revient et quand"),
+           ("blog/nettoyer-terrasse-sans-abimer.html", "Nettoyer sa terrasse sans l'abîmer")])],
+        "services",
+        "Nettoyage haute pression de terrasses, allées, cours, parkings et façades à Paris et en "
+        "Île-de-France. Pression réglée sur le support, devis ferme au m².",
+        "Nettoyage haute pression — Paris et IDF",
+        action="devis")
+
+
 # --- Sommaires -------------------------------------------------------------
 def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
          client="", action="devis"):
@@ -6686,7 +6859,7 @@ def build_redirects():
     # renvoient vers ce qui s'en rapproche le plus, pas vers l'accueil.
     lignes += [
         "/services/nettoyage-bateau-paris.html          /services.html                              301",
-        "/services/nettoyage-terrasse-paris.html        /services.html                              301",
+        "/services/nettoyage-terrasse-paris.html        /services/nettoyage-haute-pression-paris.html 301",
         "/services/traitement-ozone-paris.html          /services/nettoyage-automobile-paris.html   301",
         "/services/nettoyage-fin-de-chantier-paris.html /services/nettoyage-regulier-paris.html     301",
     ]
@@ -6698,8 +6871,11 @@ def build_redirects():
     ]
     lignes += ["/villes/nettoyage-entreprise-%s.html /villes/menage-regulier-%s.html 301"
                % (pv["slug"], pv["slug"]) for pv in PREMIUM_VILLES]
-    lignes += ["/villes/%s.html /villes/%s.html 301" % (anc, cible)
-               for anc, cible in PAGES_LOCALES_RETIREES]
+    lignes += [
+        ("/villes/%s.html /services/nettoyage-haute-pression-paris.html 301" % anc)
+        if cible == "@haute-pression"
+        else ("/villes/%s.html /villes/%s.html 301" % (anc, cible))
+        for anc, cible in PAGES_LOCALES_RETIREES]
     # Les mêmes adresses sans l'extension .html. Cloudflare ajoute .html de
     # lui-même quand le fichier existe, mais ces pages-là n'existent plus :
     # sans ces lignes, un lien dont l'extension a été retirée tomberait en 404.
@@ -6923,6 +7099,9 @@ def main():
     pages.append((build_hub_restaurant(), "0.9", "monthly"))
     for v in VILLES_PRO:
         pages.append((build_restaurant_ville(v), "0.7", "monthly"))
+    pages.append((build_hub_hp(), "0.9", "monthly"))
+    for s in SURFACES_HP:
+        pages.append((build_hp_surface(s), "0.8", "monthly"))
     pages.append((build_hub_appart(), "0.9", "monthly"))
     for v in VILLES_APPART:
         pages.append((build_appart_ville(v), "0.7", "monthly"))

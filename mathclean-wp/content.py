@@ -218,6 +218,79 @@ SERVICES = [
         ],
     },
     {
+        "slug": "nettoyage-haute-pression-paris",
+        "audience": "mixte",
+        "local": {"court": "Haute pression", "slug": "haute-pression",
+                  "nom": "Nettoyage haute pression", "kw": "nettoyage haute pression"},
+        "short": "Haute pression",
+        "nav": "Nettoyage haute pression",
+        "name": "Nettoyage haute pression à Paris",
+        "h1": "Nettoyage haute pression : terrasses, sols et façades",
+        "title": "Nettoyage haute pression à Paris et en IDF",
+        "meta": "Nettoyage haute pression de terrasses, allées, cours, parkings et façades à "
+                "Paris et en Île-de-France. Eau chaude, pression adaptée au support. Devis au m².",
+        "price": "sur devis",
+        "excerpt": "Terrasses, allées, cours, parkings et façades accessibles depuis le sol : "
+                   "la pression réglée sur le support, jamais l'inverse.",
+        "image": "ba-terrasse2-apres.webp",
+        "hero": "ba-terrasse2-apres.webp",
+        "icon": "deck",
+        "intro": [
+            "Le nettoyage haute pression est la prestation où l'on fait le plus de dégâts quand "
+            "on la croit simple. Ce qui décolle la salissure, ce n'est pas la pression mais le "
+            "débit : la pression détache, le débit évacue. Une machine réglée trop fort sur une "
+            "pierre tendre ou un bois de terrasse ne nettoie pas mieux — elle creuse la surface, "
+            "et le défaut est définitif.",
+            "Nous réglons donc la pression sur le support, nous travaillons à l'hydro-brosse "
+            "rotative plutôt qu'à la lance sur les grandes surfaces — c'est ce qui évite les "
+            "zébrures —, et nous passons à l'eau chaude quand le dépôt est gras. Les supports "
+            "que nous ne traitons pas, nous le disons avant le devis.",
+        ],
+        "included_title": "Ce que nous traitons",
+        "included": [
+            "Terrasses : dallage, pierre, carrelage, béton, bois et composite",
+            "Allées, cours, descentes de garage et escaliers extérieurs",
+            "Parkings et sous-sols, à l'eau chaude pour les traces d'hydrocarbures",
+            "Quais de livraison, locaux poubelles et abords de bennes",
+            "Murs de clôture, murets et façades accessibles depuis le sol",
+            "Mobilier de jardin, pergolas et garde-corps",
+            "Rejointoiement de sable des dallages après lavage, si nécessaire",
+        ],
+        "steps": [
+            ("Identification du support",
+             "Pierre naturelle, béton désactivé, grès cérame, bois, composite ou enrobé : chacun "
+             "a sa pression maximale et son produit. C'est ce diagnostic qui décide du reste."),
+            ("Essai sur une zone cachée",
+             "Avant de traiter la surface entière, un essai dans un angle peu visible. Il montre "
+             "le résultat réel et révèle une fragilité que l'œil ne voyait pas."),
+            ("Lavage à la pression adaptée",
+             "Hydro-brosse rotative sur les grandes surfaces pour un résultat régulier, lance "
+             "pour les angles et les bordures. Eau chaude quand le dépôt est gras."),
+            ("Rinçage et remise en état",
+             "Rinçage complet, évacuation des résidus, et rejointoiement de sable si le lavage "
+             "l'a entamé. Nous ne laissons pas un dallage déchaussé."),
+        ],
+        "faq": [
+            ("Le nettoyage haute pression peut-il abîmer ma terrasse ?",
+             "Oui, et c'est le risque principal de cette prestation. Une pierre tendre se creuse, "
+             "un bois pelucherait si on le prenait à contre-fil, un béton désactivé perd ses "
+             "granulats, un enrobé perd son liant. Le dommage est irréversible. C'est pour cela "
+             "que nous identifions le support et faisons un essai sur une zone cachée avant de "
+             "traiter l'ensemble."),
+            ("Les mousses vont-elles revenir ?",
+             "Oui. Le lavage retire ce qui est visible, pas ce qui est installé dans la porosité "
+             "du support : sur une surface exposée au nord ou à l'ombre, la repousse se voit en "
+             "une à deux saisons. Nous le disons plutôt que de laisser croire à un résultat "
+             "durable. Les produits de traitement destinés à retarder cette repousse relèvent "
+             "d'une réglementation à part, et nous n'en appliquons pas."),
+            ("Traitez-vous les toitures ?",
+             "Non, dans aucun cas. C'est du travail en hauteur, qui demande des compétences et "
+             "des équipements que nous n'avons pas. Et les plaques en fibrociment posées avant "
+             "1997 peuvent contenir de l'amiante : le nettoyage haute pression y est à proscrire, "
+             "parce qu'il libère des fibres. Nous refusons ces chantiers sans discuter."),
+        ],
+    },
+    {
         "slug": "nettoyage-automobile-paris",
         "audience": "particulier",
         "local": {"court": "Nettoyage voiture", "slug": "nettoyage-voiture", "nom": "Nettoyage de voiture", "kw": "nettoyage voiture"},
@@ -548,6 +621,8 @@ ENGAGEMENTS = [
 
 # --- Avant / après --------------------------------------------------------
 BEFORE_AFTER = [
+    ('ba-terrasse2-avant.webp', 'ba-terrasse2-apres.webp', 'Terrasse en pierre',
+     'Lavage haute pression, hydro-brosse rotative'),
     # Les trois premières sont en haute définition (700 px et plus) : ce sont
     # celles que l'accueil affiche. Les trois suivantes sont d'anciennes
     # miniatures (192 px) — elles restent visibles sur la page Réalisations,
@@ -748,7 +823,6 @@ POSTS = [
     },
     {
         "slug": "nettoyer-terrasse-sans-abimer",
-        "hors_offre": "le nettoyage de terrasse",
         "title": "Nettoyer sa terrasse sans l'abîmer",
         "cat": "Extérieur",
         "date": "2026-07-18",
@@ -769,7 +843,7 @@ POSTS = [
             ("p", "Un saturateur sur le bois, un hydrofuge sur la pierre poreuse : dans les deux cas, la protection limite la pénétration de l'eau et des salissures. C'est ce qui permet de passer d'un nettoyage tous les six mois à un nettoyage annuel."),
         ],
         "cta": "Une terrasse à remettre à neuf ?",
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-haute-pression-paris",
     },
     {
         "slug": "vitres-sans-traces",
@@ -2118,7 +2192,6 @@ GUIDES = [
     },
     {
         "slug": 'demoussage-terrasse-ile-de-france',
-        "hors_offre": "le nettoyage de terrasse",
         "cat": 'Extérieur',
         "h1": 'Démoussage de terrasse en Île-de-France',
         "title": 'Démoussage de terrasse en IDF',
@@ -2161,11 +2234,10 @@ GUIDES = [
             ('Quelle est la meilleure saison ?',
              "Le printemps et l'automne. En plein été, le produit sèche avant d'avoir pénétré ; par gel, il n'agit pas. L'automne a l'avantage de protéger la terrasse pendant l'hiver."),
         ],
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-haute-pression-paris",
     },
     {
         "slug": 'prix-nettoyage-terrasse-m2',
-        "hors_offre": "le nettoyage de terrasse",
         "cat": 'Prix',
         "h1": "Prix d'un nettoyage de terrasse au mètre carré",
         "title": "Prix d'un nettoyage de terrasse",
@@ -2205,7 +2277,7 @@ GUIDES = [
             ("Faut-il un point d'eau sur place ?",
              "Non. Nous venons avec notre eau et notre matériel, y compris un groupe électrogène si nécessaire. Cela dit, un accès direct à l'eau accélère l'intervention et se répercute sur le devis."),
         ],
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-haute-pression-paris",
     },
     {
         "slug": 'prix-nettoyage-bureaux-m2',
@@ -7642,4 +7714,349 @@ RESTAURANT_LIMITES = (
     "détenons pas. Nous signalons ce que nous constatons, et nous nous arrêtons là.",
     "Nous n'intervenons pas sur les équipements eux-mêmes : nous nettoyons autour, dessous et "
     "derrière, mais le démontage d'un four ou d'une friteuse relève de votre mainteneur.",
+)
+
+
+# ---------------------------------------------------------------------------
+# HAUTE PRESSION PAR SUPPORT
+# ---------------------------------------------------------------------------
+# C'est la prestation où le support décide de tout. Une même machine, mal
+# réglée, nettoie un grès cérame et détruit une pierre de Bourgogne. Chaque
+# entrée porte donc le réglage réel et le risque réel, pas une variation de
+# vocabulaire — et quand nous ne traitons pas, c'est écrit.
+#
+# Rappel technique commun : la pression détache, le débit évacue. Monter la
+# pression sans monter le débit abîme le support sans mieux nettoyer.
+SURFACES_HP = [
+    {
+        "slug": "terrasse-pierre",
+        "nom": "terrasse en pierre",
+        "nom_long": "terrasse en pierre naturelle ou reconstituée",
+        "le": "une terrasse en pierre",
+        "pour": "particulier",
+        "enjeu": "La pierre ne se répare pas",
+        "probleme":
+            "Une pierre naturelle est poreuse, et c'est dans cette porosité que s'installent les "
+            "mousses et le noir. D'où la tentation de monter la pression pour aller les chercher — "
+            "et c'est exactement ce qu'il ne faut pas faire. Une pierre calcaire tendre, une pierre "
+            "de Bourgogne, un travertin se creusent sous une lance trop proche, et le relief ainsi "
+            "créé retient davantage la saleté qu'avant.",
+        "detail":
+            "Le défaut typique est la zébrure : des bandes plus claires et légèrement creusées, "
+            "laissées par une lance passée à main levée. Elles ne se rattrapent pas, et elles se "
+            "voient pour toujours sous une lumière rasante. L'hydro-brosse rotative travaille à "
+            "distance constante et supprime ce risque.",
+        "reglage":
+            "Pression modérée, hydro-brosse rotative, eau froide. Sur une pierre tendre ou "
+            "ancienne, on descend encore et on compense par le temps de passage, jamais par la "
+            "pression.",
+        "contrainte":
+            "Les joints de dallage sablés se déchaussent au lavage : le rejointoiement fait partie "
+            "de l'intervention quand c'est le cas, sinon le sable part au premier orage et les "
+            "dalles bougent.",
+        "faq": ("Ma terrasse en pierre a des taches noires incrustées, partiront-elles ?",
+                "Le noir de surface part. Celui qui a pénétré la porosité sur plusieurs années "
+                "ressort partiellement, et insister à la pression creuserait la pierre sans "
+                "l'enlever. Nous faisons un essai sur une zone cachée et nous vous montrons le "
+                "résultat réellement atteignable avant de traiter l'ensemble."),
+    },
+    {
+        "slug": "terrasse-bois",
+        "nom": "terrasse en bois",
+        "nom_long": "terrasse en bois ou en composite",
+        "le": "une terrasse en bois",
+        "pour": "particulier",
+        "enjeu": "Le bois pardonne le moins",
+        "probleme":
+            "Le bois est le support sur lequel la haute pression fait le plus de dégâts, et le plus "
+            "vite. Une lance trop forte ou trop proche arrache les fibres de surface : la lame "
+            "devient pelucheuse, grise plus vite ensuite, et prend l'écharde. C'est irréversible "
+            "sans ponçage.",
+        "detail":
+            "Deux règles qui changent tout : travailler dans le sens de la fibre, jamais en "
+            "travers, et garder la buse à distance. Le composite n'est pas plus tolérant — il a "
+            "une pression maximale indiquée par son fabricant, souvent basse, et un passage trop "
+            "fort y laisse des marques satinées définitives.",
+        "reglage":
+            "Pression basse, buse large, distance constante, dans le sens des lames. Sur un bois "
+            "très grisé, le dégrisage relève d'un produit et d'un ponçage, pas d'une montée en "
+            "pression.",
+        "contrainte":
+            "Nous refusons de laver à haute pression un bois déjà fendu ou dont les lames jouent : "
+            "l'eau s'infiltre sous la structure et accélère la dégradation. Nous le disons sur "
+            "place plutôt que de prendre le chantier.",
+        "faq": ("Peut-on rendre sa couleur d'origine à une terrasse grisée ?",
+                "Pas à la haute pression. Le gris est une oxydation de surface du bois : elle se "
+                "retire avec un produit dégriseur puis un rinçage, et la couleur se protège "
+                "ensuite par une saturation. Monter la pression pour « aller chercher » le gris "
+                "arrache les fibres et abîme la lame définitivement."),
+    },
+    {
+        "slug": "terrasse-carrelage",
+        "nom": "terrasse carrelée",
+        "nom_long": "terrasse en carrelage ou en grès cérame",
+        "le": "une terrasse carrelée",
+        "pour": "particulier",
+        "enjeu": "Le support solide, les joints fragiles",
+        "probleme":
+            "Le grès cérame et le carrelage extérieur sont les supports les plus tolérants : ils ne "
+            "craignent presque rien. Le point faible n'est pas le carreau mais le joint — un joint "
+            "de ciment fatigué part sous la pression, et un joint sablé se vide entièrement.",
+        "detail":
+            "L'autre sujet est l'antidérapant. Un carrelage extérieur a un relief destiné à "
+            "éviter les glissades ; le film gras et les mousses le comblent peu à peu, et la "
+            "terrasse devient glissante par temps humide. C'est un sujet de sécurité avant d'être "
+            "un sujet d'aspect, et c'est le lavage qui le rouvre.",
+        "reglage":
+            "Pression moyenne à soutenue, hydro-brosse rotative, eau chaude si le dépôt est gras. "
+            "Pression réduite au passage des joints.",
+        "contrainte":
+            "Sur un joint déjà fissuré, nous réduisons la pression et nous vous signalons les "
+            "reprises nécessaires : le lavage révèle toujours l'état réel des joints, il ne le "
+            "crée pas.",
+        "faq": ("Ma terrasse carrelée est glissante, est-ce rattrapable ?",
+                "Le plus souvent, oui. Ce qui rend un carrelage extérieur glissant, c'est le film "
+                "organique et gras qui a comblé son relief antidérapant. Le lavage le rouvre et la "
+                "terrasse redevient sûre. Si le relief lui-même est usé par le temps, en revanche, "
+                "aucun nettoyage ne le reconstitue."),
+    },
+    {
+        "slug": "allee-cour",
+        "nom": "allée et cour",
+        "nom_long": "allée, cour et descente de garage",
+        "le": "une allée",
+        "pour": "particulier",
+        "enjeu": "Ce que l'on voit en arrivant",
+        "probleme":
+            "Une allée et une cour reçoivent tout : ruissellement de toiture, terre, feuilles, "
+            "traces de pneus, gouttes d'huile au droit du véhicule. Les surfaces sont grandes, ce "
+            "qui rend la régularité du passage plus importante que la puissance : une allée lavée "
+            "à la lance garde des bandes visibles sur toute sa longueur.",
+        "detail":
+            "Les taches d'hydrocarbures au droit du stationnement sont le vrai sujet. L'eau froide "
+            "les étale ; il faut de l'eau chaude et un dégraissant à temps de pose. Une tache "
+            "ancienne, qui a pénétré un béton poreux, s'atténue sans disparaître complètement — "
+            "nous le disons avant.",
+        "reglage":
+            "Hydro-brosse rotative sur les surfaces courantes, eau chaude sur les zones grasses, "
+            "lance pour les bordures et les caniveaux.",
+        "contrainte":
+            "L'évacuation doit pouvoir absorber le volume d'eau. Sur une cour fermée sans "
+            "écoulement suffisant, nous travaillons par portions pour éviter l'accumulation.",
+        "faq": ("Une tache d'huile sur le béton part-elle complètement ?",
+                "Rarement en totalité si elle est ancienne. Le béton est poreux : l'huile y "
+                "descend, et ce qui est en profondeur ne remonte pas. À l'eau chaude avec un "
+                "dégraissant, on retire ce qui est en surface et on atténue nettement le reste. "
+                "Promettre la disparition complète serait vous mentir."),
+    },
+    {
+        "slug": "facade-mur",
+        "nom": "façade et mur",
+        "nom_long": "façade accessible depuis le sol, mur et clôture",
+        "le": "une façade",
+        "pour": "mixte",
+        "enjeu": "Nettoyer sans décaper",
+        "probleme":
+            "Sur une façade, la haute pression mal employée ne nettoie pas : elle décape. Un enduit "
+            "fatigué part en plaques, une peinture se soulève, un joint de maçonnerie ancien se "
+            "vide. Et une fois l'enduit entamé, l'eau entre dans le mur — le problème devient "
+            "structurel, pas esthétique.",
+        "detail":
+            "Les surfaces nord et les pignons sans soleil se couvrent de vert : ce sont des algues "
+            "et des mousses installées dans la porosité. Le lavage retire ce qui est visible ; "
+            "elles reviennent, et sur un mur exposé au nord elles reviennent vite. Nous le disons "
+            "d'emblée.",
+        "reglage":
+            "Pression basse à modérée, buse large, mouvement continu de bas en haut puis rinçage "
+            "de haut en bas. Essai obligatoire sur une zone peu visible.",
+        "contrainte":
+            "Jusqu'à trois niveaux depuis le sol, et seulement avec du recul au pied de la façade. "
+            "Au-delà, il faut une nacelle ou un cordiste : nous ne le faisons pas, et nous "
+            "l'annonçons avant le devis.",
+        "faq": ("Le lavage peut-il abîmer mon enduit de façade ?",
+                "Oui, si la pression est mal réglée ou si l'enduit est déjà fatigué. C'est pour "
+                "cela que nous commençons par un essai sur une zone peu visible : il montre en "
+                "deux minutes si le support tient. S'il ne tient pas, nous refusons le chantier "
+                "plutôt que de vous laisser avec une façade à refaire."),
+    },
+    {
+        "slug": "parking-sous-sol",
+        "nom": "parking et sous-sol",
+        "nom_long": "parking, sous-sol et rampe d'accès",
+        "le": "un parking",
+        "pour": "pro",
+        "enjeu": "Le gras, et où part l'eau",
+        "probleme":
+            "Un sol de parking accumule un film d'hydrocarbures, de poussières de freinage et de "
+            "caoutchouc qui noircit uniformément et rend le sol glissant à l'entrée, là où les "
+            "pneus arrivent mouillés. L'eau froide ne l'enlève pas : elle l'étale.",
+        "detail":
+            "La question à régler avant l'intervention n'est pas technique mais réglementaire : où "
+            "partent les eaux de lavage. Chargées d'hydrocarbures, elles ne doivent pas rejoindre "
+            "le réseau pluvial. Il faut un séparateur d'hydrocarbures en état de marche, ou une "
+            "récupération. Nous vérifions ce point avant de chiffrer, et nous ne lançons pas une "
+            "intervention tant qu'il n'est pas tranché.",
+        "reglage":
+            "Eau chaude, hydro-brosse rotative, dégraissant à temps de pose sur les zones de "
+            "stationnement. Lance pour les caniveaux et les pieds de poteaux.",
+        "contrainte":
+            "Le parking doit être vidé zone par zone. Nous travaillons par tranches, la nuit ou le "
+            "week-end, en coordination avec le gestionnaire : c'est l'organisation qui coûte du "
+            "temps, pas le lavage.",
+        "faq": ("Où partent les eaux de lavage d'un parking ?",
+                "C'est la première question à régler, et elle est trop souvent oubliée. Des eaux "
+                "chargées d'hydrocarbures ne doivent pas rejoindre le réseau pluvial : il faut un "
+                "séparateur d'hydrocarbures en état, ou une récupération. Nous vérifions son "
+                "existence et son entretien avant de chiffrer. Sans réponse claire, nous "
+                "n'intervenons pas."),
+    },
+    {
+        "slug": "quai-livraison",
+        "nom": "quai de livraison",
+        "nom_long": "quai de livraison et abords de benne",
+        "le": "un quai de livraison",
+        "pour": "pro",
+        "enjeu": "Les odeurs viennent du sol",
+        "probleme":
+            "Un quai de livraison et les abords d'une benne concentrent des jus organiques qui "
+            "pénètrent le béton et fermentent. L'odeur ne vient pas de la benne elle-même mais du "
+            "sol autour, et aucun désodorisant n'y change quoi que ce soit tant que le sol n'est "
+            "pas traité.",
+        "detail":
+            "C'est l'un des rares cas où l'eau chaude n'est pas un confort mais une nécessité : "
+            "elle dissout les graisses animales et végétales qui ont figé dans la porosité. À "
+            "froid, le lavage déplace l'odeur sans la retirer.",
+        "reglage":
+            "Eau chaude à température élevée, dégraissant alcalin à temps de pose, hydro-brosse "
+            "puis rinçage abondant. Reprise des angles et du pied des murs à la lance.",
+        "contrainte":
+            "Intervention avant l'ouverture ou après la dernière livraison, et évacuation des eaux "
+            "à vérifier comme pour un parking. Un passage mensuel tient un quai ; un passage "
+            "annuel ne fait que rattraper.",
+        "faq": ("Les odeurs autour de la benne vont-elles disparaître ?",
+                "Si elles viennent du sol, oui, et c'est le cas le plus fréquent. Les jus "
+                "organiques pénètrent le béton et fermentent : un lavage à l'eau chaude avec "
+                "dégraissant les retire. Si l'odeur vient de la benne elle-même ou d'un local mal "
+                "ventilé, le lavage du sol ne suffira pas, et nous vous le dirons."),
+    },
+    {
+        "slug": "local-poubelles",
+        "nom": "local poubelles",
+        "nom_long": "local poubelles et local vide-ordures",
+        "le": "un local poubelles",
+        "pour": "pro",
+        "enjeu": "Le premier motif de réclamation en copropriété",
+        "probleme":
+            "Le local poubelles est, avec la cage d'escalier, ce qui déclenche le plus de "
+            "réclamations auprès d'un conseil syndical. Le sol y est le problème : béton brut, "
+            "poreux, imprégné de jus, et des angles que la serpillière n'atteint jamais.",
+        "detail":
+            "Le lavage à haute pression en local fermé demande une précaution que beaucoup "
+            "négligent : la projection. Tout ce qui est au mur et au plafond reçoit ce qui part du "
+            "sol. On lave donc du haut vers le bas, puis on reprend le sol, et jamais l'inverse.",
+        "reglage":
+            "Eau chaude, pression modérée en milieu fermé, dégraissant alcalin, rinçage complet "
+            "vers l'évacuation. Reprise des bacs à l'extérieur du local.",
+        "contrainte":
+            "Il faut une évacuation au sol dans le local, sinon l'eau stagne et le résultat est "
+            "pire qu'avant. Quand il n'y en a pas, nous travaillons avec aspiration des eaux, et "
+            "nous le chiffrons.",
+        "faq": ("Que faire si le local n'a pas de siphon de sol ?",
+                "Nous travaillons alors avec aspiration des eaux plutôt qu'au ruissellement : "
+                "c'est plus long, donc plus cher, mais c'est la seule méthode propre. Laver à "
+                "grande eau un local sans évacuation revient à y laisser une flaque chargée, et "
+                "l'odeur revient en deux jours."),
+    },
+    {
+        "slug": "cour-copropriete",
+        "nom": "cour de copropriété",
+        "nom_long": "cour, hall extérieur et parties communes d'immeuble",
+        "le": "une cour de copropriété",
+        "pour": "pro",
+        "enjeu": "La valeur perçue des lots",
+        "probleme":
+            "Une cour d'immeuble, un porche et des abords d'entrée sont ce que voient les "
+            "résidents, les visiteurs et les acquéreurs potentiels. Ils se dégradent lentement : "
+            "pavés noircis, pied de murs vert, caniveaux chargés. Personne ne le remarque d'un "
+            "jour à l'autre, tout le monde le constate sur une photo d'annonce.",
+        "detail":
+            "La difficulté est l'occupation permanente : il n'y a pas d'heure où une cour "
+            "d'immeuble est vide. Nous travaillons par portions, en maintenant un cheminement "
+            "praticable, et nous séchons les zones de passage avant de partir — une cour mouillée "
+            "est un risque de chute dont la copropriété serait responsable.",
+        "reglage":
+            "Hydro-brosse rotative sur les pavés et le dallage, pression réduite au pied des murs "
+            "et sur les joints, lance pour les caniveaux et les grilles.",
+        "contrainte":
+            "Intervention en semaine, en journée, avec information des résidents par affichage. "
+            "Un passage annuel ou semestriel suffit sur une cour entretenue.",
+        "faq": ("Faut-il prévenir les résidents ?",
+                "Oui, par affichage dans le hall quelques jours avant : c'est ce qui évite les "
+                "véhicules mal placés et les réclamations. Nous fournissons le texte au syndic si "
+                "besoin. Nous maintenons un cheminement praticable pendant toute l'intervention."),
+    },
+    {
+        "slug": "beton-enrobe",
+        "nom": "béton et enrobé",
+        "nom_long": "béton désactivé, béton lissé et enrobé",
+        "le": "un sol en béton",
+        "pour": "mixte",
+        "enjeu": "Trois matériaux, trois limites",
+        "probleme":
+            "On range sous le même mot des supports qui n'ont rien en commun. Un béton désactivé "
+            "a des granulats tenus par un liant que la pression peut déchausser. Un béton lissé "
+            "est dense et tolérant, mais sa laitance de surface s'use. Un enrobé, lui, est tenu "
+            "par un bitume que l'eau chaude ramollit et que la pression arrache.",
+        "detail":
+            "L'erreur classique est de traiter un enrobé comme un béton. Un enrobé lavé trop fort "
+            "perd son liant : les gravillons se déchaussent, la surface devient rugueuse et le "
+            "vieillissement s'accélère. Sur ce support, on travaille à pression basse et à l'eau "
+            "froide, et on accepte un résultat moins spectaculaire.",
+        "reglage":
+            "Béton désactivé : pression modérée, hydro-brosse. Béton lissé : pression soutenue "
+            "possible. Enrobé : pression basse, eau froide, jamais de dégraissant agressif.",
+        "contrainte":
+            "Sur un béton désactivé déjà déchaussé, le lavage accentuera le défaut. Nous le "
+            "signalons avant : à ce stade, c'est une reprise de surface qu'il faut, pas un "
+            "nettoyage.",
+        "faq": ("Peut-on nettoyer un enrobé à la haute pression ?",
+                "Avec précaution seulement, à pression basse et à l'eau froide. L'enrobé est tenu "
+                "par un bitume : l'eau chaude le ramollit et la pression arrache les gravillons. "
+                "Le résultat est moins net que sur du béton, et c'est normal — un enrobé propre "
+                "reste un enrobé, il ne redevient pas noir."),
+    },
+]
+
+
+# Périmètre et limites de la haute pression, écrits une fois. Les limites
+# comptent plus ici que sur toute autre prestation : c'est celle où un
+# prestataire pressé fait des dégâts irréversibles, et où dire non est le
+# vrai service rendu.
+HP_PERIMETRE = (
+    "Identification du support et essai sur une zone cachée avant de traiter",
+    "Hydro-brosse rotative sur les grandes surfaces : pas de zébrures",
+    "Eau chaude sur les dépôts gras — parkings, quais, abords de bennes",
+    "Pression réglée sur le matériau, et réduite au passage des joints",
+    "Rinçage complet et évacuation des résidus",
+    "Rejointoiement de sable des dallages quand le lavage l'a entamé",
+    "Séchage des zones de passage avant de partir, en site occupé",
+    "Eau et électricité fournies : aucun branchement demandé sur place",
+)
+
+HP_LIMITES = (
+    "Pas de toiture, dans aucun cas. C'est du travail en hauteur, qui demande des compétences et "
+    "des équipements que nous n'avons pas. Et les plaques en fibrociment posées avant 1997 "
+    "peuvent contenir de l'amiante : le nettoyage haute pression y est à proscrire, parce qu'il "
+    "libère des fibres.",
+    "Pas de façade au-delà de trois niveaux depuis le sol, ni sans recul au pied du mur. Au-delà, "
+    "il faut une nacelle ou un cordiste : ce sont d'autres métiers, d'autres assurances.",
+    "Pas de produit de traitement destiné à retarder la repousse des mousses : cette catégorie "
+    "relève d'une réglementation à part, et nous n'en appliquons pas. Le lavage retire ce qui est "
+    "visible, il n'empêche pas la repousse, et nous le disons plutôt que de laisser croire le "
+    "contraire.",
+    "Pas de lavage d'un support déjà dégradé — enduit qui se décolle, bois fendu, béton désactivé "
+    "déchaussé. La pression y accentuerait le défaut. Nous le constatons sur place et nous "
+    "refusons le chantier plutôt que de vous laisser avec une surface à refaire.",
+    "Pas de rejet d'eaux chargées d'hydrocarbures au réseau pluvial. Sur un parking ou un quai, "
+    "nous vérifions l'existence et l'état du séparateur avant de chiffrer.",
 )

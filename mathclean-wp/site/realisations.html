@@ -67,9 +67,10 @@
 <li class="menu-item-has-children current-menu-item">
   <a href="services">Prestations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
-    <li><a href="services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li><li><a href="services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-vitres-paris">Nettoyage de vitres</a></li>
+    <li><a href="services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li><li><a href="services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-vitres-paris">Nettoyage de vitres</a></li>
     <li class="sub-sep"><a href="hottes">Hottes : par métier et par commune</a></li>
     <li><a href="nettoyage-restaurant">Nettoyage de restaurant</a></li>
+    <li><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li>
     <li><a href="vitrerie-professionnelle">Vitrerie professionnelle</a></li>
     <li><a href="menage-regulier">Entretien régulier de locaux</a></li>
     <li><a href="nettoyage-appartement">Nettoyage d'appartement</a></li>
@@ -128,8 +129,23 @@
     <div class="grid grid-2"><div class="reveal">
   <div class="ba" style="--pos:50%">
     <div class="ba-pane">
+      <img src="assets/photos/ba-terrasse2-avant.webp" alt="Terrasse en pierre avant l'intervention MathClean"
+           loading="eager" fetchpriority="high" width="800" height="600" srcset="assets/photos/ba-terrasse2-avant-400.webp 400w, assets/photos/ba-terrasse2-avant.webp 700w" sizes="(max-width:900px) 92vw, 800px">
+      <img class="ba-after" src="assets/photos/ba-terrasse2-apres.webp" alt="Terrasse en pierre après l'intervention MathClean"
+           loading="lazy" width="800" height="600" srcset="assets/photos/ba-terrasse2-apres-400.webp 400w, assets/photos/ba-terrasse2-apres.webp 700w" sizes="(max-width:900px) 92vw, 800px">
+    </div>
+    <span class="ba-tag ba-tag-before">Avant</span>
+    <span class="ba-tag ba-tag-after">Après</span>
+    <span class="ba-handle"></span>
+    <input class="ba-range" type="range" min="0" max="100" value="50" step="0.5"
+           aria-label="Comparer avant et après — Terrasse en pierre" id="ba-0">
+  </div>
+  <div class="ba-caption"><strong>Terrasse en pierre</strong><span>Lavage haute pression, hydro-brosse rotative</span></div>
+</div><div class="reveal">
+  <div class="ba" style="--pos:50%">
+    <div class="ba-pane">
       <img src="assets/photos/avant-voiture-siege.webp" alt="Siège automobile avant l'intervention MathClean"
-           loading="eager" fetchpriority="high" width="800" height="600" srcset="assets/photos/avant-voiture-siege-400.webp 400w, assets/photos/avant-voiture-siege.webp 700w" sizes="(max-width:900px) 92vw, 800px">
+           loading="lazy" width="800" height="600" srcset="assets/photos/avant-voiture-siege-400.webp 400w, assets/photos/avant-voiture-siege.webp 700w" sizes="(max-width:900px) 92vw, 800px">
       <img class="ba-after" src="assets/photos/apres-voiture-siege.webp" alt="Siège automobile après l'intervention MathClean"
            loading="lazy" width="800" height="600" srcset="assets/photos/apres-voiture-siege-400.webp 400w, assets/photos/apres-voiture-siege.webp 700w" sizes="(max-width:900px) 92vw, 800px">
     </div>
@@ -137,7 +153,7 @@
     <span class="ba-tag ba-tag-after">Après</span>
     <span class="ba-handle"></span>
     <input class="ba-range" type="range" min="0" max="100" value="50" step="0.5"
-           aria-label="Comparer avant et après — Siège automobile" id="ba-0">
+           aria-label="Comparer avant et après — Siège automobile" id="ba-1">
   </div>
   <div class="ba-caption"><strong>Siège automobile</strong><span>Shampoing et détachage des tissus</span></div>
 </div><div class="reveal">
@@ -152,27 +168,27 @@
     <span class="ba-tag ba-tag-after">Après</span>
     <span class="ba-handle"></span>
     <input class="ba-range" type="range" min="0" max="100" value="50" step="0.5"
-           aria-label="Comparer avant et après — Réfrigérateur professionnel" id="ba-1">
+           aria-label="Comparer avant et après — Réfrigérateur professionnel" id="ba-2">
   </div>
   <div class="ba-caption"><strong>Réfrigérateur professionnel</strong><span>Nettoyage complet, hygiène alimentaire</span></div>
-</div><div class="reveal">
+</div></div>
+    <h2 style="margin:56px 0 26px">Nos autres chantiers</h2>
+    <div class="grid grid-3"><div class="reveal">
   <div class="ba" style="--pos:50%">
     <div class="ba-pane">
       <img src="assets/photos/avant-plan-travail.webp" alt="Plan de travail avant l'intervention MathClean"
-           loading="lazy" width="800" height="600">
+           loading="lazy" width="380" height="285">
       <img class="ba-after" src="assets/photos/apres-plan-travail.webp" alt="Plan de travail après l'intervention MathClean"
-           loading="lazy" width="800" height="600">
+           loading="lazy" width="380" height="285">
     </div>
     <span class="ba-tag ba-tag-before">Avant</span>
     <span class="ba-tag ba-tag-after">Après</span>
     <span class="ba-handle"></span>
     <input class="ba-range" type="range" min="0" max="100" value="50" step="0.5"
-           aria-label="Comparer avant et après — Plan de travail" id="ba-2">
+           aria-label="Comparer avant et après — Plan de travail" id="ba-3">
   </div>
   <div class="ba-caption"><strong>Plan de travail</strong><span>Dégraissage et désinfection en profondeur</span></div>
-</div></div>
-    <h2 style="margin:56px 0 26px">Nos autres chantiers</h2>
-    <div class="grid grid-3"><div class="reveal">
+</div><div class="reveal">
   <div class="ba" style="--pos:50%">
     <div class="ba-pane">
       <img src="assets/photos/ba-canape-avant.webp" alt="Canapé en tissu avant l'intervention MathClean"
@@ -184,7 +200,7 @@
     <span class="ba-tag ba-tag-after">Après</span>
     <span class="ba-handle"></span>
     <input class="ba-range" type="range" min="0" max="100" value="50" step="0.5"
-           aria-label="Comparer avant et après — Canapé en tissu" id="ba-3">
+           aria-label="Comparer avant et après — Canapé en tissu" id="ba-4">
   </div>
   <div class="ba-caption"><strong>Canapé en tissu</strong><span>Injection-extraction et désinfection</span></div>
 </div><div class="reveal">
@@ -199,7 +215,7 @@
     <span class="ba-tag ba-tag-after">Après</span>
     <span class="ba-handle"></span>
     <input class="ba-range" type="range" min="0" max="100" value="50" step="0.5"
-           aria-label="Comparer avant et après — Tapis et moquette" id="ba-4">
+           aria-label="Comparer avant et après — Tapis et moquette" id="ba-5">
   </div>
   <div class="ba-caption"><strong>Tapis et moquette</strong><span>Shampoing et détachage en profondeur</span></div>
 </div><div class="reveal">
@@ -214,7 +230,7 @@
     <span class="ba-tag ba-tag-after">Après</span>
     <span class="ba-handle"></span>
     <input class="ba-range" type="range" min="0" max="100" value="50" step="0.5"
-           aria-label="Comparer avant et après — Fauteuil de bureau" id="ba-5">
+           aria-label="Comparer avant et après — Fauteuil de bureau" id="ba-6">
   </div>
   <div class="ba-caption"><strong>Fauteuil de bureau</strong><span>Détachage et assainissement des tissus</span></div>
 </div></div>
@@ -377,7 +393,7 @@
         <span class="brand-name" style="font-size:1.5rem">Math<span>Clean</span></span>
         <p class="footer-about">
           Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit départements
-          d'Île-de-France&nbsp;: Hottes, ménage régulier, appartement, automobile, textile et vitres.
+          d'Île-de-France&nbsp;: Hottes, ménage régulier, appartement, haute pression, automobile, textile et vitres.
           Une exigence de roi, du particulier au professionnel.
         </p>
         <div class="footer-contact">
@@ -389,11 +405,12 @@
       </div>
       <div>
         <h2 class="widget-title">Prestations</h2>
-        <ul><li><a href="services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li><li><a href="services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-vitres-paris">Nettoyage de vitres</a></li></ul>
+        <ul><li><a href="services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li><li><a href="services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-vitres-paris">Nettoyage de vitres</a></li></ul>
         <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
         <ul>
           <li><a href="hottes">Hottes et conduits</a></li>
           <li><a href="nettoyage-restaurant">Nettoyage de restaurant</a></li>
+          <li><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li>
           <li><a href="vitrerie-professionnelle">Vitrerie professionnelle</a></li>
           <li><a href="menage-regulier">Entretien régulier</a></li>
           <li><a href="nettoyage-appartement">Nettoyage d'appartement</a></li>
