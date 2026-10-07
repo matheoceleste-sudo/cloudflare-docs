@@ -742,6 +742,20 @@ VIDEOS = {
         "desc": "Pulvérisation du détachant, brossage rotatif, traitement vapeur "
                 "puis injection-extraction : l'eau sale est aspirée, pas étalée.",
     },
+    "automobile": {
+        "fichier": "automobile-interieur", "duree": "PT8S", "secondes": 8,
+        "nom": "Intérieur automobile après nettoyage complet",
+        "desc": "Sièges en alcantara, console centrale, volant et contre-portes après une "
+                "prestation Intérieur Prestige, filmée sur le véhicule du client. Le volant "
+                "porte encore la protection posée pendant l'intervention.",
+    },
+    "canape": {
+        "fichier": "textile-canape", "duree": "PT5S", "secondes": 5,
+        "nom": "Canapé d'angle en velours côtelé, en cours d'injection-extraction",
+        "desc": "Les bandes diagonales sont les passages de la buse : chacune a été injectée "
+                "puis réaspirée aussitôt. Le contraste entre deux passages montre ce que la "
+                "fibre contenait, et le tuyau de la machine est visible au sol.",
+    },
     "vitres": {
         "fichier": "methode-vitres", "duree": "PT22S", "secondes": 22,
         "nom": "Nettoyage de vitres, châssis et rainures",
@@ -1410,6 +1424,14 @@ VIDEO_PAR_SERVICE = {
         "<p>Regardez la cuve à la fin de la séquence&nbsp;: l'eau qui en ressort est celle "
         "qui était dans la fibre. C'est toute la différence avec un shampoing de surface, "
         "qui laisse un résidu et fait resalir le textile plus vite qu'avant.</p>"),
+    "nettoyage-automobile-paris": ("automobile",
+        "Un intérieur terminé, filmé dans le véhicule",
+        "<p>Pas de plan de montage ni de musique : l'habitacle tel qu'il est rendu au client, "
+        "à la fin d'une formule Intérieur Prestige. Sièges en alcantara, console, contre-portes "
+        "et volant, qui porte encore la protection posée pendant l'intervention.</p>"
+        "<p>L'alcantara est la matière qui pardonne le moins en detailing&nbsp;: trop d'eau la "
+        "marque, trop de brosse la lustre. Elle se travaille au mousseur et au chiffon, pas à "
+        "la machine — c'est pour cela qu'elle est au tarif des cuirs et alcantaras.</p>"),
     "nettoyage-vitres-paris": ("vitres",
         "Le lavage des vitres, filmé",
         "<p>Vitres, châssis et rainures, intérieur et extérieur. Les rainures sont le point "
@@ -1845,8 +1867,9 @@ def build_realisations():
     </div>
     <div class="grid grid-3">
       <div class="media-frame reveal">
-        <video src="assets/videos/detailing-3.mp4" poster="assets/videos/detailing-3.webp"
-               muted loop playsinline controls preload="none"></video>
+        <video src="assets/videos/textile-canape.mp4" poster="assets/videos/textile-canape.webp"
+               muted loop playsinline controls preload="none"
+               aria-label="Canapé d'angle en velours côtelé, en cours d'injection-extraction"></video>
       </div>
       <div class="media-frame reveal">
         <video src="assets/videos/vitres-1.mp4" poster="assets/videos/vitres-1.webp"
