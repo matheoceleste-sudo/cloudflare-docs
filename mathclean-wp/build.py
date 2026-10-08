@@ -750,6 +750,27 @@ VIDEOS = {
                 "prestation Intérieur Prestige, filmée sur le véhicule du client. Le volant "
                 "porte encore la protection posée pendant l'intervention.",
     },
+    "hp-facade": {
+        "fichier": "hp-facade", "duree": "PT18S", "secondes": 18,
+        "nom": "Coffret extérieur couvert de lichen, lavé à la lance",
+        "desc": "Un coffret de jardin envahi de lichen jaune et d'algues vertes, repris à la "
+                "lance haute pression. La bande propre apparaît au fur et à mesure du passage : "
+                "c'est le même support, sans produit miracle ni montage.",
+    },
+    "hp-terrasse": {
+        "fichier": "hp-terrasse", "duree": "PT31S", "secondes": 31,
+        "nom": "Dalle extérieure noircie, dégagée à la lance",
+        "desc": "Une dalle de terrasse noircie par plusieurs saisons, dégagée au passage de la "
+                "lance. Le contraste entre la zone traitée et le reste montre l'épaisseur réelle "
+                "du dépôt organique, que l'œil ne voyait plus.",
+    },
+    "automobile-moquette": {
+        "fichier": "automobile-moquette", "duree": "PT13S", "secondes": 13,
+        "nom": "Habitacle : moquette, seuil de porte et poils d'animaux",
+        "desc": "Aspiration du plancher conducteur et du seuil de porte, puis reprise d'un "
+                "accoudoir chargé de poils d'animaux. Les poils ne s'aspirent pas : ils "
+                "s'enroulent autour de la fibre et se retirent au contact.",
+    },
     "canape": {
         "fichier": "textile-canape", "duree": "PT5S", "secondes": 5,
         "nom": "Canapé d'angle en velours côtelé, en cours d'injection-extraction",
@@ -1425,6 +1446,15 @@ VIDEO_PAR_SERVICE = {
         "<p>Regardez la cuve à la fin de la séquence&nbsp;: l'eau qui en ressort est celle "
         "qui était dans la fibre. C'est toute la différence avec un shampoing de surface, "
         "qui laisse un résidu et fait resalir le textile plus vite qu'avant.</p>"),
+    "nettoyage-haute-pression-paris": ("hp-facade",
+        "Un support couvert de lichen, repris à la lance",
+        "<p>Un coffret de jardin envahi de lichen jaune et d'algues vertes. La bande propre "
+        "apparaît au fur et à mesure du passage : aucun produit miracle, aucun montage, et "
+        "c'est le même support du début à la fin.</p>"
+        "<p>Ce que la séquence ne montre pas, et qui décide pourtant de tout : le support a été "
+        "identifié avant, et la pression réglée sur lui. Le même geste sur une pierre tendre ou "
+        "sur du bois aurait creusé la surface — c'est pour cela que nous faisons un essai sur "
+        "une zone cachée avant de traiter l'ensemble.</p>"),
     "nettoyage-automobile-paris": ("automobile",
         "Un intérieur terminé, filmé dans le véhicule",
         "<p>Pas de plan de montage ni de musique : l'habitacle tel qu'il est rendu au client, "
@@ -1877,8 +1907,9 @@ def build_realisations():
                muted loop playsinline controls preload="none"></video>
       </div>
       <div class="media-frame reveal">
-        <video src="assets/videos/detailing-6.mp4" poster="assets/videos/detailing-6.webp"
-               muted loop playsinline controls preload="none"></video>
+        <video src="assets/videos/automobile-moquette.mp4" poster="assets/videos/automobile-moquette.webp"
+               muted loop playsinline controls preload="none"
+               aria-label="Habitacle : moquette, seuil de porte et poils d'animaux"></video>
       </div>
     </div>
   </div>
@@ -5137,6 +5168,8 @@ def _pages_video():
     for g in GUIDES:
         if g.get("video"):
             pages["guides/%s.html" % g["slug"]] = g["video"]
+    for slug, (cle, _t, _x) in VIDEO_PAR_SURFACE_HP.items():
+        pages["haute-pression/nettoyage-%s.html" % slug] = cle
     return pages
 
 
@@ -6595,6 +6628,37 @@ def build_hub_restaurant():
         client="pro")
 
 
+# Vidéo propre à certains supports de haute pression. Un plan ne vaut que
+# s'il montre le support dont la page parle : on ne le réutilise donc pas
+# partout, et les supports sans plan n'en affichent aucun.
+VIDEO_PAR_SURFACE_HP = {
+    "terrasse-pierre": ("hp-terrasse",
+        "La dalle, filmée pendant le passage",
+        "<p>Une dalle extérieure noircie par plusieurs saisons. Le contraste entre la zone "
+        "traitée et le reste donne l'épaisseur réelle du dépôt — celle que l'œil ne voit plus "
+        "parce qu'elle s'est installée lentement.</p>"
+        "<p>Le passage est régulier et à distance constante : c'est ce qui évite les zébrures, "
+        "ces bandes légèrement creusées que laisse une lance tenue à main levée et qui ne se "
+        "rattrapent jamais.</p>"),
+    "allee-cour": ("hp-terrasse",
+        "Le passage de la lance, filmé",
+        "<p>Le plan montre une dalle extérieure, mais le geste est le même sur une allée ou une "
+        "cour : distance constante, recouvrement régulier, et la limite nette entre le traité et "
+        "le non traité.</p>"
+        "<p>Sur une grande surface, c'est la régularité du passage qui compte, pas la puissance. "
+        "Une allée lavée à la lance à main levée garde des bandes visibles sur toute sa "
+        "longueur ; l'hydro-brosse rotative les supprime.</p>"),
+    "facade-mur": ("hp-facade",
+        "Un support vertical couvert de lichen, filmé",
+        "<p>Un coffret de jardin envahi de lichen jaune et d'algues vertes. La bande propre "
+        "apparaît au fur et à mesure : c'est le même support du début à la fin, sans montage.</p>"
+        "<p>Ce que la séquence ne montre pas est pourtant l'essentiel : le support avait été "
+        "identifié avant, et la pression réglée sur lui. Le même geste sur un enduit fatigué "
+        "l'aurait décollé par plaques — d'où l'essai sur une zone peu visible avant de traiter "
+        "l'ensemble.</p>"),
+}
+
+
 # --- Haute pression : par support ------------------------------------------
 def build_hp_surface(sec):
     """Page « nettoyage haute pression » pour un support.
@@ -6624,6 +6688,12 @@ def build_hp_surface(sec):
     autres = [("haute-pression/nettoyage-%s.html" % o["slug"],
                "Nettoyage haute pression : %s" % o["nom"])
               for o in SURFACES_HP if o["slug"] != sec["slug"]]
+    bloc_video_hp = ""
+    if sec["slug"] in VIDEO_PAR_SURFACE_HP:
+        cle, titre_v, texte_v = VIDEO_PAR_SURFACE_HP[sec["slug"]]
+        bloc_video_hp = ('<section class="section"><div class="container">'
+                         + video_block(base, cle, titre_v, texte_v)
+                         + "</div></section>")
 
     body = f"""
 {page_title_block(base, trail, h1,
@@ -6685,6 +6755,8 @@ def build_hp_surface(sec):
     </div>
   </div>
 </section>
+
+{bloc_video_hp}
 
 {_bloc_limites("Ce que nous refusons, et pourquoi", HP_LIMITES)}
 
