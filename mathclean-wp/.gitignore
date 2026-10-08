@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+
+# Archives de dépôt manuel, reconstruites à la demande depuis site/ :
+#   cd site && zip -r -9 ../mathclean-site.zip .
+# Elles ne vont pas dans le dépôt. C'est du binaire qui change intégralement
+# à chaque build, et git garde toutes les versions : le dépôt grossirait
+# d'autant à chaque fois, pour un contenu entièrement dérivé de site/, qui
+# est lui déjà suivi fichier par fichier.
+#
+# Le motif couvre aussi les livraisons découpées en plusieurs parties :
+# depuis l'ajout des vidéos, l'archive complète dépasse la limite d'envoi et
+# se livre en deux morceaux à recombiner dans un même dossier.
+mathclean-site*.zip
