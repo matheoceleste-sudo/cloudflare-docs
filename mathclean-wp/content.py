@@ -368,8 +368,8 @@ SERVICES = [
         "meta": "Nettoyage de canapé, matelas, tapis et fauteuil à domicile à Paris et en Île-de-France. Injection-extraction, détachage, anti-acariens. Dès 15 €.",
         "price": "dès 15 €",
         "excerpt": "Canapé, matelas, tapis, fauteuil et moquette : injection-extraction, détachage ciblé et traitement anti-acariens, directement chez vous.",
-        "image": "canape-nettoyage.webp",
-        "hero": "canape-nettoyage.webp",
+        "image": "canape-extraction.webp",
+        "hero": "canape-extraction.webp",
         "icon": "sofa",
         "intro": [
             "Un canapé d'angle ne se démonte pas et ne part pas au pressing. C'est précisément pour cela que nous venons chez vous, "
@@ -1726,7 +1726,7 @@ GUIDES = [
         "h1": 'Nettoyage avant état des lieux de sortie : la liste complète',
         "title": 'Nettoyage avant état des lieux de sortie',
         "meta": "La liste pièce par pièce de ce qu'un état des lieux de sortie contrôle, et l'ordre dans lequel traiter un logement pour ne rien oublier.",
-        "image": 'intervention-1.webp',
+        "image": "moquette-piece-vide.webp",
         "lead": 'Un état des lieux se déroule toujours dans le même ordre : pièce par pièce, du haut vers le bas. Voici la même liste, dans le même ordre, pour ne rien laisser passer.',
         "sections": [
             ("L'ordre qui fait gagner du temps", [
@@ -2020,7 +2020,7 @@ GUIDES = [
         "h1": 'Nettoyage de moquette de bureau à Paris',
         "title": 'Nettoyage de moquette de bureau',
         "meta": 'Nettoyage de moquette en bureau à Paris : injection-extraction, traitement des zones de passage, séchage et intervention hors heures ouvrées.',
-        "image": 'bureau-entreprise.webp',
+        "image": "moquette-bureau.webp",
         "lead": "Une moquette de bureau ne s'use pas uniformément. Elle noircit d'abord dans les couloirs et devant les postes, et c'est là que se joue l'impression générale du plateau.",
         "sections": [
             ('Pourquoi une moquette de bureau grise par endroits', [
@@ -2063,7 +2063,7 @@ GUIDES = [
         "h1": 'Nettoyage de tapis à domicile à Paris',
         "title": 'Nettoyage de tapis à Paris',
         "meta": 'Nettoyage de tapis à domicile à Paris : méthode selon la matière, traitement des taches, séchage, et les tapis que nous ne traitons pas.',
-        "image": 'tapis-karcher.webp',
+        "image": "moquette-rotative.webp",
         "lead": "Un tapis se nettoie selon sa fibre, pas selon son aspect. C'est la seule règle qui compte, et c'est celle qu'on enfreint le plus souvent en voulant bien faire.",
         "sections": [
             ('Identifier la fibre avant tout', [
@@ -2113,7 +2113,7 @@ GUIDES = [
         "h1": 'Nettoyage de vitrine de commerce à Paris',
         "title": 'Nettoyage de vitrine à Paris',
         "meta": 'Nettoyage de vitrine de commerce à Paris : fréquence, horaires avant ouverture, traitement des traces de pluie et des affichages collés.',
-        "image": 'vitre-controle.webp',
+        "image": "vitre-raclette.webp",
         "lead": "Une vitrine sale annule l'effet de la vitrine elle-même. C'est la seule surface d'un commerce que tous les passants voient, et la seule qui se dégrade en quelques jours.",
         "sections": [
             ('Pourquoi une vitrine se salit si vite', [
@@ -2600,7 +2600,7 @@ GUIDES = [
         "h1": 'Nettoyage de canapé en cuir et en alcantara',
         "title": 'Nettoyage de canapé cuir et alcantara',
         "meta": "Entretien d'un canapé en cuir ou en alcantara : pourquoi l'eau ne suffit pas, les produits à éviter, et ce qui ne se rattrape plus.",
-        "image": 'canape-nettoyage.webp',
+        "image": "canape-velours.webp",
         "lead": "Le cuir et l'alcantara sont les deux matières où un nettoyage mal conduit fait plus de dégâts que l'encrassement qu'il prétend traiter.",
         "sections": [
             ("Le cuir ne se nettoie pas, il s'entretient", [

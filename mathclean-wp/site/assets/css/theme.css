@@ -1472,5 +1472,21 @@ html[data-profil="pro"] .cta-band{
   background:linear-gradient(135deg,#0c4b96 0,#0e5fbb 60%,#1668c8 100%);
 }
 
+/* Illustration d'un sommaire : une seule photo, legendee, jamais pleine largeur.
+   La legende dit ce que montre l'image — c'est elle qui fait le lien avec la
+   liste de liens qui suit. */
+.hub-photo{margin:0}
+.hub-photo img{
+  width:100%;border-radius:var(--radius-lg);border:1px solid var(--line);
+  aspect-ratio:820/620;object-fit:cover;
+  /* Les deux photos sont verticales et l'information est en haut du cadre :
+     la hotte et son bâchage, la brosse posée sur le vitrage. Un recadrage
+     centré coupait précisément ça. */
+  object-position:center 22%;
+}
+.hub-photo figcaption{
+  margin-top:.8rem;font-size:.92rem;color:var(--muted);line-height:1.5;
+}
+
 /* Le choix reste lisible dans la barre du haut quelle que soit la page. */
 .parcours a.is-on{font-weight:700}

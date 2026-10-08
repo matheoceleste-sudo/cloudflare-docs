@@ -6889,10 +6889,25 @@ def build_hub_hp():
 
 # --- Sommaires -------------------------------------------------------------
 def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
-         client="", action="devis"):
-    """Sommaire d'une famille de pages. `blocs` = [(titre, intro, [(href, lib)])]."""
+         client="", action="devis", photo=None, photo_alt=""):
+    """Sommaire d'une famille de pages. `blocs` = [(titre, intro, [(href, lib)])].
+
+    `photo` est facultative : un sommaire est d'abord une liste de liens, et
+    une illustration sans rapport y ferait plus de mal que de bien. Elle n'est
+    posée que là où une photo montre vraiment le travail de la famille."""
     base = ""
     sections = ""
+    if photo:
+        sections += f"""
+<section class="section section-sm">
+  <div class="container container-narrow">
+    <figure class="hub-photo">
+      <img src="{base}assets/photos/{photo}" alt="{photo_alt}"
+           loading="lazy" width="820" height="620">
+      <figcaption>{photo_alt}</figcaption>
+    </figure>
+  </div>
+</section>"""
     for i, (titre, intro, entrees) in enumerate(blocs):
         lis = "".join('<li><a href="%s">%s</a></li>' % (h, lb) for h, lb in entrees)
         soft = " section-soft" if i % 2 else ""
@@ -6956,7 +6971,10 @@ def build_hub_hottes():
         "Dégraissage de hotte, de filtres et de conduits d'extraction à Paris et en "
         "Île-de-France. Par métier et par commune, avec le cadre réglementaire.",
         "Nettoyage de hottes et de conduits — Paris et IDF",
-        client="pro")
+        client="pro",
+        photo="hotte-bachee.webp",
+        photo_alt=("Hotte de cuisine professionnelle bâchée et bacs de récupération "
+                   "en place avant le dégraissage du caisson et des filtres"))
 
 
 def build_hub_vitres():
@@ -6984,7 +7002,10 @@ def build_hub_vitres():
         "Vitrines, façades accessibles depuis le sol et vitrages intérieurs à l'eau "
         "déminéralisée. Par métier et par commune, à Paris et en Île-de-France.",
         "Vitrerie professionnelle — Paris et Île-de-France",
-        client="pro")
+        client="pro",
+        photo="vitrerie-perche.webp",
+        photo_alt=("Nettoyage d'une façade vitrée à la perche télescopique alimentée en eau "
+                   "déminéralisée, depuis le sol et sans échafaudage"))
 
 
 def build_hub_menage():
