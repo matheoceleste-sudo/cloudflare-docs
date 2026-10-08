@@ -37,6 +37,7 @@ from content import (
     VILLES_PRO, VILLES_APPART, DOSSIERS,
     RESTAURANT_PERIMETRE, RESTAURANT_LIMITES,
     SURFACES_HP, HP_PERIMETRE, HP_LIMITES,
+    HOTTE_RISQUE, HOTTE_PROPAGATION, HOTTE_OBLIGATIONS,
     HOTTE_PERIMETRE, HOTTE_LIMITES, HOTTE_REGLEMENT,
     VITRES_PERIMETRE, VITRES_LIMITES,
 )
@@ -2740,10 +2741,12 @@ def build_professionnels():
         nous n'avons pas.</li>
       <li><strong>Les travaux sur un réseau d'extraction.</strong> Nous dégraissons et nous
         ramonons hotte, filtres et conduits ; la pose d'une trappe de visite, la modification
-        d'un tracé ou le remplacement d'un moteur relèvent d'un installateur. Nous ne
-        délivrons pas non plus d'attestation de conformité : nous remettons un relevé daté de
-        ce que nous avons fait, destiné à votre
-        <a href="dossiers/obligation-nettoyage-hotte-restaurant.html">livret d'entretien</a>.</li>
+        d'un tracé ou le remplacement d'un moteur relèvent d'un installateur.</li>
+      <li><strong>La vérification annuelle de l'article GC 22.</strong> Elle revient à un
+        technicien compétent ou à un organisme agréé. Nous délivrons l'attestation de nettoyage
+        et d'entretien de la hotte et des conduits, qui se range dans votre
+        <a href="dossiers/obligation-nettoyage-hotte-restaurant.html">livret d'entretien</a> —
+        elle dit ce que nous avons fait, elle ne remplace pas cette vérification.</li>
       <li><strong>La désinsectisation et la dératisation.</strong> Elles relèvent d'agréments
         spécifiques que nous ne détenons pas.</li>
       <li><strong>Le travail en hauteur au-delà de trois niveaux.</strong> Au-delà, il faut
@@ -5342,13 +5345,22 @@ avec sa contrainte technique propre (dépôt dominant, rythme, horaire d'accès)
 
 ## Cadre réglementaire cité (hottes)
 Arrêté du 25 juin 1980, article GC 21, pour les établissements recevant du public
-dotés de grandes cuisines : filtres nettoyés ou remplacés au moins une fois par
-semaine ; ramonage des conduits d'évacuation au moins une fois par an avec
-vérification de leur vacuité ; nettoyage du circuit d'extraction aussi souvent que
-nécessaire ; dates notées par l'exploitant dans un livret d'entretien annexé au
-registre de sécurité.
-MathClean ne délivre ni attestation de conformité ni certificat : l'intervention
-donne lieu à un relevé daté et détaillé, destiné à ce livret.
+dotés de grandes cuisines, section 7 « Entretien et vérifications ».
+Article GC 21 : filtres nettoyés ou remplacés au moins une fois par semaine ;
+ramonage des conduits d'évacuation au moins une fois par an avec vérification de
+leur vacuité ; nettoyage du circuit d'extraction aussi souvent que nécessaire ;
+dates notées par l'exploitant dans un livret d'entretien annexé au registre de
+sécurité.
+Article GC 22 : vérification annuelle des installations de cuisson dans les
+établissements des quatre premières catégories, par un technicien compétent ou un
+organisme agréé, portant notamment sur l'état d'entretien des appareils et sur la
+ventilation des locaux, consignée au registre de sécurité. La 5e catégorie relève
+de l'arrêté du 22 juin 1990.
+MathClean délivre une attestation de nettoyage et d'entretien de hotte, datée et
+détaillée, destinée au livret d'entretien. Elle ne vaut ni attestation de
+conformité de l'installation, ni vérification annuelle au titre de GC 22, qui est
+une prestation distincte relevant d'un technicien compétent ou d'un organisme
+agréé.
 
 ## Dossiers techniques
 {dossiers}
@@ -5498,6 +5510,80 @@ def _faq_section(titre, faq, group_id):
 </section>"""
 
 
+
+def bloc_risque_incendie(base, sec_ou_ville=""):
+    """Risque d'incendie et obligations de l'exploitant, sur les pages hottes."""
+    cartes = "".join(
+        '<div class="step reveal"><h3>%s</h3><p>%s</p></div>' % (t, d)
+        for t, d in HOTTE_RISQUE)
+    return f"""<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Pourquoi cela compte</span>
+      <h2>La graisse d'un conduit n'est pas de la saleté,<br>c'est un combustible</h2>
+      <p class="lead">
+        Un feu de conduit demande trois éléments. Dans une cuisine professionnelle, deux sont
+        déjà réunis en permanence — il ne manque que le troisième.
+      </p>
+    </div>
+    <div class="steps">{cartes}</div>
+    <div class="container-narrow" style="margin-top:2.4rem">
+      {_paras(HOTTE_PROPAGATION)}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Vos obligations</span>
+        <h2>Ce que vous devez pouvoir présenter</h2>
+        <p>
+          Lors d'une visite de sécurité, et surtout après un sinistre, ce sont les dates qui
+          sont regardées. Un livret vide a le même effet qu'un entretien non fait.
+        </p>
+        {_ul(HOTTE_OBLIGATIONS)}
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le texte</span>
+        <h2>Arrêté du 25 juin 1980, articles GC 21 et GC 22</h2>
+        <p>{HOTTE_REGLEMENT}</p>
+        <p class="field-hint" style="margin-top:1.2rem">
+          Applicable aux établissements recevant du public dotés de grandes cuisines, c'est-à-dire
+          dès que la puissance utile totale des appareils de cuisson et de remise en température
+          dépasse 20 kW.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">Ce que nous remettons</span>
+      <h2>Une attestation de nettoyage et d'entretien</h2>
+    </div>
+    <div class="prose-block">
+      <p>
+        À l'issue de l'intervention, vous recevez une attestation datée et détaillée : les zones
+        traitées, les trappes de visite ouvertes, la longueur de conduit reprise, l'état constaté
+        avant, et le résultat de l'essai d'extraction après remontage. Elle se range dans le
+        livret d'entretien annexé à votre registre de sécurité.
+      </p>
+      <p>
+        <strong>Elle dit ce que nous avons fait.</strong> Elle ne vaut ni attestation de
+        conformité de votre installation, ni vérification annuelle au titre de l'article GC 22 —
+        celle-ci revient à un technicien compétent ou à un organisme agréé, et c'est une
+        prestation distincte de la nôtre. Un prestataire de nettoyage qui vous promet les deux
+        dans le même document vous vend une couverture que vous n'avez pas.
+      </p>
+    </div>
+  </div>
+</section>"""
+
+
 # --- Hottes : par secteur d'activité ---------------------------------------
 def build_hotte_secteur(sec):
     base = "../"
@@ -5568,10 +5654,13 @@ def build_hotte_secteur(sec):
   <div class="container">
     <div class="split">
       <div class="reveal">
-        <span class="eyebrow">Le cadre</span>
-        <h2>Ce que la réglementation demande</h2>
-        <p>{HOTTE_REGLEMENT}</p>
-        <p><strong>Le rythme conseillé {sec['dans']} :</strong> {sec['rythme']}</p>
+        <span class="eyebrow">Le rythme</span>
+        <h2>À quelle fréquence {sec['dans']}</h2>
+        <p>{sec['rythme']}</p>
+        <p>
+          Le ramonage annuel des conduits est un plancher réglementaire, pas une
+          recommandation : le détail du texte est plus bas sur cette page.
+        </p>
       </div>
       <div class="reveal">
         <span class="eyebrow">Organisation</span>
@@ -5583,6 +5672,8 @@ def build_hotte_secteur(sec):
     </div>
   </div>
 </section>
+
+{bloc_risque_incendie(base)}
 
 {_bloc_limites("Ce que nous ne faisons pas", HOTTE_LIMITES)}
 
@@ -5699,15 +5790,15 @@ def build_hotte_ville(v):
         <p>{v['acces']}</p>
       </div>
       <div class="reveal">
-        <span class="eyebrow">Le cadre</span>
-        <h2>Ce que la réglementation demande</h2>
-        <p>{HOTTE_REGLEMENT}</p>
-        <h3 style="margin-top:1.6rem">Ce que comprend l'intervention</h3>
-        {_ul(HOTTE_PERIMETRE, style="margin-top:1rem")}
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend l'intervention</h2>
+        {_ul(HOTTE_PERIMETRE)}
       </div>
     </div>
   </div>
 </section>
+
+{bloc_risque_incendie(base)}
 
 {_bloc_limites("Ce que nous ne faisons pas", HOTTE_LIMITES)}
 

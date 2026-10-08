@@ -2352,7 +2352,7 @@ GUIDES = [
                 "Remise en état : reprise complète d'un local avant ouverture, après travaux ou en fin de bail commercial.",
             ]),
             ('Ce que nous ne faisons pas, et pourquoi', [
-                "<strong>Le dégraissage certifié des hottes et conduits d'extraction.</strong> C'est une obligation d'entretien liée au risque incendie, que les assureurs contrôlent et qui donne lieu à un certificat délivré par une entreprise spécialisée. Nous dégraissons les surfaces et les filtres accessibles ; le conduit et le certificat relèvent d'un autre métier.",
+                "<strong>La vérification annuelle des installations de cuisson.</strong> L'article GC 22 de l'arrêté du 25 juin 1980 la confie à un technicien compétent ou à un organisme agréé. Nous dégraissons la hotte, les filtres et les conduits, et nous en délivrons l'attestation ; cette vérification-là est une autre prestation, et elle ne se remplace pas par un nettoyage.",
                 '<strong>La désinsectisation et la dératisation.</strong> Ce sont des activités réglementées, avec agrément et produits biocides soumis à autorisation. Nous ne les pratiquons pas et nous ne masquons pas un problème de nuisibles par un nettoyage.',
                 "<strong>Le plan de maîtrise sanitaire HACCP.</strong> Nous pouvons exécuter des tâches qui s'y inscrivent, mais nous ne délivrons pas d'attestation de conformité sanitaire.",
                 "Vous dire non sur ces trois points nous coûte des prestations. Cela vous évite surtout de croire couvert un risque qui ne l'est pas.",
@@ -2360,7 +2360,7 @@ GUIDES = [
         ],
         "faq": [
             ('Nettoyez-vous les hottes de cuisine professionnelle ?',
-             "Nous dégraissons les surfaces et les filtres accessibles. Le dégraissage du conduit d'extraction avec certificat, exigé par les assureurs au titre du risque incendie, relève d'une entreprise certifiée : ce n'est pas notre métier."),
+             "Oui, c'est devenu l'une de nos prestations principales : hotte, filtres et conduits d'extraction, par les trappes de visite, avec remontage et essai d'extraction. Vous recevez une attestation de nettoyage et d'entretien datée, à ranger dans le livret annexé à votre registre de sécurité."),
             ('Intervenez-vous après le service, tard le soir ?',
              "Oui, et tôt le matin, sept jours sur sept, sans supplément. Le temps de séchage des sols conditionne l'heure autant que vos horaires d'ouverture."),
             ('Traitez-vous les banquettes en tissu ?',
@@ -2879,7 +2879,7 @@ GUIDES = [
                 "Le point que presque personne ne connaît concerne les filtres. La plupart des filtres à chocs de hotte sont en <strong>aluminium</strong>, et l'aluminium est un métal amphotère : il est attaqué aussi bien par les acides forts que par les bases fortes. Un dégraissant four très alcalin — au-delà de pH 11, souvent à base de soude — noircit un filtre aluminium, le pique et le rend friable. Le filtre ressort propre et détruit.",
                 "Nous traitons donc les filtres aluminium avec un dégraissant modérément alcalin et un trempage tiède, pas avec un décapant four. Les filtres inox, eux, tolèrent un alcalin plus soutenu, et c'est encore un cas où identifier le métal commande le produit.",
                 "Sur la hotte elle-même, le caisson et la surface visible sont presque toujours en inox : tout ce qui précède s'applique, et notamment l'interdiction du chloré. Un dégraissant chloré sur une hotte revient à la faire rouiller pour la nettoyer.",
-                "Enfin, une précision de périmètre que nous répétons volontiers : nous dégraissons les surfaces, les caissons et les filtres accessibles. Le dégraissage du <strong>conduit d'extraction</strong> d'une cuisine professionnelle, avec le certificat exigé par les assureurs au titre du risque incendie, relève d'une entreprise certifiée. Ce n'est pas notre métier, et nous ne le facturons pas.",
+                "Le conduit d'extraction obéit aux mêmes règles de produit, avec une difficulté en plus : on y travaille à l'aveugle, par les trappes de visite. Sur un dépôt polymérisé par des années de chaleur, un alcalin à temps de pose ne suffit pas en une passe, et la suie d'un four à bois ne se dissout pas du tout — elle se décolle à la brosse. C'est la raison pour laquelle dégraissage chimique et ramonage mécanique sont deux opérations distinctes, et pourquoi une cuisine au feu de bois a besoin des deux.",
             ]),
             ('Les fibres qui ne tolèrent pas l\'alcalinité', [
                 "La laine et la soie sont des fibres protéiniques, faites de kératine et de fibroïne. Au-delà de pH 8, la structure de la fibre se dégrade : la laine ternit, se feutre et perd sa résistance ; la soie perd son brillant de façon définitive.",
@@ -4201,7 +4201,10 @@ SECTEURS_HOTTE = [
             "Deux à trois passages par an selon le nombre de services, le circuit étant court et donc vite saturé.",
         "contrainte":
             "Intervention sur votre lieu de stationnement, en autonomie complète d'eau et d'électricité : nous n'avons besoin "
-            "d'aucun raccordement sur place.",
+            "d'aucun raccordement sur place. À noter : une cuisine installée dans un module ou un "
+            "conteneur spécialisé relève de l'article GC 18 de l'arrêté du 25 juin 1980 pour ses "
+            "conditions d'installation — un article distinct de GC 21 et GC 22, qui eux portent "
+            "sur l'entretien et la vérification.",
         "faq": ("Faut-il amener le camion quelque part ?",
                 "Non. Nous venons là où il stationne, avec notre eau et notre électricité. C'est précisément le mode de travail "
                 "que nous pratiquons sur toutes nos autres prestations."),
@@ -5730,9 +5733,13 @@ VILLES_APPART = [
 # de leur vacuité, nettoyage ou remplacement des filtres, livret d'entretien
 # annexé au registre de sécurité. Rien n'y est ajouté.
 #
-# Aucun dossier ne promet d'attestation ni de certificat : ce qui est remis à
-# l'issue d'une intervention est un relevé daté et détaillé, destiné à être
-# rangé dans le livret d'entretien que l'exploitant tient lui-même.
+# L'attestation remise à l'issue d'une intervention est une attestation de
+# nettoyage et d'entretien : elle décrit ce que MathClean a fait, datée et
+# détaillée, et se range dans le livret d'entretien que l'exploitant tient.
+# Elle ne vaut pas attestation de conformité de l'installation, ni
+# vérification annuelle GC 22 — qui relève d'un technicien compétent ou d'un
+# organisme agréé. Cette distinction est tenue partout : la confondre serait
+# vendre une couverture que le client n'a pas.
 DOSSIERS = [
     {
         "slug": "obligation-nettoyage-hotte-restaurant",
@@ -5751,11 +5758,12 @@ DOSSIERS = [
             ("Le texte applicable", [
                 "L'obligation ne vient pas d'une recommandation de la profession mais d'un texte : "
                 "l'arrêté du 25 juin 1980 portant règlement de sécurité contre l'incendie et la "
-                "panique dans les établissements recevant du public. C'est son article GC 21 qui "
-                "traite de l'entretien des installations de cuisson, et il s'applique aux "
-                "établissements dotés de grandes cuisines, c'est-à-dire à la très grande majorité "
-                "des restaurants, brasseries, boulangeries et cuisines collectives recevant du "
-                "public.",
+                "panique dans les établissements recevant du public. Sa section 7, « Entretien et "
+                "vérifications », tient en deux articles — GC 21 pour l'entretien, GC 22 pour la "
+                "vérification — et s'applique aux établissements dotés de grandes cuisines, "
+                "c'est-à-dire dès que la puissance utile totale des appareils de cuisson et de "
+                "remise en température dépasse 20 kW. Cela couvre la très grande majorité des "
+                "restaurants, brasseries, boulangeries et cuisines collectives recevant du public.",
                 "Le texte distingue trois opérations distinctes, et c'est cette distinction qui est "
                 "le plus souvent perdue : le nettoyage des filtres, le nettoyage du circuit "
                 "d'extraction, et le ramonage des conduits d'évacuation. Elles n'ont ni la même "
@@ -5782,16 +5790,38 @@ DOSSIERS = [
                 "où sont notées les dates des opérations. C'est l'exploitant qui le tient, et c'est "
                 "lui qui le présente en cas de contrôle.",
             ]),
+            ("L'article GC 22 : la vérification annuelle, qui est autre chose", [
+                "C'est le second article de la section 7, et il est régulièrement confondu avec le "
+                "premier. Dans les établissements des quatre premières catégories, les "
+                "installations de cuisson font l'objet d'une vérification annuelle par un "
+                "technicien compétent ou un organisme agréé. Elle porte notamment sur l'état "
+                "d'entretien des appareils et sur la ventilation des locaux : évacuation de l'air "
+                "vicié, des buées et des graisses, et fonctionnement du dispositif d'extraction. "
+                "Elle est consignée au registre de sécurité.",
+                "Les établissements classés en 5<sup>e</sup> catégorie — la plupart des petits "
+                "restaurants — relèvent d'un autre régime, celui de l'arrêté du 22 juin 1990. "
+                "Vérifiez votre catégorie avant d'appliquer l'un ou l'autre : c'est la première "
+                "question à poser à votre service de prévention.",
+                "Retenez la différence, parce qu'elle décide de qui vous devez appeler. GC 21, "
+                "c'est faire nettoyer. GC 22, c'est faire vérifier. Un dégraissage ne remplace pas "
+                "une vérification, et une vérification ne nettoie rien.",
+            ]),
             ("Ce que nous remettons après l'intervention", [
-                "Un relevé daté et détaillé : la date, les zones traitées — hotte, filtres, "
-                "plénum, trappes ouvertes, longueur de conduit reprise —, l'état constaté avant, et "
-                "l'essai d'extraction après remontage. Ce document est fait pour être rangé dans "
-                "votre livret d'entretien.",
-                "Nous ne délivrons pas de certificat de conformité et nous nous méfions de ceux qui "
-                "en promettent : la conformité d'une installation ne se juge pas sur un dégraissage, "
-                "elle se juge sur l'installation elle-même, et ce n'est pas le métier d'un "
-                "prestataire de nettoyage. Ce que nous pouvons attester, c'est ce que nous avons "
-                "fait, où, et quand.",
+                "Une attestation de nettoyage et d'entretien de hotte, datée et détaillée : les "
+                "zones traitées — hotte, filtres, plénum —, les trappes de visite ouvertes, la "
+                "longueur de conduit reprise, l'état constaté avant, et le résultat de l'essai "
+                "d'extraction après remontage. Elle se range dans le livret d'entretien annexé à "
+                "votre registre de sécurité, et c'est elle que votre assureur demande après un "
+                "sinistre.",
+                "Cette attestation dit ce que nous avons fait, où et quand. Elle ne vaut pas "
+                "attestation de conformité de votre installation : la conformité ne se juge pas "
+                "sur un dégraissage, elle se juge sur l'installation elle-même, et ce n'est pas le "
+                "métier d'un prestataire de nettoyage. Elle ne vaut pas davantage vérification "
+                "annuelle au titre de GC 22, qui revient à un technicien compétent ou à un "
+                "organisme agréé.",
+                "Un prestataire de nettoyage qui vous promet les trois dans le même document vous "
+                "vend une couverture que vous n'avez pas — et c'est après le sinistre que vous "
+                "vous en apercevrez.",
             ]),
             ("Le point à vérifier de votre côté", [
                 "Votre contrat d'assurance multirisque professionnelle comporte presque "
@@ -5811,6 +5841,13 @@ DOSSIERS = [
              "recommandation technique. Le texte demande en outre que le circuit d'extraction soit "
              "nettoyé « aussi souvent que nécessaire », ce qui veut dire deux passages par an dans "
              "la plupart des restaurants, et davantage en friture, grillade ou four à bois."),
+            ("Quelle différence entre GC 21 et GC 22 ?",
+             "GC 21 impose l'entretien : filtres chaque semaine, ramonage annuel des conduits, "
+             "nettoyage du circuit aussi souvent que nécessaire. GC 22 impose une vérification "
+             "annuelle des installations de cuisson par un technicien compétent ou un organisme "
+             "agréé, consignée au registre de sécurité. Le premier, c'est faire nettoyer ; le "
+             "second, faire vérifier. Nous assurons le premier et nous en délivrons l'attestation ; "
+             "le second est une prestation distincte, que nous ne réalisons pas."),
             ("Qui peut me demander mon livret d'entretien ?",
              "Les services de contrôle compétents lors d'une visite de sécurité de l'établissement, "
              "et votre assureur en cas de sinistre. Dans les deux cas, ce sont les dates qui sont "
@@ -6548,9 +6585,16 @@ HOTTE_PERIMETRE = (
 )
 
 HOTTE_LIMITES = (
-    "Nous ne délivrons ni attestation de conformité ni certificat : nous remettons un relevé "
-    "daté de ce que nous avons fait, où et quand. C'est ce document qui se range dans le livret "
-    "d'entretien annexé à votre registre de sécurité, que vous tenez vous-même.",
+    "Nous délivrons une attestation de nettoyage et d'entretien de hotte, datée et détaillée : "
+    "ce qui a été traité, sur quelle longueur de conduit, quelles trappes ont été ouvertes, "
+    "l'état constaté avant et le résultat de l'essai d'extraction. Elle se range dans le livret "
+    "d'entretien annexé à votre registre de sécurité, et c'est elle que votre assureur demande "
+    "après un sinistre.",
+    "Cette attestation dit ce que nous avons fait. Elle ne vaut ni attestation de conformité de "
+    "votre installation, ni vérification annuelle au titre de l'article GC 22 : celle-ci relève "
+    "d'un technicien compétent ou d'un organisme agréé, et c'est une prestation distincte de la "
+    "nôtre. Méfiez-vous d'un prestataire de nettoyage qui vous promet les deux dans le même "
+    "document.",
     "Nous n'intervenons pas sur le réseau : pose de trappe de visite, modification de tracé, "
     "remplacement de moteur relèvent d'un installateur. Nous constatons et nous vous orientons, "
     "sans rien vendre là-dessus.",
@@ -6561,12 +6605,20 @@ HOTTE_LIMITES = (
 
 HOTTE_REGLEMENT = (
     "Le texte applicable est l'arrêté du 25 juin 1980 portant règlement de sécurité contre "
-    "l'incendie dans les établissements recevant du public, article GC 21, pour les "
-    "établissements dotés de grandes cuisines. Il demande trois choses distinctes : des filtres "
-    "nettoyés ou remplacés au moins une fois par semaine, un ramonage des conduits d'évacuation "
-    "au moins une fois par an avec vérification de leur vacuité, et un nettoyage du circuit "
-    "d'extraction aussi souvent que nécessaire. Les dates sont notées par l'exploitant dans un "
-    "livret d'entretien annexé au registre de sécurité."
+    "l'incendie dans les établissements recevant du public. Sa section 7, « Entretien et "
+    "vérifications », tient en deux articles.<br><br>"
+    "<strong>Article GC 21 — l'entretien.</strong> Les filtres sont nettoyés ou remplacés au "
+    "moins une fois par semaine. Les conduits d'évacuation sont ramonés au moins une fois par "
+    "an, et leur vacuité vérifiée à cette occasion. Le circuit d'extraction est nettoyé aussi "
+    "souvent que nécessaire. Les dates sont notées par l'exploitant dans un livret d'entretien "
+    "annexé au registre de sécurité.<br><br>"
+    "<strong>Article GC 22 — la vérification.</strong> Dans les établissements des quatre "
+    "premières catégories, les installations de cuisson font l'objet d'une vérification "
+    "annuelle par un technicien compétent ou un organisme agréé. Elle porte notamment sur "
+    "l'état d'entretien des appareils et sur la ventilation des locaux : évacuation de l'air "
+    "vicié, des buées et des graisses, et fonctionnement du dispositif d'extraction. Elle est "
+    "consignée au registre de sécurité. Les établissements de 5<sup>e</sup> catégorie relèvent "
+    "d'un autre régime, celui de l'arrêté du 22 juin 1990."
 )
 
 VITRES_PERIMETRE = (
@@ -8059,4 +8111,51 @@ HP_LIMITES = (
     "refusons le chantier plutôt que de vous laisser avec une surface à refaire.",
     "Pas de rejet d'eaux chargées d'hydrocarbures au réseau pluvial. Sur un parking ou un quai, "
     "nous vérifions l'existence et l'état du séparateur avant de chiffrer.",
+)
+
+
+# ---------------------------------------------------------------------------
+# RISQUE INCENDIE ET OBLIGATIONS — bloc commun aux pages hottes
+# ---------------------------------------------------------------------------
+# Trois éléments et un seul manque rarement. C'est le mécanisme qu'il faut
+# expliquer, pas la peur qu'il faut vendre : un exploitant qui comprend
+# pourquoi son conduit brûle fait nettoyer, celui à qui on fait peur change
+# de prestataire.
+HOTTE_RISQUE = (
+    ("Un combustible",
+     "La graisse vaporisée par la cuisson condense sur les parois dès que l'air refroidit, et "
+     "se polymérise à chaque reprise en chauffe. Elle devient dure, sèche et adhérente : ce "
+     "n'est plus de la saleté, c'est un combustible."),
+    ("Un comburant, en mouvement",
+     "L'air circule en permanence dans le conduit, et en quantité. Un feu qui démarre là "
+     "dispose d'exactement ce qu'il lui faut pour se développer, sans que rien ne le freine."),
+    ("Une source d'allumage",
+     "Une flamme de piano qui monte, un flambage, une friteuse en surchauffe, une étincelle. "
+     "Des trois éléments, c'est le seul qui soit accidentel — les deux autres sont déjà là."),
+)
+
+HOTTE_PROPAGATION = (
+    "Ce qui distingue un feu de conduit d'un feu de cuisine, c'est le chemin. Le conduit est un "
+    "volume fermé, étroit et ventilé, qui traverse les planchers jusqu'en toiture. Le feu y "
+    "progresse à l'abri des regards, chauffe les parois sur son passage, et peut ressortir à "
+    "plusieurs étages de la cuisine. C'est pour cette raison que le texte réglementaire "
+    "s'intéresse aux conduits et pas seulement aux hottes.",
+    "Un feu de graisse ne s'éteint pas à l'eau : projetée dessus, elle se vaporise "
+    "instantanément et disperse le combustible. C'est une donnée que toute équipe de cuisine "
+    "devrait connaître avant d'en avoir besoin, et un extincteur de classe F doit être à portée.",
+)
+
+# Ce que l'exploitant doit pouvoir présenter. Formulé comme une liste de
+# contrôle : c'est ainsi qu'il s'en servira, et c'est ce qui déclenche l'appel.
+HOTTE_OBLIGATIONS = (
+    "Des filtres nettoyés ou remplacés au moins une fois par semaine — c'est votre équipe, "
+    "et c'est le geste le plus rentable de tout le dispositif",
+    "Un ramonage des conduits d'évacuation au moins une fois par an, vacuité vérifiée",
+    "Un circuit d'extraction nettoyé aussi souvent que nécessaire : une à trois fois par an "
+    "selon votre mode de cuisson dominant",
+    "Un livret d'entretien annexé au registre de sécurité, où les dates sont portées",
+    "Une vérification annuelle des installations de cuisson (article GC 22), par un technicien "
+    "compétent ou un organisme agréé, consignée au registre",
+    "Une clause d'entretien dans votre contrat d'assurance multirisque : à lire avant le "
+    "sinistre, pas après",
 )

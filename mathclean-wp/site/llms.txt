@@ -85,13 +85,22 @@ avec sa contrainte technique propre (dépôt dominant, rythme, horaire d'accès)
 
 ## Cadre réglementaire cité (hottes)
 Arrêté du 25 juin 1980, article GC 21, pour les établissements recevant du public
-dotés de grandes cuisines : filtres nettoyés ou remplacés au moins une fois par
-semaine ; ramonage des conduits d'évacuation au moins une fois par an avec
-vérification de leur vacuité ; nettoyage du circuit d'extraction aussi souvent que
-nécessaire ; dates notées par l'exploitant dans un livret d'entretien annexé au
-registre de sécurité.
-MathClean ne délivre ni attestation de conformité ni certificat : l'intervention
-donne lieu à un relevé daté et détaillé, destiné à ce livret.
+dotés de grandes cuisines, section 7 « Entretien et vérifications ».
+Article GC 21 : filtres nettoyés ou remplacés au moins une fois par semaine ;
+ramonage des conduits d'évacuation au moins une fois par an avec vérification de
+leur vacuité ; nettoyage du circuit d'extraction aussi souvent que nécessaire ;
+dates notées par l'exploitant dans un livret d'entretien annexé au registre de
+sécurité.
+Article GC 22 : vérification annuelle des installations de cuisson dans les
+établissements des quatre premières catégories, par un technicien compétent ou un
+organisme agréé, portant notamment sur l'état d'entretien des appareils et sur la
+ventilation des locaux, consignée au registre de sécurité. La 5e catégorie relève
+de l'arrêté du 22 juin 1990.
+MathClean délivre une attestation de nettoyage et d'entretien de hotte, datée et
+détaillée, destinée au livret d'entretien. Elle ne vaut ni attestation de
+conformité de l'installation, ni vérification annuelle au titre de GC 22, qui est
+une prestation distincte relevant d'un technicien compétent ou d'un organisme
+agréé.
 
 ## Dossiers techniques
 - Nettoyage de hotte en restaurant : ce que la réglementation impose : https://mathclean.fr/dossiers/obligation-nettoyage-hotte-restaurant
