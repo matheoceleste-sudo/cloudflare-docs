@@ -789,6 +789,13 @@ VIDEOS = {
                 "prestation Intérieur Prestige, filmée sur le véhicule du client. Le volant "
                 "porte encore la protection posée pendant l'intervention.",
     },
+    "appartement": {
+        "fichier": "appartement-remise-en-etat", "duree": "PT5S", "secondes": 5,
+        "nom": "Un appartement rendu après remise en état",
+        "desc": "Le résultat d'une remise en état d'appartement en Île-de-France : "
+                "parquet, plinthes, murs et menuiseries, pièce vide avant l'état des "
+                "lieux de sortie. Aucun montage, un seul plan.",
+    },
     "hp-facade": {
         "fichier": "hp-facade", "duree": "PT18S", "secondes": 18,
         "nom": "Coffret extérieur couvert de lichen, lavé à la lance",
@@ -1486,6 +1493,16 @@ VIDEO_PAR_SERVICE = {
         "<p>Regardez la cuve à la fin de la séquence&nbsp;: l'eau qui en ressort est celle "
         "qui était dans la fibre. C'est toute la différence avec un shampoing de surface, "
         "qui laisse un résidu et fait resalir le textile plus vite qu'avant.</p>"),
+    "nettoyage-appartement-paris": ("appartement",
+        "Une pièce rendue, filmée avant l'état des lieux",
+        "<p>Un seul plan, pas de montage : la pièce telle qu'elle est rendue au "
+        "locataire sortant. Parquet, plinthes, murs et menuiseries, dans un logement "
+        "vide d'Île-de-France.</p>"
+        "<p>C'est le reflet au sol qui dit le travail, pas la pièce vide&nbsp;: un "
+        "parquet essuyé reste terne, un parquet repris poste par poste renvoie la "
+        "fenêtre. L'état des lieux de sortie se joue sur ces détails-là — les angles, "
+        "les plinthes, le pourtour des prises — et c'est sur eux que se retient une "
+        "part du dépôt de garantie.</p>"),
     "nettoyage-haute-pression-paris": ("hp-facade",
         "Un support couvert de lichen, repris à la lance",
         "<p>Un coffret de jardin envahi de lichen jaune et d'algues vertes. La bande propre "

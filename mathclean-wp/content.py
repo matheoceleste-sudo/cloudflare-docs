@@ -79,8 +79,8 @@ SERVICES = [
         "meta": "Dégraissage de hotte, filtres et conduits d'extraction pour restaurants et boulangeries à Paris et en IDF. Ramonage annuel exigé par l'arrêté du 25 juin 1980.",
         "price": "sur devis",
         "excerpt": "Hotte, filtres, bac à graisse et conduits d'extraction jusqu'au ventilateur : le circuit complet, dégraissé en une intervention de nuit.",
-        "image": "intervention-1.webp",
-        "hero": "intervention-1.webp",
+        "image": "filtre-hotte-degraisse.webp",
+        "hero": "filtre-hotte-degraisse.webp",
         "icon": "tools",
         "intro": [
             "La graisse de cuisson ne reste pas sur la hotte. Elle est aspirée, se condense en remontant dans le conduit, et s'y dépose en une couche "
@@ -434,8 +434,8 @@ SERVICES = [
         "meta": "Nettoyage de vitres, baies vitrées, vérandas et vitrines à Paris et en Île-de-France. Eau osmosée, résultat sans trace. Devis gratuit, 7j/7.",
         "price": "sur devis",
         "excerpt": "Fenêtres, baies vitrées, vérandas et vitrines nettoyées à l'eau osmosée : sans minéraux, l'eau sèche sans rien déposer.",
-        "image": "vitre-controle.webp",
-        "hero": "vitre-controle.webp",
+        "image": "vitre-raclette-ciel.webp",
+        "hero": "vitre-raclette-ciel.webp",
         "icon": "window",
         "intro": [
             "Les traces sur une vitre viennent presque toujours de trois choses : l'eau du robinet, très calcaire en Île-de-France, qui dépose "
