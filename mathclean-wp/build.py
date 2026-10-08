@@ -5811,7 +5811,19 @@ def build_hotte_ville(v):
       {_liens(base, "Nettoyage de hotte dans les autres communes", autres)}
       {_liens(base, "Votre métier", secteurs
               + [("vitres/nettoyage-vitrine-%s.html" % v["slug"],
-                  "Nettoyage de vitrine %s" % a_nom)])}
+                  "Nettoyage de vitrine %s" % a_nom),
+                 ("restaurants/nettoyage-restaurant-%s.html" % v["slug"],
+                  "Nettoyage de restaurant %s" % a_nom)])}
+    </div>
+    <div class="split" style="margin-top:3rem">
+      {_liens(base, "Vos obligations, en détail",
+              [("dossiers/%s.html" % d["slug"], d["h1"])
+               for d in DOSSIERS if d["cat"] == "Hottes et extraction"])}
+      {_liens(base, "La prestation",
+              [("services/nettoyage-hottes-paris.html", "Le dégraissage de hotte en détail"),
+               ("hottes.html", "Hottes : tous les métiers et toutes les communes"),
+               ("professionnels.html", "Nos prestations pour les professionnels"),
+               ("devis.html?client=pro", "Demander un devis")])}
     </div>
   </div>
 </section>

@@ -8159,3 +8159,363 @@ HOTTE_OBLIGATIONS = (
     "Une clause d'entretien dans votre contrat d'assurance multirisque : à lire avant le "
     "sinistre, pas après",
 )
+
+
+# ---------------------------------------------------------------------------
+# DOSSIERS HOTTES — second ensemble
+# ---------------------------------------------------------------------------
+# Quatre pages sur les questions que se pose un exploitant au moment où il
+# décide, et que les sites concurrents traitent mal : l'attestation, ce que
+# l'assureur peut réellement refuser, ce qu'un contrôle regarde, et l'état du
+# conduit au moment d'une reprise de local.
+#
+# Point de fond, vérifié et utilisé dans la première de ces pages : avant
+# l'arrêté du 10 octobre 2005, l'entretien figurait à l'article GC 18, dans
+# une section « Entretien et vérification ». Depuis cette réorganisation du
+# chapitre X, l'entretien est à GC 21 et la vérification à GC 22 ; GC 18 est
+# devenu l'article des modules ou conteneurs spécialisés, et son point h
+# renvoie lui-même à GC 21 pour l'entretien. Les prestataires qui citent
+# encore GC 18 pour l'entretien travaillent sur un texte d'avant 2005.
+DOSSIERS += [
+    {
+        "slug": "attestation-degraissage-hotte",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Attestation de dégraissage de hotte : ce qu'elle prouve, ce qu'elle ne prouve pas",
+        "title": "Attestation de dégraissage de hotte : ce qu'elle vaut",
+        "meta": "Ce que doit contenir une attestation de dégraissage, ce qu'elle ne couvre pas, "
+                "et pourquoi certains prestataires citent encore l'article GC 18.",
+        "lead": "Trois documents différents circulent sous le même mot. Savoir lequel vous avez "
+                "en main décide de ce que vous pourrez présenter le jour où on vous le demande.",
+        "cle": "Une attestation de nettoyage dit ce qui a été fait. Elle n'atteste pas la "
+               "conformité de l'installation.",
+        "sections": [
+            ("Trois documents, trois portées", [
+                "<strong>L'attestation de nettoyage et d'entretien</strong> est délivrée par "
+                "l'entreprise qui a nettoyé. Elle décrit son intervention : la date, les zones "
+                "traitées, les trappes ouvertes, la longueur de conduit reprise. C'est une "
+                "déclaration du prestataire sur son propre travail, et c'est le document que nous "
+                "remettons.",
+                "<strong>Le rapport de vérification de l'article GC 22</strong> est tout autre "
+                "chose. Il émane d'un technicien compétent ou d'un organisme agréé, porte sur "
+                "l'état d'entretien des appareils et sur la ventilation des locaux, et se fait une "
+                "fois par an dans les établissements des quatre premières catégories. Ce n'est pas "
+                "un prestataire de nettoyage qui l'établit.",
+                "<strong>L'attestation de conformité de l'installation</strong> porte sur le "
+                "réseau lui-même : section, tracé, matériaux, recoupements. Elle relève de celui "
+                "qui a conçu ou vérifié l'installation, pas de celui qui l'a nettoyée. Un "
+                "dégraissage ne dit rien de la conformité d'un conduit — il dit seulement qu'il "
+                "est propre.",
+                "Confondre les trois est l'erreur la plus répandue du secteur, et elle se paie au "
+                "moment où l'on en a besoin : le jour d'un contrôle, ou après un sinistre.",
+            ]),
+            ("Ce qu'une attestation sérieuse doit porter", [
+                "La date, et l'identité de l'entreprise avec son SIRET. Sans cela, le document ne "
+                "vaut rien aux yeux d'un expert.",
+                "Le détail de ce qui a été traité, et non une formule générale. « Nettoyage de "
+                "hotte » ne dit pas si le conduit a été ouvert. Nous écrivons les zones une par "
+                "une : hotte, filtres, plénum, caisson du moteur, et la longueur de conduit "
+                "reprise avec les trappes de visite ouvertes.",
+                "L'état constaté avant intervention. C'est ce qui donne sa valeur au document : "
+                "une attestation qui ne décrit pas l'état de départ ne prouve pas grand-chose.",
+                "Le résultat de l'essai d'extraction après remontage, qui établit que "
+                "l'installation a été rendue en état de fonctionner.",
+                "Ce qui n'a pas pu être fait, le cas échéant, et pourquoi. Une ligne de conduit "
+                "sans trappe intermédiaire ne peut pas être traitée sur toute sa longueur : "
+                "l'écrire protège l'exploitant autant que le prestataire.",
+            ]),
+            ("Le piège des numéros d'articles", [
+                "Vous verrez beaucoup de prestataires citer l'article <strong>GC 18</strong> comme "
+                "fondement de l'obligation de dégraissage. Ils ne sont pas de mauvaise foi : "
+                "c'était exact. Dans la version d'origine de l'arrêté du 25 juin 1980, l'entretien "
+                "figurait bien à GC 18, dans une section intitulée « Entretien et vérification ».",
+                "L'arrêté du 10 octobre 2005 a réorganisé le chapitre X. Depuis, l'entretien est à "
+                "l'article <strong>GC 21</strong> et la vérification annuelle à l'article "
+                "<strong>GC 22</strong>, réunis dans la section 7. L'article GC 18, lui, est devenu "
+                "celui des modules ou conteneurs spécialisés — les cuisines installées en module ou "
+                "en conteneur — et il renvoie d'ailleurs lui-même à GC 21 pour l'entretien.",
+                "Ce n'est pas un détail de juriste. Un prestataire qui vous cite encore GC 18 pour "
+                "l'entretien travaille sur un texte d'avant 2005, et cela vous dit quelque chose "
+                "sur la fraîcheur du reste de son information. Demandez-lui la section 7.",
+            ]),
+            ("Ce que vous en faites", [
+                "L'attestation se range dans le livret d'entretien annexé à votre registre de "
+                "sécurité. C'est l'exploitant qui tient ce livret, et c'est lui qui le présente — "
+                "le prestataire ne le fait pas à sa place.",
+                "Gardez-les toutes, et dans l'ordre. Ce qui est regardé, en contrôle comme après "
+                "un sinistre, ce n'est pas la dernière attestation : c'est la régularité de la "
+                "série. Trois attestations espacées de six mois disent quelque chose qu'une seule, "
+                "datée de la semaine dernière, ne dit pas.",
+            ]),
+        ],
+        "faq": [
+            ("L'attestation de dégraissage est-elle obligatoire ?",
+             "Le texte n'impose pas une « attestation » sous ce nom : il impose que les dates des "
+             "opérations soient notées dans un livret d'entretien annexé au registre de sécurité. "
+             "L'attestation du prestataire est ce qui permet de le tenir avec des preuves plutôt "
+             "qu'avec des souvenirs, et c'est elle que l'on vous demandera de produire."),
+            ("Mon prestataire me parle de l'article GC 18, est-ce faux ?",
+             "C'était exact avant l'arrêté du 10 octobre 2005, qui a réorganisé le chapitre X. "
+             "Depuis, l'entretien est à GC 21 et la vérification annuelle à GC 22. GC 18 traite "
+             "désormais des modules ou conteneurs spécialisés. Citer GC 18 pour l'entretien n'est "
+             "pas malhonnête, c'est simplement périmé."),
+            ("Pouvez-vous délivrer l'attestation si c'est mon équipe qui nettoie ?",
+             "Non. Nous n'attestons que ce que nous avons fait nous-mêmes — c'est tout l'intérêt "
+             "du document. Le nettoyage hebdomadaire des filtres par votre équipe, en revanche, se "
+             "note directement au livret d'entretien : c'est prévu ainsi, et cela n'a pas besoin "
+             "d'un prestataire."),
+        ],
+    },
+    {
+        "slug": "assurance-incendie-cuisine-hotte",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Incendie de cuisine : ce que votre assureur peut vraiment refuser",
+        "title": "Incendie de cuisine : ce que l'assureur peut refuser",
+        "meta": "Exclusion formelle et limitée, aggravation du risque, règle proportionnelle : ce "
+                "que le droit des assurances permet réellement, sans les raccourcis du secteur.",
+        "lead": "« Sans attestation, vous n'êtes pas couvert » : la phrase est partout, et elle "
+                "est fausse. Voici ce que la loi permet réellement à un assureur, et pourquoi il "
+                "faut quand même tenir ses dates.",
+        "cle": "Une faute de l'assuré n'écarte pas la garantie, sauf exclusion formelle et "
+               "limitée inscrite au contrat.",
+        "sections": [
+            ("Le principe, et il est en votre faveur", [
+                "L'article L. 113-1 du Code des assurances pose la règle : les pertes et dommages "
+                "causés par une faute de l'assuré restent à la charge de l'assureur, sauf "
+                "exclusion <strong>formelle et limitée</strong> figurant dans la police. Seule la "
+                "faute intentionnelle ou dolosive est exclue de plein droit.",
+                "« Formelle » veut dire que la clause doit être précise, sans marge "
+                "d'interprétation, et énoncer les cas de façon limitative. Une liste d'exemples "
+                "introduite par « tels que » ne satisfait pas à cette exigence. « Limitée » veut "
+                "dire que l'exclusion ne doit pas vider la garantie de sa substance. La clause doit "
+                "en outre figurer en caractères très apparents.",
+                "Autrement dit : un assureur ne refuse pas parce qu'il trouve que vous avez mal "
+                "entretenu. Il refuse si son contrat porte une clause qui vise précisément ce "
+                "manquement, et si elle est rédigée comme la loi l'exige.",
+            ]),
+            ("Ce qui peut malgré tout réduire ou faire tomber l'indemnisation", [
+                "<strong>Une clause d'exclusion valablement rédigée.</strong> Beaucoup de polices "
+                "multirisques professionnelles en comportent une sur l'entretien des installations "
+                "de cuisson et d'extraction. Lisez la vôtre — conditions générales et conditions "
+                "particulières — et demandez-la à votre courtier si vous ne la trouvez pas.",
+                "<strong>Une aggravation du risque non déclarée.</strong> L'article L. 113-2 "
+                "impose de signaler par écrit, sous quinze jours, les circonstances nouvelles qui "
+                "aggravent le risque. Un changement d'activité ou de mode de cuisson en fait "
+                "partie : passer à la friture intensive dans une cuisine assurée pour un service "
+                "léger n'est pas neutre.",
+                "<strong>La règle proportionnelle de prime.</strong> Si une omission de bonne foi "
+                "est découverte après le sinistre, l'article L. 113-9 permet de réduire "
+                "l'indemnité dans le rapport entre la prime payée et celle qui aurait été due. Ce "
+                "n'est pas un refus, c'est une amputation — et elle peut être lourde.",
+                "Dans tous ces cas, c'est à l'assureur d'apporter la preuve. Ce n'est pas à vous "
+                "de démontrer que vous avez bien entretenu.",
+            ]),
+            ("Le vrai point de bascule : le rapport d'expertise", [
+                "Après un incendie, un expert détermine l'origine du feu. Si son rapport retient "
+                "une carence d'entretien comme cause du départ de feu, la discussion change de "
+                "nature : l'assureur dispose alors d'un fondement pour appliquer son exclusion, "
+                "s'il en a une.",
+                "C'est là que la série d'attestations compte, et c'est la seule raison sérieuse de "
+                "les tenir. Elles ne vous garantissent rien à l'avance ; elles vous donnent de quoi "
+                "répondre, avec des dates, quand la question est posée.",
+                "Vous pouvez vous faire assister d'un expert de votre choix pendant les opérations "
+                "d'expertise. C'est une faculté que peu d'exploitants connaissent et qui change le "
+                "rapport de forces.",
+            ]),
+            ("Ce que nous ne vous dirons pas", [
+                "Que l'attestation vous garantit d'être indemnisé. Elle ne garantit rien : elle "
+                "documente. Un prestataire qui vous vend une « couverture » vend ce qu'il ne peut "
+                "pas donner.",
+                "Que le dégraissage est « obligatoire sous peine de fermeture ». Les décisions de "
+                "fermeture administrative relèvent d'un cadre bien plus large que l'état d'une "
+                "hotte, et l'affirmation sert surtout à faire signer vite.",
+                "Que nous délivrons un certificat de conformité. Nous attestons ce que nous avons "
+                "fait, où et quand. Pour tout le reste, ce sont d'autres métiers — et nous vous "
+                "dirons lesquels.",
+            ]),
+        ],
+        "faq": [
+            ("Mon assureur peut-il refuser de m'indemniser si je n'ai pas fait dégraisser ?",
+             "Seulement si son contrat comporte une clause d'exclusion formelle et limitée visant "
+             "ce manquement, et si le lien avec le sinistre est établi — le plus souvent par le "
+             "rapport d'expertise. La preuve lui incombe. En l'absence d'une telle clause, le "
+             "principe de l'article L. 113-1 joue en votre faveur."),
+            ("Où trouver cette clause dans mon contrat ?",
+             "Dans les conditions générales, au chapitre des exclusions, et dans les conditions "
+             "particulières qui peuvent en ajouter. Elle doit figurer en caractères très "
+             "apparents. Si vous ne la trouvez pas, demandez-la par écrit à votre courtier : sa "
+             "réponse écrite a de la valeur."),
+            ("Que faire si l'indemnisation m'est refusée ?",
+             "Déclarez le sinistre dans les délais de votre contrat, souvent cinq jours ouvrés. "
+             "Faites-vous assister d'un expert de votre choix pendant l'expertise. En cas de refus "
+             "notifié, vous n'êtes pas tenu d'attendre la fin du délai lié à l'état des pertes "
+             "pour saisir le juge. Un avocat en droit des assurances, ou la Médiation de "
+             "l'assurance, sont les bons interlocuteurs — pas nous."),
+        ],
+    },
+    {
+        "slug": "registre-securite-livret-entretien-restaurant",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Registre de sécurité et livret d'entretien : ce qu'un contrôle regarde",
+        "title": "Registre de sécurité et livret d'entretien en restaurant",
+        "meta": "Ce que doit contenir le livret d'entretien annexé au registre de sécurité, qui "
+                "le tient, et ce qui est réellement vérifié lors d'une visite.",
+        "lead": "Le registre n'est pas une formalité administrative : c'est le seul endroit où "
+                "votre entretien existe. Un livret vide a exactement le même effet qu'un entretien "
+                "non fait.",
+        "cle": "Ce sont les dates qui sont regardées, et la régularité de la série.",
+        "sections": [
+            ("Deux documents emboîtés", [
+                "Le <strong>registre de sécurité</strong> est le document de l'établissement. Il "
+                "rassemble tout ce qui touche à la sécurité incendie : les vérifications "
+                "périodiques, les rapports d'organismes, les travaux, les consignes, les exercices.",
+                "Le <strong>livret d'entretien</strong> lui est annexé pour ce qui concerne les "
+                "installations de cuisson. C'est là que se notent les dates des opérations prévues "
+                "par l'article GC 21 : le nettoyage des filtres, le nettoyage du circuit "
+                "d'extraction, le ramonage annuel des conduits.",
+                "Les deux sont tenus par l'exploitant. Un prestataire fournit des attestations et "
+                "des rapports ; il ne tient pas votre registre à votre place, et aucun contrat "
+                "d'entretien ne vous décharge de cette obligation.",
+            ]),
+            ("Ce qui doit y figurer, côté cuisine", [
+                "Les dates de nettoyage ou de remplacement des filtres. Elles sont hebdomadaires "
+                "et c'est votre équipe qui les porte : une ligne, une date, une initiale. Un "
+                "tableau affiché en cuisine et recopié au livret suffit, à condition que quelqu'un "
+                "en ait la charge nommément.",
+                "Les dates des interventions sur le circuit d'extraction et du ramonage annuel des "
+                "conduits, avec l'attestation du prestataire agrafée en regard.",
+                "Le rapport de la vérification annuelle de l'article GC 22, réalisée par un "
+                "technicien compétent ou un organisme agréé dans les établissements des quatre "
+                "premières catégories. C'est un document distinct de l'attestation de nettoyage, "
+                "et il manque souvent.",
+                "Les suites données aux observations. Un rapport qui signale un point à reprendre, "
+                "sans trace de ce qui a été fait ensuite, se retourne contre l'exploitant.",
+            ]),
+            ("Ce qu'une visite regarde en premier", [
+                "La régularité, avant le contenu. Une série de dates espacées normalement sur "
+                "deux ans dit plus qu'une intervention récente isolée — qui ressemble surtout à un "
+                "rattrapage avant visite, et se lit comme tel.",
+                "La cohérence entre les documents. Une attestation de dégraissage datée d'un jour "
+                "de fermeture annoncée, ou un rapport de vérification dont les conclusions ne "
+                "correspondent à rien dans le registre, attire l'attention plus sûrement qu'un "
+                "trou.",
+                "Le nom d'un responsable. Un registre que personne ne tient nommément est un "
+                "registre que personne ne tient.",
+            ]),
+            ("Si vous repartez de zéro", [
+                "C'est fréquent, notamment après une reprise de local, et ce n'est pas "
+                "rattrapable rétroactivement : on ne reconstitue pas des dates passées. Ce que "
+                "vous pouvez faire, c'est ouvrir proprement la série.",
+                "Faites un premier passage complet, avec constat écrit de l'état de départ. "
+                "Classez l'attestation. Fixez les deux dates de l'année suivante au calendrier "
+                "plutôt qu'« à prévoir ». Désignez la personne qui porte les filtres au livret. "
+                "En dix-huit mois, vous avez une série qui tient.",
+            ]),
+        ],
+        "faq": [
+            ("Qui doit tenir le registre de sécurité ?",
+             "L'exploitant. C'est lui qui le détient, le met à jour et le présente. Un prestataire "
+             "fournit les attestations et les rapports qui s'y rangent, mais il ne peut pas tenir "
+             "le registre à votre place, et aucun contrat ne transfère cette obligation."),
+            ("Que se passe-t-il si mon livret est vide ?",
+             "Il a le même effet qu'un entretien non fait : ce qui n'est pas documenté n'est pas "
+             "opposable. En contrôle comme après un sinistre, ce sont les dates qui sont "
+             "regardées. Un entretien réel mais non consigné ne vous protège pas."),
+            ("L'attestation de nettoyage suffit-elle à remplir mes obligations ?",
+             "Non. Elle couvre l'entretien de l'article GC 21, pour la part que nous réalisons. La "
+             "vérification annuelle de l'article GC 22, par un technicien compétent ou un "
+             "organisme agréé, est une autre obligation et donne lieu à un autre document."),
+        ],
+    },
+    {
+        "slug": "reprise-local-restaurant-conduit-hotte",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Reprendre un local de restaurant : ce que cache le conduit d'extraction",
+        "title": "Reprise de local : vérifier le conduit avant de signer",
+        "meta": "Le conduit d'extraction est ce dont on hérite sans le voir. Ce qu'il faut ouvrir "
+                "et demander avant de signer, et ce que coûte une remise à zéro.",
+        "lead": "On visite la salle, on compte les couverts, on regarde le piano. Presque personne "
+                "n'ouvre une trappe de visite — et c'est pourtant le seul endroit où se cache un "
+                "coût qu'on ne découvre qu'après.",
+        "cle": "Le conduit se transmet avec le local, et son état ne se voit pas depuis la salle.",
+        "sections": [
+            ("Pourquoi c'est le point aveugle d'une reprise", [
+                "Un local de restauration change souvent d'enseigne sans que le circuit "
+                "d'extraction soit jamais ouvert. Chaque exploitant hérite du dépôt du précédent, "
+                "et personne ne se sent responsable d'un conduit qu'il n'a pas chargé. Dans les "
+                "quartiers à forte rotation, nous ouvrons régulièrement des conduits qui n'ont pas "
+                "été repris depuis deux ou trois enseignes.",
+                "La peinture neuve, l'inox poli et le piano récent ne disent rien de ce qui est à "
+                "l'intérieur de la gaine. Et une fois le bail signé, l'état du conduit devient "
+                "votre affaire : c'est vous qui l'exploitez, c'est vous qui tenez le livret "
+                "d'entretien, et c'est votre assureur qui posera la question le jour venu.",
+            ]),
+            ("Ce qu'il faut demander avant de signer", [
+                "<strong>Le registre de sécurité et le livret d'entretien.</strong> Demandez-les, "
+                "et lisez les dates. Un livret vide ou qui s'arrête trois ans en arrière vous dit "
+                "l'essentiel.",
+                "<strong>Les dernières attestations de dégraissage</strong>, avec le détail de ce "
+                "qui a été traité. Une attestation qui ne mentionne aucune trappe de visite "
+                "ouverte signale un nettoyage limité à la partie visible.",
+                "<strong>Le dernier rapport de vérification de l'article GC 22</strong>, pour les "
+                "établissements des quatre premières catégories. Son absence est une information "
+                "en soi.",
+                "<strong>Le tracé du conduit</strong> : où il part, par où il passe, où il "
+                "débouche, et s'il est partagé avec un autre local. Un conduit mitoyen pose une "
+                "question d'entretien et de responsabilité qu'il vaut mieux trancher avant la "
+                "signature qu'après le premier conflit.",
+                "<strong>L'emplacement des trappes de visite.</strong> S'il n'y en a pas sur une "
+                "ligne longue, le conduit ne pourra pas être nettoyé sur toute sa longueur sans "
+                "travaux. C'est un coût, et il est à négocier avant.",
+            ]),
+            ("Ouvrir avant de signer, et ce que cela change", [
+                "Un constat prend une heure : on ouvre les trappes existantes, on regarde, on "
+                "photographie. Cela ne coûte presque rien au regard de ce que vous engagez, et cela "
+                "donne trois choses.",
+                "Un chiffre : vous savez ce que coûte la remise à zéro, et vous l'intégrez à votre "
+                "plan de reprise au lieu de le découvrir au premier service.",
+                "Un levier : un conduit lourdement chargé est un argument de négociation sur le "
+                "prix du fonds ou sur le dépôt, surtout si le livret d'entretien est vide.",
+                "Un point de départ : la série d'attestations commence avec un état constaté, daté "
+                "et photographié, qui n'est pas le vôtre. Si un sinistre survient dans les mois qui "
+                "suivent, cette distinction compte.",
+            ]),
+            ("La remise à zéro, concrètement", [
+                "Une remise à zéro est un rattrapage, pas un entretien : elle prend plus de temps "
+                "qu'un passage courant et se chiffre à part. Sur un dépôt polymérisé par des "
+                "années de chaleur, un alcalin à temps de pose ne suffit pas en une passe, et la "
+                "suie d'un four à bois ne se dissout pas — elle se décolle mécaniquement.",
+                "Le bon moment est la période de travaux, avant l'ouverture : la cuisine est vide, "
+                "il n'y a pas de service à préserver, et l'accès est libre. C'est aussi le seul "
+                "moment où l'on peut faire poser une trappe manquante par un installateur sans "
+                "fermer boutique.",
+                "Ensuite, le rythme redevient celui de votre mode de cuisson dominant, et les "
+                "passages suivants sont nettement plus courts.",
+            ]),
+        ],
+        "faq": [
+            ("Le cédant est-il tenu de me remettre le registre de sécurité ?",
+             "Le registre est attaché à l'établissement et doit suivre l'exploitation. En pratique, "
+             "demandez-le explicitement et par écrit pendant les négociations : un refus ou une "
+             "incapacité à le produire est une information que vous devez intégrer à votre "
+             "décision."),
+            ("Combien coûte une remise à zéro de conduit ?",
+             "Cela dépend de la longueur de la ligne, du nombre de trappes et de l'état réel, qui "
+             "ne se devine pas depuis la cuisine. C'est précisément pourquoi nous chiffrons après "
+             "constat, trappes ouvertes, et non sur description téléphonique. Le constat lui-même "
+             "est rapide."),
+            ("Pouvez-vous intervenir pendant les travaux, avant l'ouverture ?",
+             "C'est le meilleur moment, et de loin. Le local est vide, aucun service n'est à "
+             "préserver, et si une trappe de visite manque, votre installateur peut la poser "
+             "pendant que le chantier est ouvert. Après l'ouverture, la même opération demande une "
+             "fermeture."),
+        ],
+    },
+]
