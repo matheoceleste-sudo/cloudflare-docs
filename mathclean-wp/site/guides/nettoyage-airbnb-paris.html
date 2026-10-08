@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-profil="part">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -31,8 +31,10 @@
 <meta name="twitter:description" content="Nettoyage de logement Airbnb à Paris : le protocole entre deux séjours, les points qui font baisser une note, et la contrainte des créneaux serrés.">
 <meta name="twitter:image" content="https://mathclean.fr/assets/photos/canape-nettoyage.webp">
 <link rel="icon" href="../assets/img/lion.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/theme.css?v=111759c3">
-<script>document.documentElement.className+=' js';</script>
+<link rel="stylesheet" href="../assets/css/theme.css?v=51ce6f7f">
+<script>(function(d){d.className+=' js';
+if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.dataset.profil='pro';}catch(e){}}
+})(document.documentElement);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://mathclean.fr/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://mathclean.fr/guides"},{"@type":"ListItem","position":3,"name":"Nettoyage Airbnb à Paris : entre deux voyageurs","item":"https://mathclean.fr/guides/nettoyage-airbnb-paris"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Nettoyage Airbnb à Paris : entre deux voyageurs","description":"En location courte durée, la propreté est notée publiquement et la fenêtre d'intervention dure quelques heures. Ce sont deux contraintes qui changent la méthode.","image":"https://mathclean.fr/assets/photos/canape-nettoyage.webp","datePublished":"2026-09-05T12:00:00+02:00","dateModified":"2026-09-05T12:00:00+02:00","inLanguage":"fr-FR","author":{"@type":"Person","name":"Mathéo Céleste","url":"https://mathclean.fr/a-propos","worksFor":{"@id":"https://mathclean.fr/#business"}},"publisher":{"@type":"Organization","@id":"https://mathclean.fr/#business","name":"MathClean","url":"https://mathclean.fr/","logo":{"@type":"ImageObject","url":"https://mathclean.fr/assets/img/og-image.png","width":1200,"height":630}},"isPartOf":{"@type":"WebSite","@id":"https://mathclean.fr/#site"},"mainEntityOfPage":"https://mathclean.fr/guides/nettoyage-airbnb-paris"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Intervenez-vous le dimanche et les jours fériés ?","acceptedAnswer":{"@type":"Answer","text":"Oui, sept jours sur sept, sans supplément. C'est indispensable en location courte durée, où les rotations tombent précisément ces jours-là."}},{"@type":"Question","name":"Fournissez-vous le linge ?","acceptedAnswer":{"@type":"Answer","text":"Non. Nous nettoyons et nous faisons les lits avec le linge disponible sur place. La gestion du linge relève d'une conciergerie ou d'une blanchisserie, avec qui nous nous coordonnons sans difficulté."}},{"@type":"Question","name":"Combien de temps faut-il entre deux voyageurs ?","acceptedAnswer":{"@type":"Answer","text":"Trois heures sur place pour un deux-pièces, davantage si un traitement textile ou un passage à l'ozone est prévu. L'ozone impose en plus une aération avant l'arrivée du voyageur suivant."}},{"@type":"Question","name":"Traitez-vous une odeur de tabac laissée par un voyageur ?","acceptedAnswer":{"@type":"Answer","text":"Oui, par ozone, après nettoyage des surfaces et des textiles. Le traitement se fait logement vide et suivi d'une aération. Sur une odeur ancienne et très incrustée, un second passage est parfois nécessaire ; nous le disons au devis quand nous l'anticipons."}}]}</script>
@@ -71,15 +73,7 @@
 <li class="menu-item-has-children">
   <a href="../services">Prestations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
-    <li><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="../services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li><li><a href="../services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li><a href="../services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="../services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="../services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="../services/nettoyage-vitres-paris">Nettoyage de vitres</a></li>
-    <li class="sub-sep"><a href="../hottes">Hottes : par métier et par commune</a></li>
-    <li><a href="../nettoyage-restaurant">Nettoyage de restaurant</a></li>
-    <li><a href="../nettoyage-haute-pression">Nettoyage haute pression</a></li>
-    <li><a href="../vitrerie-professionnelle">Vitrerie professionnelle</a></li>
-    <li><a href="../menage-regulier">Entretien régulier de locaux</a></li>
-    <li><a href="../nettoyage-appartement">Nettoyage d'appartement</a></li>
-    <li class="sub-sep"><a href="../services"><strong>Toutes nos prestations</strong></a></li>
-    <li><a href="../realisations">Nos réalisations (avant/après)</a></li>
+    <li class="nav-part"><a href="../services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li class="nav-part"><a href="../services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="../services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-part"><a href="../services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="../services/nettoyage-vitres-paris">Nettoyage de vitres</a></li><li class="nav-pro"><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li class="nav-pro"><a href="../nettoyage-restaurant">Nettoyage de restaurant</a></li><li class="nav-pro"><a href="../menage-regulier">Nettoyage d'entreprise</a></li><li class="nav-pro"><a href="../vitrerie-professionnelle">Vitrerie professionnelle</a></li><li class="nav-pro"><a href="../nettoyage-haute-pression">Nettoyage haute pression</a></li>
   </ul>
 </li>
 <li><a href="../tarifs">Tarifs</a></li>
@@ -97,8 +91,10 @@
     <li><a href="../guides"><strong>Guides pratiques</strong></a></li>
     <li><a href="../dossiers"><strong>Dossiers techniques</strong></a></li>
     <li><a href="../blog"><strong>Astuces &amp; conseils</strong></a></li>
+    <li class="sub-sep"><a href="../hottes">Hottes : par métier et par commune</a></li>
   </ul>
 </li>
+<li><a href="../realisations">Réalisations</a></li>
 <li><a href="../a-propos">À propos</a></li>
 <li><a href="../contact">Contact</a></li>
 </ul>
@@ -146,7 +142,7 @@
           Nous laissons ce texte en ligne parce qu'il reste utile, mais MathClean ne réalise plus
           le nettoyage complet d'un meublé entre deux séjours. Nos sept prestations sont le
           <a href="../services/nettoyage-vitres-paris">nettoyage de vitres</a>, le
-          <a href="../services/nettoyage-entreprise-paris">nettoyage pour entreprise</a>, le
+          <a href="../services/nettoyage-regulier-paris">nettoyage pour entreprise</a>, le
           <a href="../services/nettoyage-automobile-paris">nettoyage automobile</a> et le
           <a href="../services/nettoyage-textile-paris">nettoyage textile</a>.
         </p>
@@ -369,6 +365,6 @@
   <button class="btn btn-sm" id="cookie-ok" type="button">J'ai compris</button>
 </div>
 
-<script src="../assets/js/theme.js?v=d5e91aeb" defer></script>
+<script src="../assets/js/theme.js?v=17b1ebfa" defer></script>
 </body>
 </html>

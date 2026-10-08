@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-profil="part">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -31,8 +31,10 @@
 <meta name="twitter:description" content="Hebdomadaire, bimensuel ou mensuel : ce qui décide du rythme, et pourquoi la zone basse et la poignée se reprennent plus souvent que le reste.">
 <meta name="twitter:image" content="https://mathclean.fr/assets/img/og-image.png">
 <link rel="icon" href="../assets/img/lion.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/theme.css?v=111759c3">
-<script>document.documentElement.className+=' js';</script>
+<link rel="stylesheet" href="../assets/css/theme.css?v=51ce6f7f">
+<script>(function(d){d.className+=' js';
+if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.dataset.profil='pro';}catch(e){}}
+})(document.documentElement);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://mathclean.fr/"},{"@type":"ListItem","position":2,"name":"Dossiers","item":"https://mathclean.fr/dossiers"},{"@type":"ListItem","position":3,"name":"Vitrine de commerce : à quelle fréquence la faire nettoyer","item":"https://mathclean.fr/dossiers/nettoyage-vitrine-commerce-frequence"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Vitrine de commerce : à quelle fréquence la faire nettoyer","description":"Hebdomadaire, bimensuel ou mensuel : ce qui décide du rythme, et pourquoi la zone basse et la poignée se reprennent plus souvent que le reste.","inLanguage":"fr-FR","datePublished":"2026-09-05T12:00:00+02:00","dateModified":"2026-09-05T12:00:00+02:00","author":{"@type":"Person","name":"Mathéo Céleste","url":"https://mathclean.fr/a-propos","worksFor":{"@id":"https://mathclean.fr/#business"}},"publisher":{"@type":"Organization","@id":"https://mathclean.fr/#business","name":"MathClean","url":"https://mathclean.fr/","logo":{"@type":"ImageObject","url":"https://mathclean.fr/assets/img/og-image.png","width":1200,"height":630}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mathclean.fr/dossiers/nettoyage-vitrine-commerce-frequence"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pourquoi des traces blanches réapparaissent-elles après le nettoyage ?","acceptedAnswer":{"@type":"Answer","text":"Parce que l'eau utilisée était calcaire. Ce que vous voyez n'est pas de la saleté revenue, c'est le minéral laissé par l'eau en séchant. Une eau déminéralisée supprime le phénomène — et avec lui la nécessité d'essuyer, qui est ce qui laisse des traces de chiffon."}},{"@type":"Question","name":"Les encadrements et les appuis sont-ils compris ?","acceptedAnswer":{"@type":"Answer","text":"Chez nous, oui, dans le même passage. C'est important : un appui chargé de poussière fait couler une coulure sur la vitre à la première pluie, et le nettoyage du verre seul ne tient alors que quelques jours."}},{"@type":"Question","name":"Peut-on nettoyer une vitrine en plein soleil ?","acceptedAnswer":{"@type":"Answer","text":"Mieux vaut l'éviter. En plein soleil, l'eau sèche plus vite que la raclette ne descend et le résultat est marqué quelle que soit la méthode. C'est pour cela que nous intervenons tôt le matin, quand le verre est encore froid."}}]}</script>
@@ -71,15 +73,7 @@
 <li class="menu-item-has-children">
   <a href="../services">Prestations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
-    <li><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="../services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li><li><a href="../services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li><a href="../services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="../services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="../services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="../services/nettoyage-vitres-paris">Nettoyage de vitres</a></li>
-    <li class="sub-sep"><a href="../hottes">Hottes : par métier et par commune</a></li>
-    <li><a href="../nettoyage-restaurant">Nettoyage de restaurant</a></li>
-    <li><a href="../nettoyage-haute-pression">Nettoyage haute pression</a></li>
-    <li><a href="../vitrerie-professionnelle">Vitrerie professionnelle</a></li>
-    <li><a href="../menage-regulier">Entretien régulier de locaux</a></li>
-    <li><a href="../nettoyage-appartement">Nettoyage d'appartement</a></li>
-    <li class="sub-sep"><a href="../services"><strong>Toutes nos prestations</strong></a></li>
-    <li><a href="../realisations">Nos réalisations (avant/après)</a></li>
+    <li class="nav-part"><a href="../services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li class="nav-part"><a href="../services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="../services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-part"><a href="../services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="../services/nettoyage-vitres-paris">Nettoyage de vitres</a></li><li class="nav-pro"><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li class="nav-pro"><a href="../nettoyage-restaurant">Nettoyage de restaurant</a></li><li class="nav-pro"><a href="../menage-regulier">Nettoyage d'entreprise</a></li><li class="nav-pro"><a href="../vitrerie-professionnelle">Vitrerie professionnelle</a></li><li class="nav-pro"><a href="../nettoyage-haute-pression">Nettoyage haute pression</a></li>
   </ul>
 </li>
 <li><a href="../tarifs">Tarifs</a></li>
@@ -97,8 +91,10 @@
     <li><a href="../guides"><strong>Guides pratiques</strong></a></li>
     <li><a href="../dossiers"><strong>Dossiers techniques</strong></a></li>
     <li><a href="../blog"><strong>Astuces &amp; conseils</strong></a></li>
+    <li class="sub-sep"><a href="../hottes">Hottes : par métier et par commune</a></li>
   </ul>
 </li>
+<li><a href="../realisations">Réalisations</a></li>
 <li><a href="../a-propos">À propos</a></li>
 <li><a href="../contact">Contact</a></li>
 </ul>
@@ -325,6 +321,6 @@
   <button class="btn btn-sm" id="cookie-ok" type="button">J'ai compris</button>
 </div>
 
-<script src="../assets/js/theme.js?v=d5e91aeb" defer></script>
+<script src="../assets/js/theme.js?v=17b1ebfa" defer></script>
 </body>
 </html>

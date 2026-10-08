@@ -16,6 +16,7 @@
   --brand-dark:#0a4a94;
   --brand-soft:#e8f1fb;
   --gold:#c8a04b;             /* rappel « une exigence de roi »            */
+  --gold-deep:#9a7b2e;        /* doré lisible sur blanc (contraste AA)    */
   --gold-soft:#faf4e8;
   --ink:#16212e;              /* titres                                   */
   --body:#4a5766;             /* texte courant                            */
@@ -1180,6 +1181,9 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .page-pro .page-title .lead{color:#c3cfdd}
 .page-pro .breadcrumbs,.page-pro .breadcrumbs a{color:#8fa3ba}
 .page-pro .breadcrumbs a:hover{color:#fff}
+/* Sur fond sombre, la page courante du fil d'Ariane était écrite en --ink,
+   c'est-à-dire en bleu nuit sur bleu nuit : illisible. */
+.page-pro .breadcrumbs span[aria-current]{color:#e8eef6}
 .section-pro{padding-top:56px}
 
 /* Carte d'identité de l'entreprise : les trois informations qu'un acheteur
@@ -1357,3 +1361,116 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 html:not(.js) #resa,
 html:not(.js) #resa-ticket,
 html:not(.js) #resa-bar{display:none}
+
+/* ===========================================================================
+   25. PROFIL DU VISITEUR — deux habillages, un seul site
+   ===========================================================================
+   Le menu « Prestations » listait les sept prestations puis les six
+   sommaires : « Nettoyage haute pression » et « Nettoyage d'appartement »
+   y apparaissaient deux fois, et une offre de particulier côtoyait une
+   offre d'entreprise. Les deux volets sont désormais rendus tous les deux
+   et le CSS n'en montre qu'un, selon data-profil posé sur <html> avant le
+   premier affichage. Aucun clignotement, aucun décalage. */
+html[data-profil="pro"] .sub-menu li.nav-part,
+html:not([data-profil="pro"]) .sub-menu li.nav-pro{display:none}
+
+/* --- Deux styles -----------------------------------------------------------
+   Le particulier doit être rassuré, le professionnel convaincu. Deux
+   vocabulaires visuels, un seul fond : ce sont les mêmes pages, et aucune
+   information n'est réservée à l'un.
+
+   Particulier — une brochure : angles arrondis, fonds crème, cartes posées
+   sur une ombre douce qui se soulève au survol, l'accent doré de la marque.
+
+   Professionnel — un dossier technique : angles francs, fonds bleu froid,
+   cartes à plat bordées d'un filet, un repère bleu au-dessus de chaque titre
+   de section, et des chiffres alignés en colonnes.
+
+   Le profil est posé sur <html> avant la première peinture : rien ne bouge
+   après coup, le CLS reste à zéro. */
+
+/* ---- Particulier --------------------------------------------------------- */
+html[data-profil="part"]{
+  --radius:14px;
+  --radius-lg:20px;
+  --bg-soft:#fbf8f2;          /* crème : le doré de la marque, très dilué */
+  --line:#e7e2d9;
+}
+html[data-profil="part"] .page-title{
+  background:linear-gradient(180deg,#fbf8f2 0%,#fff 100%);
+}
+html[data-profil="part"] .section-head .eyebrow{color:var(--gold-deep)}
+html[data-profil="part"] .feature{
+  box-shadow:var(--shadow-sm);
+  border-color:#ece7de;
+}
+html[data-profil="part"] .feature:hover{border-color:#e0cfa6}
+html[data-profil="part"] .feature-icon{border-radius:16px}
+html[data-profil="part"] .btn:not(.btn-outline):not(.btn-light):not(.btn-ghost-light){
+  box-shadow:0 2px 0 0 rgba(154,123,46,.35);
+}
+html[data-profil="part"] .checklist li::before{
+  background-color:var(--gold-soft);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b18a37' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+}
+
+/* ---- Professionnel ------------------------------------------------------- */
+html[data-profil="pro"]{
+  --radius:3px;
+  --radius-lg:5px;
+  --bg-soft:#f1f6fc;          /* bleu froid : le registre du document */
+  --line:#dde7f2;
+}
+html[data-profil="pro"] .section{padding-block:clamp(2.6rem,5vw,4.4rem)}
+html[data-profil="pro"] .section-soft{
+  background:linear-gradient(180deg,#eff5fc 0,#f7fafd 100%);
+  border-block:1px solid #e1ebf6;
+}
+
+/* Un repère bleu au-dessus de chaque titre de section : le signe le plus
+   économique pour qu'une page se lise comme un document et non une page
+   d'accueil. Centré quand le titre l'est. */
+html[data-profil="pro"] .section-head .eyebrow::before,
+html[data-profil="pro"] .split .eyebrow::before,
+html[data-profil="pro"] .prose-block .eyebrow::before{
+  content:"";display:block;width:34px;height:3px;background:currentColor;
+  margin-bottom:.75rem;
+}
+html[data-profil="pro"] .section-head.center .eyebrow::before{margin-inline:auto}
+html[data-profil="pro"] .eyebrow{letter-spacing:.16em}
+/* Un titre de section sans surtitre reçoit le repère lui-même. */
+html[data-profil="pro"] .section-head:not(:has(.eyebrow))::before{
+  content:"";display:block;width:34px;height:3px;background:var(--brand);
+  margin-bottom:1rem;
+}
+html[data-profil="pro"] .section-head.center:not(:has(.eyebrow))::before{margin-inline:auto}
+html[data-profil="pro"] .section-dark .section-head:not(:has(.eyebrow))::before{background:var(--gold)}
+
+/* Cartes à plat : un filet, un bord supérieur bleu, aucun soulèvement. */
+html[data-profil="pro"] .feature{
+  border-top:2px solid var(--brand);
+  box-shadow:none;
+}
+html[data-profil="pro"] .feature:hover{
+  transform:none;box-shadow:none;border-color:var(--line);border-top-color:var(--brand);
+  background:#fcfdff;
+}
+html[data-profil="pro"] .feature-icon{border-radius:4px}
+
+/* Chiffres alignés : prix, surfaces, fréquences se comparent en colonne. */
+html[data-profil="pro"] .price-table,
+html[data-profil="pro"] .stat-num,
+html[data-profil="pro"] .amount{font-variant-numeric:tabular-nums}
+html[data-profil="pro"] .price-table caption{
+  border-left:3px solid var(--brand);padding-left:12px;
+}
+html[data-profil="pro"] .table-wrap{border-color:#d7e4f2}
+html[data-profil="pro"] .lien-liste a::before{border-radius:1px}
+
+/* Le bandeau d'appel à l'action : chaleureux d'un côté, factuel de l'autre. */
+html[data-profil="pro"] .cta-band{
+  background:linear-gradient(135deg,#0c4b96 0,#0e5fbb 60%,#1668c8 100%);
+}
+
+/* Le choix reste lisible dans la barre du haut quelle que soit la page. */
+.parcours a.is-on{font-weight:700}

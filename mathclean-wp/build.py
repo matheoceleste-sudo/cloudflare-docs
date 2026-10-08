@@ -230,6 +230,7 @@ def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=N
                    d'appel, qu'elle remplace par sa propre barre de total.
     """
     _cls = (' class="%s"' % body_class) if body_class else ""
+    profil_initial = "pro" if "page-pro" in body_class else "part"
     ld = ""
     for block in (schema or []):
         ld += '<script type="application/ld+json">%s</script>\n' % json.dumps(
@@ -276,7 +277,7 @@ def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=N
                % (base, preload, attrs))
     t, m = esc(title), esc(meta)
     return f"""<!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-profil="{profil_initial}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -306,7 +307,9 @@ def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=N
 <meta name="twitter:image" content="{SITE['url']}/{image}">
 <link rel="icon" href="{base}assets/img/lion.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{base}assets/css/theme.css?v={V_CSS}">
-{pre}<script>document.documentElement.className+=' js';</script>
+{pre}<script>(function(d){{d.className+=' js';
+if(d.dataset.profil!=='pro'){{try{{if(localStorage.getItem('mc-profil')==='pro')d.dataset.profil='pro';}}catch(e){{}}}}
+}})(document.documentElement);</script>
 {ld}</head>
 <body{_cls}>
 <a class="skip-link" href="#content">Aller au contenu</a>
@@ -314,14 +317,40 @@ def head(title, meta, canonical, base, image="assets/img/og-image.png", schema=N
 
 
 def nav_menu(base, current):
-    """Menu principal. `current` = clé de la page pour l'état actif."""
+    """Menu principal. `current` = clé de la page pour l'état actif.
+
+    Le sous-menu « Prestations » dépend du profil du visiteur. Il listait
+    auparavant les sept prestations puis les six sommaires, ce qui faisait
+    apparaître « Nettoyage haute pression » et « Nettoyage d'appartement »
+    deux fois dans la même liste, et mélangeait une offre de particulier
+    avec une offre d'entreprise.
+
+    Les deux listes sont rendues toutes les deux, et le CSS n'en montre
+    qu'une selon l'attribut data-profil posé sur <html>. Cet attribut est
+    écrit par le serveur quand la page a un public connu, et complété en
+    ligne dans le <head> par le choix mémorisé du visiteur : il est donc
+    en place avant le premier affichage, et rien ne bouge à l'écran.
+    """
     def cls(key):
         return ' class="current-menu-item"' if key == current else ""
 
-    services_sub = "".join(
-        '<li><a href="%sservices/%s.html">%s</a></li>' % (base, s["slug"], s["nav"])
-        for s in SERVICES
+    # Côté particulier : les prestations qu'un particulier achète.
+    services_part = "".join(
+        '<li class="nav-part"><a href="%sservices/%s.html">%s</a></li>'
+        % (base, s["slug"], s["nav"])
+        for s in SERVICES if s["audience"] in ("particulier", "mixte")
     )
+    # Côté professionnel : les prestations d'entreprise, par leur sommaire
+    # quand il existe — c'est là que se trouve la profondeur par métier et
+    # par commune, et c'est ce qu'un professionnel cherche.
+    services_pro = "".join(
+        '<li class="nav-pro"><a href="%s%s">%s</a></li>' % (base, h, lb) for h, lb in (
+        ("services/nettoyage-hottes-paris.html", "Dégraissage de hottes"),
+        ("nettoyage-restaurant.html", "Nettoyage de restaurant"),
+        ("menage-regulier.html", "Nettoyage d'entreprise"),
+        ("vitrerie-professionnelle.html", "Vitrerie professionnelle"),
+        ("nettoyage-haute-pression.html", "Nettoyage haute pression"),
+    ))
     zones_sub = "".join(
         '<li><a href="%szones/%s.html">%s (%s)</a></li>' % (base, z["slug"], z["name"], z["num"])
         for z in ZONES
@@ -332,15 +361,7 @@ def nav_menu(base, current):
 <li class="menu-item-has-children{' current-menu-item' if current == 'services' else ''}">
   <a href="{base}services.html">Prestations {icon('chevron', 'caret')}</a>
   <ul class="sub-menu">
-    {services_sub}
-    <li class="sub-sep"><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
-    <li><a href="{base}nettoyage-restaurant.html">Nettoyage de restaurant</a></li>
-    <li><a href="{base}nettoyage-haute-pression.html">Nettoyage haute pression</a></li>
-    <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
-    <li><a href="{base}menage-regulier.html">Entretien régulier de locaux</a></li>
-    <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
-    <li class="sub-sep"><a href="{base}services.html"><strong>Toutes nos prestations</strong></a></li>
-    <li><a href="{base}realisations.html">Nos réalisations (avant/après)</a></li>
+    {services_part}{services_pro}
   </ul>
 </li>
 <li{cls('tarifs')}><a href="{base}tarifs.html">Tarifs</a></li>
@@ -358,8 +379,10 @@ def nav_menu(base, current):
     <li><a href="{base}guides.html"><strong>Guides pratiques</strong></a></li>
     <li><a href="{base}dossiers.html"><strong>Dossiers techniques</strong></a></li>
     <li><a href="{base}blog.html"><strong>Astuces &amp; conseils</strong></a></li>
+    <li class="sub-sep"><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
   </ul>
 </li>
+<li{cls('realisations')}><a href="{base}realisations.html">Réalisations</a></li>
 <li{cls('apropos')}><a href="{base}a-propos.html">À propos</a></li>
 <li{cls('contact')}><a href="{base}contact.html">Contact</a></li>
 </ul>
@@ -619,16 +642,32 @@ def service_tile(base, s):
 </a>"""
 
 
-def ba_block(base, before, after, title, sub, idx, largeur=800):
+def ba_block(base, before, after, title, sub, idx, largeur=800, prioritaire=False):
     """Comparateur avant/après. `largeur` = largeur d'affichage réelle, déclarée
-    sur les images pour que le navigateur réserve la bonne place."""
+    sur les images pour que le navigateur réserve la bonne place.
+
+    `prioritaire` ne se déduit pas du rang : le même comparateur ouvre la page
+    Réalisations et clôt l'accueil. Sur Réalisations ses deux images sont dans
+    l'écran dès l'ouverture — le curseur est au milieu, donc une moitié de
+    chacune est visible — et les laisser en `lazy` retardait le plus grand
+    élément de la page de plus d'une seconde. Sur l'accueil le même bloc est
+    tout en bas : l'y promouvoir volait la bande passante à la photo du haut.
+    L'appelant sait où il place le bloc, pas le bloc."""
+    # Les deux images portent fetchpriority : c'est celle du dessus, l'après,
+    # qui se trouve être le plus grand élément de la page. Ne hausser que
+    # l'avant la faisait passer après, et le LCP repartait à plus de trois
+    # secondes alors que les deux fichiers arrivaient déjà. La marque sert
+    # aussi de signal à promouvoir_image_lcp(), qui s'arrête là plutôt que
+    # d'aller promouvoir le comparateur suivant, bien en dessous du pli.
+    charge = 'eager" fetchpriority="high' if prioritaire else "lazy"
+    charge2 = charge
     return f"""<div class="reveal">
   <div class="ba" style="--pos:50%">
     <div class="ba-pane">
       <img src="{base}assets/photos/{before}" alt="{title} avant l'intervention MathClean"
-           loading="lazy" width="{largeur}" height="{largeur * 3 // 4}">
+           loading="{charge}" width="{largeur}" height="{largeur * 3 // 4}">
       <img class="ba-after" src="{base}assets/photos/{after}" alt="{title} après l'intervention MathClean"
-           loading="lazy" width="{largeur}" height="{largeur * 3 // 4}">
+           loading="{charge2}" width="{largeur}" height="{largeur * 3 // 4}">
     </div>
     <span class="ba-tag ba-tag-before">Avant</span>
     <span class="ba-tag ba-tag-after">Après</span>
@@ -1093,7 +1132,8 @@ def bloc_portes(base, titre_h1=True):
     </div>
     <div class="portes-grille">{portes}</div>
     <p class="portes-note">
-      Les mêmes prestations dans les deux cas — seule la façon de les commander change.
+      Le site s'adapte à votre réponse : chacun voit d'abord ce qui le concerne.
+      Rien n'est caché pour autant —
       <a href="{base}services.html">Voir les {NB_SERVICES} prestations</a>
     </p>
   </div>
@@ -1403,7 +1443,7 @@ def build_services_archive():
         <a href="services/nettoyage-textile-paris.html">nettoyage textile</a>.</li>
       <li>Un <strong>besoin régulier</strong> plutôt qu'une intervention unique&nbsp;: nous établissons
         un rythme et un tarif fixes. Voir le
-        <a href="services/nettoyage-entreprise-paris.html">nettoyage pour entreprise</a>.</li>
+        <a href="services/nettoyage-regulier-paris.html">nettoyage pour entreprise</a>.</li>
     </ul>
     <p>
       Dans le doute, notre <a href="guides.html">bibliothèque de guides</a> détaille les méthodes,
@@ -1509,6 +1549,8 @@ def build_service(s):
                       + video_block(base, v[0], v[1], v[2])
                       + "</div></section>")
     chimie = bloc_chimie(base, s["chimie"]) if s.get("chimie") else ""
+    bloc_risque = (bloc_risque_incendie(base)
+                   if s["slug"] == "nettoyage-hottes-paris" else "")
     # Communes disposant d'une page dédiée à cette prestation. Les familles
     # sectorielles — hottes, vitrerie, restaurant, appartement — ont leur
     # propre liste de communes, bien plus large que les dix communes premium :
@@ -1640,6 +1682,8 @@ def build_service(s):
 
 {bloc_video}
 
+{bloc_risque if bloc_risque else ""}
+
 {cta_band(base, "Besoin de cette prestation ?",
           "Devis gratuit et sans engagement, réponse sous 24 h. Aucun acompte : vous réglez après l'intervention.")}
 
@@ -1679,7 +1723,9 @@ def build_service(s):
     ]
     if v:
         schema.append(video_schema(v[0], "services/%s.html" % s["slug"]))
-    html = (head(titre_page(s["title"]), s["meta"], "services/%s.html" % s["slug"], base, schema=schema)
+    html = (head(titre_page(s["title"]), s["meta"], "services/%s.html" % s["slug"], base,
+                 schema=schema,
+                 body_class="page-pro" if s["audience"] == "pro" else "")
             + header(base, "services") + body + footer(base))
     return write("services/%s.html" % s["slug"], html)
 
@@ -1861,7 +1907,7 @@ def build_tarifs():
 def build_realisations():
     base = ""
     trail = [("Réalisations", None)]
-    ba = "".join(ba_block(base, b, a, t, s, i)
+    ba = "".join(ba_block(base, b, a, t, s, i, prioritaire=(i == 0))
                  for i, (b, a, t, s) in enumerate(BEFORE_AFTER[:BEFORE_AFTER_HD]))
     # Les clichés de faible définition passent dans une grille de trois colonnes :
     # affichés petit, ils restent nets.
@@ -2313,7 +2359,7 @@ def bloc_hors_offre(base, item):
           Nous laissons ce texte en ligne parce qu'il reste utile, mais MathClean ne réalise plus
           {item['hors_offre']}. Nos {NB_SERVICES} prestations sont le
           <a href="{base}services/nettoyage-vitres-paris.html">nettoyage de vitres</a>, le
-          <a href="{base}services/nettoyage-entreprise-paris.html">nettoyage pour entreprise</a>, le
+          <a href="{base}services/nettoyage-regulier-paris.html">nettoyage pour entreprise</a>, le
           <a href="{base}services/nettoyage-automobile-paris.html">nettoyage automobile</a> et le
           <a href="{base}services/nettoyage-textile-paris.html">nettoyage textile</a>.{extra}
         </p>
@@ -2324,7 +2370,10 @@ def bloc_hors_offre(base, item):
 def build_post(p, prev_post, next_post):
     base = "../"
     trail = [("Conseils & astuces", "blog.html"), (p["title"], None)]
-    service = next((s for s in SERVICES if s["slug"] == p["service"]), SERVICES[0])
+    # Pas de repli : un slug inconnu renvoyait jusqu'ici la premiere
+    # prestation de la liste, et onze guides de bureaux ont ainsi
+    # renvoye vers le degraissage de hottes sans que rien ne le signale.
+    service = next(s for s in SERVICES if s["slug"] == p["service"])
 
     content = ""
     for kind, text in p["body"]:
@@ -2532,7 +2581,7 @@ def build_apropos():
         </p>
         <p>
           Côté professionnels, nous entretenons
-          <a href="services/nettoyage-entreprise-paris.html">bureaux, commerces et locaux d'activité</a> en
+          <a href="services/nettoyage-regulier-paris.html">bureaux, commerces et locaux d'activité</a> en
           passage régulier ou ponctuel, et nous prenons en charge les
           <a href="services/nettoyage-vitres-paris.html">vitrines et façades vitrées</a>, avant l'ouverture
           ou après la fermeture pour ne pas gêner l'activité.
@@ -2605,7 +2654,7 @@ def build_professionnels():
   <span class="pro-presta-icon">{icon(x['icon'])}</span>
   <span><strong>{x['name'].replace(' à Paris', '')}</strong>
     <small>{x['excerpt']}</small></span>
-</a>""" for x in SERVICES)
+</a>""" for x in SERVICES if x["audience"] in ("pro", "mixte"))
 
     faq_pro = [
         ("Qui intervient réellement dans nos locaux ?",
@@ -2820,7 +2869,11 @@ def build_particuliers():
     base = ""
     trail = [("Particuliers", None)]
 
-    cartes = "".join(service_card(base, x) for x in SERVICES)
+    # La page des particuliers listait les sept prestations, dégraissage de
+    # hottes et nettoyage d'entreprise compris : deux métiers qu'un particulier
+    # ne commande pas. Même filtre que du côté professionnel, en miroir.
+    presta_part = [x for x in SERVICES if x["audience"] in ("particulier", "mixte")]
+    cartes = "".join(service_card(base, x) for x in presta_part)
 
     faq_part = [
         ("Qui va venir chez moi ?",
@@ -2912,11 +2965,11 @@ def build_particuliers():
       <span class="eyebrow">Nos prestations</span>
       <h2>Ce que nous faisons chez vous</h2>
       <p class="lead">
-        Les mêmes {NB_SERVICES} métiers que pour les professionnels. Deux sont à prix fixe et
-        se réservent en ligne, deux se chiffrent après échange.
+        {len(presta_part)} prestations pour votre logement et votre véhicule. Deux sont à
+        prix fixe et se réservent en ligne, les autres se chiffrent après échange.
       </p>
     </div>
-    <div class="grid {'grid-paire' if len(SERVICES) == 4 else 'grid-3'}">{cartes}</div>
+    <div class="grid {'grid-paire' if len(presta_part) == 4 else 'grid-3'}">{cartes}</div>
     <div class="section-head" style="margin-top:3rem">
       <h3>Entrer par votre commune</h3>
       <p class="lead">
@@ -4939,7 +4992,7 @@ def build_villes_archive():
     <p>
       Pour les professionnels multi-sites, nous établissons un forfait unique plutôt qu'un
       déplacement par adresse&nbsp;: voir le
-      <a href="services/nettoyage-entreprise-paris.html">nettoyage pour entreprise</a>.
+      <a href="services/nettoyage-regulier-paris.html">nettoyage pour entreprise</a>.
     </p>
 
     <h2>Ce que chaque page de commune vous indique</h2>
@@ -5012,7 +5065,7 @@ def guide_card(base, g, niveau="h3"):
 def build_guide(g):
     base = "../"
     trail = [("Guides", "guides.html"), (g["cat"], None)]
-    service = next((s for s in SERVICES if s["slug"] == g["service"]), SERVICES[0])
+    service = next(s for s in SERVICES if s["slug"] == g["service"])
     corps = ""
     for titre, paras in g["sections"]:
         corps += "<h2>%s</h2>" % titre + "".join("<p>%s</p>" % p for p in paras)
@@ -7135,6 +7188,20 @@ FORMULATIONS_INTERDITES = (
     ("dès 40 €", "ancien prix d'appel automobile"),
 )
 
+# Sommaires qui donnent accès à une prestation dans le menu professionnel.
+# Le volet « pro » du menu renvoie vers eux plutôt que vers la page de
+# prestation : c'est là que se trouve la profondeur par métier et par
+# commune. Le contrôle de cohérence s'en sert pour vérifier qu'aucune
+# prestation ne devient inatteignable depuis l'en-tête.
+SOMMAIRE_PAR_SERVICE = {
+    "nettoyage-regulier-paris": ["menage-regulier.html"],
+    "nettoyage-vitres-paris": ["vitrerie-professionnelle.html"],
+    "nettoyage-haute-pression-paris": ["nettoyage-haute-pression.html"],
+    "nettoyage-appartement-paris": ["nettoyage-appartement.html"],
+    "nettoyage-hottes-paris": ["hottes.html"],
+}
+
+
 def controle_coherence(pages):
     """Garde-fou exécuté à chaque build.
 
@@ -7194,19 +7261,34 @@ def controle_coherence(pages):
         for motif, raison in FORMULATIONS_INTERDITES:
             if motif in html:
                 erreurs.append("%s contient « %s » (%s)" % (chemin, motif, raison))
-        # Le menu déroulant et la colonne du pied de page listent le
-        # catalogue. Une page restée sur une liste périmée se verrait ici, et
-        # nulle part ailleurs : c'est exactement l'écart relevé par l'audit.
-        for zone, motif in (("menu", r"<header .*?</header>"),
-                            ("pied de page", r"<footer class=\"site-footer\".*?</footer>")):
-            bloc = re.search(motif, html, re.S)
-            if not bloc:
-                continue
+        # Le pied de page porte le catalogue entier : une page restée sur une
+        # liste périmée se verrait ici, et nulle part ailleurs. C'est l'écart
+        # relevé par l'audit, et ce contrôle reste strict.
+        bloc = re.search(r"<footer class=\"site-footer\".*?</footer>", html, re.S)
+        if bloc:
             presents = [x["slug"] for x in SERVICES if "services/" + x["slug"] in bloc.group(0)]
             if len(presents) != len(SERVICES):
                 manquants = [x["slug"] for x in SERVICES if x["slug"] not in presents]
-                erreurs.append("%s : le %s ne renvoie pas vers %s"
-                               % (chemin, zone, ", ".join(manquants)))
+                erreurs.append("%s : le pied de page ne renvoie pas vers %s"
+                               % (chemin, ", ".join(manquants)))
+
+        # Le menu, lui, est scindé depuis qu'il s'adapte au profil : le volet
+        # particulier porte les prestations de particulier, le volet
+        # professionnel passe par les sommaires. On vérifie donc que chaque
+        # prestation reste atteignable depuis l'en-tête, directement ou par
+        # son sommaire — c'est la question qui compte, et c'est elle qu'une
+        # liste périmée ferait échouer.
+        entete = re.search(r"<header .*?</header>", html, re.S)
+        if entete:
+            bloc_h = entete.group(0)
+            for s in SERVICES:
+                voies = ["services/" + s["slug"]] + [
+                    v[:-5] if v.endswith(".html") else v
+                    for v in SOMMAIRE_PAR_SERVICE.get(s["slug"], [])]
+                if not any('"%s"' % v in bloc_h or '/%s"' % v in bloc_h or v in bloc_h
+                           for v in voies):
+                    erreurs.append("%s : le menu ne mène plus à %s, ni directement ni par un "
+                                   "sommaire" % (chemin, s["slug"]))
 
     # 5. Longueur des titres et des descriptions. Google tronque le titre
     #    autour de 60 caractères et la description autour de 160 : au-delà,

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-profil="part">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -31,8 +31,10 @@
 <meta name="twitter:description" content="Ramonage annuel, filtres chaque semaine, livret d'entretien : ce que l'arrêté du 25 juin 1980 impose réellement à un exploitant.">
 <meta name="twitter:image" content="https://mathclean.fr/assets/img/og-image.png">
 <link rel="icon" href="../assets/img/lion.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/theme.css?v=111759c3">
-<script>document.documentElement.className+=' js';</script>
+<link rel="stylesheet" href="../assets/css/theme.css?v=51ce6f7f">
+<script>(function(d){d.className+=' js';
+if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.dataset.profil='pro';}catch(e){}}
+})(document.documentElement);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://mathclean.fr/"},{"@type":"ListItem","position":2,"name":"Dossiers","item":"https://mathclean.fr/dossiers"},{"@type":"ListItem","position":3,"name":"Nettoyage de hotte en restaurant : ce que la réglementation impose","item":"https://mathclean.fr/dossiers/obligation-nettoyage-hotte-restaurant"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Nettoyage de hotte en restaurant : ce que la réglementation impose","description":"Ramonage annuel, filtres chaque semaine, livret d'entretien : ce que l'arrêté du 25 juin 1980 impose réellement à un exploitant.","inLanguage":"fr-FR","datePublished":"2026-09-05T12:00:00+02:00","dateModified":"2026-09-05T12:00:00+02:00","author":{"@type":"Person","name":"Mathéo Céleste","url":"https://mathclean.fr/a-propos","worksFor":{"@id":"https://mathclean.fr/#business"}},"publisher":{"@type":"Organization","@id":"https://mathclean.fr/#business","name":"MathClean","url":"https://mathclean.fr/","logo":{"@type":"ImageObject","url":"https://mathclean.fr/assets/img/og-image.png","width":1200,"height":630}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mathclean.fr/dossiers/obligation-nettoyage-hotte-restaurant"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Un nettoyage par an suffit-il ?","acceptedAnswer":{"@type":"Answer","text":"C'est le plancher réglementaire pour le ramonage des conduits, pas une recommandation technique. Le texte demande en outre que le circuit d'extraction soit nettoyé « aussi souvent que nécessaire », ce qui veut dire deux passages par an dans la plupart des restaurants, et davantage en friture, grillade ou four à bois."}},{"@type":"Question","name":"Quelle différence entre GC 21 et GC 22 ?","acceptedAnswer":{"@type":"Answer","text":"GC 21 impose l'entretien : filtres chaque semaine, ramonage annuel des conduits, nettoyage du circuit aussi souvent que nécessaire. GC 22 impose une vérification annuelle des installations de cuisson par un technicien compétent ou un organisme agréé, consignée au registre de sécurité. Le premier, c'est faire nettoyer ; le second, faire vérifier. Nous assurons le premier et nous en délivrons l'attestation ; le second est une prestation distincte, que nous ne réalisons pas."}},{"@type":"Question","name":"Qui peut me demander mon livret d'entretien ?","acceptedAnswer":{"@type":"Answer","text":"Les services de contrôle compétents lors d'une visite de sécurité de l'établissement, et votre assureur en cas de sinistre. Dans les deux cas, ce sont les dates qui sont regardées : un livret vide a le même effet qu'un entretien non fait."}},{"@type":"Question","name":"Les filtres doivent-ils vraiment être nettoyés chaque semaine ?","acceptedAnswer":{"@type":"Answer","text":"C'est ce que prévoit le texte : nettoyés ou remplacés au moins une fois par semaine. C'est aussi, en pratique, le geste le plus utile de tout le dispositif, parce qu'un filtre propre arrête la graisse avant le conduit."}}]}</script>
@@ -71,15 +73,7 @@
 <li class="menu-item-has-children">
   <a href="../services">Prestations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
-    <li><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="../services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li><li><a href="../services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li><a href="../services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="../services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="../services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="../services/nettoyage-vitres-paris">Nettoyage de vitres</a></li>
-    <li class="sub-sep"><a href="../hottes">Hottes : par métier et par commune</a></li>
-    <li><a href="../nettoyage-restaurant">Nettoyage de restaurant</a></li>
-    <li><a href="../nettoyage-haute-pression">Nettoyage haute pression</a></li>
-    <li><a href="../vitrerie-professionnelle">Vitrerie professionnelle</a></li>
-    <li><a href="../menage-regulier">Entretien régulier de locaux</a></li>
-    <li><a href="../nettoyage-appartement">Nettoyage d'appartement</a></li>
-    <li class="sub-sep"><a href="../services"><strong>Toutes nos prestations</strong></a></li>
-    <li><a href="../realisations">Nos réalisations (avant/après)</a></li>
+    <li class="nav-part"><a href="../services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li class="nav-part"><a href="../services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="../services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-part"><a href="../services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="../services/nettoyage-vitres-paris">Nettoyage de vitres</a></li><li class="nav-pro"><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li class="nav-pro"><a href="../nettoyage-restaurant">Nettoyage de restaurant</a></li><li class="nav-pro"><a href="../menage-regulier">Nettoyage d'entreprise</a></li><li class="nav-pro"><a href="../vitrerie-professionnelle">Vitrerie professionnelle</a></li><li class="nav-pro"><a href="../nettoyage-haute-pression">Nettoyage haute pression</a></li>
   </ul>
 </li>
 <li><a href="../tarifs">Tarifs</a></li>
@@ -97,8 +91,10 @@
     <li><a href="../guides"><strong>Guides pratiques</strong></a></li>
     <li><a href="../dossiers"><strong>Dossiers techniques</strong></a></li>
     <li><a href="../blog"><strong>Astuces &amp; conseils</strong></a></li>
+    <li class="sub-sep"><a href="../hottes">Hottes : par métier et par commune</a></li>
   </ul>
 </li>
+<li><a href="../realisations">Réalisations</a></li>
 <li><a href="../a-propos">À propos</a></li>
 <li><a href="../contact">Contact</a></li>
 </ul>
@@ -328,6 +324,6 @@
   <button class="btn btn-sm" id="cookie-ok" type="button">J'ai compris</button>
 </div>
 
-<script src="../assets/js/theme.js?v=d5e91aeb" defer></script>
+<script src="../assets/js/theme.js?v=17b1ebfa" defer></script>
 </body>
 </html>

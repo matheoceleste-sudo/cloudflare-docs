@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-profil="part">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -31,8 +31,10 @@
 <meta name="twitter:description" content="Entretien des parties communes en copropriété : ce que couvre la prestation, à quelle fréquence, et comment un syndic compare deux devis.">
 <meta name="twitter:image" content="https://mathclean.fr/assets/photos/bureau-entreprise.webp">
 <link rel="icon" href="../assets/img/lion.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/theme.css?v=111759c3">
-<script>document.documentElement.className+=' js';</script>
+<link rel="stylesheet" href="../assets/css/theme.css?v=51ce6f7f">
+<script>(function(d){d.className+=' js';
+if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.dataset.profil='pro';}catch(e){}}
+})(document.documentElement);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://mathclean.fr/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://mathclean.fr/guides"},{"@type":"ListItem","position":3,"name":"Nettoyage des parties communes de copropriété","item":"https://mathclean.fr/guides/nettoyage-copropriete-parties-communes"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Nettoyage des parties communes de copropriété","description":"La propreté des parties communes relève du syndic et se finance par les charges. C'est aussi le premier motif de plainte en assemblée générale. Voici comment la prestation se construit.","image":"https://mathclean.fr/assets/photos/bureau-entreprise.webp","datePublished":"2026-09-05T12:00:00+02:00","dateModified":"2026-09-05T12:00:00+02:00","inLanguage":"fr-FR","author":{"@type":"Person","name":"Mathéo Céleste","url":"https://mathclean.fr/a-propos","worksFor":{"@id":"https://mathclean.fr/#business"}},"publisher":{"@type":"Organization","@id":"https://mathclean.fr/#business","name":"MathClean","url":"https://mathclean.fr/","logo":{"@type":"ImageObject","url":"https://mathclean.fr/assets/img/og-image.png","width":1200,"height":630}},"isPartOf":{"@type":"WebSite","@id":"https://mathclean.fr/#site"},"mainEntityOfPage":"https://mathclean.fr/guides/nettoyage-copropriete-parties-communes"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qui décide du prestataire de nettoyage en copropriété ?","acceptedAnswer":{"@type":"Answer","text":"Le syndic met en concurrence et le vote intervient en assemblée générale, à la majorité de l'article 24 pour un contrat d'entretien courant. Le conseil syndical peut demander des devis en amont."}},{"@type":"Question","name":"Le nettoyage des parties communes est-il obligatoire ?","acceptedAnswer":{"@type":"Answer","text":"L'entretien des parties communes incombe au syndicat des copropriétaires. Rien n'impose de passer par une entreprise — certaines copropriétés emploient un gardien — mais l'entretien lui-même n'est pas optionnel."}},{"@type":"Question","name":"Sortez-vous les conteneurs ?","acceptedAnswer":{"@type":"Answer","text":"Oui, quand c'est prévu au contrat, avec un passage calé sur le calendrier de collecte de la commune. C'est souvent le point qui détermine le jour d'intervention plutôt que l'inverse."}},{"@type":"Question","name":"Intervenez-vous ponctuellement, sans contrat ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Une remise en état après travaux, un local poubelles à reprendre à la haute pression ou une vitrerie de hall se traitent en intervention unique, sur devis."}}]}</script>
@@ -71,15 +73,7 @@
 <li class="menu-item-has-children">
   <a href="../services">Prestations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
-    <li><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="../services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li><li><a href="../services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li><a href="../services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="../services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="../services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="../services/nettoyage-vitres-paris">Nettoyage de vitres</a></li>
-    <li class="sub-sep"><a href="../hottes">Hottes : par métier et par commune</a></li>
-    <li><a href="../nettoyage-restaurant">Nettoyage de restaurant</a></li>
-    <li><a href="../nettoyage-haute-pression">Nettoyage haute pression</a></li>
-    <li><a href="../vitrerie-professionnelle">Vitrerie professionnelle</a></li>
-    <li><a href="../menage-regulier">Entretien régulier de locaux</a></li>
-    <li><a href="../nettoyage-appartement">Nettoyage d'appartement</a></li>
-    <li class="sub-sep"><a href="../services"><strong>Toutes nos prestations</strong></a></li>
-    <li><a href="../realisations">Nos réalisations (avant/après)</a></li>
+    <li class="nav-part"><a href="../services/nettoyage-appartement-paris">Nettoyage d'appartement</a></li><li class="nav-part"><a href="../services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="../services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-part"><a href="../services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="../services/nettoyage-vitres-paris">Nettoyage de vitres</a></li><li class="nav-pro"><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li class="nav-pro"><a href="../nettoyage-restaurant">Nettoyage de restaurant</a></li><li class="nav-pro"><a href="../menage-regulier">Nettoyage d'entreprise</a></li><li class="nav-pro"><a href="../vitrerie-professionnelle">Vitrerie professionnelle</a></li><li class="nav-pro"><a href="../nettoyage-haute-pression">Nettoyage haute pression</a></li>
   </ul>
 </li>
 <li><a href="../tarifs">Tarifs</a></li>
@@ -97,8 +91,10 @@
     <li><a href="../guides"><strong>Guides pratiques</strong></a></li>
     <li><a href="../dossiers"><strong>Dossiers techniques</strong></a></li>
     <li><a href="../blog"><strong>Astuces &amp; conseils</strong></a></li>
+    <li class="sub-sep"><a href="../hottes">Hottes : par métier et par commune</a></li>
   </ul>
 </li>
+<li><a href="../realisations">Réalisations</a></li>
 <li><a href="../a-propos">À propos</a></li>
 <li><a href="../contact">Contact</a></li>
 </ul>
@@ -161,7 +157,7 @@
         <p>
           <strong>Besoin d'un devis ?</strong> MathClean intervient à Paris et dans toute
           l'Île-de-France, 7j/7 et sans acompte. Découvrez notre
-          <a href="../services/nettoyage-hottes-paris">dégraissage de hottes</a>,
+          <a href="../services/nettoyage-regulier-paris">nettoyage d'entreprise</a>,
           <a href="../reservation">réservez en ligne</a> ou appelez le
           <a href="tel:+33623075259">06 23 07 52 59</a>.
         </p>
@@ -170,7 +166,7 @@
       <footer class="entry-footer">
         <ul class="tag-list">
           <li><a href="../guides">Copropriété</a></li>
-          <li><a href="../services/nettoyage-hottes-paris">Dégraissage de hottes</a></li>
+          <li><a href="../services/nettoyage-regulier-paris">Nettoyage d'entreprise</a></li>
           <li><a href="../villes">Île-de-France</a></li>
         </ul>
       </footer>
@@ -356,6 +352,6 @@
   <button class="btn btn-sm" id="cookie-ok" type="button">J'ai compris</button>
 </div>
 
-<script src="../assets/js/theme.js?v=d5e91aeb" defer></script>
+<script src="../assets/js/theme.js?v=17b1ebfa" defer></script>
 </body>
 </html>

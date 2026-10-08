@@ -188,3 +188,35 @@
     champ.value = (q === 'pro' || q === 'professionnel') ? 'Professionnel' : 'Particulier';
   })();
 })();
+
+/* ---------------------------------------------------------------------------
+   10. Profil du visiteur : particulier ou professionnel
+   ---------------------------------------------------------------------------
+   Le choix fait dans la barre du haut est mémorisé, et il commande le volet
+   du menu « Prestations » ainsi que l'habillage du site. L'attribut est déjà
+   posé sur <html> au chargement par un script en ligne dans le <head> : ce
+   qui suit ne sert qu'à enregistrer le choix au clic, et à refléter l'état
+   sur les deux boutons.
+--------------------------------------------------------------------------- */
+(function () {
+  var racine = document.documentElement;
+  var liens = document.querySelectorAll('.parcours a');
+  if (!liens.length) return;
+
+  function memoriser(valeur) {
+    try { localStorage.setItem('mc-profil', valeur); } catch (e) {}
+  }
+
+  liens.forEach(function (a) {
+    var pro = /professionnels/.test(a.getAttribute('href') || '');
+    /* L'état actif suit le profil courant, et plus seulement la page
+       affichée : un visiteur qui s'est déclaré professionnel doit voir
+       lequel des deux est le sien, même sur la page d'accueil. */
+    if (!a.hasAttribute('aria-current')) {
+      a.classList.toggle('is-on', pro === (racine.dataset.profil === 'pro'));
+    }
+    a.addEventListener('click', function () {
+      memoriser(pro ? 'pro' : 'part');
+    });
+  });
+})();

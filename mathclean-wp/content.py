@@ -79,8 +79,8 @@ SERVICES = [
         "meta": "Dégraissage de hotte, filtres et conduits d'extraction pour restaurants et boulangeries à Paris et en IDF. Ramonage annuel exigé par l'arrêté du 25 juin 1980.",
         "price": "sur devis",
         "excerpt": "Hotte, filtres, bac à graisse et conduits d'extraction jusqu'au ventilateur : le circuit complet, dégraissé en une intervention de nuit.",
-        "image": "bureau-entreprise.webp",
-        "hero": "bureau-entreprise.webp",
+        "image": "intervention-1.webp",
+        "hero": "intervention-1.webp",
         "icon": "tools",
         "intro": [
             "La graisse de cuisson ne reste pas sur la hotte. Elle est aspirée, se condense en remontant dans le conduit, et s'y dépose en une couche "
@@ -180,8 +180,8 @@ SERVICES = [
         "meta": "Nettoyage complet d'appartement à Paris et en Île-de-France : grand ménage, après travaux, avant état des lieux ou entre deux locations. Devis gratuit.",
         "price": "sur devis",
         "excerpt": "Grand ménage de printemps, remise en état avant un état des lieux, ou nettoyage complet entre deux locations : l'appartement entier, pièce par pièce.",
-        "image": "intervention-1.webp",
-        "hero": "intervention-1.webp",
+        "image": "canape-nettoyage.webp",
+        "hero": "canape-nettoyage.webp",
         "icon": "sofa",
         "intro": [
             "Un nettoyage d'appartement n'est pas un ménage en plus grand. Le ménage courant entretient ce qui est propre ; ici, on reprend ce qui ne "
@@ -899,7 +899,7 @@ POSTS = [
 
 # --- Avis clients ---------------------------------------------------------
 # Note globale affichée. À corriger dès qu'elle bouge sur votre fiche Google.
-GOOGLE_NOTE = {"score": "5,0", "nombre": 10}
+GOOGLE_NOTE = {"score": "5,0", "nombre": 33}
 
 # IMPORTANT — n'inscrivez ici que de VRAIS avis, recopiés mot pour mot depuis
 # votre fiche Google, avec le prénom et la date affichés par Google.
@@ -1718,7 +1718,7 @@ GUIDES = [
             ("Intervenez-vous en urgence, la veille de l'état des lieux ?",
              "Souvent oui, selon nos disponibilités et votre commune. Appelez-nous plutôt que d'utiliser le formulaire : c'est plus rapide. Sachez seulement qu'un sol lavé la veille peut être encore humide le lendemain matin."),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'nettoyage-etat-des-lieux-sortie',
@@ -1758,7 +1758,7 @@ GUIDES = [
             ('Les joints de carrelage gris se rattrapent-ils ?',
              "En partie. Un joint grisé par l'encrassement se récupère bien. Un joint poreux teinté dans la masse, non : il faudrait le refaire, ce qui est un travail de carreleur, pas de nettoyage."),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'prix-nettoyage-fin-de-bail',
@@ -1800,7 +1800,7 @@ GUIDES = [
             ('Y a-t-il un supplément le week-end ?',
              'Non. Nous intervenons sept jours sur sept au même tarif, parce que les déménagements se font justement le week-end.'),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'nettoyage-copropriete-parties-communes',
@@ -1844,7 +1844,7 @@ GUIDES = [
             ('Intervenez-vous ponctuellement, sans contrat ?',
              'Oui. Une remise en état après travaux, un local poubelles à reprendre à la haute pression ou une vitrerie de hall se traitent en intervention unique, sur devis.'),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'nettoyage-cage-escalier-immeuble',
@@ -1884,7 +1884,7 @@ GUIDES = [
             ('Nettoyez-vous aussi les vitrages de la cage ?',
              "Oui, à l'eau osmosée, qui sèche sans laisser de trace. C'est en général une prestation trimestrielle plutôt qu'hebdomadaire."),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'nettoyage-airbnb-paris',
@@ -2055,7 +2055,7 @@ GUIDES = [
              "En partie. L'extraction retire la saleté, elle ne restaure pas une fibre usée mécaniquement. Sur une moquette dont la fibre est écrasée dans les couloirs, le résultat sera net mais l'usure restera visible. Nous le disons avant."),
         ],
         "video": 'textile',
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'nettoyage-tapis-paris',
@@ -2322,7 +2322,7 @@ GUIDES = [
             ('Facturez-vous un supplément pour les horaires décalés ?',
              'Non. Avant ouverture, après fermeture ou le week-end, le tarif est le même.'),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'nettoyage-local-commercial-restaurant',
@@ -2368,7 +2368,7 @@ GUIDES = [
             ('Pouvez-vous traiter une odeur de friture installée ?',
              "Oui, par ozone, après dégraissage des surfaces. Le traitement se fait local vide, hors présence de personnes, d'animaux et de plantes, et suivi d'une aération avant réouverture."),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'prix-nettoyage-fin-de-chantier-m2',
@@ -2683,7 +2683,7 @@ GUIDES = [
             ('Peut-on traiter les sièges en même temps que la moquette ?',
              "Oui, et c'est la solution la plus économique : même matériel, même déplacement, coût par siège nettement réduit."),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'nettoyage-salon-jardin-mobilier-exterieur',
@@ -2770,7 +2770,7 @@ GUIDES = [
             ('Faut-il vider le parking entièrement ?',
              "Non, et c'est déconseillé. Mieux vaut procéder par zones successives, avec un affichage plusieurs jours à l'avance, que de tenter de libérer toutes les places le même jour."),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'nettoyage-urgent-7j-7-ile-de-france',
@@ -2820,7 +2820,7 @@ GUIDES = [
             ('Quel est votre délai habituel ?',
              "Réponse sous vingt-quatre heures, intervention sous vingt-quatre à soixante-douze heures selon le département. Le plus court en Seine-Saint-Denis, dans le Val-d'Oise, à Paris et en proche couronne."),
         ],
-        "service": 'nettoyage-entreprise-paris',
+        "service": 'nettoyage-regulier-paris',
     },
     {
         "slug": 'ph-produits-nettoyage-professionnel',
