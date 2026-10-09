@@ -12,3 +12,7 @@ __pycache__/
 # depuis l'ajout des vidéos, l'archive complète dépasse la limite d'envoi et
 # se livre en deux morceaux à recombiner dans un même dossier.
 mathclean-site*.zip
+
+# Secrets de développement local — ne doivent jamais être versionnés.
+.dev.vars
+.wrangler/

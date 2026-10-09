@@ -16,7 +16,6 @@ SITE = {
     "phone": "06 23 07 52 59",
     "phone_link": "+33623075259",
     "email": "matheoceleste@gmail.com",
-    "form_action": "https://formsubmit.co/matheoceleste@gmail.com",
     # Reprise de la fiche INSEE (SIREN 924 565 990), pour que le site, la fiche
     # Google et le registre désignent la même adresse.
     "address": "2 rue Poussin",
@@ -27,6 +26,11 @@ SITE = {
     "lat": 48.9499461,
     "lon": 2.4559529,
     "siret": "924 565 990 00010",
+    # Prestataire d'envoi des courriels, nommé dans la politique de
+    # confidentialité. À changer ici — et nulle part ailleurs — si vous
+    # passez de Resend à Brevo ou à un autre.
+    "courriel_prestataire": "Resend",
+    "courriel_prestataire_pays": "États-Unis",
     "siren": "924 565 990",
     "manager": "Mathéo Céleste",
     "hours": "7j/7, de 8h à 20h",

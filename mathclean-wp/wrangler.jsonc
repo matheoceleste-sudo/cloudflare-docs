@@ -1,8 +1,9 @@
 {
-	// Configuration du site MathClean pour Cloudflare Workers.
+	// Configuration du site MathClean sur Cloudflare Workers.
 	//
-	// Worker « assets seuls » : il n'y a pas de champ "main", donc aucun code
-	// serveur — Cloudflare se contente de servir les fichiers de ./site.
+	// Le site reste un ensemble de fichiers statiques dans ./site. Le Worker
+	// ne s'occupe que de ce qui bouge : réception des formulaires, page de
+	// devis, console, et la passe de relances une fois par jour.
 	//
 	// Dans le tableau de bord Cloudflare, le projet doit pointer sur ce dossier :
 	//   Root directory  : mathclean-wp
@@ -12,11 +13,56 @@
 	// Sans "Root directory", le build lit le wrangler.toml de la racine du dépôt,
 	// qui appartient au projet cloudflare-docs et vise un autre compte : il échoue
 	// immédiatement.
+	//
+	// Mise en service : voir AUTOMATISATION.md, à la racine de ce dossier.
+
 	"name": "mathclean",
+	"main": "worker/index.js",
 	"compatibility_date": "2025-06-02",
+
 	"assets": {
 		"directory": "./site",
+		"binding": "ASSETS",
 		// Sert site/404.html pour toute adresse inconnue.
-		"not_found_handling": "404-page"
+		"not_found_handling": "404-page",
+		// Ces chemins n'existent pas en fichiers : ils doivent atteindre le
+		// Worker, et non la page 404. Sans cette liste, la gestion des assets
+		// répondrait 404 avant que le code ne soit appelé.
+		"run_worker_first": ["/api/*", "/devis/*", "/admin", "/admin/*"]
+	},
+
+	// La base des demandes et du journal d'envoi.
+	// À créer une fois :  npx wrangler d1 create mathclean
+	// puis recopier l'identifiant renvoyé dans "database_id" ci-dessous.
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "mathclean",
+			"database_id": "À REMPLACER — voir AUTOMATISATION.md"
+		}
+	],
+
+	// La passe de relances. 7 h 12 UTC, soit 9 h 12 en heure d'été et 8 h 12
+	// en heure d'hiver : assez tôt pour que la journée en profite, assez tard
+	// pour ne réveiller personne. La minute n'est pas ronde volontairement —
+	// les crons à l'heure pile sont les plus encombrés.
+	"triggers": {
+		"crons": ["12 7 * * *"]
+	},
+
+	// Variables non secrètes. Les clés, elles, se posent en secrets :
+	//   npx wrangler secret put RESEND_API_KEY
+	//   npx wrangler secret put ADMIN_CLE
+	//   npx wrangler secret put SEL_IP
+	"vars": {
+		"SITE_URL": "https://mathclean.fr",
+		"CONTACT_EMAIL": "matheoceleste@gmail.com",
+		"EXPEDITEUR": "devis@mathclean.fr",
+		"EXPEDITEUR_NOM": "MathClean",
+		"REPONDRE_A": "matheoceleste@gmail.com"
+	},
+
+	"observability": {
+		"enabled": true
 	}
 }

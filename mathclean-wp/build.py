@@ -3092,11 +3092,7 @@ def build_devis():
 <section class="section">
   <div class="container blog-layout">
     <div class="form-card" id="estimateur">
-      <form action="{SITE['form_action']}" method="POST">
-        <input type="hidden" name="_subject" value="Nouvelle demande de devis — MathClean">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="{SITE['url']}/merci.html">
+      <form action="/api/devis" method="POST">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <h2 style="font-size:1.35rem">Votre demande</h2>
@@ -3329,11 +3325,7 @@ def build_contact():
           Pour une demande chiffrée, préférez notre <a href="devis.html">formulaire de devis</a>,
           plus complet.
         </p>
-        <form action="{SITE['form_action']}" method="POST">
-          <input type="hidden" name="_subject" value="Message depuis le site — MathClean">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="{SITE['url']}/merci.html">
+        <form action="/api/contact" method="POST">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-grid">
             <div class="field">
@@ -3763,11 +3755,13 @@ def build_legal():
 <h2>4. Qui a accès à vos données</h2>
 <p>
   Vos données sont destinées uniquement à {SITE['name']}. Elles ne sont <strong>ni vendues ni
-  cédées</strong> à des tiers à des fins commerciales. Pour recevoir les messages de vos formulaires,
-  nous utilisons le service <strong>FormSubmit</strong> (envoi d'e-mails) ; le site est hébergé par
-  <strong>Cloudflare</strong>. Ces prestataires techniques agissent en tant que sous-traitants. Certains
-  serveurs pouvant être situés hors de l'Union européenne, les transferts éventuels sont encadrés par
-  des garanties appropriées.
+  cédées</strong> à des tiers à des fins commerciales. Deux prestataires techniques interviennent,
+  en qualité de sous-traitants : <strong>Cloudflare</strong> héberge le site, conserve les demandes
+  de devis et exécute le programme qui les traite ; <strong>{SITE['courriel_prestataire']}</strong>
+  achemine les courriels que nous vous adressons — devis, accusés de réception, relances et rappels.
+  Certains serveurs pouvant être situés hors de l'Union européenne ({SITE['courriel_prestataire_pays']}
+  pour l'envoi des courriels), les transferts sont encadrés par les clauses contractuelles types
+  de la Commission européenne.
 </p>
 
 <h2>5. Combien de temps nous les conservons</h2>
@@ -3881,8 +3875,11 @@ def build_legal():
   du fait de leur chargement :
 </p>
 <ul>
-  <li><strong>FormSubmit</strong> — acheminement des messages de vos formulaires ;</li>
-  <li><strong>Cloudflare</strong> — hébergement et diffusion du site.</li>
+  <li><strong>Cloudflare</strong> — hébergement du site, diffusion, et conservation des
+  demandes de devis ;</li>
+  <li><strong>{SITE['courriel_prestataire']}</strong> — acheminement des courriels que nous
+  vous adressons. Ce service ne reçoit pas votre adresse IP : il n'est appelé par aucune page,
+  seulement par notre serveur au moment de l'envoi.</li>
 </ul>
 <p>
   Ces services ne déposent pas de cookie publicitaire dans le cadre de leur usage sur ce site. Le site
@@ -4103,6 +4100,63 @@ EXEMPLES_BRIEF = {
 }
 
 
+def build_tarifs_worker(data):
+    """Écrit worker/tarifs.js : la grille que le serveur applique aux devis.
+
+    Le configurateur calcule dans le navigateur, donc tout ce qu'il envoie est
+    modifiable par le visiteur. Le Worker ne lit jamais un montant reçu : il
+    recalcule à partir de ce fichier. Et ce fichier est produit ici, à partir
+    des mêmes tables que les pages — PACKS_AUTO, OPTIONS_AUTO, TARIFS_TEXTILE,
+    DEPLACEMENT. Il n'existe donc pas deux grilles qui pourraient diverger,
+    mais une seule, recopiée.
+
+    Les communes servent à borner les frais de déplacement : le code postal
+    déclaré donne un plancher de distance que le navigateur ne peut pas
+    descendre.
+    """
+    communes = {}
+    for source in (PREMIUM_VILLES, VILLES_PRO, VILLES_APPART):
+        for v in source:
+            if v.get("cp") and v.get("lat") is not None:
+                communes.setdefault(str(v["cp"]), [round(v["lat"], 5),
+                                                   round(v["lon"], 5)])
+    # Repli par département, pour un code postal que nous ne couvrons pas :
+    # le barycentre des communes connues du département.
+    depts = {}
+    for cp, (la, lo) in communes.items():
+        depts.setdefault(cp[:2], []).append((la, lo))
+    departements = {d: [round(sum(x[0] for x in v) / len(v), 5),
+                        round(sum(x[1] for x in v) / len(v), 5)]
+                    for d, v in depts.items()}
+
+    grille = {
+        "packs": [{"nom": p["nom"], "prix": p["prix"]} for p in data["packs"]],
+        "options": [{"nom": o["nom"], "prix": o["prix"]} for o in data["options"]],
+        "textile": [{"nom": t["nom"], "prix": t["prix"]} for t in data["textile"]],
+        "services": [{"slug": s["slug"], "nav": s["nav"], "univers": s["univers"]}
+                     for s in data["services"]],
+        "deplacement": {k: DEPLACEMENT[k] for k in
+                        ("lat", "lon", "palier_km", "palier_eur", "coef_route")},
+    }
+
+    js = ("/* Fichier GÉNÉRÉ par build.py — ne pas modifier à la main.\n"
+          "   Toute correction se fait dans content.py, puis `python3 build.py`.\n"
+          "   C'est la grille que le Worker applique pour chiffrer un devis. */\n\n"
+          "export const TARIFS = " + json.dumps(grille, ensure_ascii=False, indent=2)
+          + ";\n\nexport const COMMUNES = "
+          + json.dumps(communes, ensure_ascii=False, separators=(",", ":"))
+          + ";\n\nexport const DEPARTEMENTS = "
+          + json.dumps(departements, ensure_ascii=False, separators=(",", ":"))
+          + ";\n")
+
+    chemin = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          "worker", "tarifs.js")
+    os.makedirs(os.path.dirname(chemin), exist_ok=True)
+    with open(chemin, "w", encoding="utf-8") as f:
+        f.write(js)
+    return len(communes)
+
+
 def build_reservation():
     base = ""
     trail = [("Réserver", None)]
@@ -4129,6 +4183,7 @@ def build_reservation():
                    "reponse_txt": DELAIS["reponse"],
                    "jours_proche": 1, "jours_loin": 2},
     }
+    build_tarifs_worker(data)
     data_json = json.dumps(data, ensure_ascii=False)
 
     # Chaque carte dit dès l'étape 1 ce qui l'attend à l'étape 2 : un prix
@@ -4182,14 +4237,13 @@ def build_reservation():
         <li><button type="button" data-go="4"><span>4</span>Coordonnées</button></li>
       </ol>
 
-      <form id="resa-form" action="{SITE['form_action']}" method="POST">
-        <input type="hidden" name="_subject" value="Nouvelle réservation — MathClean">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="{SITE['url']}/merci.html">
+      <form id="resa-form" action="/api/reservation" method="POST">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="Prestation" id="resa-presta">
         <input type="hidden" name="Récapitulatif" id="resa-recap">
+        <!-- Ce que le client a choisi, pas ce qu'il doit payer : le
+             serveur applique sa propre grille et ignore tout montant reçu. -->
+        <input type="hidden" name="Sélection" id="resa-selection">
         <input type="hidden" name="Total estimé" id="resa-total-field">
 
         <!-- Étape 1 -->

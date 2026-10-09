@@ -169,11 +169,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
           Pour une demande chiffrée, préférez notre <a href="devis">formulaire de devis</a>,
           plus complet.
         </p>
-        <form action="https://formsubmit.co/matheoceleste@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Message depuis le site — MathClean">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://mathclean.fr/merci">
+        <form action="/api/contact" method="POST">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-grid">
             <div class="field">

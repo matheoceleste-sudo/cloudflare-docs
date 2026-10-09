@@ -248,6 +248,24 @@
     $('#resa-total-field').value = txt;
     $('#resa-recap').value = r.lines.map(function (l) { return l.t + ' : ' + l.p; }).join(' | ');
 
+    /* Ce que le serveur lira pour établir le devis : des choix, jamais des
+       montants. Le récapitulatif et le total ci-dessus restent utiles à
+       l'humain qui lit le courriel, mais ils ne décident de rien — le Worker
+       retarife à partir de sa propre grille. Un total modifié dans la page
+       n'a donc aucun effet sur le prix facturé. */
+    var sel = $('#resa-selection');
+    if (sel) {
+      sel.value = JSON.stringify({
+        service:  state.service || null,
+        univers:  state.univers,
+        pack:     state.pack,
+        options:  state.options,
+        textile:  state.textile,
+        km:       state.dep && state.dep.km ? state.dep.km : null,
+        dept:     state.dept
+      });
+    }
+
     var fin = $('#resa-final');
     if (fin) {
       fin.innerHTML = r.lines.length
