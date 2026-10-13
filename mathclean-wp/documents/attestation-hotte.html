@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Attestation de nettoyage et d'entretien de hotte — MathClean</title>
+<style>
+/* ---------------------------------------------------------------------------
+   Attestation de nettoyage et d'entretien — hotte et circuit d'extraction.
+
+   Se remplit à l'écran, s'imprime en A4, s'enregistre en PDF. Les champs sont
+   de vrais champs : on tape dedans, la bordure disparaît à l'impression et il
+   ne reste que le texte, sur une ligne.
+
+   Rien n'est envoyé nulle part : ce fichier fonctionne hors ligne, et le
+   contenu saisi ne quitte pas l'appareil.
+   --------------------------------------------------------------------------- */
+:root{
+  --bleu:#0e5fbb; --or:#9a7b2e; --encre:#16212e; --corps:#39465a;
+  --ligne:#cfd8e4; --doux:#f4f7fb; --rouge:#8a1c1c;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:#e9eef4;color:var(--corps);
+  font:400 11.5px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+.feuille{
+  width:210mm;margin:16px auto;padding:12mm 13mm 10mm;
+  background:#fff;box-shadow:0 2px 18px rgba(16,33,54,.14);
+}
+.feuille + .feuille{margin-top:22px}
+
+/* En-tête ------------------------------------------------------------------ */
+.bandeau{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:14mm;
+  border-bottom:2.5px solid var(--encre);padding-bottom:3.5mm;margin-bottom:4mm;
+}
+.marque{font:700 18px/1.1 inherit;color:var(--encre);letter-spacing:-.02em}
+.marque span{color:var(--bleu)}
+.devise{
+  font:600 8.5px/1.4 inherit;color:var(--or);letter-spacing:.14em;
+  text-transform:uppercase;margin-top:3px;
+}
+.emetteur{font-size:10px;line-height:1.45;margin-top:3mm;color:var(--corps)}
+.titre{text-align:right;max-width:78mm}
+.titre h1{
+  margin:0 0 1.5mm;font:700 13.5px/1.2 inherit;color:var(--encre);
+  letter-spacing:-.01em;text-transform:uppercase;
+}
+.titre .objet{font-size:10px;color:var(--corps);margin:0 0 2mm}
+.numero{font-size:10.5px;line-height:1.6}
+.numero b{color:var(--encre)}
+/* Un champ date s'affiche au format du système : 13/10/2026 en France,
+   10/13/2026 sur un navigateur réglé en anglais. Sur un document qui peut
+   finir chez un assureur, l'ambiguïté n'est pas acceptable — la date est
+   donc doublée en toutes lettres, et c'est elle qui fait foi à l'impression. */
+.en-toutes-lettres{
+  display:block;font-size:9.5px;color:#6b7a8d;font-style:italic;margin-top:.4mm;
+}
+.en-toutes-lettres:empty{display:none}
+
+/* Sections ----------------------------------------------------------------- */
+section{margin-bottom:3.5mm;break-inside:avoid}
+h2{
+  margin:0 0 2mm;padding-bottom:.8mm;font:700 9px/1.4 inherit;
+  color:var(--encre);letter-spacing:.11em;text-transform:uppercase;
+  border-bottom:1px solid var(--ligne);
+}
+h2 .num{
+  display:inline-block;width:4.8mm;height:4.8mm;margin-right:1.6mm;
+  background:var(--encre);color:#fff;border-radius:2px;text-align:center;
+  line-height:4.8mm;font-size:8px;
+}
+
+/* Champs ------------------------------------------------------------------- */
+.grille{display:grid;gap:1.6mm 5mm}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+.champ{display:flex;flex-direction:column;gap:.6mm}
+.champ > label{
+  font:600 7.8px/1.35 inherit;color:#6b7a8d;letter-spacing:.06em;
+  text-transform:uppercase;
+}
+input[type=text],input[type=date],input[type=time],input[type=number],textarea{
+  width:100%;padding:1.1mm 1.6mm;border:1px solid var(--ligne);border-radius:2px;
+  font:inherit;font-size:11.5px;color:var(--encre);background:#fff;
+}
+input:focus,textarea:focus{outline:2px solid var(--bleu);outline-offset:-1px;border-color:var(--bleu)}
+textarea{resize:vertical;min-height:13mm;line-height:1.45}
+.fige{background:var(--doux);border-style:dashed;color:var(--corps)}
+
+/* Cases à cocher ----------------------------------------------------------- */
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:.8mm 5mm}
+.op{display:flex;align-items:flex-start;gap:1.6mm;font-size:10.5px;line-height:1.3}
+.op input{
+  flex:none;width:3.2mm;height:3.2mm;margin:.5mm 0 0;accent-color:var(--bleu);
+}
+.op span{color:var(--encre)}
+.op small{display:block;color:#6b7a8d;font-size:8.8px;line-height:1.3}
+
+/* Encarts ------------------------------------------------------------------ */
+.reserve{
+  background:#fff8e6;border-left:3px solid var(--or);padding:2.2mm 2.8mm;
+  border-radius:0 2px 2px 0;font-size:10px;line-height:1.45;margin-bottom:2mm;
+}
+.portee{
+  border:1.5px solid var(--encre);padding:3.2mm 3.6mm;border-radius:2px;
+  font-size:10.5px;line-height:1.55;
+}
+.portee p{margin:0 0 2mm}
+.portee p:last-child{margin-bottom:0}
+.portee strong{color:var(--encre)}
+.ne-vaut-pas{color:var(--rouge);font-weight:700}
+
+/* Signatures --------------------------------------------------------------- */
+.signatures{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-top:4mm}
+.case-signature{border:1px solid var(--ligne);border-radius:2px;padding:3mm}
+.case-signature .qui{
+  font:600 8.5px/1.4 inherit;color:#6b7a8d;letter-spacing:.07em;
+  text-transform:uppercase;margin-bottom:1mm;
+}
+.case-signature .quoi{font-size:10.5px;color:#6b7a8d;margin-bottom:2mm}
+.trait{height:18mm;border-bottom:1px solid var(--ligne)}
+
+/* Pied --------------------------------------------------------------------- */
+.pied{
+  margin-top:5mm;padding-top:2.5mm;border-top:1px solid var(--ligne);
+  font-size:8.8px;line-height:1.5;color:#6b7a8d;text-align:center;
+}
+
+/* Barre d'outils, jamais imprimée ------------------------------------------ */
+.outils{
+  position:sticky;top:0;z-index:5;background:var(--encre);color:#fff;
+  padding:9px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  font-size:13px;
+}
+.outils b{margin-right:auto}
+.outils button{
+  font-family:inherit;font-size:13px;font-weight:600;padding:8px 15px;
+  border-radius:4px;cursor:pointer;
+  border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;
+}
+.outils button.fort{background:var(--bleu);border-color:var(--bleu)}
+.outils button:hover{background:rgba(255,255,255,.14)}
+.outils button.fort:hover{background:#0a4a94}
+.aide{font-size:11.5px;color:#9fb3cb;width:100%;margin:0}
+
+/* Écran seulement : une page A4 fait 794 px de large à 96 ppp, donc une
+   règle « max-width: 820px » non qualifiée s'applique aussi à l'impression
+   et replie tout le document en une colonne. Il passait de deux à quatre
+   pages sans que rien ne le laisse voir à l'écran. */
+@media screen and (max-width:820px){
+  .feuille{width:auto;min-height:0;padding:18px 16px;margin:10px}
+  .bandeau{flex-direction:column;gap:5mm}
+  .titre{text-align:left;max-width:none}
+  .g2,.g3,.ops,.signatures{grid-template-columns:1fr}
+}
+
+@media print{
+  @page{size:A4 portrait;margin:11mm}
+  body{background:#fff}
+  .outils{display:none!important}
+  .feuille{
+    width:auto;min-height:0;margin:0;padding:0;box-shadow:none;
+    break-after:page;
+  }
+  .feuille:last-child{break-after:auto}
+  /* Les champs deviennent des lignes écrites : plus de boîte, plus de fond. */
+  input[type=text],input[type=date],input[type=time],input[type=number],textarea{
+    border:0;border-bottom:1px solid #9aa7b6;border-radius:0;padding:.6mm 0;
+    background:none;color:#000;
+  }
+  .fige{border-bottom-style:solid}
+  textarea{min-height:16mm}
+  .op input{-webkit-appearance:none;appearance:none;border:1px solid #333;border-radius:1px}
+  .op input:checked::after{content:"×";display:block;text-align:center;line-height:3.4mm;font-weight:700}
+  /* Le rappel « à remplir même quand tout s'est bien passé » s'adresse à
+     celui qui remplit, pas au client qui reçoit. Il reste à l'écran et
+     disparaît du document délivré. */
+  .reserve{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="outils">
+  <b>Attestation de hotte — MathClean</b>
+  <button class="fort" onclick="window.print()">Imprimer ou enregistrer en PDF</button>
+  <button onclick="if(confirm('Effacer tout ce qui a été saisi ?')) document.querySelectorAll('input:not(.fige),textarea:not(.fige)').forEach(function(c){c.type==='checkbox'?c.checked=false:c.value=''})">Vider le formulaire</button>
+  <p class="aide">Remplissez à l'écran, puis imprimez — ou enregistrez en PDF et envoyez-la par courriel.
+  Rien n'est transmis : tout reste sur cet appareil.</p>
+</div>
+
+<!-- ====================== PAGE 1 ====================== -->
+<main class="feuille">
+
+  <header class="bandeau">
+    <div>
+      <div class="marque">Math<span>Clean</span></div>
+      <div class="devise">Une exigence de roi</div>
+      <div class="emetteur">
+        <strong>Mathéo Céleste</strong> — entreprise individuelle<br>
+        2 rue Poussin, 93150 Le Blanc-Mesnil<br>
+        SIRET 924 565 990 00010<br>
+        06 23 07 52 59 · mathclean.fr
+      </div>
+    </div>
+    <div class="titre">
+      <h1>Attestation de nettoyage<br>et d'entretien</h1>
+      <p class="objet">Hotte de cuisine professionnelle et circuit d'extraction</p>
+      <div class="numero">
+        <b>N°</b> <input type="text" style="width:34mm" placeholder="AT-2026-001"><br>
+        <b>Établie le</b> <input type="date" style="width:34mm" id="d-etablie">
+        <span class="en-toutes-lettres" id="d-etablie-txt"></span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="num">1</span>Établissement bénéficiaire</h2>
+    <div class="grille g2">
+      <div class="champ"><label>Raison sociale</label><input type="text"></div>
+      <div class="champ"><label>Enseigne</label><input type="text"></div>
+      <div class="champ" style="grid-column:1/-1"><label>Adresse de l'établissement</label><input type="text"></div>
+      <div class="champ"><label>Code postal et ville</label><input type="text"></div>
+      <div class="champ"><label>SIRET (facultatif)</label><input type="text"></div>
+      <div class="champ"><label>Type d'établissement</label><input type="text" placeholder="restaurant, boulangerie, pizzeria…"></div>
+      <div class="champ"><label>Interlocuteur sur place</label><input type="text"></div>
+      <div class="champ" style="grid-column:1/-1"><label>Mode de cuisson dominant</label><input type="text" placeholder="friture, braise, four à bois, pizza…"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>Intervention</h2>
+    <div class="grille g3">
+      <div class="champ"><label>Date</label><input type="date" id="d-interv">
+        <span class="en-toutes-lettres" id="d-interv-txt"></span></div>
+      <div class="champ"><label>Début</label><input type="time"></div>
+      <div class="champ"><label>Fin</label><input type="time"></div>
+    </div>
+    <div class="grille g2" style="margin-top:2mm">
+      <div class="champ"><label>Intervenant</label><input type="text" class="fige" value="Mathéo Céleste"></div>
+      <div class="champ"><label>Référence du devis (facultatif)</label><input type="text" placeholder="MC-2026-0000"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>Installation traitée</h2>
+    <div class="grille g3">
+      <div class="champ"><label>Type de hotte</label><input type="text" placeholder="murale, îlot, caisson…"></div>
+      <div class="champ"><label>Longueur de hotte (m)</label><input type="text"></div>
+      <div class="champ"><label>Nombre de filtres</label><input type="text"></div>
+      <div class="champ"><label>Type de conduit</label><input type="text" placeholder="rigide, gaine, maçonné"></div>
+      <div class="champ"><label>Longueur traitée (m)</label><input type="text"></div>
+      <div class="champ"><label>Trappes de visite ouvertes</label><input type="text" placeholder="nombre / emplacement"></div>
+      <div class="champ" style="grid-column:1/-1"><label>Moteur d'extraction</label><input type="text" placeholder="accessible sans dépose / non accessible — préciser"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>Opérations réalisées</h2>
+    <div class="ops">
+      <label class="op"><input type="checkbox"><span>Protection de la zone de cuisson</span></label>
+      <label class="op"><input type="checkbox"><span>Dépose des filtres</span></label>
+      <label class="op"><input type="checkbox"><span>Dégraissage des filtres<small>Trempage puis rinçage, ou remplacement</small></span></label>
+      <label class="op"><input type="checkbox"><span>Caisson de hotte, intérieur</span></label>
+      <label class="op"><input type="checkbox"><span>Caisson de hotte, extérieur</span></label>
+      <label class="op"><input type="checkbox"><span>Plénum<small>Volume situé derrière les filtres</small></span></label>
+      <label class="op"><input type="checkbox"><span>Bac à graisse</span></label>
+      <label class="op"><input type="checkbox"><span>Conduit d'extraction<small>Par les trappes de visite, sur la longueur indiquée</small></span></label>
+      <label class="op"><input type="checkbox"><span>Ramonage mécanique du conduit<small>Lorsqu'il y a de la suie — four à bois, charbon</small></span></label>
+      <label class="op"><input type="checkbox"><span>Caisson et pales du moteur<small>Lorsqu'ils sont accessibles sans dépose</small></span></label>
+      <label class="op"><input type="checkbox"><span>Remontage complet</span></label>
+      <label class="op"><input type="checkbox"><span>Essai d'extraction</span></label>
+      <label class="op"><input type="checkbox"><span>Vérification de vacuité du conduit<small>Sur la longueur ouverte et contrôlée</small></span></label>
+      <label class="op"><input type="checkbox"><span>Remise en état de la zone</span></label>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>État constaté et résultat</h2>
+    <div class="grille g2">
+      <div class="champ">
+        <label>État avant intervention</label>
+        <textarea placeholder="Épaisseur et nature du dépôt, zones les plus chargées, délai depuis le dernier passage."></textarea>
+      </div>
+      <div class="champ">
+        <label>Résultat et essai d'extraction</label>
+        <textarea placeholder="État après intervention, résultat de l'essai de mise en route, tirage constaté."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>Observations et réserves</h2>
+    <div class="reserve">
+      <strong>À remplir même quand tout s'est bien passé.</strong> Ce que l'on n'a pas pu
+      traiter — conduit sans trappe accessible, moteur non démontable, longueur non
+      atteinte — doit figurer ici. Une attestation qui laisse croire à un traitement
+      complet alors qu'une partie du circuit est restée fermée n'est pas tenable, ni
+      devant l'assureur, ni devant la commission de sécurité.
+    </div>
+    <textarea style="min-height:20mm" placeholder="Parties non accessibles et motif. Anomalies constatées : trappe manquante, conduit percé, grille détériorée, défaut d'étanchéité. Recommandations relevant d'un installateur."></textarea>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>Prochaine intervention recommandée</h2>
+    <div class="grille g2">
+      <div class="champ"><label>Échéance conseillée</label><input type="text" placeholder="dans 6 mois / dans 12 mois"></div>
+      <div class="champ"><label>Motif de cette fréquence</label><input type="text" placeholder="mode de cuisson, volume de service, état constaté"></div>
+    </div>
+  </section>
+
+  <div class="pied">
+    MathClean — Mathéo Céleste · 2 rue Poussin, 93150 Le Blanc-Mesnil ·
+    SIRET 924 565 990 00010 · TVA non applicable, article 293 B du CGI<br>
+    La portée de la présente attestation figure en dernière page, qui en fait partie intégrante.
+  </div>
+</main>
+
+<!-- ====================== PAGE 2 ====================== -->
+<main class="feuille">
+
+  <header class="bandeau">
+    <div>
+      <div class="marque">Math<span>Clean</span></div>
+      <div class="devise">Une exigence de roi</div>
+    </div>
+    <div class="titre">
+      <h1 style="font-size:13px">Portée de l'attestation</h1>
+      <p class="objet">Partie intégrante de l'attestation qui précède</p>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="num">8</span>Ce que cette attestation établit</h2>
+    <div class="portee">
+      <p>Je soussigné <strong>Mathéo Céleste</strong>, exerçant sous l'enseigne MathClean,
+      atteste avoir réalisé à la date indiquée en page 1, dans l'établissement désigné,
+      les opérations de nettoyage et d'entretien cochées à l'article 4, dans les limites
+      consignées à l'article 6.</p>
+
+      <p>Cette attestation est établie pour être <strong>versée au livret d'entretien
+      annexé au registre de sécurité</strong> de l'établissement. L'article GC 21 de
+      l'arrêté du 25 juin 1980 modifié, portant règlement de sécurité contre l'incendie
+      dans les établissements recevant du public, met à la charge de l'exploitant
+      l'inscription des dates d'entretien dans ce livret.</p>
+
+      <p>Pour mémoire, ce même article prévoit que les filtres soient nettoyés ou
+      remplacés <strong>au moins une fois par semaine</strong>, que les conduits
+      d'évacuation soient ramonés <strong>au moins une fois par an</strong> avec
+      vérification de leur vacuité à cette occasion, et que le circuit d'extraction soit
+      nettoyé aussi souvent que nécessaire.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">9</span>Ce que cette attestation n'établit pas</h2>
+    <div class="portee">
+      <p><span class="ne-vaut-pas">Elle ne vaut pas attestation de conformité</span> de
+      l'installation. Le tracé du conduit, son degré coupe-feu, ses distances aux
+      matériaux combustibles et la présence des trappes de visite relèvent de la
+      conception de l'installation, et non du nettoyage.</p>
+
+      <p><span class="ne-vaut-pas">Elle ne vaut pas vérification annuelle au titre de
+      l'article GC 22.</span> Dans les établissements des quatre premières catégories,
+      les installations de cuisson font l'objet d'une vérification annuelle par un
+      <strong>technicien compétent ou un organisme agréé</strong>, portant notamment sur
+      l'état d'entretien des appareils et sur la ventilation des locaux, et consignée au
+      registre de sécurité. C'est une prestation distincte, que MathClean n'assure pas.
+      Les établissements de 5<sup>e</sup> catégorie relèvent de l'arrêté du 22 juin 1990.</p>
+
+      <p>MathClean n'intervient pas sur le réseau lui-même : la pose d'une trappe de
+      visite, la modification d'un tracé ou le remplacement d'un moteur relèvent d'un
+      installateur. Les anomalies constatées sont signalées à l'article 6 ; elles ne sont
+      pas réparées dans le cadre de la présente intervention.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span>Signatures</h2>
+    <div class="signatures">
+      <div class="case-signature">
+        <div class="qui">Le prestataire</div>
+        <div class="quoi">Mathéo Céleste — MathClean</div>
+        <div class="trait"></div>
+      </div>
+      <div class="case-signature">
+        <div class="qui">L'exploitant ou son représentant</div>
+        <div class="quoi">Nom, qualité, et mention « lu et approuvé »</div>
+        <div class="trait"></div>
+      </div>
+    </div>
+    <p style="font-size:10.5px;color:#6b7a8d;margin-top:3mm">
+      La signature de l'exploitant vaut reconnaissance de la réalisation des opérations
+      décrites et de la prise de connaissance des réserves portées à l'article 6. Son
+      absence ne retire rien à la valeur de l'attestation, qui demeure signée par le
+      prestataire.
+    </p>
+  </section>
+
+  <div class="pied">
+    MathClean — Mathéo Céleste · 2 rue Poussin, 93150 Le Blanc-Mesnil ·
+    SIRET 924 565 990 00010 · TVA non applicable, article 293 B du CGI<br>
+    06 23 07 52 59 · mathclean.fr
+  </div>
+</main>
+
+<script>
+/* Deux commodités, et rien de plus : la date du jour pré-remplie, et un
+   numéro proposé à partir de l'année. Tout reste modifiable. */
+(function () {
+  var auj = new Date();
+  var iso = auj.getFullYear() + '-' +
+            String(auj.getMonth() + 1).padStart(2, '0') + '-' +
+            String(auj.getDate()).padStart(2, '0');
+  document.querySelectorAll('input[type=date]').forEach(function (c) {
+    if (!c.value) c.value = iso;
+  });
+  var num = document.querySelector('input[placeholder^="AT-"]');
+  if (num && !num.value) num.placeholder = 'AT-' + auj.getFullYear() + '-001';
+
+  /* La date en toutes lettres suit le champ, quel que soit le réglage du
+     navigateur : c'est la seule forme qui ne se lit pas de deux façons. */
+  function enLettres(valeur) {
+    if (!valeur) return '';
+    var d = new Date(valeur + 'T12:00:00');
+    if (isNaN(d)) return '';
+    return new Intl.DateTimeFormat('fr-FR', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    }).format(d);
+  }
+  [['d-etablie', 'd-etablie-txt'], ['d-interv', 'd-interv-txt']].forEach(function (p) {
+    var champ = document.getElementById(p[0]);
+    var sortie = document.getElementById(p[1]);
+    if (!champ || !sortie) return;
+    var maj = function () { sortie.textContent = enLettres(champ.value); };
+    champ.addEventListener('input', maj);
+    champ.addEventListener('change', maj);
+    maj();
+  });
+})();
+</script>
+</body>
+</html>
