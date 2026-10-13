@@ -211,7 +211,7 @@ textarea{resize:vertical;min-height:13mm;line-height:1.45}
       <h1>Attestation de nettoyage<br>et d'entretien</h1>
       <p class="objet">Hotte de cuisine professionnelle et circuit d'extraction</p>
       <div class="numero">
-        <b>N°</b> <input type="text" style="width:34mm" placeholder="AT-2026-001"><br>
+        <b>N°</b> <input type="text" style="width:34mm" placeholder="AT-2026-001" id="a-num"><br>
         <b>Établie le</b> <input type="date" style="width:34mm" id="d-etablie">
         <span class="en-toutes-lettres" id="d-etablie-txt"></span>
       </div>
@@ -221,13 +221,13 @@ textarea{resize:vertical;min-height:13mm;line-height:1.45}
   <section>
     <h2><span class="num">1</span>Établissement bénéficiaire</h2>
     <div class="grille g2">
-      <div class="champ"><label>Raison sociale</label><input type="text"></div>
-      <div class="champ"><label>Enseigne</label><input type="text"></div>
-      <div class="champ" style="grid-column:1/-1"><label>Adresse de l'établissement</label><input type="text"></div>
-      <div class="champ"><label>Code postal et ville</label><input type="text"></div>
+      <div class="champ"><label>Raison sociale</label><input type="text" id="a-raison"></div>
+      <div class="champ"><label>Enseigne</label><input type="text" id="a-enseigne"></div>
+      <div class="champ" style="grid-column:1/-1"><label>Adresse de l'établissement</label><input type="text" id="a-adresse"></div>
+      <div class="champ"><label>Code postal et ville</label><input type="text" id="a-cpville"></div>
       <div class="champ"><label>SIRET (facultatif)</label><input type="text"></div>
       <div class="champ"><label>Type d'établissement</label><input type="text" placeholder="restaurant, boulangerie, pizzeria…"></div>
-      <div class="champ"><label>Interlocuteur sur place</label><input type="text"></div>
+      <div class="champ"><label>Interlocuteur sur place</label><input type="text" id="a-contact"></div>
       <div class="champ" style="grid-column:1/-1"><label>Mode de cuisson dominant</label><input type="text" placeholder="friture, braise, four à bois, pizza…"></div>
     </div>
   </section>
@@ -242,7 +242,7 @@ textarea{resize:vertical;min-height:13mm;line-height:1.45}
     </div>
     <div class="grille g2" style="margin-top:2mm">
       <div class="champ"><label>Intervenant</label><input type="text" class="fige" value="Mathéo Céleste"></div>
-      <div class="champ"><label>Référence du devis (facultatif)</label><input type="text" placeholder="MC-2026-0000"></div>
+      <div class="champ"><label>Référence du devis (facultatif)</label><input type="text" placeholder="MC-2026-0000" id="a-devis"></div>
     </div>
   </section>
 
@@ -432,6 +432,18 @@ textarea{resize:vertical;min-height:13mm;line-height:1.45}
       day: 'numeric', month: 'long', year: 'numeric'
     }).format(d);
   }
+  /* Pré-remplissage depuis la console, quand il y en a un. */
+  var bloc = document.getElementById('mc-prefill');
+  if (bloc) {
+    try {
+      var v = JSON.parse(bloc.textContent);
+      Object.keys(v).forEach(function (id) {
+        var c = document.getElementById(id);
+        if (c && v[id]) c.value = v[id];
+      });
+    } catch (e) { /* un pré-remplissage illisible ne doit pas vider la page */ }
+  }
+
   [['d-etablie', 'd-etablie-txt'], ['d-interv', 'd-interv-txt']].forEach(function (p) {
     var champ = document.getElementById(p[0]);
     var sortie = document.getElementById(p[1]);

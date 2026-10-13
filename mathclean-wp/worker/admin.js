@@ -15,6 +15,7 @@ import { envoyer, reprendre } from "./courriel.js";
 import { devisFerme } from "./modeles.js";
 import { identite } from "./reservation.js";
 import { passeQuotidienne } from "./relances.js";
+import { rendreAttestation } from "./attestation.js";
 
 const COOKIE = "mc_admin";
 
@@ -320,6 +321,12 @@ Déplacement | 15"></textarea>
       ${d.message ? `<p style="padding:11px 13px;background:#f8fafc;border-left:3px solid #0e5fbb;white-space:pre-wrap;font-size:14px">${ech(d.message)}</p>` : ""}
       ${tableLignes}
       <p style="margin-top:12px"><a class="lien" href="${ech(site.url)}/devis/${ech(d.jeton)}">Voir le devis tel que le client le voit →</a></p>
+      <a class="btn btn-léger" href="/admin/attestation?demande=${d.id}" target="_blank" rel="noopener">
+        Ouvrir l'attestation de hotte
+      </a>
+      <p class="meta" style="margin-top:6px">Le client, l'adresse et les dates sont déjà
+      remplis. Le constat — longueur de conduit, trappes, état avant, réserves — reste à
+      saisir sur place : il ne se devine pas depuis une fiche.</p>
     </div>
     ${blocChiffrage}
     ${blocDate}
@@ -412,6 +419,20 @@ export async function routeAdmin(request, env, ctx, url) {
       const j = await passeQuotidienne(env);
       return versPage(`/admin?m=${encodeURIComponent(`Passe exécutée : ${JSON.stringify(j)}`)}`);
     }
+  }
+
+  if (chemin === "/admin/attestation") {
+    const id = parseInt(url.searchParams.get("demande"), 10);
+    const d = Number.isFinite(id)
+      ? await env.DB.prepare(`SELECT * FROM demandes WHERE id = ?`).bind(id).first()
+      : null;
+    return new Response(rendreAttestation(d), {
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "no-store",
+      },
+    });
   }
 
   const demande = url.searchParams.get("demande");

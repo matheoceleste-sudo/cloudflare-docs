@@ -155,6 +155,20 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled"
 - Le journal des courriels, en bas, dit ce qui est parti et ce qui a échoué,
   avec le motif.
 
+**L'attestation de hotte** : sur la fiche d'une demande, le bouton *Ouvrir
+l'attestation de hotte* ouvre le document avec le client, l'adresse et les
+dates déjà remplis, et un numéro dérivé de celui du devis — MC-2026-0042
+donne AT-2026-0042, les deux pièces d'un dossier portent le même numéro.
+
+Le constat reste à saisir sur place : longueur de conduit traitée, trappes
+ouvertes, état avant, résultat de l'essai d'extraction, et surtout les
+réserves. Ces champs-là ne se devinent pas depuis une fiche de réservation,
+et un document qui les proposerait tout faits inciterait à les valider sans
+les avoir regardés.
+
+C'est le même fichier que `documents/attestation-hotte.html`, importé tel
+quel par le Worker : il n'en existe pas deux versions à tenir d'accord.
+
 **Chiffrer un sur-devis** : une ligne par poste, un trait vertical avant le
 montant.
 
