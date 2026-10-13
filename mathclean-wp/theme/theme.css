@@ -1472,6 +1472,23 @@ html[data-profil="pro"] .cta-band{
   background:linear-gradient(135deg,#0c4b96 0,#0e5fbb 60%,#1668c8 100%);
 }
 
+/* Deux vidéos côte à côte : un avant et un après du même objet. Elles se
+   lisent ensemble, donc elles restent sur une ligne tant que la largeur le
+   permet, et passent l'une au-dessus de l'autre en dessous — jamais en
+   colonne étroite où l'on ne verrait plus le détail qui fait la preuve. */
+.video-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:26px}
+.video-duo-item{margin:0}
+.video-duo-item video{
+  width:100%;aspect-ratio:640/1138;border-radius:var(--radius-lg);
+  border:1px solid var(--line);background:#111b27;display:block;
+}
+.video-duo-item figcaption{
+  margin-top:.7rem;font-size:.92rem;line-height:1.5;color:var(--muted);
+}
+@media(max-width:700px){
+  .video-duo{grid-template-columns:1fr;gap:26px}
+}
+
 /* Illustration d'un sommaire : une seule photo, legendee, jamais pleine largeur.
    La legende dit ce que montre l'image — c'est elle qui fait le lien avec la
    liste de liens qui suit. */

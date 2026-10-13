@@ -1,3 +1,10 @@
+> **Mise à jour du 13 octobre 2026.** Quatre photos et deux vidéos de
+> chantiers hottes sont arrivées et sont en ligne : la hotte bâchée avant
+> intervention, l'intérieur du caisson avec le départ de conduit, les filtres
+> à la dépose et les filtres rendus. **La prise de vue n° 1 de cette liste —
+> l'intérieur du conduit, trappe ouverte — est donc faite.** Le reste de la
+> liste tient toujours.
+
 # Les photos qui manquent au site
 
 154 pages n'ont aucune image : 54 pages hottes, 50 vitrerie, 40 restaurants,

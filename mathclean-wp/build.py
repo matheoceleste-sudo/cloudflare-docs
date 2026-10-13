@@ -796,6 +796,20 @@ VIDEOS = {
                 "parquet, plinthes, murs et menuiseries, pièce vide avant l'état des "
                 "lieux de sortie. Aucun montage, un seul plan.",
     },
+    "filtres-encrasses": {
+        "fichier": "filtres-hotte-encrasses", "duree": "PT4S", "secondes": 4,
+        "nom": "Filtres à chicanes encrassés, avant dégraissage",
+        "desc": "Les filtres déposés d'une hotte de restaurant avant traitement : "
+                "le dépôt brun pris entre les chicanes est de la graisse de cuisson "
+                "condensée, qui est combustible.",
+    },
+    "filtres-nettoyes": {
+        "fichier": "filtres-hotte-nettoyes", "duree": "PT7S", "secondes": 7,
+        "nom": "Filtres à chicanes rendus après dégraissage",
+        "desc": "Des filtres à chicanes de hotte professionnelle après trempage et "
+                "dégraissage : l'inox est rendu nu, les chicanes dégagées sur toute "
+                "leur longueur, et la section de passage retrouvée.",
+    },
     "hp-facade": {
         "fichier": "hp-facade", "duree": "PT18S", "secondes": 18,
         "nom": "Coffret extérieur couvert de lichen, lavé à la lance",
@@ -848,6 +862,56 @@ def video_block(base, cle, titre, texte, eyebrow="En vidéo"):
     <h2>{titre}</h2>
     {texte}
   </div>
+</div>"""
+
+
+def figure_photo(base, fichier, legende, largeur=820, hauteur=620):
+    """Photo légendée sur une section à part.
+
+    La légende n'est pas décorative : elle dit ce que montre l'image et
+    pourquoi elle est là. Une photo d'inox propre sans légende ne prouve rien ;
+    la même, avec ce qu'elle a remplacé en une phrase, prouve quelque chose.
+    """
+    return f"""<section class="section section-sm">
+  <div class="container container-narrow">
+    <figure class="hub-photo">
+      <img src="{base}assets/photos/{fichier}" alt="{esc(legende)}"
+           loading="lazy" width="{largeur}" height="{hauteur}">
+      <figcaption>{legende}</figcaption>
+    </figure>
+  </div>
+</section>"""
+
+
+def video_paire(base, cle_avant, cle_apres, titre, texte, eyebrow="En vidéo"):
+    """Deux vidéos du même objet, avant et après, et leur commentaire.
+
+    Deux plans valent mieux qu'un : un filtre brillant seul ne prouve rien,
+    il faut avoir vu l'état de départ. En revanche les légendes ne promettent
+    pas qu'il s'agit du même objet filmé deux fois — ce sont deux moments du
+    métier, pris sur des interventions, et c'est ce qu'elles disent. Un
+    avant/après annoncé comme tel se vérifie, ou ne s'annonce pas.
+    """
+    a = VIDEOS[cle_avant]
+    b = VIDEOS[cle_apres]
+
+    def clip(v, legende):
+        return f"""<figure class="video-duo-item">
+    <video src="{base}assets/videos/{v['fichier']}.mp4"
+           poster="{base}assets/videos/{v['fichier']}.webp"
+           controls playsinline preload="none" width="640" height="1138"
+           aria-label="{esc(v['nom'])}"></video>
+    <figcaption>{legende}</figcaption>
+  </figure>"""
+
+    return f"""<div class="section-head">
+  <span class="eyebrow">{eyebrow}</span>
+  <h2>{titre}</h2>
+  {texte}
+</div>
+<div class="video-duo reveal">
+  {clip(a, "À la dépose — le dépôt pris entre les chicanes")}
+  {clip(b, "Après dégraissage — l'inox nu, les chicanes dégagées")}
 </div>"""
 
 
@@ -1568,6 +1632,24 @@ def build_service(s):
     chimie = bloc_chimie(base, s["chimie"]) if s.get("chimie") else ""
     bloc_risque = (bloc_risque_incendie(base)
                    if s["slug"] == "nettoyage-hottes-paris" else "")
+    # Les deux vidéos des filtres viennent après : le texte dit que le dépôt
+    # est combustible, les plans montrent de quel dépôt il s'agit.
+    bloc_filtres = ('<section class="section"><div class="container">'
+                    + video_paire(
+                        base, "filtres-encrasses", "filtres-nettoyes",
+                        "Les filtres d'une hotte, déposés puis rendus",
+                        "<p class=\"lead\">Deux plans pris sur nos interventions : des "
+                        "filtres à chicanes au moment de la dépose, et des filtres "
+                        "rendus après dégraissage. Le dépôt brun pris entre les lames "
+                        "n'est pas de la saleté de surface : c'est de la graisse de "
+                        "cuisson condensée, et c'est elle qui brûle.</p>"
+                        "<p>Un filtre encrassé fait deux choses à la fois. Il laisse "
+                        "passer vers le conduit la graisse qu'il aurait dû retenir — "
+                        "et le conduit, lui, ne se nettoie pas en cuisine. Et il perd "
+                        "sa section de passage, donc l'extraction tire moins, et les "
+                        "buées restent en salle.</p>")
+                    + "</div></section>"
+                    if s["slug"] == "nettoyage-hottes-paris" else "")
     # Communes disposant d'une page dédiée à cette prestation. Les familles
     # sectorielles — hottes, vitrerie, restaurant, appartement — ont leur
     # propre liste de communes, bien plus large que les dix communes premium :
@@ -1700,6 +1782,7 @@ def build_service(s):
 {bloc_video}
 
 {bloc_risque if bloc_risque else ""}
+{bloc_filtres}
 
 {cta_band(base, "Besoin de cette prestation ?",
           "Devis gratuit et sans engagement, réponse sous 24 h. Aucun acompte : vous réglez après l'intervention.")}
@@ -1740,6 +1823,11 @@ def build_service(s):
     ]
     if v:
         schema.append(video_schema(v[0], "services/%s.html" % s["slug"]))
+    if bloc_filtres:
+        # Les deux plans des filtres sont déclarés comme les autres vidéos du
+        # site : sans fiche VideoObject, ils n'existent pas pour les moteurs.
+        for cle in ("filtres-encrasses", "filtres-nettoyes"):
+            schema.append(video_schema(cle, "services/%s.html" % s["slug"]))
     html = (head(titre_page(s["title"]), s["meta"], "services/%s.html" % s["slug"], base,
                  schema=schema,
                  body_class="page-pro" if s["audience"] == "pro" else "")
@@ -5286,7 +5374,9 @@ def build_guides_archive():
 # Pages portant une vidéo, et l'extrait qu'elles montrent. Sert à enrichir le
 # sitemap : Google peut alors afficher une vignette vidéo dans ses résultats.
 def _pages_video():
-    pages = {"": "mathclean", "realisations.html": "mathclean"}
+    """Page -> clé de vidéo, pour le sitemap. Une page peut en porter deux."""
+    pages = {"": "mathclean", "realisations.html": "mathclean",
+             "services/nettoyage-hottes-paris.html": "filtres-nettoyes"}
     for sl, (cle, _t, _x) in VIDEO_PAR_SERVICE.items():
         pages["services/%s.html" % sl] = cle
     for g in GUIDES:
@@ -5832,6 +5922,11 @@ def build_hotte_secteur(sec):
 
 {bloc_risque_incendie(base)}
 
+{figure_photo(base, "filtres-hotte-propres.webp",
+  "Les filtres à chicanes d'une hotte de restaurant après dégraissage : "
+  "l'inox est rendu nu et les chicanes sont dégagées sur toute leur longueur, "
+  "ce qui rend à l'extraction la section qu'elle avait perdue.")}
+
 {_bloc_limites("Ce que nous ne faisons pas", HOTTE_LIMITES)}
 
 {_faq_section("%s : vos questions" % titre_court, faq, "faq-hotte-%s" % sec["slug"])}
@@ -5956,6 +6051,11 @@ def build_hotte_ville(v):
 </section>
 
 {bloc_risque_incendie(base)}
+
+{figure_photo(base, "hotte-plenum-trappe.webp",
+  "L'intérieur du caisson d'une hotte, filtres déposés : au fond, le départ "
+  "du conduit d'extraction. C'est par là que la graisse monte, et c'est cette "
+  "partie-là qu'un nettoyage de surface ne touche jamais.", 820, 580)}
 
 {_bloc_limites("Ce que nous ne faisons pas", HOTTE_LIMITES)}
 
@@ -7043,9 +7143,10 @@ def build_hub_hottes():
         "Île-de-France. Par métier et par commune, avec le cadre réglementaire.",
         "Nettoyage de hottes et de conduits — Paris et IDF",
         client="pro",
-        photo="hotte-bachee.webp",
-        photo_alt=("Hotte de cuisine professionnelle bâchée et bacs de récupération "
-                   "en place avant le dégraissage du caisson et des filtres"))
+        photo="hotte-protegee.webp",
+        photo_alt=("Hotte de cuisine professionnelle bâchée avant dégraissage : la "
+                   "protection est posée sur tout le poste de cuisson, du caisson "
+                   "jusqu'au plan de travail"))
 
 
 def build_hub_vitres():

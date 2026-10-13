@@ -83,8 +83,8 @@ SERVICES = [
         "meta": "Dégraissage de hotte, filtres et conduits d'extraction pour restaurants et boulangeries à Paris et en IDF. Ramonage annuel exigé par l'arrêté du 25 juin 1980.",
         "price": "sur devis",
         "excerpt": "Hotte, filtres, bac à graisse et conduits d'extraction jusqu'au ventilateur : le circuit complet, dégraissé en une intervention de nuit.",
-        "image": "filtre-hotte-degraisse.webp",
-        "hero": "filtre-hotte-degraisse.webp",
+        "image": "hotte-caisson-conduit.webp",
+        "hero": "hotte-caisson-conduit.webp",
         "icon": "tools",
         "intro": [
             "La graisse de cuisson ne reste pas sur la hotte. Elle est aspirée, se condense en remontant dans le conduit, et s'y dépose en une couche "

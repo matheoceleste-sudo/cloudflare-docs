@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-  <url><loc>https://mathclean.fr/</loc><lastmod>2026-10-08</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
+  <url><loc>https://mathclean.fr/</loc><lastmod>2026-10-13</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
     <video:video>
       <video:thumbnail_loc>https://mathclean.fr/assets/videos/methode-mathclean.webp</video:thumbnail_loc>
       <video:title>La méthode MathClean en une minute</video:title>
@@ -13,10 +13,21 @@
       <video:live>no</video:live>
     </video:video>
   </url>
-  <url><loc>https://mathclean.fr/services</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://mathclean.fr/services/nettoyage-hottes-paris</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://mathclean.fr/services/nettoyage-regulier-paris</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://mathclean.fr/services/nettoyage-appartement-paris</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+  <url><loc>https://mathclean.fr/services</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mathclean.fr/services/nettoyage-hottes-paris</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+    <video:video>
+      <video:thumbnail_loc>https://mathclean.fr/assets/videos/filtres-hotte-nettoyes.webp</video:thumbnail_loc>
+      <video:title>Filtres à chicanes rendus après dégraissage</video:title>
+      <video:description>Des filtres à chicanes de hotte professionnelle après trempage et dégraissage : l'inox est rendu nu, les chicanes dégagées sur toute leur longueur, et la section de passage retrouvée.</video:description>
+      <video:content_loc>https://mathclean.fr/assets/videos/filtres-hotte-nettoyes.mp4</video:content_loc>
+      <video:duration>7</video:duration>
+      <video:publication_date>2026-09-05T12:00:00+02:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+  <url><loc>https://mathclean.fr/services/nettoyage-regulier-paris</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mathclean.fr/services/nettoyage-appartement-paris</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <video:video>
       <video:thumbnail_loc>https://mathclean.fr/assets/videos/appartement-remise-en-etat.webp</video:thumbnail_loc>
       <video:title>Un appartement rendu après remise en état</video:title>
@@ -28,7 +39,7 @@
       <video:live>no</video:live>
     </video:video>
   </url>
-  <url><loc>https://mathclean.fr/services/nettoyage-haute-pression-paris</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+  <url><loc>https://mathclean.fr/services/nettoyage-haute-pression-paris</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <video:video>
       <video:thumbnail_loc>https://mathclean.fr/assets/videos/hp-facade.webp</video:thumbnail_loc>
       <video:title>Coffret extérieur couvert de lichen, lavé à la lance</video:title>
@@ -40,7 +51,7 @@
       <video:live>no</video:live>
     </video:video>
   </url>
-  <url><loc>https://mathclean.fr/services/nettoyage-automobile-paris</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+  <url><loc>https://mathclean.fr/services/nettoyage-automobile-paris</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <video:video>
       <video:thumbnail_loc>https://mathclean.fr/assets/videos/automobile-interieur.webp</video:thumbnail_loc>
       <video:title>Intérieur automobile après nettoyage complet</video:title>
@@ -52,7 +63,7 @@
       <video:live>no</video:live>
     </video:video>
   </url>
-  <url><loc>https://mathclean.fr/services/nettoyage-textile-paris</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+  <url><loc>https://mathclean.fr/services/nettoyage-textile-paris</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <video:video>
       <video:thumbnail_loc>https://mathclean.fr/assets/videos/methode-textile.webp</video:thumbnail_loc>
       <video:title>Nettoyage d'un matelas et d'un canapé par injection-extraction</video:title>
@@ -64,7 +75,7 @@
       <video:live>no</video:live>
     </video:video>
   </url>
-  <url><loc>https://mathclean.fr/services/nettoyage-vitres-paris</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+  <url><loc>https://mathclean.fr/services/nettoyage-vitres-paris</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <video:video>
       <video:thumbnail_loc>https://mathclean.fr/assets/videos/methode-vitres.webp</video:thumbnail_loc>
       <video:title>Nettoyage de vitres, châssis et rainures</video:title>
@@ -90,14 +101,14 @@
     </video:video>
   </url>
   <url><loc>https://mathclean.fr/zones</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/zones/paris-75</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/zones/hauts-de-seine-92</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/zones/seine-saint-denis-93</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/zones/val-de-marne-94</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/zones/essonne-91</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/zones/yvelines-78</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/zones/seine-et-marne-77</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/zones/val-doise-95</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/zones/paris-75</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/zones/hauts-de-seine-92</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/zones/seine-saint-denis-93</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/zones/val-de-marne-94</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/zones/essonne-91</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/zones/yvelines-78</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/zones/seine-et-marne-77</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/zones/val-doise-95</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mathclean.fr/villes</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mathclean.fr/villes/boulogne-billancourt</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://mathclean.fr/villes/neuilly-sur-seine</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -312,61 +323,61 @@
       <video:live>no</video:live>
     </video:video>
   </url>
-  <url><loc>https://mathclean.fr/hottes</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-boulangerie</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-restaurant</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-pizzeria</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-restaurant-asiatique</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-kebab-grillades</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-brasserie</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-friterie-snack</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-boucherie-charcuterie</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-traiteur</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-restauration-collective</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-hotel-restaurant</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-creperie</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-food-truck</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-dark-kitchen</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-saint-denis</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-aubervilliers</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-montreuil</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-pantin</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-bobigny</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-aulnay-sous-bois</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-le-blanc-mesnil</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-drancy</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-noisy-le-grand</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-boulogne-billancourt</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-levallois-perret</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-neuilly-sur-seine</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-courbevoie</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-issy-les-moulineaux</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-nanterre</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-vincennes</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-creteil</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-ivry-sur-seine</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-8</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-11</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-12</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-15</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-16</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-17</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-puteaux</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-rueil-malmaison</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-saint-cloud</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-saint-germain-en-laye</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-sceaux</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-versailles</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-le-vesinet</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-saint-maur-des-fosses</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-tremblay-en-france</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-chelles</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-meaux</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-argenteuil</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-sarcelles</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-cergy</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-massy</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-evry-courcouronnes</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-boulangerie</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-restaurant</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-pizzeria</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-restaurant-asiatique</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-kebab-grillades</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-brasserie</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-friterie-snack</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-boucherie-charcuterie</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-traiteur</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-restauration-collective</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-hotel-restaurant</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-creperie</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-food-truck</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-dark-kitchen</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-saint-denis</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-aubervilliers</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-montreuil</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-pantin</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-bobigny</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-aulnay-sous-bois</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-le-blanc-mesnil</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-drancy</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-noisy-le-grand</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-boulogne-billancourt</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-levallois-perret</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-neuilly-sur-seine</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-courbevoie</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-issy-les-moulineaux</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-nanterre</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-vincennes</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-creteil</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-ivry-sur-seine</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-8</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-11</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-12</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-15</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-16</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-paris-17</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-puteaux</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-rueil-malmaison</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-saint-cloud</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-saint-germain-en-laye</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-sceaux</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-versailles</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-le-vesinet</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-saint-maur-des-fosses</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-tremblay-en-france</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-chelles</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-meaux</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-argenteuil</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-sarcelles</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-cergy</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-massy</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mathclean.fr/hottes/nettoyage-hotte-evry-courcouronnes</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://mathclean.fr/vitrerie-professionnelle</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://mathclean.fr/vitres/nettoyage-vitres-boulangerie</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mathclean.fr/vitres/nettoyage-vitres-restaurant</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -558,6 +569,6 @@
   <url><loc>https://mathclean.fr/devis</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://mathclean.fr/contact</loc><lastmod>2026-10-09</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mathclean.fr/mentions-legales</loc><lastmod>2026-10-08</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://mathclean.fr/politique-confidentialite</loc><lastmod>2026-10-09</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://mathclean.fr/politique-confidentialite</loc><lastmod>2026-10-13</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://mathclean.fr/politique-cookies</loc><lastmod>2026-10-09</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
