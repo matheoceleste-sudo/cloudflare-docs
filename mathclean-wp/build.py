@@ -804,7 +804,7 @@ VIDEOS = {
                 "condensée, qui est combustible.",
     },
     "filtres-nettoyes": {
-        "fichier": "filtres-hotte-nettoyes", "duree": "PT7S", "secondes": 7,
+        "fichier": "filtres-hotte-nettoyes", "duree": "PT5S", "secondes": 5,
         "nom": "Filtres à chicanes rendus après dégraissage",
         "desc": "Des filtres à chicanes de hotte professionnelle après trempage et "
                 "dégraissage : l'inox est rendu nu, les chicanes dégagées sur toute "
