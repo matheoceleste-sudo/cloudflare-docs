@@ -796,6 +796,13 @@ VIDEOS = {
                 "parquet, plinthes, murs et menuiseries, pièce vide avant l'état des "
                 "lieux de sortie. Aucun montage, un seul plan.",
     },
+    "hotte-caisson": {
+        "fichier": "hotte-caisson-interieur", "duree": "PT4S", "secondes": 4,
+        "nom": "L'intérieur d'un caisson de hotte, filtres déposés",
+        "desc": "Le volume situé derrière les filtres d'une hotte de restaurant, "
+                "filtres déposés : les parois mouchetées de graisse et, au fond, la "
+                "bouche du conduit d'extraction par laquelle le dépôt remonte.",
+    },
     "filtres-encrasses": {
         "fichier": "filtres-hotte-encrasses", "duree": "PT4S", "secondes": 4,
         "nom": "Filtres à chicanes encrassés, avant dégraissage",
@@ -1634,6 +1641,13 @@ def build_service(s):
                    if s["slug"] == "nettoyage-hottes-paris" else "")
     # Les deux vidéos des filtres viennent après : le texte dit que le dépôt
     # est combustible, les plans montrent de quel dépôt il s'agit.
+    photo_depot = (figure_photo(
+                       base, "filtres-hotte-depose.webp",
+                       "Les filtres d'une hotte de pizzeria au moment de la dépose. "
+                       "Le dépôt brun pris entre les chicanes est la couche dont parle "
+                       "le texte ci-dessus : c'est elle qui brûle, et c'est elle qui "
+                       "ferme peu à peu le passage de l'air.", 820, 600)
+                   if s["slug"] == "nettoyage-hottes-paris" else "")
     bloc_filtres = ('<section class="section"><div class="container">'
                     + video_paire(
                         base, "filtres-encrasses", "filtres-nettoyes",
@@ -1782,6 +1796,7 @@ def build_service(s):
 {bloc_video}
 
 {bloc_risque if bloc_risque else ""}
+{photo_depot}
 {bloc_filtres}
 
 {cta_band(base, "Besoin de cette prestation ?",
@@ -5376,7 +5391,8 @@ def build_guides_archive():
 def _pages_video():
     """Page -> clé de vidéo, pour le sitemap. Une page peut en porter deux."""
     pages = {"": "mathclean", "realisations.html": "mathclean",
-             "services/nettoyage-hottes-paris.html": "filtres-nettoyes"}
+             "services/nettoyage-hottes-paris.html": "filtres-nettoyes",
+             "hottes.html": "hotte-caisson"}
     for sl, (cle, _t, _x) in VIDEO_PAR_SERVICE.items():
         pages["services/%s.html" % sl] = cle
     for g in GUIDES:
@@ -5922,10 +5938,10 @@ def build_hotte_secteur(sec):
 
 {bloc_risque_incendie(base)}
 
-{figure_photo(base, "filtres-hotte-propres.webp",
+{figure_photo(base, "filtres-hotte-rendus.webp",
   "Les filtres à chicanes d'une hotte de restaurant après dégraissage : "
   "l'inox est rendu nu et les chicanes sont dégagées sur toute leur longueur, "
-  "ce qui rend à l'extraction la section qu'elle avait perdue.")}
+  "ce qui rend à l'extraction la section qu'elle avait perdue.", 820, 640)}
 
 {_bloc_limites("Ce que nous ne faisons pas", HOTTE_LIMITES)}
 
@@ -6849,7 +6865,11 @@ def build_hub_restaurant():
         "Nettoyage complet de restaurant à Paris et en Île-de-France : cuisine en "
         "profondeur, salle, banquettes, sanitaires, vitrine. De nuit, sans acompte.",
         "Nettoyage de restaurant — Paris et IDF",
-        client="pro")
+        client="pro",
+        photo="hotte-caisson-ouvert.webp",
+        photo_alt=("Hotte de cuisine de restaurant vue du dessous, filtres en place à "
+                   "gauche et caisson ouvert à droite : la partie visible et celle "
+                   "qu'il faut ouvrir pour atteindre le dépôt"))
 
 
 # Vidéo propre à certains supports de haute pression. Un plan ne vaut que
@@ -7060,7 +7080,8 @@ def build_hub_hp():
 
 # --- Sommaires -------------------------------------------------------------
 def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
-         client="", action="devis", photo=None, photo_alt=""):
+         client="", action="devis", photo=None, photo_alt="",
+         video=None, video_titre="", video_texte=""):
     """Sommaire d'une famille de pages. `blocs` = [(titre, intro, [(href, lib)])].
 
     `photo` est facultative : un sommaire est d'abord une liste de liens, et
@@ -7079,6 +7100,10 @@ def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
     </figure>
   </div>
 </section>"""
+    if video:
+        sections += ('<section class="section section-soft"><div class="container">'
+                     + video_block(base, video, video_titre, video_texte)
+                     + "</div></section>")
     for i, (titre, intro, entrees) in enumerate(blocs):
         lis = "".join('<li><a href="%s">%s</a></li>' % (h, lb) for h, lb in entrees)
         soft = " section-soft" if i % 2 else ""
@@ -7104,6 +7129,8 @@ def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
                     "url": "%s/%s" % (SITE["url"], h)}
                    for n, (h, lb) in enumerate(
                        [e for _t, _i, es in blocs for e in es])]}]
+    if video:
+        schema.append(video_schema(video, slug))
     html = (head(titre_page(titre_tag), meta, slug, base, schema=schema,
                  body_class="page-pro" if client == "pro" else "")
             + header(base, current) + body + footer(base))
@@ -7111,6 +7138,10 @@ def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
 
 
 def build_hub_hottes():
+    # Une vidéo en plus de la photo : la photo montre la protection posée
+    # avant d'ouvrir, la vidéo montre ce qu'il y a derrière les filtres. Les
+    # deux ensemble disent le travail ; l'une sans l'autre n'en dit que la
+    # moitié.
     return _hub(
         "hottes.html",
         "Nettoyage de hottes et de conduits d'extraction",
@@ -7146,7 +7177,15 @@ def build_hub_hottes():
         photo="hotte-protegee.webp",
         photo_alt=("Hotte de cuisine professionnelle bâchée avant dégraissage : la "
                    "protection est posée sur tout le poste de cuisson, du caisson "
-                   "jusqu'au plan de travail"))
+                   "jusqu'au plan de travail"),
+        video="hotte-caisson",
+        video_titre="Ce qu'il y a derrière les filtres",
+        video_texte=(
+            "<p>Les parois du caisson, mouchetées de graisse, et au fond la bouche du "
+            "conduit d'extraction. C'est le volume que les filtres protègent, et par "
+            "lequel le dépôt remonte quand ils ne le retiennent plus.</p>"
+            "<p>Un nettoyage de surface s'arrête à la face visible de la hotte. Ce "
+            "plan montre ce qu'il laisse derrière lui.</p>"))
 
 
 def build_hub_vitres():
