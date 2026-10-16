@@ -611,9 +611,13 @@ def page_title_block(base, trail, h1, lead=""):
 
 
 def service_card(base, s):
+    visuel = (f'<img src="{base}assets/photos/{s["image"]}" alt="{s["name"]}" '
+              f'loading="lazy" width="640" height="400">'
+              if s.get("image") else
+              f'<span class="thumb-vide">{icon(s["icon"])}</span>')
     return f"""<a class="service-card reveal" href="{base}services/{s['slug']}.html">
   <span class="service-thumb">
-    <img src="{base}assets/photos/{s['image']}" alt="{s['name']}" loading="lazy" width="640" height="400">
+    {visuel}
     <span class="service-price">{s['price']}</span>
   </span>
   <span class="service-body">
@@ -631,8 +635,12 @@ def service_tile(base, s):
     (accueil et page Prestations) ; les listes secondaires gardent la carte
     compacte `service_card`.
     """
+    visuel = (f'<img src="{base}assets/photos/{s["image"]}" alt="{s["name"]}" '
+              f'loading="lazy" width="640" height="420">'
+              if s.get("image") else
+              f'<span class="tile-vide">{icon(s["icon"])}</span>')
     return f"""<a class="tile reveal" href="{base}services/{s['slug']}.html" aria-label="{s['name']}">
-  <img src="{base}assets/photos/{s['image']}" alt="{s['name']}" loading="lazy" width="640" height="420">
+  {visuel}
   <span class="tile-veil"></span>
   <span class="tile-price">{s['price']}</span>
   <span class="tile-body">
@@ -1716,7 +1724,7 @@ def build_service(s):
 
 <section class="section">
   <div class="container">
-    <div class="split">
+    <div class="split{'' if s.get('hero') else ' split-solo'}">
       <div class="reveal">
         <span class="eyebrow">La prestation</span>
         <h2>{s['name']}</h2>
@@ -1726,9 +1734,9 @@ def build_service(s):
           {tarif_cta}
         </div>
       </div>
-      <div class="media-frame reveal">
+      {f'''<div class="media-frame reveal">
         <img src="{base}assets/photos/{s['hero']}" alt="{s['name']} — MathClean" loading="lazy" width="760" height="570">
-      </div>
+      </div>''' if s.get('hero') else ''}
     </div>
   </div>
 </section>
@@ -1881,8 +1889,8 @@ def build_tarifs():
     )
     devis_rows = "".join(
         f"<tr><th scope=\"row\"><a href=\"services/{slug}.html\">{n}</a><small>{d}</small></th>"
-        f"<td class=\"amount\">Sur devis</td></tr>"
-        for n, d, slug in TARIFS_DEVIS
+        f"<td class=\"amount\">{montant}</td></tr>"
+        for n, d, slug, montant in TARIFS_DEVIS
     )
 
     faq_tarifs = [

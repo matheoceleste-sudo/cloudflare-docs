@@ -247,6 +247,10 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 @media(max-width:800px){.grid-paire{grid-template-columns:1fr}}
 .split{display:grid;gap:46px;grid-template-columns:1fr 1fr;align-items:center}
 @media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+/* Chapô de prestation sans photo : une seule colonne, bornée pour que
+   la ligne reste lisible au lieu de courir sur toute la largeur. */
+.split-solo{grid-template-columns:1fr}
+.split-solo>.reveal{max-width:72ch}
 .media-frame{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
 .media-frame img,.media-frame video{width:100%;aspect-ratio:4/3;object-fit:cover}
 
@@ -1507,3 +1511,11 @@ html[data-profil="pro"] .cta-band{
 
 /* Le choix reste lisible dans la barre du haut quelle que soit la page. */
 .parcours a.is-on{font-weight:700}
+
+/* Prestation sans photo : un aplat de marque avec l'icône, plutôt qu'une
+   image qui montrerait autre chose. Même boîte que la photo remplacée. */
+.thumb-vide,.tile-vide{display:flex;align-items:center;justify-content:center;
+  width:100%;height:100%;background:linear-gradient(145deg,#1b2b40,#0f1b2a)}
+.thumb-vide svg,.tile-vide svg{width:46px;height:46px;stroke:#c9a227;stroke-width:1.4}
+.tile-vide{position:absolute;inset:0}
+.tile-vide svg{width:62px;height:62px}

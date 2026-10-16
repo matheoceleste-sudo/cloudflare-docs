@@ -471,6 +471,133 @@ SERVICES = [
              "Un passage hebdomadaire ou bimensuel selon l'exposition à la rue. Nous établissons un forfait pour les passages réguliers."),
         ],
     },
+    # -----------------------------------------------------------------
+    # RAMONAGE — activité réglementée.
+    #
+    # Article 16 de la loi n° 96-603 du 5 juillet 1996 et décret n° 98-246 du
+    # 2 avril 1998 : le ramonage ne peut être exercé que par une personne
+    # qualifiée professionnellement (diplôme de niveau CAP ou supérieur, ou
+    # trois ans d'expérience dans le métier), ou sous son contrôle effectif
+    # et permanent.
+    #
+    # La page annonce une attestation de ramonage, parce que l'article
+    # R. 1331-19 du code de la santé publique en fait le document de
+    # l'intervention. Une attestation délivrée par une entreprise non
+    # qualifiée peut être écartée par l'assureur après un sinistre — c'est
+    # le client qui le découvre au pire moment. Si la qualification n'est
+    # pas acquise, retirer cette prestation plutôt que ses mentions.
+    # -----------------------------------------------------------------
+    {
+        "slug": "ramonage-cheminee-paris",
+        "audience": "particulier",
+        "local": {"court": "Ramonage", "slug": "ramonage-cheminee",
+                  "nom": "Ramonage de cheminée", "kw": "ramonage cheminée"},
+        "short": "Ramonage",
+        "nav": "Ramonage de cheminée",
+        "name": "Ramonage de cheminée à Paris",
+        "h1": "Ramonage de cheminée et de conduit de fumée",
+        "title": "Ramonage de cheminée à Paris — à partir de 50 €",
+        "meta": "Ramonage de cheminée, insert ou poêle à bois à Paris et en Île-de-France. "
+                "Dès 50 €, chiffré après contact. Attestation de ramonage remise.",
+        "price": "dès 50 €",
+        "excerpt": "Cheminée ouverte, insert, poêle à bois ou à granulés : ramonage mécanique du "
+                   "conduit sur toute sa longueur, contrôle de vacuité et attestation remise.",
+        # Pas de photo pour l'instant : nous n'en avons aucune de nos propres
+        # interventions de ramonage, et le site n'en publie pas d'autres.
+        "image": "",
+        "hero": "",
+        "icon": "shield",
+        "intro": [
+            "Un feu de bois ne brûle jamais complètement. Ce qui ne brûle pas monte dans le conduit, "
+            "refroidit en montant et s'y dépose : de la suie quand la combustion est vive, du bistre "
+            "quand elle est lente ou le bois humide. Le bistre est le problème : dur, luisant, collé "
+            "à la paroi, et combustible. C'est lui qui transforme une flambée ordinaire en feu de "
+            "cheminée, lequel monte à plus de 1 000 °C et peut fissurer le conduit — après quoi le "
+            "feu n'est plus dans le conduit, il est dans la maison.",
+            "Le second risque est silencieux. Un conduit qui s'encrasse perd de la section, tire "
+            "moins, et finit par refouler une partie des gaz de combustion dans la pièce. Parmi eux "
+            "le monoxyde de carbone, qui n'a ni odeur ni couleur et dont les premiers signes — mal "
+            "de tête, fatigue — se confondent avec autre chose. C'est la raison pour laquelle le "
+            "ramonage se mesure à la vacuité du conduit, pas à l'aspect du foyer.",
+            "Le cadre est écrit. L'article R. 1331-19 du code de la santé publique, créé par le "
+            "décret n° 2023-641 du 20 juillet 2023, dispose que « le ramonage des conduits de "
+            "fumées et des tuyaux de raccordement est effectué au moins tous les douze mois », et "
+            "que « l'attestation de ramonage précise notamment le ou les conduits de fumée ramonés "
+            "et atteste notamment de la vacuité du conduit sur toute sa longueur ». Votre bail, "
+            "votre règlement de copropriété ou votre contrat d'assurance peuvent exiger davantage ; "
+            "ils ne peuvent pas exiger moins.",
+        ],
+        "included_title": "Ce que couvre l'intervention",
+        "included": [
+            "<strong>Protection</strong> : bâchage du foyer et des abords, aspirateur à filtration "
+            "fine en place avant toute ouverture",
+            "<strong>Ramonage mécanique</strong> du conduit sur toute sa longueur, au hérisson "
+            "adapté à la section et à la nature du conduit (boisseau, tubage inox, conduit maçonné)",
+            "<strong>Tuyau de raccordement</strong> entre l'appareil et le conduit, déposé si "
+            "nécessaire",
+            "<strong>Foyer, insert ou poêle</strong> : chambre de combustion, déflecteur et "
+            "récupération des suies",
+            "<strong>Contrôle de vacuité</strong> du conduit sur toute sa longueur, et signalement "
+            "écrit de ce qui ne va pas — fissure, défaut d'étanchéité, bistre nécessitant un "
+            "débistrage",
+            "<strong>Attestation de ramonage</strong> remise à l'issue de l'intervention, avec les "
+            "mentions exigées par l'article R. 1331-19",
+        ],
+        "steps": [
+            ("Contact et chiffrage",
+             "Vous nous décrivez l'appareil, le type de conduit et son accès. Le prix est arrêté "
+             "avant la visite, pas après : un conduit droit de deux étages et un conduit dévoyé "
+             "avec accès en toiture ne demandent ni le même temps ni le même matériel."),
+            ("Protection de la pièce",
+             "Bâchage du foyer et du sol, aspirateur à filtration fine amorcé avant l'ouverture. "
+             "Un ramonage propre se juge à ce qu'on ne retrouve pas sur les meubles le lendemain."),
+            ("Ramonage mécanique",
+             "Hérisson adapté à la section et à la matière du conduit, par le haut ou par la "
+             "trappe selon la configuration. Le ramonage est mécanique : aucune bûche ni poudre "
+             "dite de ramonage ne remplace le passage du hérisson, et aucune ne vaut attestation."),
+            ("Contrôle de vacuité",
+             "Vérification que le conduit est dégagé sur toute sa longueur, et examen de ce qui "
+             "apparaît une fois les suies retirées. Les défauts sont photographiés et écrits, y "
+             "compris quand ils impliquent des travaux que nous ne faisons pas."),
+            ("Remise en état et attestation",
+             "Aspiration, remontage, essai de tirage, et remise de l'attestation de ramonage. "
+             "Gardez-la : c'est elle que votre assureur demandera après un sinistre."),
+        ],
+        "faq": [
+            ("Combien coûte un ramonage ?",
+             "À partir de 50 €. Le montant exact dépend de l'appareil, de la longueur et de la "
+             "forme du conduit, et de son accès — un conduit droit accessible depuis le foyer et "
+             "un conduit dévoyé nécessitant une intervention en toiture n'ont pas le même prix. "
+             "Contactez-nous avec ces éléments : nous chiffrons avant de nous déplacer, et le "
+             "montant annoncé est celui que vous réglez."),
+            ("À quelle fréquence faut-il ramoner ?",
+             "L'article R. 1331-19 du code de la santé publique fixe un ramonage au moins tous "
+             "les douze mois pour les conduits de fumée et les tuyaux de raccordement. Votre bail, "
+             "votre règlement de copropriété ou votre assureur peuvent demander davantage, par "
+             "exemple un second passage pendant la période de chauffe. Vérifiez votre contrat : "
+             "c'est lui qui vous sera opposé."),
+            ("Que se passe-t-il si je n'ai pas d'attestation après un feu de cheminée ?",
+             "Votre assureur peut réduire son indemnisation, voire la refuser, s'il établit que "
+             "l'entretien obligatoire n'a pas été fait. L'attestation est la preuve que vous "
+             "produisez ; sans elle, c'est à vous de démontrer que le conduit était entretenu. "
+             "C'est la raison pratique du ramonage annuel, avant même la sécurité."),
+            ("Intervenez-vous sur un poêle à granulés ?",
+             "Oui. La combustion des granulés produit moins de bistre qu'une flambée de bûches, "
+             "mais beaucoup de cendres fines qui encrassent l'échangeur et le conduit. L'appareil "
+             "et le conduit se traitent ensemble, sinon le tirage reste mauvais après un conduit "
+             "pourtant propre."),
+            ("Faites-vous le débistrage ?",
+             "Non. Le débistrage est une opération distincte, qui attaque un dépôt dur à la "
+             "débistreuse rotative et qui peut mettre à nu des défauts du conduit. Nous la "
+             "signalons quand elle est nécessaire et nous vous orientons, plutôt que de forcer au "
+             "hérisson sur un bistre épais — ce qui ne l'enlève pas et abîme le conduit."),
+            ("Et les chaudières gaz ou fioul ?",
+             "Le conduit d'une chaudière relève de son entretien annuel, assuré par un "
+             "chauffagiste qui contrôle aussi la combustion et le réglage de l'appareil. Nous "
+             "intervenons sur les conduits des appareils à bois : cheminée ouverte, insert, "
+             "foyer fermé, poêle à bûches ou à granulés."),
+        ],
+    },
 ]
 
 # --- Tarifs ---------------------------------------------------------------
@@ -508,9 +635,16 @@ TARIFS_TEXTILE = [
     ("Tapis de plus de 6 m²", 59, "Lavage des fibres en profondeur"),
 ]
 
+# Prestations chiffrées après contact. Le quatrième élément est le montant
+# affiché : « Sur devis » quand il n'y a pas de prix d'appel honnête à donner,
+# un « dès X € » quand il en existe un.
 TARIFS_DEVIS = [
-    ("Nettoyage de vitres", "Vitres, baies vitrées et vitrines", "nettoyage-vitres-paris"),
-    ("Nettoyage pour entreprise", "Bureaux, commerces, locaux et vitrerie", "nettoyage-regulier-paris"),
+    ("Nettoyage de vitres", "Vitres, baies vitrées et vitrines",
+     "nettoyage-vitres-paris", "Sur devis"),
+    ("Nettoyage pour entreprise", "Bureaux, commerces, locaux et vitrerie",
+     "nettoyage-regulier-paris", "Sur devis"),
+    ("Ramonage de cheminée", "Cheminée, insert, poêle à bois ou à granulés",
+     "ramonage-cheminee-paris", "Dès 50 €"),
 ]
 
 # --- Zones d'intervention -------------------------------------------------

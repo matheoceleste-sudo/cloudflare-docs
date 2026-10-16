@@ -120,6 +120,11 @@ export const TARIFS = {
       "slug": "nettoyage-vitres-paris",
       "nav": "Nettoyage de vitres",
       "univers": "devis"
+    },
+    {
+      "slug": "ramonage-cheminee-paris",
+      "nav": "Ramonage de cheminée",
+      "univers": "devis"
     }
   ],
   "deplacement": {
