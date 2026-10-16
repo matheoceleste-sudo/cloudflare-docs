@@ -107,10 +107,13 @@ export function chiffrer(selection, codePostal) {
   }
 
   const d = kilometres(codePostal, sel.km);
+  // La commune de départ vient de la grille générée, jamais d'une
+  // constante locale : sinon un déménagement laisse l'ancienne sur les devis.
+  const d_ville = TARIFS.deplacement.ville || "notre adresse de référence";
   const frais = aPrixFixe ? fraisDeplacement(d.km) : 0;
   if (aPrixFixe && frais > 0) {
     lignes.push({
-      libelle: `Déplacement (${Math.round(d.km)} km depuis Le Blanc-Mesnil)`,
+      libelle: `Déplacement (${Math.round(d.km)} km depuis ${d_ville})`,
       qte: 1,
       pu: frais,
       total: frais,

@@ -20,19 +20,26 @@ import { devisFerme, accuseSurDevis, notifArtisan } from "./modeles.js";
 
 const MAX_PAR_HEURE = 4;
 
-/** Identité de l'entreprise, injectée dans les gabarits. */
+/** Identité de l'entreprise, injectée dans les gabarits.
+ *
+ * Les valeurs viennent de TARIFS.identite, produit par build.py à partir de
+ * SITE dans content.py. Rien n'est recopié ici : une adresse écrite en dur
+ * dans le Worker survivrait à un déménagement et partirait sur les devis
+ * pendant des mois sans que personne ne la relise.
+ */
 export function identite(env) {
+  const i = TARIFS.identite;
   return {
-    nom: "MathClean",
-    url: env.SITE_URL || "https://mathclean.fr",
-    tel: "06 23 07 52 59",
-    tel_lien: "+33623075259",
-    adresse: "2 rue Poussin",
-    cp: "93150",
-    ville: "Le Blanc-Mesnil",
-    siret: "924 565 990 00010",
-    avis_url: "https://g.page/r/CaK1p63WHA51EBM/review",
-    contact: env.CONTACT_EMAIL || "matheoceleste@gmail.com",
+    nom: i.name,
+    url: env.SITE_URL || i.url,
+    tel: i.phone,
+    tel_lien: i.phone_link,
+    adresse: i.address,
+    cp: i.postcode,
+    ville: i.city,
+    siret: i.siret,
+    avis_url: i.review_url,
+    contact: env.CONTACT_EMAIL || i.email,
   };
 }
 

@@ -110,7 +110,9 @@ console.log("\nFrais de déplacement");
   verifie("km minoré depuis la page : corrigé par le code postal", triche.source, "code postal");
   verifie("et la distance retenue est réelle", triche.km > 15, true);
 
-  const honnete = kilometres("93150", 2.5);
+  // Le Blanc-Mesnil est à une dizaine de kilomètres de Tremblay : 11 km
+  // annoncés par l'itinéraire sont au-dessus du plancher, donc conservés.
+  const honnete = kilometres("93150", 11);
   verifie("une distance crédible est conservée", honnete.source, "itinéraire");
 
   const absurde = kilometres("75011", 99999);

@@ -2,12 +2,12 @@
 
 > Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit
 > départements d'Île-de-France. Entreprise individuelle dirigée par Mathéo Céleste,
-> basée au Blanc-Mesnil (93150).
+> basée à Tremblay-en-France (93290).
 
 ## Identité
 - Nom : MathClean
 - SIRET : 924 565 990 00010
-- Adresse : 2 rue Poussin, 93150 Le Blanc-Mesnil, France
+- Adresse : 5 rue Nicolas-Copernic, 93290 Tremblay-en-France, France
 - Téléphone : 06 23 07 52 59
 - E-mail : matheoceleste@gmail.com
 - Horaires : 7j/7, de 8h à 20h
@@ -27,7 +27,7 @@
 ## Engagements vérifiables
 - Devis gratuit, ferme et détaillé poste par poste.
 - Aucun acompte : le règlement se fait après l'intervention, une fois le résultat constaté.
-- Frais de déplacement : 5 € par tranche de 5 km depuis notre atelier du Blanc-Mesnil (93), annoncés avant validation.
+- Frais de déplacement : 5 € par tranche de 5 km depuis notre adresse de référence à Tremblay-en-France (93), annoncés avant validation.
 - Intervention 7j/7, y compris week-ends et jours fériés ; horaires décalés pour les commerces.
 - Matériel, produits, eau et électricité fournis : aucun accès technique requis sur place.
 - TVA non applicable, article 293 B du Code général des impôts.

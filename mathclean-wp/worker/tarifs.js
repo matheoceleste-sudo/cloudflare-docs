@@ -3,6 +3,18 @@
    C'est la grille que le Worker applique pour chiffrer un devis. */
 
 export const TARIFS = {
+  "identite": {
+    "name": "MathClean",
+    "url": "https://mathclean.fr",
+    "phone": "06 23 07 52 59",
+    "phone_link": "+33623075259",
+    "address": "5 rue Nicolas-Copernic",
+    "postcode": "93290",
+    "city": "Tremblay-en-France",
+    "siret": "924 565 990 00010",
+    "review_url": "https://g.page/r/CaK1p63WHA51EBM/review",
+    "email": "matheoceleste@gmail.com"
+  },
   "packs": [
     {
       "nom": "Extérieur Éclat",
@@ -111,11 +123,12 @@ export const TARIFS = {
     }
   ],
   "deplacement": {
-    "lat": 48.9499461,
-    "lon": 2.4559529,
+    "lat": 48.9508316,
+    "lon": 2.5743194,
     "palier_km": 5,
     "palier_eur": 5,
-    "coef_route": 1.25
+    "coef_route": 1.25,
+    "ville": "Tremblay-en-France"
   }
 };
 

@@ -1896,7 +1896,8 @@ def build_tarifs():
          "L'ozone détruit les molécules odorantes au lieu de les masquer, mais il ne remplace pas le "
          "nettoyage : il le termine."),
         ("Comment sont calculés les frais de déplacement ?",
-         "5 € par tranche de 5 km entre notre atelier du Blanc-Mesnil (93) et votre adresse. "
+         "5 € par tranche de 5 km entre notre adresse de référence %s (%s) et votre adresse. "
+         % (ville_a(SITE["city"]), SITE["postcode"][:2]) +
          "Le montant vous est annoncé avant que vous validiez : rien ne s'ajoute le jour de l'intervention."),
         ("Faut-il verser un acompte ?",
          "Non. Vous réglez après l'intervention, une fois le résultat constaté avec vous. "
@@ -2195,9 +2196,10 @@ def build_zones_archive():
 
     <h2>Notre point de départ, et ce qu'il implique</h2>
     <p>
-      Nous partons {ville_de(SITE['city'])} ({SITE['postcode'][:2]}), au cœur de la Seine-Saint-Denis.
-      Cela donne un centre de gravité au nord-est de la région&nbsp;: nos délais et nos frais de
-      déplacement y sont les plus bas, et ils augmentent régulièrement vers le sud et l'ouest.
+      Nous partons {ville_de(SITE['city'])} ({SITE['postcode'][:2]}), à l'est de la Seine-Saint-Denis,
+      à la limite de la Seine-et-Marne et à deux pas de Roissy. Cela donne un centre de gravité
+      au nord-est de la région&nbsp;: nos délais et nos frais de déplacement y sont les plus bas,
+      et ils augmentent régulièrement vers le sud et l'ouest.
     </p>
     <p>
       Le barème est simple et sans surprise&nbsp;: <strong>{SITE['travel_fee']}</strong>, calculé
@@ -2732,7 +2734,7 @@ def build_apropos():
                "name": "À propos de MathClean", "url": SITE["url"] + "/a-propos.html",
                "mainEntity": {"@id": SITE["url"] + "/#business"}}]
     html = (head(titre_page("À propos de MathClean, entreprise de nettoyage"),
-                 "MathClean, entreprise installée au Blanc-Mesnil : notre méthode, nos "
+                 "MathClean, entreprise installée %s : notre méthode, nos " % ville_a(SITE["city"]) +
                  "engagements et le terrain que nous couvrons en Île-de-France.",
                  "a-propos.html", base, schema=schema)
             + header(base, "apropos") + body + footer(base))
@@ -3353,7 +3355,8 @@ def build_devis():
     <p>
       Nous répondons <strong>sous {DELAIS['reponse']}</strong>, week-ends compris. L'intervention,
       elle, suit sous {DELAI_PHRASE}&nbsp;: le plus court en
-      Seine-Saint-Denis et dans le Val-d'Oise, où se trouve notre atelier, un peu plus long dans
+      Seine-Saint-Denis et dans le nord-ouest de la Seine-et-Marne, autour de notre adresse de
+      référence, un peu plus long dans
       les Yvelines et en Seine-et-Marne. Pour un besoin urgent, l'appel au
       <a href="tel:{SITE['phone_link']}">{SITE['phone']}</a> reste plus rapide que le formulaire.
     </p>
@@ -3405,7 +3408,7 @@ def build_contact():
             <span class="info-icon">{icon('pin')}</span>
             <div>
               <strong>{adresse_postale()}</strong>
-              <span>Notre atelier. Nous nous déplaçons chez vous dans les huit départements franciliens.</span>
+              <span>Notre adresse de référence. Nous ne recevons pas sur place : nous nous déplaçons chez vous dans les huit départements franciliens.</span>
             </div>
           </li>
           <li>
@@ -3645,7 +3648,7 @@ def build_404():
         pièce, et le barème des frais de déplacement.</li>
       <li><a href="/villes.html">Les communes couvertes</a> et
         <a href="/zones.html">les huit départements franciliens</a>, avec pour chacun la distance
-        depuis notre atelier et le délai habituel.</li>
+        depuis notre adresse de référence et le délai habituel.</li>
       <li><a href="/guides.html">Nos guides pratiques</a> — prix constatés, méthodes, ce qui se
         récupère et ce qui ne se récupère pas.</li>
       <li><a href="/realisations.html">Nos réalisations</a>, en avant/après, sur des chantiers
@@ -4142,15 +4145,16 @@ def reviews_section(base, soft=True):
 
 
 def find_us(base):
-    """Bloc « nous trouver » : itinéraire et avis Google."""
+    """Bloc « nous situer » : repère géographique et avis Google."""
     return f"""<section class="section section-soft">
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Nous trouver</span>
-      <h2>Venir à l'atelier, ou nous laisser un avis</h2>
+      <h2>Nous situer, ou nous laisser un avis</h2>
       <p class="lead">
-        Nous nous déplaçons chez vous dans toute l'Île-de-France. L'atelier se
-        situe {ville_a(SITE['city'])} ({SITE['postcode']}).
+        Nous nous déplaçons chez vous dans toute l'Île-de-France. Notre adresse de
+        référence est {ville_a(SITE['city'])} ({SITE['postcode']}).
+        Nous n'y recevons pas : les interventions se font chez vous.
       </p>
     </div>
     <div class="find-grid">
@@ -4233,13 +4237,24 @@ def build_tarifs_worker(data):
                     for d, v in depts.items()}
 
     grille = {
+        # L'identité qui figure en pied des courriels et des devis. Elle vient
+        # de SITE, comme le site : le Worker n'en garde pas sa propre copie,
+        # sinon un changement d'adresse se corrige deux fois et s'oublie une.
+        "identite": {k: SITE[k] for k in
+                     ("name", "url", "phone", "phone_link", "address", "postcode",
+                      "city", "siret", "review_url", "email")},
         "packs": [{"nom": p["nom"], "prix": p["prix"]} for p in data["packs"]],
         "options": [{"nom": o["nom"], "prix": o["prix"]} for o in data["options"]],
         "textile": [{"nom": t["nom"], "prix": t["prix"]} for t in data["textile"]],
         "services": [{"slug": s["slug"], "nav": s["nav"], "univers": s["univers"]}
                      for s in data["services"]],
-        "deplacement": {k: DEPLACEMENT[k] for k in
-                        ("lat", "lon", "palier_km", "palier_eur", "coef_route")},
+        "deplacement": dict(
+            {k: DEPLACEMENT[k] for k in
+             ("lat", "lon", "palier_km", "palier_eur", "coef_route")},
+            # Le libellé de la ligne « Déplacement » du devis nomme la commune
+            # de départ. Elle vient d'ici, pas d'une constante du Worker :
+            # un déménagement ne doit se saisir qu'une fois, dans SITE.
+            ville=SITE["city"]),
     }
 
     js = ("/* Fichier GÉNÉRÉ par build.py — ne pas modifier à la main.\n"
@@ -4501,7 +4516,7 @@ def build_reservation():
     </p>
     <p>
       Le kilométrage affiché pendant la saisie est la <strong>distance routière réelle</strong>,
-      calculée par le service d'itinéraire de l'IGN entre notre atelier et l'adresse que vous
+      calculée par le service d'itinéraire de l'IGN entre notre adresse de référence et celle que vous
       saisissez. C'est le trajet que nous parcourons vraiment, autoroute comprise, et non la
       ligne droite sur la carte. Si ce service ne répond pas, le configurateur le dit et bascule
       sur une estimation, que nous confirmons alors avec le devis.
@@ -4570,7 +4585,7 @@ import math  # noqa: E402
 
 def distance_atelier(lat, lon):
     """
-    Distance approchée depuis l'atelier, en kilomètres : vol d'oiseau majoré
+    Distance approchée depuis l'adresse de référence, en kilomètres : vol d'oiseau majoré
     du coefficient de repli (1,25).
 
     Les pages ville sont générées sans accès réseau, donc sans itinéraire.
@@ -4601,7 +4616,7 @@ def zone_de(dept):
 # Chaque page ville doit dire quelque chose qui lui est propre, sinon
 # vingt-huit pages se ressemblent et Google les traite comme des doublons.
 # On compose donc à partir de trois axes réels : la prestation dominante de
-# la commune, sa distance à l'atelier, et son département.
+# la commune, sa distance à l'adresse de référence, et son département.
 
 _CONTEXTE_PRESTA = {
     "nettoyage-automobile-paris":
@@ -4699,7 +4714,7 @@ _FAQ_PRESTA = {
 
 def contexte_ville(nom, presta, km, dept):
     """Paragraphes propres à une commune, tirés de sa prestation dominante, de
-    sa distance à l'atelier et de son département.
+    sa distance à l'adresse de référence et de son département.
 
     Le choix entre les deux angles rédactionnels dépend du nom de la commune :
     deux villes qui partagent la même prestation dominante lisent ainsi des
@@ -4730,7 +4745,7 @@ def build_ville(v):
     # l'article que porte le nom de certaines communes.
     a_nom = ville_a(nom)
     de_nom = ville_de(nom)
-    a_atelier = ville_de(SITE["city"])
+    a_atelier = ville_a(SITE["city"])
     base = "../"
     z = zone_de(dept)
     km = distance_atelier(lat, lon)
@@ -4756,7 +4771,7 @@ def build_ville(v):
 
     faq = [
         ("Intervenez-vous %s sans supplément ?" % a_nom,
-         "Nous intervenons %s comme partout en Île-de-France. Depuis notre atelier %s, "
+         "Nous intervenons %s comme partout en Île-de-France. Depuis notre adresse de référence %s, "
          "comptez %s, soit %s. Le montant exact est calculé sur votre adresse précise dans le "
          "configurateur de réservation, et affiché avant que vous validiez."
          % (a_nom, a_atelier, km_txt, frais_txt)),
@@ -4786,7 +4801,7 @@ def build_ville(v):
         <p>{angle}</p>
         <p>
           {nom} dépend du département <a href="{base}zones/{z['slug']}.html">{z['name']} ({dept})</a>.
-          Depuis notre atelier {ville_de(SITE['city'])}, comptez <strong>{km_txt}</strong> —
+          Depuis notre adresse de référence {ville_a(SITE['city'])}, comptez <strong>{km_txt}</strong> —
           soit {frais_txt} — et un délai habituel de <strong>{delai}</strong>.
         </p>
         <div class="btn-row" style="margin-top:1.5rem">
@@ -4801,7 +4816,7 @@ def build_ville(v):
             <tbody>
               <tr><th scope="row">Code postal</th><td class="amount">{cp}</td></tr>
               <tr><th scope="row">Département</th><td class="amount">{z['name']} ({dept})</td></tr>
-              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Distance depuis notre adresse</th><td class="amount">{km_txt}</td></tr>
               <tr><th scope="row">Frais de déplacement</th><td class="amount">{frais_court}</td></tr>
               <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
               <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
@@ -4951,11 +4966,11 @@ def build_local(pv, local_slug):
     faq = [
         (faq_q, faq_r),
         ("Quels sont les frais de déplacement %s ?" % a_nom,
-         "Comptez %s entre notre atelier %s et %s, soit %s. Le barème est de 5 € par "
+         "Comptez %s entre notre adresse de référence %s et %s, soit %s. Le barème est de 5 € par "
          "tranche de 5 km, arrondi à la tranche entière. Le montant exact est calculé sur "
          "votre adresse dans le configurateur de réservation, et affiché avant que vous "
          "validiez quoi que ce soit."
-         % (km_txt, ville_de(SITE["city"]), nom,
+         % (km_txt, ville_a(SITE["city"]), nom,
             "aucun frais" if frais == 0 else "environ %d € de frais de déplacement" % frais)),
         ("Sous quel délai intervenez-vous %s ?" % a_nom,
          "Habituellement %s, 7j/7. Pour une urgence, appelez-nous au %s : nous "
@@ -4989,7 +5004,7 @@ def build_local(pv, local_slug):
               <tr><th scope="row">Prestation</th><td class="amount">{s['local']['nom']}</td></tr>
               <tr><th scope="row">Tarif</th><td class="amount">{s['price']}</td></tr>
               <tr><th scope="row">Commune</th><td class="amount">{nom} ({cp})</td></tr>
-              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Distance depuis notre adresse</th><td class="amount">{km_txt}</td></tr>
               <tr><th scope="row">Frais de déplacement</th><td class="amount">{frais_court}</td></tr>
               <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
               <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
@@ -5115,9 +5130,9 @@ def build_villes_archive():
 
     body = f"""
 {page_title_block(base, trail, "Les villes où nous intervenons",
-  "Une page par commune, avec la distance depuis notre atelier %s, les frais de "
+  "Une page par commune, avec la distance depuis notre adresse de référence %s, les frais de "
   "déplacement correspondants et le délai habituel. Cette liste n'est pas exhaustive : "
-  "nous couvrons les huit départements franciliens." % ville_de(SITE['city']))}
+  "nous couvrons les huit départements franciliens." % ville_a(SITE['city']))}
 
 <section class="section">
   <div class="container">
@@ -5144,14 +5159,14 @@ def build_villes_archive():
   <div class="container container-narrow">
     <h2>Comment sont calculés les frais de déplacement</h2>
     <p>
-      Nous partons de notre atelier {ville_de(SITE['city'])} ({SITE['postcode'][:2]}) et facturons
+      Nous partons de notre adresse de référence {ville_a(SITE['city'])} ({SITE['postcode'][:2]}) et facturons
       <strong>{SITE['travel_fee']}</strong>. Le compteur est arrondi par tranche entière&nbsp;: une
       commune à sept kilomètres et une commune à dix kilomètres relèvent du même palier. Le montant
       vous est annoncé <em>avant</em> que vous validiez quoi que ce soit, jamais découvert sur la facture.
     </p>
     <p>
       Chaque page de commune indique la distance réelle par la route, le montant correspondant et
-      le délai d'intervention habituel. Ces distances sont calculées depuis l'atelier, puis majorées
+      le délai d'intervention habituel. Ces distances sont calculées depuis cette adresse, puis majorées
       d'un coefficient routier&nbsp;: elles reflètent le trajet, pas la ligne droite.
     </p>
 
@@ -5172,7 +5187,7 @@ def build_villes_archive():
     <h2>Ce que chaque page de commune vous indique</h2>
     <p>
       Chaque commune a sa propre page, et elle n'est pas décorative. Vous y trouvez la distance
-      réelle depuis notre atelier, le montant du déplacement qui en découle, le délai
+      réelle depuis notre adresse de référence, le montant du déplacement qui en découle, le délai
       d'intervention habituel dans ce département, et les prestations que nous y réalisons le
       plus souvent — parce qu'elles diffèrent réellement d'une commune à l'autre.
     </p>
@@ -5185,10 +5200,11 @@ def build_villes_archive():
 
     <h2>Les délais selon votre département</h2>
     <p>
-      Notre atelier est {ville_a(SITE['city'])}, en Seine-Saint-Denis, à quelques kilomètres de la
-      limite du Val-d'Oise. C'est ce qui explique nos délais&nbsp;: les plus courts en 93, 95,
-      à Paris et en proche couronne — souvent 24 à 48&nbsp;heures — un peu plus longs dans les
-      Yvelines, l'Essonne et la Seine-et-Marne, où comptez plutôt 48 à 72&nbsp;heures.
+      Notre adresse de référence est {ville_a(SITE['city'])}, en Seine-Saint-Denis, à la limite de la
+      Seine-et-Marne et à deux pas de Roissy. C'est ce qui explique nos délais&nbsp;: les plus
+      courts dans l'est du 93, le nord-ouest du 77 et autour de l'aéroport — souvent 24 à
+      48&nbsp;heures — un peu plus longs à Paris, dans les Hauts-de-Seine, les Yvelines et
+      l'Essonne, où comptez plutôt 48 à 72&nbsp;heures.
     </p>
     <p>
       Ces délais sont ceux que nous constatons, pas des engagements commerciaux. Quand notre
@@ -5996,9 +6012,9 @@ def build_hotte_ville(v):
             "nuit ou de fermeture : c'est la date qui compte plus que le délai. Pour une "
             "urgence, appelez-nous au %s." % (delai, SITE["phone"])),
            ("Quels sont les frais de déplacement %s ?" % a_nom,
-            "Comptez %s depuis notre atelier %s, soit %s. Le barème est de 5 € par tranche de "
+            "Comptez %s depuis notre adresse de référence %s, soit %s. Le barème est de 5 € par tranche de "
             "5 km entamée, à l'aller simple, et le montant est annoncé avant que vous validiez."
-            % (km_txt, ville_de(SITE["city"]), "aucun frais" if frais == 0
+            % (km_txt, ville_a(SITE["city"]), "aucun frais" if frais == 0
                else "environ %d €" % frais))]
 
     autres = [("hottes/nettoyage-hotte-%s.html" % o["slug"],
@@ -6031,7 +6047,7 @@ def build_hotte_ville(v):
             <tbody>
               <tr><th scope="row">Prestation</th><td class="amount">Hotte, filtres, conduits</td></tr>
               <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
-              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Distance depuis notre adresse</th><td class="amount">{km_txt}</td></tr>
               <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
               <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
               <tr><th scope="row">Créneau</th><td class="amount">Nuit ou fermeture</td></tr>
@@ -6256,10 +6272,10 @@ def build_vitres_ville(v):
             "sur un jour et une heure qui ne changent plus : c'est ce qui fait la différence "
             "entre un prestataire sur lequel on compte et un prestataire qu'on relance." % delai),
            ("Quels sont les frais de déplacement %s ?" % a_nom,
-            "Comptez %s depuis notre atelier %s, soit %s, au barème de 5 € par tranche de 5 km "
+            "Comptez %s depuis notre adresse de référence %s, soit %s, au barème de 5 € par tranche de 5 km "
             "entamée à l'aller simple. Sur un contrat régulier, ils sont intégrés au prix du "
             "passage et annoncés une fois pour toutes."
-            % (km_txt, ville_de(SITE["city"]), "aucun frais" if frais == 0
+            % (km_txt, ville_a(SITE["city"]), "aucun frais" if frais == 0
                else "environ %d €" % frais))]
 
     autres = [("vitres/nettoyage-vitrine-%s.html" % o["slug"],
@@ -6294,7 +6310,7 @@ def build_vitres_ville(v):
               <tr><th scope="row">Prestation</th><td class="amount">Vitrines et vitrages</td></tr>
               <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
               <tr><th scope="row">Eau</th><td class="amount">Déminéralisée</td></tr>
-              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Distance depuis notre adresse</th><td class="amount">{km_txt}</td></tr>
               <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
               <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
               <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
@@ -6524,7 +6540,7 @@ def build_appart_ville(v):
             <tbody>
               <tr><th scope="row">Prestation</th><td class="amount">Nettoyage complet</td></tr>
               <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
-              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Distance depuis notre adresse</th><td class="amount">{km_txt}</td></tr>
               <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
               <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
               <tr><th scope="row">Devis</th><td class="amount">Gratuit et ferme</td></tr>
@@ -6725,9 +6741,9 @@ def build_restaurant_ville(v):
            ("Sous quel délai intervenez-vous %s ?" % a_nom,
             "Habituellement %s pour un premier passage. L'intervention se fait de nuit, après le "
             "dernier service, ou le jour de fermeture : la cuisine est opérationnelle au service "
-            "suivant. Frais de déplacement : %s depuis notre atelier %s, soit %s, annoncés avant "
+            "suivant. Frais de déplacement : %s depuis notre adresse de référence %s, soit %s, annoncés avant "
             "que vous validiez."
-            % (delai, km_txt, ville_de(SITE["city"]),
+            % (delai, km_txt, ville_a(SITE["city"]),
                "aucun frais" if frais == 0 else "environ %d €" % frais))]
 
     autres = [("restaurants/nettoyage-restaurant-%s.html" % o["slug"],
@@ -6761,7 +6777,7 @@ def build_restaurant_ville(v):
               <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
               <tr><th scope="row">Créneau</th><td class="amount">Nuit ou fermeture</td></tr>
               <tr><th scope="row">Immobilisation</th><td class="amount">3 à 6 h</td></tr>
-              <tr><th scope="row">Distance depuis l'atelier</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Distance depuis notre adresse</th><td class="amount">{km_txt}</td></tr>
               <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
               <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
               <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
@@ -7155,7 +7171,7 @@ def build_hub_hottes():
           [("hottes/nettoyage-hotte-%s.html" % s["slug"],
             "Nettoyage de hotte %s" % s["dans"]) for s in SECTEURS_HOTTE]),
          ("Par commune",
-          "Le tissu commercial, l'accès et le délai depuis notre atelier du Blanc-Mesnil.",
+          "Le tissu commercial, l'accès et le délai depuis notre adresse de référence.",
           [("hottes/nettoyage-hotte-%s.html" % v["slug"],
             "Nettoyage de hotte %s" % ville_a(v["nom"])) for v in VILLES_PRO]),
          ("Les dossiers",
@@ -7202,7 +7218,7 @@ def build_hub_vitres():
           [("vitres/nettoyage-vitres-%s.html" % s["slug"],
             "Nettoyage de vitres %s" % s["dans"]) for s in SECTEURS_VITRES]),
          ("Par commune",
-          "Le tissu commercial local, l'accès et le délai depuis notre atelier.",
+          "Le tissu commercial local, l'accès et le délai depuis notre adresse de référence.",
           [("vitres/nettoyage-vitrine-%s.html" % v["slug"],
             "Nettoyage de vitrine %s" % ville_a(v["nom"])) for v in VILLES_PRO]),
          ("Les dossiers",
@@ -7407,12 +7423,16 @@ def copy_theme_assets():
         shutil.copyfile(os.path.join(HERE, src), os.path.join(HERE, dst))
 
 
-# Formulations et valeurs qui ne doivent plus jamais apparaître. Elles ont
-# toutes été relevées par l'audit de septembre 2026 : une ancienne adresse,
-# une ancienne fourchette automobile, et une promesse de délai qui confondait
-# la réponse à une demande et l'intervention elle-même.
+# Formulations et valeurs qui ne doivent plus jamais apparaître : une ancienne
+# adresse, une ancienne fourchette automobile, et une promesse de délai qui
+# confondait la réponse à une demande et l'intervention elle-même.
+#
+# La première ligne a changé de sens en octobre 2026 : l'établissement est
+# revenu à Tremblay-en-France, et c'est « rue Poussin » qui ne doit plus
+# reparaître. Le nom « Le Blanc-Mesnil », lui, reste légitime — c'est une
+# commune desservie, avec ses propres pages.
 FORMULATIONS_INTERDITES = (
-    ("Nicolas-Copernic", "ancienne adresse de Tremblay-en-France"),
+    ("rue Poussin", "ancienne adresse du Blanc-Mesnil"),
     ("Tremblay-en-France (77", "Tremblay-en-France est dans le 93"),
     ("Intervention sous 24 h", "confond le délai de réponse et celui d'intervention"),
     ("intervention sous 24 h", "confond le délai de réponse et celui d'intervention"),
