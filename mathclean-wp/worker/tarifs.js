@@ -125,6 +125,16 @@ export const TARIFS = {
       "slug": "ramonage-cheminee-paris",
       "nav": "Ramonage de cheminée",
       "univers": "devis"
+    },
+    {
+      "slug": "nettoyage-toiture-paris",
+      "nav": "Nettoyage de toiture",
+      "univers": "devis"
+    },
+    {
+      "slug": "debouchage-canalisation-paris",
+      "nav": "Débouchage de canalisation",
+      "univers": "devis"
     }
   ],
   "deplacement": {

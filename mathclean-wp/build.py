@@ -178,6 +178,11 @@ V_RESA = empreinte("theme/reservation.js")
 # Jeu d'icônes (contours 24×24, héritent de currentColor)
 # ---------------------------------------------------------------------------
 ICONS = {
+    # Pan de toiture et pignon, lu comme « maison » à petite taille.
+    "roof":     '<path d="M2.6 12.6 12 4.6l9.4 8M5.2 11.3V20h13.6v-8.7M9 20v-5.1h3.4V20"/>',
+    # Siphon en U entre deux collets : la forme qui dit « canalisation »
+    # sans avoir besoin d'être légendée.
+    "pipe":     '<path d="M7.4 4.2v6.9a4.6 4.6 0 0 0 9.2 0V4.2M5 4.2h4.8M14.2 4.2H19"/>',
     "car":      '<path d="M5 17h14M6.5 17V9.7l1.7-3.9A2 2 0 0 1 10 4.6h4a2 2 0 0 1 1.8 1.2l1.7 3.9V17M4 12h16"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/>',
     "sofa":     '<path d="M3 17v-5.5A2.5 2.5 0 0 1 5.5 9h13A2.5 2.5 0 0 1 21 11.5V17M3 17h18M5 17v2M19 17v2M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/>',
     "boat":     '<path d="M4 17l1.6-5.6a1 1 0 0 1 .96-.72h10.88a1 1 0 0 1 .96.72L20 17M12 10.7V4.4M12 4.4l4.6 2.3-4.6 2M2.6 19.6c1.6 0 1.6 1.2 3.2 1.2s1.6-1.2 3.2-1.2 1.6 1.2 3.2 1.2 1.6-1.2 3.2-1.2 1.6 1.2 3.2 1.2"/>',

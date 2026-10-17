@@ -598,6 +598,259 @@ SERVICES = [
              "foyer fermé, poêle à bûches ou à granulés."),
         ],
     },
+    # -----------------------------------------------------------------
+    # TOITURE — deux limites qui ne se négocient pas.
+    #
+    # 1. Fibrociment posé avant 1997 : présomption d'amiante. Le nettoyer
+    #    en libère les fibres. C'est du désamiantage, un autre métier avec
+    #    sa propre certification. Refus écrit sur la page, pas seulement
+    #    sous-entendu.
+    #
+    # 2. Traitement anti-mousse curatif : produits biocides de type TP2,
+    #    dont l'usage professionnel est soumis au Certibiocide
+    #    « désinfectants » depuis le 1er janvier 2026 (arrêté du 23 janvier
+    #    2023 modifiant celui de 2013). La page annonce donc un démoussage
+    #    MÉCANIQUE et dit pourquoi elle n'annonce pas autre chose. Ne
+    #    basculer la FAQ correspondante que sur présentation du certificat.
+    # -----------------------------------------------------------------
+    {
+        "slug": "nettoyage-toiture-paris",
+        "audience": "mixte",
+        "local": {"court": "Nettoyage toiture", "slug": "nettoyage-toiture",
+                  "nom": "Nettoyage de toiture", "kw": "nettoyage toiture"},
+        "short": "Toiture",
+        "nav": "Nettoyage de toiture",
+        "name": "Nettoyage de toiture à Paris",
+        "h1": "Nettoyage et démoussage de toiture",
+        "title": "Nettoyage de toiture et démoussage à Paris",
+        "meta": "Démoussage de toiture en tuile, ardoise ou zinc à Paris et en Île-de-France. "
+                "Pression maîtrisée, gouttières comprises, devis gratuit après photos.",
+        "price": "sur devis",
+        "excerpt": "Démoussage mécanique à pression maîtrisée, gouttières et descentes "
+                   "dégagées, et un compte rendu photo de ce que la mousse cachait.",
+        "image": "",
+        "hero": "",
+        "icon": "roof",
+        "intro": [
+            "Une toiture ne fuit pas parce qu'elle est sale. Elle fuit parce que l'eau n'en part "
+            "plus. La mousse retient l'humidité contre la couverture, s'installe dans les "
+            "recouvrements entre les tuiles, et l'hiver le gel la dilate : c'est ce qui soulève une "
+            "tuile, ouvre un recouvrement et fait entrer l'eau là où elle ne passait pas. Le reste "
+            "part dans les gouttières, qui débordent le long de la façade.",
+            "La haute pression est un risque sur une toiture, pas une méthode. Une lance tenue de "
+            "près soulève les tuiles, pousse l'eau sous la couverture par les recouvrements, et "
+            "sur une tuile béton elle arrache la couche de surface — après quoi la mousse revient "
+            "plus vite qu'avant. Nous travaillons à pression maîtrisée, du faîtage vers l'égout, à "
+            "distance, avec un réglage choisi selon la couverture : une ardoise, une tuile terre "
+            "cuite et une tuile béton ne se traitent pas pareil.",
+            "Deux refus, écrits ici plutôt que découverts le jour de l'intervention. Nous ne "
+            "touchons pas à une couverture en fibrociment posée avant 1997 : elle est présumée "
+            "contenir de l'amiante, et la nettoyer en libère les fibres — cela relève du "
+            "désamiantage, un autre métier, avec sa propre certification. Et nous ne nettoyons pas "
+            "une toiture dont l'état appelle d'abord une réparation : un nettoyage ne répare rien, "
+            "et il rend parfois visible ce qu'il n'a pas causé.",
+        ],
+        "included_title": "Ce que couvre l'intervention",
+        "included": [
+            "<strong>Démoussage mécanique</strong> : brossage et pression réglée selon la nature "
+            "de la couverture, du faîtage vers l'égout",
+            "<strong>Recouvrements et noues</strong> : les points où la mousse retient l'eau, "
+            "traités un par un plutôt que balayés au jet",
+            "<strong>Gouttières, chéneaux et descentes</strong> : dégagés et rincés — c'est là que "
+            "finit tout ce qui descend du toit",
+            "<strong>Faîtage, solins et rives</strong> : contrôle visuel et signalement de ce qui "
+            "bouge, se déjointe ou se décolle",
+            "<strong>Évacuation</strong> des déchets de démoussage, abords rendus propres",
+            "<strong>Compte rendu photo</strong> avant et après, avec la liste écrite des défauts "
+            "constatés — y compris ceux que nous ne réparons pas",
+        ],
+        "steps": [
+            ("Repérage et accès",
+             "Photos ou visite : surface, pente, nature de la couverture, et surtout l'accès. "
+             "C'est l'accès qui fait le prix d'un nettoyage de toiture, pas les mètres carrés. "
+             "Nous le disons avant, pas une fois l'échafaudage monté."),
+            ("Protection",
+             "Descentes bouchonnées pendant le travail : sans cela, l'intervention finit par "
+             "transformer la gouttière en bouchon. Abords, terrasse et plantations bâchés."),
+            ("Démoussage",
+             "Du faîtage vers l'égout, à pression maîtrisée et à distance. Le sens compte : en "
+             "remontant, on pousse l'eau sous les tuiles. C'est l'erreur la plus courante et la "
+             "plus coûteuse."),
+            ("Gouttières et descentes",
+             "Dégagement complet, rinçage, et essai d'écoulement. Une descente qui ne tire pas "
+             "après un démoussage, c'est le démoussage qui l'a bouchée."),
+            ("Contrôle et compte rendu",
+             "Photos avant et après, et liste écrite de ce que la mousse cachait : tuile fendue, "
+             "solin décollé, faîtage déjointé. Nous le signalons même quand cela vous enverra "
+             "chez un couvreur plutôt que chez nous."),
+        ],
+        "faq": [
+            ("Combien coûte un nettoyage de toiture ?",
+             "Sur devis, gratuit et ferme. Le montant dépend de la surface développée, de la "
+             "pente, de la nature de la couverture, et d'abord de l'accès : une maison de "
+             "plain-pied avec un pignon dégagé et une toiture en ville sans point d'ancrage ne se "
+             "chiffrent pas pareil. Envoyez-nous des photos, y compris de l'environnement du "
+             "bâtiment, et nous chiffrons sans nous déplacer."),
+            ("La haute pression abîme-t-elle les tuiles ?",
+             "Mal employée, oui. Une lance tenue trop près soulève les tuiles, fait passer l'eau "
+             "sous la couverture et décape la couche de surface d'une tuile béton, ce qui la rend "
+             "poreuse et accélère le retour de la mousse. Le réglage et la distance font tout : "
+             "c'est la raison pour laquelle un nettoyage de toiture ne s'improvise pas avec un "
+             "nettoyeur de jardin."),
+            ("Appliquez-vous un produit anti-mousse ?",
+             "Non, nous retirons les mousses mécaniquement. Un traitement anti-mousse curatif "
+             "emploie des produits biocides de type TP2, dont l'usage professionnel est soumis au "
+             "certificat Certibiocide « désinfectants » depuis le 1er janvier 2026. Nous ne "
+             "vendons pas une prestation pour laquelle nous ne sommes pas certifiés, et un "
+             "démoussage mécanique bien fait tient."),
+            ("Et un traitement hydrofuge ?",
+             "Nous n'en appliquons pas, et il faut savoir ce qu'il fait : un hydrofuge ralentit le "
+             "réencrassement, il n'étanche pas une toiture. Posé sur une couverture poreuse ou "
+             "déjà fendue, il peut enfermer l'humidité dans la tuile au lieu de la laisser sécher. "
+             "Si votre toiture fuit, c'est un couvreur qu'il vous faut, pas un traitement de "
+             "surface."),
+            ("À quelle fréquence faut-il démousser ?",
+             "Cela dépend surtout de l'exposition : une pente au nord, sous des arbres, se "
+             "recouvre en trois ou quatre ans quand une pente au sud dégagée tient bien plus "
+             "longtemps. En revanche les gouttières se dégagent une à deux fois par an : c'est "
+             "beaucoup moins cher qu'un démoussage et c'est ce qui évite la plupart des dégâts."),
+            ("Ma toiture est en fibrociment, pouvez-vous la nettoyer ?",
+             "Si elle a été posée avant 1997, non. Ces plaques sont présumées contenir de "
+             "l'amiante, et les nettoyer — a fortiori sous pression — en libère les fibres. C'est "
+             "une opération de désamiantage, soumise à certification, que nous ne faisons pas. "
+             "Nous vous le disons plutôt que de le découvrir sur le toit."),
+            ("Montez-vous sur le toit ?",
+             "Selon la configuration, et seulement si l'accès peut être sécurisé : échafaudage, "
+             "nacelle ou point d'ancrage selon le cas. Le dispositif figure au devis, parce qu'il "
+             "pèse dans le prix et qu'il n'est pas négociable. Une toiture sur laquelle on ne peut "
+             "pas travailler en sécurité est une toiture que nous ne nettoyons pas."),
+        ],
+    },
+    # -----------------------------------------------------------------
+    # DÉBOUCHAGE — secteur du dépannage à domicile.
+    #
+    # L'arrêté du 24 janvier 2017, applicable depuis le 1er avril 2017,
+    # impose un devis écrit AVANT toute intervention de dépannage, de
+    # réparation ou d'entretien du bâtiment, quel que soit le montant, et
+    # une note détaillée au-delà de 25 € TTC. Le Worker produit déjà ce
+    # devis : lignes détaillées, total, validité 30 jours, et la mention
+    # « TVA non applicable, article 293 B du CGI ».
+    #
+    # Deux refus à tenir : la vidange de fosse (transport et traitement des
+    # matières de vidange soumis à agrément préfectoral) et les travaux sur
+    # l'installation elle-même, qui relèvent de la plomberie.
+    # -----------------------------------------------------------------
+    {
+        "slug": "debouchage-canalisation-paris",
+        "audience": "mixte",
+        "local": {"court": "Débouchage", "slug": "debouchage-canalisation",
+                  "nom": "Débouchage de canalisation", "kw": "débouchage canalisation"},
+        "short": "Canalisation",
+        "nav": "Débouchage de canalisation",
+        "name": "Débouchage de canalisation à Paris",
+        "h1": "Débouchage de canalisation",
+        "title": "Débouchage de canalisation à Paris — devis avant",
+        "meta": "Canalisation bouchée à Paris et en Île-de-France : furet, hydrocurage, "
+                "inspection caméra. Devis écrit avant toute intervention, sans acompte.",
+        "price": "sur devis",
+        "excerpt": "Évier, douche, WC ou colonne : repérage, débouchage au furet ou par "
+                   "hydrocurage, et un devis écrit avant que nous touchions à quoi que ce soit.",
+        "image": "",
+        "hero": "",
+        "icon": "pipe",
+        "intro": [
+            "Un bouchon ne s'installe pas en une nuit. Il se construit : les graisses figent en "
+            "refroidissant et tapissent la paroi, les cheveux s'y accrochent, les lingettes dites "
+            "biodégradables ne se délitent pas et viennent s'y coincer. L'écoulement ralentit "
+            "pendant des semaines, une odeur revient, et le jour où cela déborde, le dépôt est "
+            "déjà installé sur plusieurs mètres.",
+            "Le débouchage est l'un des terrains favoris du dépannage abusif : une urgence "
+            "entretenue au téléphone, un prix évoqué sans engagement, une facture sans rapport à "
+            "l'arrivée. L'arrêté du 24 janvier 2017 l'encadre pourtant clairement — un devis écrit "
+            "doit vous être remis avant toute intervention de dépannage, de réparation ou "
+            "d'entretien du bâtiment, <strong>quel que soit le montant</strong>, et une note "
+            "détaillée vous est due au-delà de 25 € TTC. Chez nous c'est la règle de base : le "
+            "devis part avant, aucun acompte n'est demandé, et vous réglez après avoir vu "
+            "l'écoulement.",
+            "Nous débouchons ; nous ne refaisons pas l'installation. Remplacer un tronçon, un "
+            "siphon ou une chute relève de la plomberie, le réseau au-delà de la limite de "
+            "propriété relève de votre commune, et la vidange d'une fosse exige un agrément "
+            "préfectoral que nous n'avons pas. Dans ces trois cas nous vous le disons, avec "
+            "l'image à l'appui quand nous l'avons.",
+        ],
+        "included_title": "Ce que couvre l'intervention",
+        "included": [
+            "<strong>Repérage</strong> du point de bouchage et de l'accès utilisable : regard, "
+            "tampon de dégorgement, siphon de sol ou démontage du siphon",
+            "<strong>Débouchage au furet</strong>, manuel ou électrique selon le diamètre et la "
+            "longueur à parcourir",
+            "<strong>Hydrocurage haute pression</strong> sur les canalisations qui le supportent, "
+            "quand le dépôt est gras et étendu",
+            "<strong>Inspection caméra</strong> lorsque le bouchon est déjà revenu ou que le "
+            "tracé est inconnu",
+            "<strong>Rinçage et essai d'écoulement</strong> devant vous, avant que nous partions",
+            "<strong>Compte rendu écrit</strong> : ce qui bouchait, à quelle distance, et ce qui "
+            "le fera revenir s'il y a un défaut d'installation",
+        ],
+        "steps": [
+            ("Au téléphone",
+             "Vous décrivez l'appareil concerné, depuis quand, et si d'autres évacuations sont "
+             "touchées — un seul évier ou toute la salle de bains ne désigne pas le même endroit. "
+             "Nous chiffrons sur cette base. Nous ne nous déplaçons pas pour vous annoncer le "
+             "prix une fois sur place."),
+            ("Devis écrit, avant",
+             "Le devis vous parvient avant l'intervention, avec le détail des postes, le total et "
+             "sa durée de validité. C'est ce qu'impose l'arrêté du 24 janvier 2017, et c'est "
+             "aussi ce qui vous permet de comparer. Vous conservez votre droit de rétractation "
+             "dans les conditions prévues par le code de la consommation."),
+            ("Repérage",
+             "Recherche du point d'accès le moins destructif. Le bon accès évite le démontage, et "
+             "le démontage est ce qui transforme un débouchage en chantier."),
+            ("Débouchage",
+             "Furet ou hydrocurage selon la nature du bouchon et ce que la canalisation supporte. "
+             "Un PVC ancien et une fonte ne reçoivent pas la même pression."),
+            ("Essai et compte rendu",
+             "L'écoulement est essayé devant vous. Si le bouchon est le symptôme d'un défaut — "
+             "racines, contre-pente, emboîtement déboîté — nous vous le disons et nous vous "
+             "montrons l'image, plutôt que de revenir dans six mois."),
+        ],
+        "faq": [
+            ("Combien coûte un débouchage ?",
+             "Sur devis écrit, remis avant l'intervention comme l'impose l'arrêté du 24 janvier "
+             "2017. Le montant dépend de l'appareil, de la longueur à parcourir, de l'accès "
+             "disponible et de la méthode. Le devis est gratuit, aucun acompte n'est demandé, et "
+             "le montant annoncé est celui que vous réglez : il n'y a pas de déplacement qui se "
+             "transforme en facture."),
+            ("Intervenez-vous en urgence, la nuit ?",
+             "Nous répondons sous 24 h, week-ends compris, et nous intervenons habituellement "
+             "sous 24 à 48 h à Paris et en petite couronne. Nous ne sommes pas un service "
+             "d'urgence 24 h/24, et nous le disons : qui vous promet quelqu'un dans la demi-heure "
+             "à 2 h du matin vous vend autre chose que du débouchage."),
+            ("Le bouchon va-t-il revenir ?",
+             "Si c'était un vrai bouchon, non : une fois le dépôt retiré et la canalisation "
+             "rincée, l'écoulement reprend durablement. S'il revient dans les mois qui suivent, ce "
+             "n'était pas un bouchon mais le symptôme d'un défaut — une contre-pente, un "
+             "emboîtement déboîté, des racines. C'est ce que montre l'inspection caméra, et c'est "
+             "ce que nous écrivons dans le compte rendu."),
+            ("Qui paie, en copropriété ?",
+             "La règle habituelle : du siphon de votre appareil jusqu'à la colonne, c'est "
+             "privatif, donc à votre charge ; la colonne de chute et le collecteur sont des "
+             "parties communes, donc à la charge du syndicat. Vérifiez votre règlement de "
+             "copropriété, qui peut en disposer autrement. Nous écrivons toujours où se trouvait "
+             "le bouchon : c'est ce document que vous présenterez au syndic."),
+            ("Peut-on utiliser un déboucheur chimique du commerce ?",
+             "Nous le déconseillons. La soude et les acides attaquent les joints et fragilisent "
+             "le PVC, ils viennent rarement à bout d'un vrai bouchon, et surtout ils restent dans "
+             "la canalisation : celui qui ouvre ensuite les reçoit. Si vous en avez versé, "
+             "dites-le-nous — cela change notre façon de travailler, et c'est une question de "
+             "sécurité, pas de reproche."),
+            ("Faites-vous la vidange d'une fosse septique ?",
+             "Non. Le transport et le traitement des matières de vidange sont soumis à un "
+             "agrément préfectoral que nous n'avons pas. Nous débouchons la canalisation qui mène "
+             "à la fosse ; pour la fosse elle-même, il vous faut un vidangeur agréé, et nous vous "
+             "le disons plutôt que de bricoler autour."),
+        ],
+    },
 ]
 
 # --- Tarifs ---------------------------------------------------------------
@@ -645,6 +898,10 @@ TARIFS_DEVIS = [
      "nettoyage-regulier-paris", "Sur devis"),
     ("Ramonage de cheminée", "Cheminée, insert, poêle à bois ou à granulés",
      "ramonage-cheminee-paris", "Dès 50 €"),
+    ("Nettoyage de toiture", "Démoussage, gouttières et descentes",
+     "nettoyage-toiture-paris", "Sur devis"),
+    ("Débouchage de canalisation", "Évier, douche, WC, colonne",
+     "debouchage-canalisation-paris", "Sur devis"),
 ]
 
 # --- Zones d'intervention -------------------------------------------------
