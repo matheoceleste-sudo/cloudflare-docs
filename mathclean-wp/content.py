@@ -82,7 +82,17 @@ SERVICES = [
         "title": "Dégraissage de hotte professionnelle à Paris",
         "meta": "Dégraissage de hotte, filtres et conduits d'extraction pour restaurants et boulangeries à Paris et en IDF. Ramonage annuel exigé par l'arrêté du 25 juin 1980.",
         "price": "sur devis",
-        "excerpt": "Hotte, filtres, bac à graisse et conduits d'extraction jusqu'au ventilateur : le circuit complet, dégraissé en une intervention de nuit.",
+        "obligation": {
+            "titre": "C'est une obligation, pas un confort",
+            "texte": "En établissement recevant du public, l'article GC 21 de l'arrêté du "
+                     "25 juin 1980 impose le ramonage des conduits et la vérification de leur "
+                     "vacuité au moins une fois par an, et le nettoyage ou le remplacement des "
+                     "filtres au moins une fois par semaine. Les dates se consignent dans un "
+                     "livret d'entretien annexé au registre de sécurité.",
+            "ancre": "#obligations",
+            "lien": "Le texte, et ce qu'on vous demandera",
+        },
+        "excerpt": "Hotte, filtres, bac à graisse et conduits jusqu'au ventilateur : le circuit complet, dégraissé de nuit. Ramonage annuel et livret d'entretien exigés par l'arrêté du 25 juin 1980 en ERP.",
         "image": "hotte-caisson-conduit.webp",
         "hero": "hotte-caisson-conduit.webp",
         "icon": "tools",
@@ -500,6 +510,16 @@ SERVICES = [
         "meta": "Ramonage de cheminée, insert ou poêle à bois à Paris et en Île-de-France. "
                 "Dès 50 €, chiffré après contact. Attestation de ramonage remise.",
         "price": "dès 50 €",
+        "obligation": {
+            "titre": "Un ramonage par an, au minimum",
+            "texte": "L'article R. 1331-19 du code de la santé publique, créé par le décret "
+                     "n° 2023-641 du 20 juillet 2023, impose un ramonage des conduits de fumée "
+                     "et des tuyaux de raccordement au moins tous les douze mois. "
+                     "L'attestation remise atteste de la vacuité du conduit sur toute sa "
+                     "longueur : c'est elle que votre assureur demandera après un sinistre.",
+            "ancre": "#faq-service",
+            "lien": "Ce que dit le texte",
+        },
         "excerpt": "Cheminée ouverte, insert, poêle à bois ou à granulés : ramonage mécanique du "
                    "conduit sur toute sa longueur, contrôle de vacuité et attestation remise.",
         # Pas de photo pour l'instant : nous n'en avons aucune de nos propres

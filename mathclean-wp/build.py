@@ -1652,6 +1652,16 @@ def build_service(s):
     chimie = bloc_chimie(base, s["chimie"]) if s.get("chimie") else ""
     bloc_risque = (bloc_risque_incendie(base)
                    if s["slug"] == "nettoyage-hottes-paris" else "")
+    # Encart d'obligation : seules les prestations qui répondent d'un texte
+    # en portent un, et le texte y est cité plutôt que résumé.
+    o = s.get("obligation")
+    bloc_obligation = ("" if not o else f"""<div class="notice notice-rouge">
+          {icon('shield')}
+          <p>
+            <strong>{o["titre"]}.</strong> {o["texte"]}
+            <a href="{o["ancre"]}">{o["lien"]}</a>
+          </p>
+        </div>""")
     # Les deux vidéos des filtres viennent après : le texte dit que le dépôt
     # est combustible, les plans montrent de quel dépôt il s'agit.
     photo_depot = (figure_photo(
@@ -1755,7 +1765,8 @@ def build_service(s):
         <ul class="checklist" style="margin-top:1.4rem">{included}</ul>
       </div>
       <div class="reveal">
-        <div class="notice">
+        {bloc_obligation}
+        <div class="notice"{' style="margin-top:18px"' if bloc_obligation else ''}>
           {icon('info')}
           <p>
             <strong>Tarif : {s['price']}.</strong>
@@ -1785,6 +1796,7 @@ def build_service(s):
   </div>
 </section>
 {chimie}
+{bloc_risque}
 
 <section class="section section-soft">
   <div class="container container-narrow">
@@ -1808,7 +1820,6 @@ def build_service(s):
 
 {bloc_video}
 
-{bloc_risque if bloc_risque else ""}
 {photo_depot}
 {bloc_filtres}
 
@@ -5828,7 +5839,7 @@ def bloc_risque_incendie(base, sec_ou_ville=""):
 <section class="section">
   <div class="container">
     <div class="split">
-      <div class="reveal">
+      <div class="reveal" id="obligations">
         <span class="eyebrow">Vos obligations</span>
         <h2>Ce que vous devez pouvoir présenter</h2>
         <p>

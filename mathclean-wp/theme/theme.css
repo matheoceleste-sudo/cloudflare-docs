@@ -1519,3 +1519,9 @@ html[data-profil="pro"] .cta-band{
 .thumb-vide svg,.tile-vide svg{width:46px;height:46px;stroke:#c9a227;stroke-width:1.4}
 .tile-vide{position:absolute;inset:0}
 .tile-vide svg{width:62px;height:62px}
+
+/* Encart d'obligation réglementaire. Distinct du doré (tarif) et du bleu
+   (information pratique) : c'est ce qu'un contrôleur demandera. */
+.notice-rouge{background:#fdf3f2;border-color:#f3d4cf;border-left-color:#b4442f}
+.notice-rouge svg{stroke:#b4442f}
+.notice-rouge a{color:#8f3626;font-weight:600;white-space:nowrap}
