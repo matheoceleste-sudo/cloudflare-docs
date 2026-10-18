@@ -1556,6 +1556,8 @@ def build_services_archive():
   </div>
 </section>
 
+{bloc_verifier_prestataire(base)}
+
 {cta_band(base)}
 """
     html = (head(titre_page("Nos prestations de nettoyage à Paris et en IDF"),
@@ -1717,9 +1719,6 @@ def build_service(s):
     steps = "".join(
         f'<div class="step reveal"><h3>{t}</h3><p>{d}</p></div>' for t, d in s["steps"]
     )
-    others = "".join(
-        service_card(base, o) for o in SERVICES if o["slug"] != s["slug"]
-    )
     zones_links = " · ".join(
         '<a href="%szones/%s.html">%s (%s)</a>' % (base, z["slug"], z["name"], z["num"])
         for z in ZONES
@@ -1840,15 +1839,9 @@ def build_service(s):
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">Découvrez aussi</span>
-      <h2>Nos autres prestations</h2>
-    </div>
-    <div class="grid grid-3">{others}</div>
-  </div>
-</section>
+{bloc_verifier_prestataire(base)}
+
+{bloc_avant_apres(base)}
 """
     schema = [
         crumb_schema([("Prestations", "services.html"), (s["nav"], "services/%s.html" % s["slug"])]),
@@ -2162,6 +2155,8 @@ def build_realisations():
   </div>
 </section>
 
+{bloc_engagements_ecrits(base)}
+
 {reviews_section(base, soft=False)}
 
 {cta_band(base)}
@@ -2327,6 +2322,10 @@ def build_zone(z):
   </div>
 </section>
 
+{bloc_qui_vient(base)}
+
+{bloc_verifier_prestataire(base)}
+
 {cta_band(base, "Un besoin en %s ?" % z["name"],
           "Devis gratuit et sans engagement, réponse sous 24 h. Aucun acompte à verser.")}
 
@@ -2472,6 +2471,10 @@ def build_blog_archive():
   </div>
 </section>
 
+{bloc_qui_vient(base)}
+
+{bloc_engagements_ecrits(base)}
+
 {cta_band(base)}
 """
     html = (head(titre_page("Conseils et astuces de nettoyage"),
@@ -2591,6 +2594,10 @@ def build_post(p, prev_post, next_post):
     {sidebar(base, p['slug'])}
   </div>
 </section>
+
+{bloc_engagements_ecrits(base)}
+
+{bloc_qui_vient(base)}
 
 {cta_band(base)}
 """
@@ -2748,6 +2755,10 @@ def build_apropos():
     </div>
   </div>
 </section>
+
+{bloc_verifier_prestataire(base)}
+
+{bloc_avant_apres(base)}
 
 {reviews_section(base, soft=False)}
 
@@ -4898,6 +4909,12 @@ def build_ville(v):
   </div>
 </section>
 
+{bloc_engagements_ecrits(base, quoi="l'intervention", ou=a_nom)}
+
+{bloc_comment_on_chiffre(base, quoi="d'une intervention %s" % a_nom)}
+
+{bloc_verifier_prestataire(base)}
+
 {cta_band(base, "Un besoin %s ?" % a_nom,
           "Devis gratuit et sans engagement, réponse sous 24 h. Aucun acompte à verser.")}
 
@@ -5092,6 +5109,10 @@ def build_local(pv, local_slug):
     </div>
   </div>
 </section>
+
+{bloc_engagements_ecrits(base, quoi="l'intervention", ou=a_nom)}
+
+{bloc_qui_vient(base)}
 
 {cta_band(base, "Un devis pour %s ?" % titre.lower(),
           "Gratuit, ferme et détaillé poste par poste. Réponse sous 24 h, sans acompte : "
@@ -5359,6 +5380,8 @@ def build_guide(g):
 </section>
 
 {bloc_video}
+
+{bloc_engagements_ecrits(base)}
 
 {cta_band(base)}
 """
@@ -5766,6 +5789,268 @@ def _ul(items, cls="checklist", style="margin-top:1.4rem"):
 
 def _paras(textes):
     return "".join("<p>%s</p>" % t for t in textes)
+
+
+# ===========================================================================
+# BLOCS DE CONFIANCE
+# ===========================================================================
+# Sections réutilisables qui disent ce qu'un client cherche à savoir avant
+# de laisser entrer quelqu'un chez lui : qui vient, ce qui est promis par
+# écrit, comment le prix est construit, et ce qu'il faut vérifier — chez
+# nous comme ailleurs.
+#
+# Chacune est paramétrée par la page qui l'appelle (commune, prestation,
+# distance, délai) : deux pages ne rendent jamais exactement le même texte.
+# C'est ce qui les distingue d'un pied de page recopié, et c'est aussi ce
+# qui évite d'empiler du contenu dupliqué sur trois cents pages.
+
+
+def bloc_engagements_ecrits(base, quoi="l'intervention", ou=""):
+    """Ce qui est promis par écrit, et la conséquence de chaque promesse.
+
+    Une promesse sans conséquence n'engage personne. Chaque ligne dit donc
+    ce qui se passe si elle n'est pas tenue — c'est la seule façon de la
+    rendre vérifiable par le client.
+    """
+    situe = (" %s" % ou) if ou else ""
+    return f"""<section class="section section-soft">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">Nos engagements</span>
+      <h2>Ce que nous écrivons, et ce qui se passe si nous ne le tenons pas</h2>
+      <p class="lead">
+        Une promesse sans conséquence n'engage personne. Voici les nôtres, et ce
+        qu'elles vous donnent concrètement.
+      </p>
+    </div>
+    <div class="prose-block">
+      <p>
+        <strong>Le devis est ferme.</strong> Le montant annoncé avant l'intervention{situe}
+        est celui que vous réglez. S'il faut plus de temps que nous l'avions estimé, c'est notre
+        affaire, pas la vôtre : nous ne refacturons pas une erreur d'estimation. La
+        seule chose qui puisse faire bouger un devis, c'est une demande que vous
+        ajoutez vous-même — et elle fait alors l'objet d'un avenant écrit, avant.
+      </p>
+      <p>
+        <strong>Aucun acompte.</strong> Vous ne versez rien à la réservation. Vous
+        réglez après {quoi}, une fois le résultat constaté avec nous, en espèces, par
+        carte ou par virement. Cela veut dire que si le résultat ne correspond pas à
+        ce qui était annoncé, vous avez encore le moyen de le dire — ce qui n'est
+        plus le cas quand l'argent est parti.
+      </p>
+      <p>
+        <strong>Ce que nous ne ferons pas est dit avant.</strong> Nos limites
+        figurent sur chaque page de prestation, avant le devis, pas découvertes le
+        jour même. Un prestataire qui accepte tout n'a pas regardé : les matériaux,
+        les accès et les états de départ imposent des refus, et les taire ne les
+        fait pas disparaître — cela les reporte sur vous.
+      </p>
+      <p>
+        <strong>Si un point n'a pas été fait correctement, nous revenons.</strong>
+        Dites-le dans les jours qui suivent, photo à l'appui si c'est plus simple :
+        nous repassons sur la zone concernée sans refacturer le déplacement. Cela ne
+        couvre pas ce que nous avions annoncé comme non récupérable — une tache
+        ancienne signalée comme telle au devis reste ce qu'elle était — mais cela
+        couvre tout ce que nous avons dit savoir faire.
+      </p>
+      <p>
+        <strong>Nous venons avec l'eau et l'électricité.</strong> Machines, produits,
+        cuve et groupe : vous n'avez ni prise ni point d'eau à fournir. C'est ce qui
+        nous permet d'intervenir en parking souterrain, en pied d'immeuble, sur une
+        place de stationnement ou dans un local fermé pour travaux, sans dépendre de
+        ce qui est disponible sur place.
+      </p>
+    </div>
+  </div>
+</section>"""
+
+
+def bloc_qui_vient(base):
+    """L'identité de l'intervenant, et pourquoi elle est vérifiable."""
+    return f"""<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Qui intervient</span>
+        <h2>Vous savez qui va sonner à votre porte</h2>
+        <p>
+          MathClean est une entreprise individuelle. La personne que vous avez au
+          téléphone est celle qui vient, et celle qui reviendra au passage suivant.
+          Il n'y a ni centre d'appels, ni sous-traitance, ni intervenant différent à
+          chaque fois.
+        </p>
+        <p>
+          Ce n'est pas un argument de confort. C'est ce qui fait qu'au deuxième
+          passage, on sait déjà où est le compteur, quel sol ne supporte pas l'eau,
+          quelle pièce ne doit pas être ouverte, et que vous n'avez pas à réexpliquer
+          votre installation à quelqu'un qui la découvre.
+        </p>
+        <p class="field-hint">
+          Les horaires d'intervention sont ceux qui vous arrangent : {SITE['hours']},
+          week-ends et jours fériés compris, et de nuit pour les commerces et les
+          cuisines professionnelles — sans supplément.
+        </p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Vérifiable</span>
+        <h2>Les éléments que vous pouvez contrôler</h2>
+        {_ul([
+            "<strong>SIRET</strong> : %s — l'établissement et son activité se "
+            "vérifient en ligne sur l'annuaire des entreprises de l'État."
+            % SITE["siret"],
+            "<strong>SIREN</strong> : %s, entreprise individuelle, "
+            "dirigeant %s." % (SITE["siren"], SITE["manager"]),
+            "<strong>Adresse de référence</strong> : %s, %s %s — la même que "
+            "celle du registre." % (SITE["address"], SITE["postcode"], SITE["city"]),
+            "<strong>Avis</strong> : publiés sur notre fiche Google, avec le nom et "
+            "la date de chacun. Nous n'en reproduisons aucun ici sans sa source.",
+            "<strong>TVA non applicable</strong>, article 293 B du code général des "
+            "impôts : nos prix sont nets, il n'y a pas de TVA à ajouter — ni, pour "
+            "un professionnel, de TVA à récupérer.",
+        ])}
+      </div>
+    </div>
+  </div>
+</section>"""
+
+
+def bloc_comment_on_chiffre(base, quoi="de la prestation", exemples=None):
+    """Ce qui fait bouger un prix, et ce qui n'y change rien."""
+    liste = exemples or [
+        "<strong>La surface et le nombre de pièces</strong>, qui donnent le temps de base.",
+        "<strong>L'état de départ</strong> : un entretien et un rattrapage ne demandent "
+        "pas le même travail, et nous le disons avant plutôt que de le découvrir sur place.",
+        "<strong>L'accès</strong> : étage sans ascenseur, parking souterrain, local "
+        "encombré, fenêtre non ouvrante. C'est souvent ce qui pèse le plus.",
+        "<strong>La matière</strong>, qui commande la méthode : un synthétique, une "
+        "laine et une viscose n'appellent ni le même produit ni la même eau.",
+    ]
+    return f"""<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Le prix</span>
+        <h2>Ce qui fait bouger le montant {quoi}</h2>
+        {_ul(liste)}
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Et ce qui n'y change rien</span>
+        <h2>Pas de supplément découvert à l'arrivée</h2>
+        <p>
+          Le barème est le même pour tout le monde. Un canapé trois places coûte le
+          même prix chez vous que chez votre voisin, et votre code postal ne modifie
+          pas le tarif de la prestation : il n'entre que dans les frais de
+          déplacement, qui suivent une règle publiée — {SITE['travel_fee']}.
+        </p>
+        <p>
+          {SITE['travel_rule']}
+        </p>
+        <p class="field-hint">
+          Ni soir, ni week-end, ni jour férié ne font l'objet d'une majoration. Le
+          montant que vous voyez avant de valider est celui qui figurera sur la
+          facture.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>"""
+
+
+def bloc_verifier_prestataire(base):
+    """Ce qu'il faut demander à n'importe quel prestataire, y compris nous.
+
+    Volontairement utile même à qui ne nous choisira pas : une liste de
+    contrôle qui ne servirait qu'à nous désigner ne serait pas une liste de
+    contrôle, ce serait un argumentaire.
+    """
+    return f"""<section class="section">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">À vérifier</span>
+      <h2>Sept questions à poser — à nous comme à n'importe qui d'autre</h2>
+      <p class="lead">
+        Cette liste sert aussi si vous ne nous retenez pas. Un prestataire qui
+        répond mal à trois de ces questions vous coûtera plus cher que l'écart de
+        devis.
+      </p>
+    </div>
+    <div class="prose-block">
+      <p>
+        <strong>1. Un SIRET, et lequel ?</strong> Il doit être donné sans hésiter et
+        se vérifier en ligne. Un numéro communiqué de mauvaise grâce, ou une
+        entreprise dont l'activité déclarée n'a rien à voir avec la prestation, sont
+        deux signaux suffisants pour arrêter là.
+      </p>
+      <p>
+        <strong>2. Un devis écrit, avant l'intervention ?</strong> Sur le dépannage,
+        la réparation et l'entretien du bâtiment, c'est une obligation, pas une
+        faveur : l'arrêté du 24 janvier 2017 l'impose quel que soit le montant. Un
+        prix annoncé uniquement au téléphone n'engage personne.
+      </p>
+      <p>
+        <strong>3. Un acompte est-il demandé ?</strong> Sur une intervention de
+        quelques heures, il n'a pas de justification. Il transfère le risque sur
+        vous, et il est l'outil habituel de qui ne compte pas revenir.
+      </p>
+      <p>
+        <strong>4. Le prix peut-il bouger, et dans quels cas ?</strong> La réponse
+        doit être précise. « Ça dépend de ce qu'on trouve » signifie que le devis
+        n'en est pas un.
+      </p>
+      <p>
+        <strong>5. Qu'est-ce qui ne sera pas fait ?</strong> La question la plus
+        utile, et celle qu'on pose le moins. Un prestataire sérieux a des limites et
+        les énonce. Celui qui dit oui à tout n'a pas regardé votre installation.
+      </p>
+      <p>
+        <strong>6. Que reste-t-il par écrit après ?</strong> Une attestation ou un
+        compte rendu daté, disant ce qui a été fait et ce qui ne l'a pas été. C'est
+        ce document que vous présenterez à un contrôle, à un syndic ou à un
+        assureur — et c'est lui qui a de la valeur, pas la facture.
+      </p>
+      <p>
+        <strong>7. Qui viendra réellement ?</strong> La personne au téléphone, un
+        salarié, ou un sous-traitant que vous ne connaîtrez qu'en ouvrant la porte ?
+        La réponse change ce que vous pouvez attendre en cas de problème.
+      </p>
+    </div>
+  </div>
+</section>"""
+
+
+def bloc_avant_apres(base, prepare=None, remis=None):
+    """Ce qu'il y a à préparer, et ce qui reste une fois nous partis."""
+    p_items = prepare or [
+        "Dégager l'accès à la zone à traiter : c'est tout ce que nous demandons.",
+        "Nous signaler les animaux, les allergies, et les pièces à ne pas ouvrir.",
+        "Nous dire si un produit a déjà été appliqué — cela change notre méthode, "
+        "et parfois notre sécurité.",
+        "Rien à fournir : ni eau, ni électricité, ni matériel, ni produit.",
+    ]
+    r_items = remis or [
+        "Un jeu de photos avant et après sur les zones traitées.",
+        "Le détail écrit de ce qui a été fait, et de ce qui ne l'a pas été.",
+        "Les réserves éventuelles, nommées plutôt que glissées sous le tapis.",
+        "Une facture détaillée poste par poste, sans ligne forfaitaire opaque.",
+    ]
+    return f"""<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Avant</span>
+        <h2>Ce que vous avez à préparer</h2>
+        <p>Presque rien, et c'est voulu.</p>
+        {_ul(p_items)}
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Après</span>
+        <h2>Ce qui reste une fois que nous sommes partis</h2>
+        <p>Un résultat ne se juge pas uniquement le jour même.</p>
+        {_ul(r_items)}
+      </div>
+    </div>
+  </div>
+</section>"""
 
 
 def _service_schema(nom, desc, chemin, service_type, zone=None):
@@ -6259,6 +6544,24 @@ def build_vitres_secteur(sec):
   </div>
 </section>
 
+{bloc_engagements_ecrits(base, quoi="le passage")}
+
+{bloc_qui_vient(base)}
+
+{bloc_avant_apres(base,
+  prepare=[
+    "Dégager l'abord des vitrages : vitrine, allège, rebord de fenêtre.",
+    "Nous signaler les vitrages fêlés et les ouvrants fatigués : nous ne forçons pas.",
+    "Nous dire si un film ou un adhésif est posé — il ne se traite pas comme du verre nu.",
+    "Rien à fournir : nous arrivons avec l'eau déminéralisée et la perche.",
+  ],
+  remis=[
+    "Des vitrages séchés sans trace, menuiseries et appuis compris.",
+    "Le relevé de ce qui n'a pas pu être fait, et pourquoi.",
+    "Les défauts constatés sur les joints et les ouvrants, par écrit.",
+    "Une facture détaillée, au vantail ou au forfait selon ce qui a été convenu.",
+  ])}
+
 {cta_band(base, "Un devis de vitrerie %s ?" % sec['dans'],
           "Gratuit et ferme, sur photos ou après visite. Intervention avant l'ouverture, "
           "sans acompte : vous réglez une fois le résultat constaté.",
@@ -6384,6 +6687,25 @@ def build_vitres_ville(v):
   </div>
 </section>
 
+{bloc_engagements_ecrits(base, quoi="le passage", ou=a_nom)}
+
+{bloc_qui_vient(base)}
+
+{bloc_avant_apres(base,
+  prepare=[
+    "Dégager l'abord des vitrages : vitrine, allège, rebord de fenêtre.",
+    "Nous signaler les vitrages fêlés, les joints fatigués et les ouvrants qui "
+    "ne tiennent plus — nous ne forçons pas un ouvrant en mauvais état.",
+    "Nous dire si un film ou un adhésif est posé : il ne se traite pas comme du verre nu.",
+    "Rien à fournir : nous arrivons avec l'eau déminéralisée et la perche.",
+  ],
+  remis=[
+    "Des vitrages séchés sans trace, y compris les menuiseries et les appuis.",
+    "Le relevé de ce qui n'a pas pu être fait, et pourquoi — hauteur, accès, état.",
+    "Les défauts constatés sur les joints et les ouvrants, signalés par écrit.",
+    "Une facture détaillée, au vantail ou au forfait selon ce qui a été convenu.",
+  ])}
+
 {cta_band(base, "Un devis de vitrerie %s ?" % a_nom,
           "Gratuit et ferme, sur photos ou après visite. Intervention avant l'ouverture, "
           "sans acompte.", action="devis", client="pro")}
@@ -6494,6 +6816,38 @@ def build_menage_secteur(sec):
     </div>
   </div>
 </section>
+
+{bloc_engagements_ecrits(base, quoi="chaque passage")}
+
+{bloc_comment_on_chiffre(base, quoi="d'un contrat d'entretien", exemples=[
+    "<strong>La surface réellement traitée</strong>, et non la surface du bail : "
+    "les réserves, les circulations et les locaux techniques ne se nettoient pas "
+    "au même rythme que les zones vues par le public.",
+    "<strong>La fréquence</strong>, qui change tout : un passage hebdomadaire "
+    "entretient, un passage mensuel rattrape, et le second coûte plus cher à "
+    "l'année que le premier.",
+    "<strong>Le créneau</strong> : avant ouverture, après fermeture ou en journée. "
+    "Nous ne majorons ni les soirs ni les week-ends, mais le créneau décide de ce "
+    "qui est faisable en une fois.",
+    "<strong>Les revêtements</strong> : un sol souple, un carrelage à joints "
+    "creux et une moquette n'appellent ni le même matériel ni la même durée.",
+])}
+
+{bloc_avant_apres(base,
+  prepare=[
+    "Nous remettre un jeu de clés ou un code, si le passage se fait hors présence.",
+    "Nous indiquer les zones à ne pas traiter, et celles qui priment en cas de "
+    "temps compté.",
+    "Nous signaler les sols fragiles et les traitements déjà appliqués.",
+    "Rien d'autre : produits, machines et consommables sont apportés.",
+  ],
+  remis=[
+    "Un relevé de passage daté, qui dit ce qui a été fait ce jour-là.",
+    "Le signalement des points qui se dégradent — un joint, une fuite, un revêtement "
+    "qui se décolle — avant qu'ils deviennent un poste de travaux.",
+    "Une facturation mensuelle lisible, au passage et non au forfait flou.",
+    "Le même interlocuteur d'un mois sur l'autre.",
+  ])}
 
 {cta_band(base, "Un devis d'entretien %s ?" % sec['dans'],
           "Détaillé zone par zone et fréquence par fréquence, après visite. Sans acompte et "
@@ -6621,6 +6975,12 @@ def build_appart_ville(v):
     </div>
   </div>
 </section>
+
+{bloc_engagements_ecrits(base, quoi="l'intervention", ou=a_nom)}
+
+{bloc_qui_vient(base)}
+
+{bloc_verifier_prestataire(base)}
 
 {cta_band(base, "Un devis %s ?" % a_nom,
           "Gratuit et ferme, sur photos ou après visite. Sans acompte : vous réglez une fois le "
@@ -7158,6 +7518,8 @@ def _hub(slug, h1, lead, eyebrow, blocs, current, meta, titre_tag,
   </div>
 </section>"""
     body = (page_title_block(base, [(h1, None)], h1, lead) + sections
+            + bloc_qui_vient(base)
+            + bloc_engagements_ecrits(base)
             + cta_band(base, "Un devis ?", "Gratuit, ferme et détaillé. Réponse sous 24 h, "
                        "sans acompte : vous réglez une fois le résultat constaté.",
                        action=action, client=client))
