@@ -80,17 +80,18 @@ SERVICES = [
         "audience": "mixte",
         "local": {"court": "Fin de chantier", "slug": "nettoyage-fin-de-chantier",
                   "nom": "Nettoyage de fin de chantier", "kw": "nettoyage fin de chantier"},
-        "short": "Fin de chantier",
-        "nav": "Nettoyage de fin de chantier",
-        "name": "Nettoyage de fin de chantier à Paris",
-        "h1": "Nettoyage de fin de chantier et remise en état",
-        "title": "Nettoyage de fin de chantier à Paris et en IDF",
-        "meta": "Nettoyage après travaux à Paris et en Île-de-France : logements, "
-                "bureaux, locaux. Plâtre, laitance, vitrerie. Devis après visite.",
+        "short": "Fin de chantier / fin de bail",
+        "nav": "Fin de chantier et fin de bail",
+        "name": "Nettoyage de fin de chantier et de fin de bail à Paris",
+        "h1": "Nettoyage de fin de chantier et de fin de bail",
+        "title": "Fin de chantier et fin de bail : nettoyage à Paris et en IDF",
+        "meta": "Nettoyage après travaux et nettoyage de fin de bail à Paris et en IDF : "
+                "plâtre, laitance, vitrerie, four et joints avant l'état des lieux.",
         "price": "sur devis",
-        "excerpt": "Logement neuf ou rénové, bureau, local commercial : retrait des "
-                   "résidus de chantier, vitrerie de première mise en service, et un "
-                   "nombre de passes annoncé avant, pas découvert en route.",
+        "excerpt": "Après travaux ou avant l'état des lieux de sortie : résidus de "
+                   "chantier, vitrerie de première mise en service, four, joints et "
+                   "calcaire. Un logement vide est le seul moment où tout est "
+                   "accessible — et le seul où un tiers va tout regarder.",
         "image": "",
         "hero": "",
         "icon": "tools",
@@ -116,6 +117,21 @@ SERVICES = [
             "projections de peinture et de colle sur un vitrage se décollent à la lame, "
             "et une lame mal tenue sur un verre trempé laisse une rayure définitive. "
             "Le silicone frais s'enlève, le silicone sec s'arrache avec le support.",
+            "La fin de bail est l'autre moitié de ce métier, et elle se joue sur un "
+            "terrain différent. Il n'y a plus de plâtre ni de laitance : il y a un "
+            "four, des joints de salle de bains, du calcaire sur une robinetterie, le "
+            "dessus des placards et les gorges de fenêtres — c'est-à-dire exactement "
+            "la liste que l'agent ou le propriétaire parcourt, dans cet ordre, le jour "
+            "de l'état des lieux de sortie. Le motif de retenue le plus fréquent sur "
+            "un dépôt de garantie n'est pas la dégradation, c'est l'état de propreté, "
+            "et il se discute sur des points précis plutôt que sur une impression "
+            "générale.",
+            "La contrainte y est le calendrier, pas la matière. Un four encrassé "
+            "demande du temps de pose, pas de la force, et ce temps de pose ne se "
+            "comprime pas : il faut le prendre la veille plutôt que le matin même. "
+            "Nous intervenons donc une fois le logement vide et avant la date de "
+            "l'état des lieux, jamais le jour J — et nous vous envoyons les photos du "
+            "logement rendu, qui valent constat si la discussion se tend après coup.",
         ],
         "included_title": "Ce que couvre l'intervention",
         "included": [
@@ -132,13 +148,24 @@ SERVICES = [
             "faïences, retrait des étiquettes et des films de protection",
             "<strong>Placards, tiroirs et gaines techniques</strong> ouverts et "
             "aspirés — c'est là que la poussière se réinstalle sinon",
+            "<strong>En fin de bail, le four et le réfrigérateur</strong> : les deux "
+            "points les plus systématiquement vérifiés à l'état des lieux, et les deux "
+            "le plus souvent laissés en l'état",
+            "<strong>Joints, faïences et robinetterie détartrés</strong>, y compris le "
+            "pourtour de la douche et le bas des parois — le calcaire se retire à "
+            "l'acide doux et au temps de pose, pas à la brosse métallique",
+            "<strong>Dessus de placards, gorges de fenêtres et rails</strong>, "
+            "plinthes et pourtour des prises : les points de détail sur lesquels se "
+            "retient une part du dépôt de garantie",
         ],
         "steps": [
             ("Visite ou photos, et nombre de passes annoncé",
              "Nous regardons l'état réel et nous annonçons combien de passes seront "
              "nécessaires, avant le devis. C'est la seule façon d'avoir un prix qui ne "
              "bouge pas : un chiffrage à une passe sur un chantier qui en demande deux "
-             "se termine toujours en discussion."),
+             "se termine toujours en discussion. En fin de bail, c'est la date de "
+             "l'état des lieux qui commande : donnez-la-nous dès le premier échange, "
+             "elle décide du créneau bien plus que la surface."),
             ("Première passe, le gros",
              "Dépose des protections, évacuation des résidus de notre propre travail, "
              "aspiration lourde du haut vers le bas. À ce stade on ne cherche pas le "
@@ -151,10 +178,13 @@ SERVICES = [
              "Angles, huisseries, coulisses, grilles, placards, sanitaires, vitrerie. "
              "C'est la passe qui décide de l'impression finale, et celle qui prend le "
              "plus de temps."),
-            ("Contrôle avec vous",
+            ("Contrôle, photos, et ce qui ne se rattrape pas",
              "Tour complet ensemble, à la lumière du jour si possible. Ce qui n'est pas "
-             "récupérable — une projection de peinture incrustée, une rayure "
-             "antérieure — vous est montré et écrit, pas passé sous silence."),
+             "récupérable — une projection de peinture incrustée, un joint moisi dans "
+             "la masse, une rayure antérieure — vous est montré et écrit, pas passé "
+             "sous silence : en fin de bail, cette distinction entre l'usure et le "
+             "manque d'entretien est précisément ce qui se discute. Vous recevez les "
+             "photos du logement rendu, pièce par pièce."),
         ],
         "faq": [
             ("Combien coûte un nettoyage de fin de chantier ?",
@@ -184,6 +214,26 @@ SERVICES = [
              "différent d'un lavage d'entretien, et plus long. En revanche nous ne "
              "passons pas la lame sur un vitrage qui porte déjà des rayures ou dont le "
              "traitement de surface est incertain : nous vous le signalons."),
+            ("Un nettoyage de fin de bail garantit-il de récupérer le dépôt de garantie ?",
+             "Non, et personne ne peut le garantir : la retenue peut porter sur autre "
+             "chose que la propreté. Ce que nous pouvons faire, c'est retirer le motif "
+             "le plus fréquent et vous donner de quoi en discuter — un logement traité "
+             "point par point et un jeu de photos daté du logement rendu. Dans "
+             "beaucoup de cas, le coût de l'intervention est inférieur à la retenue "
+             "qu'elle évite ; nous vous le disons franchement quand ce n'est pas le "
+             "cas."),
+            ("Le logement doit-il être vide ?",
+             "C'est très préférable, et c'est tout l'intérêt du moment : un logement "
+             "vide est le seul état où le dessus des placards, l'arrière des "
+             "appareils et le pourtour des plinthes sont réellement accessibles. Nous "
+             "intervenons dans un logement encore meublé si le calendrier l'impose, "
+             "mais nous vous disons alors par écrit ce qui n'a pas pu être atteint, "
+             "plutôt que de le facturer comme fait."),
+            ("Pouvez-vous intervenir sans que je sois là ?",
+             "Oui, dès lors que l'accès est réglé : clé confiée, boîte à clés ou code. "
+             "Beaucoup de nos interventions de sortie se font en l'absence du "
+             "locataire, qui a déjà déménagé. Vous recevez les photos du logement "
+             "terminé le jour même."),
             ("La poussière revient quelques jours après, est-ce normal ?",
              "C'est fréquent, et c'est la poussière de plâtre qui redescend des volumes "
              "hauts et des gaines. C'est précisément ce que la seconde passe évite. "

@@ -352,7 +352,7 @@ def nav_menu(base, current):
         '<li class="nav-pro"><a href="%s%s">%s</a></li>' % (base, h, lb) for h, lb in (
         ("hottes.html", "Dégraissage de hottes"),
         ("nettoyage-haute-pression.html", "Nettoyage haute pression"),
-        ("services/nettoyage-fin-de-chantier-paris.html", "Nettoyage de fin de chantier"),
+        ("services/nettoyage-fin-de-chantier-paris.html", "Fin de chantier et fin de bail"),
         ("services/nettoyage-monobrosse-paris.html", "Décapage de sols à la monobrosse"),
     ))
     zones_sub = "".join(
@@ -1550,9 +1550,10 @@ def build_services_archive():
       <li>Une <strong>tache</strong> ancienne sur un tissu&nbsp;: ne la frottez pas avant notre passage,
         vous risquez de l'étaler dans la fibre. Voir le
         <a href="services/nettoyage-textile-paris.html">nettoyage textile</a>.</li>
-      <li>Un <strong>besoin régulier</strong> plutôt qu'une intervention unique&nbsp;: nous établissons
-        un rythme et un tarif fixes. Voir le
-        <a href="services/nettoyage-fin-de-chantier-paris.html">nettoyage de fin de chantier</a>.</li>
+      <li>Une <strong>date qui commande</strong>&nbsp;: état des lieux de sortie, livraison de
+        chantier, remise de clés. Donnez-la dès le premier échange, elle décide du créneau plus
+        que la surface. Voir la
+        <a href="services/nettoyage-fin-de-chantier-paris.html">fin de chantier et fin de bail</a>.</li>
     </ul>
     <p>
       Dans le doute, notre <a href="guides.html">bibliothèque de guides</a> détaille les méthodes,
@@ -1579,8 +1580,8 @@ def build_services_archive():
 {cta_band(base)}
 """
     html = (head(titre_page("Nos prestations de nettoyage à Paris et en IDF"),
-                 "Les %s prestations MathClean : fin de chantier, haute pression, hottes, "
-                 "monobrosse, automobile et textile. À Paris et en IDF." % NB_SERVICES,
+                 "Les %s prestations MathClean : fin de chantier et fin de bail, haute "
+                 "pression, hottes, monobrosse, automobile et textile." % NB_SERVICES,
                  "services.html", base,
                  schema=[crumb_schema([("Prestations", "services.html")]), liste_schema])
             + header(base, "services") + body + footer(base))
@@ -2613,7 +2614,7 @@ def bloc_hors_offre(base, item):
           <strong>Ce sujet ne fait plus partie de nos prestations.</strong>
           Nous laissons ce texte en ligne parce qu'il reste utile, mais MathClean ne réalise plus
           {item['hors_offre']}. Nos {NB_SERVICES} prestations sont le
-          <a href="{base}services/nettoyage-fin-de-chantier-paris.html">nettoyage de fin de chantier</a>, le
+          <a href="{base}services/nettoyage-fin-de-chantier-paris.html">nettoyage de fin de chantier et de fin de bail</a>, le
           <a href="{base}services/nettoyage-haute-pression-paris.html">nettoyage haute pression</a>, le
           <a href="{base}services/nettoyage-hottes-paris.html">dégraissage de hottes</a>, le
           <a href="{base}services/nettoyage-monobrosse-paris.html">décapage de sols à la monobrosse</a>, le
@@ -3068,8 +3069,8 @@ def build_professionnels():
         cours, façades et sols extérieurs, surface par surface</a></li>
       <li><a href="services/nettoyage-monobrosse-paris.html">Décapage et remise en état de sols
         à la monobrosse — PVC, linoléum, carrelage, béton</a></li>
-      <li><a href="services/nettoyage-fin-de-chantier-paris.html">Nettoyage de fin de chantier —
-        logements, bureaux et locaux commerciaux après travaux</a></li>
+      <li><a href="services/nettoyage-fin-de-chantier-paris.html">Fin de chantier et fin de bail —
+        logements, bureaux et locaux commerciaux, après travaux ou avant l'état des lieux</a></li>
       <li><a href="services/nettoyage-textile-paris.html">Nettoyage textile — sièges, moquettes
         et fauteuils de bureau, sur site</a></li>
       <li><a href="dossiers.html">Dossiers techniques — réglementation, risque d'incendie,
@@ -3528,8 +3529,8 @@ def build_devis():
 </section>
 """
     html = (head(titre_page("Devis gratuit de nettoyage à Paris et en IDF"),
-                 "Devis gratuit et sans engagement : fin de chantier, haute pression, hotte, "
-                 "sols, auto ou textile, à Paris et en Île-de-France. Réponse sous 24 h.",
+                 "Devis gratuit et sans engagement : fin de chantier, fin de bail, haute "
+                 "pression, hotte, sols, auto ou textile en IDF. Réponse sous 24 h.",
                  "devis.html", base, schema=[crumb_schema([("Devis gratuit", "devis.html")])])
             + header(base, "devis") + body + footer(base))
     return write("devis.html", html)
@@ -3805,9 +3806,9 @@ def build_404():
       couvrent la plupart des cas, mais pas tous. Voici les points d'entrée principaux.
     </p>
     <ul class="checklist">
-      <li><a href="/services.html">Nos {NB_SERVICES} prestations</a> — fin de chantier, haute
-        pression, hottes, monobrosse, automobile et textile, chacune avec sa page
-        détaillée&nbsp;: méthode, contenu, tarifs.</li>
+      <li><a href="/services.html">Nos {NB_SERVICES} prestations</a> — fin de chantier et fin
+        de bail, haute pression, hottes, monobrosse, automobile et textile, chacune avec sa
+        page détaillée&nbsp;: méthode, contenu, tarifs.</li>
       <li><a href="/tarifs.html">La grille tarifaire</a> — packs automobile, tarifs textile à la
         pièce, et le barème des frais de déplacement.</li>
       <li><a href="/villes.html">Les communes couvertes</a> et
@@ -4354,8 +4355,9 @@ def find_us(base):
 # ===========================================================================
 EXEMPLES_BRIEF = {
     "nettoyage-fin-de-chantier-paris":
-        "Exemple : trois-pièces de 62 m² repeint et carrelé, les peintres sortent vendredi, "
-        "état des lieux d'entrée le mercredi suivant, laitance sur le carrelage neuf.",
+        "Exemple : trois-pièces de 62 m² vide, état des lieux de sortie mercredi, four et "
+        "joints de salle de bains à reprendre. Ou : même logement repeint et carrelé, les "
+        "peintres sortent vendredi, laitance sur le carrelage neuf.",
     "nettoyage-haute-pression-paris":
         "Exemple : terrasse en pierre de 40 m² côté nord, verte depuis deux hivers, plus une "
         "allée de 15 m avec des traces d'huile au droit du stationnement.",
@@ -4474,7 +4476,7 @@ def build_reservation():
         "nettoyage-monobrosse-paris": "Devis après essai sur zone témoin",
         "nettoyage-hottes-paris": "Devis après constat des trappes",
         "nettoyage-haute-pression-paris": "Devis au m², après visite ou photos",
-        "nettoyage-fin-de-chantier-paris": "Devis après visite ou photos du chantier",
+        "nettoyage-fin-de-chantier-paris": "Devis après visite ou photos du logement",
     }
     cartes = ""
     for s in SERVICES:
@@ -4790,10 +4792,11 @@ _CONTEXTE_PRESTA = {
         "L'injection-extraction se pratique sur place, et le point à anticiper est le séchage — "
         "quatre à six heures pour un matelas, un peu plus pour un canapé épais.",
     "nettoyage-fin-de-chantier-paris":
-        "Sur un chantier livré, la difficulté n'est pas le volume mais le nombre de passes. La "
-        "poussière de plâtre redescend des volumes hauts pendant des jours : une seule "
-        "intervention donne un résultat qui ne tient pas la semaine. Nous annonçons le nombre "
-        "de passes avant le devis, et nous intervenons une fois le dernier corps d'état sorti.",
+        "Sur un chantier livré, la difficulté n'est pas le volume mais le nombre de passes : la "
+        "poussière de plâtre redescend des volumes hauts pendant des jours, et une seule "
+        "intervention donne un résultat qui ne tient pas la semaine. Sur une fin de bail, la "
+        "contrainte change de nature — c'est la date de l'état des lieux qui commande, et le "
+        "four comme les joints demandent du temps de pose, qui ne se comprime pas.",
 }
 
 # Second angle par prestation. Le choix entre les deux variantes est déterminé

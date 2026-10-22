@@ -88,7 +88,7 @@ export const TARIFS = {
   "services": [
     {
       "slug": "nettoyage-fin-de-chantier-paris",
-      "nav": "Nettoyage de fin de chantier",
+      "nav": "Fin de chantier et fin de bail",
       "univers": "devis"
     },
     {
