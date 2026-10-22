@@ -107,6 +107,36 @@ export const TARIFS = {
       "univers": "devis"
     },
     {
+      "slug": "nettoyage-vitres-paris",
+      "nav": "Nettoyage de vitres",
+      "univers": "devis"
+    },
+    {
+      "slug": "nettoyage-regulier-paris",
+      "nav": "Nettoyage d'entreprise",
+      "univers": "devis"
+    },
+    {
+      "slug": "nettoyage-appartement-paris",
+      "nav": "Nettoyage d'appartement",
+      "univers": "devis"
+    },
+    {
+      "slug": "debouchage-canalisation-paris",
+      "nav": "Débouchage de canalisation",
+      "univers": "devis"
+    },
+    {
+      "slug": "ramonage-cheminee-paris",
+      "nav": "Ramonage de cheminée",
+      "univers": "devis"
+    },
+    {
+      "slug": "nettoyage-toiture-paris",
+      "nav": "Nettoyage de toiture",
+      "univers": "devis"
+    },
+    {
       "slug": "nettoyage-textile-paris",
       "nav": "Nettoyage textile (canapé, matelas, tapis)",
       "univers": "textile"

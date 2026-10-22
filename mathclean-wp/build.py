@@ -33,7 +33,8 @@ from content import (
     GOOGLE_NOTE, REVIEWS, DEPLACEMENT, CRENEAUX, HERO, VILLES, GUIDES, DELAIS,
     PORTES, QUALIFICATION, REFERENCES_PRO, ARGUMENTS_PRO,
     PREMIUM_VILLES,
-    SECTEURS_HOTTE, SECTEURS_VITRES, SECTEURS_MENAGE,
+    SECTEURS_HOTTE, SECTEURS_VITRES, SECTEURS_MENAGE, SECTEURS_CHANTIER,
+    CHANTIER_PERIMETRE, CHANTIER_LIMITES,
     VILLES_PRO, VILLES_APPART, DOSSIERS,
     RESTAURANT_PERIMETRE, RESTAURANT_LIMITES,
     SURFACES_HP, HP_PERIMETRE, HP_LIMITES,
@@ -351,8 +352,11 @@ def nav_menu(base, current):
     services_pro = "".join(
         '<li class="nav-pro"><a href="%s%s">%s</a></li>' % (base, h, lb) for h, lb in (
         ("hottes.html", "Dégraissage de hottes"),
+        ("nettoyage-restaurant.html", "Nettoyage de restaurant"),
+        ("menage-regulier.html", "Nettoyage d'entreprise"),
+        ("vitrerie-professionnelle.html", "Vitrerie professionnelle"),
         ("nettoyage-haute-pression.html", "Nettoyage haute pression"),
-        ("services/nettoyage-fin-de-chantier-paris.html", "Fin de chantier et fin de bail"),
+        ("fin-de-chantier.html", "Fin de chantier et fin de bail"),
         ("services/nettoyage-monobrosse-paris.html", "Décapage de sols à la monobrosse"),
     ))
     zones_sub = "".join(
@@ -383,7 +387,9 @@ def nav_menu(base, current):
     <li><a href="{base}guides.html"><strong>Guides pratiques</strong></a></li>
     <li><a href="{base}dossiers.html"><strong>Dossiers techniques</strong></a></li>
     <li><a href="{base}blog.html"><strong>Astuces &amp; conseils</strong></a></li>
-    <li class="sub-sep"><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
+    <li class="sub-sep"><a href="{base}fin-de-chantier.html">Fin de chantier : par local et par commune</a></li>
+    <li><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
+    <li><a href="{base}vitrerie-professionnelle.html">Vitrerie : par métier et par commune</a></li>
     <li><a href="{base}nettoyage-haute-pression.html">Haute pression : par surface</a></li>
   </ul>
 </li>
@@ -524,8 +530,13 @@ def footer(base):
         <ul>{services_links}</ul>
         <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
         <ul>
+          <li><a href="{base}fin-de-chantier.html">Fin de chantier et fin de bail</a></li>
           <li><a href="{base}hottes.html">Hottes et conduits</a></li>
+          <li><a href="{base}nettoyage-restaurant.html">Nettoyage de restaurant</a></li>
           <li><a href="{base}nettoyage-haute-pression.html">Nettoyage haute pression</a></li>
+          <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
+          <li><a href="{base}menage-regulier.html">Entretien régulier</a></li>
+          <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
         </ul>
       </div>
       <div>
@@ -1806,6 +1817,9 @@ def build_service(s):
     # c'est celle-là qu'il faut servir, sinon la page de prestation renvoie
     # vers dix villes quand quarante existent.
     _familles = {
+        "nettoyage-fin-de-chantier-paris": [
+            ("fin-de-chantier/nettoyage-fin-de-chantier-%s.html" % v["slug"],
+             "Fin de chantier %s" % ville_a(v["nom"])) for v in VILLES_PRO],
         "nettoyage-hottes-paris": [
             ("hottes/nettoyage-hotte-%s.html" % v["slug"],
              "Dégraissage de hotte %s" % ville_a(v["nom"])) for v in VILLES_PRO],
@@ -3063,14 +3077,20 @@ def build_professionnels():
       </p>
     </div>
     <ul class="lien-liste">
+      <li><a href="fin-de-chantier.html">Fin de chantier et fin de bail — par type de local
+        et par commune</a></li>
       <li><a href="hottes.html">Dégraissage de hottes et de conduits — par métier et par
         commune</a></li>
       <li><a href="nettoyage-haute-pression.html">Nettoyage haute pression — parkings, quais,
         cours, façades et sols extérieurs, surface par surface</a></li>
+      <li><a href="nettoyage-restaurant.html">Nettoyage de restaurant — salle, cuisine,
+        sanitaires et vitrine, commune par commune</a></li>
+      <li><a href="vitrerie-professionnelle.html">Vitrerie professionnelle — vitrines, façades
+        et vitrages intérieurs</a></li>
+      <li><a href="menage-regulier.html">Entretien régulier — bureaux, copropriétés,
+        commerces, cabinets</a></li>
       <li><a href="services/nettoyage-monobrosse-paris.html">Décapage et remise en état de sols
         à la monobrosse — PVC, linoléum, carrelage, béton</a></li>
-      <li><a href="services/nettoyage-fin-de-chantier-paris.html">Fin de chantier et fin de bail —
-        logements, bureaux et locaux commerciaux, après travaux ou avant l'état des lieux</a></li>
       <li><a href="services/nettoyage-textile-paris.html">Nettoyage textile — sièges, moquettes
         et fauteuils de bureau, sur site</a></li>
       <li><a href="dossiers.html">Dossiers techniques — réglementation, risque d'incendie,
@@ -5784,8 +5804,18 @@ Une page dédiée par couple prestation × commune, sur dix communes d'Île-de-F
 ## Pages par métier, par surface et par commune
 Deux prestations sont déclinées en familles de pages, chacune avec sa
 contrainte propre :
+- Fin de chantier et fin de bail, par type de local ({len(SECTEURS_CHANTIER)} cas) et par
+  commune ({len(VILLES_PRO)}) : {SITE['url']}/fin-de-chantier.html
 - Hottes et conduits, par métier ({len(SECTEURS_HOTTE)} métiers) et par commune
   ({len(VILLES_PRO)} communes) : {SITE['url']}/hottes.html
+- Vitrerie professionnelle, par métier ({len(SECTEURS_VITRES)}) et par commune
+  ({len(VILLES_PRO)}) : {SITE['url']}/vitrerie-professionnelle.html
+- Entretien régulier, par type de site ({len(SECTEURS_MENAGE)}) :
+  {SITE['url']}/menage-regulier.html
+- Nettoyage de restaurant, par commune ({len(VILLES_PRO)}) :
+  {SITE['url']}/nettoyage-restaurant.html
+- Nettoyage d'appartement, par commune ({len(VILLES_APPART)}) :
+  {SITE['url']}/nettoyage-appartement.html
 - Terrasses, façades, cours et sols extérieurs ({len(SURFACES_HP)} surfaces) :
   {SITE['url']}/nettoyage-haute-pression.html
 
@@ -7838,6 +7868,351 @@ def build_hub_dossiers():
         action="devis")
 
 
+
+# ===========================================================================
+# FIN DE CHANTIER — famille sectorielle et locale
+# ===========================================================================
+# Le résidu dominant et le nombre de passes changent du tout au tout d'un
+# type de local à l'autre. Une page par cas sert mieux qu'une page unique
+# qui les énumère, parce que la question posée n'est jamais la même.
+
+# Angles d'attaque par commune. Le choix se fait sur le nom de la commune :
+# deux communes voisines ne lisent pas le même paragraphe d'ouverture.
+_CHANTIER_ANGLES = (
+    "Le nombre de passes est la seule variable qui compte vraiment sur un devis de fin de "
+    "chantier, et c'est celle qu'on ne vous annonce presque jamais. Nous la disons avant, "
+    "après avoir vu l'état réel — sur place ou sur photos — plutôt que de la découvrir au "
+    "milieu du chantier.",
+    "La poussière de plâtre redescend pendant plusieurs jours depuis les volumes hauts, les "
+    "coffres de volet et les grilles de ventilation. C'est la raison pour laquelle nous "
+    "laissons un temps de retombée entre deux passes, et pourquoi un chantier traité en une "
+    "journée ne tient pas la semaine.",
+    "Ce qui coûte cher sur une fin de chantier n'est pas le nettoyage, c'est de le lancer "
+    "trop tôt. Tant qu'un corps d'état doit revenir, le travail est à refaire. Nous nous "
+    "calons sur la date de sortie du dernier intervenant, et nous le disons quand elle "
+    "n'est pas encore connue.",
+    "Trois matières décident du résultat et ne pardonnent pas l'improvisation : la laitance "
+    "de ciment, qui se retire à l'acide dilué après essai, les projections sur vitrage, qui "
+    "se décollent à la lame sauf sur un verre trempé, et le silicone, qui s'enlève frais et "
+    "s'arrache sec.",
+    "Un chantier livré se juge à la lumière du jour, pas au néon. C'est pour cela que nous "
+    "faisons le tour final avec vous, et que ce qui n'est pas récupérable — une projection "
+    "incrustée, une rayure antérieure — vous est montré et écrit plutôt que passé sous "
+    "silence.",
+    "La fin de bail obéit à la même logique que la fin de chantier, avec une matière "
+    "différente : plus de plâtre, mais un four, des joints et du calcaire, et une date qui "
+    "commande tout. Nous traitons les deux, et nous envoyons les photos du logement rendu "
+    "le jour même.",
+)
+
+
+def build_hub_chantier():
+    return _hub(
+        "fin-de-chantier.html",
+        "Nettoyage de fin de chantier et de fin de bail",
+        "Après travaux ou avant un état des lieux de sortie. Le nombre de passes nécessaires "
+        "est annoncé avant le devis, pas découvert en cours de chantier — c'est la seule "
+        "façon d'avoir un prix qui ne bouge plus.",
+        "Fin de chantier",
+        [("Par type de local",
+          "Le résidu dominant n'est pas le même dans un appartement rénové, un plateau de "
+          "bureaux livré ou un logement neuf : plâtre, colle de sol, laitance. Chaque page dit "
+          "ce qui s'accumule, combien de passes il faut, et ce qui ne se rattrape pas.",
+          [("fin-de-chantier/nettoyage-apres-travaux-%s.html" % s["slug"],
+            "Nettoyage %s" % s["dans"]) for s in SECTEURS_CHANTIER]),
+         ("Par commune",
+          "Le tissu bâti, l'accès au chantier et le délai depuis notre adresse de référence.",
+          [("fin-de-chantier/nettoyage-fin-de-chantier-%s.html" % v["slug"],
+            "Fin de chantier %s" % ville_a(v["nom"])) for v in VILLES_PRO]),
+         ("Pour aller plus loin",
+          "Le prix au mètre carré, la liste de ce qui est vérifié à l'état des lieux, et les "
+          "questions à poser avant de signer un devis.",
+          [("services/nettoyage-fin-de-chantier-paris.html", "La prestation en détail"),
+           ("dossiers/nettoyage-appartement-etat-des-lieux.html",
+            "Nettoyage avant état des lieux : la liste de ce qui est vérifié"),
+           ("services/nettoyage-monobrosse-paris.html",
+            "Décapage et remise en état des sols à la monobrosse"),
+           ("services/nettoyage-vitres-paris.html",
+            "Vitrerie de première mise en service")])],
+        "services",
+        "Nettoyage de fin de chantier et de fin de bail à Paris et en Île-de-France, par type "
+        "de local et par commune. Nombre de passes annoncé avant le devis.",
+        "Nettoyage de fin de chantier — Paris et IDF",
+    )
+
+
+# --- Fin de chantier : par type de local -----------------------------------
+def build_chantier_secteur(sec):
+    base = "../"
+    chemin = "fin-de-chantier/nettoyage-apres-travaux-%s.html" % sec["slug"]
+    h1 = "Nettoyage de fin de chantier %s" % sec["dans"]
+    titre_court = "Nettoyage %s" % sec["dans"]
+    trail = [("Fin de chantier", "fin-de-chantier.html"), (sec["nom"].capitalize(), None)]
+
+    faq = [sec["faq"],
+           ("Combien coûte un nettoyage de fin de chantier %s ?" % sec["dans"],
+            "Sur devis, établi après visite ou sur photos. Le prix dépend de la surface, du "
+            "nombre de passes nécessaires, de la nature des sols et de l'accès. Méfiez-vous "
+            "d'un prix au mètre carré annoncé au téléphone sans avoir vu l'état : il suppose "
+            "une passe, et il sera révisé sur place."),
+           ("Évacuez-vous les gravats ?",
+            "Non. L'évacuation des déchets de chantier relève du transport de déchets, avec "
+            "les déclarations qui vont avec, et se règle avec une benne ou votre entreprise de "
+            "travaux. Nous évacuons les protections que nous déposons et les déchets de notre "
+            "propre intervention, pas le reste.")]
+
+    autres = [("fin-de-chantier/nettoyage-apres-travaux-%s.html" % o["slug"],
+               "Nettoyage %s" % o["dans"])
+              for o in SECTEURS_CHANTIER if o["slug"] != sec["slug"]][:7]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Nettoyage après travaux %s, à Paris et en Île-de-France. Nombre de passes annoncé avant "
+  "le devis, intervention une fois le dernier corps d'état sorti." % sec['dans'])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{sec['nom_long']}</span>
+        <h2>Ce qui reste {sec['dans']}</h2>
+        {_paras([sec['probleme'], sec['detail']])}
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {sec['dans']}</caption>
+            <tbody>
+              <tr><th scope="row">Résidu dominant</th><td class="amount">{sec['residu']}</td></tr>
+              <tr><th scope="row">Nombre de passes</th><td class="amount">{sec['passes']}</td></tr>
+              <tr><th scope="row">Moment</th><td class="amount">Après le dernier corps d'état</td></tr>
+              <tr><th scope="row">Vitrerie</th><td class="amount">Première mise en service</td></tr>
+              <tr><th scope="row">Tarif</th><td class="amount">Sur devis après visite ou photos</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Le nombre de passes est annoncé avant le devis. Un chiffrage à une passe sur un
+          chantier qui en demande deux se termine toujours en discussion.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Organisation</span>
+        <h2>Quand nous intervenons</h2>
+        <p>{sec['contrainte']}</p>
+        <p>
+          Il nous faut trois choses sur place : l'eau, l'électricité et un accès pour
+          décharger le matériel. Quand l'une des trois manque — cas fréquent avant la mise en
+          service des compteurs —, dites-le au moment du devis : nous venons autonomes, mais
+          cela se prépare, cela ne s'improvise pas le matin même.
+        </p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend l'intervention</h2>
+        {_ul(CHANTIER_PERIMETRE, style="margin-top:1rem")}
+      </div>
+    </div>
+  </div>
+</section>
+
+{bloc_comment_on_chiffre(base, quoi="d'un nettoyage %s" % sec['dans'])}
+
+{_bloc_limites("Ce que nous ne faisons pas", CHANTIER_LIMITES)}
+
+{bloc_engagements_ecrits(base, "le nombre de passes et le périmètre traité",
+                         "sur le devis, avant l'intervention")}
+
+{_faq_section("%s : vos questions" % titre_court, faq, "faq-chantier-%s" % sec["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Fin de chantier : les autres cas", autres)}
+      {_liens(base, "Pour aller plus loin",
+              [("services/nettoyage-fin-de-chantier-paris.html", "La prestation en détail"),
+               ("fin-de-chantier.html", "Fin de chantier : tous les cas et toutes les communes"),
+               ("dossiers/nettoyage-appartement-etat-des-lieux.html",
+                "Ce qui est vérifié à l'état des lieux"),
+               ("services/nettoyage-monobrosse-paris.html", "La remise en état des sols"),
+               ("devis.html", "Demander un devis")])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis pour %s ?" % sec['le'],
+          "Gratuit et ferme, établi après visite ou sur photos, avec le nombre de passes "
+          "annoncé avant. Sans acompte : vous réglez après l'intervention.", action="devis")}
+"""
+    schema = [crumb_schema([("Fin de chantier", "fin-de-chantier.html"),
+                            (sec["nom"].capitalize(), chemin)]),
+              _service_schema(titre_court,
+                              "Nettoyage de fin de chantier %s à Paris et en Île-de-France."
+                              % sec["dans"],
+                              chemin, "Nettoyage de fin de chantier"),
+              faq_schema(faq)]
+    html = (head(titre_page(avec_suffixe(titre_court, " — Paris et IDF")),
+                 "Nettoyage après travaux %s : résidus, vitrerie et nombre de passes "
+                 "annoncé avant le devis." % sec["dans"],
+                 chemin, base, schema=schema)
+            + header(base, "services") + body + footer(base))
+    return write(chemin, html)
+
+
+# --- Fin de chantier : par commune -----------------------------------------
+def build_chantier_ville(v):
+    base = "../"
+    chemin = "fin-de-chantier/nettoyage-fin-de-chantier-%s.html" % v["slug"]
+    a_nom = ville_a(v["nom"])
+    h1 = "Nettoyage de fin de chantier %s" % a_nom
+    km = distance_atelier(v["lat"], v["lon"])
+    km_txt = "moins d'un kilomètre" if km < 1 else "environ %d km" % round(km)
+    frais = frais_pour(km)
+    delai = delai_intervention(v["dept"])
+    trail = [("Fin de chantier", "fin-de-chantier.html"), (v["nom"], None)]
+    angle = _CHANTIER_ANGLES[sum(ord(c) for c in v["nom"]) % len(_CHANTIER_ANGLES)]
+
+    faq = [("Sous quel délai intervenez-vous %s ?" % a_nom,
+            "Habituellement %s. Sur une fin de chantier, c'est pourtant la date de sortie du "
+            "dernier corps d'état qui commande, et sur une fin de bail celle de l'état des "
+            "lieux : donnez-la-nous dès le premier échange, elle décide du créneau bien plus "
+            "que la surface. Pour une urgence, appelez-nous au %s." % (delai, SITE["phone"])),
+           ("Quels sont les frais de déplacement %s ?" % a_nom,
+            "Comptez %s depuis notre adresse de référence %s, soit %s. Le barème est de 5 € "
+            "par tranche de 5 km entamée, à l'aller simple, et le montant est annoncé avant "
+            "que vous validiez."
+            % (km_txt, ville_a(SITE["city"]),
+               "aucun frais" if frais == 0 else "environ %d €" % frais)),
+           ("Combien de passes faut-il ?",
+            "Deux dans la plupart des cas, trois quand des finitions restent à faire après "
+            "notre premier passage, une seule sur un chantier léger ou une fin de bail. Nous "
+            "l'annonçons après avoir vu l'état réel, avant le devis — jamais en cours de "
+            "route.")]
+
+    autres = [("fin-de-chantier/nettoyage-fin-de-chantier-%s.html" % o["slug"],
+               "Fin de chantier %s" % ville_a(o["nom"]))
+              for o in VILLES_PRO if o["slug"] != v["slug"]][:8]
+    secteurs = [("fin-de-chantier/nettoyage-apres-travaux-%s.html" % s["slug"],
+                 "Nettoyage %s" % s["dans"]) for s in SECTEURS_CHANTIER[:7]]
+
+    body = f"""
+{page_title_block(base, trail, h1,
+  "Nettoyage après travaux et nettoyage de fin de bail %s (%s). Nombre de passes annoncé "
+  "avant le devis, délai habituel de %s, sans acompte." % (a_nom, v['cp'], delai))}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">{v['nom']} · {v['cp']}</span>
+        <h2>Les chantiers que nous reprenons {a_nom}</h2>
+        <p>{angle}</p>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn" href="{base}devis.html">Demander un devis</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_link']}">{icon('phone')}{SITE['phone']}</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="table-wrap">
+          <table class="price-table">
+            <caption>En pratique {a_nom}</caption>
+            <tbody>
+              <tr><th scope="row">Prestation</th><td class="amount">Fin de chantier et fin de bail</td></tr>
+              <tr><th scope="row">Commune</th><td class="amount">{v['nom']} ({v['cp']})</td></tr>
+              <tr><th scope="row">Distance depuis notre adresse</th><td class="amount">{km_txt}</td></tr>
+              <tr><th scope="row">Frais de déplacement</th><td class="amount">{"Aucun" if frais == 0 else "~ %d €" % frais}</td></tr>
+              <tr><th scope="row">Délai habituel</th><td class="amount">{delai}</td></tr>
+              <tr><th scope="row">Nombre de passes</th><td class="amount">Annoncé avant le devis</td></tr>
+              <tr><th scope="row">Acompte</th><td class="amount">Aucun</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="field-hint" style="margin-top:12px">
+          Distance approchée depuis le centre de la commune. Le montant exact se calcule sur la
+          route, d'après votre adresse, et vous est confirmé avant que vous validiez.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Intervenir {a_nom}</span>
+        <h2>Le tissu local, et l'accès</h2>
+        <p>{v['tissu']}</p>
+        <p>{v['acces']}</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Le contenu</span>
+        <h2>Ce que comprend l'intervention</h2>
+        {_ul(CHANTIER_PERIMETRE)}
+      </div>
+    </div>
+  </div>
+</section>
+
+{bloc_comment_on_chiffre(base, quoi="d'un nettoyage de fin de chantier %s" % a_nom)}
+
+{_bloc_limites("Ce que nous ne faisons pas", CHANTIER_LIMITES)}
+
+{bloc_qui_vient(base)}
+
+{_faq_section("Fin de chantier %s : vos questions" % a_nom, faq,
+              "faq-chantier-v-%s" % v["slug"])}
+
+<section class="section">
+  <div class="container">
+    <div class="split">
+      {_liens(base, "Fin de chantier dans les autres communes", autres)}
+      {_liens(base, "Votre type de local", secteurs)}
+    </div>
+    <div class="split" style="margin-top:3rem">
+      {_liens(base, "Pour aller plus loin",
+              [("services/nettoyage-fin-de-chantier-paris.html", "La prestation en détail"),
+               ("fin-de-chantier.html", "Fin de chantier : tous les cas et toutes les communes"),
+               ("dossiers/nettoyage-appartement-etat-des-lieux.html",
+                "Ce qui est vérifié à l'état des lieux")])}
+      {_liens(base, "Les prestations qui vont avec",
+              [("services/nettoyage-monobrosse-paris.html", "Remise en état des sols"),
+               ("services/nettoyage-vitres-paris.html", "Vitrerie de première mise en service"),
+               ("services/nettoyage-haute-pression-paris.html", "Abords et sols extérieurs"),
+               ("devis.html", "Demander un devis")])}
+    </div>
+  </div>
+</section>
+
+{cta_band(base, "Un devis %s ?" % a_nom,
+          "Gratuit et ferme, établi après visite ou sur photos, avec le nombre de passes "
+          "annoncé avant. Sans acompte : vous réglez après l'intervention.", action="devis")}
+"""
+    schema = [crumb_schema([("Fin de chantier", "fin-de-chantier.html"), (v["nom"], chemin)]),
+              _service_schema(h1,
+                              "Nettoyage de fin de chantier et de fin de bail %s (%s)."
+                              % (a_nom, v["cp"]),
+                              chemin, "Nettoyage de fin de chantier"),
+              faq_schema(faq)]
+    html = (head(titre_page(avec_suffixe(h1, " — devis gratuit")),
+                 "Nettoyage après travaux et fin de bail %s (%s) : nombre de passes annoncé "
+                 "avant le devis, délai de %s, sans acompte." % (a_nom, v["cp"], delai),
+                 chemin, base, schema=schema)
+            + header(base, "services") + body + footer(base))
+    return write(chemin, html)
+
 def build_redirects():
     """
     Redirections 301, lues par Cloudflare Pages et par Workers static assets.
@@ -7851,8 +8226,8 @@ def build_redirects():
     """
     lignes = [
         # Prestations renommées ou retirées
-        "/services/nettoyage-locaux-paris.html       /services/nettoyage-fin-de-chantier-paris.html 301",
-        "/services/nettoyage-bureau-paris.html       /services/nettoyage-fin-de-chantier-paris.html 301",
+        "/services/nettoyage-locaux-paris.html       /services/nettoyage-regulier-paris.html    301",
+        "/services/nettoyage-bureau-paris.html       /services/nettoyage-regulier-paris.html    301",
         "/services/nettoyage-avion-paris.html        /services.html                             301",
         # L'ancien site relayait déjà ces adresses ; on garde la chaîne intacte
         "/services/polissage-carrosserie-paris.html  /services/nettoyage-automobile-paris.html  301",
@@ -7873,66 +8248,19 @@ def build_redirects():
     # de prestation et les dix pages locales correspondantes ont été indexées
     # sous l'ancien nom. Chacune part vers son équivalent exact.
     lignes += [
-        "/services/nettoyage-entreprise-paris.html  /services/nettoyage-fin-de-chantier-paris.html 301",
+        "/services/nettoyage-entreprise-paris.html  /services/nettoyage-regulier-paris.html  301",
     ]
 
     # ------------------------------------------------------------------
-    # Catalogue ramené en octobre 2026 : vitrerie, entretien régulier,
-    # nettoyage d'appartement, nettoyage de restaurant, ramonage, toiture
-    # et débouchage ne sont plus proposés. Tout ce qui les vendait
-    # disparaît : les pages de prestation,
-    # leurs sommaires, et les familles sectorielles et locales entières.
-    # Chaque adresse part vers le métier qui s'en rapproche le plus, et
-    # vers le sommaire quand rien ne s'en rapproche — jamais vers
-    # l'accueil, qui ne répond pas à la question posée.
     # ------------------------------------------------------------------
-    FIN = "/services/nettoyage-fin-de-chantier-paris.html"
-    HP = "/services/nettoyage-haute-pression-paris.html"
-    lignes += [
-        "/services/nettoyage-regulier-paris.html      %s              301" % FIN,
-        "/services/nettoyage-appartement-paris.html   %s              301" % FIN,
-        "/services/nettoyage-vitres-paris.html        /services.html  301",
-        "/services/ramonage-cheminee-paris.html       /services.html  301",
-        "/services/nettoyage-toiture-paris.html       %s              301" % HP,
-        "/services/debouchage-canalisation-paris.html /services.html  301",
-        # Sommaires des familles retirées.
-        "/vitrerie-professionnelle.html /services.html  301",
-        "/nettoyage-restaurant.html     /services.html  301",
-        "/menage-regulier.html          %s              301" % FIN,
-        "/nettoyage-appartement.html    %s              301" % FIN,
-    ]
-    # Les pages filles, par dossier entier. Cloudflare accepte le joker en
-    # fin de source ; une ligne vaut mieux que deux cents.
-    lignes += [
-        "/vitres/*      /services.html  301",
-        "/restaurants/* /services.html  301",
-        "/menage/*      %s              301" % FIN,
-        "/appartement/* %s              301" % FIN,
-    ]
-    # Pages ville des deux prestations retirées : chacune vers la page de
-    # sa commune, qui existe toujours et parle d'elle.
-    # Toutes les communes « premium » n'ont pas de page ville généraliste :
-    # celles qui n'en ont pas partent vers le sommaire plutôt que vers une
-    # adresse qui n'existe pas.
-    avec_page = {v[0] for v in VILLES}
-    for pv in PREMIUM_VILLES:
-        cible = ("/villes/%s.html" % pv["slug"]
-                 if pv["slug"] in avec_page else "/villes.html")
-        for mort in ("nettoyage-vitres", "menage-regulier", "nettoyage-entreprise"):
-            lignes.append("/villes/%s-%s.html %s 301" % (mort, pv["slug"], cible))
-    # Guides et billets supprimés avec leur métier.
-    lignes += ["/guides/%s.html /guides.html 301" % g for g in (
-        "entreprise-nettoyage-vitres-specialisee", "eau-osmosee-vitres",
-        "nettoyage-vitrine-commerce-paris", "prix-nettoyage-vitres-m2",
-        "nettoyage-veranda-baie-vitree", "frequence-nettoyage-bureaux",
-        "nettoyage-copropriete-parties-communes", "nettoyage-cage-escalier-immeuble",
-        "prix-nettoyage-bureaux-m2", "nettoyage-local-commercial-restaurant")]
-    lignes += ["/blog/vitres-sans-traces.html /blog.html 301"]
+    # Pages locales « premium » renommées : l'ancien nom « nettoyage
+    # entreprise » a été indexé avant de devenir « ménage régulier ».
+    # ------------------------------------------------------------------
+    lignes += ["/villes/nettoyage-entreprise-%s.html /villes/menage-regulier-%s.html 301"
+               % (pv["slug"], pv["slug"]) for pv in PREMIUM_VILLES]
     lignes += [
         ("/villes/%s.html /services/nettoyage-haute-pression-paris.html 301" % anc)
         if cible == "@haute-pression"
-        else ("/villes/%s.html /services/nettoyage-fin-de-chantier-paris.html 301" % anc)
-        if cible.startswith("menage-regulier-")
         else ("/villes/%s.html /villes/%s.html 301" % (anc, cible))
         for anc, cible in PAGES_LOCALES_RETIREES]
     # Les mêmes adresses sans l'extension .html. Cloudflare ajoute .html de
@@ -8184,14 +8512,30 @@ def main():
 
     # Familles sectorielles et locales. Les sommaires portent une priorité
     # supérieure à leurs pages filles : ce sont eux qui doivent remonter.
-    # Les familles des métiers abandonnés — vitrerie, entretien régulier,
-    # restaurant, appartement — ne sont plus produites. Leurs adresses sont
-    # redirigées, voir build_redirects().
     pages.append((build_hub_hottes(), "0.9", "monthly"))
     for s in SECTEURS_HOTTE:
         pages.append((build_hotte_secteur(s), "0.8", "monthly"))
     for v in VILLES_PRO:
         pages.append((build_hotte_ville(v), "0.7", "monthly"))
+    pages.append((build_hub_vitres(), "0.9", "monthly"))
+    for sec in SECTEURS_VITRES:
+        pages.append((build_vitres_secteur(sec), "0.8", "monthly"))
+    for v in VILLES_PRO:
+        pages.append((build_vitres_ville(v), "0.7", "monthly"))
+    pages.append((build_hub_menage(), "0.9", "monthly"))
+    for sec in SECTEURS_MENAGE:
+        pages.append((build_menage_secteur(sec), "0.8", "monthly"))
+    pages.append((build_hub_restaurant(), "0.9", "monthly"))
+    for v in VILLES_PRO:
+        pages.append((build_restaurant_ville(v), "0.7", "monthly"))
+    pages.append((build_hub_appart(), "0.9", "monthly"))
+    for v in VILLES_APPART:
+        pages.append((build_appart_ville(v), "0.7", "monthly"))
+    pages.append((build_hub_chantier(), "0.9", "monthly"))
+    for sec in SECTEURS_CHANTIER:
+        pages.append((build_chantier_secteur(sec), "0.8", "monthly"))
+    for v in VILLES_PRO:
+        pages.append((build_chantier_ville(v), "0.7", "monthly"))
     pages.append((build_hub_hp(), "0.9", "monthly"))
     for s in SURFACES_HP:
         pages.append((build_hp_surface(s), "0.8", "monthly"))
