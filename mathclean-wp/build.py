@@ -809,6 +809,20 @@ VIDEOS = {
                 "parquet, plinthes, murs et menuiseries, pièce vide avant l'état des "
                 "lieux de sortie. Aucun montage, un seul plan.",
     },
+    "hp-cour-lance": {
+        "fichier": "hp-cour-lance", "duree": "PT3S", "secondes": 3,
+        "nom": "Lavage haute pression d'un sol en résine",
+        "desc": "La lance au travail sur une cour en résine de jardinerie : "
+                "l'eau décolle le film de terre et de mousse sans attaquer le "
+                "revêtement. Un seul plan, sans montage.",
+    },
+    "hp-cour-deux-postes": {
+        "fichier": "hp-cour-deux-postes", "duree": "PT2S", "secondes": 2,
+        "nom": "Deux postes de lavage sur une cour commerciale",
+        "desc": "Deux lances en parallèle sur la cour d'une jardinerie en "
+                "Île-de-France. Travailler à deux postes divise par deux le "
+                "temps pendant lequel la surface est inutilisable.",
+    },
     "hotte-caisson": {
         "fichier": "hotte-caisson-interieur", "duree": "PT4S", "secondes": 4,
         "nom": "L'intérieur d'un caisson de hotte, filtres déposés",
@@ -1570,6 +1584,62 @@ def build_services_archive():
 
 
 # Les extraits de la vidéo de méthode qui correspondent à une prestation.
+# Photos propres à une prestation, affichées entre la méthode et la FAQ.
+# Chaque entrée : (fichier, légende, largeur, hauteur).
+PHOTOS_PAR_SERVICE = {
+    "nettoyage-haute-pression-paris": [
+        ("hp-cour-resine-deux-postes.webp",
+         "Une cour en résine de jardinerie, en cours de lavage. La différence "
+         "visible n'est pas un effet de mouillé : à gauche le film de terre "
+         "et de mousse est parti, à droite il est encore là. C'est sur cette "
+         "limite que se juge un lavage haute pression, pas sur la brillance.",
+         760, 1196),
+        ("hp-cour-resine-lance.webp",
+         "La même cour, au poste de travail. La lance est tenue à distance et "
+         "en biais : sur une résine, un jet trop près ou perpendiculaire "
+         "marque le revêtement de façon définitive.",
+         760, 918),
+    ],
+    "nettoyage-automobile-paris": [
+        ("auto-mousse-deux-vehicules.webp",
+         "Prélavage à la mousse sur deux véhicules, à domicile. La mousse "
+         "reste en place plusieurs minutes pour décoller la poussière avant "
+         "tout contact : c'est ce temps de pose qui évite les micro-rayures "
+         "du lavage au gant sur une carrosserie sale.",
+         820, 559),
+        ("auto-mousse-avant.webp",
+         "La même étape, de face. Calandre, bas de caisse et passages de "
+         "roues reçoivent la mousse en premier : ce sont les zones les plus "
+         "chargées, et celles qui demandent le plus long temps de pose.",
+         760, 933),
+    ],
+}
+
+# Vidéos en plus de celle de VIDEO_PAR_SERVICE, qui n'en accepte qu'une par
+# prestation et dont les données structurées dépendent.
+VIDEOS_SUP_PAR_SERVICE = {
+    "nettoyage-haute-pression-paris": [
+        ("hp-cour-deux-postes",
+         "Une cour commerciale lavée à deux postes",
+         "<p>Une cour en résine de jardinerie, en Île-de-France. La bande déjà "
+         "traitée se distingue de ce qui ne l'est pas encore&nbsp;: ce n'est pas "
+         "la couleur du sol qui change, c'est le film de terre et de mousse qui "
+         "part.</p>"
+         "<p>Deux lances en parallèle, parce que sur un site commercial le temps "
+         "qui compte n'est pas le nôtre&nbsp;: c'est celui pendant lequel la "
+         "surface est inutilisable. Nous intervenons avant l'ouverture ou le jour "
+         "de fermeture, et nous repartons avant les premiers clients.</p>"),
+        ("hp-cour-lance",
+         "La lance au travail, de près",
+         "<p>Le même chantier, au poste. La lance est tenue à distance et en "
+         "biais&nbsp;: sur une résine, un jet trop près ou perpendiculaire laisse "
+         "une marque que rien ne rattrape.</p>"
+         "<p>C'est la différence entre décaper et laver. Le but n'est pas de "
+         "sortir la pression maximale, c'est de sortir juste ce qu'il faut pour "
+         "décoller le film sans toucher au support.</p>"),
+    ],
+}
+
 VIDEO_PAR_SERVICE = {
     "nettoyage-textile-paris": ("textile",
         "Le nettoyage d'un matelas et d'un canapé, filmé",
@@ -1652,6 +1722,15 @@ def build_service(s):
                       + video_block(base, v[0], v[1], v[2])
                       + "</div></section>")
     chimie = bloc_chimie(base, s["chimie"]) if s.get("chimie") else ""
+    photos_prestation = "".join(
+        figure_photo(base, f, legende, l, h)
+        for f, legende, l, h in PHOTOS_PAR_SERVICE.get(s["slug"], ()))
+    for i, (cle, titre, texte) in enumerate(
+            VIDEOS_SUP_PAR_SERVICE.get(s["slug"], ())):
+        doux = " section-soft" if i % 2 == 0 else ""
+        photos_prestation += (
+            f'<section class="section{doux}"><div class="container">'
+            + video_block(base, cle, titre, texte) + "</div></section>")
     bloc_risque = (bloc_risque_incendie(base)
                    if s["slug"] == "nettoyage-hottes-paris" else "")
     # Encart d'obligation : seules les prestations qui répondent d'un texte
@@ -1795,6 +1874,7 @@ def build_service(s):
   </div>
 </section>
 {chimie}
+{photos_prestation}
 {bloc_risque}
 
 <section class="section section-soft">
