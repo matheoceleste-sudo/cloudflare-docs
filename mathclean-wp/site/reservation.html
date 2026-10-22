@@ -68,7 +68,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
 <li class="menu-item-has-children">
   <a href="services">Prestations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
-    <li class="nav-part"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li class="nav-part"><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-pro"><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li><li class="nav-pro"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li>
+    <li class="nav-part"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li class="nav-part"><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="services/nettoyage-monobrosse-paris">Décapage de sols à la monobrosse</a></li><li class="nav-part"><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-pro"><a href="hottes">Dégraissage de hottes</a></li><li class="nav-pro"><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li><li class="nav-pro"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li class="nav-pro"><a href="services/nettoyage-monobrosse-paris">Décapage de sols à la monobrosse</a></li>
   </ul>
 </li>
 <li><a href="tarifs">Tarifs</a></li>
@@ -84,8 +84,10 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
   <a href="guides">Conseils <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
     <li><a href="guides"><strong>Guides pratiques</strong></a></li>
+    <li><a href="dossiers"><strong>Dossiers techniques</strong></a></li>
     <li><a href="blog"><strong>Astuces &amp; conseils</strong></a></li>
-    <li class="sub-sep"><a href="nettoyage-haute-pression">Haute pression : par surface</a></li>
+    <li class="sub-sep"><a href="hottes">Hottes : par métier et par commune</a></li>
+    <li><a href="nettoyage-haute-pression">Haute pression : par surface</a></li>
   </ul>
 </li>
 <li><a href="realisations">Réalisations</a></li>
@@ -158,7 +160,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
     <span class="pick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 5.4a3.6 3.6 0 0 0-5 4.6l-6.2 6.2a1.6 1.6 0 0 0 0 2.3l2.1 2.1a1.6 1.6 0 0 0 2.3 0l6.2-6.2a3.6 3.6 0 0 0 4.6-5l-2.6 2.6-2.5-.5-.5-2.5z"/></svg></span>
     <span class="pick-name">Nettoyage de fin de chantier</span>
     <span class="pick-price">sur devis</span>
-    <span class="pick-desc"></span>
+    <span class="pick-desc">Devis après visite ou photos du chantier</span>
   </span>
 </label><label class="pick">
   <input type="radio" name="univers" value="nettoyage-haute-pression-paris">
@@ -167,6 +169,22 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
     <span class="pick-name">Nettoyage haute pression</span>
     <span class="pick-price">sur devis</span>
     <span class="pick-desc">Devis au m², après visite ou photos</span>
+  </span>
+</label><label class="pick">
+  <input type="radio" name="univers" value="nettoyage-hottes-paris">
+  <span class="pick-body">
+    <span class="pick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 5.4a3.6 3.6 0 0 0-5 4.6l-6.2 6.2a1.6 1.6 0 0 0 0 2.3l2.1 2.1a1.6 1.6 0 0 0 2.3 0l6.2-6.2a3.6 3.6 0 0 0 4.6-5l-2.6 2.6-2.5-.5-.5-2.5z"/></svg></span>
+    <span class="pick-name">Dégraissage de hottes</span>
+    <span class="pick-price">sur devis</span>
+    <span class="pick-desc">Devis après constat des trappes</span>
+  </span>
+</label><label class="pick">
+  <input type="radio" name="univers" value="nettoyage-monobrosse-paris">
+  <span class="pick-body">
+    <span class="pick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
+    <span class="pick-name">Décapage de sols à la monobrosse</span>
+    <span class="pick-price">sur devis</span>
+    <span class="pick-desc">Devis après essai sur zone témoin</span>
   </span>
 </label><label class="pick">
   <input type="radio" name="univers" value="nettoyage-textile-paris">
@@ -340,9 +358,9 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
     <p>
       Les prix des prestations sont <strong>fixes</strong>. Un pack automobile coûte le même
       montant sur une citadine et sur un grand break&nbsp;; un tarif textile dépend de la pièce
-      traitée, pas de sa taille exacte. Le nettoyage de vitres et les prestations en entreprise,
-      eux, se chiffrent après échange&nbsp;: vous repartez d'ici avec une demande, pas avec un
-      montant approximatif.
+      traitée, pas de sa taille exacte. La fin de chantier, la haute pression, le dégraissage
+      de hotte et le décapage de sols, eux, se chiffrent après échange&nbsp;: vous repartez
+      d'ici avec une demande, pas avec un montant approximatif.
     </p>
 
     <h2>Ce qu'une estimation en ligne ne peut pas savoir</h2>
@@ -416,7 +434,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
     </div>
   </div>
 </section>
-<script id="resa-data" type="application/json">{"packs": [{"nom": "Extérieur Éclat", "prix": 50, "portee": "Extérieur", "desc": "La carrosserie retrouve sa brillance", "lignes": ["Lavage complet de la carrosserie", "Jantes et passages de roues", "Brillant pneus", "Vitres extérieures", "Séchage sans trace"]}, {"nom": "Intérieur Essentiel", "prix": 55, "portee": "Intérieur", "desc": "Idéal pour un coup de propre régulier (hors cuir et alcantara)", "lignes": ["Aspiration de l'habitacle et du coffre", "Nettoyage du tableau de bord", "Nettoyage des plastiques", "Vitres intérieures", "Désinfection complète à la vapeur", "Parfum d'ambiance"]}, {"nom": "Intérieur Prestige", "prix": 100, "portee": "Intérieur", "desc": "Le détail poussé jusqu'au moindre recoin, cuir compris", "lignes": ["Tout l'Intérieur Essentiel", "Sièges cuir nettoyés ou pressing des sièges tissu", "Pressing des tapis et moquettes", "Protection des plastiques", "Traitement des cuirs", "Battements de portes", "Ciel de toit", "Compartiment de la roue de secours"]}, {"nom": "Intégral", "prix": 130, "portee": "Intérieur + Extérieur", "desc": "Le véhicule entier, dedans comme dehors", "lignes": ["Tout l'Intérieur Prestige", "Lavage complet de la carrosserie", "Jantes et brillant pneus", "Vitres intérieures et extérieures", "Séchage sans trace", "Parfum d'ambiance"]}], "options": [{"nom": "Retrait des poils d'animaux", "prix": 10, "desc": "Sièges, tapis et moquettes"}, {"nom": "Traitement cuir & alcantara", "prix": 20, "desc": "Nettoyage puis nourrissage des cuirs et de l'alcantara"}, {"nom": "Neutralisation des odeurs par ozone", "prix": 30, "desc": "Traitement d'1 h : les molécules odorantes sont détruites, pas masquées"}], "textile": [{"nom": "Chaise / chaise de bureau", "prix": 15, "desc": "Assise et dossier"}, {"nom": "Fauteuil", "prix": 25, "desc": "Assise, dossier et accoudoirs"}, {"nom": "Canapé 2 places", "prix": 39, "desc": "Injection-extraction et détachage"}, {"nom": "Canapé 3 places", "prix": 49, "desc": "Injection-extraction et détachage"}, {"nom": "Canapé d'angle", "prix": 69, "desc": "Injection-extraction et détachage"}, {"nom": "Matelas 1 place", "prix": 39, "desc": "Deux faces, traitement anti-acariens"}, {"nom": "Matelas 2 places", "prix": 49, "desc": "Deux faces, traitement anti-acariens"}, {"nom": "Tapis jusqu'à 6 m²", "prix": 39, "desc": "Lavage des fibres en profondeur"}, {"nom": "Tapis de plus de 6 m²", "prix": 59, "desc": "Lavage des fibres en profondeur"}], "services": [{"slug": "nettoyage-fin-de-chantier-paris", "nav": "Nettoyage de fin de chantier", "prix": "sur devis", "exemple": "Exemple : trois-pièces de 62 m² repeint et carrelé, les peintres sortent vendredi, état des lieux d'entrée le mercredi suivant, laitance sur le carrelage neuf.", "univers": "devis"}, {"slug": "nettoyage-haute-pression-paris", "nav": "Nettoyage haute pression", "prix": "sur devis", "exemple": "Exemple : terrasse en pierre de 40 m² côté nord, verte depuis deux hivers, plus une allée de 15 m avec des traces d'huile au droit du stationnement.", "univers": "devis"}, {"slug": "nettoyage-textile-paris", "nav": "Nettoyage textile (canapé, matelas, tapis)", "prix": "dès 15 €", "exemple": "", "univers": "textile"}, {"slug": "nettoyage-automobile-paris", "nav": "Nettoyage automobile", "prix": "dès 50 €", "exemple": "", "univers": "auto"}], "deplacement": {"lat": 48.9508316, "lon": 2.5743194, "palier_km": 5, "palier_eur": 5, "routage": {"url": "https://data.geopf.fr/navigation/itineraire", "params": "resource=bdtopo-osrm&profile=car&optimization=fastest&geometryFormat=geojson&getSteps=false"}, "coef_route": 1.25}, "creneaux": ["Matin — 8h à 12h", "Après-midi — 12h à 17h", "Fin de journée — 17h à 20h"], "delais": {"proches": ["75", "92", "93", "94"], "proche": "24 à 48 h", "loin": "48 à 72 h", "reponse_txt": "24 h", "jours_proche": 1, "jours_loin": 2}}</script>
+<script id="resa-data" type="application/json">{"packs": [{"nom": "Extérieur Éclat", "prix": 50, "portee": "Extérieur", "desc": "La carrosserie retrouve sa brillance", "lignes": ["Lavage complet de la carrosserie", "Jantes et passages de roues", "Brillant pneus", "Vitres extérieures", "Séchage sans trace"]}, {"nom": "Intérieur Essentiel", "prix": 55, "portee": "Intérieur", "desc": "Idéal pour un coup de propre régulier (hors cuir et alcantara)", "lignes": ["Aspiration de l'habitacle et du coffre", "Nettoyage du tableau de bord", "Nettoyage des plastiques", "Vitres intérieures", "Désinfection complète à la vapeur", "Parfum d'ambiance"]}, {"nom": "Intérieur Prestige", "prix": 100, "portee": "Intérieur", "desc": "Le détail poussé jusqu'au moindre recoin, cuir compris", "lignes": ["Tout l'Intérieur Essentiel", "Sièges cuir nettoyés ou pressing des sièges tissu", "Pressing des tapis et moquettes", "Protection des plastiques", "Traitement des cuirs", "Battements de portes", "Ciel de toit", "Compartiment de la roue de secours"]}, {"nom": "Intégral", "prix": 130, "portee": "Intérieur + Extérieur", "desc": "Le véhicule entier, dedans comme dehors", "lignes": ["Tout l'Intérieur Prestige", "Lavage complet de la carrosserie", "Jantes et brillant pneus", "Vitres intérieures et extérieures", "Séchage sans trace", "Parfum d'ambiance"]}], "options": [{"nom": "Retrait des poils d'animaux", "prix": 10, "desc": "Sièges, tapis et moquettes"}, {"nom": "Traitement cuir & alcantara", "prix": 20, "desc": "Nettoyage puis nourrissage des cuirs et de l'alcantara"}, {"nom": "Neutralisation des odeurs par ozone", "prix": 30, "desc": "Traitement d'1 h : les molécules odorantes sont détruites, pas masquées"}], "textile": [{"nom": "Chaise / chaise de bureau", "prix": 15, "desc": "Assise et dossier"}, {"nom": "Fauteuil", "prix": 25, "desc": "Assise, dossier et accoudoirs"}, {"nom": "Canapé 2 places", "prix": 39, "desc": "Injection-extraction et détachage"}, {"nom": "Canapé 3 places", "prix": 49, "desc": "Injection-extraction et détachage"}, {"nom": "Canapé d'angle", "prix": 69, "desc": "Injection-extraction et détachage"}, {"nom": "Matelas 1 place", "prix": 39, "desc": "Deux faces, traitement anti-acariens"}, {"nom": "Matelas 2 places", "prix": 49, "desc": "Deux faces, traitement anti-acariens"}, {"nom": "Tapis jusqu'à 6 m²", "prix": 39, "desc": "Lavage des fibres en profondeur"}, {"nom": "Tapis de plus de 6 m²", "prix": 59, "desc": "Lavage des fibres en profondeur"}], "services": [{"slug": "nettoyage-fin-de-chantier-paris", "nav": "Nettoyage de fin de chantier", "prix": "sur devis", "exemple": "Exemple : trois-pièces de 62 m² repeint et carrelé, les peintres sortent vendredi, état des lieux d'entrée le mercredi suivant, laitance sur le carrelage neuf.", "univers": "devis"}, {"slug": "nettoyage-haute-pression-paris", "nav": "Nettoyage haute pression", "prix": "sur devis", "exemple": "Exemple : terrasse en pierre de 40 m² côté nord, verte depuis deux hivers, plus une allée de 15 m avec des traces d'huile au droit du stationnement.", "univers": "devis"}, {"slug": "nettoyage-hottes-paris", "nav": "Dégraissage de hottes", "prix": "sur devis", "exemple": "Exemple : restaurant de 60 couverts, hotte de 3 m au-dessus du piano, conduit qui monte en toiture, jamais nettoyé depuis la reprise du local il y a deux ans.", "univers": "devis"}, {"slug": "nettoyage-monobrosse-paris", "nav": "Décapage de sols à la monobrosse", "prix": "sur devis", "exemple": "Exemple : 180 m² de PVC dans des bureaux occupés, gris dans les circulations, jamais décapés depuis la pose, intervention possible le vendredi soir ou le samedi.", "univers": "devis"}, {"slug": "nettoyage-textile-paris", "nav": "Nettoyage textile (canapé, matelas, tapis)", "prix": "dès 15 €", "exemple": "", "univers": "textile"}, {"slug": "nettoyage-automobile-paris", "nav": "Nettoyage automobile", "prix": "dès 50 €", "exemple": "", "univers": "auto"}], "deplacement": {"lat": 48.9508316, "lon": 2.5743194, "palier_km": 5, "palier_eur": 5, "routage": {"url": "https://data.geopf.fr/navigation/itineraire", "params": "resource=bdtopo-osrm&profile=car&optimization=fastest&geometryFormat=geojson&getSteps=false"}, "coef_route": 1.25}, "creneaux": ["Matin — 8h à 12h", "Après-midi — 12h à 17h", "Fin de journée — 17h à 20h"], "delais": {"proches": ["75", "92", "93", "94"], "proche": "24 à 48 h", "loin": "48 à 72 h", "reponse_txt": "24 h", "jours_proche": 1, "jours_loin": 2}}</script>
 <script src="assets/js/reservation.js?v=50ac0419" defer></script>
 </main>
 
@@ -427,7 +445,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
         <span class="brand-name" style="font-size:1.5rem">Math<span>Clean</span></span>
         <p class="footer-about">
           Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit départements
-          d'Île-de-France&nbsp;: Fin de chantier, haute pression, textile et automobile.
+          d'Île-de-France&nbsp;: Fin de chantier, haute pression, hottes, monobrosse, textile et automobile.
           Une exigence de roi, du particulier au professionnel.
         </p>
         <div class="footer-contact">
@@ -439,12 +457,11 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
       </div>
       <div>
         <h2 class="widget-title">Prestations</h2>
-        <ul><li><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li></ul>
+        <ul><li><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="services/nettoyage-monobrosse-paris">Décapage de sols à la monobrosse</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li></ul>
         <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
         <ul>
-
+          <li><a href="hottes">Hottes et conduits</a></li>
           <li><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li>
-
         </ul>
       </div>
       <div>
@@ -459,6 +476,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
           <li><a href="tarifs">Tarifs</a></li>
           <li><a href="realisations">Réalisations</a></li>
           <li><a href="guides">Guides pratiques</a></li>
+          <li><a href="dossiers">Dossiers techniques</a></li>
           <li><a href="blog">Conseils &amp; astuces</a></li>
           <li><a href="reservation">Réserver en ligne</a></li>
           <li><a href="devis">Devis gratuit</a></li>

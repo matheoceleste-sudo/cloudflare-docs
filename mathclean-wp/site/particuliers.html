@@ -69,7 +69,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
 <li class="menu-item-has-children">
   <a href="services">Prestations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
-    <li class="nav-part"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li class="nav-part"><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-pro"><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li><li class="nav-pro"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li>
+    <li class="nav-part"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li class="nav-part"><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="services/nettoyage-monobrosse-paris">Décapage de sols à la monobrosse</a></li><li class="nav-part"><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-pro"><a href="hottes">Dégraissage de hottes</a></li><li class="nav-pro"><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li><li class="nav-pro"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li class="nav-pro"><a href="services/nettoyage-monobrosse-paris">Décapage de sols à la monobrosse</a></li>
   </ul>
 </li>
 <li><a href="tarifs">Tarifs</a></li>
@@ -85,8 +85,10 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
   <a href="guides">Conseils <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
     <li><a href="guides"><strong>Guides pratiques</strong></a></li>
+    <li><a href="dossiers"><strong>Dossiers techniques</strong></a></li>
     <li><a href="blog"><strong>Astuces &amp; conseils</strong></a></li>
-    <li class="sub-sep"><a href="nettoyage-haute-pression">Haute pression : par surface</a></li>
+    <li class="sub-sep"><a href="hottes">Hottes : par métier et par commune</a></li>
+    <li><a href="nettoyage-haute-pression">Haute pression : par surface</a></li>
   </ul>
 </li>
 <li><a href="realisations">Réalisations</a></li>
@@ -175,11 +177,11 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
       <span class="eyebrow">Nos prestations</span>
       <h2>Ce que nous faisons chez vous</h2>
       <p class="lead">
-        4 prestations pour votre logement et votre véhicule. Deux sont à
+        5 prestations pour votre logement et votre véhicule. Deux sont à
         prix fixe et se réservent en ligne, les autres se chiffrent après échange.
       </p>
     </div>
-    <div class="grid grid-paire"><a class="service-card reveal" href="services/nettoyage-fin-de-chantier-paris">
+    <div class="grid grid-3"><a class="service-card reveal" href="services/nettoyage-fin-de-chantier-paris">
   <span class="service-thumb">
     <span class="thumb-vide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 5.4a3.6 3.6 0 0 0-5 4.6l-6.2 6.2a1.6 1.6 0 0 0 0 2.3l2.1 2.1a1.6 1.6 0 0 0 2.3 0l6.2-6.2a3.6 3.6 0 0 0 4.6-5l-2.6 2.6-2.5-.5-.5-2.5z"/></svg></span>
     <span class="service-price">sur devis</span>
@@ -197,6 +199,16 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
   <span class="service-body">
     <h3>Nettoyage haute pression</h3>
     <p>Terrasses, allées, cours, parkings et façades accessibles depuis le sol : la pression réglée sur le support, jamais l'inverse.</p>
+    <span class="service-more">Découvrir la prestation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+  </span>
+</a><a class="service-card reveal" href="services/nettoyage-monobrosse-paris">
+  <span class="service-thumb">
+    <span class="thumb-vide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
+    <span class="service-price">sur devis</span>
+  </span>
+  <span class="service-body">
+    <h3>Décapage de sols à la monobrosse</h3>
+    <p>PVC, linoléum, carrelage, béton, moquette : retrait de l'ancienne protection, récurage des joints, pose d'une émulsion neuve ou lustrage. Le revêtement est identifié et testé avant le premier passage, pas après.</p>
     <span class="service-more">Découvrir la prestation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
   </span>
 </a><a class="service-card reveal" href="services/nettoyage-textile-paris">
@@ -381,7 +393,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
         <span class="brand-name" style="font-size:1.5rem">Math<span>Clean</span></span>
         <p class="footer-about">
           Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit départements
-          d'Île-de-France&nbsp;: Fin de chantier, haute pression, textile et automobile.
+          d'Île-de-France&nbsp;: Fin de chantier, haute pression, hottes, monobrosse, textile et automobile.
           Une exigence de roi, du particulier au professionnel.
         </p>
         <div class="footer-contact">
@@ -393,12 +405,11 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
       </div>
       <div>
         <h2 class="widget-title">Prestations</h2>
-        <ul><li><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li></ul>
+        <ul><li><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a></li><li><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="services/nettoyage-monobrosse-paris">Décapage de sols à la monobrosse</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li></ul>
         <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
         <ul>
-
+          <li><a href="hottes">Hottes et conduits</a></li>
           <li><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li>
-
         </ul>
       </div>
       <div>
@@ -413,6 +424,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
           <li><a href="tarifs">Tarifs</a></li>
           <li><a href="realisations">Réalisations</a></li>
           <li><a href="guides">Guides pratiques</a></li>
+          <li><a href="dossiers">Dossiers techniques</a></li>
           <li><a href="blog">Conseils &amp; astuces</a></li>
           <li><a href="reservation">Réserver en ligne</a></li>
           <li><a href="devis">Devis gratuit</a></li>

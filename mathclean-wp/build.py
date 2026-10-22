@@ -350,8 +350,10 @@ def nav_menu(base, current):
     # par commune, et c'est ce qu'un professionnel cherche.
     services_pro = "".join(
         '<li class="nav-pro"><a href="%s%s">%s</a></li>' % (base, h, lb) for h, lb in (
+        ("hottes.html", "Dégraissage de hottes"),
         ("nettoyage-haute-pression.html", "Nettoyage haute pression"),
         ("services/nettoyage-fin-de-chantier-paris.html", "Nettoyage de fin de chantier"),
+        ("services/nettoyage-monobrosse-paris.html", "Décapage de sols à la monobrosse"),
     ))
     zones_sub = "".join(
         '<li><a href="%szones/%s.html">%s (%s)</a></li>' % (base, z["slug"], z["name"], z["num"])
@@ -379,8 +381,10 @@ def nav_menu(base, current):
   <a href="{base}guides.html">Conseils {icon('chevron', 'caret')}</a>
   <ul class="sub-menu">
     <li><a href="{base}guides.html"><strong>Guides pratiques</strong></a></li>
+    <li><a href="{base}dossiers.html"><strong>Dossiers techniques</strong></a></li>
     <li><a href="{base}blog.html"><strong>Astuces &amp; conseils</strong></a></li>
-    <li class="sub-sep"><a href="{base}nettoyage-haute-pression.html">Haute pression : par surface</a></li>
+    <li class="sub-sep"><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
+    <li><a href="{base}nettoyage-haute-pression.html">Haute pression : par surface</a></li>
   </ul>
 </li>
 <li{cls('realisations')}><a href="{base}realisations.html">Réalisations</a></li>
@@ -520,9 +524,8 @@ def footer(base):
         <ul>{services_links}</ul>
         <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
         <ul>
-
+          <li><a href="{base}hottes.html">Hottes et conduits</a></li>
           <li><a href="{base}nettoyage-haute-pression.html">Nettoyage haute pression</a></li>
-
         </ul>
       </div>
       <div>
@@ -537,6 +540,7 @@ def footer(base):
           <li><a href="{base}tarifs.html">Tarifs</a></li>
           <li><a href="{base}realisations.html">Réalisations</a></li>
           <li><a href="{base}guides.html">Guides pratiques</a></li>
+          <li><a href="{base}dossiers.html">Dossiers techniques</a></li>
           <li><a href="{base}blog.html">Conseils &amp; astuces</a></li>
           <li><a href="{base}reservation.html">Réserver en ligne</a></li>
           <li><a href="{base}devis.html">Devis gratuit</a></li>
@@ -821,6 +825,14 @@ VIDEOS = {
         "desc": "Le volume situé derrière les filtres d'une hotte de restaurant, "
                 "filtres déposés : les parois mouchetées de graisse et, au fond, la "
                 "bouche du conduit d'extraction par laquelle le dépôt remonte.",
+    },
+    "hotte-plenum": {
+        "fichier": "hotte-plenum-conduit", "duree": "PT3S", "secondes": 3,
+        "nom": "Le plénum d'une hotte de pizzeria, trappe ouverte",
+        "desc": "L'intérieur du caisson d'une hotte de restaurant, filtres "
+                "déposés : la bouche ronde du conduit d'extraction au-dessus des "
+                "filtres, et le joint d'angle où le dépôt de graisse s'accroche "
+                "en premier.",
     },
     "filtres-encrasses": {
         "fichier": "filtres-hotte-encrasses", "duree": "PT4S", "secondes": 4,
@@ -1567,8 +1579,8 @@ def build_services_archive():
 {cta_band(base)}
 """
     html = (head(titre_page("Nos prestations de nettoyage à Paris et en IDF"),
-                 "Les %s prestations MathClean : nettoyage de vitres, nettoyage pour entreprise, "
-                 "automobile et textile. À Paris et en Île-de-France." % NB_SERVICES,
+                 "Les %s prestations MathClean : fin de chantier, haute pression, hottes, "
+                 "monobrosse, automobile et textile. À Paris et en IDF." % NB_SERVICES,
                  "services.html", base,
                  schema=[crumb_schema([("Prestations", "services.html")]), liste_schema])
             + header(base, "services") + body + footer(base))
@@ -1605,6 +1617,22 @@ PHOTOS_PAR_SERVICE = {
          "chargées, et celles qui demandent le plus long temps de pose.",
          760, 933),
     ],
+    "nettoyage-hottes-paris": [
+        ("hotte-bachage-cuisine.webp",
+         "Une cuisine de pizzeria bâchée avant le premier coup de produit. La "
+         "bâche n'est pas un décor : un décapant alcalin projeté sur un piano, "
+         "un plan de travail ou une pile d'assiettes impose un relavage complet "
+         "à l'équipe avant le service suivant. Ce qui est protégé ici est ce "
+         "qu'il nous faudrait rendre propre autrement.",
+         820, 924),
+        ("hotte-degraissage-poste.webp",
+         "La même hotte, de plus près. Le dessous du caisson et le rail des "
+         "filtres portent encore le dépôt brun&nbsp;: c'est la graisse de "
+         "cuisson condensée, et c'est elle qui brûle. La photo est prise avant "
+         "l'intervention, pas après — un «&nbsp;avant&nbsp;» vaut mieux qu'un "
+         "«&nbsp;après&nbsp;» sans point de comparaison.",
+         760, 1050),
+    ],
 }
 
 # Vidéos en plus de celle de VIDEO_PAR_SERVICE, qui n'en accepte qu'une par
@@ -1629,6 +1657,17 @@ VIDEOS_SUP_PAR_SERVICE = {
          "<p>C'est la différence entre décaper et laver. Le but n'est pas de "
          "sortir la pression maximale, c'est de sortir juste ce qu'il faut pour "
          "décoller le film sans toucher au support.</p>"),
+    ],
+    "nettoyage-hottes-paris": [
+        ("hotte-plenum", "Le plénum d'une hotte, trappe ouverte",
+         "<p>Trois secondes filmées à l'intérieur du caisson d'une hotte de "
+         "pizzeria, en Seine-Saint-Denis, filtres déposés. On y voit la bouche "
+         "ronde du conduit d'extraction, au-dessus des filtres, et le joint "
+         "d'angle où le dépôt s'accroche en premier.</p>"
+         "<p>C'est le volume dont parle l'article GC 21 et que personne ne voit "
+         "depuis la cuisine&nbsp;: on juge une hotte sur son inox extérieur, "
+         "alors que ce qui brûle est ici. Un devis sérieux se chiffre après "
+         "avoir ouvert cette trappe, pas avant.</p>"),
     ],
 }
 
@@ -1769,12 +1808,6 @@ def build_service(s):
         "nettoyage-hottes-paris": [
             ("hottes/nettoyage-hotte-%s.html" % v["slug"],
              "Dégraissage de hotte %s" % ville_a(v["nom"])) for v in VILLES_PRO],
-        "nettoyage-vitres-paris": [
-            ("vitres/nettoyage-vitrine-%s.html" % v["slug"],
-             "Nettoyage de vitrine %s" % ville_a(v["nom"])) for v in VILLES_PRO],
-        "nettoyage-appartement-paris": [
-            ("appartement/nettoyage-appartement-%s.html" % v["slug"],
-             "Nettoyage d'appartement %s" % ville_a(v["nom"])) for v in VILLES_APPART],
     }
     if s["slug"] in _familles:
         communes = "".join('<li><a href="%s%s">%s</a></li>' % (base, h, lb)
@@ -2422,7 +2455,7 @@ def build_zone(z):
          "url": "%s/zones/%s.html" % (SITE["url"], z["slug"])},
     ]
     html = (head(titre_page("Entreprise de nettoyage en %s (%s)" % (z["name"], z["num"])),
-                 "Nettoyage de vitres, nettoyage pour entreprise, automobile et textile en %s (%s). "
+                 "Fin de chantier, haute pression, hottes, sols, automobile et textile en %s (%s). "
                  "Intervention à domicile 7j/7, devis gratuit, sans acompte." % (z["name"], z["num"]),
                  "zones/%s.html" % z["slug"], base, schema=schema)
             + header(base, "zones") + body + footer(base))
@@ -2581,6 +2614,9 @@ def bloc_hors_offre(base, item):
           Nous laissons ce texte en ligne parce qu'il reste utile, mais MathClean ne réalise plus
           {item['hors_offre']}. Nos {NB_SERVICES} prestations sont le
           <a href="{base}services/nettoyage-fin-de-chantier-paris.html">nettoyage de fin de chantier</a>, le
+          <a href="{base}services/nettoyage-haute-pression-paris.html">nettoyage haute pression</a>, le
+          <a href="{base}services/nettoyage-hottes-paris.html">dégraissage de hottes</a>, le
+          <a href="{base}services/nettoyage-monobrosse-paris.html">décapage de sols à la monobrosse</a>, le
           <a href="{base}services/nettoyage-automobile-paris.html">nettoyage automobile</a> et le
           <a href="{base}services/nettoyage-textile-paris.html">nettoyage textile</a>.{extra}
         </p>
@@ -2802,14 +2838,17 @@ def build_apropos():
           moquettes — et du <a href="services/nettoyage-automobile-paris.html">nettoyage automobile</a>
           à domicile, souvent avant une revente ou après un long trajet. Le
           <a href="services/nettoyage-haute-pression-paris.html">nettoyage haute pression</a> complète ces demandes,
-          en particulier sur les pavillons à grandes baies.
+          en particulier sur les terrasses et les cours de pavillon.
         </p>
         <p>
-          Côté professionnels, nous entretenons
-          <a href="services/nettoyage-fin-de-chantier-paris.html">bureaux, commerces et locaux d'activité</a> en
-          passage régulier ou ponctuel, et nous prenons en charge les
-          <a href="services/nettoyage-haute-pression-paris.html">façades et sols extérieurs</a>, avant l'ouverture
-          ou après la fermeture pour ne pas gêner l'activité.
+          Côté professionnels, nous remettons en état
+          <a href="services/nettoyage-fin-de-chantier-paris.html">bureaux, commerces et locaux d'activité</a>
+          après travaux, nous dégraissons les
+          <a href="services/nettoyage-hottes-paris.html">hottes et les conduits d'extraction</a> des cuisines
+          professionnelles, et nous reprenons les sols
+          <a href="services/nettoyage-monobrosse-paris.html">à la monobrosse</a> comme les
+          <a href="services/nettoyage-haute-pression-paris.html">façades et sols extérieurs</a> — avant
+          l'ouverture ou après la fermeture, pour ne pas gêner l'activité.
         </p>
         <p>
           Le détail des villes couvertes, département par département, se trouve sur notre page
@@ -3001,8 +3040,9 @@ def build_professionnels():
     <h2>Ce que nous réalisons</h2>
     <div class="pro-presta-list">{presta}</div>
     <p class="field-hint" style="margin-top:20px">
-      Le nettoyage de hottes, la vitrerie et l'entretien régulier se chiffrent après échange ou
-      visite. L'automobile et le textile ont des tarifs fixes, consultables sur la
+      La fin de chantier, la haute pression, le dégraissage de hottes et le décapage de sols se
+      chiffrent après échange ou visite. L'automobile et le textile ont des tarifs fixes,
+      consultables sur la
       <a href="tarifs.html">grille tarifaire</a> — utile pour une flotte de véhicules ou un
       parc de sièges de bureau.
     </p>
@@ -3015,18 +3055,25 @@ def build_professionnels():
       <span class="eyebrow">Votre métier, votre commune</span>
       <h2>Entrer par ce qui vous concerne</h2>
       <p class="lead">
-        Une cour de jardinerie ne se lave pas comme un quai de livraison, et un chantier de
-        bureaux livré ne demande pas le même nombre de passes qu'une pièce repeinte. Ces
-        sommaires mènent directement à ce qui vous concerne.
+        Le dépôt d'une hotte de pizzeria n'est pas celui d'une hotte de boulangerie, une cour
+        de jardinerie ne se lave pas comme un quai de livraison, et un chantier de bureaux
+        livré ne demande pas le même nombre de passes qu'une pièce repeinte. Ces sommaires
+        mènent directement à ce qui vous concerne.
       </p>
     </div>
     <ul class="lien-liste">
+      <li><a href="hottes.html">Dégraissage de hottes et de conduits — par métier et par
+        commune</a></li>
       <li><a href="nettoyage-haute-pression.html">Nettoyage haute pression — parkings, quais,
         cours, façades et sols extérieurs, surface par surface</a></li>
+      <li><a href="services/nettoyage-monobrosse-paris.html">Décapage et remise en état de sols
+        à la monobrosse — PVC, linoléum, carrelage, béton</a></li>
       <li><a href="services/nettoyage-fin-de-chantier-paris.html">Nettoyage de fin de chantier —
         logements, bureaux et locaux commerciaux après travaux</a></li>
       <li><a href="services/nettoyage-textile-paris.html">Nettoyage textile — sièges, moquettes
         et fauteuils de bureau, sur site</a></li>
+      <li><a href="dossiers.html">Dossiers techniques — réglementation, risque d'incendie,
+        attestation et livret d'entretien</a></li>
       <li><a href="guides.html">Guides pratiques — prix au mètre carré, nombre de passes,
         questions à poser avant de signer</a></li>
     </ul>
@@ -3051,6 +3098,21 @@ def build_professionnels():
       <li><strong>Le fibrociment posé avant 1997.</strong> Il est présumé contenir de l'amiante,
         et le laver sous pression en libère les fibres. C'est du désamiantage, un métier
         certifié que nous ne pratiquons pas.</li>
+      <li><strong>Les travaux sur un réseau d'extraction.</strong> Nous dégraissons et nous
+        brossons hotte, filtres et conduits d'extraction ; la pose d'une trappe de visite, la
+        modification d'un tracé ou le remplacement d'un moteur relèvent d'un installateur.</li>
+      <li><strong>Le ramonage d'un conduit de fumée.</strong> Celui d'un four à bois ou d'une
+        cheminée est une activité réglementée, distincte du conduit d'extraction d'une hotte.
+        Nous traitons le second, pas le premier, et nous vous le disons quand les deux sont
+        présents dans la même cuisine.</li>
+      <li><strong>La vérification annuelle de l'article GC 22.</strong> Elle revient à un
+        technicien compétent ou à un organisme agréé. Nous délivrons l'attestation de nettoyage
+        et d'entretien de la hotte et des conduits, qui se range dans votre
+        <a href="dossiers/obligation-nettoyage-hotte-restaurant.html">livret d'entretien</a> —
+        elle dit ce que nous avons fait, elle ne remplace pas cette vérification.</li>
+      <li><strong>Le ponçage et la vitrification d'un parquet.</strong> Nous entretenons un
+        parquet à très faible humidité ; le décaper à la monobrosse le gonflerait, et le
+        remettre à nu relève d'un parqueteur.</li>
       <li><strong>La désinsectisation et la dératisation.</strong> Elles relèvent d'agréments
         spécifiques que nous ne détenons pas.</li>
       <li><strong>Le travail en hauteur au-delà de trois niveaux.</strong> Au-delà, il faut
@@ -3466,8 +3528,8 @@ def build_devis():
 </section>
 """
     html = (head(titre_page("Devis gratuit de nettoyage à Paris et en IDF"),
-                 "Devis gratuit et sans engagement pour un nettoyage de vitres, auto, textile "
-                 "ou entreprise à Paris et en Île-de-France. Réponse sous 24 h.",
+                 "Devis gratuit et sans engagement : fin de chantier, haute pression, hotte, "
+                 "sols, auto ou textile, à Paris et en Île-de-France. Réponse sous 24 h.",
                  "devis.html", base, schema=[crumb_schema([("Devis gratuit", "devis.html")])])
             + header(base, "devis") + body + footer(base))
     return write("devis.html", html)
@@ -3743,8 +3805,8 @@ def build_404():
       couvrent la plupart des cas, mais pas tous. Voici les points d'entrée principaux.
     </p>
     <ul class="checklist">
-      <li><a href="/services.html">Nos {NB_SERVICES} prestations</a> — nettoyage de vitres,
-        nettoyage pour entreprise, automobile et textile, chacune avec sa page
+      <li><a href="/services.html">Nos {NB_SERVICES} prestations</a> — fin de chantier, haute
+        pression, hottes, monobrosse, automobile et textile, chacune avec sa page
         détaillée&nbsp;: méthode, contenu, tarifs.</li>
       <li><a href="/tarifs.html">La grille tarifaire</a> — packs automobile, tarifs textile à la
         pièce, et le barème des frais de déplacement.</li>
@@ -4297,6 +4359,12 @@ EXEMPLES_BRIEF = {
     "nettoyage-haute-pression-paris":
         "Exemple : terrasse en pierre de 40 m² côté nord, verte depuis deux hivers, plus une "
         "allée de 15 m avec des traces d'huile au droit du stationnement.",
+    "nettoyage-hottes-paris":
+        "Exemple : restaurant de 60 couverts, hotte de 3 m au-dessus du piano, conduit qui "
+        "monte en toiture, jamais nettoyé depuis la reprise du local il y a deux ans.",
+    "nettoyage-monobrosse-paris":
+        "Exemple : 180 m² de PVC dans des bureaux occupés, gris dans les circulations, jamais "
+        "décapés depuis la pose, intervention possible le vendredi soir ou le samedi.",
 }
 
 
@@ -4403,11 +4471,10 @@ def build_reservation():
     _SUITE = {
         "nettoyage-automobile-paris": "Prix immédiat — 4 formules au choix",
         "nettoyage-textile-paris": "Prix immédiat — tarif à la pièce",
-        "nettoyage-vitres-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
-        "nettoyage-regulier-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
+        "nettoyage-monobrosse-paris": "Devis après essai sur zone témoin",
         "nettoyage-hottes-paris": "Devis après constat des trappes",
         "nettoyage-haute-pression-paris": "Devis au m², après visite ou photos",
-        "nettoyage-appartement-paris": "Devis sous %s après votre demande" % DELAIS["reponse"],
+        "nettoyage-fin-de-chantier-paris": "Devis après visite ou photos du chantier",
     }
     cartes = ""
     for s in SERVICES:
@@ -4617,9 +4684,9 @@ def build_reservation():
     <p>
       Les prix des prestations sont <strong>fixes</strong>. Un pack automobile coûte le même
       montant sur une citadine et sur un grand break&nbsp;; un tarif textile dépend de la pièce
-      traitée, pas de sa taille exacte. Le nettoyage de vitres et les prestations en entreprise,
-      eux, se chiffrent après échange&nbsp;: vous repartez d'ici avec une demande, pas avec un
-      montant approximatif.
+      traitée, pas de sa taille exacte. La fin de chantier, la haute pression, le dégraissage
+      de hotte et le décapage de sols, eux, se chiffrent après échange&nbsp;: vous repartez
+      d'ici avec une demande, pas avec un montant approximatif.
     </p>
 
     <h2>Ce qu'une estimation en ligne ne peut pas savoir</h2>
@@ -5640,6 +5707,9 @@ def build_llms_txt():
     guides = "\n".join(
         "- %s : %s/guides/%s.html" % (g["h1"], SITE["url"], g["slug"]) for g in GUIDES
     )
+    dossiers = "\n".join(
+        "- %s : %s/dossiers/%s.html" % (d["h1"], SITE["url"], d["slug"]) for d in DOSSIERS
+    )
     zones = ", ".join("%s (%s)" % (z["name"], z["num"]) for z in ZONES)
     villes = ", ".join(v[1] for v in VILLES)
     premium_txt = "\n".join(
@@ -5691,10 +5761,13 @@ def build_llms_txt():
   neutralisation des odeurs par ozone 30 €.
 - Textile : chaise 15 €, fauteuil 25 €, canapé 2 places 39 €, 3 places 49 €, angle 69 €,
   matelas 1 place 39 €, 2 places 49 €, tapis 39 € à 59 €.
-- Fin de chantier et haute pression : sur devis après échange, photos ou visite. Le devis
-  est ferme : le prix ne bouge plus une fois annoncé.
+- Fin de chantier, haute pression, dégraissage de hottes et décapage de sols : sur devis
+  après échange, photos ou visite. Le devis est ferme : le prix ne bouge plus une fois annoncé.
 - Fin de chantier : le nombre de passes nécessaires est annoncé avant le devis, pas découvert
   en cours de chantier.
+- Hottes : le devis est établi après constat, trappes de visite ouvertes.
+- Monobrosse : le devis est établi après identification du revêtement et essai sur une zone
+  témoin cachée.
 - Grille complète : {SITE['url']}/tarifs.html
 
 ## Zone d'intervention
@@ -5705,11 +5778,35 @@ Villes documentées : {villes}.
 Une page dédiée par couple prestation × commune, sur dix communes d'Île-de-France :
 {premium_txt}
 
-## Pages par surface
-La haute pression est déclinée par type de surface, chacune avec sa contrainte
-propre (pression admissible, risque de marquage, traitement après lavage) :
+## Pages par métier, par surface et par commune
+Deux prestations sont déclinées en familles de pages, chacune avec sa
+contrainte propre :
+- Hottes et conduits, par métier ({len(SECTEURS_HOTTE)} métiers) et par commune
+  ({len(VILLES_PRO)} communes) : {SITE['url']}/hottes.html
 - Terrasses, façades, cours et sols extérieurs ({len(SURFACES_HP)} surfaces) :
   {SITE['url']}/nettoyage-haute-pression.html
+
+## Cadre réglementaire cité (hottes)
+Arrêté du 25 juin 1980, article GC 21, pour les établissements recevant du public
+dotés de grandes cuisines, section 7 « Entretien et vérifications ».
+Article GC 21 : filtres nettoyés ou remplacés au moins une fois par semaine ;
+ramonage des conduits d'évacuation au moins une fois par an avec vérification de
+leur vacuité ; nettoyage du circuit d'extraction aussi souvent que nécessaire ;
+dates notées par l'exploitant dans un livret d'entretien annexé au registre de
+sécurité.
+Article GC 22 : vérification annuelle des installations de cuisson dans les
+établissements des quatre premières catégories, par un technicien compétent ou un
+organisme agréé, portant notamment sur l'état d'entretien des appareils et sur la
+ventilation des locaux, consignée au registre de sécurité. La 5e catégorie relève
+de l'arrêté du 22 juin 1990.
+MathClean délivre une attestation de nettoyage et d'entretien de hotte, datée et
+détaillée, destinée au livret d'entretien. Elle ne vaut ni attestation de
+conformité de l'installation, ni vérification annuelle au titre de GC 22, qui est
+une prestation distincte relevant d'un technicien compétent ou d'un organisme
+agréé.
+
+## Dossiers techniques
+{dossiers}
 
 ## Guides de référence
 {guides}
@@ -6427,11 +6524,7 @@ def build_hotte_ville(v):
   <div class="container">
     <div class="split">
       {_liens(base, "Nettoyage de hotte dans les autres communes", autres)}
-      {_liens(base, "Votre métier", secteurs
-              + [("vitres/nettoyage-vitrine-%s.html" % v["slug"],
-                  "Nettoyage de vitrine %s" % a_nom),
-                 ("restaurants/nettoyage-restaurant-%s.html" % v["slug"],
-                  "Nettoyage de restaurant %s" % a_nom)])}
+      {_liens(base, "Votre métier", secteurs)}
     </div>
     <div class="split" style="margin-top:3rem">
       {_liens(base, "Vos obligations, en détail",
@@ -6440,6 +6533,8 @@ def build_hotte_ville(v):
       {_liens(base, "La prestation",
               [("services/nettoyage-hottes-paris.html", "Le dégraissage de hotte en détail"),
                ("hottes.html", "Hottes : tous les métiers et toutes les communes"),
+               ("services/nettoyage-monobrosse-paris.html",
+                "Le sol de la cuisine, décapé à la brosse"),
                ("professionnels.html", "Nos prestations pour les professionnels"),
                ("devis.html?client=pro", "Demander un devis")])}
     </div>
@@ -7585,12 +7680,16 @@ def build_hub_hottes():
           "de dégraissage et le diagnostic d'une extraction qui tire mal.",
           [("dossiers/%s.html" % d["slug"], d["h1"])
            for d in DOSSIERS if d["cat"] == "Hottes et extraction"]),
-         ("La prestation qui va avec",
-          "La remise à niveau de la salle et de la cuisine se planifie souvent le même soir que "
-          "le dégraissage, pour ne mobiliser le restaurant qu'une fois.",
-          [("nettoyage-restaurant.html", "Nettoyage de restaurant, commune par commune"),
-           ("menage-regulier.html", "Entretien régulier de locaux professionnels"),
-           ("vitrerie-professionnelle.html", "Vitrerie professionnelle")])],
+         ("Les prestations qui vont avec",
+          "Ce qui se planifie le même soir que le dégraissage, pour ne mobiliser la cuisine "
+          "qu'une fois : le sol, dont la graisse retombée fait le revêtement glissant, et les "
+          "abords extérieurs.",
+          [("services/nettoyage-monobrosse-paris.html",
+            "Décapage du sol de cuisine à la brosse, antidérapant compris"),
+           ("services/nettoyage-haute-pression-paris.html",
+            "Cour, local poubelles et abords, au nettoyeur haute pression"),
+           ("services/nettoyage-fin-de-chantier-paris.html",
+            "Remise en état après travaux, à la reprise d'un local")])],
         "services",
         "Dégraissage de hotte, de filtres et de conduits d'extraction à Paris et en "
         "Île-de-France. Par métier et par commune, avec le cadre réglementaire.",
@@ -7775,8 +7874,10 @@ def build_redirects():
     ]
 
     # ------------------------------------------------------------------
-    # Catalogue ramené à quatre métiers en octobre 2026. Tout ce qui
-    # vendait l'un des six autres disparaît : les pages de prestation,
+    # Catalogue ramené en octobre 2026 : vitrerie, entretien régulier,
+    # nettoyage d'appartement, nettoyage de restaurant, ramonage, toiture
+    # et débouchage ne sont plus proposés. Tout ce qui les vendait
+    # disparaît : les pages de prestation,
     # leurs sommaires, et les familles sectorielles et locales entières.
     # Chaque adresse part vers le métier qui s'en rapproche le plus, et
     # vers le sommaire quand rien ne s'en rapproche — jamais vers
@@ -7785,7 +7886,6 @@ def build_redirects():
     FIN = "/services/nettoyage-fin-de-chantier-paris.html"
     HP = "/services/nettoyage-haute-pression-paris.html"
     lignes += [
-        "/services/nettoyage-hottes-paris.html        /services.html  301",
         "/services/nettoyage-regulier-paris.html      %s              301" % FIN,
         "/services/nettoyage-appartement-paris.html   %s              301" % FIN,
         "/services/nettoyage-vitres-paris.html        /services.html  301",
@@ -7793,22 +7893,18 @@ def build_redirects():
         "/services/nettoyage-toiture-paris.html       %s              301" % HP,
         "/services/debouchage-canalisation-paris.html /services.html  301",
         # Sommaires des familles retirées.
-        "/hottes.html                   /services.html  301",
         "/vitrerie-professionnelle.html /services.html  301",
         "/nettoyage-restaurant.html     /services.html  301",
         "/menage-regulier.html          %s              301" % FIN,
         "/nettoyage-appartement.html    %s              301" % FIN,
-        "/dossiers.html                 /guides.html    301",
     ]
     # Les pages filles, par dossier entier. Cloudflare accepte le joker en
     # fin de source ; une ligne vaut mieux que deux cents.
     lignes += [
-        "/hottes/*      /services.html  301",
         "/vitres/*      /services.html  301",
         "/restaurants/* /services.html  301",
         "/menage/*      %s              301" % FIN,
         "/appartement/* %s              301" % FIN,
-        "/dossiers/*    /guides.html    301",
     ]
     # Pages ville des deux prestations retirées : chacune vers la page de
     # sa commune, qui existe toujours et parle d'elle.
@@ -8085,12 +8181,20 @@ def main():
 
     # Familles sectorielles et locales. Les sommaires portent une priorité
     # supérieure à leurs pages filles : ce sont eux qui doivent remonter.
-    # Les familles sectorielles des métiers abandonnés — hottes, vitrerie,
-    # entretien régulier, restaurant, appartement — ne sont plus produites.
-    # Leurs adresses sont redirigées, voir build_redirects().
+    # Les familles des métiers abandonnés — vitrerie, entretien régulier,
+    # restaurant, appartement — ne sont plus produites. Leurs adresses sont
+    # redirigées, voir build_redirects().
+    pages.append((build_hub_hottes(), "0.9", "monthly"))
+    for s in SECTEURS_HOTTE:
+        pages.append((build_hotte_secteur(s), "0.8", "monthly"))
+    for v in VILLES_PRO:
+        pages.append((build_hotte_ville(v), "0.7", "monthly"))
     pages.append((build_hub_hp(), "0.9", "monthly"))
     for s in SURFACES_HP:
         pages.append((build_hp_surface(s), "0.8", "monthly"))
+    pages.append((build_hub_dossiers(), "0.8", "monthly"))
+    for d in DOSSIERS:
+        pages.append((build_dossier(d), "0.7", "monthly"))
     pages.append((build_blog_archive(), "0.7", "weekly"))
     for i, p in enumerate(POSTS):
         prev_post = POSTS[i - 1] if i > 0 else None

@@ -264,6 +264,172 @@ SERVICES = [
              "parce qu'il libère des fibres. Nous refusons ces chantiers sans discuter."),
         ],
     },
+    # -----------------------------------------------------------------
+    # HOTTES — la seule prestation du catalogue qui réponde d'un texte
+    # réglementaire. L'encart d'obligation et le bloc risque d'incendie
+    # sont accrochés à ce slug dans build.py.
+    # -----------------------------------------------------------------
+    {
+        "slug": "nettoyage-hottes-paris",
+        "audience": "pro",
+        "local": {"court": "Dégraissage hotte", "slug": "degraissage-hotte",
+                  "nom": "Dégraissage de hotte", "kw": "dégraissage hotte"},
+        "short": "Hottes",
+        "nav": "Dégraissage de hottes",
+        "name": "Dégraissage de hottes à Paris",
+        "h1": "Dégraissage de hotte et de conduits d'extraction",
+        "title": "Dégraissage de hotte professionnelle à Paris",
+        "meta": "Dégraissage de hotte, filtres et conduits d'extraction pour restaurants et boulangeries à Paris et en IDF. Ramonage annuel exigé par l'arrêté du 25 juin 1980.",
+        "price": "sur devis",
+        "obligation": {
+            "titre": "C'est une obligation, pas un confort",
+            "texte": "En établissement recevant du public, l'article GC 21 de l'arrêté du "
+                     "25 juin 1980 impose le ramonage des conduits et la vérification de leur "
+                     "vacuité au moins une fois par an, et le nettoyage ou le remplacement des "
+                     "filtres au moins une fois par semaine. Les dates se consignent dans un "
+                     "livret d'entretien annexé au registre de sécurité.",
+            "ancre": "#obligations",
+            "lien": "Le texte, et ce qu'on vous demandera",
+        },
+        "excerpt": "Hotte, filtres, bac à graisse et conduits jusqu'au ventilateur : le circuit complet, dégraissé de nuit. Ramonage annuel et livret d'entretien exigés par l'arrêté du 25 juin 1980 en ERP.",
+        "image": "hotte-caisson-conduit.webp",
+        "hero": "hotte-caisson-conduit.webp",
+        "icon": "tools",
+        "intro": [
+            "La graisse de cuisson ne reste pas sur la hotte. Elle est aspirée, se condense en remontant dans le conduit, et s'y dépose en une couche "
+            "qui s'épaissit chaque service. Cette couche est combustible : c'est elle qui transforme un départ de feu sur un piano en feu de conduit, "
+            "lequel se propage dans les gaines à travers les planchers. La plupart des incendies de restaurant ne partent pas de la cuisine, ils y passent.",
+            "Le second effet est quotidien et moins spectaculaire : un conduit encrassé perd sa section utile. L'extraction tire moins, les buées restent "
+            "en salle, les odeurs s'installent dans les textiles et le personnel travaille dans une cuisine plus chaude. Une extraction qui faiblit "
+            "progressivement ne se remarque pas — jusqu'au jour où l'on compare avant et après.",
+        ],
+        "included_title": "Ce que couvre l'intervention",
+        "included": [
+            "<strong>Hotte</strong> : intérieur, extérieur, soudures et angles, dégraissage à l'alcalin puis rinçage",
+            "<strong>Filtres à chocs ou à cassettes</strong> : démontage, trempage, rinçage haute pression, remontage",
+            "<strong>Bac à graisse et gouttières</strong> : vidange et nettoyage complet",
+            "<strong>Plafond filtrant</strong> le cas échéant, module par module",
+            "<strong>Conduits d'extraction</strong> : gaines accessibles jusqu'au ventilateur, par les trappes de visite",
+            "<strong>Ventilateur d'extraction</strong> : turbine et volute dégraissées",
+        ],
+        "steps": [
+            ("Repérage et protection", "Relevé du circuit, repérage des trappes de visite, et bâchage du piano, des plans de travail et des sols. Rien ne doit recevoir de produit ni de dépôt."),
+            ("Démontage", "Filtres, gouttières et bac à graisse sont déposés et mis à tremper dans un bain alcalin pendant que le reste est traité."),
+            ("Dégraissage alcalin", "Produit à temps de pose sur la hotte et les parois du conduit, puis action mécanique. La graisse polymérisée par la chaleur ne part pas au chiffon : c'est la chimie et le temps qui la décollent, pas la force."),
+            ("Conduits et ventilateur", "Progression par les trappes de visite jusqu'au ventilateur, turbine et volute comprises. Les zones sans trappe sont signalées plutôt que contournées en silence."),
+            ("Rinçage, remontage, contrôle", "Rinçage complet, remontage, essai de l'extraction, et photos avant/après de chaque zone traitée. Vous notez la date dans votre livret d'entretien."),
+        ],
+        "faq": [
+            ("À quelle fréquence la loi impose-t-elle ce nettoyage ?",
+             "Pour un établissement recevant du public, l'article GC 21 de l'arrêté du 25 juin 1980 impose un ramonage des conduits d'évacuation et une vérification de leur vacuité <strong>au moins une fois par an</strong>, et un nettoyage ou remplacement des filtres <strong>au moins une fois par semaine</strong>. Le circuit d'extraction lui-même doit être nettoyé aussi souvent que nécessaire. Un livret d'entretien, annexé au registre de sécurité, consigne les dates."),
+            ("Faut-il fermer la cuisine ?",
+             "Non. Nous intervenons après le dernier service ou avant l'ouverture, de nuit si besoin, sans supplément. La cuisine est rendue propre et opérationnelle pour le service suivant."),
+            ("Combien de temps dure une intervention ?",
+             "De trois à huit heures selon la longueur du conduit, l'accessibilité des trappes et l'ancienneté du dépôt. Une première intervention sur une installation jamais traitée prend toujours plus longtemps qu'un passage d'entretien."),
+            ("Et s'il n'y a pas de trappe de visite sur le conduit ?",
+             "Nous traitons ce qui est accessible et nous vous le disons par écrit, avec les zones non atteintes repérées sur un schéma. La pose de trappes relève d'un installateur : nous ne perçons pas une gaine, et nous ne faisons pas semblant d'avoir nettoyé ce que nous n'avons pas vu."),
+            ("Que remettez-vous après l'intervention ?",
+             "Un jeu de photos avant/après par zone traitée, et le détail de ce qui a été fait et de ce qui ne l'a pas été. Vous reportez la date dans votre livret d'entretien, qui est le document que vous présentez en cas de contrôle."),
+        ],
+    },
+    # -----------------------------------------------------------------
+    # MONOBROSSE — le métier où la machine compte moins que le
+    # revêtement. La page passe l'essentiel de son temps sur ce qui se
+    # vérifie avant le premier passage, parce que c'est là que se
+    # jouent les dégâts irréversibles.
+    # -----------------------------------------------------------------
+    {
+        "slug": "nettoyage-monobrosse-paris",
+        "audience": "mixte",
+        "local": {"court": "Monobrosse", "slug": "decapage-sol-monobrosse",
+                  "nom": "Décapage de sol à la monobrosse", "kw": "décapage sol monobrosse"},
+        "short": "Monobrosse",
+        "nav": "Décapage de sols à la monobrosse",
+        "name": "Décapage de sols à la monobrosse à Paris",
+        "h1": "Décapage, protection et remise en état de sols à la monobrosse",
+        "title": "Monobrosse : décapage et remise en état de sols à Paris",
+        "meta": "Décapage, émulsion et lustrage de sols à la monobrosse — PVC, "
+                "linoléum, carrelage, béton — à Paris et en IDF. Essai sur zone "
+                "témoin avant traitement.",
+        "price": "sur devis",
+        "excerpt": "PVC, linoléum, carrelage, béton, moquette : retrait de l'ancienne "
+                   "protection, récurage des joints, pose d'une émulsion neuve ou "
+                   "lustrage. Le revêtement est identifié et testé avant le premier "
+                   "passage, pas après.",
+        "image": "",
+        "hero": "",
+        "icon": "sparkle",
+        "intro": [
+            "Un sol qui reste gris malgré un lavage quotidien n'est le plus souvent pas "
+            "sale : il est à nu. Sur un PVC ou un linoléum, la protection posée à la "
+            "livraison — une émulsion de quelques dizaines de microns — s'use d'abord "
+            "là où l'on marche, se charge de micro-rayures, puis disparaît. Le "
+            "revêtement nu qui apparaît en dessous est poreux : il prend la saleté au "
+            "lieu de la rendre, et la serpillière ne fait plus que promener de l'eau "
+            "grise dessus. Aucun produit ne rattrape cela. Il faut retirer ce qui reste "
+            "de l'ancienne couche, et en reposer une.",
+            "C'est le travail de la monobrosse : un disque unique qui tourne lentement, "
+            "autour de cent cinquante tours par minute, avec un pad ou une brosse selon "
+            "ce qu'on lui demande. Le produit décapant fait le travail chimique pendant "
+            "son temps de pose ; la machine ne fait que l'action mécanique, et "
+            "l'aspirateur à eau récupère la solution chargée. L'ordre compte plus que la "
+            "force : décaper sans laisser poser, c'est étaler ; poser une émulsion sur "
+            "un sol mal rincé, c'est la voir blanchir et se décoller en trois semaines.",
+            "La question qui décide de tout n'est pourtant pas la machine, c'est le "
+            "revêtement. Un PVC encaisse un décapant alcalin franc. Un linoléum "
+            "véritable, lui, est lié à l'huile de lin : le même produit le jaunit et le "
+            "brûle, de façon définitive. Un parquet ou un stratifié ne supportent pas "
+            "l'eau qui s'infiltre dans les joints. Un sol antidérapant de cuisine "
+            "professionnelle perd son relief — donc sa fonction de sécurité — si on le "
+            "lustre au pad au lieu de le récurer à la brosse. C'est pour cette raison "
+            "que nous commençons toujours par identifier le sol et par faire un essai "
+            "sur un mètre carré caché, et que nous le facturons dans le temps "
+            "d'intervention plutôt que de le sauter.",
+        ],
+        "included_title": "Ce que couvre l'intervention",
+        "included": [
+            "<strong>Identification du revêtement et essai sur zone témoin</strong>, avant tout traitement de l'ensemble",
+            "<strong>Dépoussiérage préalable</strong> : aspiration et balayage humide — un grain de sable sous un pad raye le sol sur toute la surface",
+            "<strong>Décapage</strong> de l'ancienne émulsion, de la cire ou du film encrassé, produit à temps de pose puis action mécanique",
+            "<strong>Récurage à la brosse</strong> des carrelages et des joints, et des sols antidérapants que le pad ne doit pas toucher",
+            "<strong>Aspiration de la solution et rinçage neutralisant</strong>, qui conditionne la tenue de ce qui sera posé ensuite",
+            "<strong>Pose d'une émulsion de protection</strong>, en deux couches croisées minimum, ou lustrage par méthode spray sur un sol encore protégé",
+            "<strong>Détourage manuel des plinthes, des angles et des seuils</strong> : un disque rond laisse une bordure, elle se fait à la main",
+            "<strong>Shampooing rotatif des moquettes</strong> en grande surface, en complément ou en préparation d'une injection-extraction",
+        ],
+        "steps": [
+            ("Identification et essai",
+             "Relevé du revêtement, de son état et de ce qui a déjà été posé dessus, puis essai de décapage sur un mètre carré caché — sous un meuble, derrière une porte. C'est là qu'on voit si le produit prévu convient, combien de temps il doit poser, et si le sol supporte le traitement. Tant que cet essai n'a pas parlé, rien n'est lancé sur l'ensemble."),
+            ("Dégagement et dépoussiérage",
+             "Mobilier léger déplacé, aspiration puis balayage humide de toute la surface. Passer une monobrosse sur un sol qui porte encore du sable, c'est transformer chaque grain en abrasif et rayer le revêtement d'un bout à l'autre de la pièce."),
+            ("Décapage",
+             "Application du décapant, temps de pose respecté, puis passage de la monobrosse avec le disque adapté au revêtement. La chimie fait le travail pendant la pose ; la machine ne fait que décoller ce qui a été ramolli. C'est ce temps-là que l'on saute quand on veut aller vite, et c'est pour cela que le résultat est inégal."),
+            ("Aspiration et rinçage neutralisant",
+             "La solution chargée est aspirée, puis le sol est rincé pour qu'il ne reste aucun résidu de décapant. Cette étape ne se voit pas et décide pourtant de tout : une trace de produit alcalin sous une émulsion neuve l'empêche d'adhérer, et le film posé blanchit ou pèle quelques semaines plus tard."),
+            ("Séchage complet",
+             "Le sol doit être sec, pas ressuyé. Une émulsion posée sur un support encore humide emprisonne l'eau et laisse un voile laiteux que seul un nouveau décapage enlève."),
+            ("Protection ou lustrage",
+             "Émulsion en deux couches croisées au minimum, avec le temps de séchage entre les deux, ou lustrage à la méthode spray quand le sol a encore sa protection et ne demande qu'une reprise. Nous vous disons à ce moment-là combien de couches ont été posées, et laquelle sera à reprendre en premier."),
+            ("Remise à disposition",
+             "Mobilier remis en place une fois le film durci, et délai annoncé : quelques heures avant de remarcher dessus, plus longtemps avant de rouler un meuble lourd ou de reposer un tapis. Ce délai est donné avant l'intervention, parce qu'il décide de l'horaire du chantier bien plus que la surface."),
+        ],
+        "faq": [
+            ("Mon sol reste gris alors qu'il est lavé tous les jours : un décapage suffira-t-il ?",
+             "Dans la plupart des cas, oui — parce que ce gris n'est pas de la saleté mais l'ancienne protection usée, chargée de micro-rayures, qui ne se nettoie plus. Le décapage la retire, et la couche neuve rend au sol sa surface fermée. En revanche, si le revêtement lui-même est rayé en profondeur ou décoloré par un produit mal choisi, un décapage ne le réparera pas : nous vous le disons après l'essai sur zone témoin, avant de vous engager sur l'ensemble."),
+            ("Faut-il obligatoirement reposer une protection après un décapage ?",
+             "Sur un PVC et sur un linoléum, oui. Décaper sans reposer d'émulsion laisse le revêtement nu et poreux : il se salit plus vite qu'avant, il marque, et il faut le relaver plus souvent. Un décapage seul n'a de sens que si vous changez le sol derrière. Sur un carrelage, un béton ciré ou un grès cérame, la question se pose autrement — beaucoup de ces sols se passent très bien de film, et nous ne vous en vendrons pas un dont vous n'avez pas besoin."),
+            ("Combien de temps la pièce est-elle indisponible ?",
+             "Comptez une demi-journée à une journée pour le décapage et le rinçage selon la surface, puis le temps des couches : environ une demi-heure entre deux couches d'émulsion, quelques heures avant de remarcher normalement, et jusqu'à deux jours avant de faire rouler un meuble lourd ou de reposer un tapis. C'est cette contrainte-là qui fixe l'horaire : nous intervenons volontiers le soir, la nuit ou le week-end, sans supplément, pour qu'elle tombe en dehors de votre activité."),
+            ("Pouvez-vous passer la monobrosse sur un parquet ou un stratifié ?",
+             "Pas avec de l'eau, et pas pour les décaper. L'eau qui passe dans les joints gonfle le bois et le panneau de fibres, et le dégât est définitif : il ne se rattrape pas, il se remplace. Le ponçage et la vitrification d'un parquet sont un autre métier, que nous ne pratiquons pas. Sur ces sols, nous nous en tenons à un entretien à très faible humidité, et nous le disons quand ce n'est pas la bonne réponse."),
+            ("Et sur un sol antidérapant de cuisine professionnelle ?",
+             "On le récure à la brosse, jamais au pad. Ces sols tiennent leur sécurité d'un relief de surface : un pad abrasif le lisse peu à peu, le sol devient glissant quand il est mouillé, et vous perdez précisément ce pour quoi il a été posé. La brosse, elle, va chercher la graisse au fond du relief sans l'écraser. C'est plus lent, et c'est la seule façon correcte de le faire."),
+            ("Faites-vous les moquettes à la monobrosse ?",
+             "Oui, en shampooing rotatif, qui est la bonne méthode sur une grande surface encrassée en surface — un plateau de bureaux, une salle de réunion, un couloir d'hôtel. Mais il ne va pas chercher ce qui est descendu dans la fibre : sur une moquette lourdement chargée, le rotatif prépare et l'injection-extraction extrait. Nous vous disons lequel des deux votre moquette demande, et nous ne facturons pas le second quand le premier suffit."),
+            ("Pourquoi un devis plutôt qu'un prix au mètre carré ?",
+             "Parce que le mètre carré ne dit presque rien ici. Deux cents mètres carrés de PVC jamais décapés depuis huit ans, avec du mobilier à déplacer et deux couches d'émulsion à poser de nuit, n'ont rien à voir avec les mêmes deux cents mètres carrés entretenus, vides et à relustrer. Nous chiffrons après avoir vu le sol — sur place, ou sur photos quand elles suffisent — et le montant annoncé est celui que vous réglez."),
+        ],
+    },
     {
         "slug": "nettoyage-textile-paris",
         "audience": "particulier",
@@ -442,6 +608,10 @@ TARIFS_DEVIS = [
      "nettoyage-fin-de-chantier-paris", "Sur devis"),
     ("Nettoyage haute pression", "Terrasses, façades, cours, sols extérieurs",
      "nettoyage-haute-pression-paris", "Sur devis"),
+    ("Dégraissage de hotte", "Hotte, filtres, bac à graisse, conduits et ventilateur",
+     "nettoyage-hottes-paris", "Sur devis"),
+    ("Décapage de sol à la monobrosse", "PVC, linoléum, carrelage, béton, moquette",
+     "nettoyage-monobrosse-paris", "Sur devis"),
 ]
 
 # --- Zones d'intervention -------------------------------------------------
@@ -880,174 +1050,176 @@ HERO = {
 # [slug, nom, code postal, département, lat, lon, angle éditorial, prestations mises en avant]
 VILLES = [
     ("boulogne-billancourt", "Boulogne-Billancourt", "92100", "92", 48.8352, 2.2409,
-     "Première commune d'Île-de-France par la population après Paris, Boulogne-Billancourt "
-     "mêle immeubles haussmanniens, résidences récentes et un tissu dense de sièges sociaux. "
-     "Deux demandes y dominent : le textile en appartement — canapés d'angle qu'on ne peut ni "
-     "démonter ni descendre — et l'entretien de bureaux en horaires décalés.",
-     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     "Première commune d'Île-de-France par la population après Paris, Boulogne-Billancourt mêle "
+     "immeubles haussmanniens, résidences récentes et un tissu dense de sièges sociaux. Deux "
+     "demandes y dominent : le textile en appartement — canapés d'angle qu'on ne peut ni démonter "
+     "ni descendre — et la reprise des moquettes et des sols de bureaux, en horaires décalés.",
+     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
 
     ("neuilly-sur-seine", "Neuilly-sur-Seine", "92200", "92", 48.8846, 2.2697,
      "À Neuilly, l'essentiel de nos interventions concerne des selleries cuir, des tapis de "
      "laine et des moquettes de belle facture — des matières qui ne pardonnent pas l'erreur de "
      "produit. Le diagnostic de la fibre y compte davantage qu'ailleurs.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("levallois-perret", "Levallois-Perret", "92300", "92", 48.8939, 2.2874,
      "Levallois concentre bureaux et logements sur un territoire très compact. Le stationnement "
      "y étant difficile, notre autonomie en eau et en électricité change tout : nous intervenons "
      "en parking souterrain, sans avoir à tirer un tuyau depuis la rue.",
-     ["nettoyage-regulier-paris", "nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris"]),
 
     ("nanterre", "Nanterre", "92000", "92", 48.8924, 2.2069,
      "Entre la préfecture, les campus et la proximité immédiate de La Défense, Nanterre nous "
-     "sollicite surtout pour l'entretien de locaux professionnels et la remise en état après "
-     "travaux, deux prestations qui se planifient hors des heures d'activité.",
-     ["nettoyage-regulier-paris", "nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     "sollicite surtout pour la remise en état de locaux après travaux et le décapage des sols, "
+     "deux prestations qui se planifient hors des heures d'activité.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
 
     ("issy-les-moulineaux", "Issy-les-Moulineaux", "92130", "92", 48.8239, 2.2730,
-     "Pôle tertiaire dense, Issy-les-Moulineaux nous appelle principalement pour la vitrerie de "
-     "grandes surfaces et l'entretien de moquettes de bureaux. L'eau osmosée y prend tout son "
-     "sens sur les façades vitrées.",
-     ["nettoyage-vitres-paris", "nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     "Pôle tertiaire dense, Issy-les-Moulineaux nous appelle principalement pour les moquettes de "
+     "bureaux et les sols de circulation. Le shampooing rotatif y prend tout son sens sur les "
+     "grands plateaux, où l'injection-extraction seule immobiliserait l'étage trop longtemps.",
+     ["nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
 
     ("saint-denis", "Saint-Denis", "93200", "93", 48.9362, 2.3574,
-     "Saint-Denis est en chantier permanent : programmes neufs, réhabilitations, bureaux livrés "
-     "en continu. L'entretien de locaux et la vitrerie de façade y représentent une part "
-     "importante de l'activité, le plus souvent en passage régulier.",
-     ["nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     "Saint-Denis est en chantier permanent : programmes neufs, réhabilitations, bureaux livrés en "
+     "continu. Le nettoyage de fin de chantier et la reprise des sols y représentent une part "
+     "importante de l'activité, le plus souvent entre la livraison et l'entrée dans les lieux.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
 
     ("montreuil", "Montreuil", "93100", "93", 48.8638, 2.4485,
      "Montreuil alterne pavillons, lofts d'anciens ateliers et immeubles récents. Les grands "
      "volumes reconvertis y posent une question précise : des moquettes et des textiles en "
      "quantité, dans des espaces qu'on ne peut pas vider.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("aulnay-sous-bois", "Aulnay-sous-Bois", "93600", "93", 48.9386, 2.4938,
      "Aulnay est à une dizaine de minutes de notre adresse de référence : c'est l'une des "
      "communes où nous intervenons le plus rapidement, souvent dans la journée en cas "
      "d'urgence. L'habitat "
      "pavillonnaire y appelle surtout du textile et du detailing automobile à domicile.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("le-blanc-mesnil", "Le Blanc-Mesnil", "93150", "93", 48.9386, 2.4644,
      "Le Blanc-Mesnil est à une dizaine de kilomètres de notre adresse de référence, par "
      "l'ex-RN2. Habitat pavillonnaire et grands ensembles : le textile à domicile et le "
      "detailing automobile y dominent, avec un délai habituel de 24 à 48 h.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("tremblay-en-france", "Tremblay-en-France", "93290", "93", 48.9486, 2.5697,
      "C'est la commune de notre adresse de référence : les frais de déplacement y sont "
      "réduits au minimum et nous pouvons y tenir des délais que nous ne tenons nulle part "
      "ailleurs. Pavillons, résidences récentes et zones d'activité proches de Roissy : "
      "les demandes y vont du detailing automobile au nettoyage de locaux.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("pantin", "Pantin", "93500", "93", 48.8944, 2.4090,
      "Pantin s'est couverte de bureaux et d'ateliers reconvertis le long du canal. Nous y "
      "traitons beaucoup de locaux professionnels, avec la contrainte habituelle des sites "
      "occupés : intervenir tôt le matin ou après la fermeture.",
-     ["nettoyage-regulier-paris", "nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
 
     ("creteil", "Créteil", "94000", "94", 48.7904, 2.4556,
      "Préfecture du Val-de-Marne, Créteil combine grands ensembles, zones d'activité et "
-     "équipements publics. Les demandes y sont partagées entre entretien de locaux et textile "
+     "équipements publics. Les demandes y sont partagées entre remise en état de locaux et textile "
      "à domicile.",
-     ["nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris"]),
 
     ("vincennes", "Vincennes", "94300", "94", 48.8478, 2.4390,
      "Vincennes est un tissu résidentiel serré, aux appartements souvent anciens. Canapés, "
      "matelas et tapis y constituent l'essentiel des interventions, avec la contrainte "
      "récurrente des escaliers étroits — qui ne nous gêne pas, puisque nous travaillons sur place.",
-     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("saint-maur-des-fosses", "Saint-Maur-des-Fossés", "94100", "94", 48.7994, 2.4934,
      "Dans la boucle de la Marne, Saint-Maur aligne pavillons avec jardin, vérandas et grandes "
      "baies côté sud. Le nettoyage des vitrages y suit les saisons, et le textile d'intérieur "
      "occupe le reste de l'année.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("massy", "Massy", "91300", "91", 48.7262, 2.2825,
-     "Massy conjugue quartiers d'affaires, gares et logements neufs. Nous y intervenons pour "
-     "l'entretien de bureaux et la remise en état après travaux, les livraisons de programmes "
-     "y étant fréquentes.",
-     ["nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     "Massy conjugue quartiers d'affaires, gares et logements neufs. Nous y intervenons pour la "
+     "remise en état après travaux et le décapage des sols, les livraisons de programmes y étant "
+     "fréquentes.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
 
     ("evry-courcouronnes", "Évry-Courcouronnes", "91000", "91", 48.6238, 2.4297,
      "Évry-Courcouronnes est l'un des points les plus éloignés de notre adresse de référence : nous y "
      "groupons volontiers plusieurs interventions sur une même journée, ce qui reste le meilleur "
      "moyen de contenir les frais de déplacement.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("versailles", "Versailles", "78000", "78", 48.8014, 2.1301,
      "À Versailles, nous traitons beaucoup de matières nobles — tapis de laine, selleries cuir — "
      "et de grands vitrages anciens. Sur ces supports, la question n'est jamais la puissance "
      "mais le réglage.",
-     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("saint-germain-en-laye", "Saint-Germain-en-Laye", "78100", "78", 48.8987, 2.0940,
-     "Maisons anciennes, grandes fenêtres à petits bois et vérandas : Saint-Germain-en-Laye "
-     "appelle surtout de la vitrerie au printemps et du textile de valeur le reste de l'année.",
-     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris"]),
+     "Maisons anciennes, terrasses en pierre et allées gravillonnées : Saint-Germain-en-Laye "
+     "appelle surtout du nettoyage haute pression au printemps, quand deux hivers de mousse se "
+     "voient, et du textile de valeur le reste de l'année.",
+     ["nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("chelles", "Chelles", "77500", "77", 48.8797, 2.5928,
      "Chelles est l'une des communes de Seine-et-Marne les plus proches de notre adresse de "
      "référence, à une dizaine de kilomètres. Habitat pavillonnaire dominant : automobile à domicile, "
      "textile et grandes surfaces vitrées.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("meaux", "Meaux", "77100", "77", 48.9601, 2.8785,
      "Meaux marque la limite est de notre zone habituelle. Nous y intervenons volontiers, en "
      "planifiant la journée autour du déplacement — plusieurs prestations groupées plutôt qu'un "
      "aller-retour pour une seule.",
-     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris"]),
 
     ("argenteuil", "Argenteuil", "95100", "95", 48.9474, 2.2467,
      "Argenteuil est la plus peuplée du Val-d'Oise, avec un habitat très varié. Textile à "
      "domicile et detailing automobile y constituent l'essentiel de nos passages.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("cergy", "Cergy", "95000", "95", 49.0361, 2.0631,
      "Ville nouvelle et pôle universitaire, Cergy nous sollicite pour des locaux professionnels "
      "et des logements étudiants en remise en état, souvent entre deux occupations.",
-     ["nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
 
     ("sarcelles", "Sarcelles", "95200", "95", 48.9959, 2.3785,
      "Sarcelles est à une vingtaine de kilomètres de notre adresse de référence. "
      "Nous y intervenons surtout en textile à domicile et en entretien de commerces.",
-     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris"]),
 
     ("paris-8", "Paris 8e", "75008", "75", 48.8721, 2.3120,
-     "Le 8e concentre sièges sociaux, hôtels et commerces de luxe. Vitrines, selleries cuir et "
-     "moquettes de bureaux y forment le gros de nos interventions, presque toujours en horaires "
-     "décalés pour ne pas gêner l'activité.",
-     ["nettoyage-vitres-paris", "nettoyage-regulier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     "Le 8e concentre sièges sociaux, hôtels et commerces de luxe. Selleries cuir, moquettes de "
+     "bureaux et hottes de cuisines d'hôtel y forment le gros de nos interventions, presque "
+     "toujours en horaires décalés pour ne pas gêner l'activité.",
+     ["nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
 
     ("paris-11", "Paris 11e", "75011", "75", 48.8580, 2.3792,
      "Le 11e est un arrondissement dense, très résidentiel et très restauré. Nous y traitons "
      "beaucoup de canapés et de matelas en appartement, et des cuisines professionnelles en "
      "intervention nocturne.",
-     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
 
     ("paris-12", "Paris 12e", "75012", "75", 48.8409, 2.3876,
-     "Entre Bercy, la Bastille et le bois de Vincennes, le 12e alterne immeubles récents et "
-     "bâti ancien. Textile à domicile et entretien de locaux s'y partagent nos passages.",
-     ["nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris"]),
+     "Entre Bercy, la Bastille et le bois de Vincennes, le 12e alterne immeubles récents et bâti "
+     "ancien. Textile à domicile et remise en état de locaux s'y partagent nos passages.",
+     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris"]),
 
     ("paris-15", "Paris 15e", "75015", "75", 48.8412, 2.3003,
      "Le 15e est le plus peuplé des arrondissements parisiens. Grands appartements familiaux, "
      "donc grands canapés et moquettes : c'est l'arrondissement où l'injection-extraction à "
      "domicile prend le plus de sens.",
-     ["nettoyage-textile-paris", "nettoyage-vitres-paris", "nettoyage-automobile-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("paris-16", "Paris 16e", "75016", "75", 48.8637, 2.2769,
      "Le 16e nous amène des matières exigeantes : tapis d'Orient, parquets anciens, selleries "
      "cuir. Le test de solidité des couleurs y est systématique avant tout lavage.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-vitres-paris", "nettoyage-regulier-paris"]),
+     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("paris-17", "Paris 17e", "75017", "75", 48.8872, 2.3220,
      "Des Batignolles à la plaine Monceau, le 17e mêle résidentiel haussmannien et bureaux "
-     "récents. Vitrerie, textile et entretien de locaux s'y répartissent assez également.",
-     ["nettoyage-vitres-paris", "nettoyage-textile-paris", "nettoyage-regulier-paris", "nettoyage-automobile-paris"]),
+     "récents. Textile, décapage de sols et remise en état après travaux s'y répartissent assez "
+     "également.",
+     ["nettoyage-haute-pression-paris", "nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris"]),
 ]
 
 
@@ -2485,12 +2657,8 @@ ZONES_DETAIL = {
             "prend son importance : le second ne tolère aucun produit aqueux.",
         ]),
         ("Accès et organisation", [
-            "Le stationnement en heures ouvrées est le vrai sujet, davantage que la distance. "
-            "Nous privilégions les créneaux de début de matinée et de fin de journée, et nous "
-            "travaillons volontiers en parking souterrain, où nous sommes autonomes en eau "
-            "comme en électricité.",
-            "Sur les sites tertiaires, nous groupons ce qui peut l'être : extraction de moquette "
-            "et reprise des sièges le même week-end, vitrerie intérieure dans la foulée. Le "
+            "Sur les sites tertiaires, nous groupons ce qui peut l'être : extraction de moquette et "
+            "reprise des sièges le même week-end, décapage des circulations dans la foulée. Le "
             "déplacement est unique et le coût par poste en profite.",
         ]),
     ],
@@ -2505,12 +2673,8 @@ ZONES_DETAIL = {
         ]),
         ("Un terrain d'activité autant que d'habitat", [
             "Le 93 concentre des zones d'activité, des entrepôts, des locaux reconvertis et un "
-            "habitat collectif dense. Les demandes s'y répartissent entre l'entretien de locaux "
-            "professionnels, la vitrerie de façade et de vitrine, et le textile en logement.",
-            "Les copropriétés y sont une part importante de notre activité : parties communes, "
-            "cages d'escalier, locaux poubelles et parkings souterrains, avec la contrainte "
-            "d'un espace fermé où l'évacuation de l'eau de lavage doit être identifiée avant "
-            "de commencer.",
+            "habitat collectif dense. Les demandes s'y répartissent entre la remise en état de locaux "
+            "après travaux, le dégraissage de hottes en restauration et le textile en logement.",
         ]),
     ],
     "94": [
@@ -3217,9 +3381,11 @@ SECTEURS_HOTTE = [
             "Le four doit être froid, ce qui impose d'intervenir au moins douze heures après la dernière cuisson. Le jour de "
             "fermeture est presque toujours le bon créneau.",
         "faq": ("Faut-il ramoner le conduit du four à bois séparément ?",
-                "Oui. Le conduit de fumée du four et le conduit d'extraction de la hotte sont deux circuits différents, avec deux "
-                "encrassements différents. Le premier relève du ramonage, le second du dégraissage. Traiter l'un en croyant avoir "
-                "fait l'autre est l'erreur la plus fréquente en pizzeria."),
+                "Oui, et par quelqu'un d'autre que nous. Le conduit de fumée du four et le conduit d'extraction de la hotte sont "
+                "deux circuits différents, avec deux encrassements différents : le premier relève du ramonage, une activité "
+                "réglementée que nous ne pratiquons pas, le second du dégraissage, qui est notre métier. Traiter l'un en croyant "
+                "avoir fait l'autre est l'erreur la plus fréquente en pizzeria, et c'est pour cela que nous le signalons par écrit "
+                "plutôt que de laisser croire que tout a été fait."),
     },
     {
         "slug": "restaurant-asiatique",
@@ -4983,6 +5149,785 @@ VILLES_APPART = [
 # organisme agréé. Cette distinction est tenue partout : la confondre serait
 # vendre une couverture que le client n'a pas.
 DOSSIERS = [
+    {
+        "slug": "obligation-nettoyage-hotte-restaurant",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Nettoyage de hotte en restaurant : ce que la réglementation impose",
+        "title": "Nettoyage de hotte : obligation réglementaire en restaurant",
+        "meta": "Ramonage annuel, filtres chaque semaine, livret d'entretien : ce que l'arrêté "
+                "du 25 juin 1980 impose réellement à un exploitant.",
+        "lead": "Un ramonage par an au minimum, des filtres nettoyés chaque semaine, et un "
+                "livret d'entretien que l'exploitant tient lui-même. Voici le texte, ce qu'il "
+                "dit exactement, et ce qu'il ne dit pas.",
+        "cle": "Ramonage des conduits d'évacuation : au moins une fois par an.",
+        "sections": [
+            ("Le texte applicable", [
+                "L'obligation ne vient pas d'une recommandation de la profession mais d'un texte : "
+                "l'arrêté du 25 juin 1980 portant règlement de sécurité contre l'incendie et la "
+                "panique dans les établissements recevant du public. Sa section 7, « Entretien et "
+                "vérifications », tient en deux articles — GC 21 pour l'entretien, GC 22 pour la "
+                "vérification — et s'applique aux établissements dotés de grandes cuisines, "
+                "c'est-à-dire dès que la puissance utile totale des appareils de cuisson et de "
+                "remise en température dépasse 20 kW. Cela couvre la très grande majorité des "
+                "restaurants, brasseries, boulangeries et cuisines collectives recevant du public.",
+                "Le texte distingue trois opérations distinctes, et c'est cette distinction qui est "
+                "le plus souvent perdue : le nettoyage des filtres, le nettoyage du circuit "
+                "d'extraction, et le ramonage des conduits d'évacuation. Elles n'ont ni la même "
+                "fréquence ni le même exécutant.",
+                "Les voici dans les termes du texte. Les filtres sont nettoyés ou remplacés au "
+                "moins une fois par semaine. Les conduits d'évacuation sont ramonés au moins une "
+                "fois par an, et leur vacuité est vérifiée à cette occasion. Le circuit d'extraction "
+                "est nettoyé aussi souvent que nécessaire — le texte ne fixe pas de chiffre, parce "
+                "qu'un conduit de pizzeria et un conduit de salon de thé ne se chargent pas au même "
+                "rythme.",
+            ]),
+            ("Qui fait quoi", [
+                "Les filtres relèvent de l'équipe de cuisine. Une fois par semaine au minimum, ils "
+                "sont retirés, dégraissés ou remplacés. Ce n'est pas une prestation, c'est une "
+                "tâche d'exploitation, et c'est la plus rentable de toutes : un filtre propre "
+                "retient la graisse avant qu'elle n'entre dans le conduit, donc il espace les "
+                "nettoyages de conduit.",
+                "Le ramonage annuel et le nettoyage du circuit relèvent d'un prestataire, parce "
+                "qu'ils demandent d'ouvrir les trappes de visite, d'accéder à la ligne complète et "
+                "de remonter l'installation en état de fonctionner. C'est cette partie que nous "
+                "assurons : hotte, filtres, et conduits d'extraction.",
+                "La responsabilité, en revanche, reste entière du côté de l'exploitant. Le texte "
+                "prévoit un livret d'entretien annexé au registre de sécurité de l'établissement, "
+                "où sont notées les dates des opérations. C'est l'exploitant qui le tient, et c'est "
+                "lui qui le présente en cas de contrôle.",
+            ]),
+            ("L'article GC 22 : la vérification annuelle, qui est autre chose", [
+                "C'est le second article de la section 7, et il est régulièrement confondu avec le "
+                "premier. Dans les établissements des quatre premières catégories, les "
+                "installations de cuisson font l'objet d'une vérification annuelle par un "
+                "technicien compétent ou un organisme agréé. Elle porte notamment sur l'état "
+                "d'entretien des appareils et sur la ventilation des locaux : évacuation de l'air "
+                "vicié, des buées et des graisses, et fonctionnement du dispositif d'extraction. "
+                "Elle est consignée au registre de sécurité.",
+                "Les établissements classés en 5<sup>e</sup> catégorie — la plupart des petits "
+                "restaurants — relèvent d'un autre régime, celui de l'arrêté du 22 juin 1990. "
+                "Vérifiez votre catégorie avant d'appliquer l'un ou l'autre : c'est la première "
+                "question à poser à votre service de prévention.",
+                "Retenez la différence, parce qu'elle décide de qui vous devez appeler. GC 21, "
+                "c'est faire nettoyer. GC 22, c'est faire vérifier. Un dégraissage ne remplace pas "
+                "une vérification, et une vérification ne nettoie rien.",
+            ]),
+            ("Ce que nous remettons après l'intervention", [
+                "Une attestation de nettoyage et d'entretien de hotte, datée et détaillée : les "
+                "zones traitées — hotte, filtres, plénum —, les trappes de visite ouvertes, la "
+                "longueur de conduit reprise, l'état constaté avant, et le résultat de l'essai "
+                "d'extraction après remontage. Elle se range dans le livret d'entretien annexé à "
+                "votre registre de sécurité, et c'est elle que votre assureur demande après un "
+                "sinistre.",
+                "Cette attestation dit ce que nous avons fait, où et quand. Elle ne vaut pas "
+                "attestation de conformité de votre installation : la conformité ne se juge pas "
+                "sur un dégraissage, elle se juge sur l'installation elle-même, et ce n'est pas le "
+                "métier d'un prestataire de nettoyage. Elle ne vaut pas davantage vérification "
+                "annuelle au titre de GC 22, qui revient à un technicien compétent ou à un "
+                "organisme agréé.",
+                "Un prestataire de nettoyage qui vous promet les trois dans le même document vous "
+                "vend une couverture que vous n'avez pas — et c'est après le sinistre que vous "
+                "vous en apercevrez.",
+            ]),
+            ("Le point à vérifier de votre côté", [
+                "Votre contrat d'assurance multirisque professionnelle comporte presque "
+                "certainement une clause relative à l'entretien des installations de cuisson et "
+                "d'extraction. Les formulations varient d'un assureur à l'autre, et les "
+                "conséquences d'un entretien non documenté en cas de sinistre aussi. Lisez-la, ou "
+                "demandez-la à votre courtier : c'est une lecture de dix minutes qui peut peser "
+                "très lourd.",
+                "C'est aussi la raison pour laquelle le livret d'entretien n'est pas une formalité "
+                "administrative. En cas de départ de feu dans un conduit, la question posée sera "
+                "celle des dates, et la réponse ne s'improvise pas après coup.",
+            ]),
+        ],
+        "faq": [
+            ("Un nettoyage par an suffit-il ?",
+             "C'est le plancher réglementaire pour le ramonage des conduits, pas une "
+             "recommandation technique. Le texte demande en outre que le circuit d'extraction soit "
+             "nettoyé « aussi souvent que nécessaire », ce qui veut dire deux passages par an dans "
+             "la plupart des restaurants, et davantage en friture, grillade ou four à bois."),
+            ("Quelle différence entre GC 21 et GC 22 ?",
+             "GC 21 impose l'entretien : filtres chaque semaine, ramonage annuel des conduits, "
+             "nettoyage du circuit aussi souvent que nécessaire. GC 22 impose une vérification "
+             "annuelle des installations de cuisson par un technicien compétent ou un organisme "
+             "agréé, consignée au registre de sécurité. Le premier, c'est faire nettoyer ; le "
+             "second, faire vérifier. Nous assurons le premier et nous en délivrons l'attestation ; "
+             "le second est une prestation distincte, que nous ne réalisons pas."),
+            ("Qui peut me demander mon livret d'entretien ?",
+             "Les services de contrôle compétents lors d'une visite de sécurité de l'établissement, "
+             "et votre assureur en cas de sinistre. Dans les deux cas, ce sont les dates qui sont "
+             "regardées : un livret vide a le même effet qu'un entretien non fait."),
+            ("Les filtres doivent-ils vraiment être nettoyés chaque semaine ?",
+             "C'est ce que prévoit le texte : nettoyés ou remplacés au moins une fois par semaine. "
+             "C'est aussi, en pratique, le geste le plus utile de tout le dispositif, parce qu'un "
+             "filtre propre arrête la graisse avant le conduit."),
+        ],
+    },
+    {
+        "slug": "risque-incendie-graisse-hotte",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Pourquoi la graisse accumulée dans une hotte est un risque d'incendie",
+        "title": "Graisse dans une hotte : le mécanisme du risque d'incendie",
+        "meta": "Comment la graisse d'un conduit d'extraction devient un combustible, pourquoi "
+                "le feu s'y propage vite, et ce qui réduit réellement le risque.",
+        "lead": "La graisse qui tapisse un conduit d'extraction n'est pas de la saleté : c'est un "
+                "combustible, placé exactement là où passe l'air chaud. Voici le mécanisme, sans "
+                "dramatisation inutile.",
+        "cle": "Un conduit encrassé est un combustible dans un courant d'air chaud.",
+        "sections": [
+            ("Ce qui s'accumule, et où", [
+                "Toute cuisson à la matière grasse vaporise une partie de cette matière. Les "
+                "particules sont entraînées par le flux d'air de la hotte, elles traversent les "
+                "filtres — jamais totalement —, puis elles condensent sur les parois dès que la "
+                "température de l'air baisse. C'est pour cela que le dépôt est maximal non pas dans "
+                "la hotte, qui est la partie visible, mais dans le premier coude du conduit, juste "
+                "après.",
+                "Le dépôt n'est pas homogène. Frais, il est huileux et coulant. Repris plusieurs "
+                "fois par la chaleur, il se polymérise : il devient dur, sec, adhérent, et il ne "
+                "part plus au dégraissant. C'est un dépôt ancien qui pose le vrai problème, pas le "
+                "film de la semaine.",
+            ]),
+            ("Le mécanisme de l'incendie", [
+                "Trois conditions sont réunies dans un conduit encrassé. Un combustible : le dépôt "
+                "de graisse. Un comburant : l'air, en mouvement permanent et en quantité. Et une "
+                "source d'allumage possible : une flamme de piano qui monte, un flambage, une "
+                "friteuse en surchauffe, une étincelle. Il manque rarement plus d'un élément.",
+                "Ce qui rend un feu de conduit particulier, c'est sa propagation. Le conduit est un "
+                "volume fermé, étroit, ventilé, et il traverse les structures du bâtiment, souvent "
+                "verticalement jusqu'en toiture. Le feu y progresse à l'abri des regards, il "
+                "chauffe les parois sur son passage, et il peut ressortir loin de la cuisine. C'est "
+                "la raison pour laquelle le texte réglementaire s'intéresse aux conduits et pas "
+                "seulement aux hottes.",
+                "Un feu de graisse ne s'éteint pas à l'eau : l'eau projetée sur de la graisse "
+                "enflammée se vaporise instantanément et disperse le combustible. C'est une donnée "
+                "que toute équipe de cuisine devrait avoir en tête avant d'en avoir besoin.",
+            ]),
+            ("Ce qui réduit réellement le risque", [
+                "Par ordre d'efficacité réelle, et non d'apparence. D'abord les filtres, nettoyés "
+                "ou remplacés chaque semaine : c'est ce qui limite la quantité de graisse qui entre "
+                "dans le conduit, et c'est gratuit. Ensuite le dégraissage du circuit complet, "
+                "conduits compris, à un rythme adapté au mode de cuisson. Enfin la vérification de "
+                "l'extraction, parce qu'un débit qui chute augmente la condensation et donc le "
+                "dépôt.",
+                "Ce qui ne réduit pas le risque : nettoyer la partie visible de la hotte. C'est "
+                "l'opération la plus fréquente et la plus trompeuse. Une hotte inox brillante "
+                "au-dessus d'un conduit tapissé donne exactement la mauvaise impression, et c'est "
+                "celle qui rassure le plus.",
+            ]),
+            ("L'indice à surveiller sans attendre", [
+                "Une extraction qui tire moins qu'avant. C'est le signal le plus fiable, et il est "
+                "progressif donc facile à ne pas voir : un conduit qui s'encrasse perd de la section "
+                "utile, le débit chute, les buées commencent à rester en cuisine, puis à passer en "
+                "salle. Le jour où la cuisine devient difficilement tenable aux heures de pointe, "
+                "le dépôt est déjà important.",
+                "L'autre indice est le plafond : un jaunissement au-dessus des zones de cuisson "
+                "signifie que les buées ne sont pas captées. Dans ce cas, le dégraissage est "
+                "nécessaire mais il ne suffira pas — il faut aussi regarder le dimensionnement de "
+                "l'installation.",
+            ]),
+        ],
+        "faq": [
+            ("À partir de quelle épaisseur de dépôt le risque devient-il sérieux ?",
+             "Il n'existe pas de seuil universel, et méfiez-vous de qui vous en annonce un au "
+             "millimètre près. Ce qui compte autant que l'épaisseur, c'est la nature du dépôt : une "
+             "graisse polymérisée, sèche et dure, est plus dangereuse qu'un film huileux plus épais. "
+             "Nous ouvrons les trappes et nous vous montrons."),
+            ("Mon assurance peut-elle refuser d'indemniser un sinistre ?",
+             "C'est une question à poser à votre assureur, pas à nous, et la réponse dépend des "
+             "clauses de votre contrat. Ce que nous constatons, c'est que la question des dates "
+             "d'entretien arrive systématiquement dans un dossier de sinistre lié à l'extraction. "
+             "Vérifiez votre clause d'entretien avant d'en avoir besoin."),
+            ("Un extincteur en cuisine suffit-il ?",
+             "Un extincteur adapté aux feux de graisse — classe F — est indispensable et doit être "
+             "à portée, mais il traite un départ de feu sur l'appareil de cuisson. Il ne peut rien "
+             "contre un feu déjà parti dans un conduit, qui est inaccessible. La prévention et "
+             "l'intervention sont deux sujets distincts."),
+        ],
+    },
+    {
+        "slug": "frequence-nettoyage-hotte-professionnelle",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "À quelle fréquence faire nettoyer sa hotte professionnelle",
+        "title": "Fréquence de nettoyage d'une hotte professionnelle",
+        "meta": "Un, deux ou trois passages par an ? La fréquence dépend du mode de cuisson, pas "
+                "du nombre de couverts. Repères par métier et critères de décision.",
+        "lead": "Le ramonage annuel est le minimum réglementaire. La bonne fréquence, elle, dépend "
+                "de ce que vous cuisinez — et pas du tout de vos heures d'ouverture.",
+        "cle": "Ce qui décide du rythme : le mode de cuisson, pas le nombre d'heures.",
+        "sections": [
+            ("L'erreur de raisonnement la plus courante", [
+                "Beaucoup d'exploitants calculent la fréquence sur le temps d'ouverture : un "
+                "service unique au déjeuner justifierait un nettoyage plus espacé qu'un service "
+                "continu. C'est faux, et c'est une erreur coûteuse.",
+                "Ce qui charge un conduit, c'est la quantité de matière grasse vaporisée. Une "
+                "cuisine qui fait deux heures de friture et de grillade intensive par jour vaporise "
+                "autant, parfois plus, qu'une cuisine ouverte en continu mais travaillant "
+                "majoritairement au four et à la sauteuse. Le bon critère est le mode de cuisson "
+                "dominant.",
+            ]),
+            ("Repères par mode de cuisson", [
+                "Friture et grillade dominantes — kebab, friterie, snack, restauration rapide : "
+                "deux passages par an au minimum, trois à fort volume. C'est le profil qui charge "
+                "le plus vite.",
+                "Four à bois ou charbon — pizzeria, grillades au feu de bois : deux à trois "
+                "passages par an, avec une particularité. La suie ne se dissout pas, elle se "
+                "décolle : le conduit demande un ramonage mécanique en plus du dégraissage, et le "
+                "conduit de fumée du four est un circuit distinct de celui de la hotte.",
+                "Cuisson mixte — restaurant traditionnel, brasserie : un à deux passages par an, "
+                "deux au-delà d'une centaine de couverts par service.",
+                "Four et buées sucrées — boulangerie, pâtisserie, crêperie : deux passages par an "
+                "dans la plupart des cas. Le dépôt est moins abondant mais plus difficile, parce "
+                "que la farine et le sucre forment avec le gras une croûte dure qui ne réagit pas "
+                "comme une graisse de friture.",
+                "Restauration collective : un à deux passages par an selon le nombre de lignes de "
+                "cuisson, à caler sur les périodes de fermeture.",
+            ]),
+            ("Les trois signaux qui disent de ne pas attendre", [
+                "L'extraction tire moins qu'avant. C'est le signal le plus fiable et le plus "
+                "négligé, parce qu'il s'installe progressivement. Un conduit qui perd de la section "
+                "perd du débit, et la cuisine devient peu à peu difficile aux heures de pointe.",
+                "Les buées passent en salle, ou le plafond jaunit au-dessus des zones de cuisson. "
+                "Les buées non captées se déposent ailleurs, et c'est visible.",
+                "Les odeurs se plaignent chez les voisins. En immeuble d'habitation, c'est la "
+                "première cause de conflit en copropriété, et c'est presque toujours un circuit "
+                "encrassé plutôt qu'un défaut de conception. Un dégraissage complet règle souvent "
+                "ce que des mois de discussion n'avaient pas réglé.",
+            ]),
+            ("Comment arrêter un rythme et s'y tenir", [
+                "Le plus simple est de fixer deux dates dans l'année, liées à un repère "
+                "d'exploitation — la fermeture annuelle, une période creuse — plutôt qu'à un "
+                "calendrier abstrait. Un rendez-vous programmé se tient ; une intervention « à "
+                "prévoir » se reporte indéfiniment.",
+                "Le premier passage sert aussi à calibrer le suivant : nous ouvrons les trappes, "
+                "nous constatons l'état réel, et nous vous disons si six mois est le bon intervalle "
+                "ou s'il faut resserrer. C'est un réglage, pas une estimation faite à l'avance.",
+            ]),
+        ],
+        "faq": [
+            ("Puis-je espacer les nettoyages si mon équipe entretient bien les filtres ?",
+             "Oui, et c'est précisément le levier. Des filtres nettoyés chaque semaine arrêtent une "
+             "part importante de la graisse avant le conduit, ce qui allonge réellement "
+             "l'intervalle. Le ramonage annuel des conduits reste cependant le plancher "
+             "réglementaire, quel que soit le soin apporté aux filtres."),
+            ("Faut-il la même fréquence pour la hotte et pour le conduit ?",
+             "Non. La hotte et les filtres se traitent plus souvent que le conduit, et une partie "
+             "relève de votre équipe. Le conduit, lui, demande une intervention complète avec "
+             "ouverture des trappes : c'est ce passage-là qui se compte en nombre de fois par an."),
+            ("Comment savoir si mon intervalle actuel est le bon ?",
+             "En regardant l'état du conduit à l'ouverture des trappes. S'il est propre, "
+             "l'intervalle peut être allongé ; s'il est déjà chargé, il faut le resserrer. C'est le "
+             "seul critère sérieux, et il demande d'ouvrir plutôt que de supposer."),
+        ],
+    },
+    {
+        "slug": "degraissage-conduit-extraction",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Dégraissage d'un conduit d'extraction : comment cela se passe vraiment",
+        "title": "Dégraissage de conduit d'extraction : méthode et étapes",
+        "meta": "Trappes de visite, dégraissage, ramonage mécanique, remontage et essai "
+                "d'extraction : le déroulé réel d'une intervention en cuisine.",
+        "lead": "Une hotte propre ne dit rien du conduit. Voici ce que contient une intervention "
+                "complète, étape par étape, et comment reconnaître une prestation qui s'arrête à "
+                "la partie visible.",
+        "cle": "Sans ouverture des trappes de visite, le conduit n'est pas traité.",
+        "sections": [
+            ("Le préalable : les trappes de visite", [
+                "Un conduit d'extraction ne se nettoie que par ses trappes de visite. Sans accès "
+                "intermédiaire, on ne traite que les premiers mètres depuis la hotte, et le reste "
+                "de la ligne reste intact. C'est la différence, invisible sur une facture, entre un "
+                "dégraissage complet et un dégraissage de façade.",
+                "La première chose que nous faisons est donc d'inventorier les trappes existantes "
+                "et de repérer ce qui n'est pas accessible. Quand il en manque sur une ligne longue, "
+                "nous le disons : la pose relève d'un installateur, pas de nous, et un conduit "
+                "vertical de trois étages sans trappe intermédiaire ne peut pas être nettoyé sur "
+                "toute sa hauteur. Nous préférons l'annoncer que de facturer un travail partiel "
+                "présenté comme complet.",
+            ]),
+            ("Protection et démontage", [
+                "La cuisine est bâchée avant la première ouverture : plans de travail, "
+                "équipements, sols. Ce n'est pas une précaution de confort — ce qui sort d'un "
+                "conduit chargé est une matière noire et grasse qui tache durablement.",
+                "Les filtres sont retirés et traités séparément, par trempage. La hotte est "
+                "démontée dans ses parties démontables, y compris le plénum, qui est souvent "
+                "l'endroit le plus chargé de l'ensemble et le plus régulièrement oublié.",
+            ]),
+            ("Dégraissage et ramonage : deux opérations différentes", [
+                "Le dégraissage chimique s'attaque à la graisse. Un alcalin est appliqué, on "
+                "respecte un temps de pose — c'est lui qui fait le travail, pas la force du bras —, "
+                "puis on rince. Sur un dépôt polymérisé, une seule application ne suffit pas et il "
+                "faut recommencer.",
+                "Le ramonage mécanique s'attaque à ce qui ne se dissout pas : la suie. Un conduit "
+                "de four à bois ou à charbon en produit, et aucun produit chimique ne l'enlève. "
+                "Elle se décolle à la brosse. Les deux opérations sont distinctes, et une cuisine "
+                "qui a un four à bois a besoin des deux.",
+                "Les points sur lesquels nous insistons parce qu'ils sont les plus souvent sautés : "
+                "le plénum, les coudes de départ — là où la vitesse d'air chute et où le dépôt est "
+                "maximal —, et le caisson du moteur d'extraction, dont les pales encrassées "
+                "expliquent une bonne partie des pertes de débit.",
+            ]),
+            ("Remontage et essai : la partie qui n'est pas optionnelle", [
+                "Tout est remonté, les trappes refermées, les filtres remis en place propres ou "
+                "remplacés. Puis nous mettons l'extraction en marche et nous vérifions qu'elle "
+                "fonctionne. Cela paraît évident ; c'est pourtant l'étape que l'on retrouve le plus "
+                "souvent absente, et une cuisine rendue non opérationnelle avant un service est un "
+                "problème sérieux.",
+                "L'essai sert aussi à constater le gain : sur un conduit très chargé, la "
+                "différence de débit est immédiatement perceptible. C'est la seule preuve "
+                "tangible du travail fait sur une partie que vous ne voyez pas.",
+                "Vous recevez ensuite un relevé daté : zones traitées, trappes ouvertes, longueur "
+                "de conduit reprise, état constaté avant, résultat de l'essai. Il est fait pour "
+                "être rangé dans le livret d'entretien annexé à votre registre de sécurité, que "
+                "vous tenez vous-même.",
+            ]),
+        ],
+        "faq": [
+            ("Combien de temps la cuisine est-elle immobilisée ?",
+             "De trois à six heures pour une cuisine de restaurant de taille courante, davantage "
+             "sur une ligne longue ou une cuisine collective. Nous travaillons de nuit, après le "
+             "dernier service ou le jour de fermeture, de façon à ce que la cuisine soit "
+             "opérationnelle au service suivant."),
+            ("Comment savoir si le conduit a vraiment été traité ?",
+             "Demandez quelles trappes ont été ouvertes, et faites-vous montrer l'intérieur avant "
+             "et après. Un prestataire qui a fait le travail n'a aucune difficulté à répondre. Si "
+             "la réponse est vague ou si aucune trappe n'a été ouverte, seule la hotte a été "
+             "nettoyée."),
+            ("Pouvez-vous poser une trappe de visite manquante ?",
+             "Non, c'est une intervention sur le réseau, qui relève d'un installateur. Nous "
+             "signalons l'absence et l'endroit où elle serait nécessaire. Nous n'avons aucun "
+             "intérêt commercial à vous annoncer des travaux que nous ne réalisons pas, ce qui rend "
+             "le constat plus fiable."),
+        ],
+    },
+    {
+        "slug": "extraction-cuisine-qui-tire-mal",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Mon extraction de cuisine tire mal : les causes, dans l'ordre",
+        "title": "Extraction de cuisine qui tire mal : diagnostic",
+        "meta": "Buées en salle, chaleur aux heures de pointe, plaintes d'odeurs : les causes "
+                "d'une extraction défaillante, de la moins chère à la plus coûteuse.",
+        "lead": "Avant d'envisager des travaux sur le réseau, il y a trois hypothèses à écarter, "
+                "et elles coûtent de moins en moins cher à vérifier dans cet ordre.",
+        "cle": "Commencez par le moins coûteux : filtres, conduit, moteur, puis l'installation.",
+        "sections": [
+            ("Les symptômes et ce qu'ils disent", [
+                "Les buées restent en cuisine, puis passent en salle. La chaleur devient difficile "
+                "à tenir aux heures de pointe. Le plafond jaunit au-dessus des zones de cuisson. "
+                "Les voisins se plaignent d'odeurs. Chacun de ces signes dit la même chose : le "
+                "débit d'extraction réel est inférieur à ce qu'il devrait être.",
+                "Le point important est que cette perte est progressive. Elle s'installe sur des "
+                "mois, l'équipe s'y habitue, et le moment où l'on s'en inquiète est toujours bien "
+                "après le moment où elle a commencé. C'est pour cela qu'un constat vaut mieux "
+                "qu'une impression.",
+            ]),
+            ("Hypothèse 1 — les filtres", [
+                "C'est la première à écarter parce qu'elle est gratuite. Des filtres saturés "
+                "réduisent le débit de façon considérable, et ils se saturent en quelques jours en "
+                "friture ou en grillade. Le texte réglementaire prévoit un nettoyage ou un "
+                "remplacement au moins une fois par semaine ; dans beaucoup de cuisines, c'est plus "
+                "souvent qu'il le faudrait réellement.",
+                "Retirez-les, dégraissez-les complètement, remettez-les et mesurez la différence. "
+                "Si l'extraction redevient correcte, le problème était là, et il reviendra au même "
+                "rythme.",
+            ]),
+            ("Hypothèse 2 — le conduit", [
+                "C'est la cause la plus fréquente d'une baisse durable. Un conduit encrassé perd de "
+                "la section utile, et la perte de débit est proportionnelle. Comme le dépôt "
+                "s'accumule surtout dans les coudes et hors de vue, rien ne le signale : la hotte "
+                "peut être impeccable et le conduit à moitié obstrué.",
+                "La vérification demande d'ouvrir les trappes de visite. C'est la seule façon de "
+                "savoir, et c'est aussi ce qui permet de chiffrer un dégraissage sur un constat "
+                "plutôt que sur une estimation.",
+            ]),
+            ("Hypothèse 3 — le moteur d'extraction", [
+                "Le caisson du moteur et ses pales s'encrassent comme le reste, et des pales "
+                "chargées de graisse perdent une partie de leur rendement. C'est une cause "
+                "régulièrement ignorée parce que le caisson est souvent en toiture ou en gaine "
+                "technique, donc jamais ouvert.",
+                "Le nettoyage du caisson fait partie d'une intervention complète. Un moteur "
+                "fatigué ou sous-dimensionné, en revanche, relève du remplacement, et donc d'un "
+                "installateur.",
+            ]),
+            ("Hypothèse 4 — l'installation elle-même", [
+                "Si les trois premières hypothèses sont écartées, le problème est de conception : "
+                "section insuffisante, tracé qui multiplie les coudes, compensation d'air absente — "
+                "une cuisine ne peut pas extraire si rien ne rentre —, ou moteur sous-dimensionné "
+                "pour les appareils installés. C'est fréquent dans les locaux qui ont changé "
+                "d'activité sans que le réseau soit repris.",
+                "Cela relève d'un installateur, pas de nous. Nous le signalons quand nous le "
+                "constatons, avec ce que nous avons vu et où, parce que c'est l'information utile — "
+                "et parce que nous ne vendons pas de travaux sur le réseau, ce qui rend le constat "
+                "désintéressé.",
+            ]),
+        ],
+        "faq": [
+            ("Un dégraissage va-t-il régler mon problème d'extraction ?",
+             "Souvent, oui, et c'est l'hypothèse à tester en premier parce qu'elle est la moins "
+             "coûteuse. Pas toujours : si l'installation est sous-dimensionnée ou si la "
+             "compensation d'air manque, le dégraissage améliorera les choses sans les résoudre. "
+             "Nous vous dirons ce que nous avons constaté."),
+            ("Les plaintes d'odeurs des voisins viennent-elles de là ?",
+             "Dans la grande majorité des cas que nous rencontrons en immeuble d'habitation, oui. "
+             "Un circuit encrassé tire moins, les buées trouvent un autre chemin, et les odeurs "
+             "sortent où elles peuvent. C'est l'hypothèse à vérifier avant d'engager une discussion "
+             "longue avec la copropriété."),
+            ("Faites-vous les travaux sur le réseau d'extraction ?",
+             "Non. Nous dégraissons et nous brossons hotte, filtres et conduits d'extraction ; la "
+             "modification du réseau, la pose de trappes et le remplacement d'un moteur relèvent "
+             "d'un installateur. Nous constatons et nous orientons, sans intervenir."),
+        ],
+    },
+    {
+        "slug": "attestation-degraissage-hotte",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Attestation de dégraissage de hotte : ce qu'elle prouve, ce qu'elle ne prouve pas",
+        "title": "Attestation de dégraissage de hotte : ce qu'elle vaut",
+        "meta": "Ce que doit contenir une attestation de dégraissage, ce qu'elle ne couvre pas, "
+                "et pourquoi certains prestataires citent encore l'article GC 18.",
+        "lead": "Trois documents différents circulent sous le même mot. Savoir lequel vous avez "
+                "en main décide de ce que vous pourrez présenter le jour où on vous le demande.",
+        "cle": "Une attestation de nettoyage dit ce qui a été fait. Elle n'atteste pas la "
+               "conformité de l'installation.",
+        "sections": [
+            ("Trois documents, trois portées", [
+                "<strong>L'attestation de nettoyage et d'entretien</strong> est délivrée par "
+                "l'entreprise qui a nettoyé. Elle décrit son intervention : la date, les zones "
+                "traitées, les trappes ouvertes, la longueur de conduit reprise. C'est une "
+                "déclaration du prestataire sur son propre travail, et c'est le document que nous "
+                "remettons.",
+                "<strong>Le rapport de vérification de l'article GC 22</strong> est tout autre "
+                "chose. Il émane d'un technicien compétent ou d'un organisme agréé, porte sur "
+                "l'état d'entretien des appareils et sur la ventilation des locaux, et se fait une "
+                "fois par an dans les établissements des quatre premières catégories. Ce n'est pas "
+                "un prestataire de nettoyage qui l'établit.",
+                "<strong>L'attestation de conformité de l'installation</strong> porte sur le "
+                "réseau lui-même : section, tracé, matériaux, recoupements. Elle relève de celui "
+                "qui a conçu ou vérifié l'installation, pas de celui qui l'a nettoyée. Un "
+                "dégraissage ne dit rien de la conformité d'un conduit — il dit seulement qu'il "
+                "est propre.",
+                "Confondre les trois est l'erreur la plus répandue du secteur, et elle se paie au "
+                "moment où l'on en a besoin : le jour d'un contrôle, ou après un sinistre.",
+            ]),
+            ("Ce qu'une attestation sérieuse doit porter", [
+                "La date, et l'identité de l'entreprise avec son SIRET. Sans cela, le document ne "
+                "vaut rien aux yeux d'un expert.",
+                "Le détail de ce qui a été traité, et non une formule générale. « Nettoyage de "
+                "hotte » ne dit pas si le conduit a été ouvert. Nous écrivons les zones une par "
+                "une : hotte, filtres, plénum, caisson du moteur, et la longueur de conduit "
+                "reprise avec les trappes de visite ouvertes.",
+                "L'état constaté avant intervention. C'est ce qui donne sa valeur au document : "
+                "une attestation qui ne décrit pas l'état de départ ne prouve pas grand-chose.",
+                "Le résultat de l'essai d'extraction après remontage, qui établit que "
+                "l'installation a été rendue en état de fonctionner.",
+                "Ce qui n'a pas pu être fait, le cas échéant, et pourquoi. Une ligne de conduit "
+                "sans trappe intermédiaire ne peut pas être traitée sur toute sa longueur : "
+                "l'écrire protège l'exploitant autant que le prestataire.",
+            ]),
+            ("Le piège des numéros d'articles", [
+                "Vous verrez beaucoup de prestataires citer l'article <strong>GC 18</strong> comme "
+                "fondement de l'obligation de dégraissage. Ils ne sont pas de mauvaise foi : "
+                "c'était exact. Dans la version d'origine de l'arrêté du 25 juin 1980, l'entretien "
+                "figurait bien à GC 18, dans une section intitulée « Entretien et vérification ».",
+                "L'arrêté du 10 octobre 2005 a réorganisé le chapitre X. Depuis, l'entretien est à "
+                "l'article <strong>GC 21</strong> et la vérification annuelle à l'article "
+                "<strong>GC 22</strong>, réunis dans la section 7. L'article GC 18, lui, est devenu "
+                "celui des modules ou conteneurs spécialisés — les cuisines installées en module ou "
+                "en conteneur — et il renvoie d'ailleurs lui-même à GC 21 pour l'entretien.",
+                "Ce n'est pas un détail de juriste. Un prestataire qui vous cite encore GC 18 pour "
+                "l'entretien travaille sur un texte d'avant 2005, et cela vous dit quelque chose "
+                "sur la fraîcheur du reste de son information. Demandez-lui la section 7.",
+            ]),
+            ("Ce que vous en faites", [
+                "L'attestation se range dans le livret d'entretien annexé à votre registre de "
+                "sécurité. C'est l'exploitant qui tient ce livret, et c'est lui qui le présente — "
+                "le prestataire ne le fait pas à sa place.",
+                "Gardez-les toutes, et dans l'ordre. Ce qui est regardé, en contrôle comme après "
+                "un sinistre, ce n'est pas la dernière attestation : c'est la régularité de la "
+                "série. Trois attestations espacées de six mois disent quelque chose qu'une seule, "
+                "datée de la semaine dernière, ne dit pas.",
+            ]),
+        ],
+        "faq": [
+            ("L'attestation de dégraissage est-elle obligatoire ?",
+             "Le texte n'impose pas une « attestation » sous ce nom : il impose que les dates des "
+             "opérations soient notées dans un livret d'entretien annexé au registre de sécurité. "
+             "L'attestation du prestataire est ce qui permet de le tenir avec des preuves plutôt "
+             "qu'avec des souvenirs, et c'est elle que l'on vous demandera de produire."),
+            ("Mon prestataire me parle de l'article GC 18, est-ce faux ?",
+             "C'était exact avant l'arrêté du 10 octobre 2005, qui a réorganisé le chapitre X. "
+             "Depuis, l'entretien est à GC 21 et la vérification annuelle à GC 22. GC 18 traite "
+             "désormais des modules ou conteneurs spécialisés. Citer GC 18 pour l'entretien n'est "
+             "pas malhonnête, c'est simplement périmé."),
+            ("Pouvez-vous délivrer l'attestation si c'est mon équipe qui nettoie ?",
+             "Non. Nous n'attestons que ce que nous avons fait nous-mêmes — c'est tout l'intérêt "
+             "du document. Le nettoyage hebdomadaire des filtres par votre équipe, en revanche, se "
+             "note directement au livret d'entretien : c'est prévu ainsi, et cela n'a pas besoin "
+             "d'un prestataire."),
+        ],
+    },
+    {
+        "slug": "assurance-incendie-cuisine-hotte",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Incendie de cuisine : ce que votre assureur peut vraiment refuser",
+        "title": "Incendie de cuisine : ce que l'assureur peut refuser",
+        "meta": "Exclusion formelle et limitée, aggravation du risque, règle proportionnelle : ce "
+                "que le droit des assurances permet réellement, sans les raccourcis du secteur.",
+        "lead": "« Sans attestation, vous n'êtes pas couvert » : la phrase est partout, et elle "
+                "est fausse. Voici ce que la loi permet réellement à un assureur, et pourquoi il "
+                "faut quand même tenir ses dates.",
+        "cle": "Une faute de l'assuré n'écarte pas la garantie, sauf exclusion formelle et "
+               "limitée inscrite au contrat.",
+        "sections": [
+            ("Le principe, et il est en votre faveur", [
+                "L'article L. 113-1 du Code des assurances pose la règle : les pertes et dommages "
+                "causés par une faute de l'assuré restent à la charge de l'assureur, sauf "
+                "exclusion <strong>formelle et limitée</strong> figurant dans la police. Seule la "
+                "faute intentionnelle ou dolosive est exclue de plein droit.",
+                "« Formelle » veut dire que la clause doit être précise, sans marge "
+                "d'interprétation, et énoncer les cas de façon limitative. Une liste d'exemples "
+                "introduite par « tels que » ne satisfait pas à cette exigence. « Limitée » veut "
+                "dire que l'exclusion ne doit pas vider la garantie de sa substance. La clause doit "
+                "en outre figurer en caractères très apparents.",
+                "Autrement dit : un assureur ne refuse pas parce qu'il trouve que vous avez mal "
+                "entretenu. Il refuse si son contrat porte une clause qui vise précisément ce "
+                "manquement, et si elle est rédigée comme la loi l'exige.",
+            ]),
+            ("Ce qui peut malgré tout réduire ou faire tomber l'indemnisation", [
+                "<strong>Une clause d'exclusion valablement rédigée.</strong> Beaucoup de polices "
+                "multirisques professionnelles en comportent une sur l'entretien des installations "
+                "de cuisson et d'extraction. Lisez la vôtre — conditions générales et conditions "
+                "particulières — et demandez-la à votre courtier si vous ne la trouvez pas.",
+                "<strong>Une aggravation du risque non déclarée.</strong> L'article L. 113-2 "
+                "impose de signaler par écrit, sous quinze jours, les circonstances nouvelles qui "
+                "aggravent le risque. Un changement d'activité ou de mode de cuisson en fait "
+                "partie : passer à la friture intensive dans une cuisine assurée pour un service "
+                "léger n'est pas neutre.",
+                "<strong>La règle proportionnelle de prime.</strong> Si une omission de bonne foi "
+                "est découverte après le sinistre, l'article L. 113-9 permet de réduire "
+                "l'indemnité dans le rapport entre la prime payée et celle qui aurait été due. Ce "
+                "n'est pas un refus, c'est une amputation — et elle peut être lourde.",
+                "Dans tous ces cas, c'est à l'assureur d'apporter la preuve. Ce n'est pas à vous "
+                "de démontrer que vous avez bien entretenu.",
+            ]),
+            ("Le vrai point de bascule : le rapport d'expertise", [
+                "Après un incendie, un expert détermine l'origine du feu. Si son rapport retient "
+                "une carence d'entretien comme cause du départ de feu, la discussion change de "
+                "nature : l'assureur dispose alors d'un fondement pour appliquer son exclusion, "
+                "s'il en a une.",
+                "C'est là que la série d'attestations compte, et c'est la seule raison sérieuse de "
+                "les tenir. Elles ne vous garantissent rien à l'avance ; elles vous donnent de quoi "
+                "répondre, avec des dates, quand la question est posée.",
+                "Vous pouvez vous faire assister d'un expert de votre choix pendant les opérations "
+                "d'expertise. C'est une faculté que peu d'exploitants connaissent et qui change le "
+                "rapport de forces.",
+            ]),
+            ("Ce que nous ne vous dirons pas", [
+                "Que l'attestation vous garantit d'être indemnisé. Elle ne garantit rien : elle "
+                "documente. Un prestataire qui vous vend une « couverture » vend ce qu'il ne peut "
+                "pas donner.",
+                "Que le dégraissage est « obligatoire sous peine de fermeture ». Les décisions de "
+                "fermeture administrative relèvent d'un cadre bien plus large que l'état d'une "
+                "hotte, et l'affirmation sert surtout à faire signer vite.",
+                "Que nous délivrons un certificat de conformité. Nous attestons ce que nous avons "
+                "fait, où et quand. Pour tout le reste, ce sont d'autres métiers — et nous vous "
+                "dirons lesquels.",
+            ]),
+        ],
+        "faq": [
+            ("Mon assureur peut-il refuser de m'indemniser si je n'ai pas fait dégraisser ?",
+             "Seulement si son contrat comporte une clause d'exclusion formelle et limitée visant "
+             "ce manquement, et si le lien avec le sinistre est établi — le plus souvent par le "
+             "rapport d'expertise. La preuve lui incombe. En l'absence d'une telle clause, le "
+             "principe de l'article L. 113-1 joue en votre faveur."),
+            ("Où trouver cette clause dans mon contrat ?",
+             "Dans les conditions générales, au chapitre des exclusions, et dans les conditions "
+             "particulières qui peuvent en ajouter. Elle doit figurer en caractères très "
+             "apparents. Si vous ne la trouvez pas, demandez-la par écrit à votre courtier : sa "
+             "réponse écrite a de la valeur."),
+            ("Que faire si l'indemnisation m'est refusée ?",
+             "Déclarez le sinistre dans les délais de votre contrat, souvent cinq jours ouvrés. "
+             "Faites-vous assister d'un expert de votre choix pendant l'expertise. En cas de refus "
+             "notifié, vous n'êtes pas tenu d'attendre la fin du délai lié à l'état des pertes "
+             "pour saisir le juge. Un avocat en droit des assurances, ou la Médiation de "
+             "l'assurance, sont les bons interlocuteurs — pas nous."),
+        ],
+    },
+    {
+        "slug": "registre-securite-livret-entretien-restaurant",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Registre de sécurité et livret d'entretien : ce qu'un contrôle regarde",
+        "title": "Registre de sécurité et livret d'entretien en restaurant",
+        "meta": "Ce que doit contenir le livret d'entretien annexé au registre de sécurité, qui "
+                "le tient, et ce qui est réellement vérifié lors d'une visite.",
+        "lead": "Le registre n'est pas une formalité administrative : c'est le seul endroit où "
+                "votre entretien existe. Un livret vide a exactement le même effet qu'un entretien "
+                "non fait.",
+        "cle": "Ce sont les dates qui sont regardées, et la régularité de la série.",
+        "sections": [
+            ("Deux documents emboîtés", [
+                "Le <strong>registre de sécurité</strong> est le document de l'établissement. Il "
+                "rassemble tout ce qui touche à la sécurité incendie : les vérifications "
+                "périodiques, les rapports d'organismes, les travaux, les consignes, les exercices.",
+                "Le <strong>livret d'entretien</strong> lui est annexé pour ce qui concerne les "
+                "installations de cuisson. C'est là que se notent les dates des opérations prévues "
+                "par l'article GC 21 : le nettoyage des filtres, le nettoyage du circuit "
+                "d'extraction, le ramonage annuel des conduits.",
+                "Les deux sont tenus par l'exploitant. Un prestataire fournit des attestations et "
+                "des rapports ; il ne tient pas votre registre à votre place, et aucun contrat "
+                "d'entretien ne vous décharge de cette obligation.",
+            ]),
+            ("Ce qui doit y figurer, côté cuisine", [
+                "Les dates de nettoyage ou de remplacement des filtres. Elles sont hebdomadaires "
+                "et c'est votre équipe qui les porte : une ligne, une date, une initiale. Un "
+                "tableau affiché en cuisine et recopié au livret suffit, à condition que quelqu'un "
+                "en ait la charge nommément.",
+                "Les dates des interventions sur le circuit d'extraction et du ramonage annuel des "
+                "conduits, avec l'attestation du prestataire agrafée en regard.",
+                "Le rapport de la vérification annuelle de l'article GC 22, réalisée par un "
+                "technicien compétent ou un organisme agréé dans les établissements des quatre "
+                "premières catégories. C'est un document distinct de l'attestation de nettoyage, "
+                "et il manque souvent.",
+                "Les suites données aux observations. Un rapport qui signale un point à reprendre, "
+                "sans trace de ce qui a été fait ensuite, se retourne contre l'exploitant.",
+            ]),
+            ("Ce qu'une visite regarde en premier", [
+                "La régularité, avant le contenu. Une série de dates espacées normalement sur "
+                "deux ans dit plus qu'une intervention récente isolée — qui ressemble surtout à un "
+                "rattrapage avant visite, et se lit comme tel.",
+                "La cohérence entre les documents. Une attestation de dégraissage datée d'un jour "
+                "de fermeture annoncée, ou un rapport de vérification dont les conclusions ne "
+                "correspondent à rien dans le registre, attire l'attention plus sûrement qu'un "
+                "trou.",
+                "Le nom d'un responsable. Un registre que personne ne tient nommément est un "
+                "registre que personne ne tient.",
+            ]),
+            ("Si vous repartez de zéro", [
+                "C'est fréquent, notamment après une reprise de local, et ce n'est pas "
+                "rattrapable rétroactivement : on ne reconstitue pas des dates passées. Ce que "
+                "vous pouvez faire, c'est ouvrir proprement la série.",
+                "Faites un premier passage complet, avec constat écrit de l'état de départ. "
+                "Classez l'attestation. Fixez les deux dates de l'année suivante au calendrier "
+                "plutôt qu'« à prévoir ». Désignez la personne qui porte les filtres au livret. "
+                "En dix-huit mois, vous avez une série qui tient.",
+            ]),
+        ],
+        "faq": [
+            ("Qui doit tenir le registre de sécurité ?",
+             "L'exploitant. C'est lui qui le détient, le met à jour et le présente. Un prestataire "
+             "fournit les attestations et les rapports qui s'y rangent, mais il ne peut pas tenir "
+             "le registre à votre place, et aucun contrat ne transfère cette obligation."),
+            ("Que se passe-t-il si mon livret est vide ?",
+             "Il a le même effet qu'un entretien non fait : ce qui n'est pas documenté n'est pas "
+             "opposable. En contrôle comme après un sinistre, ce sont les dates qui sont "
+             "regardées. Un entretien réel mais non consigné ne vous protège pas."),
+            ("L'attestation de nettoyage suffit-elle à remplir mes obligations ?",
+             "Non. Elle couvre l'entretien de l'article GC 21, pour la part que nous réalisons. La "
+             "vérification annuelle de l'article GC 22, par un technicien compétent ou un "
+             "organisme agréé, est une autre obligation et donne lieu à un autre document."),
+        ],
+    },
+    {
+        "slug": "reprise-local-restaurant-conduit-hotte",
+        "cat": "Hottes et extraction",
+        "audience": "pro",
+        "service": "nettoyage-hottes-paris",
+        "h1": "Reprendre un local de restaurant : ce que cache le conduit d'extraction",
+        "title": "Reprise de local : vérifier le conduit avant de signer",
+        "meta": "Le conduit d'extraction est ce dont on hérite sans le voir. Ce qu'il faut ouvrir "
+                "et demander avant de signer, et ce que coûte une remise à zéro.",
+        "lead": "On visite la salle, on compte les couverts, on regarde le piano. Presque personne "
+                "n'ouvre une trappe de visite — et c'est pourtant le seul endroit où se cache un "
+                "coût qu'on ne découvre qu'après.",
+        "cle": "Le conduit se transmet avec le local, et son état ne se voit pas depuis la salle.",
+        "sections": [
+            ("Pourquoi c'est le point aveugle d'une reprise", [
+                "Un local de restauration change souvent d'enseigne sans que le circuit "
+                "d'extraction soit jamais ouvert. Chaque exploitant hérite du dépôt du précédent, "
+                "et personne ne se sent responsable d'un conduit qu'il n'a pas chargé. Dans les "
+                "quartiers à forte rotation, nous ouvrons régulièrement des conduits qui n'ont pas "
+                "été repris depuis deux ou trois enseignes.",
+                "La peinture neuve, l'inox poli et le piano récent ne disent rien de ce qui est à "
+                "l'intérieur de la gaine. Et une fois le bail signé, l'état du conduit devient "
+                "votre affaire : c'est vous qui l'exploitez, c'est vous qui tenez le livret "
+                "d'entretien, et c'est votre assureur qui posera la question le jour venu.",
+            ]),
+            ("Ce qu'il faut demander avant de signer", [
+                "<strong>Le registre de sécurité et le livret d'entretien.</strong> Demandez-les, "
+                "et lisez les dates. Un livret vide ou qui s'arrête trois ans en arrière vous dit "
+                "l'essentiel.",
+                "<strong>Les dernières attestations de dégraissage</strong>, avec le détail de ce "
+                "qui a été traité. Une attestation qui ne mentionne aucune trappe de visite "
+                "ouverte signale un nettoyage limité à la partie visible.",
+                "<strong>Le dernier rapport de vérification de l'article GC 22</strong>, pour les "
+                "établissements des quatre premières catégories. Son absence est une information "
+                "en soi.",
+                "<strong>Le tracé du conduit</strong> : où il part, par où il passe, où il "
+                "débouche, et s'il est partagé avec un autre local. Un conduit mitoyen pose une "
+                "question d'entretien et de responsabilité qu'il vaut mieux trancher avant la "
+                "signature qu'après le premier conflit.",
+                "<strong>L'emplacement des trappes de visite.</strong> S'il n'y en a pas sur une "
+                "ligne longue, le conduit ne pourra pas être nettoyé sur toute sa longueur sans "
+                "travaux. C'est un coût, et il est à négocier avant.",
+            ]),
+            ("Ouvrir avant de signer, et ce que cela change", [
+                "Un constat prend une heure : on ouvre les trappes existantes, on regarde, on "
+                "photographie. Cela ne coûte presque rien au regard de ce que vous engagez, et cela "
+                "donne trois choses.",
+                "Un chiffre : vous savez ce que coûte la remise à zéro, et vous l'intégrez à votre "
+                "plan de reprise au lieu de le découvrir au premier service.",
+                "Un levier : un conduit lourdement chargé est un argument de négociation sur le "
+                "prix du fonds ou sur le dépôt, surtout si le livret d'entretien est vide.",
+                "Un point de départ : la série d'attestations commence avec un état constaté, daté "
+                "et photographié, qui n'est pas le vôtre. Si un sinistre survient dans les mois qui "
+                "suivent, cette distinction compte.",
+            ]),
+            ("La remise à zéro, concrètement", [
+                "Une remise à zéro est un rattrapage, pas un entretien : elle prend plus de temps "
+                "qu'un passage courant et se chiffre à part. Sur un dépôt polymérisé par des "
+                "années de chaleur, un alcalin à temps de pose ne suffit pas en une passe, et la "
+                "suie d'un four à bois ne se dissout pas — elle se décolle mécaniquement.",
+                "Le bon moment est la période de travaux, avant l'ouverture : la cuisine est vide, "
+                "il n'y a pas de service à préserver, et l'accès est libre. C'est aussi le seul "
+                "moment où l'on peut faire poser une trappe manquante par un installateur sans "
+                "fermer boutique.",
+                "Ensuite, le rythme redevient celui de votre mode de cuisson dominant, et les "
+                "passages suivants sont nettement plus courts.",
+            ]),
+        ],
+        "faq": [
+            ("Le cédant est-il tenu de me remettre le registre de sécurité ?",
+             "Le registre est attaché à l'établissement et doit suivre l'exploitation. En pratique, "
+             "demandez-le explicitement et par écrit pendant les négociations : un refus ou une "
+             "incapacité à le produire est une information que vous devez intégrer à votre "
+             "décision."),
+            ("Combien coûte une remise à zéro de conduit ?",
+             "Cela dépend de la longueur de la ligne, du nombre de trappes et de l'état réel, qui "
+             "ne se devine pas depuis la cuisine. C'est précisément pourquoi nous chiffrons après "
+             "constat, trappes ouvertes, et non sur description téléphonique. Le constat lui-même "
+             "est rapide."),
+            ("Pouvez-vous intervenir pendant les travaux, avant l'ouverture ?",
+             "C'est le meilleur moment, et de loin. Le local est vide, aucun service n'est à "
+             "préserver, et si une trappe de visite manque, votre installateur peut la poser "
+             "pendant que le chantier est ouvert. Après l'ouverture, la même opération demande une "
+             "fermeture."),
+        ],
+    },
 ]
 
 # Suite des dossiers : vitrerie, entretien régulier, appartement. Écrits

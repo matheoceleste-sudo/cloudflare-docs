@@ -97,6 +97,16 @@ export const TARIFS = {
       "univers": "devis"
     },
     {
+      "slug": "nettoyage-hottes-paris",
+      "nav": "Dégraissage de hottes",
+      "univers": "devis"
+    },
+    {
+      "slug": "nettoyage-monobrosse-paris",
+      "nav": "Décapage de sols à la monobrosse",
+      "univers": "devis"
+    },
+    {
       "slug": "nettoyage-textile-paris",
       "nav": "Nettoyage textile (canapé, matelas, tapis)",
       "univers": "textile"
