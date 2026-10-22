@@ -2,10 +2,14 @@
  *
  *   node worker/chiffrage.test.mjs
  *
- * Ce que ces cas vérifient, dans l'ordre d'importance : qu'un montant envoyé
- * par le navigateur ne change jamais le prix, qu'un indice hors grille ne
- * fabrique pas de ligne, et que les frais de déplacement ne peuvent pas être
- * minorés depuis la page.
+ * Ce que ces cas vérifient, dans l'ordre d'importance : qu'une grille ou un
+ * montant envoyés par le navigateur ne fabriquent jamais de prix, qu'un indice
+ * hors grille ne crée pas de ligne, et que les frais de déplacement ne peuvent
+ * pas être minorés depuis la page.
+ *
+ * Le catalogue ne compte plus de prestation à prix fixe : la grille est vide
+ * côté packs, options et textile. Les cas ci-dessous le vérifient plutôt que
+ * de supposer des tarifs qui n'existent plus.
  */
 
 import { chiffrer, fraisDeplacement, kilometres } from "./chiffrage.js";
@@ -30,63 +34,49 @@ console.log("\nGrille lue depuis tarifs.js");
 console.log(`  ${TARIFS.packs.length} packs, ${TARIFS.options.length} options, ` +
             `${TARIFS.textile.length} articles textile, ${TARIFS.services.length} prestations`);
 
-console.log("\nAuto — pack seul");
+console.log("\nLe catalogue ne contient plus de prix fixe");
 {
-  const r = chiffrer({ service: "nettoyage-automobile-paris", univers: "auto", pack: 0 }, "93150");
-  verifie("un pack donne une ligne", r.lignes.length >= 1, true);
-  verifie("au prix de la grille", r.lignes[0].total, TARIFS.packs[0].prix);
-  verifie("régime ferme", r.regime, "ferme");
+  verifie("aucun pack en grille", TARIFS.packs.length, 0);
+  verifie("aucune option en grille", TARIFS.options.length, 0);
+  verifie("aucun article textile en grille", TARIFS.textile.length, 0);
+  verifie("les trois prestations relèvent du devis",
+    TARIFS.services.every((s) => s.univers === "devis"), true);
+  verifie("et elles sont bien trois", TARIFS.services.length, 3);
 }
 
-console.log("\nAuto — pack et options, sans doublon");
+console.log("\nUne grille fabriquée par le navigateur est ignorée");
 {
-  const r = chiffrer(
-    { service: "nettoyage-automobile-paris", univers: "auto", pack: 3, options: [0, 1, 0, 1] },
-    "93150"
-  );
-  const attendu = TARIFS.packs[3].prix + TARIFS.options[0].prix + TARIFS.options[1].prix;
-  const sansDep = r.lignes.filter((l) => !l.deplacement).reduce((s, l) => s + l.total, 0);
-  verifie("une option cochée deux fois ne compte qu'une fois", sansDep, attendu);
-}
-
-console.log("\nLe prix posté par le navigateur est ignoré");
-{
+  // Le cas qui compte vraiment : le visiteur poste sa propre grille, avec ses
+  // propres prix, en plus d'un montant tout fait. Rien ne doit en sortir.
   const r = chiffrer(
     {
-      service: "nettoyage-automobile-paris", univers: "auto", pack: 0,
+      service: "nettoyage-fin-de-chantier-paris", univers: "auto", pack: 0,
       prix: 1, total: 1, montant: 1,
-      packs: [{ nom: "Gratuit", prix: 0 }],
+      packs: [{ nom: "Offert", prix: 0 }, { nom: "Cher", prix: 999 }],
+      options: [{ nom: "Faux", prix: 0 }],
+      textile: [{ nom: "Faux", prix: 0 }],
     },
     "93150"
   );
-  verifie("le pack garde son prix de grille", r.lignes[0].total, TARIFS.packs[0].prix);
+  verifie("aucune ligne fabriquée depuis la requête",
+    r.lignes.filter((l) => !l.deplacement).length, 0);
+  verifie("aucun total inventé", r.total, null);
 }
 
 console.log("\nIndices hors grille");
 {
-  const r = chiffrer({ service: "nettoyage-automobile-paris", univers: "auto", pack: 99 }, "93150");
+  const r = chiffrer(
+    { service: "nettoyage-haute-pression-paris", univers: "auto", pack: 99 }, "93150");
   verifie("pack inexistant : aucune ligne", r.lignes.length, 0);
   verifie("et donc pas de prix ferme", r.total, null);
 
   const r2 = chiffrer(
-    { service: "nettoyage-automobile-paris", univers: "auto", pack: 0, options: [99, -1, "a"] },
+    { service: "nettoyage-haute-pression-paris", univers: "textile",
+      textile: { 0: 3, 1: -5, 2: "a" } },
     "93150"
   );
-  verifie("options invalides : ignorées", r2.lignes.filter((l) => !l.deplacement).length, 1);
-}
-
-console.log("\nTextile — quantités");
-{
-  const r = chiffrer({ service: "nettoyage-textile-paris", univers: "textile", textile: { 0: 3 } }, "93150");
-  const l = r.lignes.find((x) => !x.deplacement);
-  verifie("trois articles au tarif unitaire", l.total, TARIFS.textile[0].prix * 3);
-  verifie("la quantité est reportée", l.qte, 3);
-
-  const r2 = chiffrer(
-    { service: "nettoyage-textile-paris", univers: "textile", textile: { 0: 9999, 1: 0, 2: -5 } },
-    "93150"
-  );
-  verifie("quantité aberrante : ligne écartée", r2.lignes.filter((x) => !x.deplacement).length, 0);
+  verifie("quantités sur une grille vide : aucune ligne",
+    r2.lignes.filter((l) => !l.deplacement).length, 0);
 }
 
 console.log("\nPrestations sur devis");

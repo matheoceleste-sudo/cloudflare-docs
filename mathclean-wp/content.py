@@ -382,761 +382,19 @@ SERVICES = [
              "Un jeu de photos avant/après par zone traitée, et le détail de ce qui a été fait et de ce qui ne l'a pas été. Vous reportez la date dans votre livret d'entretien, qui est le document que vous présentez en cas de contrôle."),
         ],
     },
-    # -----------------------------------------------------------------
-    # MONOBROSSE — le métier où la machine compte moins que le
-    # revêtement. La page passe l'essentiel de son temps sur ce qui se
-    # vérifie avant le premier passage, parce que c'est là que se
-    # jouent les dégâts irréversibles.
-    # -----------------------------------------------------------------
-    {
-        "slug": "nettoyage-monobrosse-paris",
-        "audience": "mixte",
-        "local": {"court": "Monobrosse", "slug": "decapage-sol-monobrosse",
-                  "nom": "Décapage de sol à la monobrosse", "kw": "décapage sol monobrosse"},
-        "short": "Monobrosse",
-        "nav": "Décapage de sols à la monobrosse",
-        "name": "Décapage de sols à la monobrosse à Paris",
-        "h1": "Décapage, protection et remise en état de sols à la monobrosse",
-        "title": "Monobrosse : décapage et remise en état de sols à Paris",
-        "meta": "Décapage, émulsion et lustrage de sols à la monobrosse — PVC, "
-                "linoléum, carrelage, béton — à Paris et en IDF. Essai sur zone "
-                "témoin avant traitement.",
-        "price": "sur devis",
-        "excerpt": "PVC, linoléum, carrelage, béton, moquette : retrait de l'ancienne "
-                   "protection, récurage des joints, pose d'une émulsion neuve ou "
-                   "lustrage. Le revêtement est identifié et testé avant le premier "
-                   "passage, pas après.",
-        "image": "",
-        "hero": "",
-        "icon": "sparkle",
-        "intro": [
-            "Un sol qui reste gris malgré un lavage quotidien n'est le plus souvent pas "
-            "sale : il est à nu. Sur un PVC ou un linoléum, la protection posée à la "
-            "livraison — une émulsion de quelques dizaines de microns — s'use d'abord "
-            "là où l'on marche, se charge de micro-rayures, puis disparaît. Le "
-            "revêtement nu qui apparaît en dessous est poreux : il prend la saleté au "
-            "lieu de la rendre, et la serpillière ne fait plus que promener de l'eau "
-            "grise dessus. Aucun produit ne rattrape cela. Il faut retirer ce qui reste "
-            "de l'ancienne couche, et en reposer une.",
-            "C'est le travail de la monobrosse : un disque unique qui tourne lentement, "
-            "autour de cent cinquante tours par minute, avec un pad ou une brosse selon "
-            "ce qu'on lui demande. Le produit décapant fait le travail chimique pendant "
-            "son temps de pose ; la machine ne fait que l'action mécanique, et "
-            "l'aspirateur à eau récupère la solution chargée. L'ordre compte plus que la "
-            "force : décaper sans laisser poser, c'est étaler ; poser une émulsion sur "
-            "un sol mal rincé, c'est la voir blanchir et se décoller en trois semaines.",
-            "La question qui décide de tout n'est pourtant pas la machine, c'est le "
-            "revêtement. Un PVC encaisse un décapant alcalin franc. Un linoléum "
-            "véritable, lui, est lié à l'huile de lin : le même produit le jaunit et le "
-            "brûle, de façon définitive. Un parquet ou un stratifié ne supportent pas "
-            "l'eau qui s'infiltre dans les joints. Un sol antidérapant de cuisine "
-            "professionnelle perd son relief — donc sa fonction de sécurité — si on le "
-            "lustre au pad au lieu de le récurer à la brosse. C'est pour cette raison "
-            "que nous commençons toujours par identifier le sol et par faire un essai "
-            "sur un mètre carré caché, et que nous le facturons dans le temps "
-            "d'intervention plutôt que de le sauter.",
-        ],
-        "included_title": "Ce que couvre l'intervention",
-        "included": [
-            "<strong>Identification du revêtement et essai sur zone témoin</strong>, avant tout traitement de l'ensemble",
-            "<strong>Dépoussiérage préalable</strong> : aspiration et balayage humide — un grain de sable sous un pad raye le sol sur toute la surface",
-            "<strong>Décapage</strong> de l'ancienne émulsion, de la cire ou du film encrassé, produit à temps de pose puis action mécanique",
-            "<strong>Récurage à la brosse</strong> des carrelages et des joints, et des sols antidérapants que le pad ne doit pas toucher",
-            "<strong>Aspiration de la solution et rinçage neutralisant</strong>, qui conditionne la tenue de ce qui sera posé ensuite",
-            "<strong>Pose d'une émulsion de protection</strong>, en deux couches croisées minimum, ou lustrage par méthode spray sur un sol encore protégé",
-            "<strong>Détourage manuel des plinthes, des angles et des seuils</strong> : un disque rond laisse une bordure, elle se fait à la main",
-            "<strong>Shampooing rotatif des moquettes</strong> en grande surface, en complément ou en préparation d'une injection-extraction",
-        ],
-        "steps": [
-            ("Identification et essai",
-             "Relevé du revêtement, de son état et de ce qui a déjà été posé dessus, puis essai de décapage sur un mètre carré caché — sous un meuble, derrière une porte. C'est là qu'on voit si le produit prévu convient, combien de temps il doit poser, et si le sol supporte le traitement. Tant que cet essai n'a pas parlé, rien n'est lancé sur l'ensemble."),
-            ("Dégagement et dépoussiérage",
-             "Mobilier léger déplacé, aspiration puis balayage humide de toute la surface. Passer une monobrosse sur un sol qui porte encore du sable, c'est transformer chaque grain en abrasif et rayer le revêtement d'un bout à l'autre de la pièce."),
-            ("Décapage",
-             "Application du décapant, temps de pose respecté, puis passage de la monobrosse avec le disque adapté au revêtement. La chimie fait le travail pendant la pose ; la machine ne fait que décoller ce qui a été ramolli. C'est ce temps-là que l'on saute quand on veut aller vite, et c'est pour cela que le résultat est inégal."),
-            ("Aspiration et rinçage neutralisant",
-             "La solution chargée est aspirée, puis le sol est rincé pour qu'il ne reste aucun résidu de décapant. Cette étape ne se voit pas et décide pourtant de tout : une trace de produit alcalin sous une émulsion neuve l'empêche d'adhérer, et le film posé blanchit ou pèle quelques semaines plus tard."),
-            ("Séchage complet",
-             "Le sol doit être sec, pas ressuyé. Une émulsion posée sur un support encore humide emprisonne l'eau et laisse un voile laiteux que seul un nouveau décapage enlève."),
-            ("Protection ou lustrage",
-             "Émulsion en deux couches croisées au minimum, avec le temps de séchage entre les deux, ou lustrage à la méthode spray quand le sol a encore sa protection et ne demande qu'une reprise. Nous vous disons à ce moment-là combien de couches ont été posées, et laquelle sera à reprendre en premier."),
-            ("Remise à disposition",
-             "Mobilier remis en place une fois le film durci, et délai annoncé : quelques heures avant de remarcher dessus, plus longtemps avant de rouler un meuble lourd ou de reposer un tapis. Ce délai est donné avant l'intervention, parce qu'il décide de l'horaire du chantier bien plus que la surface."),
-        ],
-        "faq": [
-            ("Mon sol reste gris alors qu'il est lavé tous les jours : un décapage suffira-t-il ?",
-             "Dans la plupart des cas, oui — parce que ce gris n'est pas de la saleté mais l'ancienne protection usée, chargée de micro-rayures, qui ne se nettoie plus. Le décapage la retire, et la couche neuve rend au sol sa surface fermée. En revanche, si le revêtement lui-même est rayé en profondeur ou décoloré par un produit mal choisi, un décapage ne le réparera pas : nous vous le disons après l'essai sur zone témoin, avant de vous engager sur l'ensemble."),
-            ("Faut-il obligatoirement reposer une protection après un décapage ?",
-             "Sur un PVC et sur un linoléum, oui. Décaper sans reposer d'émulsion laisse le revêtement nu et poreux : il se salit plus vite qu'avant, il marque, et il faut le relaver plus souvent. Un décapage seul n'a de sens que si vous changez le sol derrière. Sur un carrelage, un béton ciré ou un grès cérame, la question se pose autrement — beaucoup de ces sols se passent très bien de film, et nous ne vous en vendrons pas un dont vous n'avez pas besoin."),
-            ("Combien de temps la pièce est-elle indisponible ?",
-             "Comptez une demi-journée à une journée pour le décapage et le rinçage selon la surface, puis le temps des couches : environ une demi-heure entre deux couches d'émulsion, quelques heures avant de remarcher normalement, et jusqu'à deux jours avant de faire rouler un meuble lourd ou de reposer un tapis. C'est cette contrainte-là qui fixe l'horaire : nous intervenons volontiers le soir, la nuit ou le week-end, sans supplément, pour qu'elle tombe en dehors de votre activité."),
-            ("Pouvez-vous passer la monobrosse sur un parquet ou un stratifié ?",
-             "Pas avec de l'eau, et pas pour les décaper. L'eau qui passe dans les joints gonfle le bois et le panneau de fibres, et le dégât est définitif : il ne se rattrape pas, il se remplace. Le ponçage et la vitrification d'un parquet sont un autre métier, que nous ne pratiquons pas. Sur ces sols, nous nous en tenons à un entretien à très faible humidité, et nous le disons quand ce n'est pas la bonne réponse."),
-            ("Et sur un sol antidérapant de cuisine professionnelle ?",
-             "On le récure à la brosse, jamais au pad. Ces sols tiennent leur sécurité d'un relief de surface : un pad abrasif le lisse peu à peu, le sol devient glissant quand il est mouillé, et vous perdez précisément ce pour quoi il a été posé. La brosse, elle, va chercher la graisse au fond du relief sans l'écraser. C'est plus lent, et c'est la seule façon correcte de le faire."),
-            ("Faites-vous les moquettes à la monobrosse ?",
-             "Oui, en shampooing rotatif, qui est la bonne méthode sur une grande surface encrassée en surface — un plateau de bureaux, une salle de réunion, un couloir d'hôtel. Mais il ne va pas chercher ce qui est descendu dans la fibre : sur une moquette lourdement chargée, le rotatif prépare et l'injection-extraction extrait. Nous vous disons lequel des deux votre moquette demande, et nous ne facturons pas le second quand le premier suffit."),
-            ("Pourquoi un devis plutôt qu'un prix au mètre carré ?",
-             "Parce que le mètre carré ne dit presque rien ici. Deux cents mètres carrés de PVC jamais décapés depuis huit ans, avec du mobilier à déplacer et deux couches d'émulsion à poser de nuit, n'ont rien à voir avec les mêmes deux cents mètres carrés entretenus, vides et à relustrer. Nous chiffrons après avoir vu le sol — sur place, ou sur photos quand elles suffisent — et le montant annoncé est celui que vous réglez."),
-        ],
-    },
-    {
-        "slug": "nettoyage-vitres-paris",
-        "audience": "mixte",
-        "local": {"court": "Nettoyage vitres", "slug": "nettoyage-vitres", "nom": "Nettoyage de vitres", "kw": "nettoyage vitres"},
-        "short": "Vitres",
-        "nav": "Nettoyage de vitres",
-        "name": "Nettoyage de vitres à Paris",
-        "h1": "Nettoyage de vitres à l'eau osmosée, sans trace",
-        "title": "Nettoyage de vitres à Paris — sans trace",
-        "meta": "Nettoyage de vitres, baies vitrées, vérandas et vitrines à Paris et en Île-de-France. Eau osmosée, résultat sans trace. Devis gratuit, 7j/7.",
-        "price": "sur devis",
-        "excerpt": "Fenêtres, baies vitrées, vérandas et vitrines nettoyées à l'eau osmosée : sans minéraux, l'eau sèche sans rien déposer.",
-        "image": "vitre-raclette-ciel.webp",
-        "hero": "vitre-raclette-ciel.webp",
-        "icon": "window",
-        "intro": [
-            "Les traces sur une vitre viennent presque toujours de trois choses : l'eau du robinet, très calcaire en Île-de-France, qui dépose "
-            "un voile blanc en séchant ; les produits ménagers, dont les tensioactifs laissent un film qui resalit vite ; et le plein soleil, "
-            "qui fait sécher l'eau avant qu'on ait pu la racler.",
-            "L'eau osmosée règle le problème à la source. Débarrassée de ses minéraux, elle sèche sans rien déposer : aucun produit n'est "
-            "nécessaire, donc aucun film résiduel. C'est la méthode que nous employons sur les grandes surfaces, les vérandas et les vitrines.",
-        ],
-        "included_title": "Ce que nous nettoyons",
-        "included": [
-            "Fenêtres, ouvrants et dormants, intérieur et extérieur",
-            "Baies vitrées et grandes surfaces sans reprise de trace",
-            "Vérandas et verrières, y compris en toiture",
-            "Vitrines de commerce, en passage ponctuel ou régulier",
-            "Encadrements, rails et appuis dégraissés",
-        ],
-        "steps": [
-            ("Repérage", "Nombre d'ouvrants, hauteur, accessibilité : ces trois points déterminent le matériel et le devis."),
-            ("Dégraissage", "Encadrements, rails et appuis d'abord — nettoyer la vitre avant le cadre revient à la resalir aussitôt."),
-            ("Eau osmosée", "Brossage et rinçage à l'eau pure, sans détergent, y compris sur perche télescopique en hauteur."),
-            ("Contrôle en lumière rasante", "Le seul contrôle fiable : on regarde la vitre de biais, à contre-jour, pour vérifier qu'aucun voile ne subsiste."),
-        ],
-        "faq": [
-            ("Qu'est-ce que l'eau osmosée ?",
-             "De l'eau filtrée par osmose inverse, débarrassée de son calcaire et de ses minéraux. En séchant, elle ne dépose rien : c'est ce qui permet de se passer de produit et d'obtenir une vitre sans trace."),
-            ("Intervenez-vous en hauteur ?",
-             "Oui, à la perche télescopique jusqu'à plusieurs étages. Au-delà, ou en cas d'accès difficile, nous vous le disons franchement lors du devis."),
-            ("À quelle fréquence pour une vitrine de commerce ?",
-             "Un passage hebdomadaire ou bimensuel selon l'exposition à la rue. Nous établissons un forfait pour les passages réguliers."),
-        ],
-    },
-    {
-        "slug": "nettoyage-regulier-paris",
-        "audience": "pro",
-        "local": {"court": "Nettoyage entreprise", "slug": "menage-regulier",
-                  "nom": "Nettoyage d'entreprise", "kw": "nettoyage d'entreprise"},
-        "short": "Ménage régulier",
-        "nav": "Nettoyage d'entreprise",
-        "name": "Nettoyage d'entreprise à Paris",
-        "h1": "Nettoyage d'entreprise : bureaux, commerces et locaux",
-        "title": "Nettoyage d'entreprise à Paris et en Île-de-France",
-        "meta": "Nettoyage d'entreprise à Paris et en Île-de-France : bureaux, commerces, restaurants, parties communes. Passage avant l'ouverture ou après la fermeture.",
-        "price": "sur devis",
-        "excerpt": "Bureaux, commerces, salles de restaurant et parties communes, en passage quotidien, hebdomadaire ou mensuel, aux horaires qui vous arrangent.",
-        "image": "bureau-entreprise.webp",
-        "hero": "bureau-entreprise.webp",
-        "icon": "building",
-        "intro": [
-            "Un contrat d'entretien se juge sur une seule donnée : le temps de présence réel par passage. C'est la seule qui remette deux devis sur la "
-            "même échelle, et c'est celle que presque personne n'écrit. Nous l'indiquons systématiquement, avec la liste des postes couverts à chaque "
-            "fréquence — ce qui est fait tous les jours, ce qui l'est une fois par semaine, ce qui l'est au trimestre.",
-            "L'autre point qui fait la différence est la continuité. C'est la même personne qui revient, qui sait où est le local technique, quel sol "
-            "ne supporte pas l'autolaveuse et à quelle heure la salle de réunion se libère. Un prestataire qui change d'intervenant chaque mois "
-            "recommence son apprentissage à vos frais.",
-        ],
-        "included_title": "Ce que recouvre un passage",
-        "included": [
-            "Bureaux, espaces d'accueil et salles de réunion",
-            "Sanitaires : désinfection complète et réapprovisionnement des consommables",
-            "Sols durs et moquettes, de l'entretien courant à l'injection-extraction périodique",
-            "Cuisines, coins repas et distributeurs",
-            "Parties communes : halls, cages d'escalier, ascenseurs, locaux poubelles",
-            "Vitrerie intérieure, et extérieure jusqu'à trois niveaux",
-        ],
-        "steps": [
-            ("Visite et relevé", "Nous passons sur site, relevons les surfaces, les revêtements et les contraintes d'accès. Un devis au jugé sur plan ne tient jamais."),
-            ("Cahier des charges écrit", "Qui fait quoi, à quelle fréquence, en combien de temps. Le document liste aussi ce qui n'est pas inclus, pour qu'il n'y ait pas de discussion au troisième mois."),
-            ("Passages réguliers", "Avant l'ouverture, après la fermeture ou le week-end, sans supplément. Même intervenant d'un passage à l'autre."),
-            ("Points de contrôle", "Un échange à un mois puis au trimestre pour ajuster les fréquences : certains postes se révèlent inutiles, d'autres méritent un passage de plus."),
-        ],
-        "faq": [
-            ("Faut-il s'engager sur une durée ?",
-             "Non. Le passage ponctuel et le contrat régulier existent tous les deux. Un rythme se cale après quelques passages, quand il devient prévisible — pas avant."),
-            ("Intervenez-vous hors des heures d'ouverture ?",
-             "Oui, avant l'ouverture, après la fermeture ou le week-end, sans supplément. C'est la seule façon de travailler correctement sur un site occupé."),
-            ("Comment comparer votre devis à un autre ?",
-             "Regardez le temps de présence par passage, pas le prix au mètre carré. Deux devis au même montant peuvent recouvrir une heure ou trois heures de travail, et c'est là que tout se joue."),
-        ],
-    },
-    {
-        "slug": "nettoyage-appartement-paris",
-        "audience": "particulier",
-        "local": {"court": "Nettoyage appartement", "slug": "nettoyage-appartement",
-                  "nom": "Nettoyage d'appartement", "kw": "nettoyage appartement"},
-        "short": "Appartement",
-        "nav": "Nettoyage d'appartement",
-        "name": "Nettoyage d'appartement à Paris",
-        "h1": "Nettoyage complet d'appartement, de fond en comble",
-        "title": "Nettoyage d'appartement à Paris et en IDF",
-        "meta": "Nettoyage complet d'appartement à Paris et en Île-de-France : grand ménage, après travaux, avant état des lieux ou entre deux locations. Devis gratuit.",
-        "price": "sur devis",
-        "excerpt": "Grand ménage de printemps, remise en état avant un état des lieux, ou nettoyage complet entre deux locations : l'appartement entier, pièce par pièce.",
-        "image": "canape-nettoyage.webp",
-        "hero": "canape-nettoyage.webp",
-        "icon": "sofa",
-        "intro": [
-            "Un nettoyage d'appartement n'est pas un ménage en plus grand. Le ménage courant entretient ce qui est propre ; ici, on reprend ce qui ne "
-            "l'a pas été depuis longtemps — le calcaire au pied des robinets, le gras au-dessus des meubles de cuisine, les plinthes, les rails de "
-            "fenêtre, l'intérieur des placards. Ce sont des postes qui demandent du temps de pose et de l'huile de coude, pas de la vitesse.",
-            "Trois situations reviennent : le grand nettoyage qu'on repousse depuis deux ans, la remise en état avant un état des lieux de sortie — où "
-            "chaque poste oublié se paie sur le dépôt de garantie — et le passage entre deux locataires ou deux séjours. Le contenu change dans chaque "
-            "cas, et le devis le dit.",
-        ],
-        "included_title": "Ce que recouvre un nettoyage complet",
-        "included": [
-            "<strong>Cuisine</strong> : dégraissage des meubles hauts, plan de travail, crédence, électroménager intérieur et extérieur",
-            "<strong>Salle de bains</strong> : détartrage des robinetteries, parois de douche, joints, WC",
-            "<strong>Sols</strong> : aspiration et lavage adapté au revêtement, plinthes comprises",
-            "<strong>Vitres</strong> : intérieur, rails et appuis de fenêtre",
-            "<strong>Dépoussiérage complet</strong> : dessus de meubles, luminaires, interrupteurs, portes",
-            "<strong>Placards</strong> : intérieur vidé et nettoyé, sur demande",
-        ],
-        "steps": [
-            ("Nous faisons le tour", "Pièce par pièce, pour établir ce qui demande du temps de pose et ce qui relève du courant. C'est ce tour qui fait le devis, pas une surface au mètre carré."),
-            ("Du haut vers le bas", "Luminaires et dessus de meubles d'abord, sols en dernier. L'ordre inverse oblige à repasser deux fois, et c'est le temps que paient les devis bâclés."),
-            ("Temps de pose là où il en faut", "Calcaire, gras de cuisine et joints ne partent pas au premier passage. Le produit travaille pendant qu'on avance ailleurs."),
-            ("Contrôle avec vous", "Tour final ensemble avant notre départ. On reprend ce qui doit l'être sur place, pas après coup."),
-        ],
-        "faq": [
-            ("Faut-il que l'appartement soit vide ?",
-             "Non, sauf pour un nettoyage avant état des lieux, où un logement vide permet de traiter les sols et les placards en entier. Sinon, nous travaillons autour des meubles."),
-            ("Combien de temps faut-il prévoir ?",
-             "Comptez une demi-journée pour un studio ou un deux-pièces en entretien courant, une journée complète pour un trois-pièces jamais repris en profondeur. Nous l'annonçons au devis."),
-            ("Faut-il fournir les produits ou le matériel ?",
-             "Non. Machines, produits, eau et électricité sont fournis. Vous n'avez rien à préparer."),
-            ("Est-ce que cela remplace un ménage régulier ?",
-             "Non, c'est l'inverse : un nettoyage complet remet à zéro, un ménage régulier maintient. Après une remise à niveau, un passage courant suffit à tenir le résultat."),
-        ],
-    },
-    {
-        "slug": "debouchage-canalisation-paris",
-        "audience": "mixte",
-        "local": {"court": "Débouchage", "slug": "debouchage-canalisation",
-                  "nom": "Débouchage de canalisation", "kw": "débouchage canalisation"},
-        "short": "Canalisation",
-        "nav": "Débouchage de canalisation",
-        "name": "Débouchage de canalisation à Paris",
-        "h1": "Débouchage de canalisation",
-        "title": "Débouchage de canalisation à Paris — devis avant",
-        "meta": "Canalisation bouchée à Paris et en Île-de-France : furet, hydrocurage, "
-                "inspection caméra. Devis écrit avant toute intervention, sans acompte.",
-        "price": "sur devis",
-        "excerpt": "Évier, douche, WC ou colonne : repérage, débouchage au furet ou par "
-                   "hydrocurage, et un devis écrit avant que nous touchions à quoi que ce soit.",
-        "image": "",
-        "hero": "",
-        "icon": "pipe",
-        "intro": [
-            "Un bouchon ne s'installe pas en une nuit. Il se construit : les graisses figent en "
-            "refroidissant et tapissent la paroi, les cheveux s'y accrochent, les lingettes dites "
-            "biodégradables ne se délitent pas et viennent s'y coincer. L'écoulement ralentit "
-            "pendant des semaines, une odeur revient, et le jour où cela déborde, le dépôt est "
-            "déjà installé sur plusieurs mètres.",
-            "Le débouchage est l'un des terrains favoris du dépannage abusif : une urgence "
-            "entretenue au téléphone, un prix évoqué sans engagement, une facture sans rapport à "
-            "l'arrivée. L'arrêté du 24 janvier 2017 l'encadre pourtant clairement — un devis écrit "
-            "doit vous être remis avant toute intervention de dépannage, de réparation ou "
-            "d'entretien du bâtiment, <strong>quel que soit le montant</strong>, et une note "
-            "détaillée vous est due au-delà de 25 € TTC. Chez nous c'est la règle de base : le "
-            "devis part avant, aucun acompte n'est demandé, et vous réglez après avoir vu "
-            "l'écoulement.",
-            "Nous débouchons ; nous ne refaisons pas l'installation. Remplacer un tronçon, un "
-            "siphon ou une chute relève de la plomberie, le réseau au-delà de la limite de "
-            "propriété relève de votre commune, et la vidange d'une fosse exige un agrément "
-            "préfectoral que nous n'avons pas. Dans ces trois cas nous vous le disons, avec "
-            "l'image à l'appui quand nous l'avons.",
-        ],
-        "included_title": "Ce que couvre l'intervention",
-        "included": [
-            "<strong>Repérage</strong> du point de bouchage et de l'accès utilisable : regard, "
-            "tampon de dégorgement, siphon de sol ou démontage du siphon",
-            "<strong>Débouchage au furet</strong>, manuel ou électrique selon le diamètre et la "
-            "longueur à parcourir",
-            "<strong>Hydrocurage haute pression</strong> sur les canalisations qui le supportent, "
-            "quand le dépôt est gras et étendu",
-            "<strong>Inspection caméra</strong> lorsque le bouchon est déjà revenu ou que le "
-            "tracé est inconnu",
-            "<strong>Rinçage et essai d'écoulement</strong> devant vous, avant que nous partions",
-            "<strong>Compte rendu écrit</strong> : ce qui bouchait, à quelle distance, et ce qui "
-            "le fera revenir s'il y a un défaut d'installation",
-        ],
-        "steps": [
-            ("Au téléphone",
-             "Vous décrivez l'appareil concerné, depuis quand, et si d'autres évacuations sont "
-             "touchées — un seul évier ou toute la salle de bains ne désigne pas le même endroit. "
-             "Nous chiffrons sur cette base. Nous ne nous déplaçons pas pour vous annoncer le "
-             "prix une fois sur place."),
-            ("Devis écrit, avant",
-             "Le devis vous parvient avant l'intervention, avec le détail des postes, le total et "
-             "sa durée de validité. C'est ce qu'impose l'arrêté du 24 janvier 2017, et c'est "
-             "aussi ce qui vous permet de comparer. Vous conservez votre droit de rétractation "
-             "dans les conditions prévues par le code de la consommation."),
-            ("Repérage",
-             "Recherche du point d'accès le moins destructif. Le bon accès évite le démontage, et "
-             "le démontage est ce qui transforme un débouchage en chantier."),
-            ("Débouchage",
-             "Furet ou hydrocurage selon la nature du bouchon et ce que la canalisation supporte. "
-             "Un PVC ancien et une fonte ne reçoivent pas la même pression."),
-            ("Essai et compte rendu",
-             "L'écoulement est essayé devant vous. Si le bouchon est le symptôme d'un défaut — "
-             "racines, contre-pente, emboîtement déboîté — nous vous le disons et nous vous "
-             "montrons l'image, plutôt que de revenir dans six mois."),
-        ],
-        "faq": [
-            ("Combien coûte un débouchage ?",
-             "Sur devis écrit, remis avant l'intervention comme l'impose l'arrêté du 24 janvier "
-             "2017. Le montant dépend de l'appareil, de la longueur à parcourir, de l'accès "
-             "disponible et de la méthode. Le devis est gratuit, aucun acompte n'est demandé, et "
-             "le montant annoncé est celui que vous réglez : il n'y a pas de déplacement qui se "
-             "transforme en facture."),
-            ("Intervenez-vous en urgence, la nuit ?",
-             "Nous répondons sous 24 h, week-ends compris, et nous intervenons habituellement "
-             "sous 24 à 48 h à Paris et en petite couronne. Nous ne sommes pas un service "
-             "d'urgence 24 h/24, et nous le disons : qui vous promet quelqu'un dans la demi-heure "
-             "à 2 h du matin vous vend autre chose que du débouchage."),
-            ("Le bouchon va-t-il revenir ?",
-             "Si c'était un vrai bouchon, non : une fois le dépôt retiré et la canalisation "
-             "rincée, l'écoulement reprend durablement. S'il revient dans les mois qui suivent, ce "
-             "n'était pas un bouchon mais le symptôme d'un défaut — une contre-pente, un "
-             "emboîtement déboîté, des racines. C'est ce que montre l'inspection caméra, et c'est "
-             "ce que nous écrivons dans le compte rendu."),
-            ("Qui paie, en copropriété ?",
-             "La règle habituelle : du siphon de votre appareil jusqu'à la colonne, c'est "
-             "privatif, donc à votre charge ; la colonne de chute et le collecteur sont des "
-             "parties communes, donc à la charge du syndicat. Vérifiez votre règlement de "
-             "copropriété, qui peut en disposer autrement. Nous écrivons toujours où se trouvait "
-             "le bouchon : c'est ce document que vous présenterez au syndic."),
-            ("Peut-on utiliser un déboucheur chimique du commerce ?",
-             "Nous le déconseillons. La soude et les acides attaquent les joints et fragilisent "
-             "le PVC, ils viennent rarement à bout d'un vrai bouchon, et surtout ils restent dans "
-             "la canalisation : celui qui ouvre ensuite les reçoit. Si vous en avez versé, "
-             "dites-le-nous — cela change notre façon de travailler, et c'est une question de "
-             "sécurité, pas de reproche."),
-            ("Faites-vous la vidange d'une fosse septique ?",
-             "Non. Le transport et le traitement des matières de vidange sont soumis à un "
-             "agrément préfectoral que nous n'avons pas. Nous débouchons la canalisation qui mène "
-             "à la fosse ; pour la fosse elle-même, il vous faut un vidangeur agréé, et nous vous "
-             "le disons plutôt que de bricoler autour."),
-        ],
-    },
-    {
-        "slug": "ramonage-cheminee-paris",
-        "audience": "particulier",
-        "local": {"court": "Ramonage", "slug": "ramonage-cheminee",
-                  "nom": "Ramonage de cheminée", "kw": "ramonage cheminée"},
-        "short": "Ramonage",
-        "nav": "Ramonage de cheminée",
-        "name": "Ramonage de cheminée à Paris",
-        "h1": "Ramonage de cheminée et de conduit de fumée",
-        "title": "Ramonage de cheminée à Paris — à partir de 50 €",
-        "meta": "Ramonage de cheminée, insert ou poêle à bois à Paris et en Île-de-France. "
-                "Dès 50 €, chiffré après contact. Attestation de ramonage remise.",
-        "price": "dès 50 €",
-        "obligation": {
-            "titre": "Un ramonage par an, au minimum",
-            "texte": "L'article R. 1331-19 du code de la santé publique, créé par le décret "
-                     "n° 2023-641 du 20 juillet 2023, impose un ramonage des conduits de fumée "
-                     "et des tuyaux de raccordement au moins tous les douze mois. "
-                     "L'attestation remise atteste de la vacuité du conduit sur toute sa "
-                     "longueur : c'est elle que votre assureur demandera après un sinistre.",
-            "ancre": "#faq-service",
-            "lien": "Ce que dit le texte",
-        },
-        "excerpt": "Cheminée ouverte, insert, poêle à bois ou à granulés : ramonage mécanique du "
-                   "conduit sur toute sa longueur, contrôle de vacuité et attestation remise.",
-        # Pas de photo pour l'instant : nous n'en avons aucune de nos propres
-        # interventions de ramonage, et le site n'en publie pas d'autres.
-        "image": "",
-        "hero": "",
-        "icon": "shield",
-        "intro": [
-            "Un feu de bois ne brûle jamais complètement. Ce qui ne brûle pas monte dans le conduit, "
-            "refroidit en montant et s'y dépose : de la suie quand la combustion est vive, du bistre "
-            "quand elle est lente ou le bois humide. Le bistre est le problème : dur, luisant, collé "
-            "à la paroi, et combustible. C'est lui qui transforme une flambée ordinaire en feu de "
-            "cheminée, lequel monte à plus de 1 000 °C et peut fissurer le conduit — après quoi le "
-            "feu n'est plus dans le conduit, il est dans la maison.",
-            "Le second risque est silencieux. Un conduit qui s'encrasse perd de la section, tire "
-            "moins, et finit par refouler une partie des gaz de combustion dans la pièce. Parmi eux "
-            "le monoxyde de carbone, qui n'a ni odeur ni couleur et dont les premiers signes — mal "
-            "de tête, fatigue — se confondent avec autre chose. C'est la raison pour laquelle le "
-            "ramonage se mesure à la vacuité du conduit, pas à l'aspect du foyer.",
-            "Le cadre est écrit. L'article R. 1331-19 du code de la santé publique, créé par le "
-            "décret n° 2023-641 du 20 juillet 2023, dispose que « le ramonage des conduits de "
-            "fumées et des tuyaux de raccordement est effectué au moins tous les douze mois », et "
-            "que « l'attestation de ramonage précise notamment le ou les conduits de fumée ramonés "
-            "et atteste notamment de la vacuité du conduit sur toute sa longueur ». Votre bail, "
-            "votre règlement de copropriété ou votre contrat d'assurance peuvent exiger davantage ; "
-            "ils ne peuvent pas exiger moins.",
-        ],
-        "included_title": "Ce que couvre l'intervention",
-        "included": [
-            "<strong>Protection</strong> : bâchage du foyer et des abords, aspirateur à filtration "
-            "fine en place avant toute ouverture",
-            "<strong>Ramonage mécanique</strong> du conduit sur toute sa longueur, au hérisson "
-            "adapté à la section et à la nature du conduit (boisseau, tubage inox, conduit maçonné)",
-            "<strong>Tuyau de raccordement</strong> entre l'appareil et le conduit, déposé si "
-            "nécessaire",
-            "<strong>Foyer, insert ou poêle</strong> : chambre de combustion, déflecteur et "
-            "récupération des suies",
-            "<strong>Contrôle de vacuité</strong> du conduit sur toute sa longueur, et signalement "
-            "écrit de ce qui ne va pas — fissure, défaut d'étanchéité, bistre nécessitant un "
-            "débistrage",
-            "<strong>Attestation de ramonage</strong> remise à l'issue de l'intervention, avec les "
-            "mentions exigées par l'article R. 1331-19",
-        ],
-        "steps": [
-            ("Contact et chiffrage",
-             "Vous nous décrivez l'appareil, le type de conduit et son accès. Le prix est arrêté "
-             "avant la visite, pas après : un conduit droit de deux étages et un conduit dévoyé "
-             "avec accès en toiture ne demandent ni le même temps ni le même matériel."),
-            ("Protection de la pièce",
-             "Bâchage du foyer et du sol, aspirateur à filtration fine amorcé avant l'ouverture. "
-             "Un ramonage propre se juge à ce qu'on ne retrouve pas sur les meubles le lendemain."),
-            ("Ramonage mécanique",
-             "Hérisson adapté à la section et à la matière du conduit, par le haut ou par la "
-             "trappe selon la configuration. Le ramonage est mécanique : aucune bûche ni poudre "
-             "dite de ramonage ne remplace le passage du hérisson, et aucune ne vaut attestation."),
-            ("Contrôle de vacuité",
-             "Vérification que le conduit est dégagé sur toute sa longueur, et examen de ce qui "
-             "apparaît une fois les suies retirées. Les défauts sont photographiés et écrits, y "
-             "compris quand ils impliquent des travaux que nous ne faisons pas."),
-            ("Remise en état et attestation",
-             "Aspiration, remontage, essai de tirage, et remise de l'attestation de ramonage. "
-             "Gardez-la : c'est elle que votre assureur demandera après un sinistre."),
-        ],
-        "faq": [
-            ("Combien coûte un ramonage ?",
-             "À partir de 50 €. Le montant exact dépend de l'appareil, de la longueur et de la "
-             "forme du conduit, et de son accès — un conduit droit accessible depuis le foyer et "
-             "un conduit dévoyé nécessitant une intervention en toiture n'ont pas le même prix. "
-             "Contactez-nous avec ces éléments : nous chiffrons avant de nous déplacer, et le "
-             "montant annoncé est celui que vous réglez."),
-            ("À quelle fréquence faut-il ramoner ?",
-             "L'article R. 1331-19 du code de la santé publique fixe un ramonage au moins tous "
-             "les douze mois pour les conduits de fumée et les tuyaux de raccordement. Votre bail, "
-             "votre règlement de copropriété ou votre assureur peuvent demander davantage, par "
-             "exemple un second passage pendant la période de chauffe. Vérifiez votre contrat : "
-             "c'est lui qui vous sera opposé."),
-            ("Que se passe-t-il si je n'ai pas d'attestation après un feu de cheminée ?",
-             "Votre assureur peut réduire son indemnisation, voire la refuser, s'il établit que "
-             "l'entretien obligatoire n'a pas été fait. L'attestation est la preuve que vous "
-             "produisez ; sans elle, c'est à vous de démontrer que le conduit était entretenu. "
-             "C'est la raison pratique du ramonage annuel, avant même la sécurité."),
-            ("Intervenez-vous sur un poêle à granulés ?",
-             "Oui. La combustion des granulés produit moins de bistre qu'une flambée de bûches, "
-             "mais beaucoup de cendres fines qui encrassent l'échangeur et le conduit. L'appareil "
-             "et le conduit se traitent ensemble, sinon le tirage reste mauvais après un conduit "
-             "pourtant propre."),
-            ("Faites-vous le débistrage ?",
-             "Non. Le débistrage est une opération distincte, qui attaque un dépôt dur à la "
-             "débistreuse rotative et qui peut mettre à nu des défauts du conduit. Nous la "
-             "signalons quand elle est nécessaire et nous vous orientons, plutôt que de forcer au "
-             "hérisson sur un bistre épais — ce qui ne l'enlève pas et abîme le conduit."),
-            ("Et les chaudières gaz ou fioul ?",
-             "Le conduit d'une chaudière relève de son entretien annuel, assuré par un "
-             "chauffagiste qui contrôle aussi la combustion et le réglage de l'appareil. Nous "
-             "intervenons sur les conduits des appareils à bois : cheminée ouverte, insert, "
-             "foyer fermé, poêle à bûches ou à granulés."),
-        ],
-    },
-    {
-        "slug": "nettoyage-toiture-paris",
-        "audience": "mixte",
-        "local": {"court": "Nettoyage toiture", "slug": "nettoyage-toiture",
-                  "nom": "Nettoyage de toiture", "kw": "nettoyage toiture"},
-        "short": "Toiture",
-        "nav": "Nettoyage de toiture",
-        "name": "Nettoyage de toiture à Paris",
-        "h1": "Nettoyage et démoussage de toiture",
-        "title": "Nettoyage de toiture et démoussage à Paris",
-        "meta": "Démoussage de toiture en tuile, ardoise ou zinc à Paris et en Île-de-France. "
-                "Pression maîtrisée, gouttières comprises, devis gratuit après photos.",
-        "price": "sur devis",
-        "excerpt": "Démoussage mécanique à pression maîtrisée, gouttières et descentes "
-                   "dégagées, et un compte rendu photo de ce que la mousse cachait.",
-        "image": "",
-        "hero": "",
-        "icon": "roof",
-        "intro": [
-            "Une toiture ne fuit pas parce qu'elle est sale. Elle fuit parce que l'eau n'en part "
-            "plus. La mousse retient l'humidité contre la couverture, s'installe dans les "
-            "recouvrements entre les tuiles, et l'hiver le gel la dilate : c'est ce qui soulève une "
-            "tuile, ouvre un recouvrement et fait entrer l'eau là où elle ne passait pas. Le reste "
-            "part dans les gouttières, qui débordent le long de la façade.",
-            "La haute pression est un risque sur une toiture, pas une méthode. Une lance tenue de "
-            "près soulève les tuiles, pousse l'eau sous la couverture par les recouvrements, et "
-            "sur une tuile béton elle arrache la couche de surface — après quoi la mousse revient "
-            "plus vite qu'avant. Nous travaillons à pression maîtrisée, du faîtage vers l'égout, à "
-            "distance, avec un réglage choisi selon la couverture : une ardoise, une tuile terre "
-            "cuite et une tuile béton ne se traitent pas pareil.",
-            "Deux refus, écrits ici plutôt que découverts le jour de l'intervention. Nous ne "
-            "touchons pas à une couverture en fibrociment posée avant 1997 : elle est présumée "
-            "contenir de l'amiante, et la nettoyer en libère les fibres — cela relève du "
-            "désamiantage, un autre métier, avec sa propre certification. Et nous ne nettoyons pas "
-            "une toiture dont l'état appelle d'abord une réparation : un nettoyage ne répare rien, "
-            "et il rend parfois visible ce qu'il n'a pas causé.",
-        ],
-        "included_title": "Ce que couvre l'intervention",
-        "included": [
-            "<strong>Démoussage mécanique</strong> : brossage et pression réglée selon la nature "
-            "de la couverture, du faîtage vers l'égout",
-            "<strong>Recouvrements et noues</strong> : les points où la mousse retient l'eau, "
-            "traités un par un plutôt que balayés au jet",
-            "<strong>Gouttières, chéneaux et descentes</strong> : dégagés et rincés — c'est là que "
-            "finit tout ce qui descend du toit",
-            "<strong>Faîtage, solins et rives</strong> : contrôle visuel et signalement de ce qui "
-            "bouge, se déjointe ou se décolle",
-            "<strong>Évacuation</strong> des déchets de démoussage, abords rendus propres",
-            "<strong>Compte rendu photo</strong> avant et après, avec la liste écrite des défauts "
-            "constatés — y compris ceux que nous ne réparons pas",
-        ],
-        "steps": [
-            ("Repérage et accès",
-             "Photos ou visite : surface, pente, nature de la couverture, et surtout l'accès. "
-             "C'est l'accès qui fait le prix d'un nettoyage de toiture, pas les mètres carrés. "
-             "Nous le disons avant, pas une fois l'échafaudage monté."),
-            ("Protection",
-             "Descentes bouchonnées pendant le travail : sans cela, l'intervention finit par "
-             "transformer la gouttière en bouchon. Abords, terrasse et plantations bâchés."),
-            ("Démoussage",
-             "Du faîtage vers l'égout, à pression maîtrisée et à distance. Le sens compte : en "
-             "remontant, on pousse l'eau sous les tuiles. C'est l'erreur la plus courante et la "
-             "plus coûteuse."),
-            ("Gouttières et descentes",
-             "Dégagement complet, rinçage, et essai d'écoulement. Une descente qui ne tire pas "
-             "après un démoussage, c'est le démoussage qui l'a bouchée."),
-            ("Contrôle et compte rendu",
-             "Photos avant et après, et liste écrite de ce que la mousse cachait : tuile fendue, "
-             "solin décollé, faîtage déjointé. Nous le signalons même quand cela vous enverra "
-             "chez un couvreur plutôt que chez nous."),
-        ],
-        "faq": [
-            ("Combien coûte un nettoyage de toiture ?",
-             "Sur devis, gratuit et ferme. Le montant dépend de la surface développée, de la "
-             "pente, de la nature de la couverture, et d'abord de l'accès : une maison de "
-             "plain-pied avec un pignon dégagé et une toiture en ville sans point d'ancrage ne se "
-             "chiffrent pas pareil. Envoyez-nous des photos, y compris de l'environnement du "
-             "bâtiment, et nous chiffrons sans nous déplacer."),
-            ("La haute pression abîme-t-elle les tuiles ?",
-             "Mal employée, oui. Une lance tenue trop près soulève les tuiles, fait passer l'eau "
-             "sous la couverture et décape la couche de surface d'une tuile béton, ce qui la rend "
-             "poreuse et accélère le retour de la mousse. Le réglage et la distance font tout : "
-             "c'est la raison pour laquelle un nettoyage de toiture ne s'improvise pas avec un "
-             "nettoyeur de jardin."),
-            ("Appliquez-vous un produit anti-mousse ?",
-             "Non, nous retirons les mousses mécaniquement. Un traitement anti-mousse curatif "
-             "emploie des produits biocides de type TP2, dont l'usage professionnel est soumis au "
-             "certificat Certibiocide « désinfectants » depuis le 1er janvier 2026. Nous ne "
-             "vendons pas une prestation pour laquelle nous ne sommes pas certifiés, et un "
-             "démoussage mécanique bien fait tient."),
-            ("Et un traitement hydrofuge ?",
-             "Nous n'en appliquons pas, et il faut savoir ce qu'il fait : un hydrofuge ralentit le "
-             "réencrassement, il n'étanche pas une toiture. Posé sur une couverture poreuse ou "
-             "déjà fendue, il peut enfermer l'humidité dans la tuile au lieu de la laisser sécher. "
-             "Si votre toiture fuit, c'est un couvreur qu'il vous faut, pas un traitement de "
-             "surface."),
-            ("À quelle fréquence faut-il démousser ?",
-             "Cela dépend surtout de l'exposition : une pente au nord, sous des arbres, se "
-             "recouvre en trois ou quatre ans quand une pente au sud dégagée tient bien plus "
-             "longtemps. En revanche les gouttières se dégagent une à deux fois par an : c'est "
-             "beaucoup moins cher qu'un démoussage et c'est ce qui évite la plupart des dégâts."),
-            ("Ma toiture est en fibrociment, pouvez-vous la nettoyer ?",
-             "Si elle a été posée avant 1997, non. Ces plaques sont présumées contenir de "
-             "l'amiante, et les nettoyer — a fortiori sous pression — en libère les fibres. C'est "
-             "une opération de désamiantage, soumise à certification, que nous ne faisons pas. "
-             "Nous vous le disons plutôt que de le découvrir sur le toit."),
-            ("Montez-vous sur le toit ?",
-             "Selon la configuration, et seulement si l'accès peut être sécurisé : échafaudage, "
-             "nacelle ou point d'ancrage selon le cas. Le dispositif figure au devis, parce qu'il "
-             "pèse dans le prix et qu'il n'est pas négociable. Une toiture sur laquelle on ne peut "
-             "pas travailler en sécurité est une toiture que nous ne nettoyons pas."),
-        ],
-    },
-    {
-        "slug": "nettoyage-textile-paris",
-        "audience": "particulier",
-        "local": {"court": "Nettoyage canapé", "slug": "nettoyage-canape", "nom": "Nettoyage de canapé", "kw": "nettoyage canapé"},
-        "short": "Textile",
-        "nav": "Nettoyage textile (canapé, matelas, tapis)",
-        "name": "Nettoyage textile à Paris",
-        "h1": "Nettoyage de canapé, matelas et tapis à domicile",
-        "title": "Nettoyage canapé et matelas à Paris",
-        "meta": "Nettoyage de canapé, matelas, tapis et fauteuil à domicile à Paris et en Île-de-France. Injection-extraction, détachage, anti-acariens. Dès 15 €.",
-        "price": "dès 15 €",
-        "excerpt": "Canapé, matelas, tapis, fauteuil et moquette : injection-extraction, détachage ciblé et traitement anti-acariens, directement chez vous.",
-        "image": "canape-extraction.webp",
-        "hero": "canape-extraction.webp",
-        "icon": "sofa",
-        "intro": [
-            "Un canapé d'angle ne se démonte pas et ne part pas au pressing. C'est précisément pour cela que nous venons chez vous, "
-            "avec des machines professionnelles d'injection-extraction qui traitent la fibre en profondeur sans détremper la mousse.",
-            "Le principe : une solution nettoyante est injectée sous pression au cœur du textile, puis immédiatement réaspirée avec la "
-            "saleté dissoute. Le tissu ressort nettoyé, pas gorgé d'eau — c'est ce qui évite les auréoles au séchage. Comptez 4 à 6 h "
-            "de séchage selon la ventilation de la pièce.",
-        ],
-        "included_title": "Ce que nous traitons",
-        "included": [
-            "Canapés en tissu et en cuir, du 2 places au canapé d'angle",
-            "Fauteuils, chaises et chaises de bureau",
-            "Matelas 1 et 2 places, traités <strong>sur les deux faces</strong>",
-            "Tapis et moquettes, avec test des couleurs préalable",
-            "Détachage ciblé : café, gras, vin, encre, urine, sang",
-        ],
-        "steps": [
-            ("Désinfection haute température", "Passage à la vapeur sur toute la surface : la chaleur seule assainit et traite les acariens, sans produit. La laine et la soie font exception — la vapeur les rétracte."),
-            ("Produit adapté à la matière", "Tissu, microfibre, alcantara ou cuir n'appellent pas le même produit. Nous identifions la matière, testons la solidité des couleurs sur une zone cachée, puis appliquons."),
-            ("Brossage", "Le produit est travaillé dans la fibre à la brosse. C'est ce passage qui décolle la saleté au lieu de la laisser remonter en surface."),
-            ("Injection-extraction", "La solution est injectée au cœur de la fibre puis réaspirée aussitôt avec la saleté dissoute. Passages croisés jusqu'à ce que l'eau ressorte claire ; sur les matelas, les deux faces."),
-            ("Repassage si nécessaire", "Tous les tissus ne le demandent pas. Quand c'est le cas, c'est le geste qui finit le travail. Le textile est réutilisable après 4 à 6 h."),
-        ],
-        "chimie": {
-            "titre": 'La fibre décide du produit',
-            "lead": "Coton, synthétique, laine, soie, viscose ou cuir : chaque fibre a une plage de pH qu'elle tolère. En sortir laisse une marque que le nettoyage suivant ne rattrapera pas.",
-            "points": [
-            ('Synthétiques et coton : alcalinité modérée',
-             "Polyester, polypropylène, nylon, coton et lin supportent un détergent faiblement alcalin sans difficulté. C'est le cas le plus fréquent, et celui où l'injection-extraction donne son plein rendement."),
-            ('Laine et soie : neutre ou légèrement acide',
-             "Ce sont des fibres protéiniques. Au-delà de pH 8, la laine ternit et se feutre, la soie perd son brillant de façon définitive. Nous les traitons en neutre, à l'eau tiède, et jamais à la vapeur qui les rétracte."),
-            ('Détachage alcalin, puis neutralisation',
-             "Gras, sang, alimentaire : ces salissures organiques demandent un alcalin en application localisée. L'extraction finale se fait avec une solution légèrement acide qui neutralise le résidu &mdash; sans quoi la fibre jaunit et refixe la poussière."),
-            ('Cuir : nettoyant neutre puis nourrissant',
-             "Sur un canapé en cuir, le protocole est celui de l'automobile : produit à pH neutre appliqué au mousseur, brosse souple, reprise à la microfibre, puis nourrissage. L'injection-extraction est réservée aux textiles."),
-            ("Zéro résidu, c'est la règle",
-             "Un shampoing de surface laisse son tensioactif dans la fibre : il devient collant, capte la poussière et le textile se resalit plus vite qu'avant. L'extraction se poursuit jusqu'à ce que l'eau reprise ressorte claire."),
-            ('Produits biodégradables, et sans danger à sec',
-             "Nous privilégions des produits biodégradables et sûrs pour les enfants et les animaux une fois le textile sec. Un produit biodégradable n'est pas pour autant inoffensif pour votre matière : c'est le pH, pas l'étiquette, qui garantit qu'il convient."),
-        ],
-        },
-        "faq": [
-            ("Mon canapé sera-t-il trempé après l'intervention ?",
-             "Non. L'injection-extraction réaspire immédiatement la solution injectée : le textile ressort humide, pas mouillé. Il est de nouveau utilisable après 4 à 6 h selon la ventilation de la pièce."),
-            ("Les taches anciennes partent-elles ?",
-             "Souvent oui, mais nous ne le promettons jamais à l'aveugle. Une tache incrustée depuis des mois, une auréole déjà créée par un détachant ménager ou une décoloration ne réagissent pas comme une tache fraîche. Nous vous disons ce qui est réaliste avant de commencer."),
-            ("Les produits sont-ils sans danger pour mes enfants et mes animaux ?",
-             "Oui. Nous choisissons des produits sûrs pour les enfants et les animaux domestiques, et nous nous en passons complètement quand la vapeur haute température suffit."),
-            ("Intervenez-vous sur le cuir ?",
-             "Oui, avec un protocole différent : nettoyage doux puis nourrissage du cuir. L'injection-extraction est réservée aux textiles."),
-        ],
-    },
-    {
-        "slug": "nettoyage-automobile-paris",
-        "audience": "particulier",
-        "local": {"court": "Nettoyage voiture", "slug": "nettoyage-voiture", "nom": "Nettoyage de voiture", "kw": "nettoyage voiture"},
-        "short": "Automobile",
-        "nav": "Nettoyage automobile",
-        "name": "Nettoyage automobile à Paris",
-        "h1": "Nettoyage automobile à domicile à Paris & en Île-de-France",
-        "title": "Nettoyage automobile à Paris — dès 50 €",
-        "meta": "Detailing automobile intérieur et extérieur à domicile à Paris et en Île-de-France. Aspiration, shampoing des sièges, vapeur, cuir. Dès 50 €, 7j/7.",
-        "price": "dès 50 €",
-        "excerpt": "Detailing intérieur et extérieur à domicile. Aspiration, shampoing des sièges, vapeur haute température, plastiques et vitres — votre voiture retrouve son aspect showroom.",
-        "image": "auto-interieur-vw.webp",
-        "hero": "auto-interieur-vw.webp",
-        "icon": "car",
-        "intro": [
-            "Nous nous déplaçons avec notre matériel, notre eau et notre électricité : rien à fournir de votre côté. "
-            "L'intervention se fait devant chez vous, en parking souterrain, sur votre place de résidence ou sur votre lieu de travail, "
-            "à Paris comme dans les huit départements franciliens.",
-            "Le nettoyage automobile, ou <em>detailing</em>, n'est pas un lavage de station. Chaque matière — cuir pleine fleur, alcantara, "
-            "tissu, plastique moussé, vernis — appelle un produit et un geste différents. C'est ce diagnostic préalable qui évite "
-            "les auréoles sur un tissu clair, les traces blanches sur un plastique noir ou le dessèchement d'un cuir.",
-        ],
-        "included_title": "Ce que comprend une prestation sans option",
-        "included": [
-            "Aspiration complète de l'habitacle <strong>et du coffre</strong>, sans supplément",
-            "Shampoing des tapis et des moquettes",
-            "Désinfection des allergènes et acariens par vapeur haute température",
-            "Traitement des sièges, du volant, des tapis et de toutes les surfaces planes",
-            "Nettoyage des vitres intérieures, sans trace",
-        ],
-        "steps": [
-            ("Diagnostic", "Nous faisons le tour du véhicule avec vous : nature des salissures, matériaux, points sensibles, et le pack qui correspond réellement à votre besoin."),
-            ("Préparation", "Décontamination et pré-traitement des taches. Les zones fragiles — écrans, boiseries, garnitures — sont protégées avant toute projection."),
-            ("Traitement", "Aspiration, injection-extraction sur les textiles, vapeur sèche sur les surfaces dures, produits adaptés aux cuirs et à l'alcantara."),
-            ("Contrôle", "Nous refaisons le tour du véhicule avec vous avant de partir. Le règlement se fait après l'intervention, une fois le résultat constaté."),
-        ],
-        "chimie": {
-            "titre": 'Un produit par matière, choisi sur son pH',
-            "lead": "Dans un habitacle, cuir, alcantara, tissu, plastique moussé et vitrage n'appellent ni le même produit ni le même geste. Le pH est ce qui commande le choix.",
-            "points": [
-            ("Cuir : pH neutre, jamais d'alcalin",
-             "Une peau tannée est stabilisée en milieu acide. Un nettoyant alcalin attaque sa finition pigmentée et rigidifie la fibre, qui craquelle ensuite aux points de flexion. Nous restons sur des gammes professionnelles à pH neutre &mdash; <strong>Koch Chemie</strong> et équivalents &mdash; suivies systématiquement d'un lait nourrissant."),
-            ('Application au mousseur',
-             "Un cuir saturé d'eau gonfle puis se rétracte au séchage, et la finition se micro-fissure. Le mousseur dépose beaucoup de volume et très peu d'eau : le produit travaille en surface, là où est la salissure, sans pénétrer dans la peau."),
-            ('Alcalin en localisé sur les taches',
-             "Le gras, le sébum et l'alimentaire ne partent pas à l'eau : ils demandent un détachant alcalin, appliqué uniquement sur la tache, avec un temps de pose contrôlé puis une extraction immédiate. Jamais en plein, jamais sans rinçage."),
-            ("Textiles de sellerie : on aspire plus qu'on n'injecte",
-             "L'injection-extraction traite la fibre en profondeur, mais c'est le taux de reprise qui évite l'auréole. Sur alcantara et sur tissu clair, nous travaillons par petites zones avec une extraction très contrôlée."),
-            ('Plastiques et écrans : neutre et sans solvant',
-             "Les plastiques moussés du tableau de bord et les écrans tactiles portent des traitements de surface qu'un produit alcalin ou solvanté ternit définitivement. Nettoyant neutre, microfibre, aucun rinçage à l'eau à proximité de l'électronique."),
-            ('Vapeur quand elle suffit',
-             "Sur les plastiques durs, les seuils, les grilles d'aération et les joints, la vapeur haute température décolle le gras par la chaleur et assainit sans laisser le moindre résidu. Quand elle fait le travail, nous n'ajoutons pas de chimie."),
-        ],
-        },
-        "faq": [
-            ("Combien de temps dure un nettoyage automobile ?",
-             "Comptez 1 h 30 pour un Extérieur Éclat ou un Intérieur Essentiel, 3 h pour un Intérieur Prestige et jusqu'à 4 h pour un Intégral sur un grand véhicule. Les durées exactes figurent sur notre page tarifs."),
-            ("Avez-vous besoin d'une prise électrique ou d'un point d'eau ?",
-             "Non. Nous venons entièrement autonomes en eau et en électricité, ce qui nous permet d'intervenir en parking souterrain, en pied d'immeuble ou sur un parking d'entreprise."),
-            ("Faites-vous le nettoyage avant une revente ?",
-             "C'est une de nos demandes les plus fréquentes. Le pack Intérieur Prestige, associé à l'option de neutralisation des odeurs par ozone, permet de présenter un véhicule sans odeur d'animal ni de tabac — un point qui pèse lourd à la revente."),
-            ("Le prix dépend-il de la taille du véhicule ?",
-             "Non. Chaque pack est à prix fixe, citadine comme SUV : le montant affiché est celui que vous réglez. Seules les options que vous ajoutez et les frais de déplacement s'ajoutent, et ils vous sont annoncés avant validation."),
-        ],
-    },
 
 ]
 
 # --- Tarifs ---------------------------------------------------------------
-PACKS_AUTO = [
-    ("Extérieur Éclat", 50, "Extérieur", "La carrosserie retrouve sa brillance", False,
-     ["Lavage complet de la carrosserie", "Jantes et passages de roues", "Brillant pneus",
-      "Vitres extérieures", "Séchage sans trace"]),
-    ("Intérieur Essentiel", 55, "Intérieur", "Idéal pour un coup de propre régulier (hors cuir et alcantara)", False,
-     ["Aspiration de l'habitacle et du coffre", "Nettoyage du tableau de bord", "Nettoyage des plastiques",
-      "Vitres intérieures", "Désinfection complète à la vapeur", "Parfum d'ambiance"]),
-    ("Intérieur Prestige", 100, "Intérieur", "Le détail poussé jusqu'au moindre recoin, cuir compris", True,
-     ["Tout l'Intérieur Essentiel", "Sièges cuir nettoyés ou pressing des sièges tissu",
-      "Pressing des tapis et moquettes", "Protection des plastiques", "Traitement des cuirs",
-      "Battements de portes", "Ciel de toit", "Compartiment de la roue de secours"]),
-    ("Intégral", 130, "Intérieur + Extérieur", "Le véhicule entier, dedans comme dehors", False,
-     ["Tout l'Intérieur Prestige", "Lavage complet de la carrosserie", "Jantes et brillant pneus",
-      "Vitres intérieures et extérieures", "Séchage sans trace", "Parfum d'ambiance"]),
-]
+# Prestations à prix fixe. Vidées en octobre 2026 avec le retrait du
+# nettoyage automobile et du nettoyage textile : les trois métiers restants
+# se chiffrent tous sur devis. Le moteur de chiffrage garde les chemins
+# correspondants, prêts si une prestation à prix fixe revient.
+PACKS_AUTO = []
 
-OPTIONS_AUTO = [
-    ("Retrait des poils d'animaux", 10, "Sièges, tapis et moquettes"),
-    ("Traitement cuir & alcantara", 20, "Nettoyage puis nourrissage des cuirs et de l'alcantara"),
-    ("Neutralisation des odeurs par ozone", 30, "Traitement d'1 h : les molécules odorantes sont détruites, pas masquées"),
-]
+OPTIONS_AUTO = []
 
-TARIFS_TEXTILE = [
-    ("Chaise / chaise de bureau", 15, "Assise et dossier"),
-    ("Fauteuil", 25, "Assise, dossier et accoudoirs"),
-    ("Canapé 2 places", 39, "Injection-extraction et détachage"),
-    ("Canapé 3 places", 49, "Injection-extraction et détachage"),
-    ("Canapé d'angle", 69, "Injection-extraction et détachage"),
-    ("Matelas 1 place", 39, "Deux faces, traitement anti-acariens"),
-    ("Matelas 2 places", 49, "Deux faces, traitement anti-acariens"),
-    ("Tapis jusqu'à 6 m²", 39, "Lavage des fibres en profondeur"),
-    ("Tapis de plus de 6 m²", 59, "Lavage des fibres en profondeur"),
-]
+TARIFS_TEXTILE = []
 
 # Prestations chiffrées après contact. Le quatrième élément est le montant
 # affiché : « Sur devis » quand il n'y a pas de prix d'appel honnête à donner,
@@ -1148,33 +406,21 @@ TARIFS_DEVIS = [
      "nettoyage-haute-pression-paris", "Sur devis"),
     ("Dégraissage de hotte", "Hotte, filtres, bac à graisse, conduits et ventilateur",
      "nettoyage-hottes-paris", "Sur devis"),
-    ("Décapage de sol à la monobrosse", "PVC, linoléum, carrelage, béton, moquette",
-     "nettoyage-monobrosse-paris", "Sur devis"),
-    ("Nettoyage de vitres", "Vitres, baies vitrées et vitrines",
-     "nettoyage-vitres-paris", "Sur devis"),
-    ("Nettoyage pour entreprise", "Bureaux, commerces, locaux et vitrerie",
-     "nettoyage-regulier-paris", "Sur devis"),
-    ("Nettoyage d'appartement", "Remise en état, état des lieux, après déménagement",
-     "nettoyage-appartement-paris", "Sur devis"),
-    ("Débouchage de canalisation", "Évier, douche, WC, colonne",
-     "debouchage-canalisation-paris", "Sur devis"),
-    ("Ramonage de cheminée", "Cheminée, insert, poêle à bois ou à granulés",
-     "ramonage-cheminee-paris", "Dès 50 €"),
-    ("Nettoyage de toiture", "Démoussage, gouttières et descentes",
-     "nettoyage-toiture-paris", "Sur devis"),
 ]
 
 # --- Zones d'intervention -------------------------------------------------
 ZONES = [
     {
         "slug": "paris-75", "num": "75", "name": "Paris",
-        "intro": "Du 1er au 20e arrondissement, nous intervenons à domicile comme en entreprise. "
-                 "Cours d'immeuble, parkings souterrains et rues étroites : notre matériel autonome en eau "
-                 "et en électricité nous permet de travailler là où un centre de lavage ne peut pas.",
-        "focus": "À Paris intra-muros, l'essentiel de notre activité tourne autour du textile — canapés d'angle "
-                 "qu'on ne peut ni démonter ni transporter, matelas et tapis — et du nettoyage automobile en "
-                 "parking résidentiel. Côté professionnels, nous entretenons bureaux, commerces et restaurants "
-                 "en horaires décalés.",
+        "intro": "Du 1er au 20e arrondissement, nous intervenons en logement comme en local "
+                 "professionnel. Cours d'immeuble, parkings souterrains et rues étroites : notre "
+                 "matériel autonome en eau et en électricité nous permet de travailler là où il "
+                 "n'y a ni point d'eau au palier ni prise disponible.",
+        "focus": "À Paris intra-muros, l'essentiel de notre activité tourne autour de la fin de "
+                 "chantier et de la fin de bail : un parc ancien qui se rénove appartement par "
+                 "appartement, et une rotation locative serrée. Côté professionnels, nous "
+                 "dégraissons les hottes des cuisines de quartier et nous reprenons cours et "
+                 "locaux poubelles au petit matin.",
         "cities": ["Paris 1er", "Paris 6e", "Paris 7e", "Paris 8e", "Paris 9e", "Paris 11e",
                    "Paris 12e", "Paris 14e", "Paris 15e", "Paris 16e", "Paris 17e", "Paris 20e"],
     },
@@ -1182,9 +428,11 @@ ZONES = [
         "slug": "hauts-de-seine-92", "num": "92", "name": "Hauts-de-Seine",
         "intro": "De Boulogne-Billancourt à Nanterre, en passant par Neuilly-sur-Seine et Levallois-Perret, "
                  "nous couvrons l'ensemble du département, pavillons comme immeubles de bureaux.",
-        "focus": "Le 92 concentre une forte demande en detailing automobile à domicile et en entretien de "
-                 "bureaux. La Défense et les pôles tertiaires d'Issy-les-Moulineaux ou de Courbevoie nous "
-                 "sollicitent régulièrement pour la vitrerie et l'entretien des moquettes.",
+        "focus": "Le 92 concentre une forte demande de remise en état après travaux : les "
+                 "plateaux de bureaux de La Défense, d'Issy-les-Moulineaux et de Courbevoie "
+                 "se réaménagent en continu, et un plateau livré se nettoie en deux passes, "
+                 "de nuit ou le week-end. Les cuisines de la restauration d'affaires "
+                 "complètent ces demandes.",
         "cities": ["Boulogne-Billancourt", "Neuilly-sur-Seine", "Levallois-Perret", "Courbevoie",
                    "Nanterre", "Issy-les-Moulineaux", "Rueil-Malmaison", "Clamart", "Antony",
                    "Asnières-sur-Seine", "Suresnes", "Meudon"],
@@ -1194,10 +442,10 @@ ZONES = [
         "intro": "C'est notre département : notre adresse de référence est à Tremblay-en-France. De Saint-Denis à "
                  "Montreuil, d'Aubervilliers à Noisy-le-Grand, nous y sommes les plus réactifs — et les frais "
                  "de déplacement y sont, mécaniquement, les plus faibles.",
-        "focus": "Le 93 est un territoire en pleine transformation, avec de nombreux programmes immobiliers "
-                 "neufs, bureaux et ateliers : l'entretien de locaux professionnels et la vitrerie de "
-                 "façade y pèsent lourd. À domicile, l'injection-extraction sur canapés, matelas et tapis "
-                 "et le detailing automobile constituent l'essentiel des demandes.",
+        "focus": "Le 93 est un territoire en pleine transformation : programmes neufs livrés, "
+                 "bureaux et ateliers reconvertis, et une rotation locative soutenue. La fin "
+                 "de chantier et la fin de bail y pèsent lourd, et les zones d'activité "
+                 "appellent régulièrement un lavage haute pression de cours et de quais.",
         "cities": ["Saint-Denis", "Montreuil", "Aubervilliers", "Aulnay-sous-Bois", "Drancy",
                    "Noisy-le-Grand", "Bobigny", "Bondy", "Le Blanc-Mesnil", "Pantin",
                    "Rosny-sous-Bois", "Épinay-sur-Seine", "Tremblay-en-France"],
@@ -1206,9 +454,10 @@ ZONES = [
         "slug": "val-de-marne-94", "num": "94", "name": "Val-de-Marne",
         "intro": "De Créteil à Vincennes, de Vitry-sur-Seine à Saint-Maur-des-Fossés, nous intervenons dans "
                  "tout le Val-de-Marne, chez les particuliers comme dans les locaux professionnels.",
-        "focus": "Les pavillons de Saint-Maur, Nogent et Le Perreux sollicitent surtout le textile — "
-                 "canapés d'angle et tapis — et les grandes surfaces vitrées côté jardin, souvent "
-                 "difficiles à atteindre sans perche.",
+        "focus": "Les pavillons de Saint-Maur, Nogent et Le Perreux appellent surtout le "
+                 "lavage haute pression : terrasses, allées et murets que deux hivers de "
+                 "mousse rendent glissants, et dont le support décide de la pression "
+                 "employée.",
         "cities": ["Créteil", "Vitry-sur-Seine", "Champigny-sur-Marne", "Saint-Maur-des-Fossés",
                    "Ivry-sur-Seine", "Villejuif", "Vincennes", "Maisons-Alfort",
                    "Fontenay-sous-Bois", "Nogent-sur-Marne", "Charenton-le-Pont", "Le Perreux-sur-Marne"],
@@ -1217,9 +466,10 @@ ZONES = [
         "slug": "essonne-91", "num": "91", "name": "Essonne",
         "intro": "D'Évry-Courcouronnes à Massy, de Palaiseau à Corbeil-Essonnes, nous nous déplaçons dans "
                  "tout le département. Les délais y sont généralement de 48 à 72 h.",
-        "focus": "L'habitat pavillonnaire de l'Essonne fait la part belle au detailing automobile à "
-                 "domicile — souvent avant une revente — et au nettoyage des baies et vérandas, que la "
-                 "poussière des axes routiers marque vite.",
+        "focus": "L'habitat pavillonnaire de l'Essonne fait la part belle aux extérieurs : "
+                 "terrasses, allées et abords de maison, que la poussière des axes routiers "
+                 "et les hivers marquent vite. Les rénovations de maison y sont fréquentes, "
+                 "et avec elles les fins de chantier.",
         "cities": ["Évry-Courcouronnes", "Massy", "Savigny-sur-Orge", "Sainte-Geneviève-des-Bois",
                    "Athis-Mons", "Palaiseau", "Viry-Châtillon", "Corbeil-Essonnes", "Draveil",
                    "Yerres", "Brunoy", "Montgeron"],
@@ -1228,9 +478,10 @@ ZONES = [
         "slug": "yvelines-78", "num": "78", "name": "Yvelines",
         "intro": "De Versailles à Mantes-la-Jolie, de Saint-Germain-en-Laye à Montigny-le-Bretonneux, nous "
                  "couvrons les Yvelines pour les particuliers et les entreprises.",
-        "focus": "Les Yvelines nous sollicitent particulièrement pour le textile de belle facture — tapis "
-                 "de laine, selleries cuir — les grands vitrages des maisons anciennes, et l'entretien de "
-                 "locaux professionnels sur les pôles de Saint-Quentin-en-Yvelines.",
+        "focus": "Les Yvelines nous sollicitent particulièrement pour les extérieurs des "
+                 "maisons anciennes — terrasses en pierre, allées gravillonnées, murets — et "
+                 "pour la remise en état après travaux, les rénovations y étant longues et "
+                 "soignées.",
         "cities": ["Versailles", "Sartrouville", "Mantes-la-Jolie", "Saint-Germain-en-Laye", "Poissy",
                    "Conflans-Sainte-Honorine", "Montigny-le-Bretonneux", "Trappes", "Les Mureaux",
                    "Houilles", "Chatou", "Le Chesnay-Rocquencourt"],
@@ -1240,9 +491,10 @@ ZONES = [
         "intro": "De Chelles à Meaux, de Melun à Fontainebleau, nous intervenons dans tout le département, "
                  "y compris sur les villes nouvelles de Marne-la-Vallée. Son nord-ouest est l'un de nos "
                  "secteurs les plus proches : notre adresse de référence est à la limite du département.",
-        "focus": "Le 77 est le plus vaste département francilien : nous y groupons volontiers plusieurs "
-                 "interventions sur une même journée, ce qui reste le meilleur moyen de contenir les frais "
-                 "de déplacement. Le textile, l'automobile à domicile et la vitrerie y dominent.",
+        "focus": "Le 77 est le plus vaste département francilien : nous y groupons volontiers "
+                 "plusieurs interventions sur une même journée, ce qui reste le meilleur "
+                 "moyen de contenir les frais de déplacement. La fin de chantier, les "
+                 "extérieurs et les cuisines de restauration y dominent.",
         "cities": ["Chelles", "Meaux", "Melun", "Pontault-Combault", "Champs-sur-Marne", "Torcy",
                    "Bussy-Saint-Georges", "Lagny-sur-Marne", "Roissy-en-Brie", "Ozoir-la-Ferrière",
                    "Fontainebleau", "Provins"],
@@ -1252,9 +504,9 @@ ZONES = [
         "intro": "D'Argenteuil à Cergy, de Sarcelles à Pontoise, nous couvrons tout le Val-d'Oise. "
                  "Sa pointe est — Roissy-en-France, Goussainville — touche presque notre adresse de "
                  "référence ; la vallée de l'Oise et le Vexin demandent, eux, une vraie traversée.",
-        "focus": "Proximité oblige, nous y intervenons souvent sous 24 à 48 h. Detailing automobile à "
-                 "domicile, injection-extraction sur textile et remise en état après travaux constituent "
-                 "l'essentiel de nos passages dans le 95.",
+        "focus": "Proximité oblige, nous y intervenons souvent sous 24 à 48 h. Remise en état "
+                 "après travaux, fin de bail et lavage haute pression de cours et de quais "
+                 "constituent l'essentiel de nos passages dans le 95.",
         "cities": ["Argenteuil", "Sarcelles", "Cergy", "Garges-lès-Gonesse", "Franconville", "Pontoise",
                    "Ermont", "Bezons", "Herblay-sur-Seine", "Eaubonne", "Goussainville", "Gonesse"],
     },
@@ -1301,20 +553,24 @@ BEFORE_AFTER_HD = 3
 
 # --- FAQ générale ---------------------------------------------------------
 FAQ = [
-    ("Combien coûte un nettoyage automobile ?",
-     "Quatre packs à prix fixe : Extérieur Éclat 50 €, Intérieur Essentiel 55 €, Intérieur Prestige 100 € et "
-     "Intégral 130 €, quelle que soit la taille du véhicule. Le détail de chaque pack et des options figure sur "
-     "notre page tarifs."),
+    ("Combien coûte un nettoyage de fin de chantier ?",
+     "Sur devis, établi après visite ou sur photos. Le prix dépend de la surface, du nombre "
+     "de passes nécessaires, de la nature des sols et de l'accès. Méfiez-vous d'un prix au "
+     "mètre carré annoncé au téléphone sans avoir vu l'état : il suppose une seule passe, et "
+     "il sera révisé sur place."),
     ("Intervenez-vous à domicile ?",
      "Oui, c'est notre mode d'intervention principal, partout en Île-de-France. Nous venons avec notre matériel, "
      "notre eau et notre électricité : vous n'avez ni prise ni point d'eau à fournir."),
     ("Combien de temps dure une intervention ?",
-     "Entre 1 h et 4 h selon la prestation. Un canapé 3 places demande environ 1 h, un Intérieur Prestige "
-     "automobile près de 3 h, une remise en état après travaux une journée complète."),
-    ("Que contient un nettoyage automobile sans option ?",
-     "Aspiration complète de l'habitacle et du coffre, shampoing des tapis et moquettes, puis désinfection des "
-     "allergènes et acariens par vapeur haute température sur les sièges, le volant, les tapis et les surfaces "
-     "planes. Le coffre est compris, sans supplément."),
+     "De quelques heures à plusieurs jours selon la prestation. Un dégraissage de hotte prend "
+     "trois à huit heures selon la longueur du conduit, une terrasse de 40 m² une demi- "
+     "journée, et une fin de chantier une à trois passes réparties sur plusieurs jours, le "
+     "temps que la poussière retombe entre deux."),
+    ("Que contient un dégraissage de hotte ?",
+     "La hotte, les filtres, le bac à graisse et les gouttières, les conduits d'extraction "
+     "accessibles par les trappes de visite, et le ventilateur — turbine et volute comprises. "
+     "Vous recevez un relevé daté et détaillé, zone par zone, destiné au livret d'entretien "
+     "annexé à votre registre de sécurité."),
     ("Les frais de déplacement sont-ils inclus ?",
      "Non, ils s'ajoutent au prix de la prestation : 5 € par tranche de 5 km entre notre adresse "
      "de référence à Tremblay-en-France (93) et votre adresse. La distance comptée est celle de "
@@ -1323,9 +579,11 @@ FAQ = [
      "trois tranches, soit 15 €. Il n'y a pas de plafond, mais le montant vous est annoncé avant "
      "que vous validiez et il ne bouge plus ensuite."),
     ("Utilisez-vous des produits écologiques ?",
-     "Nous privilégions des produits respectueux de l'environnement et de votre santé, sans danger pour les "
-     "enfants ni les animaux. La vapeur haute température nous permet en outre de désinfecter de nombreuses "
-     "surfaces sans aucun produit chimique."),
+     "Nous privilégions des produits respectueux de l'environnement et de votre santé. Sur "
+     "nos trois métiers, le produit n'est pourtant pas la variable principale : un "
+     "dégraissage de hotte demande un alcalin et du temps de pose, un lavage haute pression "
+     "demande surtout la bonne pression, et une fin de chantier se joue d'abord sur "
+     "l'aspiration en filtration fine."),
     ("Faut-il verser un acompte ?",
      "Non. Vous réglez après l'intervention, une fois le résultat constaté avec vous. Nous acceptons les "
      "espèces, la carte bancaire et le virement."),
@@ -1345,6 +603,7 @@ FAQ = [
 POSTS = [
     {
         "slug": "nettoyer-entretenir-canape-tissu",
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "title": "Nettoyer et entretenir son canapé en tissu",
         "cat": "Textile",
         "date": "2026-08-28",
@@ -1367,10 +626,11 @@ POSTS = [
             ("p", "Pour les taches anciennes, les odeurs installées ou un tissu clair qui a perdu sa teinte d'origine, l'injection-extraction reste la seule méthode qui traite le cœur de la fibre sans la détremper. La solution est injectée sous pression puis immédiatement réaspirée avec la saleté dissoute : le canapé ressort humide, pas mouillé, et sèche en 4 à 6 h sans auréole."),
         ],
         "cta": "Un canapé à traiter en profondeur ?",
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": "eliminer-acariens-matelas",
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "title": "Éliminer les acariens de son matelas",
         "cat": "Textile",
         "date": "2026-08-22",
@@ -1390,10 +650,11 @@ POSTS = [
             ("p", "Le bicarbonate masque, il ne détruit pas. Pour éliminer réellement les allergènes, il faut de la chaleur : un nettoyage anti-acariens à haute température, appliqué <strong>sur les deux faces</strong>, traite en profondeur les allergènes, les taches et les odeurs. C'est la solution que nous recommandons systématiquement aux personnes asthmatiques ou allergiques."),
         ],
         "cta": "Un matelas à assainir ?",
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": "raviver-un-tapis",
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "title": "Raviver un tapis sans le faire dégorger",
         "cat": "Textile",
         "date": "2026-08-14",
@@ -1414,10 +675,11 @@ POSTS = [
             ("p", "C'est pour cette raison que nous testons systématiquement la solidité des couleurs sur une zone cachée avant tout lavage, et que nous adaptons la méthode à la fibre : laine, soie et synthétique n'appellent ni les mêmes produits, ni la même quantité d'eau. Les pièces précieuses peuvent être traitées en atelier plutôt qu'à domicile."),
         ],
         "cta": "Un tapis à faire revivre ?",
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": "garder-voiture-propre-plus-longtemps",
+        "hors_offre": "le nettoyage automobile à domicile",
         "title": "Garder sa voiture propre plus longtemps",
         "cat": "Automobile",
         "date": "2026-08-06",
@@ -1445,7 +707,7 @@ POSTS = [
             ('p', "Un mot sur ce qu'elle ne fait pas : une protection ne comble pas une rayure existante et ne protège pas d'un impact. Ce qui a traversé le vernis relève du carrossier, pas de l'entretien."),
         ],
         "cta": "Une voiture à préparer ?",
-        "service": "nettoyage-automobile-paris",
+        "service": "nettoyage-haute-pression-paris",
     },
     {
         "slug": "entretenir-son-bateau",
@@ -1477,7 +739,7 @@ POSTS = [
             ('p', "Quand une odeur de renfermé persiste malgré tout au printemps, un traitement par ozone la traite efficacement — bateau vide, sans présence humaine ni animale pendant l'opération, puis aération avant utilisation."),
         ],
         "cta": "Un bateau à remettre en état ?",
-        "service": "nettoyage-automobile-paris",
+        "service": "nettoyage-haute-pression-paris",
     },
     {
         "slug": "nettoyer-terrasse-sans-abimer",
@@ -1505,6 +767,7 @@ POSTS = [
     },
     {
         "slug": "trois-regles-or-detachage",
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "title": "Les trois règles d'or du détachage",
         "cat": "Conseils",
         "date": "2026-06-27",
@@ -1526,10 +789,11 @@ POSTS = [
             ("p", "Sur un textile de valeur, une tache ancienne ou une matière que vous n'identifiez pas, l'essai raté coûte plus cher que l'intervention. Un professionnel commence de toute façon par identifier la fibre — c'est ce diagnostic, plus que le produit, qui fait la différence."),
         ],
         "cta": "Une tache que vous n'osez pas traiter ?",
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": "vitres-sans-traces",
+        "hors_offre": "le nettoyage de vitres en entretien courant",
         "title": "Des vitres sans traces : les trois vraies causes",
         "cat": "Extérieur",
         "date": "2026-07-09",
@@ -1550,7 +814,7 @@ POSTS = [
             ("p", "Sur les grandes surfaces, les vérandas et les vitrines, nous employons de l'<strong>eau osmosée</strong> : filtrée par osmose inverse, elle ne contient plus de minéraux et sèche donc sans rien déposer. Aucun produit n'est nécessaire, donc aucun film résiduel."),
         ],
         "cta": "Des vitres ou une vitrine à traiter ?",
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
 ]
 
@@ -1624,176 +888,187 @@ HERO = {
 # [slug, nom, code postal, département, lat, lon, angle éditorial, prestations mises en avant]
 VILLES = [
     ("boulogne-billancourt", "Boulogne-Billancourt", "92100", "92", 48.8352, 2.2409,
-     "Première commune d'Île-de-France par la population après Paris, Boulogne-Billancourt mêle "
-     "immeubles haussmanniens, résidences récentes et un tissu dense de sièges sociaux. Deux "
-     "demandes y dominent : le textile en appartement — canapés d'angle qu'on ne peut ni démonter "
-     "ni descendre — et la reprise des moquettes et des sols de bureaux, en horaires décalés.",
-     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
+     "Première commune d'Île-de-France par la population après Paris, Boulogne-Billancourt "
+     "mêle immeubles haussmanniens, résidences récentes et un tissu dense de sièges sociaux. "
+     "Deux demandes y dominent : la remise en état de plateaux de bureaux réaménagés, en "
+     "horaires décalés, et la fin de bail dans un parc locatif qui tourne vite.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("neuilly-sur-seine", "Neuilly-sur-Seine", "92200", "92", 48.8846, 2.2697,
-     "À Neuilly, l'essentiel de nos interventions concerne des selleries cuir, des tapis de "
-     "laine et des moquettes de belle facture — des matières qui ne pardonnent pas l'erreur de "
-     "produit. Le diagnostic de la fibre y compte davantage qu'ailleurs.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
+     "À Neuilly, l'essentiel de nos interventions concerne des rénovations d'appartement "
+     "haussmannien : parquets anciens, pierre, menuiseries sur mesure. Ce sont des finitions "
+     "qui ne pardonnent pas l'erreur de produit, et le diagnostic du support y compte "
+     "davantage qu'ailleurs.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("levallois-perret", "Levallois-Perret", "92300", "92", 48.8939, 2.2874,
      "Levallois concentre bureaux et logements sur un territoire très compact. Le stationnement "
      "y étant difficile, notre autonomie en eau et en électricité change tout : nous intervenons "
      "en parking souterrain, sans avoir à tirer un tuyau depuis la rue.",
-     ["nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("nanterre", "Nanterre", "92000", "92", 48.8924, 2.2069,
      "Entre la préfecture, les campus et la proximité immédiate de La Défense, Nanterre nous "
      "sollicite surtout pour la remise en état de locaux après travaux et le décapage des sols, "
      "deux prestations qui se planifient hors des heures d'activité.",
-     ["nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-hottes-paris"]),
 
     ("issy-les-moulineaux", "Issy-les-Moulineaux", "92130", "92", 48.8239, 2.2730,
-     "Pôle tertiaire dense, Issy-les-Moulineaux nous appelle principalement pour les moquettes de "
-     "bureaux et les sols de circulation. Le shampooing rotatif y prend tout son sens sur les "
-     "grands plateaux, où l'injection-extraction seule immobiliserait l'étage trop longtemps.",
-     ["nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     "Pôle tertiaire dense, Issy-les-Moulineaux nous appelle principalement pour des plateaux "
+     "de bureaux livrés ou réaménagés. Sur ces surfaces, le faux plafond décide : la "
+     "poussière de cloison qui s'y est déposée redescend à chaque passage de la ventilation, "
+     "et c'est ce qui impose une seconde passe.",
+     ["nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris"]),
 
     ("saint-denis", "Saint-Denis", "93200", "93", 48.9362, 2.3574,
      "Saint-Denis est en chantier permanent : programmes neufs, réhabilitations, bureaux livrés en "
      "continu. Le nettoyage de fin de chantier et la reprise des sols y représentent une part "
      "importante de l'activité, le plus souvent entre la livraison et l'entrée dans les lieux.",
-     ["nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("montreuil", "Montreuil", "93100", "93", 48.8638, 2.4485,
      "Montreuil alterne pavillons, lofts d'anciens ateliers et immeubles récents. Les grands "
-     "volumes reconvertis y posent une question précise : des moquettes et des textiles en "
-     "quantité, dans des espaces qu'on ne peut pas vider.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
+     "volumes reconvertis y posent une question précise : des chantiers en hauteur sous "
+     "plafond, où la poussière met plusieurs jours à redescendre des charpentes et des gaines "
+     "apparentes.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("aulnay-sous-bois", "Aulnay-sous-Bois", "93600", "93", 48.9386, 2.4938,
      "Aulnay est à une dizaine de minutes de notre adresse de référence : c'est l'une des "
      "communes où nous intervenons le plus rapidement, souvent dans la journée en cas "
-     "d'urgence. L'habitat "
-     "pavillonnaire y appelle surtout du textile et du detailing automobile à domicile.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
+     "d'urgence. L'habitat pavillonnaire y appelle surtout des extérieurs à reprendre et des "
+     "fins de chantier après rénovation.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("le-blanc-mesnil", "Le Blanc-Mesnil", "93150", "93", 48.9386, 2.4644,
      "Le Blanc-Mesnil est à une dizaine de kilomètres de notre adresse de référence, par "
-     "l'ex-RN2. Habitat pavillonnaire et grands ensembles : le textile à domicile et le "
-     "detailing automobile y dominent, avec un délai habituel de 24 à 48 h.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
+     "l'ex-RN2. Habitat pavillonnaire et grands ensembles : la fin de chantier et le lavage "
+     "des extérieurs y dominent, avec un délai habituel de 24 à 48 h.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("tremblay-en-france", "Tremblay-en-France", "93290", "93", 48.9486, 2.5697,
      "C'est la commune de notre adresse de référence : les frais de déplacement y sont "
      "réduits au minimum et nous pouvons y tenir des délais que nous ne tenons nulle part "
-     "ailleurs. Pavillons, résidences récentes et zones d'activité proches de Roissy : "
-     "les demandes y vont du detailing automobile au nettoyage de locaux.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
+     "ailleurs. Pavillons, résidences récentes et zones d'activité proches de Roissy : les "
+     "demandes y vont de la fin de chantier au lavage de quais et de cours.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("pantin", "Pantin", "93500", "93", 48.8944, 2.4090,
      "Pantin s'est couverte de bureaux et d'ateliers reconvertis le long du canal. Nous y "
      "traitons beaucoup de locaux professionnels, avec la contrainte habituelle des sites "
      "occupés : intervenir tôt le matin ou après la fermeture.",
-     ["nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-hottes-paris"]),
 
     ("creteil", "Créteil", "94000", "94", 48.7904, 2.4556,
      "Préfecture du Val-de-Marne, Créteil combine grands ensembles, zones d'activité et "
-     "équipements publics. Les demandes y sont partagées entre remise en état de locaux et textile "
-     "à domicile.",
-     ["nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris"]),
+     "équipements publics. Les demandes y sont partagées entre remise en état de locaux après "
+     "travaux et lavage haute pression d'aires de stationnement et de quais.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("vincennes", "Vincennes", "94300", "94", 48.8478, 2.4390,
-     "Vincennes est un tissu résidentiel serré, aux appartements souvent anciens. Canapés, "
-     "matelas et tapis y constituent l'essentiel des interventions, avec la contrainte "
-     "récurrente des escaliers étroits — qui ne nous gêne pas, puisque nous travaillons sur place.",
-     ["nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris"]),
+     "Vincennes est un tissu résidentiel serré, aux appartements souvent anciens. Les "
+     "rénovations et les fins de bail y constituent l'essentiel des interventions, avec la "
+     "contrainte récurrente des escaliers étroits et de l'absence d'ascenseur — qui ne nous "
+     "gêne pas, puisque nous venons avec un matériel transportable à la main.",
+     ["nettoyage-hottes-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("saint-maur-des-fosses", "Saint-Maur-des-Fossés", "94100", "94", 48.7994, 2.4934,
-     "Dans la boucle de la Marne, Saint-Maur aligne pavillons avec jardin, vérandas et grandes "
-     "baies côté sud. Le nettoyage des vitrages y suit les saisons, et le textile d'intérieur "
-     "occupe le reste de l'année.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
+     "Dans la boucle de la Marne, Saint-Maur aligne pavillons avec jardin, terrasses et "
+     "allées. Le lavage des extérieurs y suit les saisons — la mousse s'installe du côté "
+     "ombragé dès le premier hiver — et les rénovations de maison occupent le reste de "
+     "l'année.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("massy", "Massy", "91300", "91", 48.7262, 2.2825,
      "Massy conjugue quartiers d'affaires, gares et logements neufs. Nous y intervenons pour la "
      "remise en état après travaux et le décapage des sols, les livraisons de programmes y étant "
      "fréquentes.",
-     ["nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("evry-courcouronnes", "Évry-Courcouronnes", "91000", "91", 48.6238, 2.4297,
      "Évry-Courcouronnes est l'un des points les plus éloignés de notre adresse de référence : nous y "
      "groupons volontiers plusieurs interventions sur une même journée, ce qui reste le meilleur "
      "moyen de contenir les frais de déplacement.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("versailles", "Versailles", "78000", "78", 48.8014, 2.1301,
-     "À Versailles, nous traitons beaucoup de matières nobles — tapis de laine, selleries cuir — "
-     "et de grands vitrages anciens. Sur ces supports, la question n'est jamais la puissance "
-     "mais le réglage.",
-     ["nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris"]),
+     "À Versailles, nous traitons beaucoup de supports anciens — pierre de taille, dallages, "
+     "terrasses — et de rénovations soignées. Sur ces supports, la question n'est jamais la "
+     "puissance mais le réglage : une pierre tendre garde définitivement la marque d'un jet "
+     "trop fort.",
+     ["nettoyage-hottes-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("saint-germain-en-laye", "Saint-Germain-en-Laye", "78100", "78", 48.8987, 2.0940,
      "Maisons anciennes, terrasses en pierre et allées gravillonnées : Saint-Germain-en-Laye "
-     "appelle surtout du nettoyage haute pression au printemps, quand deux hivers de mousse se "
-     "voient, et du textile de valeur le reste de l'année.",
-     ["nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris"]),
+     "appelle surtout du nettoyage haute pression au printemps, quand deux hivers de mousse "
+     "se voient, et des fins de chantier le reste de l'année, les rénovations y étant longues "
+     "et soignées.",
+     ["nettoyage-hottes-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("chelles", "Chelles", "77500", "77", 48.8797, 2.5928,
      "Chelles est l'une des communes de Seine-et-Marne les plus proches de notre adresse de "
-     "référence, à une dizaine de kilomètres. Habitat pavillonnaire dominant : automobile à domicile, "
-     "textile et grandes surfaces vitrées.",
-     ["nettoyage-automobile-paris", "nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
+     "référence, à une dizaine de kilomètres. Habitat pavillonnaire dominant : terrasses et "
+     "allées à reprendre au printemps, et fins de chantier après rénovation.",
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("meaux", "Meaux", "77100", "77", 48.9601, 2.8785,
      "Meaux marque la limite est de notre zone habituelle. Nous y intervenons volontiers, en "
      "planifiant la journée autour du déplacement — plusieurs prestations groupées plutôt qu'un "
      "aller-retour pour une seule.",
-     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris"]),
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("argenteuil", "Argenteuil", "95100", "95", 48.9474, 2.2467,
-     "Argenteuil est la plus peuplée du Val-d'Oise, avec un habitat très varié. Textile à "
-     "domicile et detailing automobile y constituent l'essentiel de nos passages.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
+     "Argenteuil est la plus peuplée du Val-d'Oise, avec un habitat très varié. La fin de "
+     "chantier, la fin de bail et le lavage des extérieurs y constituent l'essentiel de nos "
+     "passages.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("cergy", "Cergy", "95000", "95", 49.0361, 2.0631,
      "Ville nouvelle et pôle universitaire, Cergy nous sollicite pour des locaux professionnels "
      "et des logements étudiants en remise en état, souvent entre deux occupations.",
-     ["nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
+     ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("sarcelles", "Sarcelles", "95200", "95", 48.9959, 2.3785,
-     "Sarcelles est à une vingtaine de kilomètres de notre adresse de référence. "
-     "Nous y intervenons surtout en textile à domicile et en entretien de commerces.",
-     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris"]),
+     "Sarcelles est à une vingtaine de kilomètres de notre adresse de référence. Nous y "
+     "intervenons surtout en remise en état de locaux commerciaux et en dégraissage de "
+     "hottes, sur un tissu de restauration dense.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("paris-8", "Paris 8e", "75008", "75", 48.8721, 2.3120,
-     "Le 8e concentre sièges sociaux, hôtels et commerces de luxe. Selleries cuir, moquettes de "
-     "bureaux et hottes de cuisines d'hôtel y forment le gros de nos interventions, presque "
-     "toujours en horaires décalés pour ne pas gêner l'activité.",
-     ["nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-textile-paris", "nettoyage-automobile-paris"]),
+     "Le 8e concentre sièges sociaux, hôtels et commerces de luxe. Les hottes de cuisines "
+     "d'hôtel et les plateaux de bureaux réaménagés y forment le gros de nos interventions, "
+     "presque toujours en horaires décalés pour ne pas gêner l'activité.",
+     ["nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris"]),
 
     ("paris-11", "Paris 11e", "75011", "75", 48.8580, 2.3792,
      "Le 11e est un arrondissement dense, très résidentiel et très restauré. Nous y traitons "
-     "beaucoup de canapés et de matelas en appartement, et des cuisines professionnelles en "
-     "intervention nocturne.",
-     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris"]),
+     "beaucoup de cuisines professionnelles en intervention nocturne, et des appartements "
+     "anciens rénovés pièce par pièce.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("paris-12", "Paris 12e", "75012", "75", 48.8409, 2.3876,
-     "Entre Bercy, la Bastille et le bois de Vincennes, le 12e alterne immeubles récents et bâti "
-     "ancien. Textile à domicile et remise en état de locaux s'y partagent nos passages.",
-     ["nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris"]),
+     "Entre Bercy, la Bastille et le bois de Vincennes, le 12e alterne immeubles récents et "
+     "bâti ancien. Fins de bail en logement et remises en état de locaux après travaux s'y "
+     "partagent nos passages.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("paris-15", "Paris 15e", "75015", "75", 48.8412, 2.3003,
-     "Le 15e est le plus peuplé des arrondissements parisiens. Grands appartements familiaux, "
-     "donc grands canapés et moquettes : c'est l'arrondissement où l'injection-extraction à "
-     "domicile prend le plus de sens.",
-     ["nettoyage-textile-paris", "nettoyage-haute-pression-paris", "nettoyage-automobile-paris", "nettoyage-fin-de-chantier-paris"]),
+     "Le 15e est le plus peuplé des arrondissements parisiens. Grands appartements familiaux "
+     "et rénovations fréquentes : c'est l'arrondissement où le nombre de passes compte le "
+     "plus, parce que la poussière de plâtre y a de la hauteur sous plafond pour redescendre.",
+     ["nettoyage-hottes-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
 
     ("paris-16", "Paris 16e", "75016", "75", 48.8637, 2.2769,
-     "Le 16e nous amène des matières exigeantes : tapis d'Orient, parquets anciens, selleries "
-     "cuir. Le test de solidité des couleurs y est systématique avant tout lavage.",
-     ["nettoyage-textile-paris", "nettoyage-automobile-paris", "nettoyage-haute-pression-paris", "nettoyage-fin-de-chantier-paris"]),
+     "Le 16e nous amène des supports exigeants : parquets anciens, pierre, marbre de hall. "
+     "L'essai sur une zone cachée y est systématique avant tout traitement, parce que ce sont "
+     "précisément les matériaux qu'un produit mal choisi marque définitivement.",
+     ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("paris-17", "Paris 17e", "75017", "75", 48.8872, 2.3220,
      "Des Batignolles à la plaine Monceau, le 17e mêle résidentiel haussmannien et bureaux "
-     "récents. Textile, décapage de sols et remise en état après travaux s'y répartissent assez "
-     "également.",
-     ["nettoyage-haute-pression-paris", "nettoyage-textile-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-automobile-paris"]),
+     "récents. Fins de chantier en logement, plateaux de bureaux livrés et cuisines de "
+     "restauration s'y répartissent assez également.",
+     ["nettoyage-haute-pression-paris", "nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris"]),
 ]
 
 
@@ -1849,6 +1124,7 @@ GUIDES = [
 },
 {
  "slug": "choisir-entreprise-nettoyage-paris",
+ "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
  "cat": "Bien choisir",
  "h1": "Entreprise de nettoyage à Paris : ce qui change intra-muros",
  "title": "Choisir une entreprise de nettoyage à Paris",
@@ -1873,7 +1149,7 @@ GUIDES = [
    "Oui, du 1er au 20e. Les délais sont généralement de 24 à 48 h à Paris et en petite couronne."),
   ("Faut-il être présent pendant l'intervention ?",
    "C'est préférable au début, pour le diagnostic, et à la fin pour le contrôle. Entre les deux, vous n'êtes pas obligé de rester.")],
- "service": "nettoyage-textile-paris",
+ "service": "nettoyage-fin-de-chantier-paris",
 },
 {
  "slug": "entreprise-nettoyage-professionnelle",
@@ -1905,6 +1181,7 @@ GUIDES = [
 },
 {
  "slug": "prix-nettoyage-canape-paris",
+ "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
  "cat": "Prix",
  "h1": "Combien coûte un nettoyage de canapé à Paris ?",
  "title": "Prix d'un nettoyage de canapé à Paris",
@@ -1929,10 +1206,11 @@ GUIDES = [
    "Souvent, mais pas systématiquement. Une auréole déjà créée par un détachant ménager ou une décoloration ne se rattrapent pas. Nous vous le disons avant l'intervention plutôt qu'après."),
   ("Les produits sont-ils sans danger pour les enfants et les animaux ?",
    "Oui, ils sont choisis pour cela. Quand la vapeur haute température suffit, nous nous passons complètement de produit.")],
- "service": "nettoyage-textile-paris",
+ "service": "nettoyage-fin-de-chantier-paris",
 },
 {
  "slug": "prix-nettoyage-voiture-domicile",
+ "hors_offre": "le nettoyage automobile à domicile",
  "cat": "Prix",
  "h1": "Combien coûte un nettoyage de voiture à domicile ?",
  "title": "Prix d'un nettoyage auto à domicile",
@@ -1958,7 +1236,7 @@ GUIDES = [
    "De 1 h 30 pour un Extérieur Éclat à environ 4 h pour un Intégral sur grand véhicule."),
   ("Est-ce rentable avant une revente ?",
    "C'est l'usage le plus fréquent de nos clients. Un habitacle assaini et sans odeur pèse concrètement sur le prix accepté par l'acheteur.")],
- "service": "nettoyage-automobile-paris",
+ "service": "nettoyage-haute-pression-paris",
 },
 {
  "slug": "entreprise-traitement-ozone-paris",
@@ -1993,7 +1271,7 @@ GUIDES = [
    "Oui, sans exception, pendant le traitement et pendant l'aération qui suit. C'est la seule façon de procéder correctement."),
   ("L'odeur peut-elle revenir après le traitement ?",
    "Seulement si la source est toujours en place. C'est pourquoi le diagnostic préalable compte plus que la puissance du générateur.")],
- "service": "nettoyage-automobile-paris",
+ "service": "nettoyage-haute-pression-paris",
 },
 {
  "slug": "traitement-ozone-ile-de-france",
@@ -2025,10 +1303,11 @@ GUIDES = [
    "Pas pendant le traitement. Le logement doit être vide de ses occupants, de leurs animaux et de leurs plantes, et le rester jusqu'à la fin de l'aération."),
   ("Combien de temps faut-il prévoir en tout ?",
    "Pour un véhicule, une demi-journée en comptant l'aération. Pour un logement, cela se planifie selon le volume : nous vous le disons précisément au devis.")],
- "service": "nettoyage-automobile-paris",
+ "service": "nettoyage-haute-pression-paris",
 },
 {
  "slug": "traitement-ozone-voiture-odeurs",
+ "hors_offre": "le nettoyage automobile à domicile",
  "cat": "Ozone",
  "h1": "Traitement ozone d'une voiture : tabac, animaux, humidité",
  "title": "Traitement ozone voiture — odeur de tabac",
@@ -2055,7 +1334,7 @@ GUIDES = [
    "Dans la grande majorité des cas, oui, à condition que l'habitacle ait été nettoyé au préalable. Sur un véhicule fumé pendant des années, un second passage est parfois nécessaire."),
   ("Puis-je conduire juste après ?",
    "Non. Il faut laisser l'ozone se recombiner en oxygène et aérer, soit environ deux heures. Nous ne vous rendons jamais le véhicule avant.")],
- "service": "nettoyage-automobile-paris",
+ "service": "nettoyage-haute-pression-paris",
 },
 {
  "slug": "traitement-ozone-securite",
@@ -2090,7 +1369,7 @@ GUIDES = [
    "Non. Il se recombine en oxygène, sans dépôt ni film résiduel. C'est l'un de ses intérêts par rapport à un produit chimique."),
   ("Est-ce compatible avec la présence d'enfants dans le logement ?",
    "Après aération complète, oui, l'air est redevenu de l'air ordinaire. Pendant le traitement, non, et cela vaut pour tout le monde.")],
- "service": "nettoyage-automobile-paris",
+ "service": "nettoyage-haute-pression-paris",
 },
 {
  "slug": "prix-traitement-ozone",
@@ -2122,10 +1401,11 @@ GUIDES = [
    "Sur des odeurs très anciennes et très incrustées, cela arrive. Nous le disons au devis quand nous l'anticipons, plutôt que de le découvrir après."),
   ("Le devis est-il payant ?",
    "Non, il est gratuit et sans engagement, comme pour toutes nos prestations.")],
- "service": "nettoyage-automobile-paris",
+ "service": "nettoyage-haute-pression-paris",
 },
 {
  "slug": "injection-extraction",
+ "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
  "cat": "Méthode",
  "h1": "L'injection-extraction expliquée simplement",
  "title": "Injection-extraction : comment ça marche",
@@ -2153,10 +1433,11 @@ GUIDES = [
   ("Combien de passages faut-il ?",
    "Autant que nécessaire pour que l'eau réaspirée ressorte claire. Sur un canapé très encrassé, cela peut demander plusieurs passages croisés.")],
  "video": 'textile',
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
 },
 {
  "slug": "nettoyage-vapeur-desinfection",
+ "hors_offre": "le nettoyage automobile à domicile",
  "cat": "Méthode",
  "h1": "Nettoyage vapeur : ce qu'il désinfecte vraiment",
  "title": "Nettoyage vapeur : ce qu'il fait vraiment",
@@ -2182,7 +1463,7 @@ GUIDES = [
    "Avec prudence. Sur un parquet vitrifié en bon état, oui, en passage rapide. Sur un parquet huilé, ancien ou dont les joints sont ouverts, l'humidité pose problème."),
   ("La vapeur laisse-t-elle de l'humidité ?",
    "Très peu : la vapeur sèche contient une faible proportion d'eau liquide. Les surfaces sont sèches en quelques minutes.")],
- "service": "nettoyage-automobile-paris",
+ "service": "nettoyage-haute-pression-paris",
 },
 {
  "slug": "nettoyage-fin-chantier-combien-de-passages",
@@ -2418,10 +1699,11 @@ GUIDES = [
             ('Traitez-vous une odeur de tabac laissée par un voyageur ?',
              "Oui, par ozone, après nettoyage des surfaces et des textiles. Le traitement se fait logement vide et suivi d'une aération. Sur une odeur ancienne et très incrustée, un second passage est parfois nécessaire ; nous le disons au devis quand nous l'anticipons."),
         ],
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'nettoyage-matelas-paris',
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Textile',
         "h1": 'Nettoyage de matelas à domicile à Paris',
         "title": 'Nettoyage de matelas à Paris',
@@ -2463,10 +1745,11 @@ GUIDES = [
              "Non, nous travaillons sur place. Dégagez simplement l'accès autour du lit et retirez la literie avant notre arrivée."),
         ],
         "video": 'textile',
-        "service": 'nettoyage-textile-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'prix-nettoyage-matelas',
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Prix',
         "h1": "Prix d'un nettoyage de matelas",
         "title": "Prix d'un nettoyage de matelas",
@@ -2503,10 +1786,11 @@ GUIDES = [
             ('Faut-il payer un acompte ?',
              "Non, jamais. Vous réglez après l'intervention, une fois le résultat constaté."),
         ],
-        "service": 'nettoyage-textile-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'nettoyage-moquette-bureau-paris',
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Professionnels',
         "h1": 'Nettoyage de moquette de bureau à Paris',
         "title": 'Nettoyage de moquette de bureau',
@@ -2546,10 +1830,11 @@ GUIDES = [
              "En partie. L'extraction retire la saleté, elle ne restaure pas une fibre usée mécaniquement. Sur une moquette dont la fibre est écrasée dans les couloirs, le résultat sera net mais l'usure restera visible. Nous le disons avant."),
         ],
         "video": 'textile',
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'nettoyage-tapis-paris',
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Textile',
         "h1": 'Nettoyage de tapis à domicile à Paris',
         "title": 'Nettoyage de tapis à Paris',
@@ -2596,7 +1881,7 @@ GUIDES = [
              'Non, nous travaillons chez vous. Il suffit de dégager la surface et, si le tapis est sur parquet, de nous laisser glisser une protection dessous.'),
         ],
         "video": 'textile',
-        "service": 'nettoyage-textile-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'demoussage-terrasse-ile-de-france',
@@ -2733,6 +2018,7 @@ GUIDES = [
     },
     {
         "slug": 'nettoyage-siege-voiture-tache',
+        "hors_offre": "le nettoyage automobile à domicile",
         "cat": 'Automobile',
         "h1": 'Nettoyage de sièges de voiture et détachage',
         "title": 'Nettoyage de sièges de voiture',
@@ -2775,10 +2061,11 @@ GUIDES = [
             ('Traitez-vous les sièges en cuir ?',
              'Oui, en option : nettoyant à pH neutre puis nourrissant. Les deux temps sont indispensables — un cuir dégraissé sans être nourri redevient sec et craquelle.'),
         ],
-        "service": 'nettoyage-automobile-paris',
+        "service": "nettoyage-haute-pression-paris",
     },
     {
         "slug": 'lavage-auto-domicile-paris',
+        "hors_offre": "le nettoyage automobile à domicile",
         "cat": 'Automobile',
         "h1": 'Lavage auto à domicile à Paris et en Île-de-France',
         "title": 'Lavage auto à domicile à Paris',
@@ -2819,7 +2106,7 @@ GUIDES = [
             ('Combien de temps dure une intervention ?',
              "D'environ une heure pour un extérieur seul à trois heures pour un intérieur complet avec extraction des sièges. Le devis précise la durée estimée."),
         ],
-        "service": 'nettoyage-automobile-paris',
+        "service": "nettoyage-haute-pression-paris",
     },
     {
         "slug": 'nettoyage-apres-travaux-appartement',
@@ -2869,6 +2156,7 @@ GUIDES = [
     },
     {
         "slug": 'nettoyage-canape-cuir-alcantara',
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Textile',
         "h1": 'Nettoyage de canapé en cuir et en alcantara',
         "title": 'Nettoyage de canapé cuir et alcantara',
@@ -2911,10 +2199,11 @@ GUIDES = [
             ('Un cuir craquelé se répare-t-il par nettoyage ?',
              "Non. Les fibres sont cassées : un nourrissant assouplit les abords mais ne reconstitue rien. Cela relève d'une réfection en atelier."),
         ],
-        "service": 'nettoyage-textile-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'nettoyage-fauteuil-chaise-bureau',
+        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Professionnels',
         "h1": 'Nettoyage de fauteuils et chaises de bureau',
         "title": 'Nettoyage de fauteuils de bureau',
@@ -2956,7 +2245,7 @@ GUIDES = [
             ('Peut-on traiter les sièges en même temps que la moquette ?',
              "Oui, et c'est la solution la plus économique : même matériel, même déplacement, coût par siège nettement réduit."),
         ],
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'nettoyage-salon-jardin-mobilier-exterieur',
@@ -3000,7 +2289,7 @@ GUIDES = [
             ("Que faire des coussins d'extérieur ?",
              "Housses déhoussables au lavage selon l'étiquette, sans sèche-linge. Coussins fixes en injection-extraction avec un séchage complet à l'air libre — un coussin remisé humide moisit de l'intérieur."),
         ],
-        "service": "nettoyage-textile-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'nettoyage-parking-local-poubelles',
@@ -3097,6 +2386,7 @@ GUIDES = [
     },
     {
         "slug": 'ph-produits-nettoyage-professionnel',
+        "hors_offre": "le nettoyage automobile à domicile",
         "cat": 'Méthode',
         "h1": 'pH et produits : la chimie qui décide du résultat',
         "title": 'pH et produits de nettoyage professionnel',
@@ -3186,10 +2476,11 @@ GUIDES = [
              "Non, il abîme plus vite. Sur une salissure donnée, c'est le pH adapté et le temps de pose qui font le résultat, pas la concentration. Une gamme professionnelle sert précisément à disposer du bon pH pour chaque matière plutôt qu'à monter en puissance."),
         ],
         "video": 'mathclean',
-        "service": 'nettoyage-automobile-paris',
+        "service": "nettoyage-haute-pression-paris",
     },
 {
  "slug": "entreprise-nettoyage-vitres-specialisee",
+ "hors_offre": "le nettoyage de vitres en entretien courant",
  "cat": "Vitrerie",
  "h1": "Entreprise spécialisée en nettoyage de vitres : ce qui la distingue",
  "title": "Entreprise de nettoyage de vitres à Paris",
@@ -3215,10 +2506,11 @@ GUIDES = [
   ("Pourquoi mes vitres se resalissent-elles si vite ?",
    "Le plus souvent à cause du film laissé par les tensioactifs des nettoyants ménagers, qui retient la poussière. Sans produit, ce film n'existe pas.")],
  "video": 'vitres',
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
 },
 {
  "slug": "eau-osmosee-vitres",
+ "hors_offre": "le nettoyage de vitres en entretien courant",
  "cat": "Vitrerie",
  "h1": "Eau osmosée : pourquoi elle supprime les traces sur les vitres",
  "title": "Eau osmosée pour vitres : pourquoi ça marche",
@@ -3245,10 +2537,11 @@ GUIDES = [
   ("Faut-il essuyer après ?",
    "Non, et c'est tout l'intérêt : on laisse sécher. Essuyer reviendrait à réintroduire des fibres et des traces.")],
  "video": 'vitres',
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
 },
 {
  "slug": "frequence-nettoyage-bureaux",
+ "hors_offre": "l'entretien régulier de locaux professionnels",
  "cat": "Professionnels",
  "h1": "À quelle fréquence faire nettoyer ses bureaux ?",
  "title": "Fréquence de nettoyage des bureaux",
@@ -3273,10 +2566,11 @@ GUIDES = [
    "Oui, et c'est souvent le bon point de départ : une remise à niveau permet de voir le résultat avant de s'engager sur un rythme régulier."),
   ("Comment est établi le devis ?",
    "Après visite des locaux : surfaces, zones, contraintes d'accès et d'horaires. Un devis fait sans visite reste une approximation.")],
- "service": "nettoyage-regulier-paris",
+ "service": "nettoyage-fin-de-chantier-paris",
 },
 {
         "slug": 'nettoyage-copropriete-parties-communes',
+        "hors_offre": "l'entretien régulier de locaux professionnels",
         "cat": 'Copropriété',
         "h1": 'Nettoyage des parties communes de copropriété',
         "title": 'Nettoyage des parties communes',
@@ -3317,10 +2611,11 @@ GUIDES = [
             ('Intervenez-vous ponctuellement, sans contrat ?',
              'Oui. Une remise en état après travaux, un local poubelles à reprendre à la haute pression ou une vitrerie de hall se traitent en intervention unique, sur devis.'),
         ],
-        "service": 'nettoyage-regulier-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
 {
         "slug": 'nettoyage-cage-escalier-immeuble',
+        "hors_offre": "l'entretien régulier de locaux professionnels",
         "cat": 'Copropriété',
         "h1": "Nettoyage de cage d'escalier : méthode et fréquence",
         "title": "Nettoyage de cage d'escalier",
@@ -3357,10 +2652,11 @@ GUIDES = [
             ('Nettoyez-vous aussi les vitrages de la cage ?',
              "Oui, à l'eau osmosée, qui sèche sans laisser de trace. C'est en général une prestation trimestrielle plutôt qu'hebdomadaire."),
         ],
-        "service": 'nettoyage-regulier-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
 {
         "slug": 'nettoyage-vitrine-commerce-paris',
+        "hors_offre": "le nettoyage de vitres en entretien courant",
         "cat": 'Vitrerie',
         "h1": 'Nettoyage de vitrine de commerce à Paris',
         "title": 'Nettoyage de vitrine à Paris',
@@ -3399,10 +2695,11 @@ GUIDES = [
              "Oui, au solvant doux. Nous n'utilisons pas de lame sur un vitrage traité, teinté ou filmé, qui se rayerait définitivement."),
         ],
         "video": 'vitres',
-        "service": 'nettoyage-vitres-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
 {
         "slug": 'prix-nettoyage-vitres-m2',
+        "hors_offre": "le nettoyage de vitres en entretien courant",
         "cat": 'Prix',
         "h1": "Prix d'un nettoyage de vitres au mètre carré",
         "title": "Prix d'un nettoyage de vitres au m²",
@@ -3440,10 +2737,11 @@ GUIDES = [
             ('Un contrat régulier revient-il moins cher ?',
              "Oui, nettement. Chaque passage est plus rapide sur un vitrage entretenu, et le déplacement est planifié plutôt qu'improvisé."),
         ],
-        "service": 'nettoyage-vitres-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
 {
         "slug": 'prix-nettoyage-bureaux-m2',
+        "hors_offre": "l'entretien régulier de locaux professionnels",
         "cat": 'Prix',
         "h1": "Prix d'un nettoyage de bureaux au mètre carré",
         "title": "Prix d'un nettoyage de bureaux au m²",
@@ -3485,10 +2783,11 @@ GUIDES = [
             ('Facturez-vous un supplément pour les horaires décalés ?',
              'Non. Avant ouverture, après fermeture ou le week-end, le tarif est le même.'),
         ],
-        "service": 'nettoyage-regulier-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
 {
         "slug": 'nettoyage-local-commercial-restaurant',
+        "hors_offre": "l'entretien régulier de locaux professionnels",
         "cat": 'Professionnels',
         "h1": 'Nettoyage de local commercial et de restaurant',
         "title": 'Nettoyage de local commercial',
@@ -3531,10 +2830,11 @@ GUIDES = [
             ('Pouvez-vous traiter une odeur de friture installée ?',
              "Oui, par ozone, après dégraissage des surfaces. Le traitement se fait local vide, hors présence de personnes, d'animaux et de plantes, et suivi d'une aération avant réouverture."),
         ],
-        "service": 'nettoyage-regulier-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
 {
         "slug": 'nettoyage-veranda-baie-vitree',
+        "hors_offre": "le nettoyage de vitres en entretien courant",
         "cat": 'Vitrerie',
         "h1": 'Nettoyage de véranda et de baie vitrée',
         "title": 'Nettoyage de véranda et baie vitrée',
@@ -3575,7 +2875,7 @@ GUIDES = [
              "Deux fois par an, au printemps et à l'automne. Davantage si des arbres la surplombent, en particulier des résineux."),
         ],
         "video": 'vitres',
-        "service": 'nettoyage-vitres-paris',
+        "service": "nettoyage-fin-de-chantier-paris",
     },
 ]
 
@@ -3587,22 +2887,18 @@ GUIDES = [
 ZONES_DETAIL = {
     "75": [
         ("Le bâti parisien impose ses contraintes", [
-            "Paris se travaille en étage, sans ascenseur une fois sur deux, avec un stationnement "
-            "qui se compte en minutes. Cela conditionne tout : nous venons avec un matériel "
-            "transportable à la main, autonome en eau et en électricité, parce qu'un immeuble "
-            "haussmannien n'offre ni point d'eau au palier ni prise dans la cage d'escalier.",
-            "Les demandes dominantes suivent le bâti. Le textile en premier — canapés d'angle "
-            "et matelas qu'on ne peut pas descendre. Les vitres ensuite, sur des fenêtres à "
-            "petits carreaux qui se comptent en vantaux et non en fenêtres. Les locaux "
-            "professionnels enfin, en horaires décalés, parce qu'un bureau parisien est occupé "
-            "de 8 h à 20 h.",
+            "Les demandes dominantes suivent le bâti. La fin de chantier et la fin de bail en premier — "
+            "un parc ancien qui se rénove appartement par appartement, et une rotation locative serrée. "
+            "Les cuisines professionnelles ensuite, denses et contraintes, où le conduit d'extraction "
+            "monte souvent sur plusieurs étages. Les cours et les locaux poubelles enfin, qui se lavent "
+            "au petit matin parce qu'un immeuble parisien n'a pas d'autre créneau.",
         ]),
         ("Ce qui change d'un arrondissement à l'autre", [
-            "Les arrondissements centraux concentrent les commerces et la restauration : "
-            "vitrines à entretenir chaque semaine, banquettes en tissu, sols carrelés dont les "
-            "joints noircissent. Les arrondissements de l'ouest et du nord-ouest sont davantage "
-            "résidentiels, avec des parquets anciens et des textiles de valeur qui demandent "
-            "une humidité contrôlée plutôt que de l'eau.",
+            "Les arrondissements centraux concentrent les commerces et la restauration : des "
+            "cuisines serrées, des conduits d'extraction qui montent sur plusieurs étages, et "
+            "des agencements refaits entre deux exploitations. Les arrondissements de l'ouest "
+            "et du nord-ouest sont davantage résidentiels, avec des parquets anciens qui "
+            "imposent de travailler à très faible humidité quand une rénovation s'achève.",
             "L'est parisien mêle logements récents et locaux reconvertis : grandes verrières "
             "d'anciens ateliers, plateaux ouverts, moquettes de bureau. Les vitrages y sont "
             "souvent hauts, ce qui se travaille à la perche depuis le sol.",
@@ -3614,10 +2910,11 @@ ZONES_DETAIL = {
             "les quartiers d'affaires : de grands plateaux, des moquettes de bureau à extraire, "
             "des sièges à reprendre, et une contrainte horaire absolue — on n'intervient pas "
             "pendant les heures ouvrées.",
-            "Au sud et sur les communes résidentielles, un habitat plus cossu où les demandes "
-            "portent sur les textiles de qualité, les cuirs et les vitrages de grande "
-            "surface. C'est là que la distinction entre cuir pigmenté et cuir aniline "
-            "prend son importance : le second ne tolère aucun produit aqueux.",
+            "Au sud et sur les communes résidentielles, un habitat plus cossu où les "
+            "rénovations sont longues et soignées, et où la fin de chantier se joue sur des "
+            "finitions coûteuses : pierre, parquet ancien, menuiseries sur mesure. C'est là "
+            "qu'un essai sur zone cachée avant traitement cesse d'être une précaution de "
+            "principe.",
         ]),
         ("Accès et organisation", [
             "Sur les sites tertiaires, nous groupons ce qui peut l'être : extraction de moquette et "
@@ -3635,25 +2932,26 @@ ZONES_DETAIL = {
             "ne pose aucune difficulté d'organisation.",
         ]),
         ("Un terrain d'activité autant que d'habitat", [
-            "Le 93 concentre des zones d'activité, des entrepôts, des locaux reconvertis et un "
-            "habitat collectif dense. Les demandes s'y répartissent entre la remise en état de locaux "
-            "après travaux, le dégraissage de hottes en restauration et le textile en logement.",
+            "Le 93 concentre des zones d'activité, des entrepôts, des locaux reconvertis et "
+            "un habitat collectif dense. Les demandes s'y répartissent entre la remise en "
+            "état de locaux après travaux, le dégraissage de hottes en restauration et le "
+            "lavage de cours et de quais de livraison.",
         ]),
     ],
     "94": [
         ("Pavillonnaire, collectif et bords de Marne", [
             "Le Val-de-Marne alterne pavillons avec jardin, collectif récent et communes de "
             "bord de Marne. Cette diversité explique la répartition de nos interventions : "
-            "beaucoup de vitrages — baies côté jardin, vérandas — dans le pavillonnaire, du "
-            "textile et de l'entretien de parties communes dans le collectif.",
-            "Les pavillons de bord de Marne ont souvent une véranda ou une grande baie "
-            "exposée plein sud, que la pluie et le pollen marquent en quelques semaines.",
+            "beaucoup d'extérieurs — terrasses, allées, murets — dans le pavillonnaire, et "
+            "des remises en état après ravalement ou après travaux dans le collectif.",
+            "Les pavillons de bord de Marne ont souvent une terrasse exposée au nord, côté "
+            "rivière, où l'humidité entretient la mousse une bonne partie de l'année.",
         ]),
         ("Le facteur végétal", [
             "C'est le département le plus arboré de la petite couronne, et cela se voit sur "
-            "les vitres : pollen au printemps, sève et poussière l'été, feuilles collées par "
-            "la pluie à l'automne. Une eau ordinaire laisse alors des traces en séchant, parce "
-            "que ses minéraux restent sur le verre une fois l'eau partie.",
+            "les sols extérieurs : pollen au printemps, sève et poussière l'été, feuilles "
+            "collées par la pluie à l'automne, puis la mousse qui s'installe sur la face "
+            "nord. Une terrasse ombragée se reverdit en un seul hiver.",
             "Nous travaillons à l'eau osmosée, privée de ces minéraux : elle sèche sans rien "
             "déposer, y compris sur de grandes surfaces qu'on ne peut pas essuyer d'un geste.",
         ]),
@@ -3664,12 +2962,14 @@ ZONES_DETAIL = {
             "matériellement plus simples — on se gare devant, on déploie le matériel, on "
             "travaille sans contrainte de créneau.",
             "Les demandes suivent l'habitat : pavillonnaire dominant, donc beaucoup "
-            "d'automobile à domicile et de vitrages de grande surface, vérandas comprises.",
+            "d'extérieurs à reprendre — terrasses, allées, descentes de garage — et des "
+            "rénovations de maison qui se terminent par une fin de chantier.",
         ]),
         ("Grouper, parce que le trajet compte", [
-            "L'Essonne est le département le plus éloigné de notre adresse de référence. Nous nous y "
-            "déplaçons volontiers, mais nous vous conseillons de regrouper : la voiture et les "
-            "vitres, les matelas et le canapé, la véranda et la baie du salon.",
+            "L'Essonne est le département le plus éloigné de notre adresse de référence. Nous "
+            "nous y déplaçons volontiers, mais nous vous conseillons de regrouper : la "
+            "terrasse et l'allée, les abords et la descente de garage, la fin de chantier et "
+            "le lavage des extérieurs qui a suivi les travaux.",
             "Le déplacement est unique, le matériel est déjà en place, et le coût par "
             "prestation baisse nettement. C'est le conseil le plus utile que nous puissions "
             "donner sur ce département, et il ne va pas dans le sens de notre facturation.",
@@ -3685,14 +2985,16 @@ ZONES_DETAIL = {
             "quand la matière relève d'un atelier spécialisé. Une laine feutrée par une eau "
             "trop chaude ne se rattrape pas.",
         ]),
-        ("Vitrages et extérieurs", [
-            "Le bâti individuel des Yvelines apporte beaucoup de vitrage : vérandas, baies de "
-            "grande dimension, verrières. Nous les traitons à l'eau osmosée depuis le sol, à la "
-            "perche, jusqu'à trois niveaux environ — au-delà, il faut une nacelle et ce n'est "
-            "plus notre métier.",
-            "Les toitures de véranda méritent une attention particulière : personne ne les "
-            "regarde, elles s'encrassent progressivement, et la pièce s'assombrit d'année en "
-            "année sans qu'on identifie la cause.",
+        ("Les extérieurs d'une maison ancienne", [
+            "Le bâti individuel des Yvelines apporte beaucoup de surfaces minérales : "
+            "terrasses en pierre reconstituée, dallages anciens, murets. Chacune a une "
+            "pression admissible différente, et c'est elle qui commande le réglage de la "
+            "lance — jamais l'inverse. Une pierre tendre lavée au jet maximal garde la marque "
+            "du passage.",
+            "Les abords d'une maison ancienne méritent une attention particulière : personne "
+            "ne les regarde, ils s'encrassent progressivement, et une terrasse en pierre "
+            "devient glissante d'année en année sans qu'on identifie le moment où cela a "
+            "basculé.",
         ]),
     ],
     "77": [
@@ -3708,9 +3010,9 @@ ZONES_DETAIL = {
             "Le terrain mêle habitat individuel avec de grandes surfaces vitrées et un tissu "
             "de locaux d'activité et d'entrepôts. L'entretien de ces locaux y est fréquent, "
             "porté par la construction neuve.",
-            "Comme en Essonne, le conseil qui compte est de grouper. Une venue qui traite les "
-            "vitres, le canapé et la voiture vaut mieux que trois déplacements successifs, "
-            "pour nous comme pour votre facture.",
+            "Comme en Essonne, le conseil qui compte est de grouper. Une venue qui traite la "
+            "terrasse, l'allée et les abords du garage vaut mieux que trois déplacements "
+            "successifs, pour nous comme pour votre facture.",
         ]),
     ],
     "95": [
@@ -3727,8 +3029,8 @@ ZONES_DETAIL = {
         ("Habitat mixte et zones d'activité", [
             "Le 95 alterne collectif dense au sud-est, pavillonnaire au nord et à l'ouest, et "
             "de vastes zones logistiques autour des plateformes aéroportuaires. Les demandes "
-            "s'y répartissent entre textile en logement, entretien de locaux professionnels et "
-            "remise en état après travaux.",
+            "s'y répartissent entre remise en état après travaux, lavage de quais et de "
+            "cours, et fin de bail en logement.",
             "Les copropriétés y sont nombreuses et les prestations ponctuelles fréquentes : "
             "reprise d'une cage d'escalier, local poubelles à traiter à la haute pression, "
             "parking souterrain à dégraisser. Ce sont des postes que les contrats d'entretien "
@@ -7173,9 +6475,10 @@ DOSSIERS = [
     },
     {
         "slug": "nettoyage-vitrine-commerce-frequence",
+        "hors_offre": "le nettoyage de vitres en entretien courant",
         "cat": "Vitrerie",
         "audience": "pro",
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
         "h1": "Vitrine de commerce : à quelle fréquence la faire nettoyer",
         "title": "Nettoyage de vitrine de commerce : quelle fréquence",
         "meta": "Hebdomadaire, bimensuel ou mensuel : ce qui décide du rythme, et pourquoi la "
@@ -7247,9 +6550,10 @@ DOSSIERS = [
     },
     {
         "slug": "traces-blanches-vitres-calcaire",
+        "hors_offre": "le nettoyage de vitres en entretien courant",
         "cat": "Vitrerie",
         "audience": "mixte",
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
         "h1": "Traces blanches sur les vitres : d'où elles viennent et comment les supprimer",
         "title": "Traces blanches sur les vitres : la cause et la solution",
         "meta": "La trace blanche qui reste après nettoyage n'est pas de la saleté : c'est le "
@@ -7324,9 +6628,10 @@ DOSSIERS = [
     },
     {
         "slug": "nettoyage-vitres-en-hauteur-limites",
+        "hors_offre": "le nettoyage de vitres en entretien courant",
         "cat": "Vitrerie",
         "audience": "pro",
-        "service": "nettoyage-vitres-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
         "h1": "Nettoyage de vitres en hauteur : ce que nous faisons et ce que nous ne faisons pas",
         "title": "Nettoyage de vitres en hauteur : nos limites",
         "meta": "Jusqu'à trois niveaux depuis le sol à la perche et à l'eau déminéralisée. "
@@ -7401,9 +6706,10 @@ DOSSIERS = [
     },
     {
         "slug": "cahier-des-charges-nettoyage-bureaux",
+        "hors_offre": "l'entretien régulier de locaux professionnels",
         "cat": "Entretien régulier",
         "audience": "pro",
-        "service": "nettoyage-regulier-paris",
+        "service": "nettoyage-fin-de-chantier-paris",
         "h1": "Nettoyage de bureaux : rédiger un cahier des charges qui tient",
         "title": "Cahier des charges de nettoyage de bureaux",
         "meta": "Fréquences par zone, périmètre, consommables, horaires, contrôle : ce qui "
