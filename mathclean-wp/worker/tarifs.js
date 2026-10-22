@@ -87,18 +87,8 @@ export const TARIFS = {
   ],
   "services": [
     {
-      "slug": "nettoyage-hottes-paris",
-      "nav": "Dégraissage de hottes",
-      "univers": "devis"
-    },
-    {
-      "slug": "nettoyage-regulier-paris",
-      "nav": "Nettoyage d'entreprise",
-      "univers": "devis"
-    },
-    {
-      "slug": "nettoyage-appartement-paris",
-      "nav": "Nettoyage d'appartement",
+      "slug": "nettoyage-fin-de-chantier-paris",
+      "nav": "Nettoyage de fin de chantier",
       "univers": "devis"
     },
     {
@@ -107,34 +97,14 @@ export const TARIFS = {
       "univers": "devis"
     },
     {
-      "slug": "nettoyage-automobile-paris",
-      "nav": "Nettoyage automobile",
-      "univers": "auto"
-    },
-    {
       "slug": "nettoyage-textile-paris",
       "nav": "Nettoyage textile (canapé, matelas, tapis)",
       "univers": "textile"
     },
     {
-      "slug": "nettoyage-vitres-paris",
-      "nav": "Nettoyage de vitres",
-      "univers": "devis"
-    },
-    {
-      "slug": "ramonage-cheminee-paris",
-      "nav": "Ramonage de cheminée",
-      "univers": "devis"
-    },
-    {
-      "slug": "nettoyage-toiture-paris",
-      "nav": "Nettoyage de toiture",
-      "univers": "devis"
-    },
-    {
-      "slug": "debouchage-canalisation-paris",
-      "nav": "Débouchage de canalisation",
-      "univers": "devis"
+      "slug": "nettoyage-automobile-paris",
+      "nav": "Nettoyage automobile",
+      "univers": "auto"
     }
   ],
   "deplacement": {

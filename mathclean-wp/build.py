@@ -350,11 +350,8 @@ def nav_menu(base, current):
     # par commune, et c'est ce qu'un professionnel cherche.
     services_pro = "".join(
         '<li class="nav-pro"><a href="%s%s">%s</a></li>' % (base, h, lb) for h, lb in (
-        ("services/nettoyage-hottes-paris.html", "Dégraissage de hottes"),
-        ("nettoyage-restaurant.html", "Nettoyage de restaurant"),
-        ("menage-regulier.html", "Nettoyage d'entreprise"),
-        ("vitrerie-professionnelle.html", "Vitrerie professionnelle"),
         ("nettoyage-haute-pression.html", "Nettoyage haute pression"),
+        ("services/nettoyage-fin-de-chantier-paris.html", "Nettoyage de fin de chantier"),
     ))
     zones_sub = "".join(
         '<li><a href="%szones/%s.html">%s (%s)</a></li>' % (base, z["slug"], z["name"], z["num"])
@@ -382,9 +379,8 @@ def nav_menu(base, current):
   <a href="{base}guides.html">Conseils {icon('chevron', 'caret')}</a>
   <ul class="sub-menu">
     <li><a href="{base}guides.html"><strong>Guides pratiques</strong></a></li>
-    <li><a href="{base}dossiers.html"><strong>Dossiers techniques</strong></a></li>
     <li><a href="{base}blog.html"><strong>Astuces &amp; conseils</strong></a></li>
-    <li class="sub-sep"><a href="{base}hottes.html">Hottes : par métier et par commune</a></li>
+    <li class="sub-sep"><a href="{base}nettoyage-haute-pression.html">Haute pression : par surface</a></li>
   </ul>
 </li>
 <li{cls('realisations')}><a href="{base}realisations.html">Réalisations</a></li>
@@ -524,12 +520,9 @@ def footer(base):
         <ul>{services_links}</ul>
         <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
         <ul>
-          <li><a href="{base}hottes.html">Hottes et conduits</a></li>
-          <li><a href="{base}nettoyage-restaurant.html">Nettoyage de restaurant</a></li>
+
           <li><a href="{base}nettoyage-haute-pression.html">Nettoyage haute pression</a></li>
-          <li><a href="{base}vitrerie-professionnelle.html">Vitrerie professionnelle</a></li>
-          <li><a href="{base}menage-regulier.html">Entretien régulier</a></li>
-          <li><a href="{base}nettoyage-appartement.html">Nettoyage d'appartement</a></li>
+
         </ul>
       </div>
       <div>
@@ -544,7 +537,6 @@ def footer(base):
           <li><a href="{base}tarifs.html">Tarifs</a></li>
           <li><a href="{base}realisations.html">Réalisations</a></li>
           <li><a href="{base}guides.html">Guides pratiques</a></li>
-          <li><a href="{base}dossiers.html">Dossiers techniques</a></li>
           <li><a href="{base}blog.html">Conseils &amp; astuces</a></li>
           <li><a href="{base}reservation.html">Réserver en ligne</a></li>
           <li><a href="{base}devis.html">Devis gratuit</a></li>
@@ -1548,7 +1540,7 @@ def build_services_archive():
         <a href="services/nettoyage-textile-paris.html">nettoyage textile</a>.</li>
       <li>Un <strong>besoin régulier</strong> plutôt qu'une intervention unique&nbsp;: nous établissons
         un rythme et un tarif fixes. Voir le
-        <a href="services/nettoyage-regulier-paris.html">nettoyage pour entreprise</a>.</li>
+        <a href="services/nettoyage-fin-de-chantier-paris.html">nettoyage de fin de chantier</a>.</li>
     </ul>
     <p>
       Dans le doute, notre <a href="guides.html">bibliothèque de guides</a> détaille les méthodes,
@@ -2211,8 +2203,9 @@ def build_realisations():
         elle décolle le gras sans détergent agressif.</li>
       <li><strong>Haute pression réglée selon le support</strong> pour les extérieurs&nbsp;: le réglage
         change du tout au tout entre une dalle béton et une pierre tendre.</li>
-      <li><strong>Eau osmosée</strong> pour les vitres&nbsp;: privée de ses minéraux, elle sèche sans
-        rien déposer. Voir <a href="guides/eau-osmosee-vitres.html">pourquoi ça marche</a>.</li>
+      <li><strong>Aspiration à filtration fine</strong> pour les fins de chantier&nbsp;: la
+        poussière de plâtre se capte, elle ne se balaie pas — un balai la remet en l'air et
+        elle redescend deux jours plus tard.</li>
     </ul>
     <p>
       Le détail par prestation figure sur <a href="services.html">nos pages de prestations</a>, avec
@@ -2587,8 +2580,7 @@ def bloc_hors_offre(base, item):
           <strong>Ce sujet ne fait plus partie de nos prestations.</strong>
           Nous laissons ce texte en ligne parce qu'il reste utile, mais MathClean ne réalise plus
           {item['hors_offre']}. Nos {NB_SERVICES} prestations sont le
-          <a href="{base}services/nettoyage-vitres-paris.html">nettoyage de vitres</a>, le
-          <a href="{base}services/nettoyage-regulier-paris.html">nettoyage pour entreprise</a>, le
+          <a href="{base}services/nettoyage-fin-de-chantier-paris.html">nettoyage de fin de chantier</a>, le
           <a href="{base}services/nettoyage-automobile-paris.html">nettoyage automobile</a> et le
           <a href="{base}services/nettoyage-textile-paris.html">nettoyage textile</a>.{extra}
         </p>
@@ -2809,14 +2801,14 @@ def build_apropos():
           <a href="services/nettoyage-textile-paris.html">textile</a> — canapés, matelas, tapis et
           moquettes — et du <a href="services/nettoyage-automobile-paris.html">nettoyage automobile</a>
           à domicile, souvent avant une revente ou après un long trajet. Le
-          <a href="services/nettoyage-vitres-paris.html">nettoyage des vitres</a> complète ces demandes,
+          <a href="services/nettoyage-haute-pression-paris.html">nettoyage haute pression</a> complète ces demandes,
           en particulier sur les pavillons à grandes baies.
         </p>
         <p>
           Côté professionnels, nous entretenons
-          <a href="services/nettoyage-regulier-paris.html">bureaux, commerces et locaux d'activité</a> en
+          <a href="services/nettoyage-fin-de-chantier-paris.html">bureaux, commerces et locaux d'activité</a> en
           passage régulier ou ponctuel, et nous prenons en charge les
-          <a href="services/nettoyage-vitres-paris.html">vitrines et façades vitrées</a>, avant l'ouverture
+          <a href="services/nettoyage-haute-pression-paris.html">façades et sols extérieurs</a>, avant l'ouverture
           ou après la fermeture pour ne pas gêner l'activité.
         </p>
         <p>
@@ -3023,24 +3015,20 @@ def build_professionnels():
       <span class="eyebrow">Votre métier, votre commune</span>
       <h2>Entrer par ce qui vous concerne</h2>
       <p class="lead">
-        Le dépôt d'une hotte de pizzeria n'est pas celui d'une hotte de boulangerie, et une
-        vitrine d'agence immobilière ne pose pas le problème d'une vitrine de pharmacie. Ces
-        trois sommaires mènent directement à ce qui vous concerne.
+        Une cour de jardinerie ne se lave pas comme un quai de livraison, et un chantier de
+        bureaux livré ne demande pas le même nombre de passes qu'une pièce repeinte. Ces
+        sommaires mènent directement à ce qui vous concerne.
       </p>
     </div>
     <ul class="lien-liste">
-      <li><a href="hottes.html">Nettoyage de hottes et de conduits — par métier et par
-        commune</a></li>
-      <li><a href="nettoyage-restaurant.html">Nettoyage de restaurant — salle, cuisine,
-        sanitaires et vitrine, commune par commune</a></li>
       <li><a href="nettoyage-haute-pression.html">Nettoyage haute pression — parkings, quais,
-        locaux poubelles et cours d'immeuble</a></li>
-      <li><a href="vitrerie-professionnelle.html">Vitrerie professionnelle — vitrines, façades
-        et vitrages intérieurs</a></li>
-      <li><a href="menage-regulier.html">Entretien régulier — bureaux, copropriétés,
-        commerces, cabinets</a></li>
-      <li><a href="dossiers.html">Dossiers techniques — réglementation, risque d'incendie,
-        cahier des charges</a></li>
+        cours, façades et sols extérieurs, surface par surface</a></li>
+      <li><a href="services/nettoyage-fin-de-chantier-paris.html">Nettoyage de fin de chantier —
+        logements, bureaux et locaux commerciaux après travaux</a></li>
+      <li><a href="services/nettoyage-textile-paris.html">Nettoyage textile — sièges, moquettes
+        et fauteuils de bureau, sur site</a></li>
+      <li><a href="guides.html">Guides pratiques — prix au mètre carré, nombre de passes,
+        questions à poser avant de signer</a></li>
     </ul>
   </div>
 </section>
@@ -3056,14 +3044,13 @@ def build_professionnels():
       <li><strong>Les parcs multi-sites à grande échelle.</strong> Plusieurs dizaines
         d'immeubles avec remplacement immédiat en cas d'absence demandent une structure que
         nous n'avons pas.</li>
-      <li><strong>Les travaux sur un réseau d'extraction.</strong> Nous dégraissons et nous
-        ramonons hotte, filtres et conduits ; la pose d'une trappe de visite, la modification
-        d'un tracé ou le remplacement d'un moteur relèvent d'un installateur.</li>
-      <li><strong>La vérification annuelle de l'article GC 22.</strong> Elle revient à un
-        technicien compétent ou à un organisme agréé. Nous délivrons l'attestation de nettoyage
-        et d'entretien de la hotte et des conduits, qui se range dans votre
-        <a href="dossiers/obligation-nettoyage-hotte-restaurant.html">livret d'entretien</a> —
-        elle dit ce que nous avons fait, elle ne remplace pas cette vérification.</li>
+      <li><strong>L'évacuation des gravats et des déchets de chantier.</strong> Elle relève du
+        transport de déchets, avec les déclarations qui vont avec, et se règle avec une benne
+        ou votre entreprise de travaux. Nous évacuons les protections que nous déposons et les
+        déchets de notre propre intervention, pas le reste.</li>
+      <li><strong>Le fibrociment posé avant 1997.</strong> Il est présumé contenir de l'amiante,
+        et le laver sous pression en libère les fibres. C'est du désamiantage, un métier
+        certifié que nous ne pratiquons pas.</li>
       <li><strong>La désinsectisation et la dératisation.</strong> Elles relèvent d'agréments
         spécifiques que nous ne détenons pas.</li>
       <li><strong>Le travail en hauteur au-delà de trois niveaux.</strong> Au-delà, il faut
@@ -3215,14 +3202,14 @@ def build_particuliers():
       </p>
     </div>
     <ul class="lien-liste">
-      <li><a href="nettoyage-appartement.html">Nettoyage d'appartement, commune par
-        commune</a></li>
       <li><a href="nettoyage-haute-pression.html">Nettoyage haute pression : terrasse, allée,
         cour, façade</a></li>
-      <li><a href="dossiers/nettoyage-appartement-etat-des-lieux.html">Nettoyage avant état des
+      <li><a href="guides/nettoyage-etat-des-lieux-sortie.html">Nettoyage avant état des
         lieux : la liste de ce qui est vérifié</a></li>
+      <li><a href="guides/nettoyage-fin-chantier-combien-de-passages.html">Fin de chantier :
+        combien de passages faut-il vraiment</a></li>
       <li><a href="villes.html">Toutes les communes que nous documentons</a></li>
-      <li><a href="dossiers.html">Nos dossiers techniques</a></li>
+      <li><a href="guides.html">Nos guides pratiques</a></li>
     </ul>
   </div>
 </section>
@@ -4304,21 +4291,12 @@ def find_us(base):
 # RÉSERVATION EN LIGNE
 # ===========================================================================
 EXEMPLES_BRIEF = {
-    "nettoyage-hottes-paris":
-        "Exemple : restaurant de 60 couverts, hotte de 3 m au-dessus du piano, conduit qui "
-        "monte en toiture, jamais nettoyé depuis la reprise du local il y a deux ans.",
-    "nettoyage-appartement-paris":
-        "Exemple : trois-pièces de 62 m² vide, état des lieux de sortie dans cinq jours, four "
-        "et joints de salle de bains à reprendre.",
+    "nettoyage-fin-de-chantier-paris":
+        "Exemple : trois-pièces de 62 m² repeint et carrelé, les peintres sortent vendredi, "
+        "état des lieux d'entrée le mercredi suivant, laitance sur le carrelage neuf.",
     "nettoyage-haute-pression-paris":
         "Exemple : terrasse en pierre de 40 m² côté nord, verte depuis deux hivers, plus une "
         "allée de 15 m avec des traces d'huile au droit du stationnement.",
-    "nettoyage-vitres-paris":
-        "Exemple : maison avec véranda, une baie coulissante à quatre vantaux et huit fenêtres "
-        "à l'étage, jamais nettoyées depuis l'hiver.",
-    "nettoyage-regulier-paris":
-        "Exemple : bureau de 120 m², six postes et une salle de réunion, passage souhaité deux "
-        "fois par semaine après 19 h.",
 }
 
 
@@ -4744,16 +4722,11 @@ _CONTEXTE_PRESTA = {
         "ni descendre : canapés d'angle, matelas en étage, tapis posés sur parquet. "
         "L'injection-extraction se pratique sur place, et le point à anticiper est le séchage — "
         "quatre à six heures pour un matelas, un peu plus pour un canapé épais.",
-    "nettoyage-vitres-paris":
-        "Sur la vitrerie, nous travaillons à l'eau osmosée : privée de ses minéraux, elle sèche "
-        "sans rien déposer, ce qui règle le problème des traces sur les grandes surfaces vitrées. "
-        "Nous intervenons depuis le sol à la perche jusqu'à trois niveaux environ ; au-delà, "
-        "il faut une nacelle et c'est un autre métier.",
-    "nettoyage-regulier-paris":
-        "Sur les locaux professionnels, la difficulté n'est pas technique mais horaire. Nous "
-        "intervenons avant l'ouverture, après la fermeture ou le week-end, sans supplément : "
-        "c'est la seule façon de travailler correctement sur un site occupé, et cela évite de "
-        "gêner votre activité.",
+    "nettoyage-fin-de-chantier-paris":
+        "Sur un chantier livré, la difficulté n'est pas le volume mais le nombre de passes. La "
+        "poussière de plâtre redescend des volumes hauts pendant des jours : une seule "
+        "intervention donne un résultat qui ne tient pas la semaine. Nous annonçons le nombre "
+        "de passes avant le devis, et nous intervenons une fois le dernier corps d'état sorti.",
 }
 
 # Second angle par prestation. Le choix entre les deux variantes est déterminé
@@ -5306,7 +5279,7 @@ def build_villes_archive():
     <p>
       Pour les professionnels multi-sites, nous établissons un forfait unique plutôt qu'un
       déplacement par adresse&nbsp;: voir le
-      <a href="services/nettoyage-regulier-paris.html">nettoyage pour entreprise</a>.
+      <a href="services/nettoyage-haute-pression-paris.html">nettoyage haute pression</a>.
     </p>
 
     <h2>Ce que chaque page de commune vous indique</h2>
@@ -5667,9 +5640,6 @@ def build_llms_txt():
     guides = "\n".join(
         "- %s : %s/guides/%s.html" % (g["h1"], SITE["url"], g["slug"]) for g in GUIDES
     )
-    dossiers = "\n".join(
-        "- %s : %s/dossiers/%s.html" % (d["h1"], SITE["url"], d["slug"]) for d in DOSSIERS
-    )
     zones = ", ".join("%s (%s)" % (z["name"], z["num"]) for z in ZONES)
     villes = ", ".join(v[1] for v in VILLES)
     premium_txt = "\n".join(
@@ -5700,7 +5670,6 @@ def build_llms_txt():
   injection-extraction, puis lavage de vitres. {SITE['url']}/assets/videos/methode-mathclean.mp4
   Elle est visible sur la page d'accueil et sur {SITE['url']}/realisations.html
 - Extrait textile (37 s) : {SITE['url']}/services/nettoyage-textile-paris.html
-- Extrait vitrerie (22 s) : {SITE['url']}/services/nettoyage-vitres-paris.html
 - Avant/après d'interventions réelles : {SITE['url']}/realisations.html — chaque paire provient
   d'une même intervention, jamais de deux clichés sans rapport.
 - Avis clients : uniquement sur la fiche Google, jamais recopiés sur le site.
@@ -5722,9 +5691,10 @@ def build_llms_txt():
   neutralisation des odeurs par ozone 30 €.
 - Textile : chaise 15 €, fauteuil 25 €, canapé 2 places 39 €, 3 places 49 €, angle 69 €,
   matelas 1 place 39 €, 2 places 49 €, tapis 39 € à 59 €.
-- Nettoyage de hottes, vitrerie, entretien régulier et nettoyage d'appartement : sur devis
-  après échange, photos ou visite. Le devis est ferme : le prix ne bouge plus une fois annoncé.
-- Hottes : le devis est établi après constat, trappes de visite ouvertes.
+- Fin de chantier et haute pression : sur devis après échange, photos ou visite. Le devis
+  est ferme : le prix ne bouge plus une fois annoncé.
+- Fin de chantier : le nombre de passes nécessaires est annoncé avant le devis, pas découvert
+  en cours de chantier.
 - Grille complète : {SITE['url']}/tarifs.html
 
 ## Zone d'intervention
@@ -5735,41 +5705,11 @@ Villes documentées : {villes}.
 Une page dédiée par couple prestation × commune, sur dix communes d'Île-de-France :
 {premium_txt}
 
-## Pages par métier et par commune
-Le catalogue est doublé de familles de pages sectorielles et locales, chacune
-avec sa contrainte technique propre (dépôt dominant, rythme, horaire d'accès) :
-- Hottes et conduits, par métier ({len(SECTEURS_HOTTE)} métiers) et par commune
-  ({len(VILLES_PRO)} communes) : {SITE['url']}/hottes.html
-- Vitrerie professionnelle, par métier ({len(SECTEURS_VITRES)}) et par commune
-  ({len(VILLES_PRO)}) : {SITE['url']}/vitrerie-professionnelle.html
-- Entretien régulier, par type de site ({len(SECTEURS_MENAGE)}) :
-  {SITE['url']}/menage-regulier.html
-- Nettoyage de restaurant, par commune ({len(VILLES_PRO)}) :
-  {SITE['url']}/nettoyage-restaurant.html
-- Nettoyage d'appartement, par commune ({len(VILLES_APPART)}) :
-  {SITE['url']}/nettoyage-appartement.html
-
-## Cadre réglementaire cité (hottes)
-Arrêté du 25 juin 1980, article GC 21, pour les établissements recevant du public
-dotés de grandes cuisines, section 7 « Entretien et vérifications ».
-Article GC 21 : filtres nettoyés ou remplacés au moins une fois par semaine ;
-ramonage des conduits d'évacuation au moins une fois par an avec vérification de
-leur vacuité ; nettoyage du circuit d'extraction aussi souvent que nécessaire ;
-dates notées par l'exploitant dans un livret d'entretien annexé au registre de
-sécurité.
-Article GC 22 : vérification annuelle des installations de cuisson dans les
-établissements des quatre premières catégories, par un technicien compétent ou un
-organisme agréé, portant notamment sur l'état d'entretien des appareils et sur la
-ventilation des locaux, consignée au registre de sécurité. La 5e catégorie relève
-de l'arrêté du 22 juin 1990.
-MathClean délivre une attestation de nettoyage et d'entretien de hotte, datée et
-détaillée, destinée au livret d'entretien. Elle ne vaut ni attestation de
-conformité de l'installation, ni vérification annuelle au titre de GC 22, qui est
-une prestation distincte relevant d'un technicien compétent ou d'un organisme
-agréé.
-
-## Dossiers techniques
-{dossiers}
+## Pages par surface
+La haute pression est déclinée par type de surface, chacune avec sa contrainte
+propre (pression admissible, risque de marquage, traitement après lavage) :
+- Terrasses, façades, cours et sols extérieurs ({len(SURFACES_HP)} surfaces) :
+  {SITE['url']}/nettoyage-haute-pression.html
 
 ## Guides de référence
 {guides}
@@ -7809,8 +7749,8 @@ def build_redirects():
     """
     lignes = [
         # Prestations renommées ou retirées
-        "/services/nettoyage-locaux-paris.html       /services/nettoyage-regulier-paris.html    301",
-        "/services/nettoyage-bureau-paris.html       /services/nettoyage-regulier-paris.html    301",
+        "/services/nettoyage-locaux-paris.html       /services/nettoyage-fin-de-chantier-paris.html 301",
+        "/services/nettoyage-bureau-paris.html       /services/nettoyage-fin-de-chantier-paris.html 301",
         "/services/nettoyage-avion-paris.html        /services.html                             301",
         # L'ancien site relayait déjà ces adresses ; on garde la chaîne intacte
         "/services/polissage-carrosserie-paris.html  /services/nettoyage-automobile-paris.html  301",
@@ -7826,19 +7766,74 @@ def build_redirects():
         "/services/nettoyage-bateau-paris.html          /services.html                              301",
         "/services/nettoyage-terrasse-paris.html        /services/nettoyage-haute-pression-paris.html 301",
         "/services/traitement-ozone-paris.html          /services/nettoyage-automobile-paris.html   301",
-        "/services/nettoyage-fin-de-chantier-paris.html /services/nettoyage-regulier-paris.html     301",
     ]
     # La prestation « entreprise » est devenue « nettoyage régulier » : la page
     # de prestation et les dix pages locales correspondantes ont été indexées
     # sous l'ancien nom. Chacune part vers son équivalent exact.
     lignes += [
-        "/services/nettoyage-entreprise-paris.html  /services/nettoyage-regulier-paris.html  301",
+        "/services/nettoyage-entreprise-paris.html  /services/nettoyage-fin-de-chantier-paris.html 301",
     ]
-    lignes += ["/villes/nettoyage-entreprise-%s.html /villes/menage-regulier-%s.html 301"
-               % (pv["slug"], pv["slug"]) for pv in PREMIUM_VILLES]
+
+    # ------------------------------------------------------------------
+    # Catalogue ramené à quatre métiers en octobre 2026. Tout ce qui
+    # vendait l'un des six autres disparaît : les pages de prestation,
+    # leurs sommaires, et les familles sectorielles et locales entières.
+    # Chaque adresse part vers le métier qui s'en rapproche le plus, et
+    # vers le sommaire quand rien ne s'en rapproche — jamais vers
+    # l'accueil, qui ne répond pas à la question posée.
+    # ------------------------------------------------------------------
+    FIN = "/services/nettoyage-fin-de-chantier-paris.html"
+    HP = "/services/nettoyage-haute-pression-paris.html"
+    lignes += [
+        "/services/nettoyage-hottes-paris.html        /services.html  301",
+        "/services/nettoyage-regulier-paris.html      %s              301" % FIN,
+        "/services/nettoyage-appartement-paris.html   %s              301" % FIN,
+        "/services/nettoyage-vitres-paris.html        /services.html  301",
+        "/services/ramonage-cheminee-paris.html       /services.html  301",
+        "/services/nettoyage-toiture-paris.html       %s              301" % HP,
+        "/services/debouchage-canalisation-paris.html /services.html  301",
+        # Sommaires des familles retirées.
+        "/hottes.html                   /services.html  301",
+        "/vitrerie-professionnelle.html /services.html  301",
+        "/nettoyage-restaurant.html     /services.html  301",
+        "/menage-regulier.html          %s              301" % FIN,
+        "/nettoyage-appartement.html    %s              301" % FIN,
+        "/dossiers.html                 /guides.html    301",
+    ]
+    # Les pages filles, par dossier entier. Cloudflare accepte le joker en
+    # fin de source ; une ligne vaut mieux que deux cents.
+    lignes += [
+        "/hottes/*      /services.html  301",
+        "/vitres/*      /services.html  301",
+        "/restaurants/* /services.html  301",
+        "/menage/*      %s              301" % FIN,
+        "/appartement/* %s              301" % FIN,
+        "/dossiers/*    /guides.html    301",
+    ]
+    # Pages ville des deux prestations retirées : chacune vers la page de
+    # sa commune, qui existe toujours et parle d'elle.
+    # Toutes les communes « premium » n'ont pas de page ville généraliste :
+    # celles qui n'en ont pas partent vers le sommaire plutôt que vers une
+    # adresse qui n'existe pas.
+    avec_page = {v[0] for v in VILLES}
+    for pv in PREMIUM_VILLES:
+        cible = ("/villes/%s.html" % pv["slug"]
+                 if pv["slug"] in avec_page else "/villes.html")
+        for mort in ("nettoyage-vitres", "menage-regulier", "nettoyage-entreprise"):
+            lignes.append("/villes/%s-%s.html %s 301" % (mort, pv["slug"], cible))
+    # Guides et billets supprimés avec leur métier.
+    lignes += ["/guides/%s.html /guides.html 301" % g for g in (
+        "entreprise-nettoyage-vitres-specialisee", "eau-osmosee-vitres",
+        "nettoyage-vitrine-commerce-paris", "prix-nettoyage-vitres-m2",
+        "nettoyage-veranda-baie-vitree", "frequence-nettoyage-bureaux",
+        "nettoyage-copropriete-parties-communes", "nettoyage-cage-escalier-immeuble",
+        "prix-nettoyage-bureaux-m2", "nettoyage-local-commercial-restaurant")]
+    lignes += ["/blog/vitres-sans-traces.html /blog.html 301"]
     lignes += [
         ("/villes/%s.html /services/nettoyage-haute-pression-paris.html 301" % anc)
         if cible == "@haute-pression"
+        else ("/villes/%s.html /services/nettoyage-fin-de-chantier-paris.html 301" % anc)
+        if cible.startswith("menage-regulier-")
         else ("/villes/%s.html /villes/%s.html 301" % (anc, cible))
         for anc, cible in PAGES_LOCALES_RETIREES]
     # Les mêmes adresses sans l'extension .html. Cloudflare ajoute .html de
@@ -7876,6 +7871,15 @@ def clean_stale(kept):
             if os.path.normpath(rel) not in kept:
                 os.remove(os.path.join(root, f))
                 removed.append(rel)
+    # Un dossier vidé de ses pages reste un dossier, et le contrôle de
+    # cohérence le voit encore comme une adresse servie : il doit partir,
+    # sinon la redirection qui le remplace est déclarée inutile.
+    for root, dirs, files in os.walk(OUT, topdown=False):
+        if root == OUT or os.path.join(OUT, "assets") in root:
+            continue
+        if not os.listdir(root):
+            os.rmdir(root)
+            removed.append(os.path.relpath(root, OUT) + "/")
     return removed
 
 
@@ -8081,31 +8085,12 @@ def main():
 
     # Familles sectorielles et locales. Les sommaires portent une priorité
     # supérieure à leurs pages filles : ce sont eux qui doivent remonter.
-    pages.append((build_hub_hottes(), "0.9", "monthly"))
-    for s in SECTEURS_HOTTE:
-        pages.append((build_hotte_secteur(s), "0.8", "monthly"))
-    for v in VILLES_PRO:
-        pages.append((build_hotte_ville(v), "0.7", "monthly"))
-    pages.append((build_hub_vitres(), "0.9", "monthly"))
-    for s in SECTEURS_VITRES:
-        pages.append((build_vitres_secteur(s), "0.8", "monthly"))
-    for v in VILLES_PRO:
-        pages.append((build_vitres_ville(v), "0.7", "monthly"))
-    pages.append((build_hub_menage(), "0.9", "monthly"))
-    for s in SECTEURS_MENAGE:
-        pages.append((build_menage_secteur(s), "0.8", "monthly"))
-    pages.append((build_hub_restaurant(), "0.9", "monthly"))
-    for v in VILLES_PRO:
-        pages.append((build_restaurant_ville(v), "0.7", "monthly"))
+    # Les familles sectorielles des métiers abandonnés — hottes, vitrerie,
+    # entretien régulier, restaurant, appartement — ne sont plus produites.
+    # Leurs adresses sont redirigées, voir build_redirects().
     pages.append((build_hub_hp(), "0.9", "monthly"))
     for s in SURFACES_HP:
         pages.append((build_hp_surface(s), "0.8", "monthly"))
-    pages.append((build_hub_appart(), "0.9", "monthly"))
-    for v in VILLES_APPART:
-        pages.append((build_appart_ville(v), "0.7", "monthly"))
-    pages.append((build_hub_dossiers(), "0.8", "monthly"))
-    for d in DOSSIERS:
-        pages.append((build_dossier(d), "0.7", "monthly"))
     pages.append((build_blog_archive(), "0.7", "weekly"))
     for i, p in enumerate(POSTS):
         prev_post = POSTS[i - 1] if i > 0 else None
