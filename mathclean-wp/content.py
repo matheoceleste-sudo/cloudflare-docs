@@ -6779,6 +6779,525 @@ DOSSIERS = [
              "près toute la journée, et elles pèsent plus que la façade sur l'impression générale."),
         ],
     },
+    {
+        "slug": "decapage-sol-selon-revetement",
+        "cat": "Décapage",
+        "audience": "mixte",
+        "service": "nettoyage-fin-de-chantier-paris",
+        "h1": "Décapage de sol : la méthode dépend du revêtement, pas de la saleté",
+        "title": "Décapage de sol : quelle méthode pour quel revêtement",
+        "meta": "PVC, linoléum, carrelage, béton, parquet, sol antidérapant : ce qui décape "
+                "chacun, ce qui l'abîme définitivement, et pourquoi le rinçage décide de tout.",
+        "lead": "Décaper un sol, ce n'est pas le laver plus fort. C'est retirer une couche — "
+                "émulsion, cire, film encrassé — pour en reposer une. La seule question qui "
+                "compte avant de commencer est de savoir sur quoi on travaille.",
+        "cle": "Le produit se choisit sur le revêtement, jamais sur le degré de saleté.",
+        "sections": [
+            ("Ce qu'on appelle décaper", [
+                "Un sol souple de locaux reçoit à la pose une protection : une émulsion, "
+                "quelques dizaines de microns d'un film qui se sacrifie à la place du "
+                "revêtement. Elle s'use là où l'on marche, se charge de micro-rayures, puis "
+                "disparaît. Le gris d'un couloir n'est pas de la crasse, c'est cette couche "
+                "qui a disparu et le revêtement nu, poreux, qui prend la saleté au lieu de la "
+                "rendre.",
+                "Décaper consiste à retirer ce qui reste de cette couche pour en reposer une "
+                "neuve. C'est une opération en deux temps : la chimie ramollit pendant son "
+                "temps de pose, la machine décolle ensuite. Décaper sans laisser poser, c'est "
+                "étaler. Et un décapage qui ne serait pas suivi d'une remise en protection "
+                "laisse le sol plus vulnérable qu'avant.",
+            ]),
+            ("PVC et linoléum : deux familles qu'on confond", [
+                "Le PVC encaisse un décapant alcalin franc : c'est un polymère, l'alcalin ne "
+                "l'attaque pas. Le linoléum véritable, lui, n'a rien à voir malgré "
+                "l'apparence. C'est de l'huile de lin oxydée, chargée de farine de bois ou de "
+                "liège, sur une toile de jute. Un alcalin fort saponifie ce liant : le "
+                "revêtement jaunit, brunit par plaques, et se raidit. Le dégât est définitif.",
+                "La distinction ne se fait pas à l'œil. Elle se fait sur l'étiquette du "
+                "fournisseur, sur une chute restée dans un placard technique, ou à défaut sur "
+                "un essai : un décapant à pH modéré sur un mètre carré caché, et on regarde "
+                "après séchage. C'est la raison pour laquelle nous facturons l'essai dans le "
+                "temps d'intervention plutôt que de le sauter.",
+            ]),
+            ("Carrelage, béton, pierre", [
+                "Sur un carrelage à joints ciment, le réflexe de l'acide est un piège : "
+                "l'acide dissout le ciment du joint avant de dissoudre ce qu'on vise. Un "
+                "récurage alcalin à la brosse, avec temps de pose, fait le travail sans "
+                "creuser les joints. L'acide dilué garde une utilité précise — la laitance de "
+                "chantier — et une seule : tamponné, testé, puis neutralisé.",
+                "Un béton brut est poreux : ce qui est entré ne se décape pas, il s'extrait "
+                "par cataplasme absorbant, et pas toujours complètement. Une pierre calcaire, "
+                "un marbre ou un travertin sont attaqués par l'acide, qui les ternit et les "
+                "pique de façon irréversible : on y travaille sans acide, point.",
+            ]),
+            ("Les deux sols sur lesquels on ne décape pas", [
+                "Un parquet et un stratifié ne se décapent pas à l'eau. L'eau passe dans les "
+                "joints, gonfle le bois ou le panneau de fibres, et le dégât ne se rattrape "
+                "pas : il se remplace. Remettre un parquet à nu relève du ponçage et de la "
+                "vitrification, qui sont le métier d'un parqueteur.",
+                "Un sol antidérapant de cuisine professionnelle ou de local technique tient sa "
+                "sécurité d'un relief de surface. Un pad abrasif le lisse peu à peu : le sol "
+                "redevient glissant une fois mouillé, et vous perdez exactement la propriété "
+                "qui a justifié sa pose. Ces sols se récurent à la brosse, plus lentement, et "
+                "c'est la seule façon correcte de le faire.",
+            ]),
+            ("Le rinçage, qui ne se voit pas et décide de tout", [
+                "Après le décapage, la solution chargée est aspirée, puis le sol est rincé "
+                "jusqu'à ce qu'il ne reste aucun résidu de produit. Cette étape est invisible "
+                "sur une photo et c'est elle qui fait tenir le reste : une trace de décapant "
+                "sous une émulsion neuve l'empêche d'adhérer, et le film posé blanchit ou pèle "
+                "trois semaines plus tard.",
+                "Le sol doit ensuite être sec, pas ressuyé. Une protection appliquée sur un "
+                "support encore humide emprisonne l'eau et laisse un voile laiteux que seul un "
+                "nouveau décapage enlève. C'est le défaut le plus fréquent sur un chantier "
+                "mené trop vite, et il coûte deux fois le prix du premier passage.",
+            ]),
+        ],
+        "faq": [
+            ("Un décapage sans remise en protection, est-ce que cela a un sens ?",
+             "Seulement si vous changez le sol derrière. Sur un PVC ou un linoléum, décaper "
+             "sans reposer d'émulsion laisse le revêtement nu et poreux : il se salit plus "
+             "vite qu'avant, il marque, et il faut le relaver plus souvent. Sur un carrelage, "
+             "un béton ciré ou un grès cérame, la question se pose autrement — beaucoup de "
+             "ces sols se passent très bien de film."),
+            ("Combien de temps la pièce est-elle indisponible ?",
+             "Une demi-journée à une journée pour le décapage et le rinçage selon la surface, "
+             "puis le temps des couches : environ une demi-heure entre deux couches "
+             "d'émulsion, quelques heures avant de remarcher normalement, et jusqu'à deux "
+             "jours avant de faire rouler un meuble lourd. C'est cette contrainte qui fixe "
+             "l'horaire, bien plus que la surface."),
+            ("Faites-vous ce travail ?",
+             "Oui, dans le cadre d'un nettoyage de fin de chantier ou d'une remise en état "
+             "après travaux : c'est à ce moment-là qu'un sol se décape utilement, local vide "
+             "et accessible. Le décapage n'est pas une prestation séparée à notre catalogue, "
+             "il fait partie du chiffrage de la remise en état."),
+        ],
+    },
+    {
+        "slug": "decapage-colorant-beton",
+        "cat": "Décapage",
+        "audience": "mixte",
+        "service": "nettoyage-haute-pression-paris",
+        "h1": "Retirer un colorant sur du béton : ce qui est possible, et ce qui ne l'est pas",
+        "title": "Décapage d'un colorant sur béton : les quatre cas",
+        "meta": "Teinté dans la masse, durcisseur coloré, poudre de démoulage ou peinture : "
+                "seuls deux de ces quatre cas se décapent. Comment les distinguer.",
+        "lead": "« Enlever la couleur d'un béton » recouvre quatre situations qui n'ont rien "
+                "en commun. Dans deux d'entre elles, aucun décapage n'y fera rien — et "
+                "mieux vaut l'apprendre avant les travaux qu'après.",
+        "cle": "Un béton teinté dans la masse ne se décape pas : la couleur traverse la dalle.",
+        "sections": [
+            ("Premier cas : la couleur est dans la masse", [
+                "Le pigment a été incorporé au béton frais, dans la toupie. La dalle est "
+                "colorée sur toute son épaisseur, exactement comme une bougie teintée. Il n'y "
+                "a pas de couche à retirer : poncer, grenailler ou décaper ne fera "
+                "qu'exposer du béton de la même couleur, en plus clair et en plus rugueux.",
+                "C'est le cas qu'il faut identifier en premier, parce qu'il est sans issue par "
+                "le nettoyage. La seule façon de changer l'aspect est de recouvrir — chape "
+                "rapportée, résine, revêtement — ou de déposer la dalle. Un prestataire qui "
+                "vous propose de décaper un béton teinté dans la masse ne sait pas ce qu'il "
+                "regarde, ou ne le dit pas.",
+            ]),
+            ("Deuxième cas : un durcisseur coloré saupoudré", [
+                "Sur un béton imprimé ou lissé, la couleur vient souvent d'un durcisseur "
+                "saupoudré sur le béton frais puis taloché. Il forme une couche dure et "
+                "colorée de deux à trois millimètres, bien plus résistante que le béton qui "
+                "la porte. Cette couche ne se dissout pas : aucun produit ne l'attaque "
+                "sélectivement.",
+                "Elle ne part que par abrasion mécanique — ponçage diamant, grenaillage — et "
+                "l'opération retire la peau de la dalle avec elle. Le résultat est un béton "
+                "nu, ouvert, qui devra être protégé. C'est un travail de préparation de sol, "
+                "pas de nettoyage : nous ne le faisons pas, et nous le disons plutôt que de "
+                "l'essayer à la lance.",
+            ]),
+            ("Troisième cas : la poudre de démoulage", [
+                "Sur un béton imprimé, un agent de démoulage pigmenté est projeté avant de "
+                "poser la matrice. Il sert à éviter que le moule colle et il donne l'effet "
+                "patiné recherché. Une partie reste en surface et s'incruste dans le relief, "
+                "et c'est elle qu'on vous demande souvent de retirer, soit parce que la teinte "
+                "ne plaît plus, soit parce qu'elle est partie de façon inégale.",
+                "Celle-là se travaille : lavage haute pression à pression maîtrisée, parfois "
+                "précédé d'un acide tamponné et toujours suivi d'une neutralisation. Deux "
+                "limites honnêtes — on n'obtient pas un béton uniforme, parce que la poudre "
+                "s'est fixée plus fort dans les creux que sur les reliefs, et le lavage "
+                "emporte aussi le vernis de protection, qui devra être refait si vous voulez "
+                "retrouver l'aspect d'origine.",
+            ]),
+            ("Quatrième cas : une peinture, une lasure ou une résine", [
+                "C'est un film posé sur le béton, et c'est le seul cas qui relève vraiment du "
+                "décapage. Un décapant en gel, à temps de pose, le ramollit ; le rinçage haute "
+                "pression l'emporte. Sur une surface extérieure, la question qui décide est "
+                "celle de la récupération des eaux : un décapant chargé de peinture ne part "
+                "pas au caniveau, il se récupère.",
+                "Le piège est le béton poreux qui a bu le liant de la peinture. Le film part, "
+                "la teinte reste en fantôme dans les premiers millimètres. On la réduit par "
+                "applications successives ou par cataplasme absorbant, on ne la fait pas "
+                "toujours disparaître. Nous le disons avant, parce que c'est précisément le "
+                "point sur lequel un client se sent floué après.",
+            ]),
+            ("Comment savoir dans quel cas vous êtes", [
+                "Un test suffit souvent : faites une entaille discrète à l'angle d'une dalle, "
+                "sur deux ou trois millimètres, dans une zone cachée. Si la couleur continue "
+                "en profondeur, c'est de la masse. Si vous traversez une couche dure et "
+                "colorée pour trouver du gris, c'est un durcisseur. Si la couleur s'écaille "
+                "en plaques ou en fines paillettes, c'est un film.",
+                "Les documents de l'entreprise qui a coulé la dalle tranchent plus vite "
+                "encore : la fiche technique d'un durcisseur coloré ou d'un béton pigmenté "
+                "figure sur son devis. Quand ni l'un ni l'autre n'est disponible, nous faisons "
+                "un essai sur une zone d'un mètre carré, et c'est lui qui décide du devis.",
+            ]),
+        ],
+        "faq": [
+            ("Le nettoyeur haute pression peut-il enlever la couleur d'un béton imprimé ?",
+             "Il enlève la poudre de démoulage et le vernis, pas le durcisseur coloré qui est "
+             "sous les deux. Autrement dit : il éclaircit et uniformise un peu, il ne "
+             "décolore pas. Un passage trop appuyé creuse par ailleurs le relief de "
+             "l'impression, ce qui se voit immédiatement et ne se rattrape pas."),
+            ("Peut-on récupérer un béton taché par un colorant renversé ?",
+             "Souvent, en partie. Un pigment qui a pénétré ne se lave pas en surface : il "
+             "s'extrait par cataplasme — un absorbant chargé de solvant, laissé en place "
+             "plusieurs heures sous film, qui tire la tache en séchant. Il faut généralement "
+             "plusieurs applications, et le résultat est une atténuation forte, rarement une "
+             "disparition complète."),
+            ("Faites-vous ce travail ?",
+             "Nous traitons les cas trois et quatre — poudre de démoulage et film de "
+             "peinture ou de lasure — au nettoyeur haute pression, avec essai préalable sur "
+             "zone cachée et récupération des eaux de lavage. Nous ne faisons ni ponçage "
+             "diamant ni grenaillage, et nous ne promettons rien sur un béton teinté dans la "
+             "masse."),
+        ],
+    },
+    {
+        "slug": "decapage-peinture-metal",
+        "cat": "Décapage",
+        "audience": "mixte",
+        "service": "nettoyage-haute-pression-paris",
+        "h1": "Décaper une peinture sur métal : les quatre voies et ce qu'elles coûtent",
+        "title": "Décaper un métal peint : les quatre méthodes",
+        "meta": "Grille, portail, garde-corps : les quatre méthodes de décapage d'un métal "
+                "peint, leurs limites, le risque plomb et la fenêtre de rouille.",
+        "lead": "Un métal peint se décape de quatre façons, et le choix ne dépend pas du "
+                "budget mais de l'alliage, de l'âge de la peinture et de l'endroit où se "
+                "trouve la pièce.",
+        "cle": "Un acier mis à nu rouille en quelques heures : le primaire se pose le jour même.",
+        "sections": [
+            ("Avant tout : l'âge de la peinture", [
+                "Une peinture ancienne sur ferronnerie peut contenir du plomb. Le poncer ou "
+                "le brûler à sec libère des poussières et des fumées plombifères, qui sont un "
+                "risque pour la santé et un déchet dangereux. La règle de prudence est "
+                "simple : sur une ferronnerie d'avant les années 1990 dont on ignore "
+                "l'historique, on fait analyser avant d'attaquer. Les kits de dépistage "
+                "coûtent quelques euros ; une intervention mal conduite coûte beaucoup plus.",
+                "Si le plomb est confirmé, le chantier change de nature : confinement, "
+                "aspiration à filtre absolu, protection des intervenants, évacuation des "
+                "résidus en déchet dangereux. Ce n'est pas du nettoyage, c'est un chantier "
+                "encadré, et il revient à une entreprise équipée pour cela. Nous ne le "
+                "prenons pas en charge.",
+            ]),
+            ("Voie chimique : le décapant en gel", [
+                "Un gel décapant appliqué au pinceau, laissé en place le temps nécessaire — "
+                "souvent plusieurs heures —, puis gratté et rincé. C'est la méthode qui "
+                "respecte le mieux le support : aucune abrasion, donc aucune déformation des "
+                "profils fins ni perte de détail sur une ferronnerie ouvragée. C'est aussi "
+                "celle qui s'emploie sur place, sans démonter.",
+                "Ses limites tiennent en trois points. Elle est lente et demande souvent deux "
+                "applications sur des peintures multicouches. Elle produit un résidu pâteux "
+                "chargé de peinture, qui est un déchet à récupérer et non à rincer au sol. Et "
+                "les décapants puissants attaquent l'aluminium : sur alu, on prend un produit "
+                "spécifiquement compatible, ou on change de méthode.",
+            ]),
+            ("Voie thermique et voie mécanique", [
+                "Le décapeur thermique ramollit la peinture, qu'on retire ensuite à la "
+                "spatule. Il est efficace sur de l'acier épais et désastreux sur de "
+                "l'aluminium, qui se déforme sans prévenir vers 200 °C sans rien laisser "
+                "paraître. Il est par ailleurs exclu sur une peinture suspectée au plomb : la "
+                "chaleur volatilise le métal lourd.",
+                "La voie mécanique — brosse métallique, disque abrasif, ponceuse — va vite sur "
+                "une surface plane et accessible. Elle ne descend pas dans les angles rentrants "
+                "d'un garde-corps, elle lustre l'acier au lieu de l'ouvrir si le grain est trop "
+                "fin, et elle laisse une surface polie sur laquelle le primaire accroche "
+                "mal. Sur de l'inox, une brosse en acier au carbone dépose des particules "
+                "ferreuses qui rouilleront ensuite : il faut de l'inox sur de l'inox.",
+            ]),
+            ("Voie par projection : sablage, aérogommage, hydrogommage", [
+                "On projette un abrasif sous pression. Le sablage, le plus agressif, est "
+                "réservé à l'acier épais et se pratique en cabine ou sous confinement, parce "
+                "que la poussière libérée est considérable. L'aérogommage emploie un abrasif "
+                "doux à basse pression et respecte les supports fragiles et les détails. "
+                "L'hydrogommage y ajoute un filet d'eau, qui abat la poussière.",
+                "C'est la méthode la plus régulière sur une grande surface, et c'est un métier "
+                "en soi : matériel, cabine ou confinement, gestion des abrasifs usés. Nous ne "
+                "le pratiquons pas. Quand c'est la bonne réponse à votre situation, nous vous "
+                "le disons plutôt que de proposer un lavage qui n'y suffira pas.",
+            ]),
+            ("Après le décapage : la fenêtre de rouille", [
+                "Un acier mis à nu rouille en quelques heures, plus vite encore par temps "
+                "humide. La couche de rouille superficielle qui apparaît compromet "
+                "l'adhérence du primaire : si elle s'est installée, il faut recommencer. "
+                "L'enchaînement décapage puis primaire anticorrosion se fait donc dans la "
+                "même journée, et c'est la vraie contrainte de planning du chantier.",
+                "Sur de l'aluminium et sur du zinc, le problème est inverse : la surface se "
+                "passive naturellement, et c'est cette couche d'oxyde qui gêne l'accrochage. "
+                "Elle demande un primaire spécifique, dit d'accrochage. Dans les deux cas, le "
+                "choix du système de protection appartient à l'applicateur, pas au nettoyeur.",
+            ]),
+        ],
+        "faq": [
+            ("Faites-vous le décapage de métaux ?",
+             "Nous lavons et nous dégraissons les surfaces métalliques au nettoyeur haute "
+             "pression : grilles, portails, garde-corps, structures, mobilier urbain, rideaux "
+             "métalliques. Nous retirons les mousses, les dépôts, les salissures et les "
+             "films gras. Nous ne pratiquons ni le sablage, ni l'aérogommage, ni le décapage "
+             "par immersion, et nous ne traitons pas une peinture suspectée au plomb."),
+            ("Le nettoyeur haute pression décape-t-il la peinture ?",
+             "Il emporte une peinture déjà décollée — celle qui cloque ou s'écaille — et il "
+             "laisse en place une peinture encore adhérente. C'est utile comme préparation "
+             "avant une reprise, parce qu'on sait alors ce qui tient et ce qui ne tient pas, "
+             "mais ce n'est pas un décapage : il ne rend jamais un métal nu et uniforme."),
+            ("Combien de temps avant de repeindre ?",
+             "Le jour même sur de l'acier, parce que la rouille superficielle s'installe en "
+             "quelques heures et ruine l'accrochage. C'est ce qui dicte l'organisation du "
+             "chantier : on ne décape pas le vendredi pour primariser le lundi."),
+        ],
+    },
+    {
+        "slug": "decapage-bois-exterieur",
+        "cat": "Décapage",
+        "audience": "mixte",
+        "service": "nettoyage-haute-pression-paris",
+        "h1": "Décaper un bois extérieur : terrasse, bardage, volets",
+        "title": "Décapage et dégrisement d'un bois extérieur",
+        "meta": "Pourquoi le bois grise, pourquoi la haute pression le creuse, et comment "
+                "retirer une lasure écaillée sans ouvrir la fibre.",
+        "lead": "Un bois extérieur gris n'est pas sale : sa lignine de surface s'est dégradée "
+                "aux ultraviolets. C'est une nuance qui change toute la méthode, et "
+                "qui explique pourquoi la lance est rarement la bonne réponse.",
+        "cle": "La haute pression creuse le bois tendre entre les cernes et ouvre la fibre.",
+        "sections": [
+            ("Le grisaillement n'est pas de la saleté", [
+                "Sous l'effet des ultraviolets et de la pluie, la lignine qui lie les fibres "
+                "du bois se dégrade en surface. Les fibres de cellulose restent, décolorées, "
+                "et prennent cette teinte argentée caractéristique. C'est une altération "
+                "chimique de quelques dixièmes de millimètre, pas un dépôt : aucun lavage, si "
+                "puissant soit-il, ne la retire autrement qu'en arrachant la matière.",
+                "Un dégriseur fait autre chose : à base d'acide oxalique, il réduit les "
+                "composés oxydés et rend au bois sa teinte. Il s'applique sur bois propre, "
+                "agit quelques minutes, se rince abondamment, et demande une neutralisation "
+                "quand on veut appliquer une finition derrière. Un dégriseur laissé en place "
+                "sans rinçage continue d'agir et tache le bois de façon irrégulière.",
+            ]),
+            ("Pourquoi la haute pression abîme le bois", [
+                "Un bois est fait d'alternances de bois de printemps, tendre, et de bois "
+                "d'été, dense. Un jet puissant creuse le premier et laisse le second en "
+                "relief : la surface devient striée, rugueuse, et elle retient ensuite "
+                "l'eau et les salissures bien plus qu'avant. Le phénomène est irréversible "
+                "sans ponçage.",
+                "Le jet ouvre aussi la fibre : des échardes se lèvent, et une terrasse "
+                "devient désagréable pieds nus. Sur un bois extérieur, on travaille donc à "
+                "basse pression, lance large, à distance, dans le sens de la fibre — et le "
+                "travail se fait par le produit et la brosse plutôt que par la pression.",
+            ]),
+            ("Une lasure ou une peinture écaillée", [
+                "Ce n'est plus du nettoyage : un film écaillé se décape. Un gel décapant "
+                "appliqué localement, laissé poser, puis gratté, retire ce qui tient encore "
+                "sans attaquer le bois. Le lavage haute pression, lui, emporte les écailles "
+                "déjà décollées et laisse le reste : on obtient un résultat en damier, pire "
+                "visuellement que l'état de départ.",
+                "L'autre voie est le ponçage, qui donne la surface la plus saine avant "
+                "refinition mais demande d'avoir démonté les éléments ou de travailler avec "
+                "aspiration à la source. Sur des volets ou une porte, le démontage et le "
+                "traitement en atelier donnent presque toujours un meilleur résultat qu'un "
+                "travail en façade.",
+            ]),
+            ("Le séchage, que tout le monde sous-estime", [
+                "Un bois qui vient d'être lavé est gorgé d'eau sur plusieurs millimètres. Un "
+                "saturateur ou une lasure appliqués sur ce bois-là ne pénètrent pas : ils "
+                "restent en surface, forment un film, et pèlent dans l'année. Le délai utile "
+                "est de quelques jours de temps sec, davantage pour un bois dense ou une "
+                "exposition nord.",
+                "C'est pour cette raison que le lavage d'une terrasse et sa protection ne se "
+                "font pas le même jour, et que le printemps est la bonne saison : il faut une "
+                "fenêtre météo, pas seulement une disponibilité. Nous préférons le dire au "
+                "moment du devis plutôt que de caler deux interventions trop rapprochées.",
+            ]),
+        ],
+        "faq": [
+            ("Faut-il poncer après avoir dégrisé ?",
+             "Souvent un égrenage léger suffit, parce que le lavage a redressé quelques "
+             "fibres. Un ponçage complet n'est nécessaire que si la surface a déjà été "
+             "creusée par un lavage trop agressif, ou si une ancienne finition tient encore "
+             "par endroits. Nous ne faisons pas le ponçage : nous disons s'il est nécessaire."),
+            ("Quelle pression sur une terrasse en bois ?",
+             "Bien plus basse que ce que la plupart des gens emploient, avec une buse large et "
+             "à distance, dans le sens de la fibre. Le travail se fait par le produit et le "
+             "temps de pose, la lance ne sert qu'à rincer. Sur un bois exotique dense, la "
+             "marge est un peu plus grande ; sur du pin traité, elle est très faible."),
+            ("Faites-vous ce travail ?",
+             "Le lavage et le dégrisement, oui, dans le cadre du nettoyage haute pression, "
+             "avec essai sur une zone cachée avant de traiter l'ensemble. Le décapage d'une "
+             "lasure au gel, oui, sur des surfaces limitées. Le ponçage, la refinition et le "
+             "traitement en atelier, non : c'est le métier d'un peintre ou d'un menuisier."),
+        ],
+    },
+    {
+        "slug": "decapage-graffiti-facade",
+        "cat": "Décapage",
+        "audience": "mixte",
+        "service": "nettoyage-haute-pression-paris",
+        "h1": "Retirer un graffiti sur une façade sans retirer la façade avec",
+        "title": "Décapage de graffiti : support poreux ou non poreux",
+        "meta": "Pourquoi un tag part en dix minutes sur un métal et laisse un fantôme sur "
+                "une pierre, et ce que la haute pression seule provoque.",
+        "lead": "Le sort d'un graffiti se joue sur une seule question : le support a-t-il bu "
+                "l'encre ? Sur un support fermé, l'affaire est simple. Sur une pierre ou un "
+                "enduit, le nettoyage commence par une décision honnête sur le résultat "
+                "atteignable.",
+        "cle": "Sur un support poreux, on atténue fortement ; on n'efface pas toujours.",
+        "sections": [
+            ("Support fermé, support ouvert", [
+                "Sur un métal laqué, un verre, un carrelage émaillé ou une peinture "
+                "satinée en bon état, l'aérosol reste en surface. Un solvant adapté le "
+                "dissout, un rinçage l'emporte, et il ne reste rien. L'opération prend "
+                "quelques minutes, et la seule précaution est de vérifier que le solvant "
+                "n'attaque pas la finition du support — ce qui se teste sur un angle.",
+                "Sur une pierre calcaire, une brique, un enduit, un béton brut ou un bois, le "
+                "support a bu le liant et les pigments dans ses premiers millimètres. Le "
+                "solvant les remobilise ; il peut aussi les faire migrer plus profond si on "
+                "l'emploie trop liquide. C'est pour cela qu'on travaille en gel, qui reste en "
+                "place et tire la matière vers l'extérieur plutôt que de l'enfoncer.",
+            ]),
+            ("Ce que la haute pression seule provoque", [
+                "Sur une pierre tendre, un jet puissant retire la pierre en même temps que le "
+                "tag. Le résultat est une tache claire, creusée, dont le contour reproduit "
+                "exactement le geste du nettoyeur : on a remplacé un graffiti par une "
+                "cicatrice, souvent plus visible. Sur un enduit, le jet ouvre le grain et la "
+                "zone se resalit ensuite plus vite que le reste de la façade.",
+                "La haute pression a sa place dans l'opération, mais en rinçage, à pression "
+                "mesurée, après que le produit a fait son travail. L'eau chaude aide "
+                "réellement — elle accélère la dissolution — là où la pression brute ne fait "
+                "que des dégâts.",
+            ]),
+            ("Le fantôme, et pourquoi il faut en parler avant", [
+                "Après traitement d'un support poreux, il reste fréquemment une ombre : les "
+                "pigments les plus fins sont descendus au-delà de ce que le gel peut "
+                "remonter. Deux ou trois applications successives la réduisent encore, avec "
+                "des rendements décroissants, et il arrive qu'une trace subsiste.",
+                "Un prestataire sérieux annonce cette possibilité avant l'intervention, sur "
+                "le devis. Promettre un effacement total sur une pierre poreuse est la "
+                "promesse la plus souvent faite et la moins souvent tenue dans ce métier. "
+                "Nous préférons annoncer une atténuation forte et dépasser l'attente que "
+                "l'inverse.",
+            ]),
+            ("Les cas où il ne faut pas intervenir soi-même", [
+                "Une façade protégée, un monument historique ou un immeuble situé dans le "
+                "périmètre d'un monument relèvent d'autorisations et de méthodes encadrées. "
+                "Une pierre de taille ancienne, un enduit à la chaux ou une brique "
+                "historique se dégradent définitivement sous un traitement standard. Dans ces "
+                "cas, c'est un restaurateur ou une entreprise de ravalement spécialisée qui "
+                "intervient, pas une entreprise de nettoyage.",
+                "Autre limite, plus banale : la hauteur. Au-delà de trois niveaux, il faut une "
+                "nacelle ou un échafaudage, et c'est un autre métier avec d'autres "
+                "assurances. Nous travaillons depuis le sol et depuis un échafaudage roulant "
+                "bas, pas au-delà.",
+            ]),
+        ],
+        "faq": [
+            ("Combien de temps pour retirer un tag ?",
+             "De dix minutes sur un rideau métallique à une demi-journée sur une façade "
+             "pierre avec plusieurs applications. La variable n'est pas la taille du "
+             "graffiti, c'est la porosité du support et le nombre de passes que celle-ci "
+             "impose."),
+            ("Faut-il poser une protection anti-graffiti ?",
+             "Cela se discute selon l'exposition. Une protection sacrificielle se retire avec "
+             "le tag suivant et se repose, une protection permanente dure plus longtemps mais "
+             "modifie l'aspect du support. Nous ne posons pas ces produits : nous vous disons "
+             "simplement que la question se pose quand un mur est tagué deux fois par an."),
+            ("Faites-vous ce travail ?",
+             "Oui, dans le cadre du nettoyage haute pression, sur des supports accessibles "
+             "depuis le sol et après essai sur une zone cachée. Nous ne traitons pas les "
+             "façades protégées ni la pierre ancienne de valeur patrimoniale, et nous "
+             "n'intervenons pas au-delà de trois niveaux."),
+        ],
+    },
+    {
+        "slug": "decapage-laitance-ciment",
+        "cat": "Décapage",
+        "audience": "mixte",
+        "service": "nettoyage-fin-de-chantier-paris",
+        "h1": "La laitance de ciment : ce voile blanc qui résiste à tous les détergents",
+        "title": "Retirer la laitance de ciment après un chantier",
+        "meta": "Pourquoi un carrelage neuf reste voilé, pourquoi le détergent n'y fait rien, "
+                "et comment employer un acide dilué sans détruire les joints ni la pierre.",
+        "lead": "Le voile laiteux d'un carrelage neuf n'est pas de la poussière : c'est une "
+                "pellicule minérale, chimiquement liée à la surface. Elle demande une autre "
+                "famille de produits, et quelques précautions qui évitent de transformer un "
+                "problème esthétique en dégât durable.",
+        "cle": "Un acide mal employé détruit les joints ciment avant de retirer la laitance.",
+        "sections": [
+            ("Ce que c'est, et pourquoi le détergent échoue", [
+                "Pendant la prise, l'eau de gâchage remonte en surface et entraîne avec elle "
+                "les particules les plus fines du liant. En s'évaporant, elle laisse un dépôt "
+                "de carbonate de calcium et de fines de ciment : la laitance. Elle est "
+                "minérale et alcaline, et elle adhère au support.",
+                "Un détergent, quel qu'il soit, est fait pour décoller des corps gras et des "
+                "salissures organiques. Sur un dépôt minéral, il n'a aucune prise : on peut "
+                "frotter indéfiniment, le voile revient dès que le sol sèche. Ce qui dissout "
+                "un carbonate, c'est un acide — et c'est là que les ennuis commencent si on "
+                "ne prend pas quelques précautions.",
+            ]),
+            ("L'acide, et les quatre précautions", [
+                "D'abord, le délai : un joint ciment doit avoir achevé sa prise avant tout "
+                "traitement acide, faute de quoi l'acide le creuse et le pulvérise. Comptez "
+                "au minimum une à deux semaines après le jointoiement, davantage par temps "
+                "froid. C'est le point que l'on saute quand on veut livrer vite.",
+                "Ensuite, la dilution et le mouillage préalable : on applique sur un sol "
+                "déjà humide, pour que l'acide reste en surface au lieu d'être aspiré dans "
+                "les joints et dans la porosité. Puis le temps de pose, court et surveillé. "
+                "Enfin la neutralisation : un rinçage abondant, suivi d'un passage alcalin "
+                "léger, sans quoi le résidu acide continue d'agir et blanchit les joints "
+                "plusieurs semaines plus tard.",
+            ]),
+            ("Les supports sur lesquels l'acide est exclu", [
+                "Le marbre, le travertin, la pierre calcaire et le terrazzo sont eux-mêmes "
+                "des carbonates : l'acide les dissout. Il les ternit, les pique, et la "
+                "brillance ne revient pas sans repolissage. Sur ces pierres, la laitance se "
+                "retire avec un produit spécifique sans acide, plus lent, ou mécaniquement "
+                "avec un abrasif très doux.",
+                "Le grès cérame poli demande aussi de l'attention : son polissage ouvre des "
+                "micro-pores qui retiennent la laitance et la relarguent ensuite. Quant aux "
+                "joints époxydiques, ils résistent à l'acide mais retiennent un voile "
+                "d'époxy que seul un produit dédié enlève — et qu'un acide n'entame pas.",
+            ]),
+            ("Le bon moment", [
+                "La laitance se retire d'autant plus facilement qu'elle est récente. Au-delà "
+                "de quelques semaines, elle se carbonate davantage et devient nettement plus "
+                "dure à enlever ; après plusieurs mois, le traitement est long et le résultat "
+                "moins complet. Un local livré se traite donc dans la foulée, pas à "
+                "l'occasion du premier grand ménage.",
+                "C'est l'une des raisons pour lesquelles un nettoyage de fin de chantier "
+                "s'enchaîne au départ du dernier corps d'état. Attendre coûte deux fois : "
+                "plus de temps sur place, et un résultat qui ne sera pas celui d'un sol "
+                "traité à temps.",
+            ]),
+        ],
+        "faq": [
+            ("Le voile revient après séchage, est-ce normal ?",
+             "C'est le signe que la laitance n'a pas été retirée mais seulement mouillée : "
+             "l'eau la redistribue, et elle réapparaît en séchant. C'est aussi, parfois, le "
+             "signe d'un rinçage insuffisant après traitement acide. Dans les deux cas, il "
+             "faut reprendre la surface, pas la relaver."),
+            ("Peut-on employer un acide chlorhydrique du commerce ?",
+             "C'est ce qui se fait le plus souvent et ce qui cause le plus de dégâts : trop "
+             "fort, mal dilué, appliqué sur un sol sec et rarement neutralisé. Les produits "
+             "formulés pour cet usage sont tamponnés et contiennent des inhibiteurs qui "
+             "protègent les joints. L'écart de prix est sans commune mesure avec le coût "
+             "d'un jointoiement à refaire."),
+            ("Faites-vous ce travail ?",
+             "Oui, c'est une étape courante du nettoyage de fin de chantier : essai sur zone "
+             "cachée, produit choisi selon le revêtement et l'âge des joints, puis "
+             "neutralisation. Sur une pierre calcaire ou un marbre, nous employons un "
+             "produit sans acide et nous vous disons ce qu'on peut en attendre."),
+        ],
+    },
 ]
 
 # Suite des dossiers : vitrerie, entretien régulier, appartement. Écrits

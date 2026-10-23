@@ -7510,7 +7510,15 @@ def build_hub_hp():
            ("guides/prix-nettoyage-terrasse-m2.html", "Prix d'un nettoyage de terrasse au m²"),
            ("guides/demoussage-terrasse-ile-de-france.html",
             "Démoussage en Île-de-France : ce qui revient et quand"),
-           ("blog/nettoyer-terrasse-sans-abimer.html", "Nettoyer sa terrasse sans l'abîmer")])],
+           ("blog/nettoyer-terrasse-sans-abimer.html", "Nettoyer sa terrasse sans l'abîmer"),
+           ("dossiers/decapage-colorant-beton.html",
+            "Retirer un colorant sur du béton : ce qui est possible"),
+           ("dossiers/decapage-bois-exterieur.html",
+            "Décaper un bois extérieur sans ouvrir la fibre"),
+           ("dossiers/decapage-graffiti-facade.html",
+            "Retirer un graffiti sans retirer la façade avec"),
+           ("dossiers/decapage-peinture-metal.html",
+            "Décaper un métal peint : les quatre méthodes")])],
         "services",
         "Nettoyage haute pression de terrasses, allées, cours, parkings et façades à Paris et en "
         "Île-de-France. Pression réglée sur le support, devis ferme au m².",
@@ -7740,6 +7748,11 @@ def build_hub_dossiers():
                               "dégrader.",
         "Appartement": "Ce qui est vérifié lors d'un état des lieux, et ce qui ne se rattrape "
                        "pas.",
+        "Décapage": "Sol, béton coloré, métal, bois, façade taguée, laitance de chantier : "
+                    "ce qui décape chaque support, ce qui l'abîme définitivement, et où "
+                    "s'arrête ce que nous faisons. Le décapage n'est pas une prestation à "
+                    "part chez nous : il fait partie du chiffrage d'une fin de chantier ou "
+                    "d'un lavage haute pression.",
     }
     for c in cats:
         blocs.append((c, intros.get(c, ""),
@@ -7820,6 +7833,10 @@ def build_hub_chantier():
           [("services/nettoyage-fin-de-chantier-paris.html", "La prestation en détail"),
            ("dossiers/nettoyage-appartement-etat-des-lieux.html",
             "Nettoyage avant état des lieux : la liste de ce qui est vérifié"),
+           ("dossiers/decapage-sol-selon-revetement.html",
+            "Décapage de sol : quelle méthode pour quel revêtement"),
+           ("dossiers/decapage-laitance-ciment.html",
+            "La laitance de ciment, et comment la retirer sans détruire les joints"),
            ("services/nettoyage-haute-pression-paris.html",
             "Abords, cours et sols extérieurs au nettoyeur haute pression"),
            ("services/nettoyage-hottes-paris.html",
