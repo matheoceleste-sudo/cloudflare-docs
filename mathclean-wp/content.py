@@ -7020,14 +7020,16 @@ DOSSIERS = [
             ]),
             ("Voie par projection : sablage, aérogommage, hydrogommage", [
                 "On projette un abrasif sous pression. Le sablage, le plus agressif, est "
-                "réservé à l'acier épais et se pratique en cabine ou sous confinement, parce "
-                "que la poussière libérée est considérable. L'aérogommage emploie un abrasif "
-                "doux à basse pression et respecte les supports fragiles et les détails. "
-                "L'hydrogommage y ajoute un filet d'eau, qui abat la poussière.",
-                "C'est la méthode la plus régulière sur une grande surface, et c'est un métier "
-                "en soi : matériel, cabine ou confinement, gestion des abrasifs usés. Nous ne "
-                "le pratiquons pas. Quand c'est la bonne réponse à votre situation, nous vous "
-                "le disons plutôt que de proposer un lavage qui n'y suffira pas.",
+                "réservé à l'acier épais et demande un confinement, parce que la poussière "
+                "libérée est considérable. L'aérogommage emploie un abrasif fin à basse "
+                "pression et respecte les supports fragiles et les profils ouvragés. "
+                "L'hydrogommage y ajoute un filet d'eau, qui abat la poussière — c'est le "
+                "réglage qui convient en milieu occupé.",
+                "C'est la méthode la plus régulière sur une grande surface, et c'est celle "
+                "que nous employons quand le lavage ne suffit pas : nous pratiquons le "
+                "décapage par projection, et nous réglons la pression et l'abrasif sur le "
+                "support plutôt que sur la couche à retirer. Le détail des trois procédés et "
+                "de leurs limites est dans notre dossier sur le décapage par projection.",
             ]),
             ("Après le décapage : la fenêtre de rouille", [
                 "Un acier mis à nu rouille en quelques heures, plus vite encore par temps "
@@ -7043,11 +7045,12 @@ DOSSIERS = [
         ],
         "faq": [
             ("Faites-vous le décapage de métaux ?",
-             "Nous lavons et nous dégraissons les surfaces métalliques au nettoyeur haute "
-             "pression : grilles, portails, garde-corps, structures, mobilier urbain, rideaux "
-             "métalliques. Nous retirons les mousses, les dépôts, les salissures et les "
-             "films gras. Nous ne pratiquons ni le sablage, ni l'aérogommage, ni le décapage "
-             "par immersion, et nous ne traitons pas une peinture suspectée au plomb."),
+             "Oui, par lavage et dégraissage au nettoyeur haute pression d'abord — grilles, "
+             "portails, garde-corps, structures, mobilier urbain, rideaux métalliques — et "
+             "par projection d'abrasif quand il faut aller jusqu'au métal nu. Deux limites : "
+             "nous ne faisons pas de décapage par immersion, qui est un travail d'atelier, et "
+             "nous ne traitons pas une peinture suspectée au plomb, dont la mise à nu est un "
+             "chantier encadré."),
             ("Le nettoyeur haute pression décape-t-il la peinture ?",
              "Il emporte une peinture déjà décollée — celle qui cloque ou s'écaille — et il "
              "laisse en place une peinture encore adhérente. C'est utile comme préparation "
@@ -7102,11 +7105,13 @@ DOSSIERS = [
                 "sans attaquer le bois. Le lavage haute pression, lui, emporte les écailles "
                 "déjà décollées et laisse le reste : on obtient un résultat en damier, pire "
                 "visuellement que l'état de départ.",
-                "L'autre voie est le ponçage, qui donne la surface la plus saine avant "
-                "refinition mais demande d'avoir démonté les éléments ou de travailler avec "
-                "aspiration à la source. Sur des volets ou une porte, le démontage et le "
-                "traitement en atelier donnent presque toujours un meilleur résultat qu'un "
-                "travail en façade.",
+                "L'autre voie est l'aérogommage, qui retire la finition et la couche grise "
+                "d'un seul passage sans ouvrir la fibre, et qui révèle le veinage. C'est "
+                "souvent le meilleur résultat possible sur des volets, un bardage ou des "
+                "poutres, et c'est un travail que nous faisons. Reste le ponçage, qui donne "
+                "la surface la plus saine avant refinition mais demande d'avoir démonté les "
+                "éléments : sur des volets, le traitement en atelier par un menuisier donne "
+                "alors un meilleur résultat qu'un travail en façade.",
             ]),
             ("Le séchage, que tout le monde sous-estime", [
                 "Un bois qui vient d'être lavé est gorgé d'eau sur plusieurs millimètres. Un "
@@ -7134,8 +7139,9 @@ DOSSIERS = [
             ("Faites-vous ce travail ?",
              "Le lavage et le dégrisement, oui, dans le cadre du nettoyage haute pression, "
              "avec essai sur une zone cachée avant de traiter l'ensemble. Le décapage d'une "
-             "lasure au gel, oui, sur des surfaces limitées. Le ponçage, la refinition et le "
-             "traitement en atelier, non : c'est le métier d'un peintre ou d'un menuisier."),
+             "lasure, oui, au gel sur des surfaces limitées ou par aérogommage sur un bardage "
+             "et des volets. Le ponçage, la refinition et le traitement en atelier, non : "
+             "c'est le métier d'un peintre ou d'un menuisier."),
         ],
     },
     {
@@ -7174,7 +7180,9 @@ DOSSIERS = [
                 "La haute pression a sa place dans l'opération, mais en rinçage, à pression "
                 "mesurée, après que le produit a fait son travail. L'eau chaude aide "
                 "réellement — elle accélère la dissolution — là où la pression brute ne fait "
-                "que des dégâts.",
+                "que des dégâts. Sur un support minéral résistant, l'hydrogommage est l'autre "
+                "réponse : un abrasif fin, à basse pression, avec un filet d'eau qui abat la "
+                "poussière.",
             ]),
             ("Le fantôme, et pourquoi il faut en parler avant", [
                 "Après traitement d'un support poreux, il reste fréquemment une ombre : les "
@@ -7212,10 +7220,10 @@ DOSSIERS = [
              "modifie l'aspect du support. Nous ne posons pas ces produits : nous vous disons "
              "simplement que la question se pose quand un mur est tagué deux fois par an."),
             ("Faites-vous ce travail ?",
-             "Oui, dans le cadre du nettoyage haute pression, sur des supports accessibles "
-             "depuis le sol et après essai sur une zone cachée. Nous ne traitons pas les "
-             "façades protégées ni la pierre ancienne de valeur patrimoniale, et nous "
-             "n'intervenons pas au-delà de trois niveaux."),
+             "Oui, par voie chimique en gel et par projection d'abrasif selon le support, sur "
+             "des surfaces accessibles depuis le sol et après essai sur une zone cachée. Nous "
+             "ne traitons pas les façades protégées ni la pierre ancienne de valeur "
+             "patrimoniale, et nous n'intervenons pas au-delà de trois niveaux."),
         ],
     },
     {
@@ -7296,6 +7304,127 @@ DOSSIERS = [
              "cachée, produit choisi selon le revêtement et l'âge des joints, puis "
              "neutralisation. Sur une pierre calcaire ou un marbre, nous employons un "
              "produit sans acide et nous vous disons ce qu'on peut en attendre."),
+        ],
+    },
+    {
+        "slug": "decapage-par-projection",
+        "cat": "Décapage",
+        "audience": "mixte",
+        "service": "nettoyage-haute-pression-paris",
+        "h1": "Décapage par projection : aérogommage, hydrogommage, sablage",
+        "title": "Décapage par projection : les trois procédés",
+        "meta": "Trois réglages d'un même principe : pression, abrasif, eau ou non. Ce que "
+                "chacun fait sur la pierre, le bois et le métal, et la règle des 5 % de "
+                "silice.",
+        "lead": "Projeter un abrasif sur une surface pour en retirer une couche : le principe "
+                "tient en une phrase, et tout le métier tient dans trois réglages. Choisir "
+                "le mauvais ne donne pas un moins bon résultat — il abîme le support.",
+        "cle": "Le réglage se choisit sur le support, jamais sur ce qu'on veut retirer.",
+        "sections": [
+            ("Un seul principe, trois réglages", [
+                "Un compresseur envoie de l'air, un abrasif est entraîné dans le flux, une "
+                "buse le projette. Ce qui change d'un procédé à l'autre tient à trois "
+                "variables : la pression, la nature et la finesse de l'abrasif, et la "
+                "présence ou non d'eau dans le jet. Tout le reste en découle.",
+                "Le sablage travaille à forte pression avec un abrasif dur : il va vite, il "
+                "ouvre la surface, et il est réservé aux supports qui le supportent — acier "
+                "épais, béton, fonte. L'aérogommage descend la pression et emploie un abrasif "
+                "fin : il retire la couche sans mordre dans le support, ce qui le rend "
+                "utilisable sur la pierre, la brique, le bois et les profils fins. "
+                "L'hydrogommage ajoute un filet d'eau au jet : il abat la poussière, ce qui "
+                "change tout en milieu occupé ou en ville, et il refroidit la surface.",
+            ]),
+            ("L'abrasif, et la règle qu'on ignore le plus souvent", [
+                "Le choix de l'abrasif pèse autant que la pression. Carbonate de calcium pour "
+                "les supports tendres, silicate d'aluminium ou grenat pour l'acier, "
+                "bicarbonate de sodium là où le résidu doit être soluble et sans danger, "
+                "verre recyclé pour un compromis. La granulométrie fait le reste : à "
+                "pression égale, un grain grossier creuse là où un grain fin polit.",
+                "Le sable siliceux, lui, est écarté — et pas par préférence. Le décret du "
+                "6 juin 1969, qui encadre les travaux de décapage au jet, impose que "
+                "l'abrasif projeté ne contienne pas plus de 5 % en poids de silice libre. Le "
+                "texte excepte les travaux à l'air libre réalisés avec projection conjointe "
+                "d'eau, mais depuis le 1er janvier 2021 la silice cristalline alvéolaire "
+                "issue d'un procédé de travail est classée comme procédé cancérogène. "
+                "Autrement dit : « sablage » est resté dans le vocabulaire, le sable n'est "
+                "plus dans la machine. Nous n'employons pas de média siliceux.",
+            ]),
+            ("Ce que la projection fait à chaque support", [
+                "Sur une pierre de taille ou une brique ancienne, le risque est la croûte de "
+                "surface. Une brique a été cuite : sa peau est plus dense et plus "
+                "imperméable que son cœur. La retirer rend la brique pulvérulente et elle "
+                "s'encrassera plus vite qu'avant. C'est la raison pour laquelle on travaille "
+                "à l'aérogommage, à pression basse, et après un essai sur un mètre carré "
+                "caché — pas sur la façade principale.",
+                "Sur le bois, une projection bien réglée retire la lasure et la couche grise "
+                "sans ouvrir la fibre, et elle révèle le veinage : c'est souvent le meilleur "
+                "résultat possible sur des volets, un bardage ou des poutres. Mal réglée, "
+                "elle creuse le bois de printemps entre les cernes exactement comme le ferait "
+                "un nettoyeur haute pression. Sur le métal, la seule règle absolue est de ne "
+                "jamais projeter un média ferreux sur de l'inox ou de l'aluminium : les "
+                "particules restent incrustées et rouillent ensuite.",
+            ]),
+            ("Ce qui se prépare avant, et que l'on sous-estime", [
+                "Une projection ne reste pas où on la met. L'abrasif rebondit, la poussière "
+                "se déplace, et un chantier mal protégé se solde par des vitrages dépolis, "
+                "des véhicules marqués et des plantations couvertes. Le temps de bâchage et "
+                "de confinement représente souvent autant que le temps de décapage : c'est "
+                "ce qui distingue un devis sérieux d'un devis optimiste.",
+                "L'autre point est le devenir de l'abrasif usé. Il n'est pas neutre : il est "
+                "chargé de ce qu'il vient de retirer — peinture, pigments, métaux. Il se "
+                "récupère et s'évacue selon sa nature, et sur un chantier extérieur il ne "
+                "part pas au caniveau. Un prestataire qui ne parle jamais de ce poste n'a pas "
+                "prévu de le traiter.",
+            ]),
+            ("Ce que nous faisons, et ce que nous ne faisons pas", [
+                "Nous pratiquons le décapage par projection, et nous réglons les trois "
+                "variables selon le support plutôt que selon la couche à retirer : essai sur "
+                "zone cachée, puis traitement de l'ensemble. Façades en pierre ou en brique "
+                "accessibles depuis le sol, bois extérieur, ferronnerie, mobilier urbain, "
+                "sols et murs de locaux techniques.",
+                "Nous ne traitons pas une peinture suspectée au plomb : la projeter en "
+                "libère les poussières, et c'est un chantier encadré, avec confinement, "
+                "aspiration à filtre absolu et évacuation en déchet dangereux. Nous ne "
+                "touchons pas au fibrociment antérieur à 1997, présumé amianté. Nous ne "
+                "faisons pas de grenaillage de sol, qui demande une machine à récupération "
+                "intégrée que nous n'avons pas, ni de décapage par immersion, qui est un "
+                "travail d'atelier. Et nous n'intervenons pas au-delà de trois niveaux, où "
+                "il faut une nacelle et d'autres assurances.",
+            ]),
+            ("La question administrative, souvent oubliée", [
+                "Depuis le décret du 27 février 2014, un ravalement est en principe dispensé "
+                "de formalité. Les exceptions ne sont pas rares pour autant : une déclaration "
+                "préalable reste exigée aux abords des monuments historiques, dans le "
+                "périmètre d'un site patrimonial remarquable, sur un immeuble protégé au "
+                "titre du plan local d'urbanisme, et partout où la commune — ou "
+                "l'intercommunalité compétente pour le PLU — l'a décidé par délibération "
+                "motivée.",
+                "Beaucoup de communes d'Île-de-France ont pris cette délibération. "
+                "Vérifiez auprès de votre mairie avant d'engager les travaux : c'est le "
+                "propriétaire qui en répond, pas l'entreprise, et une façade décapée sans "
+                "l'autorisation requise dans un secteur protégé devient un problème coûteux.",
+            ]),
+        ],
+        "faq": [
+            ("Aérogommage ou sablage, lequel pour ma façade ?",
+             "L'aérogommage, dans la quasi-totalité des cas en bâti ancien. Le sablage à "
+             "forte pression convient à l'acier épais et au béton ; sur une pierre tendre ou "
+             "une brique, il retire la peau du support avec la salissure et le résultat est "
+             "définitif. La bonne démarche est l'inverse de celle qu'on adopte "
+             "spontanément : on part de la pression la plus basse qui fonctionne, on ne "
+             "descend pas depuis la plus forte."),
+            ("Est-ce que cela abîme le support ?",
+             "Correctement réglé, non : c'est précisément l'intérêt du procédé face à un "
+             "lavage haute pression, qui ne permet pas de doser aussi finement. Mal réglé, "
+             "oui, et de façon irréversible. C'est pour cela que nous faisons systématiquement "
+             "un essai sur une zone cachée d'environ un mètre carré, que nous vous le "
+             "montrons, et que le devis n'est arrêté qu'après."),
+            ("Combien de temps pour une façade ?",
+             "Beaucoup plus longtemps qu'un lavage haute pression, et le temps de "
+             "préparation y est pour moitié : bâchage, protection des vitrages et des "
+             "abords, récupération de l'abrasif. Comptez en journées plutôt qu'en heures. "
+             "Nous chiffrons après visite, jamais au téléphone : sur ce travail-là, un prix "
+             "annoncé sans avoir vu le support ne veut rien dire."),
         ],
     },
 ]

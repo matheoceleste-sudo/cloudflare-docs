@@ -7511,6 +7511,8 @@ def build_hub_hp():
            ("guides/demoussage-terrasse-ile-de-france.html",
             "Démoussage en Île-de-France : ce qui revient et quand"),
            ("blog/nettoyer-terrasse-sans-abimer.html", "Nettoyer sa terrasse sans l'abîmer"),
+           ("dossiers/decapage-par-projection.html",
+            "Décapage par projection : aérogommage, hydrogommage, sablage"),
            ("dossiers/decapage-colorant-beton.html",
             "Retirer un colorant sur du béton : ce qui est possible"),
            ("dossiers/decapage-bois-exterieur.html",
@@ -7748,11 +7750,12 @@ def build_hub_dossiers():
                               "dégrader.",
         "Appartement": "Ce qui est vérifié lors d'un état des lieux, et ce qui ne se rattrape "
                        "pas.",
-        "Décapage": "Sol, béton coloré, métal, bois, façade taguée, laitance de chantier : "
-                    "ce qui décape chaque support, ce qui l'abîme définitivement, et où "
-                    "s'arrête ce que nous faisons. Le décapage n'est pas une prestation à "
-                    "part chez nous : il fait partie du chiffrage d'une fin de chantier ou "
-                    "d'un lavage haute pression.",
+        "Décapage": "Sol, béton coloré, métal, bois, façade taguée, laitance de chantier, "
+                    "et la projection d'abrasif que nous pratiquons : ce qui décape chaque "
+                    "support, ce qui l'abîme définitivement, et où s'arrête ce que nous "
+                    "faisons. Le décapage n'est pas une prestation à part chez nous : il "
+                    "fait partie du chiffrage d'une fin de chantier ou d'un lavage haute "
+                    "pression.",
     }
     for c in cats:
         blocs.append((c, intros.get(c, ""),
