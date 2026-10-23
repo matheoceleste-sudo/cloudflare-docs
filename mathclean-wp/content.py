@@ -6792,6 +6792,19 @@ DOSSIERS = [
                 "émulsion, cire, film encrassé — pour en reposer une. La seule question qui "
                 "compte avant de commencer est de savoir sur quoi on travaille.",
         "cle": "Le produit se choisit sur le revêtement, jamais sur le degré de saleté.",
+        "video": ("hp-resine-rotabuse",
+                  "Pourquoi une machine à hauteur fixe plutôt qu'une lance",
+                  "<p>Sur une grande surface, la lance seule laisse des traces de "
+                  "passage&nbsp;: un opérateur ne tient jamais exactement la même "
+                  "distance ni le même angle d'un geste au suivant, et cela se voit une "
+                  "fois le sol sec.</p>"
+                  "<p>Un nettoyeur de surface à buses rotatives sous capot règle les "
+                  "deux problèmes à la fois. La hauteur est fixe, donc la pression reçue "
+                  "par le sol est constante sur toute la largeur, et la projection reste "
+                  "sous le capot — ce qui compte sur un site commercial où l'on "
+                  "travaille à côté de la marchandise. C'est le même raisonnement qu'à "
+                  "l'intérieur avec une monobrosse&nbsp;: la régularité vient de la "
+                  "machine, pas du poignet.</p>"),
         "sections": [
             ("Ce qu'on appelle décaper", [
                 "Un sol souple de locaux reçoit à la pose une protection : une émulsion, "
@@ -6885,6 +6898,18 @@ DOSSIERS = [
                 "en commun. Dans deux d'entre elles, aucun décapage n'y fera rien — et "
                 "mieux vaut l'apprendre avant les travaux qu'après.",
         "cle": "Un béton teinté dans la masse ne se décape pas : la couleur traverse la dalle.",
+        "video": ("hp-resine-limite-film",
+                  "Où s'arrête le lavage, où commence le décapage",
+                  "<p>Une cour en résine rouge sur dalle béton, reprise à la lance, en "
+                  "Île-de-France. Ce qu'il faut regarder n'est pas la propreté mais la "
+                  "bordure&nbsp;: la bande où le jet vient de passer est plus claire et "
+                  "mate, le reste est lisse et saturé.</p>"
+                  "<p>C'est la frontière à surveiller sur tout revêtement coloré. Tant "
+                  "qu'elle reste nette et que la teinte tient, on lave. Quand elle "
+                  "s'estompe et que le support apparaît granuleux, ce n'est plus la "
+                  "salissure qui part&nbsp;: c'est le film. La décision de reculer la "
+                  "lance ou de baisser la pression se prend en quelques secondes, et ce "
+                  "qui a été enlevé ne revient pas.</p>"),
         "sections": [
             ("Premier cas : la couleur est dans la masse", [
                 "Le pigment a été incorporé au béton frais, dans la toupie. La dalle est "

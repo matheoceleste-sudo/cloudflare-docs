@@ -828,6 +828,36 @@ VIDEOS = {
                 "filtres déposés : les parois mouchetées de graisse et, au fond, la "
                 "bouche du conduit d'extraction par laquelle le dépôt remonte.",
     },
+    "hp-resine-limite-film": {
+        "fichier": "hp-resine-limite-film", "duree": "PT5S", "secondes": 5,
+        "nom": "La limite entre la zone traitée et le revêtement intact",
+        "desc": "Gros plan sur une cour en résine rouge reprise à la lance : la bande "
+                "où le jet est passé est plus claire et mate, le reste est lisse et "
+                "saturé. C'est cette frontière qui dit si l'on lave encore ou si l'on "
+                "a commencé à décaper le revêtement.",
+    },
+    "hp-resine-rotabuse": {
+        "fichier": "hp-resine-rotabuse", "duree": "PT6S", "secondes": 6,
+        "nom": "Le nettoyeur de surface rotatif sur une cour en résine",
+        "desc": "Un nettoyeur de surface à buses rotatives sous capot, à hauteur fixe, "
+                "sur une cour commerciale en résine. La pression est constante sur "
+                "toute la largeur et la projection reste contenue.",
+    },
+    "hp-resine-bande-traitee": {
+        "fichier": "hp-resine-bande-traitee", "duree": "PT6S", "secondes": 6,
+        "nom": "Une bande traitée à côté de ce qui ne l'est pas encore",
+        "desc": "Lavage haute pression d'une cour commerciale en résine : la bande "
+                "traitée et la zone encore intacte sont toutes deux mouillées, et "
+                "pourtant la différence se voit. C'est sur cette limite qu'un lavage "
+                "se juge.",
+    },
+    "hp-resine-poste-protege": {
+        "fichier": "hp-resine-poste-protege", "duree": "PT2S", "secondes": 2,
+        "nom": "Le poste de travail, protection comprise",
+        "desc": "Combinaison intégrale, cagoule et bottes au poste de lavage haute "
+                "pression. Ce qui est décollé du sol est renvoyé vers l'opérateur : "
+                "la protection n'est pas décorative.",
+    },
     "hotte-plenum": {
         "fichier": "hotte-plenum-conduit", "duree": "PT3S", "secondes": 3,
         "nom": "Le plénum d'une hotte de pizzeria, trappe ouverte",
@@ -1661,6 +1691,16 @@ VIDEOS_SUP_PAR_SERVICE = {
          "<p>C'est la différence entre décaper et laver. Le but n'est pas de "
          "sortir la pression maximale, c'est de sortir juste ce qu'il faut pour "
          "décoller le film sans toucher au support.</p>"),
+        ("hp-resine-bande-traitee",
+         "Une bande traitée, à côté de ce qui ne l'est pas encore",
+         "<p>Une cour commerciale en résine, en cours de lavage. La différence entre "
+         "les deux zones n'est pas un effet de mouillé&nbsp;: elles sont humides "
+         "toutes les deux. Ce qui a changé, c'est le film de terre et de mousse qui "
+         "ternissait la couleur.</p>"
+         "<p>C'est sur cette limite qu'un lavage se juge, pas sur la brillance. Et "
+         "c'est pour cela que nous gardons une zone témoin non traitée jusqu'à la "
+         "fin du chantier&nbsp;: sans point de comparaison, personne ne peut voir ce "
+         "qui a été fait — y compris celui qui paie.</p>"),
     ],
     "nettoyage-hottes-paris": [
         ("hotte-plenum", "Le plénum d'une hotte, trappe ouverte",
@@ -7063,6 +7103,13 @@ def build_dossier(d):
     corps = ""
     for titre, paras in d["sections"]:
         corps += "<h2>%s</h2>" % titre + _paras(paras)
+    # Une vidéo quand le dossier en a une : elle se place après le texte,
+    # parce qu'elle illustre un point déjà expliqué plutôt qu'elle ne
+    # l'annonce.
+    if d.get("video"):
+        cle, titre_v, texte_v = d["video"]
+        corps += ('<div class="dossier-video">'
+                  + video_block(base, cle, titre_v, texte_v) + "</div>")
     proches = [o for o in DOSSIERS if o["cat"] == d["cat"] and o["slug"] != d["slug"]][:3]
     if len(proches) < 3:
         proches += [o for o in DOSSIERS if o["slug"] != d["slug"] and o not in proches
@@ -7525,7 +7572,19 @@ def build_hub_hp():
         "Nettoyage haute pression de terrasses, allées, cours, parkings et façades à Paris et en "
         "Île-de-France. Pression réglée sur le support, devis ferme au m².",
         "Nettoyage haute pression — Paris et IDF",
-        action="devis")
+        action="devis",
+        video="hp-resine-poste-protege",
+        video_titre="Le poste de travail, protection comprise",
+        video_texte=(
+            "<p>Combinaison intégrale, cagoule, bottes. Un jet haute pression renvoie "
+            "vers l'opérateur tout ce qu'il décolle du sol, et à cette pression un "
+            "retour sur la peau n'est pas un désagrément&nbsp;: c'est une plaie, parfois "
+            "avec injection sous-cutanée.</p>"
+            "<p>L'autre raison tient au chantier plutôt qu'à nous. Sur un site "
+            "commercial ouvert, ce qui est projeté doit rester sur l'opérateur et sous "
+            "le capot de la machine, pas sur la marchandise ni sur les véhicules. Le "
+            "temps de bâchage et de protection des abords figure sur le devis, parce "
+            "qu'il représente une part réelle de l'intervention.</p>"))
 
 
 # --- Sommaires -------------------------------------------------------------
