@@ -92,8 +92,8 @@ SERVICES = [
                    "chantier, vitrerie de première mise en service, four, joints et "
                    "calcaire. Un logement vide est le seul moment où tout est "
                    "accessible — et le seul où un tiers va tout regarder.",
-        "image": "",
-        "hero": "",
+        "image": "appartement-piece-rendue.webp",
+        "hero": "appartement-piece-rendue.webp",
         "icon": "tools",
         "intro": [
             "Un nettoyage de fin de chantier n'est presque jamais une seule "
@@ -383,18 +383,259 @@ SERVICES = [
         ],
     },
 
+    {
+        "slug": "nettoyage-textile-paris",
+        "audience": "particulier",
+        "local": {"court": "Nettoyage canapé", "slug": "nettoyage-canape", "nom": "Nettoyage de canapé", "kw": "nettoyage canapé"},
+        "short": "Textile",
+        "nav": "Nettoyage textile (canapé, matelas, tapis)",
+        "name": "Nettoyage textile à Paris",
+        "h1": "Nettoyage de canapé, matelas et tapis à domicile",
+        "title": "Nettoyage canapé et matelas à Paris",
+        "meta": "Nettoyage de canapé, matelas, tapis et fauteuil à domicile à Paris et en Île-de-France. Injection-extraction, détachage, anti-acariens. Dès 15 €.",
+        "price": "dès 15 €",
+        "excerpt": "Canapé, matelas, tapis, fauteuil et moquette : injection-extraction, détachage ciblé et traitement anti-acariens, directement chez vous.",
+        "image": "canape-extraction.webp",
+        "hero": "canape-extraction.webp",
+        "icon": "sofa",
+        "intro": [
+            "Un canapé d'angle ne se démonte pas et ne part pas au pressing. C'est précisément pour cela que nous venons chez vous, "
+            "avec des machines professionnelles d'injection-extraction qui traitent la fibre en profondeur sans détremper la mousse.",
+            "Le principe : une solution nettoyante est injectée sous pression au cœur du textile, puis immédiatement réaspirée avec la "
+            "saleté dissoute. Le tissu ressort nettoyé, pas gorgé d'eau — c'est ce qui évite les auréoles au séchage. Comptez 4 à 6 h "
+            "de séchage selon la ventilation de la pièce.",
+        ],
+        "included_title": "Ce que nous traitons",
+        "included": [
+            "Canapés en tissu et en cuir, du 2 places au canapé d'angle",
+            "Fauteuils, chaises et chaises de bureau",
+            "Matelas 1 et 2 places, traités <strong>sur les deux faces</strong>",
+            "Tapis et moquettes, avec test des couleurs préalable",
+            "Détachage ciblé : café, gras, vin, encre, urine, sang",
+        ],
+        "steps": [
+            ("Désinfection haute température", "Passage à la vapeur sur toute la surface : la chaleur seule assainit et traite les acariens, sans produit. La laine et la soie font exception — la vapeur les rétracte."),
+            ("Produit adapté à la matière", "Tissu, microfibre, alcantara ou cuir n'appellent pas le même produit. Nous identifions la matière, testons la solidité des couleurs sur une zone cachée, puis appliquons."),
+            ("Brossage", "Le produit est travaillé dans la fibre à la brosse. C'est ce passage qui décolle la saleté au lieu de la laisser remonter en surface."),
+            ("Injection-extraction", "La solution est injectée au cœur de la fibre puis réaspirée aussitôt avec la saleté dissoute. Passages croisés jusqu'à ce que l'eau ressorte claire ; sur les matelas, les deux faces."),
+            ("Repassage si nécessaire", "Tous les tissus ne le demandent pas. Quand c'est le cas, c'est le geste qui finit le travail. Le textile est réutilisable après 4 à 6 h."),
+        ],
+        "chimie": {
+            "titre": 'La fibre décide du produit',
+            "lead": "Coton, synthétique, laine, soie, viscose ou cuir : chaque fibre a une plage de pH qu'elle tolère. En sortir laisse une marque que le nettoyage suivant ne rattrapera pas.",
+            "points": [
+            ('Synthétiques et coton : alcalinité modérée',
+             "Polyester, polypropylène, nylon, coton et lin supportent un détergent faiblement alcalin sans difficulté. C'est le cas le plus fréquent, et celui où l'injection-extraction donne son plein rendement."),
+            ('Laine et soie : neutre ou légèrement acide',
+             "Ce sont des fibres protéiniques. Au-delà de pH 8, la laine ternit et se feutre, la soie perd son brillant de façon définitive. Nous les traitons en neutre, à l'eau tiède, et jamais à la vapeur qui les rétracte."),
+            ('Détachage alcalin, puis neutralisation',
+             "Gras, sang, alimentaire : ces salissures organiques demandent un alcalin en application localisée. L'extraction finale se fait avec une solution légèrement acide qui neutralise le résidu &mdash; sans quoi la fibre jaunit et refixe la poussière."),
+            ('Cuir : nettoyant neutre puis nourrissant',
+             "Sur un canapé en cuir, le protocole est celui de l'automobile : produit à pH neutre appliqué au mousseur, brosse souple, reprise à la microfibre, puis nourrissage. L'injection-extraction est réservée aux textiles."),
+            ("Zéro résidu, c'est la règle",
+             "Un shampoing de surface laisse son tensioactif dans la fibre : il devient collant, capte la poussière et le textile se resalit plus vite qu'avant. L'extraction se poursuit jusqu'à ce que l'eau reprise ressorte claire."),
+            ('Produits biodégradables, et sans danger à sec',
+             "Nous privilégions des produits biodégradables et sûrs pour les enfants et les animaux une fois le textile sec. Un produit biodégradable n'est pas pour autant inoffensif pour votre matière : c'est le pH, pas l'étiquette, qui garantit qu'il convient."),
+        ],
+        },
+        "faq": [
+            ("Mon canapé sera-t-il trempé après l'intervention ?",
+             "Non. L'injection-extraction réaspire immédiatement la solution injectée : le textile ressort humide, pas mouillé. Il est de nouveau utilisable après 4 à 6 h selon la ventilation de la pièce."),
+            ("Les taches anciennes partent-elles ?",
+             "Souvent oui, mais nous ne le promettons jamais à l'aveugle. Une tache incrustée depuis des mois, une auréole déjà créée par un détachant ménager ou une décoloration ne réagissent pas comme une tache fraîche. Nous vous disons ce qui est réaliste avant de commencer."),
+            ("Les produits sont-ils sans danger pour mes enfants et mes animaux ?",
+             "Oui. Nous choisissons des produits sûrs pour les enfants et les animaux domestiques, et nous nous en passons complètement quand la vapeur haute température suffit."),
+            ("Intervenez-vous sur le cuir ?",
+             "Oui, avec un protocole différent : nettoyage doux puis nourrissage du cuir. L'injection-extraction est réservée aux textiles."),
+        ],
+    },
+    {
+        "slug": "nettoyage-automobile-paris",
+        "audience": "particulier",
+        "local": {"court": "Nettoyage voiture", "slug": "nettoyage-voiture", "nom": "Nettoyage de voiture", "kw": "nettoyage voiture"},
+        "short": "Automobile",
+        "nav": "Nettoyage automobile",
+        "name": "Nettoyage automobile à Paris",
+        "h1": "Nettoyage automobile à domicile à Paris & en Île-de-France",
+        "title": "Nettoyage automobile à Paris — dès 50 €",
+        "meta": "Detailing automobile intérieur et extérieur à domicile à Paris et en Île-de-France. Aspiration, shampoing des sièges, vapeur, cuir. Dès 50 €, 7j/7.",
+        "price": "dès 50 €",
+        "excerpt": "Detailing intérieur et extérieur à domicile. Aspiration, shampoing des sièges, vapeur haute température, plastiques et vitres — votre voiture retrouve son aspect showroom.",
+        "image": "auto-interieur-vw.webp",
+        "hero": "auto-interieur-vw.webp",
+        "icon": "car",
+        "intro": [
+            "Nous nous déplaçons avec notre matériel, notre eau et notre électricité : rien à fournir de votre côté. "
+            "L'intervention se fait devant chez vous, en parking souterrain, sur votre place de résidence ou sur votre lieu de travail, "
+            "à Paris comme dans les huit départements franciliens.",
+            "Le nettoyage automobile, ou <em>detailing</em>, n'est pas un lavage de station. Chaque matière — cuir pleine fleur, alcantara, "
+            "tissu, plastique moussé, vernis — appelle un produit et un geste différents. C'est ce diagnostic préalable qui évite "
+            "les auréoles sur un tissu clair, les traces blanches sur un plastique noir ou le dessèchement d'un cuir.",
+        ],
+        "included_title": "Ce que comprend une prestation sans option",
+        "included": [
+            "Aspiration complète de l'habitacle <strong>et du coffre</strong>, sans supplément",
+            "Shampoing des tapis et des moquettes",
+            "Désinfection des allergènes et acariens par vapeur haute température",
+            "Traitement des sièges, du volant, des tapis et de toutes les surfaces planes",
+            "Nettoyage des vitres intérieures, sans trace",
+        ],
+        "steps": [
+            ("Diagnostic", "Nous faisons le tour du véhicule avec vous : nature des salissures, matériaux, points sensibles, et le pack qui correspond réellement à votre besoin."),
+            ("Préparation", "Décontamination et pré-traitement des taches. Les zones fragiles — écrans, boiseries, garnitures — sont protégées avant toute projection."),
+            ("Traitement", "Aspiration, injection-extraction sur les textiles, vapeur sèche sur les surfaces dures, produits adaptés aux cuirs et à l'alcantara."),
+            ("Contrôle", "Nous refaisons le tour du véhicule avec vous avant de partir. Le règlement se fait après l'intervention, une fois le résultat constaté."),
+        ],
+        "chimie": {
+            "titre": 'Un produit par matière, choisi sur son pH',
+            "lead": "Dans un habitacle, cuir, alcantara, tissu, plastique moussé et vitrage n'appellent ni le même produit ni le même geste. Le pH est ce qui commande le choix.",
+            "points": [
+            ("Cuir : pH neutre, jamais d'alcalin",
+             "Une peau tannée est stabilisée en milieu acide. Un nettoyant alcalin attaque sa finition pigmentée et rigidifie la fibre, qui craquelle ensuite aux points de flexion. Nous restons sur des gammes professionnelles à pH neutre &mdash; <strong>Koch Chemie</strong> et équivalents &mdash; suivies systématiquement d'un lait nourrissant."),
+            ('Application au mousseur',
+             "Un cuir saturé d'eau gonfle puis se rétracte au séchage, et la finition se micro-fissure. Le mousseur dépose beaucoup de volume et très peu d'eau : le produit travaille en surface, là où est la salissure, sans pénétrer dans la peau."),
+            ('Alcalin en localisé sur les taches',
+             "Le gras, le sébum et l'alimentaire ne partent pas à l'eau : ils demandent un détachant alcalin, appliqué uniquement sur la tache, avec un temps de pose contrôlé puis une extraction immédiate. Jamais en plein, jamais sans rinçage."),
+            ("Textiles de sellerie : on aspire plus qu'on n'injecte",
+             "L'injection-extraction traite la fibre en profondeur, mais c'est le taux de reprise qui évite l'auréole. Sur alcantara et sur tissu clair, nous travaillons par petites zones avec une extraction très contrôlée."),
+            ('Plastiques et écrans : neutre et sans solvant',
+             "Les plastiques moussés du tableau de bord et les écrans tactiles portent des traitements de surface qu'un produit alcalin ou solvanté ternit définitivement. Nettoyant neutre, microfibre, aucun rinçage à l'eau à proximité de l'électronique."),
+            ('Vapeur quand elle suffit',
+             "Sur les plastiques durs, les seuils, les grilles d'aération et les joints, la vapeur haute température décolle le gras par la chaleur et assainit sans laisser le moindre résidu. Quand elle fait le travail, nous n'ajoutons pas de chimie."),
+        ],
+        },
+        "faq": [
+            ("Combien de temps dure un nettoyage automobile ?",
+             "Comptez 1 h 30 pour un Extérieur Éclat ou un Intérieur Essentiel, 3 h pour un Intérieur Prestige et jusqu'à 4 h pour un Intégral sur un grand véhicule. Les durées exactes figurent sur notre page tarifs."),
+            ("Avez-vous besoin d'une prise électrique ou d'un point d'eau ?",
+             "Non. Nous venons entièrement autonomes en eau et en électricité, ce qui nous permet d'intervenir en parking souterrain, en pied d'immeuble ou sur un parking d'entreprise."),
+            ("Faites-vous le nettoyage avant une revente ?",
+             "C'est une de nos demandes les plus fréquentes. Le pack Intérieur Prestige, associé à l'option de neutralisation des odeurs par ozone, permet de présenter un véhicule sans odeur d'animal ni de tabac — un point qui pèse lourd à la revente."),
+            ("Le prix dépend-il de la taille du véhicule ?",
+             "Non. Chaque pack est à prix fixe, citadine comme SUV : le montant affiché est celui que vous réglez. Seules les options que vous ajoutez et les frais de déplacement s'ajoutent, et ils vous sont annoncés avant validation."),
+        ],
+    },
+    {
+        "slug": "nettoyage-moquette-paris",
+        "audience": "mixte",
+        "local": {"court": "Moquette", "slug": "nettoyage-moquette",
+                  "nom": "Nettoyage de moquette", "kw": "nettoyage moquette"},
+        "short": "Moquette",
+        "nav": "Nettoyage de moquette",
+        "name": "Nettoyage de moquette à Paris",
+        "h1": "Nettoyage de moquette, en logement comme en bureaux",
+        "title": "Nettoyage de moquette à Paris et en Île-de-France",
+        "meta": "Injection-extraction, shampooing rotatif ou poudre absorbante : la "
+                "méthode se choisit sur la fibre et sur le temps de séchage disponible.",
+        "price": "sur devis",
+        "excerpt": "Plateau de bureaux, couloir d'hôtel, chambre ou salon : extraction "
+                   "en profondeur, détachage ciblé et séchage annoncé avant "
+                   "l'intervention — parce que c'est lui qui décide de l'horaire.",
+        # Pas de photo : les deux images de moquette présentes sur le site ne
+        # montrent pas nos interventions. Tant que nous n'avons pas la nôtre,
+        # la tuile porte son icône.
+        "image": "",
+        "hero": "",
+        "icon": "sparkle",
+        "intro": [
+            "Une moquette ne se salit pas comme un sol dur. Elle filtre : chaque "
+            "passage y dépose des particules qui descendent entre les fibres au lieu "
+            "de rester en surface. L'aspirateur en retire la part superficielle, et "
+            "c'est beaucoup — mais ce qui est descendu au pied de la fibre y reste, "
+            "s'agglomère avec les corps gras apportés par les semelles, et finit par "
+            "donner ce gris mat des zones de passage que plus aucun aspirateur ne "
+            "rattrape.",
+            "Le point que presque personne ne dit, et qui explique les mauvaises "
+            "expériences : un nettoyage mal rincé salit plus vite qu'il ne nettoie. "
+            "Un shampooing laissé dans la fibre reste collant une fois sec. Il capte "
+            "la poussière à chaque passage, et la moquette redevient grise en quelques "
+            "semaines — le client en conclut que le nettoyage n'a servi à rien, alors "
+            "que c'est le rinçage qui a manqué. C'est pour cette raison que nous "
+            "travaillons en injection-extraction chaque fois que le séchage le permet : "
+            "la solution est aspirée immédiatement après avoir été injectée.",
+            "La deuxième question est celle du support, et elle se pose avant de "
+            "mouiller quoi que ce soit. Une moquette collée en plein sur une dalle "
+            "supporte mal l'excès d'eau : la colle se ramollit, des cloques "
+            "apparaissent, et une odeur s'installe si l'humidité reste piégée. Une "
+            "moquette tendue sur thibaude laisse l'eau descendre dans la sous-couche, "
+            "où elle met des jours à partir. Dans les deux cas, ce n'est pas la "
+            "quantité d'eau qui fait la qualité du nettoyage, c'est la qualité de "
+            "l'extraction.",
+        ],
+        "included_title": "Ce que couvre l'intervention",
+        "included": [
+            "<strong>Identification de la fibre et test de solidité des couleurs</strong> sur une zone cachée, avant tout traitement",
+            "<strong>Aspiration préalable en profondeur</strong> : jusqu'à l'essentiel de la saleté sèche part avant toute humidification",
+            "<strong>Détachage ciblé</strong> tache par tache, avec le produit adapté à sa nature — tannin, gras, encre, protéine",
+            "<strong>Injection-extraction</strong> à température maîtrisée, ou shampooing rotatif quand le séchage disponible l'impose",
+            "<strong>Traitement spécifique des zones de passage</strong>, couloirs, devants d'ascenseur et entrées, qui demandent deux passages",
+            "<strong>Brossage de relevage des fibres</strong> après extraction, pour que la moquette sèche droite et non couchée",
+            "<strong>Détourage manuel des plinthes et des angles</strong>, que la machine n'atteint pas",
+        ],
+        "steps": [
+            ("Reconnaissance de la fibre et du support",
+             "Laine, polyamide, polypropylène : la fibre décide du produit. La laine est une protéine, comme un cheveu — un alcalin la ternit et la raidit sans retour possible, on y travaille à pH neutre. Nous regardons aussi comment la moquette est posée, collée ou tendue, parce que cela fixe la quantité d'eau admissible."),
+            ("Test de solidité des couleurs",
+             "Un linge humide pressé quelques secondes sur une zone cachée suffit à savoir si la teinture migre. Sur une moquette imprimée ou de provenance inconnue, c'est le seul moyen d'éviter un dégorgement, qui est définitif. Ce test prend deux minutes et il n'est jamais sauté."),
+            ("Aspiration en profondeur",
+             "Avant toute humidification, et c'est l'étape la plus rentable de l'intervention : la saleté sèche s'enlève à sec. Mouiller une moquette non aspirée transforme la poussière en boue et la fait descendre au lieu de la sortir."),
+            ("Détachage, tache par tache",
+             "Chaque famille de taches a son produit et son geste. Le sang se traite à l'eau froide — le chaud le coagule et le fixe. Le café et le thé sont des tannins, le gras demande un solvant. Dans tous les cas on tamponne du bord vers le centre, on ne frotte pas : frotter étale la tache et ouvre la fibre, qui restera plus claire après séchage."),
+            ("Extraction",
+             "Injection d'une solution chaude sous pression, aspirée dans le même geste. Ce qui ressort dans la cuve est ce qui était dans la fibre : c'est la différence avec un shampooing de surface. Sur une grande surface qui doit rester praticable, nous passons au shampooing rotatif, plus rapide à sécher, en l'assumant pour ce qu'il est — un traitement de surface."),
+            ("Relevage et séchage",
+             "Brossage pour que les fibres sèchent droites, puis ventilation. Comptez quatre à huit heures de séchage selon l'épaisseur, la saison et l'aération, davantage sur une moquette tendue sur thibaude. Ce délai vous est donné avant l'intervention : c'est lui qui décide de l'horaire, pas la surface."),
+        ],
+        "faq": [
+            ("Combien de temps avant de pouvoir remarcher dessus ?",
+             "Quatre à huit heures pour une moquette collée traitée par injection-extraction, dans une pièce aérée. Un passage léger avec des surchaussures est possible plus tôt. Sur une moquette tendue sur thibaude, comptez davantage, parce que l'humidité descend dans la sous-couche. C'est la raison pour laquelle nous intervenons volontiers le vendredi soir ou le samedi sur un plateau de bureaux : le week-end fait le séchage."),
+            ("Ma moquette redevient grise un mois après un nettoyage, pourquoi ?",
+             "Presque toujours à cause d'un résidu de produit laissé dans la fibre. Un shampooing mal rincé reste collant en séchant et capte la poussière à chaque passage : la moquette se resalit plus vite qu'avant le nettoyage. C'est un défaut de rinçage, pas une fatalité, et il se corrige par une extraction à l'eau claire."),
+            ("Les taches anciennes partent-elles ?",
+             "Souvent, mais pas toujours, et nous le disons avant plutôt qu'après. Une tache ancienne a eu le temps de se fixer à la fibre, et certaines — encre, javel, teinture, brûlure — ont modifié la couleur elle-même : il n'y a plus rien à retirer. Nous faisons un essai sur la tache la plus visible et vous montrez le résultat avant d'engager l'ensemble."),
+            ("Une moquette de bureaux, à quelle fréquence ?",
+             "Un à deux nettoyages complets par an pour un plateau en usage normal, avec des reprises ciblées sur les zones de passage — entrée, devant des ascenseurs, couloirs — qui s'encrassent trois à quatre fois plus vite que le reste. Traiter ces zones séparément coûte beaucoup moins cher qu'un passage général supplémentaire."),
+            ("Faites-vous les moquettes de véhicule ?",
+             "Oui, mais elles relèvent du nettoyage automobile : l'habitacle se traite en entier, sièges compris, et le séchage y est plus délicat parce que le volume est fermé. Dites-nous ce que vous avez, nous orientons vers la bonne prestation."),
+            ("Pourquoi un devis plutôt qu'un prix au mètre carré ?",
+             "Parce qu'une moquette de chambre peu passante et un couloir d'hôtel n'ont rien de comparable à surface égale : le second demande deux passages et un détachage poste par poste. Le mobilier à déplacer et l'horaire d'accès pèsent autant. Nous chiffrons après avoir vu — sur place ou sur photos — et le montant annoncé est celui que vous réglez."),
+        ],
+    },
 ]
 
-# --- Tarifs ---------------------------------------------------------------
-# Prestations à prix fixe. Vidées en octobre 2026 avec le retrait du
-# nettoyage automobile et du nettoyage textile : les trois métiers restants
-# se chiffrent tous sur devis. Le moteur de chiffrage garde les chemins
-# correspondants, prêts si une prestation à prix fixe revient.
-PACKS_AUTO = []
+PACKS_AUTO = [
+    ("Extérieur Éclat", 50, "Extérieur", "La carrosserie retrouve sa brillance", False,
+     ["Lavage complet de la carrosserie", "Jantes et passages de roues", "Brillant pneus",
+      "Vitres extérieures", "Séchage sans trace"]),
+    ("Intérieur Essentiel", 55, "Intérieur", "Idéal pour un coup de propre régulier (hors cuir et alcantara)", False,
+     ["Aspiration de l'habitacle et du coffre", "Nettoyage du tableau de bord", "Nettoyage des plastiques",
+      "Vitres intérieures", "Désinfection complète à la vapeur", "Parfum d'ambiance"]),
+    ("Intérieur Prestige", 100, "Intérieur", "Le détail poussé jusqu'au moindre recoin, cuir compris", True,
+     ["Tout l'Intérieur Essentiel", "Sièges cuir nettoyés ou pressing des sièges tissu",
+      "Pressing des tapis et moquettes", "Protection des plastiques", "Traitement des cuirs",
+      "Battements de portes", "Ciel de toit", "Compartiment de la roue de secours"]),
+    ("Intégral", 130, "Intérieur + Extérieur", "Le véhicule entier, dedans comme dehors", False,
+     ["Tout l'Intérieur Prestige", "Lavage complet de la carrosserie", "Jantes et brillant pneus",
+      "Vitres intérieures et extérieures", "Séchage sans trace", "Parfum d'ambiance"]),
+]
 
-OPTIONS_AUTO = []
+OPTIONS_AUTO = [
+    ("Retrait des poils d'animaux", 10, "Sièges, tapis et moquettes"),
+    ("Traitement cuir & alcantara", 20, "Nettoyage puis nourrissage des cuirs et de l'alcantara"),
+    ("Neutralisation des odeurs par ozone", 30, "Traitement d'1 h : les molécules odorantes sont détruites, pas masquées"),
+]
 
-TARIFS_TEXTILE = []
+TARIFS_TEXTILE = [
+    ("Chaise / chaise de bureau", 15, "Assise et dossier"),
+    ("Fauteuil", 25, "Assise, dossier et accoudoirs"),
+    ("Canapé 2 places", 39, "Injection-extraction et détachage"),
+    ("Canapé 3 places", 49, "Injection-extraction et détachage"),
+    ("Canapé d'angle", 69, "Injection-extraction et détachage"),
+    ("Matelas 1 place", 39, "Deux faces, traitement anti-acariens"),
+    ("Matelas 2 places", 49, "Deux faces, traitement anti-acariens"),
+    ("Tapis jusqu'à 6 m²", 39, "Lavage des fibres en profondeur"),
+    ("Tapis de plus de 6 m²", 59, "Lavage des fibres en profondeur"),
+]
 
 # Prestations chiffrées après contact. Le quatrième élément est le montant
 # affiché : « Sur devis » quand il n'y a pas de prix d'appel honnête à donner,
@@ -406,6 +647,8 @@ TARIFS_DEVIS = [
      "nettoyage-haute-pression-paris", "Sur devis"),
     ("Dégraissage de hotte", "Hotte, filtres, bac à graisse, conduits et ventilateur",
      "nettoyage-hottes-paris", "Sur devis"),
+    ("Nettoyage de moquette", "Bureaux, couloirs, chambres : extraction et détachage",
+     "nettoyage-moquette-paris", "Sur devis"),
 ]
 
 # --- Zones d'intervention -------------------------------------------------
@@ -580,7 +823,7 @@ FAQ = [
      "que vous validiez et il ne bouge plus ensuite."),
     ("Utilisez-vous des produits écologiques ?",
      "Nous privilégions des produits respectueux de l'environnement et de votre santé. Sur "
-     "nos trois métiers, le produit n'est pourtant pas la variable principale : un "
+     "nos métiers, le produit n'est pourtant pas la variable principale : un "
      "dégraissage de hotte demande un alcalin et du temps de pose, un lavage haute pression "
      "demande surtout la bonne pression, et une fin de chantier se joue d'abord sur "
      "l'aspiration en filtration fine."),

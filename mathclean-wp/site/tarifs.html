@@ -69,7 +69,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
 <li class="menu-item-has-children">
   <a href="services">Prestations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
   <ul class="sub-menu">
-    <li class="nav-part"><a href="services/nettoyage-fin-de-chantier-paris">Fin de chantier et fin de bail</a></li><li class="nav-part"><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-pro"><a href="fin-de-chantier">Fin de chantier et fin de bail</a></li><li class="nav-pro"><a href="hottes">Dégraissage de hottes</a></li><li class="nav-pro"><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li>
+    <li class="nav-part"><a href="services/nettoyage-fin-de-chantier-paris">Fin de chantier et fin de bail</a></li><li class="nav-part"><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li class="nav-part"><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li class="nav-part"><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li class="nav-part"><a href="services/nettoyage-moquette-paris">Nettoyage de moquette</a></li><li class="nav-pro"><a href="fin-de-chantier">Fin de chantier et fin de bail</a></li><li class="nav-pro"><a href="hottes">Dégraissage de hottes</a></li><li class="nav-pro"><a href="nettoyage-haute-pression">Nettoyage haute pression</a></li>
   </ul>
 </li>
 <li class="current-menu-item"><a href="tarifs">Tarifs</a></li>
@@ -118,7 +118,85 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
   <div class="container">
     <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="./">Accueil</a><span class="sep">›</span><span aria-current="page">Tarifs</span></nav>
     <h1>Nos tarifs</h1>
-    <p class="lead">Nos trois prestations se chiffrent sur devis, et c'est volontaire : aucune d'elles ne ressemble assez d'un chantier à l'autre pour qu'un prix affiché veuille dire quelque chose. Le devis est ferme, sans acompte, et le montant annoncé est celui que vous réglez.</p>
+    <p class="lead">Les prix des prestations à tarif fixe, et le principe de facturation pour celles qui se chiffrent au cas par cas. Le devis est ferme, sans acompte, et le montant annoncé est celui que vous réglez.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Automobile</span>
+      <h2>Les quatre packs detailing</h2>
+      <p class="lead">
+        Prix fixe, citadine comme grand véhicule. À domicile, sur votre place de parking ou sur votre
+        lieu de travail. Le coffre est toujours compris, sans supplément.
+      </p>
+    </div>
+    <div class="grid grid-4"><div class="pack reveal">
+  
+  <div class="pack-scope">Extérieur</div>
+  <h3>Extérieur Éclat</h3>
+  <div class="pack-price">50 € <span>prix fixe</span></div>
+  <p class="pack-desc">La carrosserie retrouve sa brillance</p>
+  <ul class="checklist"><li>Lavage complet de la carrosserie</li><li>Jantes et passages de roues</li><li>Brillant pneus</li><li>Vitres extérieures</li><li>Séchage sans trace</li></ul>
+  <a class="btn btn-outline" href="devis?prestation=Nettoyage%20automobile">Demander ce pack</a>
+</div><div class="pack reveal">
+  
+  <div class="pack-scope">Intérieur</div>
+  <h3>Intérieur Essentiel</h3>
+  <div class="pack-price">55 € <span>prix fixe</span></div>
+  <p class="pack-desc">Idéal pour un coup de propre régulier (hors cuir et alcantara)</p>
+  <ul class="checklist"><li>Aspiration de l'habitacle et du coffre</li><li>Nettoyage du tableau de bord</li><li>Nettoyage des plastiques</li><li>Vitres intérieures</li><li>Désinfection complète à la vapeur</li><li>Parfum d'ambiance</li></ul>
+  <a class="btn btn-outline" href="devis?prestation=Nettoyage%20automobile">Demander ce pack</a>
+</div><div class="pack reveal is-featured">
+  <span class="pack-flag">Le plus demandé</span>
+  <div class="pack-scope">Intérieur</div>
+  <h3>Intérieur Prestige</h3>
+  <div class="pack-price">100 € <span>prix fixe</span></div>
+  <p class="pack-desc">Le détail poussé jusqu'au moindre recoin, cuir compris</p>
+  <ul class="checklist"><li>Tout l'Intérieur Essentiel</li><li>Sièges cuir nettoyés ou pressing des sièges tissu</li><li>Pressing des tapis et moquettes</li><li>Protection des plastiques</li><li>Traitement des cuirs</li><li>Battements de portes</li><li>Ciel de toit</li><li>Compartiment de la roue de secours</li></ul>
+  <a class="btn btn-outline" href="devis?prestation=Nettoyage%20automobile">Demander ce pack</a>
+</div><div class="pack reveal">
+  
+  <div class="pack-scope">Intérieur + Extérieur</div>
+  <h3>Intégral</h3>
+  <div class="pack-price">130 € <span>prix fixe</span></div>
+  <p class="pack-desc">Le véhicule entier, dedans comme dehors</p>
+  <ul class="checklist"><li>Tout l'Intérieur Prestige</li><li>Lavage complet de la carrosserie</li><li>Jantes et brillant pneus</li><li>Vitres intérieures et extérieures</li><li>Séchage sans trace</li><li>Parfum d'ambiance</li></ul>
+  <a class="btn btn-outline" href="devis?prestation=Nettoyage%20automobile">Demander ce pack</a>
+</div></div>
+
+    <div class="table-wrap" style="margin-top:44px">
+      <table class="price-table">
+        <caption>Options automobile, à ajouter à n'importe quel pack</caption>
+        <thead><tr><th scope="col">Option</th><th scope="col" style="text-align:right">Supplément</th></tr></thead>
+        <tbody><tr><th scope="row">Retrait des poils d'animaux<small>Sièges, tapis et moquettes</small></th><td class="amount">+ 10 €</td></tr><tr><th scope="row">Traitement cuir & alcantara<small>Nettoyage puis nourrissage des cuirs et de l'alcantara</small></th><td class="amount">+ 20 €</td></tr><tr><th scope="row">Neutralisation des odeurs par ozone<small>Traitement d'1 h : les molécules odorantes sont détruites, pas masquées</small></th><td class="amount">+ 30 €</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Textile</span>
+      <h2>Canapé, matelas, tapis et fauteuil</h2>
+      <p class="lead">
+        Injection-extraction à domicile, détachage ciblé et traitement anti-acariens.
+        Les matelas sont traités sur les deux faces.
+      </p>
+    </div>
+    <div class="table-wrap">
+      <table class="price-table">
+        <caption>Tarifs par pièce traitée</caption>
+        <thead><tr><th scope="col">Prestation</th><th scope="col" style="text-align:right">Tarif</th></tr></thead>
+        <tbody><tr><th scope="row">Chaise / chaise de bureau<small>Assise et dossier</small></th><td class="amount">15 €</td></tr><tr><th scope="row">Fauteuil<small>Assise, dossier et accoudoirs</small></th><td class="amount">25 €</td></tr><tr><th scope="row">Canapé 2 places<small>Injection-extraction et détachage</small></th><td class="amount">39 €</td></tr><tr><th scope="row">Canapé 3 places<small>Injection-extraction et détachage</small></th><td class="amount">49 €</td></tr><tr><th scope="row">Canapé d'angle<small>Injection-extraction et détachage</small></th><td class="amount">69 €</td></tr><tr><th scope="row">Matelas 1 place<small>Deux faces, traitement anti-acariens</small></th><td class="amount">39 €</td></tr><tr><th scope="row">Matelas 2 places<small>Deux faces, traitement anti-acariens</small></th><td class="amount">49 €</td></tr><tr><th scope="row">Tapis jusqu'à 6 m²<small>Lavage des fibres en profondeur</small></th><td class="amount">39 €</td></tr><tr><th scope="row">Tapis de plus de 6 m²<small>Lavage des fibres en profondeur</small></th><td class="amount">59 €</td></tr></tbody>
+      </table>
+    </div>
+    <p class="field-hint" style="margin-top:14px">
+      Plusieurs pièces à traiter le même jour ? Dites-le nous : nous ajustons le devis, le déplacement
+      n'étant facturé qu'une fois.
+    </p>
   </div>
 </section>
 
@@ -135,7 +213,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
     <div class="table-wrap">
       <table class="price-table">
         <thead><tr><th scope="col">Prestation</th><th scope="col" style="text-align:right">Tarif</th></tr></thead>
-        <tbody><tr><th scope="row"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a><small>Logements, bureaux, locaux après travaux</small></th><td class="amount">Sur devis</td></tr><tr><th scope="row"><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a><small>Terrasses, façades, cours, sols extérieurs</small></th><td class="amount">Sur devis</td></tr><tr><th scope="row"><a href="services/nettoyage-hottes-paris">Dégraissage de hotte</a><small>Hotte, filtres, bac à graisse, conduits et ventilateur</small></th><td class="amount">Sur devis</td></tr></tbody>
+        <tbody><tr><th scope="row"><a href="services/nettoyage-fin-de-chantier-paris">Nettoyage de fin de chantier</a><small>Logements, bureaux, locaux après travaux</small></th><td class="amount">Sur devis</td></tr><tr><th scope="row"><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a><small>Terrasses, façades, cours, sols extérieurs</small></th><td class="amount">Sur devis</td></tr><tr><th scope="row"><a href="services/nettoyage-hottes-paris">Dégraissage de hotte</a><small>Hotte, filtres, bac à graisse, conduits et ventilateur</small></th><td class="amount">Sur devis</td></tr><tr><th scope="row"><a href="services/nettoyage-moquette-paris">Nettoyage de moquette</a><small>Bureaux, couloirs, chambres : extraction et détachage</small></th><td class="amount">Sur devis</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -210,7 +288,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
         <span class="brand-name" style="font-size:1.5rem">Math<span>Clean</span></span>
         <p class="footer-about">
           Entreprise de nettoyage à domicile et en entreprise, à Paris et dans les huit départements
-          d'Île-de-France&nbsp;: Fin de chantier / fin de bail, haute pression et hottes.
+          d'Île-de-France&nbsp;: Fin de chantier / fin de bail, haute pression, hottes, textile, automobile et moquette.
           Une exigence de roi, du particulier au professionnel.
         </p>
         <div class="footer-contact">
@@ -222,7 +300,7 @@ if(d.dataset.profil!=='pro'){try{if(localStorage.getItem('mc-profil')==='pro')d.
       </div>
       <div>
         <h2 class="widget-title">Prestations</h2>
-        <ul><li><a href="services/nettoyage-fin-de-chantier-paris">Fin de chantier et fin de bail</a></li><li><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="services/nettoyage-hottes-paris">Dégraissage de hottes</a></li></ul>
+        <ul><li><a href="services/nettoyage-fin-de-chantier-paris">Fin de chantier et fin de bail</a></li><li><a href="services/nettoyage-haute-pression-paris">Nettoyage haute pression</a></li><li><a href="services/nettoyage-hottes-paris">Dégraissage de hottes</a></li><li><a href="services/nettoyage-textile-paris">Nettoyage textile (canapé, matelas, tapis)</a></li><li><a href="services/nettoyage-automobile-paris">Nettoyage automobile</a></li><li><a href="services/nettoyage-moquette-paris">Nettoyage de moquette</a></li></ul>
         <h2 class="widget-title" style="margin-top:1.6rem">Par métier</h2>
         <ul>
           <li><a href="fin-de-chantier">Fin de chantier et fin de bail</a></li>

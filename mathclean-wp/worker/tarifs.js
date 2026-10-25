@@ -15,9 +15,76 @@ export const TARIFS = {
     "review_url": "https://g.page/r/CaK1p63WHA51EBM/review",
     "email": "matheoceleste@gmail.com"
   },
-  "packs": [],
-  "options": [],
-  "textile": [],
+  "packs": [
+    {
+      "nom": "Extérieur Éclat",
+      "prix": 50
+    },
+    {
+      "nom": "Intérieur Essentiel",
+      "prix": 55
+    },
+    {
+      "nom": "Intérieur Prestige",
+      "prix": 100
+    },
+    {
+      "nom": "Intégral",
+      "prix": 130
+    }
+  ],
+  "options": [
+    {
+      "nom": "Retrait des poils d'animaux",
+      "prix": 10
+    },
+    {
+      "nom": "Traitement cuir & alcantara",
+      "prix": 20
+    },
+    {
+      "nom": "Neutralisation des odeurs par ozone",
+      "prix": 30
+    }
+  ],
+  "textile": [
+    {
+      "nom": "Chaise / chaise de bureau",
+      "prix": 15
+    },
+    {
+      "nom": "Fauteuil",
+      "prix": 25
+    },
+    {
+      "nom": "Canapé 2 places",
+      "prix": 39
+    },
+    {
+      "nom": "Canapé 3 places",
+      "prix": 49
+    },
+    {
+      "nom": "Canapé d'angle",
+      "prix": 69
+    },
+    {
+      "nom": "Matelas 1 place",
+      "prix": 39
+    },
+    {
+      "nom": "Matelas 2 places",
+      "prix": 49
+    },
+    {
+      "nom": "Tapis jusqu'à 6 m²",
+      "prix": 39
+    },
+    {
+      "nom": "Tapis de plus de 6 m²",
+      "prix": 59
+    }
+  ],
   "services": [
     {
       "slug": "nettoyage-fin-de-chantier-paris",
@@ -32,6 +99,21 @@ export const TARIFS = {
     {
       "slug": "nettoyage-hottes-paris",
       "nav": "Dégraissage de hottes",
+      "univers": "devis"
+    },
+    {
+      "slug": "nettoyage-textile-paris",
+      "nav": "Nettoyage textile (canapé, matelas, tapis)",
+      "univers": "textile"
+    },
+    {
+      "slug": "nettoyage-automobile-paris",
+      "nav": "Nettoyage automobile",
+      "univers": "auto"
+    },
+    {
+      "slug": "nettoyage-moquette-paris",
+      "nav": "Nettoyage de moquette",
       "univers": "devis"
     }
   ],
