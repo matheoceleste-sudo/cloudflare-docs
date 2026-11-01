@@ -828,6 +828,84 @@ VIDEOS = {
                 "filtres déposés : les parois mouchetées de graisse et, au fond, la "
                 "bouche du conduit d'extraction par laquelle le dépôt remonte.",
     },
+    "auto-portiere": {
+        "fichier": "detailing-2", "duree": "PT5S", "secondes": 5,
+        "nom": "Une contre-porte reprise à la vapeur",
+        "desc": "Le panneau de porte d'un véhicule, traité à la vapeur : les "
+                "grilles de haut-parleur, le contour de la poignée et la gorge du "
+                "vide-poche sont les trois points qu'un passage à l'éponge "
+                "contourne.",
+    },
+    "auto-exterieur": {
+        "fichier": "detailing-5", "duree": "PT5S", "secondes": 5,
+        "nom": "Une carrosserie rendue, à domicile",
+        "desc": "Le véhicule rendu après lavage, sur la place où il était "
+                "stationné. Nous apportons l'eau et l'électricité : la voiture ne "
+                "bouge pas.",
+    },
+    "bois-vapeur": {
+        "fichier": "detailing-3", "duree": "PT5S", "secondes": 5,
+        "nom": "Un plateau de bois repris à la vapeur",
+        "desc": "Vapeur et grattoir sur un plateau de table ancien. La vapeur "
+                "ramollit le dépôt sans détremper le bois, ce qu'un lavage à l'eau "
+                "ne permet pas sur un support absorbant.",
+    },
+    "hp-dallage-pierre": {
+        "fichier": "detailing-4", "duree": "PT5S", "secondes": 5,
+        "nom": "Un dallage de pierre, lance en main",
+        "desc": "Une terrasse en dalles de pierre irrégulières. Les joints "
+                "larges retiennent la mousse et imposent de travailler dans leur "
+                "sens, faute de quoi on les creuse.",
+    },
+    "hp-resine-machine-passe": {
+        "fichier": "hp-resine-machine-passe", "duree": "PT3S", "secondes": 3,
+        "nom": "Le nettoyeur de surface, en passe",
+        "desc": "La machine avance à vitesse constante sur une cour commerciale "
+                "en résine. C'est la régularité du recouvrement qui évite les "
+                "bandes visibles une fois le sol sec.",
+    },
+    "hp-resine-machine-cour": {
+        "fichier": "hp-resine-machine-cour", "duree": "PT6S", "secondes": 6,
+        "nom": "La machine de profil, sur la cour",
+        "desc": "Le même poste vu de côté : le capot contient la projection, et "
+                "l'opérateur reste à distance constante du sol, ce qu'une lance "
+                "tenue à main levée ne permet pas.",
+    },
+    "hp-resine-machine-large": {
+        "fichier": "hp-resine-machine-large", "duree": "PT2S", "secondes": 2,
+        "nom": "La cour en entier, machine au travail",
+        "desc": "Vue large d'une cour commerciale pendant le lavage, véhicules "
+                "et plantations en place. Le chantier se fait autour de ce qui ne "
+                "peut pas bouger.",
+    },
+    "hp-resine-grande-surface": {
+        "fichier": "hp-resine-grande-surface", "duree": "PT5S", "secondes": 5,
+        "nom": "La lance sur une grande surface",
+        "desc": "Le geste à la lance sur une surface dégagée : recouvrement "
+                "régulier, distance constante, et une limite nette entre le traité "
+                "et le reste.",
+    },
+    "hp-resine-film-vertical": {
+        "fichier": "hp-resine-film-vertical", "duree": "PT2S", "secondes": 2,
+        "nom": "Un relevé vertical, repris de près",
+        "desc": "Le raccord entre le sol et le relevé vertical, là où le "
+                "revêtement est le plus fin et où la pression doit être la plus "
+                "basse.",
+    },
+    "hp-resine-allee-plantee": {
+        "fichier": "hp-resine-allee-plantee", "duree": "PT6S", "secondes": 6,
+        "nom": "L'allée entre les massifs",
+        "desc": "La partie étroite d'une cour commerciale, entre les bacs et les "
+                "bordures plantées. C'est là que le temps passe, et c'est ce qu'un "
+                "prix au mètre carré ne voit pas.",
+    },
+    "hp-resine-vue-operateur": {
+        "fichier": "hp-resine-vue-operateur", "duree": "PT7S", "secondes": 7,
+        "nom": "La lance, vue de l'opérateur",
+        "desc": "Le point de vue de celui qui tient la lance : l'angle du jet et "
+                "la distance au sol se jugent d'ici, pas depuis le bord du "
+                "chantier.",
+    },
     "auto-plancher": {
         "fichier": "detailing-1", "duree": "PT5S", "secondes": 5,
         "nom": "Les moquettes de plancher, à l'extracteur",
@@ -950,6 +1028,38 @@ VIDEOS = {
                 "avec reprise manuelle des angles.",
     },
 }
+
+
+def galerie_videos(base):
+    """Toutes les séquences tournées sur nos chantiers, au même endroit.
+
+    Une page de prestation n'en montre qu'une ou deux, celles qui servent son
+    propos. Les autres n'ont pas à rester invisibles : cette galerie les
+    rassemble, et rien ne part sur le réseau tant que le visiteur n'a pas
+    cliqué — seules les affiches sont téléchargées.
+    """
+    cartes = ""
+    for v in VIDEOS.values():
+        cartes += f"""<figure class="galerie-clip reveal">
+  <video src="{base}assets/videos/{v['fichier']}.mp4"
+         poster="{base}assets/videos/{v['fichier']}.webp"
+         controls playsinline preload="none" width="640" height="1138"
+         aria-label="{esc(v['nom'])}"></video>
+  <figcaption><strong>{esc(v['nom'])}</strong>{esc(v['desc'])}</figcaption>
+</figure>"""
+    return f"""<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Toutes nos séquences</span>
+      <h2>{len(VIDEOS)} vidéos de chantier</h2>
+      <p class="lead">
+        Tout ce que nous avons filmé sur nos interventions, sans montage ni musique.
+        Les vidéos ne se chargent qu'au clic.
+      </p>
+    </div>
+    <div class="galerie-clips">{cartes}</div>
+  </div>
+</section>"""
 
 
 def video_block(base, cle, titre, texte, eyebrow="En vidéo"):
@@ -1709,6 +1819,12 @@ PHOTOS_PAR_SERVICE = {
          760, 1013),
     ],
     "nettoyage-hottes-paris": [
+        ("hotte-bachee.webp",
+         "Une hotte de cuisine professionnelle sous bâche, bacs en place avant "
+         "le premier coup de produit. Le film protège le piano et les plans de "
+         "travail, les bacs reçoivent ce qui tombe : sans eux, la cuisine est à "
+         "relaver entièrement derrière nous.",
+         820, 615),
         ("hotte-bachage-cuisine.webp",
          "Une cuisine de pizzeria bâchée avant le premier coup de produit. La "
          "bâche n'est pas un décor : un décapant alcalin projeté sur un piano, "
@@ -1769,6 +1885,14 @@ VIDEOS_SUP_PAR_SERVICE = {
          "la fibre. L'extraction injecte et réaspire dans le même geste&nbsp;: ce qui "
          "ressort dans la cuve est ce qui était dans la moquette, et c'est ce qui "
          "distingue un nettoyage d'un passage d'aspirateur.</p>"),
+        ("auto-portiere", "Une contre-porte, à la vapeur",
+         "<p>Le panneau de porte concentre trois pièges&nbsp;: la grille du "
+         "haut-parleur, le contour de la poignée et la gorge du vide-poche. Une "
+         "éponge passe dessus, la vapeur va dedans.</p>"
+         "<p>La vapeur a un second intérêt ici&nbsp;: elle apporte très peu d'eau. "
+         "Un panneau de porte contient de l'électronique — lève-vitre, "
+         "haut-parleur, commandes — et c'est la raison pour laquelle on ne "
+         "pulvérise pas de produit liquide dessus.</p>"),
         ("auto-jante", "La jante, qui se traite à part",
          "<p>La poussière de frein n'est pas de la poussière&nbsp;: ce sont des "
          "particules métalliques projetées à chaud, qui s'incrustent dans le vernis de "
@@ -2334,6 +2458,8 @@ def build_realisations():
     {bloc_video}
   </div>
 </section>
+
+{galerie_videos(base)}
 
 <section class="section">
   <div class="container container-narrow">
@@ -6434,9 +6560,33 @@ def bloc_risque_incendie(base, sec_ou_ville=""):
 </section>"""
 
 
+# Quatre photos pour quatorze pages de métier : chacune en reçoit une, par
+# rotation. Une même image répétée quatorze fois ne dit rien de plus que la
+# première fois, et quatre photos valent mieux à l'arrêt dans un dossier.
+_PHOTO_SECTEUR_HOTTE = (
+    ("filtres-hotte-rendus.webp",
+     "Les filtres à chicanes d'une hotte de restaurant après dégraissage : l'inox "
+     "est rendu nu et les chicanes sont dégagées sur toute leur longueur, ce qui "
+     "rend à l'extraction la section qu'elle avait perdue."),
+    ("filtre-hotte-degraisse.webp",
+     "Un filtre à mailles en cours de dégraissage, moitié traitée et moitié non. "
+     "La partie haute laisse passer l'air, la partie basse ne le laisse plus : "
+     "c'est exactement ce que perd une extraction quand les filtres sont saturés."),
+    ("filtres-hotte-propres.webp",
+     "Un jeu de filtres à chicanes déposé et rendu après trempage. Les filtres se "
+     "démontent à chaque intervention : les nettoyer en place revient à laver le "
+     "côté visible et à laisser l'autre."),
+    ("hotte-caisson-ouvert.webp",
+     "Le dessous d'un caisson de hotte, filtres retirés. C'est le volume que "
+     "personne ne regarde depuis la cuisine, et celui qui décide de l'état réel "
+     "d'une installation."),
+)
+
+
 # --- Hottes : par secteur d'activité ---------------------------------------
 def build_hotte_secteur(sec):
     base = "../"
+    _i_sec = next(i for i, o in enumerate(SECTEURS_HOTTE) if o["slug"] == sec["slug"])
     chemin = "hottes/nettoyage-hotte-%s.html" % sec["slug"]
     h1 = "Nettoyage de hotte et de conduits %s" % sec["dans"]
     titre_court = "Nettoyage de hotte %s" % sec["dans"]
@@ -6525,10 +6675,8 @@ def build_hotte_secteur(sec):
 
 {bloc_risque_incendie(base)}
 
-{figure_photo(base, "filtres-hotte-rendus.webp",
-  "Les filtres à chicanes d'une hotte de restaurant après dégraissage : "
-  "l'inox est rendu nu et les chicanes sont dégagées sur toute leur longueur, "
-  "ce qui rend à l'extraction la section qu'elle avait perdue.", 820, 640)}
+{figure_photo(base, _PHOTO_SECTEUR_HOTTE[_i_sec % len(_PHOTO_SECTEUR_HOTTE)][0],
+              _PHOTO_SECTEUR_HOTTE[_i_sec % len(_PHOTO_SECTEUR_HOTTE)][1], 820, 640)}
 
 {_bloc_limites("Ce que nous ne faisons pas", HOTTE_LIMITES)}
 
@@ -7565,6 +7713,14 @@ VIDEO_PAR_SURFACE_HP = {
         "<p>C'est aussi ce qui sépare un devis établi sur place d'un prix au mètre carré "
         "donné au téléphone. Une cour pleine de bacs, de bordures et de mobilier ne demande "
         "pas le même temps qu'une cour nue de même surface.</p>"),
+    "quai-livraison": ("hp-resine-machine-passe",
+        "Le nettoyeur de surface sur un devant de local",
+        "<p>Le devant d'un local commercial, traité à la machine. Sur une surface de "
+        "manutention, la salissure n'est pas uniforme&nbsp;: elle suit les "
+        "trajectoires des transpalettes et s'accumule là où les roues tournent.</p>"
+        "<p>La machine avance à vitesse constante et son capot contient la "
+        "projection&nbsp;: c'est ce qui permet de travailler devant une vitrine et "
+        "à côté de la marchandise sans tout bâcher.</p>"),
     "beton-enrobe": ("hp-resine-regard",
         "Le regard d'évacuation, grille comprise",
         "<p>Tout ce qui est décollé d'une surface extérieure finit par arriver là. Un regard "

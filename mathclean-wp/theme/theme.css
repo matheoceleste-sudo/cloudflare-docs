@@ -1108,6 +1108,26 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   .video-split>div:last-child{text-align:left}
 }
 
+/* Galerie : toutes les séquences du site au même endroit. Les vidéos ne
+   sont jamais préchargées, seule l'affiche est téléchargée, et la grille
+   descend à une colonne sur téléphone. */
+.galerie-clips{
+  display:grid;gap:28px;margin-top:2.4rem;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+}
+.galerie-clip{margin:0}
+.galerie-clip video{
+  display:block;width:100%;aspect-ratio:9/16;object-fit:cover;
+  border-radius:var(--radius-lg);box-shadow:var(--shadow);background:var(--bg-dark);
+}
+.galerie-clip figcaption{
+  margin-top:12px;font-size:.92rem;line-height:1.5;color:var(--muted);
+}
+.galerie-clip figcaption strong{display:block;color:var(--ink);margin-bottom:4px}
+@media(max-width:520px){
+  .galerie-clips{grid-template-columns:1fr;gap:34px}
+}
+
 /* ==========================================================================
    21. Porte d'entrée : particulier ou professionnel
    Écran coupé en deux, une photo par côté. Ce n'est pas un volet posé

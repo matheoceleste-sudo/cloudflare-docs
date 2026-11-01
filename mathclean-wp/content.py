@@ -773,6 +773,8 @@ ENGAGEMENTS = [
 
 # --- Avant / après --------------------------------------------------------
 BEFORE_AFTER = [
+    ("ba-terrasse-avant.webp", "ba-terrasse-apres.webp", "Terrasse pavée",
+     "Démoussage et lavage haute pression"),
     ('ba-terrasse2-avant.webp', 'ba-terrasse2-apres.webp', 'Terrasse en pierre',
      'Lavage haute pression, hydro-brosse rotative'),
     # Les trois premières sont en haute définition (700 px et plus) : ce sont
@@ -2758,7 +2760,7 @@ GUIDES = [
  "h1": "Eau osmosée : pourquoi elle supprime les traces sur les vitres",
  "title": "Eau osmosée pour vitres : pourquoi ça marche",
  "meta": "Pourquoi l'eau osmosée sèche sans laisser de trace sur une vitre, et pourquoi les produits vitres du commerce font resalir plus vite. Explication et méthode.",
- "image": "vitre-controle.webp",
+ "image": "vitrerie-perche.webp",
  "lead": "Une vitre garde des traces pour trois raisons, et l'eau osmosée en supprime deux d'un coup.",
  "sections": [
   ("Les trois causes des traces", [
@@ -2947,7 +2949,7 @@ GUIDES = [
         "h1": "Prix d'un nettoyage de vitres au mètre carré",
         "title": "Prix d'un nettoyage de vitres au m²",
         "meta": "Tarifs de nettoyage de vitres en Île-de-France : fourchettes au mètre carré selon la hauteur et l'accès, et pourquoi on compte en vantaux.",
-        "image": 'vitre-controle.webp',
+        "image": "vitre-raclette-ciel.webp",
         "lead": 'Les tarifs au mètre carré circulent partout, mais une vitre ne se facture pas comme un sol. Voici comment le prix se construit réellement.',
         "sections": [
             ('Les fourchettes du marché francilien', [
@@ -7343,6 +7345,16 @@ DOSSIERS = [
                 "aux ultraviolets. C'est une nuance qui change toute la méthode, et "
                 "qui explique pourquoi la lance est rarement la bonne réponse.",
         "cle": "La haute pression creuse le bois tendre entre les cernes et ouvre la fibre.",
+        "video": ("bois-vapeur",
+                  "La vapeur, quand l'eau est de trop",
+                  "<p>Un plateau de table ancien repris à la vapeur et au grattoir. La "
+                  "vapeur apporte très peu d'eau pour beaucoup de chaleur&nbsp;: elle "
+                  "ramollit le dépôt sans détremper le bois, ce qu'un lavage ne permet "
+                  "pas sur un support absorbant.</p>"
+                  "<p>C'est le même raisonnement dehors. Sur un bois extérieur, ce qui "
+                  "abîme n'est pas le produit mais la quantité d'eau et la pression. "
+                  "Moins des deux, plus de temps de contact&nbsp;: c'est le réglage qui "
+                  "ménage la fibre.</p>"),
         "sections": [
             ("Le grisaillement n'est pas de la saleté", [
                 "Sous l'effet des ultraviolets et de la pluie, la lignine qui lie les fibres "
