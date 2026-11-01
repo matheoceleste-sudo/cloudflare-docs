@@ -2572,10 +2572,11 @@ def build_zones_archive():
 
     <h2>Notre point de départ, et ce qu'il implique</h2>
     <p>
-      Nous partons {ville_de(SITE['city'])} ({SITE['postcode'][:2]}), à l'est de la Seine-Saint-Denis,
-      à la limite de la Seine-et-Marne et à deux pas de Roissy. Cela donne un centre de gravité
-      au nord-est de la région&nbsp;: nos délais et nos frais de déplacement y sont les plus bas,
-      et ils augmentent régulièrement vers le sud et l'ouest.
+      Nous partons {ville_de(SITE['city'])} ({SITE['postcode'][:2]}), au centre de la
+      Seine-Saint-Denis, sur l'axe de l'ex-RN2, entre Drancy et Aulnay et à une dizaine de
+      kilomètres de Roissy. Cela donne un centre de gravité au nord de la région&nbsp;: nos délais
+      et nos frais de déplacement y sont les plus bas, et ils augmentent régulièrement vers le sud
+      et l'ouest.
     </p>
     <p>
       Le barème est simple et sans surprise&nbsp;: <strong>{SITE['travel_fee']}</strong>, calculé
@@ -5645,11 +5646,11 @@ def build_villes_archive():
 
     <h2>Les délais selon votre département</h2>
     <p>
-      Notre adresse de référence est {ville_a(SITE['city'])}, en Seine-Saint-Denis, à la limite de la
-      Seine-et-Marne et à deux pas de Roissy. C'est ce qui explique nos délais&nbsp;: les plus
-      courts dans l'est du 93, le nord-ouest du 77 et autour de l'aéroport — souvent 24 à
-      48&nbsp;heures — un peu plus longs à Paris, dans les Hauts-de-Seine, les Yvelines et
-      l'Essonne, où comptez plutôt 48 à 72&nbsp;heures.
+      Notre adresse de référence est {ville_a(SITE['city'])}, au centre de la Seine-Saint-Denis,
+      sur l'axe de l'ex-RN2. C'est ce qui explique nos délais&nbsp;: les plus courts dans le 93,
+      le sud-est du Val-d'Oise et autour de Roissy — souvent 24 à 48&nbsp;heures — un peu plus
+      longs à Paris, dans les Hauts-de-Seine, les Yvelines et l'Essonne, où comptez plutôt 48 à
+      72&nbsp;heures.
     </p>
     <p>
       Ces délais sont ceux que nous constatons, pas des engagements commerciaux. Quand notre
@@ -8686,12 +8687,12 @@ def copy_theme_assets():
 # adresse, une ancienne fourchette automobile, et une promesse de délai qui
 # confondait la réponse à une demande et l'intervention elle-même.
 #
-# La première ligne a changé de sens en octobre 2026 : l'établissement est
-# revenu à Tremblay-en-France, et c'est « rue Poussin » qui ne doit plus
-# reparaître. Le nom « Le Blanc-Mesnil », lui, reste légitime — c'est une
-# commune desservie, avec ses propres pages.
+# La première ligne a changé de sens deux fois. L'établissement est au
+# Blanc-Mesnil depuis novembre 2026 : c'est « Nicolas-Copernic » qui ne doit
+# plus reparaître. Le nom « Tremblay-en-France », lui, reste légitime — c'est
+# une commune desservie, avec ses propres pages.
 FORMULATIONS_INTERDITES = (
-    ("rue Poussin", "ancienne adresse du Blanc-Mesnil"),
+    ("Nicolas-Copernic", "ancienne adresse de Tremblay-en-France"),
     ("Tremblay-en-France (77", "Tremblay-en-France est dans le 93"),
     ("Intervention sous 24 h", "confond le délai de réponse et celui d'intervention"),
     ("intervention sous 24 h", "confond le délai de réponse et celui d'intervention"),

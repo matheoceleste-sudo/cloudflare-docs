@@ -16,15 +16,17 @@ SITE = {
     "phone": "06 23 07 52 59",
     "phone_link": "+33623075259",
     "email": "matheoceleste@gmail.com",
-    # Reprise de la fiche INSEE (SIREN 924 565 990), pour que le site, la fiche
-    # Google et le registre désignent la même adresse.
-    "address": "5 rue Nicolas-Copernic",
-    "postcode": "93290",
-    "city": "Tremblay-en-France",
-    # Position de la fiche Google Business, pour que le site et la fiche
-    # désignent exactement le même point.
-    "lat": 48.9508316,
-    "lon": 2.5743194,
+    # Adresse donnée par l'exploitant. La fiche INSEE (SIREN 924 565 990) et
+    # la fiche Google Business portent encore Tremblay-en-France : tant qu'elles
+    # ne sont pas modifiées, le site et les registres ne concordent plus.
+    "address": "2 rue Poussin",
+    "postcode": "93150",
+    "city": "Le Blanc-Mesnil",
+    # Centre communal, faute de géocodage à la rue. Sur un barème par tranches
+    # de 5 km, l'écart ne déplace aucun montant, mais le point exact reste à
+    # poser dès qu'il est connu.
+    "lat": 48.9386,
+    "lon": 2.4644,
     "siret": "924 565 990 00010",
     # Prestataire d'envoi des courriels, nommé dans la politique de
     # confidentialité. À changer ici — et nulle part ailleurs — si vous
@@ -36,13 +38,13 @@ SITE = {
     "hours": "7j/7, de 8h à 20h",
     # Fiche Google Business (CID issu de l'URL Maps fournie par le client).
     "google_cid": "8434710860473546146",
-    "maps_url": "https://www.google.com/maps/place/MathClean/@48.9508316,2.5743194,17z",
+    "maps_url": "https://www.google.com/maps?cid=8434710860473546146",
     # Lien court fourni par Google : il ouvre directement le formulaire
     # d'avis, sans passer par la fiche. C'est celui à mettre sur un flyer,
     # dans une signature ou derrière un QR code.
     "review_url": "https://g.page/r/CaK1p63WHA51EBM/review",
     "directions_url": "https://www.google.com/maps/dir/?api=1&destination=MathClean&destination_place_id=",
-    "travel_fee": "5 € par tranche de 5 km depuis notre adresse de référence à Tremblay-en-France (93)",
+    "travel_fee": "5 € par tranche de 5 km depuis notre adresse de référence au Blanc-Mesnil (93)",
     # Règle complète, écrite une seule fois : toute page qui parle du
     # déplacement la reprend telle quelle, pour qu'aucune formulation ne
     # diverge d'une page à l'autre.
@@ -682,7 +684,7 @@ ZONES = [
     },
     {
         "slug": "seine-saint-denis-93", "num": "93", "name": "Seine-Saint-Denis",
-        "intro": "C'est notre département : notre adresse de référence est à Tremblay-en-France. De Saint-Denis à "
+        "intro": "C'est notre département : notre adresse de référence est au Blanc-Mesnil. De Saint-Denis à "
                  "Montreuil, d'Aubervilliers à Noisy-le-Grand, nous y sommes les plus réactifs — et les frais "
                  "de déplacement y sont, mécaniquement, les plus faibles.",
         "focus": "Le 93 est un territoire en pleine transformation : programmes neufs livrés, "
@@ -732,8 +734,8 @@ ZONES = [
     {
         "slug": "seine-et-marne-77", "num": "77", "name": "Seine-et-Marne",
         "intro": "De Chelles à Meaux, de Melun à Fontainebleau, nous intervenons dans tout le département, "
-                 "y compris sur les villes nouvelles de Marne-la-Vallée. Son nord-ouest est l'un de nos "
-                 "secteurs les plus proches : notre adresse de référence est à la limite du département.",
+                 "y compris sur les villes nouvelles de Marne-la-Vallée. Son nord-ouest reste l'un de nos "
+                 "secteurs proches : Chelles est à une quinzaine de kilomètres de notre adresse de référence.",
         "focus": "Le 77 est le plus vaste département francilien : nous y groupons volontiers "
                  "plusieurs interventions sur une même journée, ce qui reste le meilleur "
                  "moyen de contenir les frais de déplacement. La fin de chantier, les "
@@ -818,7 +820,7 @@ FAQ = [
      "annexé à votre registre de sécurité."),
     ("Les frais de déplacement sont-ils inclus ?",
      "Non, ils s'ajoutent au prix de la prestation : 5 € par tranche de 5 km entre notre adresse "
-     "de référence à Tremblay-en-France (93) et votre adresse. La distance comptée est celle de "
+     "de référence au Blanc-Mesnil (93) et votre adresse. La distance comptée est celle de "
      "l'aller simple, par "
      "la route ; le retour n'est pas facturé. Toute tranche de 5 km entamée est due : 12 km font "
      "trois tranches, soit 15 €. Il n'y a pas de plafond, mais le montant vous est annoncé avant "
@@ -1078,8 +1080,8 @@ REVIEWS = []
 # --- Réservation en ligne -------------------------------------------------
 # Frais de déplacement : mêmes règles que l'ancien configurateur.
 DEPLACEMENT = {
-    "lat": 48.9508316,       # Tremblay-en-France (position de la fiche Google)
-    "lon": 2.5743194,
+    "lat": 48.9386,          # Le Blanc-Mesnil (centre communal)
+    "lon": 2.4644,
     "palier_km": 5,          # tranche facturée
     "palier_eur": 5,         # montant par tranche
 
@@ -1121,7 +1123,7 @@ HERO = {
 
 # --- Villes couvertes -----------------------------------------------------
 # Une page par ville, avec la distance réelle calculée depuis notre adresse
-# de référence à Tremblay-en-France. Les coordonnées sont celles du centre communal : la
+# de référence au Blanc-Mesnil. Les coordonnées sont celles du centre communal : la
 # distance affichée est donc « environ », et le montant exact du déplacement
 # reste celui que calcule le configurateur à partir de l'adresse précise.
 #
@@ -1174,23 +1176,24 @@ VILLES = [
      ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
 
     ("aulnay-sous-bois", "Aulnay-sous-Bois", "93600", "93", 48.9386, 2.4938,
-     "Aulnay est à une dizaine de minutes de notre adresse de référence : c'est l'une des "
+     "Aulnay jouxte notre adresse de référence, à moins de trois kilomètres : c'est l'une des "
      "communes où nous intervenons le plus rapidement, souvent dans la journée en cas "
      "d'urgence. L'habitat pavillonnaire y appelle surtout des extérieurs à reprendre et des "
      "fins de chantier après rénovation.",
      ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("le-blanc-mesnil", "Le Blanc-Mesnil", "93150", "93", 48.9386, 2.4644,
-     "Le Blanc-Mesnil est à une dizaine de kilomètres de notre adresse de référence, par "
-     "l'ex-RN2. Habitat pavillonnaire et grands ensembles : la fin de chantier et le lavage "
-     "des extérieurs y dominent, avec un délai habituel de 24 à 48 h.",
+     "C'est la commune de notre adresse de référence : les frais de déplacement y sont "
+     "réduits au minimum et nous y tenons des délais que nous ne tenons nulle part ailleurs. "
+     "Habitat pavillonnaire et grands ensembles : la fin de chantier et le lavage des "
+     "extérieurs y dominent, souvent le jour même en cas d'urgence.",
      ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("tremblay-en-france", "Tremblay-en-France", "93290", "93", 48.9486, 2.5697,
-     "C'est la commune de notre adresse de référence : les frais de déplacement y sont "
-     "réduits au minimum et nous pouvons y tenir des délais que nous ne tenons nulle part "
-     "ailleurs. Pavillons, résidences récentes et zones d'activité proches de Roissy : les "
-     "demandes y vont de la fin de chantier au lavage de quais et de cours.",
+     "Tremblay est à une dizaine de kilomètres de notre adresse de référence, par la N2 ou "
+     "la Francilienne. Pavillons, résidences récentes et zones d'activité proches de "
+     "Roissy : les demandes y vont de la fin de chantier au lavage de quais et de cours, "
+     "pour un délai habituel de 24 à 48 h.",
      ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("pantin", "Pantin", "93500", "93", 48.8944, 2.4090,
@@ -1247,7 +1250,7 @@ VILLES = [
 
     ("chelles", "Chelles", "77500", "77", 48.8797, 2.5928,
      "Chelles est l'une des communes de Seine-et-Marne les plus proches de notre adresse de "
-     "référence, à une dizaine de kilomètres. Habitat pavillonnaire dominant : terrasses et "
+     "référence, à une quinzaine de kilomètres. Habitat pavillonnaire dominant : terrasses et "
      "allées à reprendre au printemps, et fins de chantier après rénovation.",
      ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
@@ -1269,7 +1272,7 @@ VILLES = [
      ["nettoyage-fin-de-chantier-paris", "nettoyage-hottes-paris", "nettoyage-haute-pression-paris"]),
 
     ("sarcelles", "Sarcelles", "95200", "95", 48.9959, 2.3785,
-     "Sarcelles est à une vingtaine de kilomètres de notre adresse de référence. Nous y "
+     "Sarcelles est à une dizaine de kilomètres de notre adresse de référence. Nous y "
      "intervenons surtout en remise en état de locaux commerciaux et en dégraissage de "
      "hottes, sur un tissu de restauration dense.",
      ["nettoyage-hottes-paris", "nettoyage-fin-de-chantier-paris", "nettoyage-haute-pression-paris"]),
@@ -1429,7 +1432,7 @@ GUIDES = [
  "sections": [
   ("Les tarifs par taille", [
    "Chez MathClean, un canapé 2 places se traite à 39 €, un 3 places à 49 €, un canapé d'angle à 69 €. Un fauteuil est à 25 €, une chaise à 15 €. Ces prix couvrent l'injection-extraction et le détachage.",
-   "S'y ajoutent les frais de déplacement : 5 € par tranche de 5 km depuis notre adresse de référence à Tremblay-en-France. Ils sont annoncés avant que vous validiez, jamais découverts à l'arrivée."]),
+   "S'y ajoutent les frais de déplacement : 5 € par tranche de 5 km depuis notre adresse de référence au Blanc-Mesnil. Ils sont annoncés avant que vous validiez, jamais découverts à l'arrivée."]),
   ("Ce qui fait varier le prix", [
    "La matière d'abord : un tissu synthétique se traite en injection-extraction, un cuir demande un nettoyage doux puis un nourrissage — ce n'est ni le même temps ni les mêmes produits.",
    "L'état ensuite. Des taches fraîches partent au passage habituel ; des taches incrustées depuis des mois demandent un pré-traitement et un temps de pause. Un professionnel honnête vous dit ce qui est réaliste avant de commencer."]),
@@ -1531,7 +1534,7 @@ GUIDES = [
    "Ces lieux se traitent hors des heures d'ouverture, souvent de nuit, ce qui règle la question de l'évacuation. Pour un hôtel, une chambre libérée le matin peut être remise en service dans la journée.",
    "En restauration, l'ozone intervient après le dégraissage : les odeurs de friture imprègnent les textiles et les conduits, que le nettoyage de surface n'atteint pas."]),
   ("Délais et déplacement", [
-   "Comptez 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne. Les frais de déplacement suivent la règle habituelle : 5 € par tranche de 5 km depuis notre adresse de référence à Tremblay-en-France, annoncés avant validation.",
+   "Comptez 24 à 48 h à Paris et en petite couronne, 48 à 72 h en grande couronne. Les frais de déplacement suivent la règle habituelle : 5 € par tranche de 5 km depuis notre adresse de référence au Blanc-Mesnil, annoncés avant validation.",
    "Le détail commune par commune figure sur nos pages villes."])],
  "faq": [
   ("Intervenez-vous dans toute l'Île-de-France ?",
@@ -1872,7 +1875,7 @@ GUIDES = [
             ]),
             ('Ce que notre devis contient', [
                 "Nous détaillons chaque poste séparément : la cuisine, la salle de bain, les sols, les vitres et, s'il y a lieu, la moquette. Vous voyez ce que coûte chaque partie et vous pouvez en retirer une si vous préférez la faire vous-même.",
-                'Les frais de déplacement sont calculés depuis notre adresse de référence à Tremblay-en-France, à 5 € par tranche de 5 km, et annoncés avant que vous validiez. Ils figurent sur le devis, pas sur la facture finale en supplément.',
+                'Les frais de déplacement sont calculés depuis notre adresse de référence au Blanc-Mesnil, à 5 € par tranche de 5 km, et annoncés avant que vous validiez. Ils figurent sur le devis, pas sur la facture finale en supplément.',
                 "Aucun acompte n'est demandé. Vous réglez après l'intervention, une fois le résultat constaté — ce qui est particulièrement pertinent sur une prestation dont l'enjeu est justement le résultat visible.",
             ]),
             ('Faire soi-même ou faire faire', [
@@ -2000,7 +2003,7 @@ GUIDES = [
                 "<strong>Le nombre de passages.</strong> Un matelas très imprégné demande deux extractions successives sur la même face, avec un temps d'attente entre les deux. Cela se voit sur une photo, et nous le disons au devis plutôt qu'en fin d'intervention.",
             ]),
             ('Le déplacement, et comment ne pas le payer pour rien', [
-                'Nos frais de déplacement sont de 5 € par tranche de 5 km depuis notre adresse de référence à Tremblay-en-France, annoncés avant validation. Sur un seul matelas, ils peuvent représenter une part notable du total.',
+                'Nos frais de déplacement sont de 5 € par tranche de 5 km depuis notre adresse de référence au Blanc-Mesnil, annoncés avant validation. Sur un seul matelas, ils peuvent représenter une part notable du total.',
                 "Le réflexe utile : regrouper. Un matelas seul, c'est une prestation courte pour un déplacement complet. Deux matelas et un canapé traités le même jour, c'est le même déplacement pour trois fois plus de travail — le coût par pièce chute nettement.",
                 "Si vous hésitez, dites-nous simplement tout ce qui pourrait être traité chez vous. Nous vous dirons ce qui en vaut la peine et ce qui n'en vaut pas, y compris quand la réponse est « celui-là, laissez-le ».",
             ]),
@@ -2012,7 +2015,7 @@ GUIDES = [
         ],
         "faq": [
             ('Le déplacement est-il facturé en plus ?',
-             "Oui, 5 € par tranche de 5 km depuis Tremblay-en-France, annoncés avant que vous validiez et figurant sur le devis. Aucun supplément n'apparaît après."),
+             "Oui, 5 € par tranche de 5 km depuis Le Blanc-Mesnil, annoncés avant que vous validiez et figurant sur le devis. Aucun supplément n'apparaît après."),
             ('Est-ce moins cher de traiter plusieurs pièces le même jour ?',
              "Nettement. Le déplacement est unique et le matériel est déjà installé. C'est la seule optimisation vraiment efficace sur ce type de prestation."),
             ('Faut-il payer un acompte ?',
@@ -2184,7 +2187,7 @@ GUIDES = [
             ('Repères et façon de chiffrer', [
                 "Nous chiffrons sur devis après photos ou visite, plutôt qu'à un tarif au mètre carré affiché d'avance. Ce n'est pas une réticence commerciale : deux terrasses de 30 m² peuvent demander du simple au triple selon le support et l'état.",
                 "Pour vous donner un ordre de grandeur avant même de nous contacter : c'est le support et l'ancienneté de la mousse qui commandent, pas la surface. Une petite terrasse en pierre tendre très encrassée coûte plus qu'une grande dalle béton entretenue.",
-                "Les frais de déplacement — 5 € par tranche de 5 km depuis Tremblay-en-France — figurent sur le devis. Aucun acompte n'est demandé : vous réglez après avoir vu le résultat, ce qui est particulièrement pertinent sur une prestation aussi visible.",
+                "Les frais de déplacement — 5 € par tranche de 5 km depuis Le Blanc-Mesnil — figurent sur le devis. Aucun acompte n'est demandé : vous réglez après avoir vu le résultat, ce qui est particulièrement pertinent sur une prestation aussi visible.",
             ]),
             ('Quand grouper les prestations', [
                 "Une terrasse se nettoie rarement seule. Si vous nous faites venir, regardez ce qui l'entoure : le salon de jardin, les dalles de l'allée, le bas de mur, les volets, la façade accessible depuis le sol.",
@@ -2230,7 +2233,7 @@ GUIDES = [
                 "<strong>L'accès.</strong> Étage sans ascenseur, absence de stationnement, chantier encore actif à côté : cela pèse davantage que la surface.",
             ]),
             ('Notre façon de chiffrer', [
-                'Nous chiffrons sur photos ou sur place, en annonçant explicitement le nombre de passages prévus et ce que chacun comprend. Les frais de déplacement figurent au devis, à 5 € par tranche de 5 km depuis Tremblay-en-France.',
+                'Nous chiffrons sur photos ou sur place, en annonçant explicitement le nombre de passages prévus et ce que chacun comprend. Les frais de déplacement figurent au devis, à 5 € par tranche de 5 km depuis Le Blanc-Mesnil.',
                 "Nous n'exigeons aucun acompte. Sur une fin de chantier, où le résultat se juge d'un coup d'œil, cela nous paraît la moindre des choses.",
                 'Un conseil qui ne nous rapporte rien : faites protéger pendant les travaux. Une bâche posée sur un parquet coûte quelques euros et vous économise une remise en état.',
             ]),
@@ -2584,7 +2587,7 @@ GUIDES = [
             ]),
             ('Nos délais réels', [
                 "Nous répondons à toute demande sous vingt-quatre heures, week-ends compris. L'intervention suit généralement sous vingt-quatre à soixante-douze heures selon votre département.",
-                "Le délai est le plus court en Seine-Saint-Denis, où se trouve notre adresse de référence, ainsi que dans le nord-ouest de la Seine-et-Marne et autour de Roissy. Il s'allonge vers Paris et la proche couronne ouest, puis dans les Hauts-de-Seine, les Yvelines et la grande couronne sud.",
+                "Le délai est le plus court en Seine-Saint-Denis, où se trouve notre adresse de référence, ainsi que dans le sud-est du Val-d'Oise et autour de Roissy. Il s'allonge vers Paris et la proche couronne ouest, puis dans les Hauts-de-Seine, les Yvelines et la grande couronne sud.",
                 'Pour une intervention le jour même, tout dépend de notre planning et de votre commune. Nous vous répondons franchement : soit nous pouvons, soit nous vous le disons tout de suite pour que vous cherchiez ailleurs sans perdre une demi-journée.',
                 "Nous intervenons le samedi, le dimanche et les jours fériés au même tarif. Il n'y a pas de majoration de week-end chez nous, parce que les urgences ne choisissent pas leur jour.",
             ]),
@@ -3147,9 +3150,10 @@ ZONES_DETAIL = {
     ],
     "93": [
         ("Notre département d'attache", [
-            "Notre adresse de référence est à Tremblay-en-France. La Seine-Saint-Denis est donc le "
-            "département où nos délais sont les plus courts et nos frais de déplacement les "
-            "plus faibles — parfois nuls sur les communes les plus proches.",
+            "Notre adresse de référence est au Blanc-Mesnil, au centre du département. La "
+            "Seine-Saint-Denis est donc le département où nos délais sont les plus courts et "
+            "nos frais de déplacement les plus faibles — parfois nuls sur les communes les "
+            "plus proches.",
             "C'est aussi le département où nous pouvons le plus souvent caler une intervention "
             "le jour même, et où un second passage sur une tache qui demande un temps d'action "
             "ne pose aucune difficulté d'organisation.",
@@ -3240,10 +3244,10 @@ ZONES_DETAIL = {
     ],
     "95": [
         ("Un département à deux vitesses", [
-            "Le Val-d'Oise commence à quelques kilomètres de notre adresse de référence : "
-            "Roissy-en-France et Goussainville sont pratiquement à côté, et nous y intervenons "
-            "aussi vite qu'en Seine-Saint-Denis. Sarcelles est déjà à une vingtaine de "
-            "kilomètres, Cergy à une cinquantaine : le déplacement n'y pèse pas du tout pareil.",
+            "Le Val-d'Oise commence à une dizaine de kilomètres de notre adresse de référence : "
+            "Roissy-en-France, Goussainville et Sarcelles sont à peu près à la même distance, et "
+            "nous y intervenons aussi vite qu'en Seine-Saint-Denis. Cergy est à une quarantaine "
+            "de kilomètres : le déplacement n'y pèse pas du tout pareil.",
             "Sur les communes du sud-est du département — Garges, Sarcelles, Villiers-le-Bel, "
             "Gonesse — nous sommes souvent à moins de quinze "
             "minutes. Cela rend possible ce qui est difficile ailleurs : une intervention le "
@@ -3867,7 +3871,7 @@ PREMIUM_VILLES = [
                 "mousseur, extérieur avec retrait des dépôts acides par temps de pose et séchage "
                 "sans trace. Aucun branchement ne vous est demandé.",
                 "Vous déplacez-vous jusqu'à Sceaux pour une seule voiture ?",
-                "Oui, mais Sceaux est à trente-cinq kilomètres et le déplacement pèse alors dans le "
+                "Oui, mais Sceaux est à près de trente kilomètres et le déplacement pèse alors dans le "
                 "total. Si un voisin ou un proche a le même besoin, ou si vous avez un canapé à "
                 "traiter le même jour, le déplacement n'est compté qu'une fois. C'est ce que nous "
                 "proposons systématiquement au devis."),
@@ -3924,7 +3928,7 @@ PREMIUM_VILLES = [
                   "individuel de bout en bout, avec des extérieurs qui pèsent lourd dans "
                   "l'entretien.",
         "acces": "Les propriétés ont des allées privatives et de la place : l'accès est le plus "
-                 "confortable de notre zone. En contrepartie, la commune est à une quarantaine de "
+                 "confortable de notre zone. En contrepartie, la commune est à une trentaine de "
                  "kilomètres et les parcelles sont grandes — le temps sur place et le déplacement "
                  "comptent tous les deux dans le devis.",
         "angles": {
@@ -5022,7 +5026,7 @@ VILLES_PRO = [
             "travaille tôt et qui n'a pas de temps mort en journée.",
         "acces":
             "La circulation de poids lourds rend les abords difficiles en milieu de matinée. Nous "
-            "intervenons avant 7 h ou en fin de journée. Aubervilliers est à une vingtaine de "
+            "intervenons avant 7 h ou en fin de journée. Aubervilliers est à moins de dix "
             "kilomètres de notre adresse de référence, pour un délai habituel de 24 à 48 h.",
         "hotte":
             "Les cuisines albertivillariennes sont souvent installées dans des locaux anciens, avec "
@@ -5092,7 +5096,7 @@ VILLES_PRO = [
             "bouche traditionnel.",
         "acces":
             "Les quais du canal sont accessibles et le stationnement y est praticable en dehors des "
-            "heures de bureau. Pantin est à une quinzaine de kilomètres de notre adresse de référence : nous y "
+            "heures de bureau. Pantin est à moins de dix kilomètres de notre adresse de référence : nous y "
             "intervenons habituellement sous 24 à 48 h.",
         "hotte":
             "Deux profils : les restaurants d'entreprise et de quartier du canal, aux cuisines "
@@ -5126,7 +5130,7 @@ VILLES_PRO = [
             "court et intense.",
         "acces":
             "Le centre administratif est bien desservi et le stationnement praticable en dehors des "
-            "heures de bureau. Bobigny est à une quinzaine de kilomètres de notre adresse de référence, ce qui en fait l'une "
+            "heures de bureau. Bobigny est à moins de cinq kilomètres de notre adresse de référence, ce qui en fait l'une "
             "des communes où nous intervenons le plus vite, souvent dans la journée.",
         "hotte":
             "Une cuisine qui ne travaille qu'au déjeuner produit un encrassement concentré : deux "
@@ -5158,8 +5162,8 @@ VILLES_PRO = [
             "proximité — boulangeries, boucheries, restaurants de quartier — y est particulièrement "
             "présent.",
         "acces":
-            "Aulnay est à huit kilomètres de notre adresse de référence, soit dix minutes par la N2 ou l'A104. "
-            "C'est la commune où nos délais sont les plus courts après Tremblay-en-France : souvent le "
+            "Aulnay jouxte notre adresse de référence : moins de trois kilomètres, cinq minutes par l'ex-RN2. "
+            "C'est, avec Drancy, la commune où nos délais sont les plus courts après Le Blanc-Mesnil : souvent le "
             "jour même en cas d'urgence.",
         "hotte":
             "Les boulangeries et les boucheries-charcuteries aulnaysiennes posent le cas le plus "
@@ -5174,12 +5178,12 @@ VILLES_PRO = [
             "économique à entretenir, et un passage trimestriel suffit généralement.",
         "faq_hotte": ("À quelle heure pouvez-vous venir dans un fournil ?",
                       "L'après-midi, entre la fin de la cuisson et la reprise du tour de nuit, ou "
-                      "le jour de fermeture. Depuis Tremblay-en-France nous sommes chez vous en dix "
+                      "le jour de fermeture. Depuis Le Blanc-Mesnil nous sommes chez vous en cinq "
                       "minutes, ce qui permet de tenir un créneau serré sans marge de sécurité "
                       "inutile."),
         "faq_vitres": ("Quel est le délai pour une intervention à Aulnay ?",
                        "Habituellement 24 à 48 h, et souvent le jour même en cas d'urgence : nous "
-                       "sommes à huit kilomètres. Les frais de déplacement y sont de 10 €, "
+                       "sommes à moins de trois kilomètres. Les frais de déplacement y sont de 5 €, "
                        "annoncés avant que vous validiez."),
     },
     {
@@ -5190,11 +5194,12 @@ VILLES_PRO = [
             "et la proximité de la zone aéroportuaire, qui amène une restauration tournée vers "
             "les équipes et les horaires décalés.",
         "acces":
-            "La commune est à une dizaine de kilomètres de notre adresse de référence, par l'ex-RN2 "
-            "ou l'A3. Délai habituel de 24 à 48 h, créneaux de nuit compris.",
+            "C'est la commune de notre adresse de référence : nous y sommes en quelques minutes "
+            "et le déplacement y est réduit au minimum. Délai souvent le jour même, créneaux de "
+            "nuit compris.",
         "hotte":
-            "Un quart d'heure de trajet laisse le choix du créneau : un dégraissage de hotte "
-            "s'organise sur la plage que votre cuisine peut libérer, même courte, même tardive. "
+            "Être sur place en quelques minutes laisse le choix du créneau : un dégraissage de "
+            "hotte s'organise sur la plage que votre cuisine peut libérer, même courte, même tardive. "
             "C'est l'une des communes où nous intervenons le plus souvent en urgence, après un "
             "constat d'extraction défaillante ou avant une visite.",
         "vitres":
@@ -5202,13 +5207,13 @@ VILLES_PRO = [
             "déplacement y reste contenu, ce qui laisse de la place pour un passage de reprise "
             "entre deux nettoyages complets plutôt qu'un passage complet chaque semaine.",
         "faq_hotte": ("Pouvez-vous intervenir de nuit au Blanc-Mesnil ?",
-                      "Oui, et c'est fréquent : un quart d'heure de trajet ne pèse rien dans "
+                      "Oui, et c'est fréquent : c'est notre commune, le trajet ne pèse rien dans "
                       "l'organisation. Une intervention de nuit après le dernier service se "
                       "planifie sans contrainte particulière."),
         "faq_vitres": ("Combien coûte le déplacement au Blanc-Mesnil ?",
-                       "Une dizaine de kilomètres depuis notre adresse de référence, soit 15 € au "
-                       "barème de 5 € par tranche de 5 km entamée. Le montant vous est annoncé "
-                       "avant que vous validiez."),
+                       "C'est notre commune : une tranche de 5 km au plus, soit 5 € au barème de "
+                       "5 € par tranche entamée. Le montant vous est annoncé avant que vous "
+                       "validiez."),
     },
     {
         "slug": "drancy", "nom": "Drancy", "cp": "93700", "dept": "93",
@@ -5218,7 +5223,7 @@ VILLES_PRO = [
             "commerces de bouche de quartier. La restauration y est indépendante, en petites salles, "
             "avec des cuisines compactes et des conduits souvent anciens.",
         "acces":
-            "Drancy est à une douzaine de kilomètres de notre adresse de référence. Le stationnement en centre est "
+            "Drancy est à moins de trois kilomètres de notre adresse de référence. Le stationnement en centre est "
             "praticable tôt le matin, qui est aussi le créneau des commerces de bouche.",
         "hotte":
             "Les petites cuisines drancéennes cumulent deux difficultés : un volume réduit, donc une "
@@ -5447,7 +5452,7 @@ VILLES_PRO = [
             "tournée vers le midi des salariés et des étudiants.",
         "acces":
             "Les zones d'activité et les campus sont faciles d'accès et de stationnement. Nanterre "
-            "est à une trentaine de kilomètres de notre adresse de référence : le délai habituel y est de 48 à "
+            "est à environ vingt-cinq kilomètres de notre adresse de référence : le délai habituel y est de 48 à "
             "72 h, et nous regroupons les interventions de l'ouest sur une même tournée.",
         "hotte":
             "La restauration collective d'université et d'administration fonctionne par calendrier : "
@@ -5540,8 +5545,8 @@ VILLES_PRO = [
             "nombreux.",
         "acces":
             "Le stationnement est praticable hors heures de pointe, et les anciens locaux "
-            "d'activité disposent souvent d'une cour ou d'un accès véhicule. Ivry est à "
-            "vingt-cinq kilomètres de notre adresse de référence.",
+            "d'activité disposent souvent d'une cour ou d'un accès véhicule. Ivry est à une "
+            "vingtaine de kilomètres de notre adresse de référence.",
         "hotte":
             "Les cuisines ivryennes sont pour beaucoup installées dans du bâti ancien, avec des "
             "conduits qui n'ont pas été conçus pour l'usage actuel du local. C'est la situation où "
@@ -5637,7 +5642,7 @@ VILLES_APPART = [
             "film de protection sur les sols, étiquettes et traces de colle sur les vitrages. Ce "
             "n'est pas du ménage, c'est un décrassage, et il se fait une seule fois mais bien.",
         "pratique":
-            "Saint-Denis est à une vingtaine de kilomètres de notre adresse de référence : nous y intervenons sous 24 à "
+            "Saint-Denis est à une dizaine de kilomètres de notre adresse de référence : nous y intervenons sous 24 à "
             "48 h. Les résidences neuves disposent presque toujours d'un accès véhicule, ce qui "
             "simplifie l'intervention.",
         "faq": ("Mon appartement est neuf, pourquoi faut-il le nettoyer ?",
@@ -5754,7 +5759,7 @@ VILLES_APPART = [
             "l'essentiel.",
         "pratique":
             "Les résidences disposent le plus souvent d'un parking visiteurs ou d'un accès livraison. "
-            "Courbevoie est à une trentaine de kilomètres de notre adresse de référence, pour un délai de 48 à "
+            "Courbevoie est à une vingtaine de kilomètres de notre adresse de référence, pour un délai de 48 à "
             "72 h.",
         "faq": ("Nettoyez-vous l'extérieur des baies vitrées en étage ?",
                 "Depuis l'intérieur seulement, quand la menuiserie permet d'accéder à la face "
@@ -5776,7 +5781,7 @@ VILLES_APPART = [
             "locataire sortant néglige presque toujours : four, réfrigérateur, joints de salle de "
             "bains, intérieurs de placards.",
         "pratique":
-            "Stationnement praticable en dehors des heures de pointe. Asnières est à une trentaine "
+            "Stationnement praticable en dehors des heures de pointe. Asnières est à une vingtaine "
             "de kilomètres de notre adresse de référence, pour un délai de 48 à 72 h ; nous regroupons les "
             "interventions de l'ouest sur une même tournée.",
         "faq": ("Un nettoyage de sortie évite-t-il la retenue sur le dépôt de garantie ?",
@@ -5799,7 +5804,7 @@ VILLES_APPART = [
             "partout. Dans les deux cas, ce n'est pas du ménage : c'est un passage unique et "
             "complet.",
         "pratique":
-            "Saint-Ouen est à une vingtaine de kilomètres de notre adresse de référence, pour un délai de 24 à 48 h. Les "
+            "Saint-Ouen est à une douzaine de kilomètres de notre adresse de référence, pour un délai de 24 à 48 h. Les "
             "programmes neufs disposent d'un accès véhicule ; en centre ancien, nous travaillons "
             "sans place réservée grâce à notre autonomie.",
         "faq": ("Faites-vous le nettoyage après des travaux de rénovation ?",
@@ -5822,7 +5827,7 @@ VILLES_APPART = [
             "remet le logement à niveau et qu'on ne fait pas soi-même parce qu'il demande de "
             "déplacer et de démonter.",
         "pratique":
-            "Les Lilas est à une quinzaine de kilomètres de notre adresse de référence, pour un délai de 24 à "
+            "Les Lilas est à une dizaine de kilomètres de notre adresse de référence, pour un délai de 24 à "
             "48 h. Le stationnement résidentiel est praticable.",
         "faq": ("Que fait un grand ménage que je ne fais pas moi-même ?",
                 "Les surfaces qui demandent de déplacer ou de démonter : arrières et dessus de "
@@ -5885,7 +5890,7 @@ VILLES_APPART = [
             "l'intérieur, et les abords immédiats de l'entrée. Nous commençons par le haut et nous "
             "descendons, pour ne pas repasser derrière nous.",
         "pratique":
-            "Aulnay est à huit kilomètres de notre adresse de référence, soit dix minutes : nous y intervenons "
+            "Aulnay est à moins de trois kilomètres de notre adresse de référence, soit cinq minutes : nous y intervenons "
             "souvent le jour même en cas d'urgence, et les frais de déplacement y sont de 5 €.",
         "faq": ("Intervenez-vous dans les maisons, pas seulement les appartements ?",
                 "Oui, et c'est l'essentiel de la demande à Aulnay. Une maison demande plus de temps "
@@ -8245,7 +8250,7 @@ VILLES_PRO += [
             "concentré autour du centre et de la gare : commerces de bouche, quelques restaurants "
             "de quartier, des cabinets libéraux.",
         "acces":
-            "Stationnement aisé, voirie dégagée. Le Vésinet est à une quarantaine de kilomètres de "
+            "Stationnement aisé, voirie dégagée. Le Vésinet est à une trentaine de kilomètres de "
             "notre adresse de référence, dans la même tournée ouest que Saint-Germain-en-Laye et "
             "Rueil-Malmaison.",
         "hotte":
@@ -8305,13 +8310,13 @@ VILLES_PRO += [
             "et de logistique, hôtellerie, et une restauration tournée vers les équipes "
             "aéroportuaires, qui travaillent en horaires décalés et en continu.",
         "acces":
-            "Voirie dégagée, stationnement aisé, accès direct par l'A104 et la N2. C'est la commune "
-            "de notre adresse de référence : c'est celle où nous pouvons nous engager sur le "
-            "créneau le plus serré.",
+            "Voirie dégagée, stationnement aisé, accès direct par l'A104 et la N2. La commune est "
+            "à une dizaine de kilomètres de notre adresse de référence, par la N2 ou la "
+            "Francilienne : un trajet court, sur des axes qui ne saturent pas la nuit.",
         "hotte":
             "La restauration d'hôtel et de zone aéroportuaire fonctionne sans période creuse : "
             "petits-déjeuners tôt, service continu, équipes de nuit. Il n'y a pas de fenêtre "
-            "évidente, et c'est justement là que notre proximité compte — nous nous calons sur le "
+            "évidente, et c'est justement là que la proximité compte — nous nous calons sur le "
             "créneau que vous pouvez libérer, même court, même à 3 h du matin, sans que le trajet "
             "n'oblige à élargir la plage.",
         "vitres":
@@ -8320,13 +8325,14 @@ VILLES_PRO += [
             "hôtels, le sas d'entrée demande deux passages par semaine là où le reste tient au "
             "mois.",
         "faq_hotte": ("Pouvez-vous intervenir de nuit à Tremblay ?",
-                      "Oui, et sans difficulté : c'est notre commune. Une cuisine qui n'a "
-                      "qu'une fenêtre de trois heures entre deux services est précisément le "
-                      "cas où cette proximité change ce que nous pouvons proposer."),
+                      "Oui, et sans difficulté : une dizaine de kilomètres par des axes vides la "
+                      "nuit. Une cuisine qui n'a qu'une fenêtre de trois heures entre deux "
+                      "services est précisément le cas où cette proximité change ce que nous "
+                      "pouvons proposer."),
         "faq_vitres": ("Quel est le délai d'intervention à Tremblay ?",
-                       "Habituellement 24 à 48 h, et souvent le jour même en cas d'urgence. Les "
-                       "frais de déplacement y sont au minimum du barème : nous sommes à une "
-                       "kilomètres."),
+                       "Habituellement 24 à 48 h, et souvent le jour même en cas d'urgence. Nous "
+                       "sommes à une dizaine de kilomètres, soit 10 € de déplacement au barème "
+                       "de 5 € par tranche de 5 km entamée."),
     },
     {
         "slug": "chelles", "nom": "Chelles", "cp": "77500", "dept": "77",
