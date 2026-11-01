@@ -1,0 +1,20 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<!-- Monogramme MC cerclé, doré sur le carré bleu. Le tracé est exactement
+     celui de l'en-tête du site (logo_mc() dans build.py), simplement réduit
+     de 20 % pour ménager une marge dans le carré : les deux doivent rester
+     le même dessin. Il est tracé au trait plutôt qu'écrit en <text>, parce
+     qu'une police n'est pas garantie d'un appareil à l'autre alors qu'un
+     chemin l'est. Le fond bleu n'est pas décoratif : sans lui, le doré seul
+     devient illisible dans un onglet à 16 px. -->
+<defs>
+<linearGradient id="bleu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1668c8"/><stop offset="1" stop-color="#0a4a94"/></linearGradient>
+<linearGradient id="or" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7cd86"/><stop offset="1" stop-color="#c8a04b"/></linearGradient>
+</defs>
+<rect width="64" height="64" rx="16" fill="url(#bleu)"/>
+<g fill="none" stroke="url(#or)" stroke-linecap="round" stroke-linejoin="round"
+   transform="translate(32 32) scale(.8) translate(-32 -32)">
+<circle cx="32" cy="32" r="27" stroke-width="3"/>
+<path d="M16.5 41V25l7 8.5 7-8.5v16" stroke-width="4"/>
+<path d="M47 27.5a7 7 0 1 0 0 9" stroke-width="4"/>
+</g>
+</svg>
