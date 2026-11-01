@@ -848,7 +848,6 @@ FAQ = [
 POSTS = [
     {
         "slug": "nettoyer-entretenir-canape-tissu",
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "title": "Nettoyer et entretenir son canapé en tissu",
         "cat": "Textile",
         "date": "2026-08-28",
@@ -871,11 +870,10 @@ POSTS = [
             ("p", "Pour les taches anciennes, les odeurs installées ou un tissu clair qui a perdu sa teinte d'origine, l'injection-extraction reste la seule méthode qui traite le cœur de la fibre sans la détremper. La solution est injectée sous pression puis immédiatement réaspirée avec la saleté dissoute : le canapé ressort humide, pas mouillé, et sèche en 4 à 6 h sans auréole."),
         ],
         "cta": "Un canapé à traiter en profondeur ?",
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": "eliminer-acariens-matelas",
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "title": "Éliminer les acariens de son matelas",
         "cat": "Textile",
         "date": "2026-08-22",
@@ -895,11 +893,10 @@ POSTS = [
             ("p", "Le bicarbonate masque, il ne détruit pas. Pour éliminer réellement les allergènes, il faut de la chaleur : un nettoyage anti-acariens à haute température, appliqué <strong>sur les deux faces</strong>, traite en profondeur les allergènes, les taches et les odeurs. C'est la solution que nous recommandons systématiquement aux personnes asthmatiques ou allergiques."),
         ],
         "cta": "Un matelas à assainir ?",
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": "raviver-un-tapis",
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "title": "Raviver un tapis sans le faire dégorger",
         "cat": "Textile",
         "date": "2026-08-14",
@@ -920,11 +917,10 @@ POSTS = [
             ("p", "C'est pour cette raison que nous testons systématiquement la solidité des couleurs sur une zone cachée avant tout lavage, et que nous adaptons la méthode à la fibre : laine, soie et synthétique n'appellent ni les mêmes produits, ni la même quantité d'eau. Les pièces précieuses peuvent être traitées en atelier plutôt qu'à domicile."),
         ],
         "cta": "Un tapis à faire revivre ?",
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": "garder-voiture-propre-plus-longtemps",
-        "hors_offre": "le nettoyage automobile à domicile",
         "title": "Garder sa voiture propre plus longtemps",
         "cat": "Automobile",
         "date": "2026-08-06",
@@ -952,7 +948,7 @@ POSTS = [
             ('p', "Un mot sur ce qu'elle ne fait pas : une protection ne comble pas une rayure existante et ne protège pas d'un impact. Ce qui a traversé le vernis relève du carrossier, pas de l'entretien."),
         ],
         "cta": "Une voiture à préparer ?",
-        "service": "nettoyage-haute-pression-paris",
+        "service": "nettoyage-automobile-paris",
     },
     {
         "slug": "entretenir-son-bateau",
@@ -1012,7 +1008,6 @@ POSTS = [
     },
     {
         "slug": "trois-regles-or-detachage",
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "title": "Les trois règles d'or du détachage",
         "cat": "Conseils",
         "date": "2026-06-27",
@@ -1034,7 +1029,7 @@ POSTS = [
             ("p", "Sur un textile de valeur, une tache ancienne ou une matière que vous n'identifiez pas, l'essai raté coûte plus cher que l'intervention. Un professionnel commence de toute façon par identifier la fibre — c'est ce diagnostic, plus que le produit, qui fait la différence."),
         ],
         "cta": "Une tache que vous n'osez pas traiter ?",
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": "vitres-sans-traces",
@@ -1360,7 +1355,7 @@ GUIDES = [
    "Demandez simplement : « est-ce vous qui interviendrez ? ». La réponse vous en dira long."])],
  "faq": [
   ("Quel est le prix moyen d'un nettoyage en Île-de-France ?",
-   "Cela dépend entièrement de la prestation. À titre de repère : un canapé 2 places se traite à partir de 39 €, un detailing automobile à partir de 50 €, un traitement à l'ozone à 4 € le m², et les prestations professionnelles se chiffrent sur devis après visite. Un prix annoncé sans connaître le besoin n'a aucune valeur."),
+   "Cela dépend entièrement de la prestation. À titre de repère : un canapé 2 places se traite à partir de 39 €, un matelas 2 places à partir de 49 €, un nettoyage automobile à partir de 50 €, et la fin de chantier, la haute pression, les hottes et la moquette se chiffrent sur devis après visite. Un prix annoncé sans connaître le besoin n'a aucune valeur."),
   ("Faut-il choisir une grande entreprise ou un indépendant ?",
    "La taille ne dit rien de la qualité. Ce qui compte, c'est de savoir qui intervient réellement chez vous, avec quel matériel, et qui est responsable en cas de problème. Une structure petite mais directe apporte souvent plus de continuité qu'une chaîne de sous-traitance."),
   ("Les frais de déplacement sont-ils négociables ?",
@@ -1369,7 +1364,6 @@ GUIDES = [
 },
 {
  "slug": "choisir-entreprise-nettoyage-paris",
- "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
  "cat": "Bien choisir",
  "h1": "Entreprise de nettoyage à Paris : ce qui change intra-muros",
  "title": "Choisir une entreprise de nettoyage à Paris",
@@ -1426,7 +1420,6 @@ GUIDES = [
 },
 {
  "slug": "prix-nettoyage-canape-paris",
- "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
  "cat": "Prix",
  "h1": "Combien coûte un nettoyage de canapé à Paris ?",
  "title": "Prix d'un nettoyage de canapé à Paris",
@@ -1451,11 +1444,10 @@ GUIDES = [
    "Souvent, mais pas systématiquement. Une auréole déjà créée par un détachant ménager ou une décoloration ne se rattrapent pas. Nous vous le disons avant l'intervention plutôt qu'après."),
   ("Les produits sont-ils sans danger pour les enfants et les animaux ?",
    "Oui, ils sont choisis pour cela. Quand la vapeur haute température suffit, nous nous passons complètement de produit.")],
- "service": "nettoyage-fin-de-chantier-paris",
+ "service": "nettoyage-textile-paris",
 },
 {
  "slug": "prix-nettoyage-voiture-domicile",
- "hors_offre": "le nettoyage automobile à domicile",
  "cat": "Prix",
  "h1": "Combien coûte un nettoyage de voiture à domicile ?",
  "title": "Prix d'un nettoyage auto à domicile",
@@ -1481,7 +1473,7 @@ GUIDES = [
    "De 1 h 30 pour un Extérieur Éclat à environ 4 h pour un Intégral sur grand véhicule."),
   ("Est-ce rentable avant une revente ?",
    "C'est l'usage le plus fréquent de nos clients. Un habitacle assaini et sans odeur pèse concrètement sur le prix accepté par l'acheteur.")],
- "service": "nettoyage-haute-pression-paris",
+ "service": "nettoyage-automobile-paris",
 },
 {
  "slug": "entreprise-traitement-ozone-paris",
@@ -1516,7 +1508,7 @@ GUIDES = [
    "Oui, sans exception, pendant le traitement et pendant l'aération qui suit. C'est la seule façon de procéder correctement."),
   ("L'odeur peut-elle revenir après le traitement ?",
    "Seulement si la source est toujours en place. C'est pourquoi le diagnostic préalable compte plus que la puissance du générateur.")],
- "service": "nettoyage-haute-pression-paris",
+ "service": "nettoyage-automobile-paris",
 },
 {
  "slug": "traitement-ozone-ile-de-france",
@@ -1548,11 +1540,10 @@ GUIDES = [
    "Pas pendant le traitement. Le logement doit être vide de ses occupants, de leurs animaux et de leurs plantes, et le rester jusqu'à la fin de l'aération."),
   ("Combien de temps faut-il prévoir en tout ?",
    "Pour un véhicule, une demi-journée en comptant l'aération. Pour un logement, cela se planifie selon le volume : nous vous le disons précisément au devis.")],
- "service": "nettoyage-haute-pression-paris",
+ "service": "nettoyage-automobile-paris",
 },
 {
  "slug": "traitement-ozone-voiture-odeurs",
- "hors_offre": "le nettoyage automobile à domicile",
  "cat": "Ozone",
  "h1": "Traitement ozone d'une voiture : tabac, animaux, humidité",
  "title": "Traitement ozone voiture — odeur de tabac",
@@ -1579,7 +1570,7 @@ GUIDES = [
    "Dans la grande majorité des cas, oui, à condition que l'habitacle ait été nettoyé au préalable. Sur un véhicule fumé pendant des années, un second passage est parfois nécessaire."),
   ("Puis-je conduire juste après ?",
    "Non. Il faut laisser l'ozone se recombiner en oxygène et aérer, soit environ deux heures. Nous ne vous rendons jamais le véhicule avant.")],
- "service": "nettoyage-haute-pression-paris",
+ "service": "nettoyage-automobile-paris",
 },
 {
  "slug": "traitement-ozone-securite",
@@ -1614,7 +1605,7 @@ GUIDES = [
    "Non. Il se recombine en oxygène, sans dépôt ni film résiduel. C'est l'un de ses intérêts par rapport à un produit chimique."),
   ("Est-ce compatible avec la présence d'enfants dans le logement ?",
    "Après aération complète, oui, l'air est redevenu de l'air ordinaire. Pendant le traitement, non, et cela vaut pour tout le monde.")],
- "service": "nettoyage-haute-pression-paris",
+ "service": "nettoyage-automobile-paris",
 },
 {
  "slug": "prix-traitement-ozone",
@@ -1623,7 +1614,7 @@ GUIDES = [
  "cat": "Prix",
  "h1": "Combien coûte un traitement à l'ozone ?",
  "title": "Prix d'un traitement ozone — dès 30 €",
- "meta": "Prix d'un traitement ozone : 30 € en option d'un nettoyage automobile, sur devis pour un logement ou un local. Ce qui fait varier le tarif.",
+ "meta": "Prix d'un traitement ozone : 30 € en option d'un nettoyage automobile. Ce qui fait varier le tarif, et pourquoi il ne se vend pas seul.",
  "image": "intervention-1.webp",
  "lead": "Le tarif dépend d'une seule variable réelle : le volume à traiter, qui détermine la durée.",
  "sections": [
@@ -1646,11 +1637,10 @@ GUIDES = [
    "Sur des odeurs très anciennes et très incrustées, cela arrive. Nous le disons au devis quand nous l'anticipons, plutôt que de le découvrir après."),
   ("Le devis est-il payant ?",
    "Non, il est gratuit et sans engagement, comme pour toutes nos prestations.")],
- "service": "nettoyage-haute-pression-paris",
+ "service": "nettoyage-automobile-paris",
 },
 {
  "slug": "injection-extraction",
- "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
  "cat": "Méthode",
  "h1": "L'injection-extraction expliquée simplement",
  "title": "Injection-extraction : comment ça marche",
@@ -1678,11 +1668,10 @@ GUIDES = [
   ("Combien de passages faut-il ?",
    "Autant que nécessaire pour que l'eau réaspirée ressorte claire. Sur un canapé très encrassé, cela peut demander plusieurs passages croisés.")],
  "video": 'textile',
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
 },
 {
  "slug": "nettoyage-vapeur-desinfection",
- "hors_offre": "le nettoyage automobile à domicile",
  "cat": "Méthode",
  "h1": "Nettoyage vapeur : ce qu'il désinfecte vraiment",
  "title": "Nettoyage vapeur : ce qu'il fait vraiment",
@@ -1712,7 +1701,6 @@ GUIDES = [
 },
 {
  "slug": "nettoyage-fin-chantier-combien-de-passages",
- "hors_offre": "le nettoyage de fin de chantier",
  "cat": "Chantier",
  "h1": "Nettoyage de fin de chantier : un ou deux passages ?",
  "title": "Fin de chantier : un ou deux passages ?",
@@ -1905,12 +1893,13 @@ GUIDES = [
     },
     {
         "slug": 'nettoyage-airbnb-paris',
-        "hors_offre": "le nettoyage complet d'un meublé entre deux séjours",
         "cat": 'Location courte durée',
         "h1": 'Nettoyage Airbnb à Paris : entre deux voyageurs',
         "title": 'Nettoyage Airbnb à Paris',
         "meta": 'Nettoyage de logement Airbnb à Paris : le protocole entre deux séjours, les points qui font baisser une note, et la contrainte des créneaux serrés.',
-        "image": 'canape-nettoyage.webp',
+        # Un appartement francilien rendu après intervention : c'est le sujet
+        # de la page. Rien d'autre n'a à y figurer.
+        "image": "appartement-sejour-fenetre.webp",
         "lead": "En location courte durée, la propreté est notée publiquement et la fenêtre d'intervention dure quelques heures. Ce sont deux contraintes qui changent la méthode.",
         "sections": [
             ('Ce que les voyageurs remarquent vraiment', [
@@ -1925,13 +1914,13 @@ GUIDES = [
             ]),
             ('Les odeurs, le point faible du meublé', [
                 'Un logement fermé entre deux séjours, surtout sans ventilation traversante, développe une odeur de renfermé que le voyageur associe immédiatement au manque de propreté. Un désodorisant la masque une heure et la rend suspecte ensuite.',
-                "Quand l'odeur est installée — tabac d'un séjour précédent, humidité, cuisine — nous proposons un traitement par ozone. L'ozone détruit les molécules odorantes au lieu de les recouvrir, et il agit dans les textiles et les recoins que le nettoyage n'atteint pas.",
-                "Le protocole est strict : le logement doit être vide de personnes, d'animaux et de plantes pendant le traitement, puis aéré avant la remise des clés. L'ozone est un gaz irritant pour les voies respiratoires ; il ne se pratique pas en présence de qui que ce soit. C'est pour cela qu'il se cale entre deux réservations et pas pendant.",
+                "Une odeur installée a presque toujours un support matériel, et c'est lui qu'il faut traiter : le matelas et le canapé, qui absorbent puis relâchent, le siphon d'une douche ou d'un évier qui s'est asséché pendant la vacance du logement, le joint de la porte du réfrigérateur, le bac d'un aspirateur laissé sur place. Tant que le support est là, l'odeur revient en deux jours.",
+                "C'est pour cette raison que nous traitons les textiles par injection-extraction au lieu de parfumer la pièce : un matelas et un canapé extraits puis séchés ne sentent plus rien, et le résultat tient. Nous remplissons les siphons, nous dégraissons les joints du réfrigérateur et le dessus des meubles de cuisine, et nous laissons le logement aéré. Si l'odeur persiste après cela, elle vient du bâti — infiltration, ventilation, colonne d'évacuation — et ce n'est plus un problème de nettoyage : nous vous le disons plutôt que de la masquer.",
             ]),
             ('Ce que nous faisons, et ce que nous ne faisons pas', [
-                'Nous faisons le nettoyage entre deux séjours, la remise en état saisonnière plus poussée, le traitement des textiles — canapé convertible, matelas, tapis — par injection-extraction, la vitrerie et le traitement des odeurs par ozone.',
-                "Nous ne sommes pas une conciergerie. Nous ne gérons pas les annonces, les arrivées, les clés ni la relation avec les voyageurs. Si vous cherchez ce service complet, il vous faut une conciergerie ; nous pouvons travailler pour elle ou à côté d'elle.",
-                'Nous intervenons sept jours sur sept, jours fériés compris, ce qui est la condition minimale pour être utile en location courte durée. Pour un logement à rotation régulière, nous calons un créneau récurrent plutôt que de reprendre rendez-vous à chaque fois.',
+                "Nous faisons la remise en état complète du meublé : le grand nettoyage de début ou de fin de saison, la reprise après un séjour qui a laissé des traces, et la préparation d'un logement qui entre en location. Dans la même venue, le traitement des textiles — canapé convertible, matelas, tapis — par injection-extraction, et la moquette si le logement en a.",
+                "Nous ne sommes pas une conciergerie. Nous ne gérons pas les annonces, les arrivées, les clés ni la relation avec les voyageurs, et nous ne tenons pas le ménage de rotation à chaque départ sous contrat permanent : cela demande une équipe disponible à l'heure près tous les jours, et ce n'est pas notre métier. Si c'est ce que vous cherchez, il vous faut une conciergerie ou une société de ménage ; nous travaillons volontiers pour elle ou à côté d'elle, sur ce qu'elle ne couvre pas.",
+                "Nous intervenons sept jours sur sept, jours fériés compris, ce qui est la condition minimale pour être utile en location courte durée. Sur un logement qui tourne beaucoup, le bon rythme est une remise en état complète deux à trois fois par an, intercalée entre les rotations courantes : c'est ce qui empêche l'encrassement lent dont les commentaires finissent toujours par parler.",
             ]),
         ],
         "faq": [
@@ -1940,15 +1929,14 @@ GUIDES = [
             ('Fournissez-vous le linge ?',
              "Non. Nous nettoyons et nous faisons les lits avec le linge disponible sur place. La gestion du linge relève d'une conciergerie ou d'une blanchisserie, avec qui nous nous coordonnons sans difficulté."),
             ('Combien de temps faut-il entre deux voyageurs ?',
-             "Trois heures sur place pour un deux-pièces, davantage si un traitement textile ou un passage à l'ozone est prévu. L'ozone impose en plus une aération avant l'arrivée du voyageur suivant."),
+             "Trois heures sur place pour un deux-pièces en rotation simple. Comptez une demi-journée si un traitement textile est prévu : le canapé et le matelas doivent sécher avant l'arrivée du voyageur suivant, et c'est ce séchage, pas le nettoyage, qui commande l'horaire."),
             ('Traitez-vous une odeur de tabac laissée par un voyageur ?',
-             "Oui, par ozone, après nettoyage des surfaces et des textiles. Le traitement se fait logement vide et suivi d'une aération. Sur une odeur ancienne et très incrustée, un second passage est parfois nécessaire ; nous le disons au devis quand nous l'anticipons."),
+             "Oui, en traitant ce qui retient l'odeur plutôt que l'air de la pièce : le matelas, le canapé et les tapis par injection-extraction, puis les surfaces lavables, les joints et les siphons. Le tabac se fixe dans les textiles et dans le film gras déposé sur les murs et les plafonds, et c'est de là qu'il repart. Sur une odeur ancienne et très incrustée, un second passage est parfois nécessaire ; nous le disons au devis quand nous l'anticipons."),
         ],
         "service": "nettoyage-fin-de-chantier-paris",
     },
     {
         "slug": 'nettoyage-matelas-paris',
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Textile',
         "h1": 'Nettoyage de matelas à domicile à Paris',
         "title": 'Nettoyage de matelas à Paris',
@@ -1970,7 +1958,7 @@ GUIDES = [
             ("Les taches d'urine, et ce qu'on peut en attendre", [
                 "C'est la demande la plus fréquente et celle où il faut être le plus honnête. Traitée dans les quarante-huit heures, une tache d'urine s'élimine presque toujours, odeur comprise.",
                 "Passé une semaine, l'urine cristallise. Les sels restent dans la fibre et laissent une marque jaunâtre que l'extraction atténue nettement mais n'efface pas toujours. Sur un matelas clair, la marque peut rester visible même après un traitement réussi sur l'odeur.",
-                "L'odeur, elle, se traite bien mieux que la couleur. Elle provient de composés que l'extraction évacue, et un passage à l'ozone finit le travail sur les cas anciens. Nous distinguons donc systématiquement les deux au devis : ce que nous pouvons garantir sur l'odeur, ce que nous espérons sur la marque.",
+                "L'odeur, elle, se traite bien mieux que la couleur. Elle provient de composés organiques que l'extraction évacue avec l'eau sale, et un second passage sur la même face vient à bout des cas anciens. Nous distinguons donc systématiquement les deux au devis : ce que nous pouvons garantir sur l'odeur, ce que nous espérons sur la marque.",
             ]),
             ('Séchage, tarifs et conditions', [
                 'Comptez quatre à six heures de séchage avant de refaire le lit, davantage dans une pièce fermée ou humide. Nous laissons le matelas relevé et la pièce aérée en partant. Traiter le matin permet de dormir dessus le soir même.',
@@ -1990,11 +1978,10 @@ GUIDES = [
              "Non, nous travaillons sur place. Dégagez simplement l'accès autour du lit et retirez la literie avant notre arrivée."),
         ],
         "video": 'textile',
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": 'prix-nettoyage-matelas',
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Prix',
         "h1": "Prix d'un nettoyage de matelas",
         "title": "Prix d'un nettoyage de matelas",
@@ -2010,7 +1997,7 @@ GUIDES = [
             ('Les trois éléments qui font varier le prix', [
                 "<strong>La taille et le nombre de faces.</strong> Un 90 × 190 se traite en une fraction du temps d'un 180 × 200. Traiter les deux faces double le temps de travail et le temps de séchage.",
                 "<strong>Le détachage.</strong> Une tache identifiée demande un traitement individuel avec un produit choisi selon sa nature et un temps de pose. Trois taches anciennes peuvent représenter autant de temps que l'extraction elle-même.",
-                "<strong>Le traitement des odeurs.</strong> Quand l'odeur persiste après extraction, un passage à l'ozone se facture en supplément, à partir de 30 €. Il ne se justifie pas sur tous les matelas : nous ne le proposons que lorsqu'il apportera quelque chose.",
+                "<strong>Le nombre de passages.</strong> Un matelas très imprégné demande deux extractions successives sur la même face, avec un temps d'attente entre les deux. Cela se voit sur une photo, et nous le disons au devis plutôt qu'en fin d'intervention.",
             ]),
             ('Le déplacement, et comment ne pas le payer pour rien', [
                 'Nos frais de déplacement sont de 5 € par tranche de 5 km depuis notre adresse de référence à Tremblay-en-France, annoncés avant validation. Sur un seul matelas, ils peuvent représenter une part notable du total.',
@@ -2031,11 +2018,10 @@ GUIDES = [
             ('Faut-il payer un acompte ?',
              "Non, jamais. Vous réglez après l'intervention, une fois le résultat constaté."),
         ],
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": 'nettoyage-moquette-bureau-paris',
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Professionnels',
         "h1": 'Nettoyage de moquette de bureau à Paris',
         "title": 'Nettoyage de moquette de bureau',
@@ -2075,11 +2061,10 @@ GUIDES = [
              "En partie. L'extraction retire la saleté, elle ne restaure pas une fibre usée mécaniquement. Sur une moquette dont la fibre est écrasée dans les couloirs, le résultat sera net mais l'usure restera visible. Nous le disons avant."),
         ],
         "video": 'textile',
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-moquette-paris",
     },
     {
         "slug": 'nettoyage-tapis-paris',
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Textile',
         "h1": 'Nettoyage de tapis à domicile à Paris',
         "title": 'Nettoyage de tapis à Paris',
@@ -2126,7 +2111,7 @@ GUIDES = [
              'Non, nous travaillons chez vous. Il suffit de dégager la surface et, si le tapis est sur parquet, de nous laisser glisser une protection dessous.'),
         ],
         "video": 'textile',
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": 'demoussage-terrasse-ile-de-france',
@@ -2204,7 +2189,7 @@ GUIDES = [
             ('Quand grouper les prestations', [
                 "Une terrasse se nettoie rarement seule. Si vous nous faites venir, regardez ce qui l'entoure : le salon de jardin, les dalles de l'allée, le bas de mur, les volets, la façade accessible depuis le sol.",
                 'Le déplacement est le même et le matériel est déjà en place. Le coût par surface traitée chute nettement quand tout se fait le même jour.',
-                "Même logique pour la vitrerie : baies vitrées et véranda donnant sur la terrasse se traitent dans la foulée, à l'eau osmosée, sans nouveau déplacement.",
+                "Même logique pour tout ce qui se lave dans la foulée : la cour, l'allée, le mur de clôture et les abords du portail se traitent sur la même venue, sans nouveau déplacement à facturer.",
             ]),
         ],
         "faq": [
@@ -2219,7 +2204,6 @@ GUIDES = [
     },
     {
         "slug": 'prix-nettoyage-fin-de-chantier-m2',
-        "hors_offre": "le nettoyage de fin de chantier",
         "cat": 'Prix',
         "h1": "Prix d'un nettoyage de fin de chantier au m²",
         "title": "Prix d'un nettoyage de fin de chantier",
@@ -2263,7 +2247,6 @@ GUIDES = [
     },
     {
         "slug": 'nettoyage-siege-voiture-tache',
-        "hors_offre": "le nettoyage automobile à domicile",
         "cat": 'Automobile',
         "h1": 'Nettoyage de sièges de voiture et détachage',
         "title": 'Nettoyage de sièges de voiture',
@@ -2306,11 +2289,10 @@ GUIDES = [
             ('Traitez-vous les sièges en cuir ?',
              'Oui, en option : nettoyant à pH neutre puis nourrissant. Les deux temps sont indispensables — un cuir dégraissé sans être nourri redevient sec et craquelle.'),
         ],
-        "service": "nettoyage-haute-pression-paris",
+        "service": "nettoyage-automobile-paris",
     },
     {
         "slug": 'lavage-auto-domicile-paris',
-        "hors_offre": "le nettoyage automobile à domicile",
         "cat": 'Automobile',
         "h1": 'Lavage auto à domicile à Paris et en Île-de-France',
         "title": 'Lavage auto à domicile à Paris',
@@ -2351,11 +2333,10 @@ GUIDES = [
             ('Combien de temps dure une intervention ?',
              "D'environ une heure pour un extérieur seul à trois heures pour un intérieur complet avec extraction des sièges. Le devis précise la durée estimée."),
         ],
-        "service": "nettoyage-haute-pression-paris",
+        "service": "nettoyage-automobile-paris",
     },
     {
         "slug": 'nettoyage-apres-travaux-appartement',
-        "hors_offre": "le nettoyage de fin de chantier",
         "cat": 'Chantier',
         "h1": 'Nettoyage après travaux dans un appartement',
         "title": "Nettoyage après travaux d'appartement",
@@ -2386,7 +2367,7 @@ GUIDES = [
             ("Ce qui relève d'un autre métier", [
                 "Le nettoyage de fin de chantier n'est pas un débarras. Nous évacuons les résidus fins liés au nettoyage ; les gravats, les chutes de matériaux et les encombrants relèvent d'une benne et d'une filière de traitement, avec ses propres obligations.",
                 "De même, une tache de peinture sur un carrelage poreux ou une coulure d'enduit dans un joint relèvent parfois de la reprise par l'artisan, pas du nettoyage. Nous vous le signalons plutôt que d'insister au risque d'abîmer le support.",
-                "Enfin, si votre logement a subi un dégât des eaux pendant les travaux, une odeur d'humidité peut persister après séchage. Un traitement par ozone la traite efficacement, à condition que la source ait été traitée d'abord — sinon elle reviendra.",
+                "Enfin, si votre logement a subi un dégât des eaux pendant les travaux, une odeur d'humidité peut persister. Elle ne se règle pas au nettoyage : tant que le support n'est pas sec à cœur, elle revient. Nous vous le disons plutôt que de la masquer, et nous reprenons le logement une fois le séchage achevé.",
             ]),
         ],
         "faq": [
@@ -2401,7 +2382,6 @@ GUIDES = [
     },
     {
         "slug": 'nettoyage-canape-cuir-alcantara',
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Textile',
         "h1": 'Nettoyage de canapé en cuir et en alcantara',
         "title": 'Nettoyage de canapé cuir et alcantara',
@@ -2444,11 +2424,10 @@ GUIDES = [
             ('Un cuir craquelé se répare-t-il par nettoyage ?',
              "Non. Les fibres sont cassées : un nourrissant assouplit les abords mais ne reconstitue rien. Cela relève d'une réfection en atelier."),
         ],
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": 'nettoyage-fauteuil-chaise-bureau',
-        "hors_offre": "le nettoyage de canapés, de matelas et de tapis",
         "cat": 'Professionnels',
         "h1": 'Nettoyage de fauteuils et chaises de bureau',
         "title": 'Nettoyage de fauteuils de bureau',
@@ -2490,7 +2469,7 @@ GUIDES = [
             ('Peut-on traiter les sièges en même temps que la moquette ?',
              "Oui, et c'est la solution la plus économique : même matériel, même déplacement, coût par siège nettement réduit."),
         ],
-        "service": "nettoyage-fin-de-chantier-paris",
+        "service": "nettoyage-textile-paris",
     },
     {
         "slug": 'nettoyage-salon-jardin-mobilier-exterieur',
@@ -2549,7 +2528,7 @@ GUIDES = [
                 "L'odeur d'un local poubelles ne vient pas des conteneurs mais du sol et des parois. Les jus qui s'écoulent des sacs pénètrent dans la porosité du béton, y fermentent, et continuent de sentir longtemps après que les conteneurs ont été sortis.",
                 "Un lavage de surface ne fait donc rien de durable. Il faut une haute pression avec eau chaude si possible, un dégraissant alcalin sur le sol, un temps de pose, puis un rinçage complet vers l'évacuation.",
                 "Les parois se traitent aussi, jusqu'à hauteur d'homme au minimum : les projections montent plus haut qu'on ne l'imagine lors des manipulations de conteneurs.",
-                "Quand l'odeur persiste après le lavage — parce qu'elle est descendue dans le béton ou installée dans la ventilation — un traitement par ozone la traite en profondeur. Le local est fermé pendant l'opération, sans présence humaine ni animale, puis ventilé avant réouverture. C'est le seul moyen d'atteindre ce que l'eau ne touche pas.",
+                "Quand l'odeur persiste après le lavage, c'est qu'elle est descendue dans le béton ou qu'elle s'est installée dans la ventilation. Un sol de local à poubelles non protégé est poreux : les jus l'ont imprégné sur plusieurs millimètres, et aucun lavage de surface ne va les y chercher. Nous le disons franchement — un passage de plus à la lance n'y changera rien, et la question devient celle de l'étanchéité du sol et du tirage du local.",
             ]),
             ('Le parking souterrain', [
                 "Deux problèmes distincts s'y cumulent.",
@@ -2573,7 +2552,7 @@ GUIDES = [
             ("Une tache d'huile ancienne part-elle du béton ?",
              "Le gras se retire, la coloration non. Le béton est teinté dans son épaisseur : on récupère l'adhérence et l'aspect général, pas la couleur d'origine. Nous le disons avant d'intervenir."),
             ('Comment traiter une odeur de local poubelles ?',
-             "En traitant le sol et les parois, pas les conteneurs : les jus ont pénétré le béton. Quand l'odeur persiste après lavage, un traitement par ozone l'atteint en profondeur, local fermé et sans présence, puis ventilé."),
+             "En traitant le sol et les parois, pas les conteneurs : les jus ont pénétré le béton, et c'est de là que l'odeur repart. Nous lavons sous pression avec un dégraissant alcalin, nous rinçons et nous évacuons les eaux. Si l'odeur revient malgré cela, elle tient à la porosité du sol ou à la ventilation du local, et nous vous le disons."),
             ('Faut-il vider le parking entièrement ?',
              "Non, et c'est déconseillé. Mieux vaut procéder par zones successives, avec un affichage plusieurs jours à l'avance, que de tenter de libérer toutes les places le même jour."),
         ],
@@ -2600,7 +2579,7 @@ GUIDES = [
                 "Il faut aussi savoir dire quand l'urgence dessert.",
                 '<strong>Un nettoyage de fin de chantier.</strong> Intervenir le jour même du dernier ponçage garantit de devoir repasser : la poussière de plâtre retombe pendant vingt-quatre à quarante-huit heures. Attendre un jour donne un meilleur résultat pour le même prix.',
                 "<strong>Un traitement de terrasse.</strong> L'anti-mousse a besoin d'un temps d'action de plusieurs heures à plusieurs jours. Le presser revient à ne pas le faire.",
-                "<strong>Un traitement par ozone.</strong> Il impose un local vide pendant l'opération puis une aération avant réoccupation. Ce délai n'est pas négociable : l'ozone est un gaz irritant pour les voies respiratoires, et écourter l'aération serait dangereux.",
+                "<strong>Un dégraissage de hotte.</strong> Il impose l'arrêt de la cuisine, le bâchage des plans de travail et la dépose des filtres, qui trempent plusieurs heures. Ce n'est pas une intervention qu'on glisse entre deux services : elle se cale la nuit ou un jour de fermeture.",
                 "<strong>Tout ce qui doit sécher.</strong> Un matelas, une moquette, un fauteuil de bureau : le séchage prend le temps qu'il prend. On peut avancer l'intervention, pas raccourcir le séchage.",
             ]),
             ('Nos délais réels', [
@@ -2631,7 +2610,6 @@ GUIDES = [
     },
     {
         "slug": 'ph-produits-nettoyage-professionnel',
-        "hors_offre": "le nettoyage automobile à domicile",
         "cat": 'Méthode',
         "h1": 'pH et produits : la chimie qui décide du résultat',
         "title": 'pH et produits de nettoyage professionnel',
@@ -3614,13 +3592,14 @@ PREMIUM_VILLES = [
                 "l'aspirateur domestique n'en retire que la couche de surface.",
                 "L'injection-extraction va chercher ce qui est logé au cœur de la fibre. Le "
                 "retrait des poils est traité en amont, mécaniquement, car ils encrassent "
-                "l'extraction. Sur une maison avec animaux, l'association textile plus ozone "
-                "donne un résultat que ni l'un ni l'autre n'obtient seul.",
+                "l'extraction. Sur une maison avec animaux, c'est la seule méthode qui retire "
+                "réellement la matière : tant qu'elle est dans l'assise, l'odeur revient.",
                 "Que faire d'un canapé qui sent le chien ?",
-                "Deux étapes, dans cet ordre. D'abord l'injection-extraction, qui retire la "
-                "matière — sébum, poils, salissure — car tant qu'elle est là, l'odeur revient. "
-                "Ensuite seulement l'ozone, qui détruit les molécules odorantes ayant imprégné les "
-                "mousses. L'inverse ne tient pas plus de quelques jours."),
+                "On traite la matière, pas l'air de la pièce. Le poil part d'abord, "
+                "mécaniquement, car il encrasse l'extraction ; puis l'injection-extraction "
+                "retire le sébum et la salissure logés dans l'assise, qui sont ce qui sent. Un "
+                "canapé extrait puis séché complètement ne sent plus le chien. Un désodorisant, "
+                "lui, tient deux jours."),
                 "nettoyage-vitres": (
                 "Les maisons de coteau ont souvent de grandes baies orientées vers la vue, des "
                 "vérandas et des fenêtres de toit. Ce sont les vitrages les plus exposés : pluie, "

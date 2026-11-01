@@ -2853,6 +2853,13 @@ def bloc_hors_offre(base, item):
     if not item.get("hors_offre"):
         return ""
     extra = ""
+    if item.get("hors_offre_note") == "ozone":
+        # L'ozone n'a pas disparu : il reste une option du nettoyage automobile,
+        # à 30 €, sur un véhicule. Ce qui a disparu, c'est le traitement d'un
+        # logement ou d'un local vendu pour lui-même.
+        extra = (" La neutralisation des odeurs par ozone reste disponible, mais"
+                 " uniquement en option d'un nettoyage automobile, sur un"
+                 " véhicule : nous ne traitons plus un logement ni un local.")
     return f"""
       <div class="notice" style="margin-top:28px">
         {icon('info')}
@@ -7442,6 +7449,12 @@ def build_dossier(d):
                     ][:3 - len(proches)]
     cartes = "".join(dossier_card(base, o) for o in proches)
     client = "pro" if d["audience"] == "pro" else ""
+    # Sur un dossier hors catalogue, le bandeau renvoie déjà vers les six
+    # prestations : annoncer « cette prestation en détail » en plus enverrait
+    # le lecteur vers un métier qui n'est pas celui du dossier.
+    renvoi_prestation = "" if d.get("hors_offre") else (
+        'Cette prestation en détail : <a href="%sservices/%s.html">%s</a>. '
+        % (base, service["slug"], service["name"]))
 
     body = f"""
 <section class="page-title">
@@ -7453,22 +7466,21 @@ def build_dossier(d):
     <article>
       <header class="entry-header">
         <div class="post-meta" style="margin-bottom:14px">
-          <span class="post-cat">{d['cat']}</span>
+          <span class="post-cat">{d['cat']}</span>{marqueur_hors_offre(d)}
           <span>Mis à jour le {DATE_GUIDES_FR}</span>
         </div>
         <h1>{d['h1']}</h1>
         <p class="lead">{d['lead']}</p>
         <p class="dossier-cle">{icon('check')}<strong>{d['cle']}</strong></p>
       </header>
+{bloc_hors_offre(base, d)}
       <div class="entry-content">
         {corps}
         <h2>Vos questions</h2>
         {faq_block(d['faq'], 'faq-dossier-%s' % d['slug'])}
       </div>
       <footer class="entry-footer">
-        <p>Cette prestation en détail :
-        <a href="{base}services/{service['slug']}.html">{service['name']}</a>.
-        Un devis gratuit et ferme :
+        <p>{renvoi_prestation}Un devis gratuit et ferme :
         <a href="{base}devis.html{'?client=pro' if client else ''}">demander un devis</a>,
         ou {SITE['phone']}.</p>
       </footer>
