@@ -238,9 +238,12 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .section-head.center{margin-inline:auto;text-align:center}
 .section-head h2{margin-bottom:.45em}
 .grid{display:grid;gap:24px}
-.grid-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
-.grid-3{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-.grid-4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+/* `min(Xpx, 100%)` et non `Xpx` : une colonne à minimum fixe ne peut pas
+   rétrécir sous ce minimum, et sur un écran plus étroit elle fait défiler
+   toute la page de côté. */
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(min(320px, 100%),1fr))}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(min(290px, 100%),1fr))}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(min(230px, 100%),1fr))}
 /* Quatre cartes se lisent en 2 × 2 : en trois colonnes, la dernière
    reste seule sur sa ligne. */
 .grid-paire{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -276,7 +279,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 @media(max-width:700px){.hero-inner{padding:66px 0 58px}}
 
 /* Bandeau de chiffres */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px, 100%),1fr));gap:1px;background:var(--line)}
 .stat{background:#fff;padding:30px 22px;text-align:center}
 .stat-num{font-size:2.15rem;font-weight:800;color:var(--brand);line-height:1;letter-spacing:-.03em}
 .stat-label{font-size:.87rem;color:var(--muted);margin-top:.45rem;font-weight:550}
@@ -548,7 +551,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .cta-inner{display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
 .cta-inner>div{max-width:620px}
 
-.form-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.form-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(230px, 100%),1fr))}
 .field{display:flex;flex-direction:column;gap:7px}
 .field-full{grid-column:1/-1}
 .field label{
@@ -596,11 +599,11 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .info-list span{font-size:.93rem;color:var(--muted)}
 
 /* Étapes numérotées */
-.steps{counter-reset:step;display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.steps{counter-reset:step;display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(min(250px, 100%),1fr))}
 /* À cinq étapes, la grille par défaut en aligne quatre et laisse la
    dernière seule. Des colonnes plus larges donnent 3 + 2, et le texte
    d'une étape respire mieux. */
-.steps--large{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.steps--large{grid-template-columns:repeat(auto-fit,minmax(min(320px, 100%),1fr))}
 .step{position:relative;padding-top:12px}
 .step::before{
   counter-increment:step;content:counter(step,decimal-leading-zero);
@@ -660,6 +663,11 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 }
 .callbar a+a{background:var(--brand);color:#fff}
 .callbar svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.1}
+/* Le numéro est écrit en clair plutôt que « Appeler » : sur un téléphone,
+   c'est le seul endroit où il reste visible en permanence, et un numéro
+   qu'on peut lire se retient et se recopie — un bouton, non. */
+.callbar-num{font-variant-numeric:tabular-nums;letter-spacing:-.1px}
+@media(max-width:360px){.callbar a{font-size:.86rem;gap:6px;padding:15px 6px}}
 @media(max-width:780px){.callbar{display:grid}body{padding-bottom:56px}
   /* La réservation a sa propre barre basse : la barre d'appel ferait
      doublon, et son bouton « Réserver » renverrait à la page ouverte. */
@@ -741,7 +749,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .review blockquote p{margin:0}
 
 /* Bloc « nous trouver » */
-.find-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.find-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(270px, 100%),1fr))}
 .find-card{
   display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);
   border-radius:var(--radius-lg);padding:28px 26px;text-align:center;align-items:center;
@@ -790,7 +798,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .resa-sub{font-size:1.05rem;margin:28px 0 14px}
 .resa-intro{font-size:.95rem;color:var(--muted);margin-bottom:18px}
 
-.pick-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.pick-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(180px, 100%),1fr))}
 .pack-pick{display:grid;gap:12px}
 .pick{cursor:pointer;display:block;position:relative}
 /* Invisible, mais de la taille de la carte : la cible tactile est la carte entière. */
@@ -1113,7 +1121,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
    descend à une colonne sur téléphone. */
 .galerie-clips{
   display:grid;gap:28px;margin-top:2.4rem;
-  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(min(230px, 100%),1fr));
 }
 .galerie-clip{margin:0}
 .galerie-clip video{
@@ -1233,7 +1241,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 
 /* Quatre arguments : des colonnes assez larges pour qu'ils tiennent en
    2 × 2 plutôt qu'en 3 + 1 avec un dernier bloc orphelin. */
-.arg-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(400px,1fr))}
+.arg-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(400px, 100%),1fr))}
 .arg{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand);
   border-radius:var(--radius);padding:24px 26px}
 .arg-tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.12em;
@@ -1292,9 +1300,9 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
   .topbar .container{min-height:38px;gap:6px 12px;justify-content:center}
   .parcours{gap:6px;font-size:.82rem}
   .parcours a{padding:6px 12px}
-  /* Le téléphone reste accessible par la barre basse « Appeler » et par
-     l'en-tête : le répéter ici forcerait le choix de parcours sur une
-     deuxième ligne. */
+  /* Le téléphone était masqué ici parce qu'il poussait le choix de parcours
+     sur une deuxième ligne. Il reste donc masqué dans la barre, mais il est
+     écrit en clair dans la barre basse, qui ne quitte jamais l'écran. */
   .topbar-info{display:none}
 }
 
@@ -1310,7 +1318,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 .lien-liste{
   list-style:none;margin:0;padding:0;
   display:grid;gap:2px 28px;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(min(320px, 100%),1fr));
 }
 /* Le filet est gardé sur tous les éléments, y compris le dernier : à trois
    colonnes, retirer celui du dernier élément de la liste ne retire que celui
@@ -1356,7 +1364,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 
 /* --- Deux débordements relevés au contrôle mobile ------------------------- */
 
-/* .arg-grid était passé à minmax(400px,1fr) pour éviter une quatrième carte
+/* .arg-grid était passé à minmax(min(400px, 100%),1fr) pour éviter une quatrième carte
    orpheline en 3 + 1. À 390 px de large, 400 px de minimum déborde du
    conteneur : sous 520 px, une seule colonne pleine largeur. */
 @media(max-width:520px){
@@ -1544,4 +1552,7 @@ html[data-profil="pro"] .cta-band{
    (information pratique) : c'est ce qu'un contrôleur demandera. */
 .notice-rouge{background:#fdf3f2;border-color:#f3d4cf;border-left-color:#b4442f}
 .notice-rouge svg{stroke:#b4442f}
-.notice-rouge a{color:#8f3626;font-weight:600;white-space:nowrap}
+/* Le lien était en `white-space:nowrap` : ses 36 caractères tenaient sur une
+   ligne de 324 px, qui dépassait l'écran d'un téléphone et donnait une barre
+   de défilement horizontale à toute la page. Il se coupe maintenant. */
+.notice-rouge a{color:#8f3626;font-weight:600}

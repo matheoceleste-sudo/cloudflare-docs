@@ -564,7 +564,7 @@ def footer(base):
 <button class="to-top" id="to-top" type="button" aria-label="Revenir en haut">{icon('up')}</button>
 
 <div class="callbar">
-  <a href="tel:{SITE['phone_link']}">{icon('phone')}Appeler</a>
+  <a href="tel:{SITE['phone_link']}" aria-label="Appeler le {SITE['phone']}">{icon('phone')}<span class="callbar-num">{SITE['phone']}</span></a>
   <a href="{base}reservation.html">{icon('calendar')}Réserver</a>
 </div>
 
