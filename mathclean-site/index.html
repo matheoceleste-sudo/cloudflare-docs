@@ -269,6 +269,19 @@
 }
 .jscrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(to bottom,rgba(10,10,12,.62),rgba(10,10,12,.38) 42%,rgba(10,10,12,.72))}
+/* ===== Devis express (placé haut : le formulaire était au 17e écran sur mobile) =====
+   Les couleurs passent par les variables du thème : le site est en thème clair,
+   des valeurs en dur rendaient le texte illisible. */
+.express .ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center}
+.express h2{margin:0 0 14px;font-size:clamp(2rem,4.4vw,3rem);color:var(--blanc)}
+.express .ex-txt p{color:var(--gris);line-height:1.7;margin-bottom:22px;max-width:460px;font-size:1.05rem}
+.express .ex-tel{display:inline-block;font-family:var(--serif,'Cormorant Garamond',Georgia,serif);font-size:clamp(1.9rem,4vw,2.5rem);color:var(--or);text-decoration:none;line-height:1.1;font-weight:600}
+.express .ex-tel:hover{text-decoration:underline}
+.express .ex-note{display:block;margin-top:6px;font-size:.84rem;color:var(--gris);opacity:.85}
+.express .ex-form{background:var(--noir-2);border:1px solid var(--ligne);border-radius:18px;padding:clamp(20px,3vw,30px);box-shadow:var(--ombre)}
+.express .ex-form .btn{width:100%;justify-content:center;margin-top:6px}
+.express .ex-legal{margin:12px 0 0;font-size:.8rem;color:var(--gris);opacity:.85;text-align:center}
+@media (max-width:820px){.express .ex-grid{grid-template-columns:1fr}.express .ex-txt{text-align:center}.express .ex-txt p{margin-left:auto;margin-right:auto}}
 /* Mobile : caler le contenu du hero sous la barre de nav (évite le chevauchement avec le logo) */
 @media (max-width:700px){
   .journey .hero-inner.jcap{padding:96px 24px 48px}
@@ -405,6 +418,41 @@ gtag('js',new Date());gtag('config','G-B58TBB5DQL');gtag('config','GT-5DHFFMX6')
   </div>
 </section>
 
+
+<!-- ============ DEVIS EXPRESS ============ -->
+<section class="band alt express" id="devis">
+  <div class="wrap">
+    <div class="ex-grid">
+      <div class="ex-txt reveal-l">
+        <span class="eyebrow">Devis gratuit</span>
+        <h2>Votre prix en 2 minutes</h2>
+        <p>Laissez-nous votre numéro : nous vous rappelons avec un prix ferme, gratuit et sans engagement. Ou appelez-nous directement, nous répondons 7j/7.</p>
+        <a href="tel:+33623075259" class="ex-tel">06&nbsp;23&nbsp;07&nbsp;52&nbsp;59</a>
+        <span class="ex-note">7j/7 · même tard le soir et tôt le matin</span>
+      </div>
+      <form class="ex-form reveal-r" action="https://formsubmit.co/matheoceleste@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Rappel demandé — devis express MathClean">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="origine" value="Devis express — accueil">
+        <div class="fld"><label for="ex-nom">Prénom</label><input id="ex-nom" type="text" name="nom" autocomplete="given-name" required></div>
+        <div class="fld"><label for="ex-tel">Téléphone</label><input id="ex-tel" type="tel" name="telephone" autocomplete="tel" inputmode="tel" required></div>
+        <div class="fld"><label for="ex-besoin">Votre besoin</label>
+          <select id="ex-besoin" name="prestation">
+            <option>Nettoyage automobile</option>
+            <option>Nettoyage textile (canapé, matelas, tapis)</option>
+            <option>Nettoyage de vitres</option>
+            <option>Nettoyage d'avion</option>
+            <option>Nettoyage de terrasse</option>
+            <option>Nettoyage de locaux &amp; bureaux</option>
+            <option>Nettoyage de fin de chantier</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-or">Être rappelé gratuitement</button>
+        <p class="ex-legal">Sans engagement · aucune carte bancaire demandée</p>
+      </form>
+    </div>
+  </div>
+</section>
 
 <!-- ============ AVANT / APRÈS ============ -->
 <section id="avant-apres" class="band beforeafter">
@@ -744,11 +792,12 @@ gtag('js',new Date());gtag('config','G-B58TBB5DQL');gtag('config','GT-5DHFFMX6')
         <input type="hidden" name="_captcha" value="false">
         <div class="fld"><label for="ct-nom">Nom &amp; prénom</label><input id="ct-nom" type="text" name="nom" autocomplete="name" required></div>
         <div class="fld"><label for="ct-tel">Téléphone</label><input id="ct-tel" type="tel" name="telephone" autocomplete="tel" required></div>
-        <div class="fld"><label for="ct-email">Email</label><input id="ct-email" type="email" name="email" autocomplete="email" required></div>
+        <div class="fld"><label for="ct-email">Email <span style="opacity:.6;font-weight:400">(facultatif)</span></label><input id="ct-email" type="email" name="email" autocomplete="email"></div>
         <div class="fld"><label for="ct-presta">Prestation souhaitée</label>
           <select id="ct-presta" name="prestation">
             <option>Nettoyage automobile</option>
             <option>Nettoyage textile (canapé, matelas, tapis)</option>
+            <option>Nettoyage de vitres</option>
             <option>Nettoyage d'avion</option><option>Nettoyage de terrasse</option>
             <option>Nettoyage de locaux &amp; bureaux</option>
             <option>Nettoyage de fin de chantier</option>

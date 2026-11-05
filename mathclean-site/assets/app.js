@@ -60,17 +60,59 @@ document.querySelectorAll('form[action*="formsubmit.co"]').forEach(f=>{
 });
 
 
-/* ===== Bulle flottante Réserver (toutes pages sauf réservation/merci) ===== */
+/* ===== Barre d'action flottante : Appeler + Devis (toutes pages sauf réservation/merci) =====
+   Le téléphone n'apparaissait qu'une seule fois, tout en bas de la page : sur mobile il fallait
+   faire défiler dix-sept écrans avant de pouvoir appeler. Il est désormais toujours à portée.
+   Les guides sont au même niveau que services/ et zones/ : sans le préfixe, le bouton pointait
+   vers /guides/reservation.html, qui n'existe pas. */
 (function(){
   var path=location.pathname;
   if(/reservation\.html$|merci\.html$/.test(path)) return;
-  var pre=/\/(services|zones)\//.test(path)?'../':'';
-  var b=document.createElement('a');
-  b.href=pre+'reservation.html';
-  b.className='resa-bubble';
-  b.setAttribute('aria-label','Réserver une prestation');
-  b.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Réserver</span>';
-  document.body.appendChild(b);
+  var pre=/\/(services|zones|guides)\//.test(path)?'../':'';
+
+  var st=document.createElement('style');
+  st.textContent=
+  '.cta-dock{position:fixed;z-index:96;right:22px;bottom:22px;display:flex;gap:10px;align-items:center}'+
+  '.cta-dock a{display:flex;align-items:center;gap:9px;padding:14px 22px;border-radius:99px;'+
+  'text-decoration:none;font-weight:700;font-size:.95rem;letter-spacing:.2px;white-space:nowrap;'+
+  'box-shadow:0 10px 32px rgba(0,0,0,.45);transition:transform .3s ease,box-shadow .3s ease}'+
+  '.cta-dock a:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.55)}'+
+  '.cta-dock svg{flex:0 0 18px}'+
+  '.cta-dock .d-call{background:linear-gradient(135deg,#c9a24b,#9c7a2e);color:#151004;'+
+  'box-shadow:0 10px 32px rgba(0,0,0,.45),0 0 0 1px rgba(231,205,134,.35)}'+
+  '.cta-dock .d-quote{background:rgba(18,16,12,.92);color:#f6f3ec;border:1px solid rgba(231,205,134,.45);'+
+  '-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}'+
+  '@media (max-width:700px){'+
+  '.cta-dock{left:12px;right:12px;bottom:12px;gap:9px}'+
+  '.cta-dock a{flex:1 1 0;justify-content:center;padding:15px 10px;font-size:1rem}'+
+  'body{padding-bottom:88px}'+
+  '}';
+  document.head.appendChild(st);
+
+  var d=document.createElement('div');
+  d.className='cta-dock';
+  d.innerHTML=
+   '<a class="d-call" href="tel:+33623075259" aria-label="Appeler MathClean au 06 23 07 52 59">'+
+   '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'+
+   '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>'+
+   '</svg><span>Appeler</span></a>'+
+   '<a class="d-quote" href="'+pre+'reservation.html" aria-label="Demander un devis gratuit">'+
+   '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'+
+   '<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'+
+   '</svg><span>Devis gratuit</span></a>';
+  document.body.appendChild(d);
+
+  /* Le bandeau cookies occupe le bas de l'écran au premier passage : on remonte la barre. */
+  function place(){
+    var bk=document.querySelector('.ck-banner.on');
+    var h=bk?Math.round(bk.getBoundingClientRect().height):0;
+    d.style.bottom = h ? (h+20)+'px' : '';
+  }
+  place();
+  window.addEventListener('resize',place);
+  if(window.MutationObserver){
+    new MutationObserver(place).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+  }
 })();
 
 
